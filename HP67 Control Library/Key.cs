@@ -8,22 +8,25 @@ using System.Windows.Forms;
 
 namespace HP67_Control_Library
 {
-	public enum FGTextAlign
-	{
-		Centered,
-		Justified
-	}
-
 	/// <summary>
-	/// Summary description for Key.
+	/// A Key on the keyboard of the HP67 calculator.
 	/// </summary>
 	public class Key : System.Windows.Forms.UserControl
 	{
-		const double brightnessReduction = 0.78;
-		const float sizeReduction = 0.85F;
+
+		public enum TextAlign
+		{
+			Centered,
+			Justified
+		}
+
+		#region Private Data
+
+		private const double brightnessReduction = 0.78;
+		private const float sizeReduction = 0.85F;
 
 		private System.Drawing.Color fgBackColor;
-		private FGTextAlign fgTextAlign;
+		private TextAlign fgTextAlign;
 		private int fgWidth;
 		private System.Drawing.Font font;
 		private System.Drawing.Color mainBackColor;
@@ -39,12 +42,23 @@ namespace HP67_Control_Library
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
+		#endregion
+
+		#region Event Definitions
+
+		public delegate void KeyClickEvent (object sender, System.EventArgs e);
+		public event KeyClickEvent KeyClick;
+
+		#endregion
+
+		#region Constructors & Destructors
+
 		public Key()
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			fgTextAlign = FGTextAlign.Justified;
+			fgTextAlign = TextAlign.Justified;
 			fgWidth = button.Size.Width;
 			mainWidth = button.Width;
 
@@ -53,7 +67,7 @@ namespace HP67_Control_Library
 			HText = "h";
 			MainText = "key";
 
-			FGTextAlign = FGTextAlign.Centered;
+			FGTextAlign = TextAlign.Centered;
 			HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
 			FGBackColor = System.Drawing.Color.FromArgb (64, 64, 64);
@@ -83,6 +97,8 @@ namespace HP67_Control_Library
 			}
 			base.Dispose( disposing );
 		}
+
+		#endregion
 
 		#region Component Designer generated code
 		/// <summary> 
@@ -167,7 +183,10 @@ namespace HP67_Control_Library
 		private void button_Click(object sender, System.EventArgs e)
 		{
 			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			MessageBox.Show ("Click!");
+			if (KeyClick != null) 
+			{
+				KeyClick (sender, e);
+			}
 		}
 
 		private void hButton_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -189,7 +208,10 @@ namespace HP67_Control_Library
 		private void button_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-			MessageBox.Show ("Click!");
+			if (KeyClick != null) 
+			{
+				KeyClick (sender, e);
+			}
 		}
 
 		#endregion
@@ -222,7 +244,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public HP67_Control_Library.FGTextAlign FGTextAlign
+		public TextAlign FGTextAlign
 		{
 			get
 			{
@@ -235,12 +257,12 @@ namespace HP67_Control_Library
 					fgTextAlign = value;
 					switch (value)
 					{
-						case FGTextAlign.Centered:
+						case TextAlign.Centered:
 						{
 							CenterFG ();
 							break;
 						}
-						case FGTextAlign.Justified:
+						case TextAlign.Justified:
 						{
 							JustifyFG ();
 							break;
@@ -316,7 +338,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public String FText
+		public string FText
 		{
 			get
 			{
@@ -331,14 +353,14 @@ namespace HP67_Control_Library
 					GText = "";
 				}
 				fLabel.Text = value;
-				if (fgTextAlign == FGTextAlign.Centered) 
+				if (fgTextAlign == TextAlign.Centered) 
 				{
 					CenterFG();
 				}
 			}
 		}
 
-		public String GText
+		public string GText
 		{
 			get
 			{
@@ -362,12 +384,12 @@ namespace HP67_Control_Library
 				{
 					gLabel.Text = value;
 					switch (fgTextAlign) {
-						case FGTextAlign.Centered :
+						case TextAlign.Centered :
 						{
 							CenterFG ();
 							break;
 						}
-						case FGTextAlign.Justified :
+						case TextAlign.Justified :
 						{
 							JustifyFG ();
 							break;
@@ -377,14 +399,14 @@ namespace HP67_Control_Library
 					gLabel.Visible = true;
 				}
 				gLabel.Text = value;
-				if (fgTextAlign == FGTextAlign.Centered) 
+				if (fgTextAlign == TextAlign.Centered) 
 				{
 					CenterFG();
 				}
 			}
 		}
 
-		public String HText
+		public string HText
 		{
 			get
 			{
@@ -425,7 +447,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public String MainText // Would love to call it Text, but that confuses PropertyGrid.
+		public string MainText // Would love to call it Text, but that confuses PropertyGrid.
 		{
 			get
 			{

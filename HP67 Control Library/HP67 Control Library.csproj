@@ -90,7 +90,7 @@
                 />
                 <Reference
                     Name = "System.XML"
-                    AssemblyName = "System.XML"
+                    AssemblyName = "System.Xml"
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
             </References>
@@ -99,16 +99,31 @@
             <Include>
                 <File
                     RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "UserControl1.cs"
+                    RelPath = "Key.cs"
                     SubType = "UserControl"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "UserControl1.resx"
-                    DependentUpon = "UserControl1.cs"
+                    RelPath = "Key.resx"
+                    DependentUpon = "Key.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Toggle.bmp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Toggle.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Toggle.resx"
+                    DependentUpon = "Toggle.cs"
                     BuildAction = "EmbeddedResource"
                 />
             </Include>

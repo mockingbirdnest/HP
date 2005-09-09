@@ -1,31 +1,33 @@
-using HP67_Control_Library;
 using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 
 namespace HP67_Testing
 {
 	/// <summary>
-	/// A test rig for the Key user control.
+	/// Summary description for ToggleTest.
 	/// </summary>
-	public class KeyTest : System.Windows.Forms.Form
+	public class ToggleTest : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.PropertyGrid PropertyGrid;
-		private HP67_Control_Library.Key KeyUnderTest;
+		private HP67_Control_Library.Toggle ToggleUnderTest;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public KeyTest()
+		public ToggleTest()
 		{
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+
+			//
+			// TODO: Add any constructor code after InitializeComponent call
+			//
 		}
 
 		/// <summary>
@@ -35,7 +37,7 @@ namespace HP67_Testing
 		{
 			if( disposing )
 			{
-				if (components != null) 
+				if(components != null)
 				{
 					components.Dispose();
 				}
@@ -51,7 +53,7 @@ namespace HP67_Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-			this.KeyUnderTest = new HP67_Control_Library.Key();
+			this.ToggleUnderTest = new HP67_Control_Library.Toggle();
 			this.SuspendLayout();
 			// 
 			// PropertyGrid
@@ -61,48 +63,38 @@ namespace HP67_Testing
 			this.PropertyGrid.LineColor = System.Drawing.SystemColors.ScrollBar;
 			this.PropertyGrid.Location = new System.Drawing.Point(8, 8);
 			this.PropertyGrid.Name = "PropertyGrid";
-			this.PropertyGrid.SelectedObject = this.KeyUnderTest;
-			this.PropertyGrid.Size = new System.Drawing.Size(320, 448);
-			this.PropertyGrid.TabIndex = 1;
+			this.PropertyGrid.SelectedObject = this.ToggleUnderTest;
+			this.PropertyGrid.Size = new System.Drawing.Size(480, 360);
+			this.PropertyGrid.TabIndex = 2;
 			this.PropertyGrid.Text = "PropertyGrid";
 			this.PropertyGrid.ViewBackColor = System.Drawing.SystemColors.Window;
 			this.PropertyGrid.ViewForeColor = System.Drawing.SystemColors.WindowText;
 			// 
-			// KeyUnderTest
+			// ToggleUnderTest
 			// 
-			this.KeyUnderTest.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.KeyUnderTest.FGTextAlign = Key.TextAlign.Centered;
-			this.KeyUnderTest.FGWidth = 48;
-			this.KeyUnderTest.FText = "f";
-			this.KeyUnderTest.GText = "g";
-			this.KeyUnderTest.HText = "h";
-			this.KeyUnderTest.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.KeyUnderTest.Location = new System.Drawing.Point(368, 200);
-			this.KeyUnderTest.MainBackColor = System.Drawing.Color.Olive;
-			this.KeyUnderTest.MainText = "key";
-			this.KeyUnderTest.MainWidth = 48;
-			this.KeyUnderTest.Name = "KeyUnderTest";
-			this.KeyUnderTest.Size = new System.Drawing.Size(48, 51);
-			this.KeyUnderTest.TabIndex = 2;
-			this.KeyUnderTest.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClickHandler);
+			this.ToggleUnderTest.LeftText = "left";
+			this.ToggleUnderTest.LeftWidth = 60;
+			this.ToggleUnderTest.Location = new System.Drawing.Point(152, 400);
+			this.ToggleUnderTest.MainWidth = 60;
+			this.ToggleUnderTest.Name = "ToggleUnderTest";
+			this.ToggleUnderTest.RightText = "right";
+			this.ToggleUnderTest.RightWidth = 60;
+			this.ToggleUnderTest.Size = new System.Drawing.Size(192, 40);
+			this.ToggleUnderTest.TabIndex = 3;
+			this.ToggleUnderTest.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.ToggleClick);
 			// 
-			// KeyTest
+			// ToggleTest
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(492, 466);
-			this.Controls.Add(this.KeyUnderTest);
+			this.Controls.Add(this.ToggleUnderTest);
 			this.Controls.Add(this.PropertyGrid);
-			this.Name = "KeyTest";
-			this.Text = "KeyTest";
+			this.Name = "ToggleTest";
+			this.Text = "ToggleTest";
 			this.ResumeLayout(false);
 
 		}
 		#endregion
-
-		private void KeyClickHandler (object sender, System.EventArgs e)
-		{
-			MessageBox.Show ("Click event handled!");
-		}
 
 		/// <summary>
 		/// The main entry point for the application.
@@ -110,7 +102,25 @@ namespace HP67_Testing
 		[STAThread]
 		static void Main() 
 		{
-			Application.Run(new KeyTest());
+			Application.Run(new ToggleTest());
+		}
+
+		private void ToggleClick
+			(object sender, System.EventArgs e, HP67_Control_Library.Toggle.Position position)
+		{
+			switch (position) 
+			{
+				case HP67_Control_Library.Toggle.Position.Left:
+				{
+					MessageBox.Show ("Now on the left!");
+					break;
+				}
+				case HP67_Control_Library.Toggle.Position.Right:
+				{
+					MessageBox.Show ("Now on the right!");
+					break;
+				}
+			}
 		}
 	}
 }
