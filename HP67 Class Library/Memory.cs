@@ -1,17 +1,16 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 
 namespace HP67_Class_Library
 {
 	/// <summary>
-	/// Description r�sum�e de Memory.
+	/// Description résumée de Memory.
 	/// </summary>
 	public class Memory
 	{
-		private double[] Registry;
-
 		public System.ApplicationException BadIndex;
-		public enum  LetterRegistry
+
+		public enum LetterRegister
 		{
 			A = 20,
 			B = 21,
@@ -20,76 +19,157 @@ namespace HP67_Class_Library
 			E = 24,
 			I = 25
 		}
-		public delegate double Operator(double X, double Y);
 
+		public delegate double Operator (double X, double Y);
+
+		#region Private Declarations
+
+		private double[] registers;
+
+		private enum ΣRegister
+		{
+			Σx = 14,
+			Σx2 = 15,
+			Σy = 16,
+			Σy2 = 17,
+			Σxy = 18,
+			n = 19
+		}
+
+		#endregion
+
+		#region Constructors & Destructors
 
 		public Memory()
 		{
-			Registry = new double[25];
-			for (int i = 0; i < Registry.Length; i++)
+			registers = new double [25];
+			for (int i = 0; i < registers.Length; i++)
 			{
-				Registry[i] = 0.0;
+				registers[i] = 0.0;
 			}
 		}
-		public void SPlus (double X, double Y)
+
+		#endregion
+
+		#region Private Operations
+
+		private double this [int r] 
 		{
-			Registry[19]++;
-			Registry[18] += X * Y;
-			Registry[17] += Y * Y;
-			Registry[16] += Y;
-			Registry[15] += X * X;
-			Registry[14] += X;
+			get
+			{
+				return registers [r];
+			}
+			set
+			{
+				registers [r] = value;
+			}
 		}
-		public void SMinus (double X, double Y)
+
+		private double this [LetterRegister r] 
 		{
-			Registry[19]--;
-			Registry[18] -= X * Y;
-			Registry[17] -= Y * Y;
-			Registry[16] -= Y;
-			Registry[15] -= X * X;
-			Registry[14] -= X;
+			get
+			{
+				return this [r];
+			}
+			set
+			{
+				this [r] = value;
+			}
 		}
-		public void PrimarySecondaryExchange()
+
+		private double this [ΣRegister r] 
+		{
+			get
+			{
+				return this [r];
+			}
+			set
+			{
+				this [r] = value;
+			}
+		}
+
+		#endregion
+
+		#region Public Operations
+
+		public void ΣPlus (double X, double Y)
+		{
+			this [ΣRegister.n]++;
+			this [ΣRegister.Σxy] += X * Y;
+			this [ΣRegister.Σy2] += Y * Y;
+			this [ΣRegister.Σy]  += Y;
+			this [ΣRegister.Σx2] += X * X;
+			this [ΣRegister.Σx]  += X;
+		}
+
+		public void ΣMinus (double X, double Y)
+		{
+			this [ΣRegister.n]--;
+			this [ΣRegister.Σxy] -= X * Y;
+			this [ΣRegister.Σy2] -= Y * Y;
+			this [ΣRegister.Σy]  -= Y;
+			this [ΣRegister.Σx2] -= X * X;
+			this [ΣRegister.Σx]  -= X;
+		}
+
+		public void PrimarySecondaryExchange ()
 		{
 			double temp;
 			
 			for (int i = 0; i < 9; i++)
 			{
-				temp = Registry[i];
-				Registry[i] = Registry[i + 10];
-				Registry[i + 10] = temp;
+				temp = registers [i];
+				registers [i] = registers [i + 10];
+				registers [i + 10] = temp;
 			}
+		}
 
-		}
-		public void Store(double Value, Int16 Index)
+		public void Store (double Value, Byte Index)
 		{
 			Trace.Assert(Index < 9);
-			Registry[Index] = Value;
+			registers [Index] = Value;
 		}
-		public void Store(double Value, Int16 Index, Operator Modifier)
+
+		public void Store (double Value, Byte Index, Operator Modifier)
 		{
 			Trace.Assert(Index < 9);
-			Registry[Index] = Modifier(Registry[Index], Value);
+			registers [Index] = Modifier (registers [Index], Value);
 		}
-		public double Recall(Int16 Index)
+
+		public double Recall (Byte Index)
 		{
 			Trace.Assert(Index < 9);
-			return Registry[Index];
+			return registers [Index];
 		}
-		public void StoreIndexed(double Value)
+
+		public void StoreIndexed (double Value)
 		{
-			if (Registry[(int)LetterRegistry.I] < 0  | Registry[(int)LetterRegistry.I] > 25){throw BadIndex;}
-			Registry[(int)LetterRegistry.I] = Value;
+			if (this [LetterRegister.I] < 0  || this [LetterRegister.I] > 25)
+			{
+				throw BadIndex;
+			}
+			this [LetterRegister.I] = Value;
 		}
-		public void StoreIndexed(double Value, Operator Modifier)
+
+		public void StoreIndexed (double Value, Operator Modifier)
 		{
-			if (Registry[(int)LetterRegistry.I] < 0  | Registry[(int)LetterRegistry.I] > 25){throw BadIndex;}
-			Registry[(int)LetterRegistry.I] = Modifier(Registry[(int)LetterRegistry.I], Value);
+			if (this [LetterRegister.I] < 0  || this [LetterRegister.I] > 25)
+			{
+				throw BadIndex;
+			}
+			this [LetterRegister.I] = Modifier (this [LetterRegister.I], Value);
 		}
-		public double RecallIndexed()
+
+		public double RecallIndexed ()
 		{
-			if (Registry[(int)LetterRegistry.I] < 0  | Registry[(int)LetterRegistry.I] > 25){throw BadIndex;}
-			return Registry[(int)LetterRegistry.I];
+			if (this [LetterRegister.I] < 0  || this [LetterRegister.I] > 25)
+			{
+				throw BadIndex;
+			}
+			return this [LetterRegister.I];
 		}
+
+		#endregion
 	}
 }
