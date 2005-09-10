@@ -89,6 +89,18 @@ namespace HP67_Class_Library
 			}
 		}
 
+		private double this [double r] 
+		{
+			get
+			{
+				return this [r];
+			}
+			set
+			{
+				this [r] = value;
+			}
+		}
+
 		#endregion
 
 		#region Public Operations
@@ -143,31 +155,50 @@ namespace HP67_Class_Library
 			return registers [Index];
 		}
 
+		public void Store (double Value, LetterRegister Index)
+		{
+			this [Index] = Value;
+		}
+
+		public void Store (double Value, LetterRegister Index, Operator Modifier)
+		{
+			this [Index] = Modifier (this [Index], Value);
+		}
+
+		public double Recall (LetterRegister Index)
+		{
+			return this [Index];
+		}
+
 		public void StoreIndexed (double Value)
 		{
-			if (this [LetterRegister.I] < 0  || this [LetterRegister.I] > 25)
+			if ((System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) < 0  ||
+				(System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > 25)))
 			{
 				throw BadIndex;
 			}
-			this [LetterRegister.I] = Value;
+			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] = Value;
 		}
 
 		public void StoreIndexed (double Value, Operator Modifier)
 		{
-			if (this [LetterRegister.I] < 0  || this [LetterRegister.I] > 25)
+			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) < 0  ||
+				System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > 25)
 			{
 				throw BadIndex;
 			}
-			this [LetterRegister.I] = Modifier (this [LetterRegister.I], Value);
+			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] = 
+			Modifier (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])), Value);
 		}
 
 		public double RecallIndexed ()
 		{
-			if (this [LetterRegister.I] < 0  || this [LetterRegister.I] > 25)
+			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) < 0  ||
+				System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > 25)
 			{
 				throw BadIndex;
 			}
-			return this [LetterRegister.I];
+			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))];
 		}
 
 		#endregion
