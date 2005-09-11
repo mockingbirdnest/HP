@@ -24,7 +24,7 @@
                 PostBuildEvent = ""
                 RootNamespace = "HP67_Testing"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
+                StartupObject = "HP67_Testing.DisplayTest"
             >
                 <Config
                     Name = "Debug"
@@ -108,7 +108,18 @@
                 />
                 <File
                     RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "DisplayTest.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "DisplayTest.resx"
+                    DependentUpon = "DisplayTest.cs"
+                    BuildAction = "EmbeddedResource"
                 />
                 <File
                     RelPath = "KeyTest.cs"
@@ -118,6 +129,16 @@
                 <File
                     RelPath = "KeyTest.resx"
                     DependentUpon = "KeyTest.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ToggleTest.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ToggleTest.resx"
+                    DependentUpon = "ToggleTest.cs"
                     BuildAction = "EmbeddedResource"
                 />
             </Include>

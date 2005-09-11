@@ -103,6 +103,16 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "Display.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Display.resx"
+                    DependentUpon = "Display.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "Key.cs"
                     SubType = "UserControl"
                     BuildAction = "Compile"
