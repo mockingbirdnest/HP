@@ -69,7 +69,6 @@ namespace HP67_Control_Library
 			DigitsCount = 2;
 			DigitsFormat = Format.Fixed;
 			Value = 0.0;
-			this.Size = textBox.Size;
 		}
 
 		/// <summary> 
@@ -101,6 +100,9 @@ namespace HP67_Control_Library
 			// 
 			// textBox
 			// 
+			this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+				| System.Windows.Forms.AnchorStyles.Left) 
+				| System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox.BackColor = System.Drawing.Color.Black;
 			this.textBox.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.textBox.ForeColor = System.Drawing.Color.Red;
