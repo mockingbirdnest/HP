@@ -73,11 +73,10 @@ namespace HP67_Testing
 			// 
 			// CardUnderTest
 			// 
-			this.CardUnderTest.LabelWidth = 48;
+			this.CardUnderTest.TextBoxWidth = 48;
 			this.CardUnderTest.Location = new System.Drawing.Point(112, 392);
 			this.CardUnderTest.Margin = 16;
 			this.CardUnderTest.Name = "CardUnderTest";
-			this.CardUnderTest.ReadOnly = true;
 			this.CardUnderTest.Size = new System.Drawing.Size(300, 50);
 			this.CardUnderTest.TabIndex = 6;
 			// 
