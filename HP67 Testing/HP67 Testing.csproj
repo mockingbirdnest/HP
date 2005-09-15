@@ -24,7 +24,7 @@
                 PostBuildEvent = ""
                 RootNamespace = "HP67_Testing"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = "HP67_Testing.DisplayTest"
+                StartupObject = "HP67_Testing.CardTest"
             >
                 <Config
                     Name = "Debug"
@@ -110,6 +110,16 @@
                     RelPath = "AssemblyInfo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "CardSlotTest.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "CardSlotTest.resx"
+                    DependentUpon = "CardSlotTest.cs"
+                    BuildAction = "EmbeddedResource"
                 />
                 <File
                     RelPath = "DisplayTest.cs"

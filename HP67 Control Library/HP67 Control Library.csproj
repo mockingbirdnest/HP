@@ -103,13 +103,13 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Card.cs"
+                    RelPath = "CardSlot.cs"
                     SubType = "UserControl"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Card.resx"
-                    DependentUpon = "Card.cs"
+                    RelPath = "CardSlot.resx"
+                    DependentUpon = "CardSlot.cs"
                     BuildAction = "EmbeddedResource"
                 />
                 <File

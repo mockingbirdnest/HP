@@ -7,17 +7,17 @@ using System.Windows.Forms;
 
 namespace HP67_Control_Library
 {
+	public enum TogglePosition 
+	{
+		Left,
+		Right
+	}
+
 	/// <summary>
 	/// Sliding switch to toggle between modes of the HP67 calculator.
 	/// </summary>
 	public class Toggle : System.Windows.Forms.UserControl
 	{
-
-		public enum Position 
-		{
-			Left,
-			Right
-		}
 
 		#region Private Data
 
@@ -27,7 +27,7 @@ namespace HP67_Control_Library
 		private System.Drawing.Color backColor;
 		private System.Drawing.Font font;
 		private System.Drawing.Color foreColor;
-		private Position position;
+		private TogglePosition position;
 
 		internal System.Windows.Forms.Button button;
 		internal System.Windows.Forms.Label rightLabel;
@@ -42,7 +42,8 @@ namespace HP67_Control_Library
 
 		#region Event Definitions
 
-		public delegate void ToggleClickEvent (object sender, System.EventArgs e, Position position);
+		public delegate void ToggleClickEvent
+			(object sender, System.EventArgs e, TogglePosition position);
 		public event ToggleClickEvent ToggleClick;
 
 		#endregion
@@ -54,7 +55,7 @@ namespace HP67_Control_Library
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			position = Position.Left;
+			position = TogglePosition.Left;
 
 			LeftWidth = 60;
 			RightWidth = 60;
@@ -163,20 +164,20 @@ namespace HP67_Control_Library
 		{
 			switch (position) 
 			{
-				case Position.Left:
+				case TogglePosition.Left:
 				{
 					button.Location = new System.Drawing.Point
 						(panel.Location.X + panel.Size.Width - button.Size.Width - marginWidth,
 						 button.Location.Y);
-					position = Position.Right;
+					position = TogglePosition.Right;
 					break;
 				}
-				case Position.Right:
+				case TogglePosition.Right:
 				{
 					button.Location = new System.Drawing.Point
 						(panel.Location.X + marginWidth,
 						 button.Location.Y);
-					position = Position.Left;
+					position = TogglePosition.Left;
 					break;
 				}
 			}
@@ -279,7 +280,7 @@ namespace HP67_Control_Library
 				panel.Size = new System.Drawing.Size (value, panel.Size.Height);
 				button.Size = new System.Drawing.Size
 					((int)(value * reductionFactor), button.Size.Height);
-				if (position == Position.Right) 
+				if (position == TogglePosition.Right) 
 				{
 					button.Location = new System.Drawing.Point
 						(panel.Location.X + panel.Size.Width - button.Size.Width - marginWidth,

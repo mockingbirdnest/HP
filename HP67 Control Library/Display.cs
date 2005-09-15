@@ -9,18 +9,18 @@ using System.Windows.Forms;
 
 namespace HP67_Control_Library
 {
+	public enum DisplayFormat
+	{
+		Engineering,
+		Fixed,
+		Scientific
+	}
+
 	/// <summary>
 	/// The LED display for the HP67 calculator.
 	/// </summary>
 	public class Display : System.Windows.Forms.UserControl
 	{
-
-		public enum Format
-		{
-			Engineering,
-			Fixed,
-			Scientific
-		}
 
 		#region Private Data
 
@@ -43,7 +43,7 @@ namespace HP67_Control_Library
 		private string exponentTemplate = " 00;-00";
 		private string fixMantissaTemplate;
 		private string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
-		private Format format;
+		private DisplayFormat format;
 		private string negativeOverflow = "-9.999999999 99";
 		private bool overflows;
 		private double overflowValue;
@@ -66,8 +66,8 @@ namespace HP67_Control_Library
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			DigitsCount = 2;
-			DigitsFormat = Format.Fixed;
+			Count = 2;
+			Format = DisplayFormat.Fixed;
 			Value = 0.0;
 		}
 
@@ -165,7 +165,7 @@ namespace HP67_Control_Library
 			}
 			set
 			{
-				if (value == 0 && format == Format.Fixed) 
+				if (value == 0 && format == DisplayFormat.Fixed) 
 				{
 					Text =
 						Text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
@@ -206,7 +206,7 @@ namespace HP67_Control_Library
 				
 			switch (format) 
 			{
-				case Format.Engineering:
+				case DisplayFormat.Engineering:
 				{
 					double absTo = Math.Abs (to);
 
@@ -228,7 +228,7 @@ namespace HP67_Control_Library
 					}
 					break;
 				}
-				case Format.Fixed:
+				case DisplayFormat.Fixed:
 				{
 					if (fixedUnderflowOverflow) 
 					{
@@ -244,7 +244,7 @@ namespace HP67_Control_Library
 					};
 					break;
 				}
-				case Format.Scientific:
+				case DisplayFormat.Scientific:
 				{
 					mantissa = to.ToString
 						(sciMantissaTemplate, NumberFormatInfo.InvariantInfo);
@@ -262,7 +262,7 @@ namespace HP67_Control_Library
 
 		#region Public Properties
 
-		public byte DigitsCount
+		public byte Count
 		{
 			set
 			{
@@ -314,7 +314,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public Format DigitsFormat
+		public DisplayFormat Format
 		{
 			set
 			{
@@ -391,7 +391,7 @@ namespace HP67_Control_Library
 				fixedUnderflowOverflow = false;
 				switch (format) 
 				{
-					case Format.Engineering:
+					case DisplayFormat.Engineering:
 					{
 						if (exponent % 3 != 0) 
 						{
@@ -399,7 +399,7 @@ namespace HP67_Control_Library
 						}
 						break;
 					}
-					case Format.Fixed:
+					case DisplayFormat.Fixed:
 					{
 						if (exponent < -digits - 1 || exponent > 9) 
 						{
@@ -420,7 +420,7 @@ namespace HP67_Control_Library
 						}
 						break;
 					}
-					case Format.Scientific:
+					case DisplayFormat.Scientific:
 					{
 						break;
 					}

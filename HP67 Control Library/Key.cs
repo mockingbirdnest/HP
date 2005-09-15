@@ -8,17 +8,17 @@ using System.Windows.Forms;
 
 namespace HP67_Control_Library
 {
+	public enum TextAlign
+	{
+		Centered,
+		Justified
+	}
+
 	/// <summary>
 	/// A Key on the keyboard of the HP67 calculator.
 	/// </summary>
 	public class Key : System.Windows.Forms.UserControl
 	{
-
-		public enum TextAlign
-		{
-			Centered,
-			Justified
-		}
 
 		#region Private Data
 
@@ -223,6 +223,90 @@ namespace HP67_Control_Library
 			get 
 			{
 				return gLabel.Text != "";
+			}
+		}
+
+		#endregion
+
+		#region Private Methods
+
+		private void AutoSize ()
+		{
+			int x = Math.Min (button.Location.X, fLabel.Location.X);
+			int y = button.Location.Y;
+
+			button.Location = new System.Drawing.Point
+				(button.Location.X - x, button.Location.Y - y);
+			hButton.Location = new System.Drawing.Point
+				(hButton.Location.X - x, hButton.Location.Y - y);
+			fLabel.Location = new System.Drawing.Point
+				(fLabel.Location.X - x, fLabel.Location.Y - y);
+			gLabel.Location = new System.Drawing.Point
+				(gLabel.Location.X - x, gLabel.Location.Y - y);
+
+			this.Size = new System.Drawing.Size (Math.Max (mainWidth, fgWidth),
+											   fLabel.Location.Y + fLabel.Size.Height);
+		}
+
+		private void CenterFG ()
+		{
+			float ΔWidth = gLabel.CreateGraphics ().
+								MeasureString (gLabel.Text, gLabel.Font).Width -
+						   fLabel.CreateGraphics ().
+								MeasureString (fLabel.Text, fLabel.Font).Width;
+			int spacing = gLabel.Location.X - (fLabel.Location.X + fLabel.Size.Width);
+
+			Trace.Assert (spacing == 0);
+			if (HasG) 
+			{
+
+				// Adjust the widths so as to center the text.
+				fLabel.Size = new System.Drawing.Size
+					((int)(((float)fgWidth - ΔWidth - (float)spacing) / 2.0),
+					 fLabel.Size.Height);
+				gLabel.Size = new System.Drawing.Size
+					(fgWidth - fLabel.Size.Width - spacing,
+					 gLabel.Size.Height);
+				gLabel.Location = new System.Drawing.Point
+					(fLabel.Location.X + fgWidth - gLabel.Size.Width,
+					 gLabel.Location.Y);
+
+				// Now set the alignments.
+				fLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+				gLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+			}
+			else
+			{
+				fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			}
+		}
+
+		private void JustifyFG ()
+		{
+			int spacing = gLabel.Location.X - (fLabel.Location.X + fLabel.Size.Width);
+
+			Trace.Assert (spacing == 0);
+			if (HasG)
+			{
+
+				// Make sure the two labels have the same width.
+				fLabel.Size = new System.Drawing.Size
+					((fgWidth - spacing) / 2,
+					 fLabel.Size.Height);
+				gLabel.Size = new System.Drawing.Size
+					(fgWidth - fLabel.Size.Width - spacing,
+					 gLabel.Size.Height);
+				gLabel.Location = new System.Drawing.Point
+					(fLabel.Location.X + fgWidth - gLabel.Size.Width,
+					 gLabel.Location.Y);
+
+				// Now set the alignments.
+				fLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+				gLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			}
+			else
+			{
+				fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			}
 		}
 
@@ -488,88 +572,5 @@ namespace HP67_Control_Library
 		
 		#endregion
 
-		#region Private Methods
-
-		private void AutoSize ()
-		{
-			int x = Math.Min (button.Location.X, fLabel.Location.X);
-			int y = button.Location.Y;
-
-			button.Location = new System.Drawing.Point
-				(button.Location.X - x, button.Location.Y - y);
-			hButton.Location = new System.Drawing.Point
-				(hButton.Location.X - x, hButton.Location.Y - y);
-			fLabel.Location = new System.Drawing.Point
-				(fLabel.Location.X - x, fLabel.Location.Y - y);
-			gLabel.Location = new System.Drawing.Point
-				(gLabel.Location.X - x, gLabel.Location.Y - y);
-
-			this.Size = new System.Drawing.Size (Math.Max (mainWidth, fgWidth),
-											   fLabel.Location.Y + fLabel.Size.Height);
-		}
-
-		private void CenterFG ()
-		{
-			float ΔWidth = gLabel.CreateGraphics ().
-								MeasureString (gLabel.Text, gLabel.Font).Width -
-						   fLabel.CreateGraphics ().
-								MeasureString (fLabel.Text, fLabel.Font).Width;
-			int spacing = gLabel.Location.X - (fLabel.Location.X + fLabel.Size.Width);
-
-			Trace.Assert (spacing == 0);
-			if (HasG) 
-			{
-
-				// Adjust the widths so as to center the text.
-				fLabel.Size = new System.Drawing.Size
-					((int)(((float)fgWidth - ΔWidth - (float)spacing) / 2.0),
-					 fLabel.Size.Height);
-				gLabel.Size = new System.Drawing.Size
-					(fgWidth - fLabel.Size.Width - spacing,
-					 gLabel.Size.Height);
-				gLabel.Location = new System.Drawing.Point
-					(fLabel.Location.X + fgWidth - gLabel.Size.Width,
-					 gLabel.Location.Y);
-
-				// Now set the alignments.
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-				gLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-			}
-			else
-			{
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			}
-		}
-
-		private void JustifyFG ()
-		{
-			int spacing = gLabel.Location.X - (fLabel.Location.X + fLabel.Size.Width);
-
-			Trace.Assert (spacing == 0);
-			if (HasG)
-			{
-
-				// Make sure the two labels have the same width.
-				fLabel.Size = new System.Drawing.Size
-					((fgWidth - spacing) / 2,
-					 fLabel.Size.Height);
-				gLabel.Size = new System.Drawing.Size
-					(fgWidth - fLabel.Size.Width - spacing,
-					 gLabel.Size.Height);
-				gLabel.Location = new System.Drawing.Point
-					(fLabel.Location.X + fgWidth - gLabel.Size.Width,
-					 gLabel.Location.Y);
-
-				// Now set the alignments.
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-				gLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			}
-			else
-			{
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			}
-		}
-
-		#endregion
 	}
 }

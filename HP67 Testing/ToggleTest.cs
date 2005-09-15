@@ -106,16 +106,16 @@ namespace HP67_Testing
 		}
 
 		private void ToggleClick
-			(object sender, System.EventArgs e, HP67_Control_Library.Toggle.Position position)
+			(object sender, System.EventArgs e, HP67_Control_Library.TogglePosition position)
 		{
 			switch (position) 
 			{
-				case HP67_Control_Library.Toggle.Position.Left:
+				case HP67_Control_Library.TogglePosition.Left:
 				{
 					MessageBox.Show ("Now on the left!");
 					break;
 				}
-				case HP67_Control_Library.Toggle.Position.Right:
+				case HP67_Control_Library.TogglePosition.Right:
 				{
 					MessageBox.Show ("Now on the right!");
 					break;

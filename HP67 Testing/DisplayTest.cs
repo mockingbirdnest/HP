@@ -191,14 +191,14 @@ namespace HP67_Testing
 
 		private void numericUpDown_ValueChanged(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.DigitsCount = (byte) numericUpDown.Value;
+			DisplayUnderTest.Count = (byte) numericUpDown.Value;
 		}
 
 		private void radioButtonEngineering_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (radioButtonEngineering.Checked) 
 			{
-				DisplayUnderTest.DigitsFormat = HP67_Control_Library.Display.Format.Engineering;
+				DisplayUnderTest.Format = HP67_Control_Library.DisplayFormat.Engineering;
 			}
 		}
 
@@ -206,7 +206,7 @@ namespace HP67_Testing
 		{
 			if (radioButtonFixed.Checked) 
 			{
-				DisplayUnderTest.DigitsFormat = HP67_Control_Library.Display.Format.Fixed;
+				DisplayUnderTest.Format = HP67_Control_Library.DisplayFormat.Fixed;
 			}
 		}
 
@@ -214,7 +214,7 @@ namespace HP67_Testing
 		{
 			if (radioButtonScientific.Checked) 
 			{
-				DisplayUnderTest.DigitsFormat = HP67_Control_Library.Display.Format.Scientific;
+				DisplayUnderTest.Format = HP67_Control_Library.DisplayFormat.Scientific;
 			}
 		}
 	}
