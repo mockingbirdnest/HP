@@ -29,30 +29,41 @@ namespace HP67_Control_Library
 		private int textBoxWidth;
 		private System.Drawing.Font largeFont;
 		private int margin;
+		private bool richText;
 		private CardSlotState state;
 
 		private System.Windows.Forms.Label [] labels;
-		private System.Windows.Forms.TextBox [] textBoxs;
-		private System.Windows.Forms.TextBox [] fTextBoxs;
+		private System.Windows.Forms.Control [] textBoxs;
+		private System.Windows.Forms.Control [] fTextBoxs;
 
 		internal System.Windows.Forms.Panel cornerPanel;
 		internal System.Windows.Forms.Panel panel;
 		internal System.Windows.Forms.TextBox titleTextBox;
-		internal System.Windows.Forms.TextBox ATextBox;
-		internal System.Windows.Forms.TextBox BTextBox;
-		internal System.Windows.Forms.TextBox CTextBox;
-		internal System.Windows.Forms.TextBox DTextBox;
-		internal System.Windows.Forms.TextBox ETextBox;
-		internal System.Windows.Forms.TextBox fATextBox;
-		internal System.Windows.Forms.TextBox fBTextBox;
-		internal System.Windows.Forms.TextBox fCTextBox;
-		internal System.Windows.Forms.TextBox fDTextBox;
-		internal System.Windows.Forms.TextBox fETextBox;
-		internal System.Windows.Forms.Label ALabel;
-		internal System.Windows.Forms.Label CLabel;
-		internal System.Windows.Forms.Label BLabel;
-		internal System.Windows.Forms.Label ELabel;
-		internal System.Windows.Forms.Label DLabel;
+		internal System.Windows.Forms.TextBox textBoxA;
+		internal System.Windows.Forms.TextBox textBoxB;
+		internal System.Windows.Forms.TextBox textBoxC;
+		internal System.Windows.Forms.TextBox textBoxD;
+		internal System.Windows.Forms.TextBox textBoxE;
+		internal System.Windows.Forms.TextBox textBoxfA;
+		internal System.Windows.Forms.TextBox textBoxfB;
+		internal System.Windows.Forms.TextBox textBoxfC;
+		internal System.Windows.Forms.TextBox textBoxfD;
+		internal System.Windows.Forms.TextBox textBoxfE;
+		internal System.Windows.Forms.Label labelA;
+		internal System.Windows.Forms.Label labelC;
+		internal System.Windows.Forms.Label labelB;
+		internal System.Windows.Forms.Label labelE;
+		internal System.Windows.Forms.Label labelD;
+		internal System.Windows.Forms.RichTextBox rtfBoxA;
+		internal System.Windows.Forms.RichTextBox rtfBoxB;
+		internal System.Windows.Forms.RichTextBox rtfBoxC;
+		internal System.Windows.Forms.RichTextBox rtfBoxD;
+		internal System.Windows.Forms.RichTextBox rtfBoxE;
+		internal System.Windows.Forms.RichTextBox rtfBoxFA;
+		internal System.Windows.Forms.RichTextBox rtfBoxFB;
+		internal System.Windows.Forms.RichTextBox rtfBoxFC;
+		internal System.Windows.Forms.RichTextBox rtfBoxFD;
+		internal System.Windows.Forms.RichTextBox rtfBoxFE;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -69,16 +80,18 @@ namespace HP67_Control_Library
 			InitializeComponent();
 
 			labels = new System.Windows.Forms.Label [5]
-				{ALabel, BLabel, CLabel, DLabel, ELabel};
+				{labelA, labelB, labelC, labelD, labelE};
 			textBoxs = new System.Windows.Forms.TextBox [5] 
-				{ATextBox, BTextBox, CTextBox, DTextBox, ETextBox};
+				{textBoxA, textBoxB, textBoxC, textBoxD, textBoxE};
 			fTextBoxs = new System.Windows.Forms.TextBox [5]
-				{fATextBox, fBTextBox, fCTextBox, fDTextBox, fETextBox};
+				{textBoxfA, textBoxfB, textBoxfC, textBoxfD, textBoxfE};
 
 			Font = new System.Drawing.Font
 				("Arial Unicode MS", 7.0F, System.Drawing.FontStyle.Regular);
 			TextBoxWidth = 48;
 			State = CardSlotState.Unloaded;
+			RichText = true;
+			RichText = false;
 			Margin = 16;
 		}
 
@@ -108,23 +121,33 @@ namespace HP67_Control_Library
 		{
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(CardSlot));
 			this.panel = new System.Windows.Forms.Panel();
-			this.ELabel = new System.Windows.Forms.Label();
-			this.DLabel = new System.Windows.Forms.Label();
-			this.BLabel = new System.Windows.Forms.Label();
-			this.CLabel = new System.Windows.Forms.Label();
-			this.ALabel = new System.Windows.Forms.Label();
+			this.labelE = new System.Windows.Forms.Label();
+			this.labelD = new System.Windows.Forms.Label();
+			this.labelB = new System.Windows.Forms.Label();
+			this.labelC = new System.Windows.Forms.Label();
+			this.labelA = new System.Windows.Forms.Label();
 			this.titleTextBox = new System.Windows.Forms.TextBox();
 			this.cornerPanel = new System.Windows.Forms.Panel();
-			this.ATextBox = new System.Windows.Forms.TextBox();
-			this.BTextBox = new System.Windows.Forms.TextBox();
-			this.CTextBox = new System.Windows.Forms.TextBox();
-			this.DTextBox = new System.Windows.Forms.TextBox();
-			this.ETextBox = new System.Windows.Forms.TextBox();
-			this.fATextBox = new System.Windows.Forms.TextBox();
-			this.fBTextBox = new System.Windows.Forms.TextBox();
-			this.fETextBox = new System.Windows.Forms.TextBox();
-			this.fCTextBox = new System.Windows.Forms.TextBox();
-			this.fDTextBox = new System.Windows.Forms.TextBox();
+			this.textBoxA = new System.Windows.Forms.TextBox();
+			this.textBoxB = new System.Windows.Forms.TextBox();
+			this.textBoxC = new System.Windows.Forms.TextBox();
+			this.textBoxD = new System.Windows.Forms.TextBox();
+			this.textBoxE = new System.Windows.Forms.TextBox();
+			this.textBoxfA = new System.Windows.Forms.TextBox();
+			this.textBoxfB = new System.Windows.Forms.TextBox();
+			this.textBoxfE = new System.Windows.Forms.TextBox();
+			this.textBoxfC = new System.Windows.Forms.TextBox();
+			this.textBoxfD = new System.Windows.Forms.TextBox();
+			this.rtfBoxA = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxB = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxC = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxD = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxE = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxFA = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxFC = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxFD = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxFE = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxFB = new System.Windows.Forms.RichTextBox();
 			this.panel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -135,83 +158,93 @@ namespace HP67_Control_Library
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.panel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
 			this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.panel.Controls.Add(this.ELabel);
-			this.panel.Controls.Add(this.DLabel);
-			this.panel.Controls.Add(this.BLabel);
-			this.panel.Controls.Add(this.CLabel);
-			this.panel.Controls.Add(this.ALabel);
+			this.panel.Controls.Add(this.rtfBoxFB);
+			this.panel.Controls.Add(this.rtfBoxFE);
+			this.panel.Controls.Add(this.rtfBoxFD);
+			this.panel.Controls.Add(this.rtfBoxFC);
+			this.panel.Controls.Add(this.rtfBoxFA);
+			this.panel.Controls.Add(this.rtfBoxE);
+			this.panel.Controls.Add(this.rtfBoxD);
+			this.panel.Controls.Add(this.rtfBoxC);
+			this.panel.Controls.Add(this.rtfBoxB);
+			this.panel.Controls.Add(this.rtfBoxA);
 			this.panel.Controls.Add(this.titleTextBox);
 			this.panel.Controls.Add(this.cornerPanel);
-			this.panel.Controls.Add(this.ATextBox);
-			this.panel.Controls.Add(this.BTextBox);
-			this.panel.Controls.Add(this.CTextBox);
-			this.panel.Controls.Add(this.DTextBox);
-			this.panel.Controls.Add(this.ETextBox);
-			this.panel.Controls.Add(this.fATextBox);
-			this.panel.Controls.Add(this.fBTextBox);
-			this.panel.Controls.Add(this.fETextBox);
-			this.panel.Controls.Add(this.fCTextBox);
-			this.panel.Controls.Add(this.fDTextBox);
+			this.panel.Controls.Add(this.textBoxA);
+			this.panel.Controls.Add(this.textBoxB);
+			this.panel.Controls.Add(this.textBoxC);
+			this.panel.Controls.Add(this.textBoxD);
+			this.panel.Controls.Add(this.textBoxE);
+			this.panel.Controls.Add(this.textBoxfA);
+			this.panel.Controls.Add(this.textBoxfB);
+			this.panel.Controls.Add(this.textBoxfE);
+			this.panel.Controls.Add(this.textBoxfC);
+			this.panel.Controls.Add(this.textBoxfD);
+			this.panel.Controls.Add(this.labelA);
+			this.panel.Controls.Add(this.labelB);
+			this.panel.Controls.Add(this.labelC);
+			this.panel.Controls.Add(this.labelD);
+			this.panel.Controls.Add(this.labelE);
 			this.panel.ForeColor = System.Drawing.Color.Gold;
 			this.panel.Location = new System.Drawing.Point(0, 0);
 			this.panel.Name = "panel";
 			this.panel.Size = new System.Drawing.Size(300, 50);
 			this.panel.TabIndex = 0;
 			// 
-			// ELabel
+			// labelE
 			// 
-			this.ELabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.ELabel.ForeColor = System.Drawing.Color.White;
-			this.ELabel.Location = new System.Drawing.Point(240, 26);
-			this.ELabel.Name = "ELabel";
-			this.ELabel.Size = new System.Drawing.Size(48, 18);
-			this.ELabel.TabIndex = 16;
-			this.ELabel.Text = "x⇄y";
-			this.ELabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.labelE.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelE.ForeColor = System.Drawing.Color.White;
+			this.labelE.Location = new System.Drawing.Point(240, 26);
+			this.labelE.Name = "labelE";
+			this.labelE.Size = new System.Drawing.Size(48, 18);
+			this.labelE.TabIndex = 16;
+			this.labelE.Text = "x⇄y";
+			this.labelE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
-			// DLabel
+			// labelD
 			// 
-			this.DLabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.DLabel.ForeColor = System.Drawing.Color.White;
-			this.DLabel.Location = new System.Drawing.Point(184, 26);
-			this.DLabel.Name = "DLabel";
-			this.DLabel.Size = new System.Drawing.Size(48, 18);
-			this.DLabel.TabIndex = 15;
-			this.DLabel.Text = "R↓";
-			this.DLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.labelD.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelD.ForeColor = System.Drawing.Color.White;
+			this.labelD.Location = new System.Drawing.Point(184, 26);
+			this.labelD.Name = "labelD";
+			this.labelD.Size = new System.Drawing.Size(48, 18);
+			this.labelD.TabIndex = 15;
+			this.labelD.Text = "R↓";
+			this.labelD.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
-			// BLabel
+			// labelB
 			// 
-			this.BLabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.BLabel.ForeColor = System.Drawing.Color.White;
-			this.BLabel.Location = new System.Drawing.Point(72, 26);
-			this.BLabel.Name = "BLabel";
-			this.BLabel.Size = new System.Drawing.Size(48, 18);
-			this.BLabel.TabIndex = 14;
-			this.BLabel.Text = "√x̅";
-			this.BLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.labelB.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelB.ForeColor = System.Drawing.Color.White;
+			this.labelB.Location = new System.Drawing.Point(72, 26);
+			this.labelB.Name = "labelB";
+			this.labelB.Size = new System.Drawing.Size(48, 18);
+			this.labelB.TabIndex = 14;
+			this.labelB.Text = "√x̅";
+			this.labelB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
-			// CLabel
+			// labelC
 			// 
-			this.CLabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.CLabel.ForeColor = System.Drawing.Color.White;
-			this.CLabel.Location = new System.Drawing.Point(124, 26);
-			this.CLabel.Name = "CLabel";
-			this.CLabel.Size = new System.Drawing.Size(48, 18);
-			this.CLabel.TabIndex = 13;
-			this.CLabel.Text = "yˣ";
-			this.CLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.labelC.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelC.ForeColor = System.Drawing.Color.White;
+			this.labelC.Location = new System.Drawing.Point(124, 26);
+			this.labelC.Name = "labelC";
+			this.labelC.Size = new System.Drawing.Size(48, 18);
+			this.labelC.TabIndex = 13;
+			this.labelC.Text = "yˣ";
+			this.labelC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
-			// ALabel
+			// labelA
 			// 
-			this.ALabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.ALabel.ForeColor = System.Drawing.Color.White;
-			this.ALabel.Location = new System.Drawing.Point(16, 26);
-			this.ALabel.Name = "ALabel";
-			this.ALabel.Size = new System.Drawing.Size(48, 18);
-			this.ALabel.TabIndex = 12;
-			this.ALabel.Text = "1/x";
-			this.ALabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.labelA.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelA.ForeColor = System.Drawing.Color.White;
+			this.labelA.Location = new System.Drawing.Point(16, 26);
+			this.labelA.Name = "labelA";
+			this.labelA.Size = new System.Drawing.Size(48, 18);
+			this.labelA.TabIndex = 12;
+			this.labelA.Text = "1/x";
+			this.labelA.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
 			// titleTextBox
 			// 
@@ -234,140 +267,270 @@ namespace HP67_Control_Library
 			this.cornerPanel.Size = new System.Drawing.Size(15, 15);
 			this.cornerPanel.TabIndex = 0;
 			// 
-			// ATextBox
+			// textBoxA
 			// 
-			this.ATextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.ATextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.ATextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.ATextBox.ForeColor = System.Drawing.Color.White;
-			this.ATextBox.Location = new System.Drawing.Point(16, 32);
-			this.ATextBox.Name = "ATextBox";
-			this.ATextBox.Size = new System.Drawing.Size(48, 13);
-			this.ATextBox.TabIndex = 7;
-			this.ATextBox.Text = "A";
-			this.ATextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxA.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxA.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxA.ForeColor = System.Drawing.Color.White;
+			this.textBoxA.Location = new System.Drawing.Point(16, 32);
+			this.textBoxA.Name = "textBoxA";
+			this.textBoxA.Size = new System.Drawing.Size(48, 13);
+			this.textBoxA.TabIndex = 7;
+			this.textBoxA.Text = "A";
+			this.textBoxA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// BTextBox
+			// textBoxB
 			// 
-			this.BTextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.BTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.BTextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.BTextBox.ForeColor = System.Drawing.Color.White;
-			this.BTextBox.Location = new System.Drawing.Point(72, 32);
-			this.BTextBox.Name = "BTextBox";
-			this.BTextBox.Size = new System.Drawing.Size(48, 13);
-			this.BTextBox.TabIndex = 8;
-			this.BTextBox.Text = "B";
-			this.BTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxB.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxB.ForeColor = System.Drawing.Color.White;
+			this.textBoxB.Location = new System.Drawing.Point(72, 32);
+			this.textBoxB.Name = "textBoxB";
+			this.textBoxB.Size = new System.Drawing.Size(48, 13);
+			this.textBoxB.TabIndex = 8;
+			this.textBoxB.Text = "B";
+			this.textBoxB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// CTextBox
+			// textBoxC
 			// 
-			this.CTextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.CTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.CTextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.CTextBox.ForeColor = System.Drawing.Color.White;
-			this.CTextBox.Location = new System.Drawing.Point(128, 32);
-			this.CTextBox.Name = "CTextBox";
-			this.CTextBox.Size = new System.Drawing.Size(48, 13);
-			this.CTextBox.TabIndex = 9;
-			this.CTextBox.Text = "C";
-			this.CTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxC.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxC.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxC.ForeColor = System.Drawing.Color.White;
+			this.textBoxC.Location = new System.Drawing.Point(128, 32);
+			this.textBoxC.Name = "textBoxC";
+			this.textBoxC.Size = new System.Drawing.Size(48, 13);
+			this.textBoxC.TabIndex = 9;
+			this.textBoxC.Text = "C";
+			this.textBoxC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// DTextBox
+			// textBoxD
 			// 
-			this.DTextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.DTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.DTextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.DTextBox.ForeColor = System.Drawing.Color.White;
-			this.DTextBox.Location = new System.Drawing.Point(184, 32);
-			this.DTextBox.Name = "DTextBox";
-			this.DTextBox.Size = new System.Drawing.Size(48, 13);
-			this.DTextBox.TabIndex = 10;
-			this.DTextBox.Text = "D";
-			this.DTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxD.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxD.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxD.ForeColor = System.Drawing.Color.White;
+			this.textBoxD.Location = new System.Drawing.Point(184, 32);
+			this.textBoxD.Name = "textBoxD";
+			this.textBoxD.Size = new System.Drawing.Size(48, 13);
+			this.textBoxD.TabIndex = 10;
+			this.textBoxD.Text = "D";
+			this.textBoxD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// ETextBox
+			// textBoxE
 			// 
-			this.ETextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.ETextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.ETextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.ETextBox.ForeColor = System.Drawing.Color.White;
-			this.ETextBox.Location = new System.Drawing.Point(240, 32);
-			this.ETextBox.Name = "ETextBox";
-			this.ETextBox.Size = new System.Drawing.Size(48, 13);
-			this.ETextBox.TabIndex = 11;
-			this.ETextBox.Text = "E";
-			this.ETextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxE.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxE.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxE.ForeColor = System.Drawing.Color.White;
+			this.textBoxE.Location = new System.Drawing.Point(240, 32);
+			this.textBoxE.Name = "textBoxE";
+			this.textBoxE.Size = new System.Drawing.Size(48, 13);
+			this.textBoxE.TabIndex = 11;
+			this.textBoxE.Text = "E";
+			this.textBoxE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// fATextBox
+			// textBoxfA
 			// 
-			this.fATextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.fATextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.fATextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.fATextBox.ForeColor = System.Drawing.Color.Gold;
-			this.fATextBox.Location = new System.Drawing.Point(16, 18);
-			this.fATextBox.Name = "fATextBox";
-			this.fATextBox.Size = new System.Drawing.Size(48, 13);
-			this.fATextBox.TabIndex = 2;
-			this.fATextBox.Text = "fA";
-			this.fATextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxfA.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxfA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxfA.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxfA.ForeColor = System.Drawing.Color.Gold;
+			this.textBoxfA.Location = new System.Drawing.Point(16, 18);
+			this.textBoxfA.Name = "textBoxfA";
+			this.textBoxfA.Size = new System.Drawing.Size(48, 13);
+			this.textBoxfA.TabIndex = 2;
+			this.textBoxfA.Text = "fA";
+			this.textBoxfA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// fBTextBox
+			// textBoxfB
 			// 
-			this.fBTextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.fBTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.fBTextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.fBTextBox.ForeColor = System.Drawing.Color.Gold;
-			this.fBTextBox.Location = new System.Drawing.Point(72, 18);
-			this.fBTextBox.Name = "fBTextBox";
-			this.fBTextBox.Size = new System.Drawing.Size(48, 13);
-			this.fBTextBox.TabIndex = 3;
-			this.fBTextBox.Text = "fB";
-			this.fBTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxfB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxfB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxfB.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxfB.ForeColor = System.Drawing.Color.Gold;
+			this.textBoxfB.Location = new System.Drawing.Point(72, 18);
+			this.textBoxfB.Name = "textBoxfB";
+			this.textBoxfB.Size = new System.Drawing.Size(48, 13);
+			this.textBoxfB.TabIndex = 3;
+			this.textBoxfB.Text = "fB";
+			this.textBoxfB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// fETextBox
+			// textBoxfE
 			// 
-			this.fETextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.fETextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.fETextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.fETextBox.ForeColor = System.Drawing.Color.Gold;
-			this.fETextBox.Location = new System.Drawing.Point(240, 18);
-			this.fETextBox.Name = "fETextBox";
-			this.fETextBox.Size = new System.Drawing.Size(48, 13);
-			this.fETextBox.TabIndex = 6;
-			this.fETextBox.Text = "fE";
-			this.fETextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxfE.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxfE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxfE.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxfE.ForeColor = System.Drawing.Color.Gold;
+			this.textBoxfE.Location = new System.Drawing.Point(240, 18);
+			this.textBoxfE.Name = "textBoxfE";
+			this.textBoxfE.Size = new System.Drawing.Size(48, 13);
+			this.textBoxfE.TabIndex = 6;
+			this.textBoxfE.Text = "fE";
+			this.textBoxfE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// fCTextBox
+			// textBoxfC
 			// 
-			this.fCTextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.fCTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.fCTextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.fCTextBox.ForeColor = System.Drawing.Color.Gold;
-			this.fCTextBox.Location = new System.Drawing.Point(128, 18);
-			this.fCTextBox.Name = "fCTextBox";
-			this.fCTextBox.Size = new System.Drawing.Size(48, 13);
-			this.fCTextBox.TabIndex = 4;
-			this.fCTextBox.Text = "fC";
-			this.fCTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxfC.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxfC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxfC.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxfC.ForeColor = System.Drawing.Color.Gold;
+			this.textBoxfC.Location = new System.Drawing.Point(128, 18);
+			this.textBoxfC.Name = "textBoxfC";
+			this.textBoxfC.Size = new System.Drawing.Size(48, 13);
+			this.textBoxfC.TabIndex = 4;
+			this.textBoxfC.Text = "fC";
+			this.textBoxfC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// fDTextBox
+			// textBoxfD
 			// 
-			this.fDTextBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.fDTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.fDTextBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.fDTextBox.ForeColor = System.Drawing.Color.Gold;
-			this.fDTextBox.Location = new System.Drawing.Point(184, 18);
-			this.fDTextBox.Name = "fDTextBox";
-			this.fDTextBox.Size = new System.Drawing.Size(48, 13);
-			this.fDTextBox.TabIndex = 5;
-			this.fDTextBox.Text = "fD";
-			this.fDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.textBoxfD.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.textBoxfD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.textBoxfD.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.textBoxfD.ForeColor = System.Drawing.Color.Gold;
+			this.textBoxfD.Location = new System.Drawing.Point(184, 18);
+			this.textBoxfD.Name = "textBoxfD";
+			this.textBoxfD.Size = new System.Drawing.Size(48, 13);
+			this.textBoxfD.TabIndex = 5;
+			this.textBoxfD.Text = "fD";
+			this.textBoxfD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
-			// Card
+			// rtfBoxA
+			// 
+			this.rtfBoxA.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxA.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxA.ForeColor = System.Drawing.Color.White;
+			this.rtfBoxA.Location = new System.Drawing.Point(16, 32);
+			this.rtfBoxA.Multiline = false;
+			this.rtfBoxA.Name = "rtfBoxA";
+			this.rtfBoxA.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxA.TabIndex = 17;
+			this.rtfBoxA.Text = "A";
+			// 
+			// rtfBoxB
+			// 
+			this.rtfBoxB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxB.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxB.ForeColor = System.Drawing.Color.White;
+			this.rtfBoxB.Location = new System.Drawing.Point(72, 32);
+			this.rtfBoxB.Multiline = false;
+			this.rtfBoxB.Name = "rtfBoxB";
+			this.rtfBoxB.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxB.TabIndex = 18;
+			this.rtfBoxB.Text = "B";
+			// 
+			// rtfBoxC
+			// 
+			this.rtfBoxC.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxC.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxC.ForeColor = System.Drawing.Color.White;
+			this.rtfBoxC.Location = new System.Drawing.Point(128, 32);
+			this.rtfBoxC.Multiline = false;
+			this.rtfBoxC.Name = "rtfBoxC";
+			this.rtfBoxC.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxC.TabIndex = 19;
+			this.rtfBoxC.Text = "C";
+			// 
+			// rtfBoxD
+			// 
+			this.rtfBoxD.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxD.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxD.ForeColor = System.Drawing.Color.White;
+			this.rtfBoxD.Location = new System.Drawing.Point(184, 32);
+			this.rtfBoxD.Multiline = false;
+			this.rtfBoxD.Name = "rtfBoxD";
+			this.rtfBoxD.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxD.TabIndex = 20;
+			this.rtfBoxD.Text = "D";
+			// 
+			// rtfBoxE
+			// 
+			this.rtfBoxE.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxE.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxE.ForeColor = System.Drawing.Color.White;
+			this.rtfBoxE.Location = new System.Drawing.Point(240, 32);
+			this.rtfBoxE.Multiline = false;
+			this.rtfBoxE.Name = "rtfBoxE";
+			this.rtfBoxE.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxE.TabIndex = 21;
+			this.rtfBoxE.Text = "E";
+			// 
+			// rtfBoxFA
+			// 
+			this.rtfBoxFA.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxFA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxFA.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxFA.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxFA.Location = new System.Drawing.Point(16, 18);
+			this.rtfBoxFA.Multiline = false;
+			this.rtfBoxFA.Name = "rtfBoxFA";
+			this.rtfBoxFA.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxFA.TabIndex = 22;
+			this.rtfBoxFA.Text = "fA";
+			// 
+			// rtfBoxFC
+			// 
+			this.rtfBoxFC.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxFC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxFC.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxFC.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxFC.Location = new System.Drawing.Point(128, 18);
+			this.rtfBoxFC.Multiline = false;
+			this.rtfBoxFC.Name = "rtfBoxFC";
+			this.rtfBoxFC.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxFC.TabIndex = 23;
+			this.rtfBoxFC.Text = "fC";
+			// 
+			// rtfBoxFD
+			// 
+			this.rtfBoxFD.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxFD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxFD.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxFD.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxFD.Location = new System.Drawing.Point(184, 18);
+			this.rtfBoxFD.Multiline = false;
+			this.rtfBoxFD.Name = "rtfBoxFD";
+			this.rtfBoxFD.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxFD.TabIndex = 24;
+			this.rtfBoxFD.Text = "fD";
+			// 
+			// rtfBoxFE
+			// 
+			this.rtfBoxFE.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxFE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxFE.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxFE.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxFE.Location = new System.Drawing.Point(240, 18);
+			this.rtfBoxFE.Multiline = false;
+			this.rtfBoxFE.Name = "rtfBoxFE";
+			this.rtfBoxFE.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxFE.TabIndex = 25;
+			this.rtfBoxFE.Text = "fE";
+			// 
+			// rtfBoxFB
+			// 
+			this.rtfBoxFB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxFB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxFB.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxFB.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxFB.Location = new System.Drawing.Point(72, 18);
+			this.rtfBoxFB.Multiline = false;
+			this.rtfBoxFB.Name = "rtfBoxFB";
+			this.rtfBoxFB.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxFB.TabIndex = 26;
+			this.rtfBoxFB.Text = "fB";
+			// 
+			// CardSlot
 			// 
 			this.Controls.Add(this.panel);
-			this.Name = "Card";
+			this.Name = "CardSlot";
 			this.Size = new System.Drawing.Size(300, 50);
 			this.panel.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -380,11 +543,11 @@ namespace HP67_Control_Library
 		private void SetEditable (bool editable)
 		{
 			titleTextBox.ReadOnly = !editable;
-			foreach (System.Windows.Forms.TextBox t in textBoxs)  
+			foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
 			{
 				t.ReadOnly = !editable;
 			}
-			foreach (System.Windows.Forms.TextBox t in fTextBoxs)  
+			foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)  
 			{
 				t.ReadOnly = !editable;
 			}
@@ -404,17 +567,17 @@ namespace HP67_Control_Library
 			}
 		}
 
-		private void SetLoaded (bool editable)
+		private void SetLoaded (bool loaded)
 		{
-			if (editable) 
+			if (loaded) 
 			{
 				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 0);
 				titleTextBox.Visible = true;
-				foreach (System.Windows.Forms.TextBox t in textBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
 				{
 					t.Visible = true;
 				}
-				foreach (System.Windows.Forms.TextBox t in fTextBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)  
 				{
 					t.Visible = true;
 				}
@@ -428,11 +591,11 @@ namespace HP67_Control_Library
 				cornerPanel.Visible = false;
 				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 64);
 				titleTextBox.Visible = false;
-				foreach (System.Windows.Forms.TextBox t in textBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
 				{
 					t.Visible = false;
 				}
-				foreach (System.Windows.Forms.TextBox t in fTextBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)  
 				{
 					t.Visible = false;
 				}
@@ -446,6 +609,76 @@ namespace HP67_Control_Library
 		#endregion
 
 		#region Public Properties
+
+		public bool RichText 
+		{
+			get
+			{
+				return richText;
+			}
+			set
+			{
+				string [] text = new string [5];
+				string [] fText = new string [5];
+
+				richText = value;
+
+				// Preserve the contents of the text boxes.
+				for (int i = 0; i < textBoxs.Length; i++) 
+				{
+					textBoxs [i].Visible = false;
+					text [i] = textBoxs [i].Text;
+				}
+				for (int i = 0; i < fTextBoxs.Length; i++) 
+				{
+					fTextBoxs [i].Visible = false;
+					fText [i] = fTextBoxs [i].Text;
+				}
+				switch (richText) 
+				{
+					case false:
+					{
+						textBoxs = new System.Windows.Forms.TextBox [5] 
+							{textBoxA, textBoxB, textBoxC, textBoxD, textBoxE};
+						fTextBoxs = new System.Windows.Forms.TextBox [5]
+							{textBoxfA, textBoxfB, textBoxfC, textBoxfD, textBoxfE};
+						break;
+					}
+					case true:
+					{
+						textBoxs = new System.Windows.Forms.RichTextBox [5] 
+							{rtfBoxA, rtfBoxB, rtfBoxC, rtfBoxD, rtfBoxE};
+						fTextBoxs = new System.Windows.Forms.RichTextBox [5]
+							{rtfBoxFA, rtfBoxFB, rtfBoxFC, rtfBoxFD, rtfBoxFE};
+						break;
+					}
+				}
+				State = State;
+
+				// Finally, restore the text and center it if need be.
+				for (int i = 0; i < textBoxs.Length; i++) 
+				{
+					textBoxs [i].Text = text [i];
+				}
+				for (int i = 0; i < fTextBoxs.Length; i++) 
+				{
+					fTextBoxs [i].Text = fText [i];
+				}
+				if (richText) 
+				{
+					foreach (System.Windows.Forms.RichTextBox r in textBoxs) 
+					{
+						r.SelectAll ();
+						r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+					}
+					foreach (System.Windows.Forms.RichTextBox r in fTextBoxs) 
+					{
+						r.SelectAll ();
+						r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+					}
+				}
+			}
+		}
 
 		public CardSlotState State 
 		{
@@ -502,11 +735,11 @@ namespace HP67_Control_Library
 					font.SizeInPoints * sizeIncrease,
 					System.Drawing.FontStyle.Bold);
 				titleTextBox.Font = font;
-				foreach (System.Windows.Forms.TextBox t in textBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
 				{
 					t.Font = font;
 				}
-				foreach (System.Windows.Forms.TextBox t in fTextBoxs)
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)
 				{
 					t.Font = font;
 				}
