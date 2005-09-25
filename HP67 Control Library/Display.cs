@@ -123,12 +123,23 @@ namespace HP67_Control_Library
 			this.ForeColor = System.Drawing.Color.Red;
 			this.Name = "Display";
 			this.Size = new System.Drawing.Size(300, 40);
+			this.Resize += new System.EventHandler(this.Display_Resize);
 			this.ResumeLayout(false);
 
 		}
 		#endregion
 
 		#region Event Handlers
+
+		private void Display_Resize(object sender, System.EventArgs e)
+		{
+			Control control = (Control)sender;
+        
+			if(control.Size.Height != 40)
+			{
+				control.Size = new Size(control.Size.Width, 40);
+			}
+		}
 
 		// This stuff is intended to prevent selection of the text.  It doesn't work 100% of the
 		// time, but it's good enough in practice.  At any rate, setting the Value property clean

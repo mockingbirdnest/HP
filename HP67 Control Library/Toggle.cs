@@ -33,6 +33,7 @@ namespace HP67_Control_Library
 		internal System.Windows.Forms.Label rightLabel;
 		internal System.Windows.Forms.Label leftLabel;
 		internal System.Windows.Forms.Panel panel;
+
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>

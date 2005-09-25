@@ -173,12 +173,24 @@ namespace HP67_Control_Library
 			this.Controls.Add(this.hButton);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.Name = "Key";
+			this.Resize += new System.EventHandler(this.Key_Resize);
 			this.ResumeLayout(false);
 
 		}
 		#endregion
 
 		#region Event Handlers
+
+		private void Key_Resize(object sender, System.EventArgs e)
+		{
+			Control control = (Control)sender;
+        
+//			if (control.Size.Width > Math.Max (FGWidth, MainWidth)) 
+//			{
+				FGWidth = control.Size.Width;
+				MainWidth = control.Size.Width;
+//			}
+		}
 
 		private void button_Click(object sender, System.EventArgs e)
 		{
