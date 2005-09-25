@@ -1,0 +1,266 @@
+"Name"              = 'Calculatrice HP'
+"Version"           = '1.0'
+"Author"            = 'Robin'
+"Case Sensitive"    = 'False'
+"Character Mapping" = Unicode
+"Start Symbol"      = <Instruction>
+
+! Definitions for unshifted keys.
+Sigma_Plus     = '21'
+Gto            = '22'
+Dsp            = '23'
+Sub_I          = '24'
+Sst            = '25'
+Sto            = '33'
+Rcl            = '34'
+Enter          = '41'
+Chs            = '42'
+Eex            = '43'
+Clx            = '44'
+Subtraction    = '51'
+Addition       = '61'
+Multiplication = '71'
+Division       = '72'
+Period         = '81'
+R_S            = '84'
+One            = '01'
+Two            = '02'
+Three          = '03'
+Four           = '04'
+Five           = '05'
+Six            = '06'
+Seven          = '07'
+Eight          = '08'
+Nine           = '09'
+Zero           = '00'
+A              = '11'
+B              = '12'
+C              = '13'
+D              = '14'
+E              = '15'
+f              = '31'
+g              = '32'
+h              = '35'
+
+! Aliases for f-shifted keys.
+<X_Macron>       ::= Sigma_Plus
+<Gsb>            ::= Gto
+<Fix>            ::= Dsp
+<Rnd>            ::= Sub_I
+<Lbl>            ::= Sst
+<Dsz>            ::= Sto
+<Isz>            ::= Rcl
+<W_Data>         ::= Enter
+<P_Exchange_S>   ::= Chs
+<Cl_Reg>         ::= Eex
+<Cl_Prgm>        ::= Clx
+<X_EQ_0>         ::= Subtraction
+<Ln>             ::= Seven
+<Log>            ::= Eight
+<Sqrt>           ::= nine
+<X_NE_0>         ::= Addition
+<Sin>            ::= four
+<Cos>            ::= five
+<Tan>            ::= six
+<X_LT_0>         ::= Multiplication
+<To_Rectangular> ::= one
+<To_Degrees>     ::= two
+<To_Hours>       ::= three
+<X_GT_0>         ::= Division
+<Percent>        ::= Zero
+<Int>            ::= Period
+<Display_X>      ::= R_S
+
+! Aliases for g-shifted keys.
+<S>              ::= Sigma_Plus
+<Gsb_f>          ::= Gto
+<Sci>            ::= Dsp
+<Lbl_f>          ::= Sst
+<Dsz_Sub_I>      ::= Sto
+<Isz_Sub_I>      ::= Rcl
+<Merge>          ::= Enter
+<X_EQ_Y>         ::= Subtraction
+<Exp>            ::= Seven
+<Ten_To_The_Xth> ::= Eight
+<Square>         ::= Nine
+<X_NE_Y>         ::= Addition
+<Arcsin>         ::= four
+<Arccos>         ::= five
+<Arctan>         ::= six
+<X_LE_Y>         ::= Multiplication
+<To_Polar>       ::= one
+<To_Radians>     ::= two
+<To_HMS>         ::= three
+<X_GT_Y>         ::= Division
+<Percent_Change> ::= zero
+<Frac>           ::= Period
+<Stk>            ::= R_S
+
+! Aliases for h-shifted keys.
+<Sigma_Minus>    ::= Sigma_Plus
+<Rtn>            ::= Gto
+<Eng>            ::= Dsp
+<X_Exchange_I>   ::= Sub_I
+<Bst>            ::= Sst
+<St_I>           ::= Sto
+<Rc_I>           ::= Rcl
+<Deg>            ::= Enter
+<Rad>            ::= Chs
+<Grd>            ::= Eex
+<Del>            ::= Clx
+<SF>             ::= Subtraction
+<X_Exchange_Y>   ::= seven
+<R_Down>         ::= eight
+<R_Up>           ::= nine
+<CF>             ::= Addition
+<Reciprocal>     ::= four
+<Y_To_The_Xth>   ::= five
+<Abs>            ::= six
+<F_Question>     ::= Multiplication
+<Pause>          ::= one
+<Pi>             ::= two
+<Reg>            ::= three
+<Factorial>      ::= Division
+<Lst_X>          ::= zero
+<HMS_Plus>       ::= Period
+<Space>          ::= R_S
+
+<Instruction> ::= <Command>
+                  | <Shortcut>
+                  | <Unshifted_Instruction>
+                  | <F_Shifted_Instruction>
+                  | <G_Shifted_Instruction>
+                  | <H_Shifted_Instruction>
+
+<Command> ::= Sst
+              | h <Bst>
+              | h <Del>
+              | f <Cl_Prgm>
+              | Gto Period <Digit> <Digit> <Digit>
+                    
+<Shortcut> ::= <Unshifted_Shortcut>
+               | <F_Shifted_Shortcut>
+
+<Unshifted_Shortcut> ::= <Gsb_Shortcut>
+                         | <Memory_Shortcut>
+                         
+<F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
+
+<Gsb_Shortcut> ::= <Letter>
+
+<Memory_Shortcut> ::= Sub_I
+
+<Unshifted_Instruction> ::= <Parameterless_Unshifted_Instruction>
+                            | <Parametered_Unshifted_Instruction>
+<F_Shifted_Instruction> ::= f <Parameterless_F_Shifted_Instruction>
+                            | f <Parametered_F_Shifted_Instruction>
+<G_Shifted_Instruction> ::= g <Parameterless_G_Shifted_Instruction>
+                            | g <Parametered_G_Shifted_Instruction>
+<H_Shifted_Instruction> ::= h <Parameterless_H_Shifted_Instruction>
+                            | h <Parametered_H_Shifted_Instruction>
+
+<Parameterless_Unshifted_Instruction> ::= Sigma_Plus
+                                          | Enter
+                                          | Chs
+                                          | Eex
+                                          | Clx
+                                          | <Digit>
+                                          | Subtraction
+                                          | Addition
+                                          | Multiplication
+                                          | Division
+                                          | Period
+                                          | R_S
+                                          
+<Parametered_Unshifted_Instruction> ::= Gto <Label>
+                                        | Dsp <Digit>
+                                        | Sto <Memory>
+                                        | Rcl <Memory>
+                                        
+<Parameterless_F_Shifted_Instruction> ::= <X_Macron>
+                                          | <Fix>
+                                          | <Rnd>
+                                          | <Dsz>
+                                          | <Isz>
+                                          | <W_Data>
+                                          | <P_Exchange_S>
+                                          | <Cl_Reg>
+                                          | <X_EQ_0>
+                                          | <Ln>
+                                          | <Log>
+                                          | <Sqrt>
+                                          | <X_NE_0>
+                                          | <Sin>
+                                          | <Cos>
+                                          | <Tan>
+                                          | <X_LT_0>
+                                          | <To_Rectangular>
+                                          | <To_Degrees>
+                                          | <To_Hours>
+                                          | <X_GT_0>
+                                          | <Percent>
+                                          | <Int>
+                                          | <Display_X>
+                                          
+<Parametered_F_Shifted_Instruction> ::= <Gsb> <Label>
+                                        | <Lbl> <Label>
+
+<Parameterless_G_Shifted_Instruction> ::= <S>
+                                          | <Sci>
+                                          | <Dsz_Sub_I>
+                                          | <Isz_Sub_I>
+                                          | <Merge>
+                                          | <X_EQ_Y>
+                                          | <Exp>
+                                          | <Ten_To_The_Xth>
+                                          | <Square>
+                                          | <X_NE_Y>
+                                          | <Arcsin>
+                                          | <Arccos>
+                                          | <Arctan>
+                                          | <X_LE_Y>
+                                          | <To_Polar>
+                                          | <To_Radians>
+                                          | <To_HMS>
+                                          | <X_GT_Y>
+                                          | <Percent_Change>
+                                          | <Frac>
+                                          | <Stk>
+                                          
+<Parametered_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
+                                        | <Lbl_f> <Letter_Label>
+                                        
+<Parameterless_H_Shifted_Instruction> ::= <Sigma_Minus>
+                                          | <Rtn>
+                                          | <Eng>
+                                          | <X_Exchange_I>
+                                          | <St_I>
+                                          | <Rc_I>
+                                          | <Deg>
+                                          | <Rad>
+                                          | <Grd>
+                                          | <SF>
+                                          | <X_Exchange_Y>
+                                          | <R_Down>
+                                          | <R_Up>
+                                          | <CF>
+                                          | <Reciprocal>
+                                          | <Y_To_The_Xth>
+                                          | <Abs>
+                                          | <F_Question>
+                                          | <Pause>
+                                          | <Pi>
+                                          | <Reg>
+                                          | <Factorial>
+                                          | <Lst_X>
+                                          | <HMS_Plus>
+                                          | <Space>
+                                          
+<Parametered_H_Shifted_Instruction> ::=
+
+<Digit> ::= Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine
+<Letter> ::= A | B | C | D | E
+<Letter_Label> ::= <Letter>
+<Digit_Label> ::= <Digit>
+<Label>  ::= <Digit_Label> | <Letter_Label>
+<Memory> ::= <Digit> | <Letter> | Sub_I
