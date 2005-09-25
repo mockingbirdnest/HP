@@ -36,6 +36,14 @@ namespace HP67_Class_Library
 			n = 19
 		}
 
+		private void CheckIndex ()
+		{
+			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > (int) LetterRegister.I)
+			{
+				throw BadIndex;
+			}
+		}
+
 		#endregion
 
 		#region Constructors & Destructors
@@ -172,33 +180,59 @@ namespace HP67_Class_Library
 
 		public void StoreIndexed (double Value)
 		{
-			if ((System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) < 0  ||
-				(System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > 25)))
-			{
-				throw BadIndex;
-			}
+			CheckIndex ();
 			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] = Value;
 		}
 
 		public void StoreIndexed (double Value, Operator Modifier)
 		{
-			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) < 0  ||
-				System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > 25)
-			{
-				throw BadIndex;
-			}
+			CheckIndex ();
 			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] = 
 			Modifier (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])), Value);
 		}
 
 		public double RecallIndexed ()
 		{
-			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) < 0  ||
-				System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > 25)
-			{
-				throw BadIndex;
-			}
+			CheckIndex ();
 			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))];
+		}
+
+		public bool IncrementAndSkipIfZero ()
+		{
+			this [LetterRegister.I]++;
+			return this [LetterRegister.I] == 0.0;
+		}
+
+		public bool IncrementAndSkipIfZeroIndexed ()
+		{
+			CheckIndex ();
+			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]++;
+			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] == 0.0;
+		}
+
+		public bool DecrementAndSkipIfZero ()
+		{
+			this [LetterRegister.I]--;
+			return this [LetterRegister.I] == 0.0;
+		}
+
+		public bool DecrementAndSkipIfZeroIndexed ()
+		{
+			CheckIndex ();
+			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]--;
+			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] == 0.0;
+		}
+
+		public void ClearRegisters ()
+		{
+			for (int i = 0; i <= 9; i++)
+			{
+				this [i] = 0.0;
+			}
+			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
+			{
+				this [i] = 0.0;
+			}
 		}
 
 		#endregion
