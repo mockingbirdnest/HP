@@ -15,9 +15,13 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HP67 Setup", "HP67 Setup\HP
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Testing", "HP67 Testing\HP67 Testing.csproj", "{8BA89B45-8FB5-4281-A816-4C765105883A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 6
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SolutionUniqueID = {878E852C-8F25-4FB7-95ED-DC7CB08F89F4}
@@ -37,6 +41,10 @@ Global
 		SccLocalPath4 = .
 		CanCheckoutShared = false
 		SccProjectFilePathRelativizedFromConnection4 = HP67\\
+		SccProjectUniqueName5 = HP67\u0020Testing\\HP67\u0020Testing.csproj
+		SccLocalPath5 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection5 = HP67\u0020Testing\\
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -57,6 +65,10 @@ Global
 		{71A0054A-FD2B-4DDB-91FB-1470909F91E4}.Release.Build.0 = Release|.NET
 		{3CE76BA5-C118-4219-AF78-21B5763F7057}.Debug.ActiveCfg = Debug
 		{3CE76BA5-C118-4219-AF78-21B5763F7057}.Release.ActiveCfg = Release
+		{8BA89B45-8FB5-4281-A816-4C765105883A}.Debug.ActiveCfg = Debug|.NET
+		{8BA89B45-8FB5-4281-A816-4C765105883A}.Debug.Build.0 = Debug|.NET
+		{8BA89B45-8FB5-4281-A816-4C765105883A}.Release.ActiveCfg = Release|.NET
+		{8BA89B45-8FB5-4281-A816-4C765105883A}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

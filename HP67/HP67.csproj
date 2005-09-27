@@ -90,8 +90,23 @@
                 />
                 <Reference
                     Name = "System.XML"
-                    AssemblyName = "System.XML"
+                    AssemblyName = "System.Xml"
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "HP67 Control Library"
+                    Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "GoldParserEngine"
+                    AssemblyName = "GoldParserEngine"
+                    HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
+                />
+                <Reference
+                    Name = "CalithaLib"
+                    AssemblyName = "CalithaLib"
+                    HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll"
                 />
             </References>
         </Build>
@@ -106,6 +121,14 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "C-Sharp - Calitha Interface Based.pgt"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "C-Sharp - Calitha Interface Implementation.pgt"
+                    BuildAction = "None"
+                />
+                <File
                     RelPath = "HP67.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
@@ -114,6 +137,20 @@
                     RelPath = "HP67.resx"
                     DependentUpon = "HP67.cs"
                     BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "HP67.grm"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "HP67Parser.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HP67ParserActions.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

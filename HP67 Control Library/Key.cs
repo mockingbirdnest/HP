@@ -422,18 +422,6 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public new System.Drawing.Color ForeColor
-		{
-			get
-			{
-				return button.ForeColor;
-			}
-			set
-			{
-				button.ForeColor = value;
-			}
-		}
-
 		public string FText
 		{
 			get
@@ -540,6 +528,18 @@ namespace HP67_Control_Library
 					((int)((double)mainBackColor.R * brightnessReduction),
 					(int)((double)mainBackColor.G * brightnessReduction),
 					(int)((double)mainBackColor.B * brightnessReduction));
+			}
+		}
+
+		public System.Drawing.Color MainForeColor
+		{
+			get
+			{
+				return button.ForeColor;
+			}
+			set
+			{
+				button.ForeColor = value;
 			}
 		}
 

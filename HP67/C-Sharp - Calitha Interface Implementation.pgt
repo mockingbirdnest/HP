@@ -1,0 +1,39 @@
+##TEMPLATE-NAME 'C# - Calitha Engine, Interface Implementation'
+##LANGUAGE 'C#'
+##ENGINE-NAME 'Calitha GOLD Parser Engine'
+##AUTHOR 'Pascal Leroy' 
+##FILE-EXTENSION 'cs'
+##NOTES
+This template creates a class implementing the I...Actions interface.
+
+BEWARE!  It will overwrite all the code in that class!
+##END-NOTES
+##ID-CASE UPPERCASE
+##ID-SEPARATOR '_'
+##ID-SYMBOL-PREFIX 'Symbol'
+##ID-RULE-PREFIX 'Rule'
+
+using System;
+using System.IO;
+using com.calitha.goldparser.lalr;
+using com.calitha.commons;
+
+namespace com.calitha.goldparser
+{
+
+##PARAMETERS
+    public class %Name%Actions : I%Name%Actions
+##END-PARAMETERS
+    {
+
+##RULES
+        public void %ID% (Rule rule, Token [] tokens)
+        {
+            // %Description%
+        }
+
+##END-RULES
+
+    }
+
+}
