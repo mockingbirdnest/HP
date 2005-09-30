@@ -66,7 +66,7 @@ namespace HP67_Control_Library
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
-			Count = 2;
+			Digits = 2;
 			Format = DisplayFormat.Fixed;
 			Value = 0.0;
 		}
@@ -273,7 +273,7 @@ namespace HP67_Control_Library
 
 		#region Public Properties
 
-		public byte Count
+		public byte Digits
 		{
 			set
 			{
@@ -295,7 +295,7 @@ namespace HP67_Control_Library
 					fixMantissaTemplate = " 0." + zeros + blanks + ";-0." + zeros + blanks;
 				}
 
-				// Engineering is weird because the DigitsCount is the total number of digits
+				// Engineering is weird because the Digits is the total number of digits
 				// displayed minus 1, regardless of the position of the decimal point.  Produce
 				// three templates corresponding to the three orders of magnitude of the mantissa
 				// in this format.

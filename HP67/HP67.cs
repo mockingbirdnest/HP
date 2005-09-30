@@ -8,10 +8,13 @@ using System.Data;
 namespace HP67
 {
 	/// <summary>
-	/// Summary description for HP67.
+	/// User interface for the HP67 calculator.
 	/// </summary>
 	public class HP67 : System.Windows.Forms.Form
 	{
+
+		private HP67ParserActions theActions;
+
 		private HP67_Control_Library.Display display1;
 		private HP67_Control_Library.CardSlot cardSlot1;
 		private HP67_Control_Library.Toggle toggle1;
@@ -49,8 +52,8 @@ namespace HP67
 		private HP67_Control_Library.Key key3;
 		private HP67_Control_Library.Key keyDiv;
 		private HP67_Control_Library.Key keyRS;
-		private HP67_Control_Library.Key keyDot;
 		private HP67_Control_Library.Key key0;
+		private HP67_Control_Library.Key keyPeriod;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -115,7 +118,7 @@ namespace HP67
 			this.keyg = new HP67_Control_Library.Key();
 			this.key8 = new HP67_Control_Library.Key();
 			this.keyRS = new HP67_Control_Library.Key();
-			this.keyDot = new HP67_Control_Library.Key();
+			this.keyPeriod = new HP67_Control_Library.Key();
 			this.key0 = new HP67_Control_Library.Key();
 			this.key9 = new HP67_Control_Library.Key();
 			this.key3 = new HP67_Control_Library.Key();
@@ -195,6 +198,7 @@ namespace HP67
 			this.keyA.Size = new System.Drawing.Size(48, 51);
 			this.keyA.TabIndex = 1;
 			this.keyA.Tag = "11";
+			this.keyA.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyf
 			// 
@@ -214,6 +218,7 @@ namespace HP67
 			this.keyf.Size = new System.Drawing.Size(48, 51);
 			this.keyf.TabIndex = 11;
 			this.keyf.Tag = "31";
+			this.keyf.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keySST
 			// 
@@ -233,6 +238,7 @@ namespace HP67
 			this.keySST.Size = new System.Drawing.Size(48, 51);
 			this.keySST.TabIndex = 10;
 			this.keySST.Tag = "25";
+			this.keySST.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyi
 			// 
@@ -252,6 +258,7 @@ namespace HP67
 			this.keyi.Size = new System.Drawing.Size(48, 51);
 			this.keyi.TabIndex = 9;
 			this.keyi.Tag = "24";
+			this.keyi.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyDSP
 			// 
@@ -271,6 +278,7 @@ namespace HP67
 			this.keyDSP.Size = new System.Drawing.Size(48, 51);
 			this.keyDSP.TabIndex = 8;
 			this.keyDSP.Tag = "23";
+			this.keyDSP.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyGTO
 			// 
@@ -290,6 +298,7 @@ namespace HP67
 			this.keyGTO.Size = new System.Drawing.Size(48, 51);
 			this.keyGTO.TabIndex = 7;
 			this.keyGTO.Tag = "22";
+			this.keyGTO.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyΣ
 			// 
@@ -309,6 +318,7 @@ namespace HP67
 			this.keyΣ.Size = new System.Drawing.Size(48, 51);
 			this.keyΣ.TabIndex = 6;
 			this.keyΣ.Tag = "21";
+			this.keyΣ.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyE
 			// 
@@ -328,6 +338,7 @@ namespace HP67
 			this.keyE.Size = new System.Drawing.Size(48, 51);
 			this.keyE.TabIndex = 5;
 			this.keyE.Tag = "15";
+			this.keyE.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyD
 			// 
@@ -347,6 +358,7 @@ namespace HP67
 			this.keyD.Size = new System.Drawing.Size(48, 51);
 			this.keyD.TabIndex = 4;
 			this.keyD.Tag = "14";
+			this.keyD.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyC
 			// 
@@ -366,6 +378,7 @@ namespace HP67
 			this.keyC.Size = new System.Drawing.Size(48, 51);
 			this.keyC.TabIndex = 3;
 			this.keyC.Tag = "13";
+			this.keyC.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyB
 			// 
@@ -385,6 +398,7 @@ namespace HP67
 			this.keyB.Size = new System.Drawing.Size(48, 51);
 			this.keyB.TabIndex = 2;
 			this.keyB.Tag = "12";
+			this.keyB.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyENTER
 			// 
@@ -404,6 +418,7 @@ namespace HP67
 			this.keyENTER.Size = new System.Drawing.Size(120, 51);
 			this.keyENTER.TabIndex = 16;
 			this.keyENTER.Tag = "41";
+			this.keyENTER.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyEEX
 			// 
@@ -423,6 +438,7 @@ namespace HP67
 			this.keyEEX.Size = new System.Drawing.Size(48, 51);
 			this.keyEEX.TabIndex = 18;
 			this.keyEEX.Tag = "43";
+			this.keyEEX.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyCLx
 			// 
@@ -442,6 +458,7 @@ namespace HP67
 			this.keyCLx.Size = new System.Drawing.Size(64, 51);
 			this.keyCLx.TabIndex = 19;
 			this.keyCLx.Tag = "44";
+			this.keyCLx.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyCHS
 			// 
@@ -461,6 +478,7 @@ namespace HP67
 			this.keyCHS.Size = new System.Drawing.Size(48, 51);
 			this.keyCHS.TabIndex = 17;
 			this.keyCHS.Tag = "42";
+			this.keyCHS.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyh
 			// 
@@ -480,6 +498,7 @@ namespace HP67
 			this.keyh.Size = new System.Drawing.Size(48, 51);
 			this.keyh.TabIndex = 15;
 			this.keyh.Tag = "35";
+			this.keyh.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyRCL
 			// 
@@ -499,6 +518,7 @@ namespace HP67
 			this.keyRCL.Size = new System.Drawing.Size(48, 51);
 			this.keyRCL.TabIndex = 14;
 			this.keyRCL.Tag = "34";
+			this.keyRCL.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keySTO
 			// 
@@ -518,6 +538,7 @@ namespace HP67
 			this.keySTO.Size = new System.Drawing.Size(48, 51);
 			this.keySTO.TabIndex = 13;
 			this.keySTO.Tag = "33";
+			this.keySTO.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyg
 			// 
@@ -537,6 +558,7 @@ namespace HP67
 			this.keyg.Size = new System.Drawing.Size(48, 51);
 			this.keyg.TabIndex = 12;
 			this.keyg.Tag = "32";
+			this.keyg.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key8
 			// 
@@ -556,6 +578,7 @@ namespace HP67
 			this.key8.Size = new System.Drawing.Size(56, 51);
 			this.key8.TabIndex = 22;
 			this.key8.Tag = "53";
+			this.key8.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyRS
 			// 
@@ -575,25 +598,27 @@ namespace HP67
 			this.keyRS.Size = new System.Drawing.Size(56, 51);
 			this.keyRS.TabIndex = 35;
 			this.keyRS.Tag = "84";
+			this.keyRS.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
-			// keyDot
+			// keyPeriod
 			// 
-			this.keyDot.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyDot.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
-			this.keyDot.FGWidth = 72;
-			this.keyDot.FText = "INT";
-			this.keyDot.GText = "FRAC";
-			this.keyDot.HText = "H.MS+";
-			this.keyDot.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyDot.Location = new System.Drawing.Point(144, 528);
-			this.keyDot.MainBackColor = System.Drawing.Color.LightYellow;
-			this.keyDot.MainForeColor = System.Drawing.Color.Black;
-			this.keyDot.MainText = " ・";
-			this.keyDot.MainWidth = 56;
-			this.keyDot.Name = "keyDot";
-			this.keyDot.Size = new System.Drawing.Size(72, 51);
-			this.keyDot.TabIndex = 34;
-			this.keyDot.Tag = "83";
+			this.keyPeriod.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyPeriod.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyPeriod.FGWidth = 72;
+			this.keyPeriod.FText = "INT";
+			this.keyPeriod.GText = "FRAC";
+			this.keyPeriod.HText = "H.MS+";
+			this.keyPeriod.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyPeriod.Location = new System.Drawing.Point(144, 528);
+			this.keyPeriod.MainBackColor = System.Drawing.Color.LightYellow;
+			this.keyPeriod.MainForeColor = System.Drawing.Color.Black;
+			this.keyPeriod.MainText = " ・";
+			this.keyPeriod.MainWidth = 56;
+			this.keyPeriod.Name = "keyPeriod";
+			this.keyPeriod.Size = new System.Drawing.Size(72, 51);
+			this.keyPeriod.TabIndex = 34;
+			this.keyPeriod.Tag = "83";
+			this.keyPeriod.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key0
 			// 
@@ -613,6 +638,7 @@ namespace HP67
 			this.key0.Size = new System.Drawing.Size(56, 51);
 			this.key0.TabIndex = 33;
 			this.key0.Tag = "82";
+			this.key0.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key9
 			// 
@@ -632,6 +658,7 @@ namespace HP67
 			this.key9.Size = new System.Drawing.Size(56, 51);
 			this.key9.TabIndex = 23;
 			this.key9.Tag = "54";
+			this.key9.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key3
 			// 
@@ -651,6 +678,7 @@ namespace HP67
 			this.key3.Size = new System.Drawing.Size(56, 51);
 			this.key3.TabIndex = 31;
 			this.key3.Tag = "74";
+			this.key3.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key2
 			// 
@@ -670,6 +698,7 @@ namespace HP67
 			this.key2.Size = new System.Drawing.Size(56, 51);
 			this.key2.TabIndex = 30;
 			this.key2.Tag = "73";
+			this.key2.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key1
 			// 
@@ -689,6 +718,7 @@ namespace HP67
 			this.key1.Size = new System.Drawing.Size(56, 51);
 			this.key1.TabIndex = 29;
 			this.key1.Tag = "72";
+			this.key1.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key6
 			// 
@@ -708,6 +738,7 @@ namespace HP67
 			this.key6.Size = new System.Drawing.Size(56, 51);
 			this.key6.TabIndex = 27;
 			this.key6.Tag = "64";
+			this.key6.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key5
 			// 
@@ -727,6 +758,7 @@ namespace HP67
 			this.key5.Size = new System.Drawing.Size(56, 51);
 			this.key5.TabIndex = 26;
 			this.key5.Tag = "63";
+			this.key5.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key4
 			// 
@@ -746,6 +778,7 @@ namespace HP67
 			this.key4.Size = new System.Drawing.Size(56, 51);
 			this.key4.TabIndex = 25;
 			this.key4.Tag = "62";
+			this.key4.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// key7
 			// 
@@ -765,6 +798,7 @@ namespace HP67
 			this.key7.Size = new System.Drawing.Size(56, 51);
 			this.key7.TabIndex = 21;
 			this.key7.Tag = "52";
+			this.key7.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyMinus
 			// 
@@ -784,6 +818,7 @@ namespace HP67
 			this.keyMinus.Size = new System.Drawing.Size(48, 51);
 			this.keyMinus.TabIndex = 20;
 			this.keyMinus.Tag = "51";
+			this.keyMinus.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyDiv
 			// 
@@ -803,6 +838,7 @@ namespace HP67
 			this.keyDiv.Size = new System.Drawing.Size(48, 51);
 			this.keyDiv.TabIndex = 32;
 			this.keyDiv.Tag = "81";
+			this.keyDiv.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyMult
 			// 
@@ -822,6 +858,7 @@ namespace HP67
 			this.keyMult.Size = new System.Drawing.Size(48, 51);
 			this.keyMult.TabIndex = 28;
 			this.keyMult.Tag = "71";
+			this.keyMult.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// keyPlus
 			// 
@@ -841,6 +878,7 @@ namespace HP67
 			this.keyPlus.Size = new System.Drawing.Size(48, 51);
 			this.keyPlus.TabIndex = 24;
 			this.keyPlus.Tag = "61";
+			this.keyPlus.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
 			// HP67
 			// 
@@ -860,7 +898,7 @@ namespace HP67
 			this.Controls.Add(this.key3);
 			this.Controls.Add(this.key9);
 			this.Controls.Add(this.key0);
-			this.Controls.Add(this.keyDot);
+			this.Controls.Add(this.keyPeriod);
 			this.Controls.Add(this.keyRS);
 			this.Controls.Add(this.key8);
 			this.Controls.Add(this.keyg);
@@ -901,5 +939,11 @@ namespace HP67
 		{
 			Application.Run(new HP67());
 		}
+
+		private void KeyClick(object sender, System.EventArgs e)
+		{
+		
+		}
+
 	}
 }

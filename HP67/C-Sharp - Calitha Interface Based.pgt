@@ -15,13 +15,16 @@ events must be provided by the class that implements I...Actions.
 ##ID-SYMBOL-PREFIX 'Symbol'
 ##ID-RULE-PREFIX 'Rule'
 
+using com.calitha.commons;
+using com.calitha.goldparser;
+using com.calitha.goldparser.lalr;
 using System;
 using System.IO;
 using System.Runtime.Serialization;
-using com.calitha.goldparser.lalr;
-using com.calitha.commons;
 
-namespace com.calitha.goldparser
+##PARAMETERS
+namespace %About%
+##END-PARAMETERS
 {
 
     [Serializable()]
@@ -84,7 +87,7 @@ namespace com.calitha.goldparser
 ##END-PARAMETERS
     {
 ##RULES
-        void %ID% (Rule rule, Token [] tokens);
+        void %ID% (Token token, Token [] tokens);
 ##END-RULES
     }
 
@@ -111,7 +114,7 @@ namespace com.calitha.goldparser
 ##RULES
                 case (int)RuleConstants.%ID% :
                     // %Description%
-                    actions.%ID% (args.Token.Rule, args.Token.Tokens);
+                    actions.%ID% (args.Token, args.Token.Tokens);
                     return;
 
 ##END-RULES

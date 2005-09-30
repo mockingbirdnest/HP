@@ -191,7 +191,7 @@ namespace HP67_Testing
 
 		private void numericUpDown_ValueChanged(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.Count = (byte) numericUpDown.Value;
+			DisplayUnderTest.Digits = (byte) numericUpDown.Value;
 		}
 
 		private void radioButtonEngineering_CheckedChanged(object sender, System.EventArgs e)

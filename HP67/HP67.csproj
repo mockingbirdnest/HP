@@ -108,6 +108,11 @@
                     AssemblyName = "CalithaLib"
                     HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll"
                 />
+                <Reference
+                    Name = "HP67 Class Library"
+                    AssemblyName = "HP67 Class Library"
+                    HintPath = "..\HP67 Class Library\bin\Debug\HP67 Class Library.dll"
+                />
             </References>
         </Build>
         <Files>
@@ -141,6 +146,11 @@
                 <File
                     RelPath = "HP67.grm"
                     BuildAction = "None"
+                />
+                <File
+                    RelPath = "HP67Execution.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
                 <File
                     RelPath = "HP67Parser.cs"

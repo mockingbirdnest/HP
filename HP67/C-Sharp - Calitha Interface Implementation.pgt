@@ -13,12 +13,16 @@ BEWARE!  It will overwrite all the code in that class!
 ##ID-SYMBOL-PREFIX 'Symbol'
 ##ID-RULE-PREFIX 'Rule'
 
-using System;
-using System.IO;
-using com.calitha.goldparser.lalr;
 using com.calitha.commons;
+using com.calitha.goldparser;
+using com.calitha.goldparser.lalr;
+using System;
+using System.Diagnostics;
+using System.IO;
 
-namespace com.calitha.goldparser
+##PARAMETERS
+namespace %About%
+##END-PARAMETERS
 {
 
 ##PARAMETERS
@@ -26,8 +30,33 @@ namespace com.calitha.goldparser
 ##END-PARAMETERS
     {
 
+		private void Execute (Token [] tokens) 
+		{
+			Symbol instruction;
+
+			if (tokens [0].GetType () == typeof (NonterminalToken)) 
+			{
+				instruction = ((NonterminalToken) tokens [0]).Symbol;
+			}
+			else if (tokens [0].GetType () == typeof (TerminalToken)) 
+			{
+				instruction = ((TerminalToken) tokens [0]).Symbol;
+			}
+			else 
+			{
+				Trace.Assert (false);
+			}
+			switch (instruction.Id) 
+			{
+##SYMBOLS
+                case (int)SymbolConstants.%ID% :
+                    break;
+##END-SYMBOLS
+			}
+		}
+
 ##RULES
-        public void %ID% (Rule rule, Token [] tokens)
+        public void %ID% (Token token, Token [] tokens)
         {
             // %Description%
         }
