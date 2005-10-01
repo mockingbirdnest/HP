@@ -77,6 +77,18 @@ namespace HP67_Class_Library
 			}
 		}
 
+		public double Y
+		{
+			get 
+			{
+				return stack[(int)Position.y];
+			}
+			set 
+			{
+				stack[(int)Position.y] = value;
+			}
+		}
+
 		public void Get(out double X)
 		{
 			X = stack[(int)Position.x];
@@ -100,6 +112,14 @@ namespace HP67_Class_Library
 			{
 				stack[i] = stack[i - 1];
 			}
+		}
+
+		public void XExchangeY ()
+		{
+			double temp;
+			temp = stack[(int)Position.x];
+			stack[(int)Position.x] = stack[(int)Position.y];
+			stack[(int)Position.y] = temp;
 		}
 
 	}

@@ -93,6 +93,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "Card.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "Memory.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

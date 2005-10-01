@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Xml;
 
 namespace HP67_Class_Library
 {
@@ -133,6 +134,18 @@ namespace HP67_Class_Library
 			this [ΣRegister.Σx]  -= X;
 		}
 
+		public void X̄ (out double x, out double y)
+		{
+			x =  this [ΣRegister.Σx] / this [ΣRegister.n];
+			y =  this [ΣRegister.Σy] / this [ΣRegister.n];
+		}
+
+		public double S()
+		{
+			return Math.Sqrt((this [ΣRegister.Σx2] - (this [ΣRegister.Σx] * this [ΣRegister.Σx])/
+			this [ΣRegister.n]) / (this [ΣRegister.n] -1));
+		}
+
 		public void PrimarySecondaryExchange ()
 		{
 			double temp;
@@ -236,5 +249,11 @@ namespace HP67_Class_Library
 		}
 
 		#endregion
+
+		public void GiveRegisters()
+		{
+
+		}
+
 	}
 }
