@@ -24,7 +24,7 @@ namespace HP67
 
 		#region Constructors & Destructors
 
-		public Engine () 
+		static Engine () 
 		{
 			theDisplay = new Display ();
 			theMemory = new Memory ();
