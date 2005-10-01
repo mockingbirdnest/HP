@@ -158,6 +158,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "HP67Parser.resx"
+                    DependentUpon = "HP67Parser.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "HP67ParserActions.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

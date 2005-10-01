@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HP67_Control_Library;
+using HP67Parser;
+using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
@@ -13,7 +15,8 @@ namespace HP67
 	public class HP67 : System.Windows.Forms.Form
 	{
 
-		private HP67ParserActions theActions;
+		private Actions theActions;
+		private Parser theParser;
 
 		private HP67_Control_Library.Display display1;
 		private HP67_Control_Library.CardSlot cardSlot1;
@@ -66,9 +69,8 @@ namespace HP67
 			//
 			InitializeComponent();
 
-			//
-			// TODO: Add any constructor code after InitializeComponent call
-			//
+			theActions = new Actions ();
+			theParser = new Parser ("HP67.HP67Parser", "CGT", theActions);
 		}
 
 		/// <summary>
@@ -942,7 +944,9 @@ namespace HP67
 
 		private void KeyClick(object sender, System.EventArgs e)
 		{
-		
+			Key key = (Key) sender;
+
+			theParser.Parse ((string) key.Tag);
 		}
 
 	}

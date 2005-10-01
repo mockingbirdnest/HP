@@ -21,13 +21,11 @@ using System.Diagnostics;
 using System.IO;
 
 ##PARAMETERS
-namespace %About%
+namespace %Name%
 ##END-PARAMETERS
 {
 
-##PARAMETERS
-    public class %Name%Actions : I%Name%Actions
-##END-PARAMETERS
+    public class Actions : IActions
     {
 
 		private void Execute (Token [] tokens) 

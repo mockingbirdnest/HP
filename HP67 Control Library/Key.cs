@@ -197,7 +197,7 @@ namespace HP67_Control_Library
 			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			if (KeyClick != null) 
 			{
-				KeyClick (sender, e);
+				KeyClick (this, e);
 			}
 		}
 
@@ -222,7 +222,7 @@ namespace HP67_Control_Library
 			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
 			if (KeyClick != null) 
 			{
-				KeyClick (sender, e);
+				KeyClick (this, e);
 			}
 		}
 

@@ -3,50 +3,11 @@ using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using System;
+using System.Diagnostics;
 using System.IO;
-using System.Runtime.Serialization;
 
-namespace HP67
+namespace HP67Parser
 {
-
-    [Serializable()]
-    public class SymbolException : System.Exception
-    {
-        public SymbolException(string message) : base(message)
-        {
-        }
-
-        public SymbolException(string message,
-            Exception inner) : base(message, inner)
-        {
-        }
-
-        protected SymbolException(SerializationInfo info,
-            StreamingContext context) : base(info, context)
-        {
-        }
-
-    }
-
-    [Serializable()]
-    public class RuleException : System.Exception
-    {
-
-        public RuleException(string message) : base(message)
-        {
-        }
-
-        public RuleException(string message,
-                             Exception inner) : base(message, inner)
-        {
-        }
-
-        protected RuleException(SerializationInfo info,
-                                StreamingContext context) : base(info, context)
-        {
-        }
-
-    }
 
     enum SymbolConstants : int
     {
@@ -422,7 +383,7 @@ namespace HP67
         RULE_MEMORY2                                      = 222  // <Memory> ::= <Letter>
     };
 
-    public interface IHP67ParserActions
+    public interface IActions
     {
         void RULE_X_AVERAGE_SIGMA_PLUS (Token token, Token [] tokens);
         void RULE_GSB_GTO (Token token, Token [] tokens);
@@ -649,10 +610,10 @@ namespace HP67
         void RULE_MEMORY2 (Token token, Token [] tokens);
     }
 
-    public class HP67Parser
+    public class Parser
     {
         private LALRParser parser;
-        private IHP67ParserActions actions;
+        private IActions actions;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -1781,7 +1742,7 @@ namespace HP67
                     return;
 
             }
-            throw new RuleException("Unknown rule");
+			Trace.Assert (false);
         }
 
         private void AcceptEvent(LALRParser parser, AcceptEventArgs args)
@@ -1815,7 +1776,7 @@ namespace HP67
                 new LALRParser.ParseErrorHandler (ParseErrorEvent);
         }
 
-        public HP67Parser (string filename)
+        public Parser (string filename, IActions a)
         {
             FileStream stream = new FileStream (filename,
                                                 FileMode.Open, 
@@ -1823,9 +1784,10 @@ namespace HP67
                                                 FileShare.Read);
             Initialize (stream);
             stream.Close ();
+            actions = a;
         }
 
-        public HP67Parser (string baseName, string resourceName)
+        public Parser (string baseName, string resourceName, IActions a)
         {
             byte[] buffer = ResourceUtil.GetByteArrayResource
                (System.Reflection.Assembly.GetExecutingAssembly (),
@@ -1834,16 +1796,17 @@ namespace HP67
             MemoryStream stream = new MemoryStream (buffer);
             Initialize (stream);
             stream.Close ();
+            actions = a;
         }
 
-        public HP67Parser (Stream stream)
+        public Parser (Stream stream, IActions a)
         {
             Initialize (stream);
+            actions = a;
         }
 
-        public void Parse (string source, IHP67ParserActions a)
+        public void Parse (string source)
         {
-            actions = a;
             parser.Parse (source);
         }
 

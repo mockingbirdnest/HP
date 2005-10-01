@@ -2,13 +2,14 @@
 using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
+using HP67;
 using HP67_Class_Library;
 using HP67_Control_Library;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace HP67
+namespace HP67Parser
 {
 
 	public class HP67ArgumentDigit : Object
@@ -31,7 +32,7 @@ namespace HP67
 
 	}
 
-    public class HP67ParserActions : IHP67ParserActions
+    public class Actions : IActions
     {
 
 		#region Public Operations
@@ -454,31 +455,31 @@ namespace HP67
         public void RULE_COMMAND_SST (Token token, Token [] tokens)
         {
             // <Command> ::= Sst
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_COMMAND_H (Token token, Token [] tokens)
         {
             // <Command> ::= h <Bst>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_COMMAND_H2 (Token token, Token [] tokens)
         {
             // <Command> ::= h <Del>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_COMMAND_F (Token token, Token [] tokens)
         {
             // <Command> ::= f <Cl_Prgm>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_COMMAND_GTO_PERIOD (Token token, Token [] tokens)
         {
             // <Command> ::= Gto Period <Digit> <Digit> <Digit>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_SHORTCUT (Token token, Token [] tokens)
@@ -494,19 +495,19 @@ namespace HP67
         public void RULE_UNSHIFTED_SHORTCUT (Token token, Token [] tokens)
         {
             // <Unshifted_Shortcut> ::= <Gsb_Shortcut>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNSHIFTED_SHORTCUT2 (Token token, Token [] tokens)
         {
             // <Unshifted_Shortcut> ::= <Memory_Shortcut>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_F_SHIFTED_SHORTCUT_F (Token token, Token [] tokens)
         {
             // <F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_GSB_SHORTCUT (Token token, Token [] tokens)
@@ -567,547 +568,547 @@ namespace HP67
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Enter
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Chs
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Eex
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Clx
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= <Digit>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Subtraction
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Addition
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Multiplication
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Division
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Period
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= 'R_S'
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Gto <Label>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Dsp <Digit>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Sto <Memory>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_BINARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens)
         {
             // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_Average>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Fix>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Rnd>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Dsz>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Isz>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <W_Data>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Ln>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Log>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Sin>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Cos>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Tan>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Percent>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Int>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_F_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Display_X>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <S>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Sci>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Merge>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Exp>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Square>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Arccos>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Arctan>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Frac>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_G_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Stk>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Rtn>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Eng>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <St_I>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Deg>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Rad>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Grd>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <SF>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <R_Down>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <R_Up>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <CF>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Abs>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <F_Test>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Pause>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Pi>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Reg>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Factorial>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_NULLARY_H_SHIFTED_INSTRUCTION25 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Space>
-			// TODO: Instruction
+			HP67Execution.Execute (tokens);
 		}
 
         public void RULE_UNARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens)

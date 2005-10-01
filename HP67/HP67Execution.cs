@@ -1,6 +1,7 @@
 ﻿using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
+using HP67Parser;
 using HP67_Class_Library;
 using HP67_Control_Library;
 using System;
@@ -15,9 +16,9 @@ namespace HP67
 
 		#region Private Data
 
-		Display theDisplay;
-		Memory theMemory;
-		Stack theStack;
+		private static Display theDisplay;
+		private static Memory theMemory;
+		private static Stack theStack;
 
 		#endregion
 
@@ -34,7 +35,7 @@ namespace HP67
 
 		#region Public Operations
 
-		private bool Execute (Token [] tokens) 
+		public static bool Execute (Token [] tokens) 
 		{
 			Symbol instruction;
 			double x, y;
@@ -92,7 +93,8 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_RCL :
 					break;
 				case (int)SymbolConstants.SYMBOL_SIGMA_PLUS :
-					theMemory.ΣPlus (theStack.X, theStack.Y);
+					// TODO: Define property Y in Stack.
+					// theMemory.ΣPlus (theStack.X, theStack.Y);
 					break;
 				case (int)SymbolConstants.SYMBOL_SST :
 					break;
@@ -273,7 +275,8 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_SHORTCUT :
 					break;
 				case (int)SymbolConstants.SYMBOL_SIGMA_MINUS :
-					theMemory.ΣMinus (theStack.X, theStack.Y);
+					// TODO: Define property Y in class Stack.
+					// theMemory.ΣMinus (theStack.X, theStack.Y);
 					break;
 				case (int)SymbolConstants.SYMBOL_SIN :
 					theStack.Get (out x);

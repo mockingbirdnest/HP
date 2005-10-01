@@ -6,9 +6,9 @@
 ##NOTES
 This template creates the constants for symbols and rules and a custom parser
 class that acts as a template for parsing any source.  When a string is being
-parsed, an object that implements the I...Actions interface is updated and it is
+parsed, an object that implements the IActions interface is updated and it is
 returned by the Parse method.  The code to deal with the reductions and other 
-events must be provided by the class that implements I...Actions.
+events must be provided by the class that implements IActions.
 ##END-NOTES
 ##ID-CASE UPPERCASE
 ##ID-SEPARATOR '_'
@@ -19,52 +19,13 @@ using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using System;
+using System.Diagnostics;
 using System.IO;
-using System.Runtime.Serialization;
 
 ##PARAMETERS
-namespace %About%
+namespace %Name%
 ##END-PARAMETERS
 {
-
-    [Serializable()]
-    public class SymbolException : System.Exception
-    {
-        public SymbolException(string message) : base(message)
-        {
-        }
-
-        public SymbolException(string message,
-            Exception inner) : base(message, inner)
-        {
-        }
-
-        protected SymbolException(SerializationInfo info,
-            StreamingContext context) : base(info, context)
-        {
-        }
-
-    }
-
-    [Serializable()]
-    public class RuleException : System.Exception
-    {
-
-        public RuleException(string message) : base(message)
-        {
-        }
-
-        public RuleException(string message,
-                             Exception inner) : base(message, inner)
-        {
-        }
-
-        protected RuleException(SerializationInfo info,
-                                StreamingContext context) : base(info, context)
-        {
-        }
-
-    }
 
     enum SymbolConstants : int
     {
@@ -82,23 +43,17 @@ namespace %About%
 ##END-RULES
     };
 
-##PARAMETERS
-    public interface I%Name%Actions
-##END-PARAMETERS
+    public interface IActions
     {
 ##RULES
         void %ID% (Token token, Token [] tokens);
 ##END-RULES
     }
 
-##PARAMETERS
-    public class %Name%
-##END-PARAMETERS
+    public class Parser
     {
         private LALRParser parser;
-##PARAMETERS
-        private I%Name%Actions actions;
-##END-PARAMETERS
+        private IActions actions;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -119,7 +74,7 @@ namespace %About%
 
 ##END-RULES
             }
-            throw new RuleException("Unknown rule");
+			Trace.Assert (false);
         }
 
         private void AcceptEvent(LALRParser parser, AcceptEventArgs args)
@@ -153,9 +108,7 @@ namespace %About%
                 new LALRParser.ParseErrorHandler (ParseErrorEvent);
         }
 
-##PARAMETERS
-        public %Name% (string filename)
-##END-PARAMETERS
+        public Parser (string filename, IActions a)
         {
             FileStream stream = new FileStream (filename,
                                                 FileMode.Open, 
@@ -163,11 +116,10 @@ namespace %About%
                                                 FileShare.Read);
             Initialize (stream);
             stream.Close ();
+            actions = a;
         }
 
-##PARAMETERS
-        public %Name% (string baseName, string resourceName)
-##END-PARAMETERS
+        public Parser (string baseName, string resourceName, IActions a)
         {
             byte[] buffer = ResourceUtil.GetByteArrayResource
                (System.Reflection.Assembly.GetExecutingAssembly (),
@@ -176,20 +128,17 @@ namespace %About%
             MemoryStream stream = new MemoryStream (buffer);
             Initialize (stream);
             stream.Close ();
+            actions = a;
         }
 
-##PARAMETERS
-        public %Name% (Stream stream)
-##END-PARAMETERS
+        public Parser (Stream stream, IActions a)
         {
             Initialize (stream);
+            actions = a;
         }
 
-##PARAMETERS
-        public void Parse (string source, I%Name%Actions a)
-##END-PARAMETERS
+        public void Parse (string source)
         {
-            actions = a;
             parser.Parse (source);
         }
 
