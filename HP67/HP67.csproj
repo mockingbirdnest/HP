@@ -148,7 +148,12 @@
                     BuildAction = "None"
                 />
                 <File
-                    RelPath = "HP67Execution.cs"
+                    RelPath = "HP67Actions.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HP67Engine.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -161,11 +166,6 @@
                     RelPath = "HP67Parser.resx"
                     DependentUpon = "HP67Parser.cs"
                     BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "HP67ParserActions.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

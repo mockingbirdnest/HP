@@ -11,7 +11,7 @@ using System.IO;
 namespace HP67
 { 
 
-	public class HP67Execution 
+	public class Engine
 	{
 
 		#region Private Data
@@ -24,7 +24,7 @@ namespace HP67
 
 		#region Constructors & Destructors
 
-		public HP67Execution () 
+		public Engine () 
 		{
 			theDisplay = new Display ();
 			theMemory = new Memory ();
@@ -73,7 +73,7 @@ namespace HP67
 					theStack.X = y / x;
 					break;
 				case (int)SymbolConstants.SYMBOL_DSP :
-					theDisplay.Digits = ((HP67ArgumentDigit) tokens [1].UserObject).Digit;
+					theDisplay.Digits = ((Digit) tokens [1].UserObject).Value;
 					break;
 				case (int)SymbolConstants.SYMBOL_EEX :
 					break;
