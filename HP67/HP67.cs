@@ -16,12 +16,9 @@ namespace HP67
 	{
 
 		private Actions theActions;
+		private Engine theEngine;
 		private Parser theParser;
 
-		private HP67_Control_Library.Display display1;
-		private HP67_Control_Library.CardSlot cardSlot1;
-		private HP67_Control_Library.Toggle toggle1;
-		private HP67_Control_Library.Toggle toggle2;
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
 		private HP67_Control_Library.Key keyC;
@@ -57,6 +54,10 @@ namespace HP67
 		private HP67_Control_Library.Key keyRS;
 		private HP67_Control_Library.Key key0;
 		private HP67_Control_Library.Key keyPeriod;
+		private HP67_Control_Library.Display display;
+		private HP67_Control_Library.CardSlot cardSlot;
+		private HP67_Control_Library.Toggle toggleOffOn;
+		private HP67_Control_Library.Toggle toggleWprgmRun;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -69,7 +70,8 @@ namespace HP67
 			//
 			InitializeComponent();
 
-			theActions = new Actions ();
+			theEngine = new Engine (display);
+			theActions = new Actions (theEngine);
 			theParser = new Parser ("HP67.HP67Parser", "CGT", theActions);
 		}
 
@@ -95,10 +97,10 @@ namespace HP67
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.display1 = new HP67_Control_Library.Display();
-			this.cardSlot1 = new HP67_Control_Library.CardSlot();
-			this.toggle1 = new HP67_Control_Library.Toggle();
-			this.toggle2 = new HP67_Control_Library.Toggle();
+			this.display = new HP67_Control_Library.Display();
+			this.cardSlot = new HP67_Control_Library.CardSlot();
+			this.toggleOffOn = new HP67_Control_Library.Toggle();
+			this.toggleWprgmRun = new HP67_Control_Library.Toggle();
 			this.keyA = new HP67_Control_Library.Key();
 			this.keyf = new HP67_Control_Library.Key();
 			this.keySST = new HP67_Control_Library.Key();
@@ -136,51 +138,51 @@ namespace HP67
 			this.keyPlus = new HP67_Control_Library.Key();
 			this.SuspendLayout();
 			// 
-			// display1
+			// display
 			// 
-			this.display1.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.display1.ForeColor = System.Drawing.Color.Red;
-			this.display1.Location = new System.Drawing.Point(8, 8);
-			this.display1.Name = "display1";
-			this.display1.Size = new System.Drawing.Size(288, 40);
-			this.display1.TabIndex = 0;
-			this.display1.Value = 0;
+			this.display.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.display.ForeColor = System.Drawing.Color.Red;
+			this.display.Location = new System.Drawing.Point(8, 8);
+			this.display.Name = "display";
+			this.display.Size = new System.Drawing.Size(288, 40);
+			this.display.TabIndex = 0;
+			this.display.Value = 0;
 			// 
-			// cardSlot1
+			// cardSlot
 			// 
-			this.cardSlot1.Location = new System.Drawing.Point(8, 80);
-			this.cardSlot1.Margin = 8;
-			this.cardSlot1.Name = "cardSlot1";
-			this.cardSlot1.RichText = false;
-			this.cardSlot1.Size = new System.Drawing.Size(288, 50);
-			this.cardSlot1.State = HP67_Control_Library.CardSlotState.Unloaded;
-			this.cardSlot1.TabIndex = 1;
-			this.cardSlot1.TextBoxWidth = 48;
-			this.cardSlot1.Title = "TITLE";
+			this.cardSlot.Location = new System.Drawing.Point(8, 80);
+			this.cardSlot.Margin = 8;
+			this.cardSlot.Name = "cardSlot";
+			this.cardSlot.RichText = false;
+			this.cardSlot.Size = new System.Drawing.Size(288, 50);
+			this.cardSlot.State = HP67_Control_Library.CardSlotState.Unloaded;
+			this.cardSlot.TabIndex = 1;
+			this.cardSlot.TextBoxWidth = 48;
+			this.cardSlot.Title = "TITLE";
 			// 
-			// toggle1
+			// toggleOffOn
 			// 
-			this.toggle1.LeftText = "OFF";
-			this.toggle1.LeftWidth = 30;
-			this.toggle1.Location = new System.Drawing.Point(8, 56);
-			this.toggle1.MainWidth = 50;
-			this.toggle1.Name = "toggle1";
-			this.toggle1.RightText = "ON";
-			this.toggle1.RightWidth = 30;
-			this.toggle1.Size = new System.Drawing.Size(110, 16);
-			this.toggle1.TabIndex = 2;
+			this.toggleOffOn.LeftText = "OFF";
+			this.toggleOffOn.LeftWidth = 30;
+			this.toggleOffOn.Location = new System.Drawing.Point(8, 56);
+			this.toggleOffOn.MainWidth = 50;
+			this.toggleOffOn.Name = "toggleOffOn";
+			this.toggleOffOn.RightText = "ON";
+			this.toggleOffOn.RightWidth = 30;
+			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
+			this.toggleOffOn.TabIndex = 2;
 			// 
-			// toggle2
+			// toggleWprgmRun
 			// 
-			this.toggle2.LeftText = "W/PRGM";
-			this.toggle2.LeftWidth = 60;
-			this.toggle2.Location = new System.Drawing.Point(160, 56);
-			this.toggle2.MainWidth = 50;
-			this.toggle2.Name = "toggle2";
-			this.toggle2.RightText = "RUN";
-			this.toggle2.RightWidth = 30;
-			this.toggle2.Size = new System.Drawing.Size(140, 16);
-			this.toggle2.TabIndex = 3;
+			this.toggleWprgmRun.LeftText = "W/PRGM";
+			this.toggleWprgmRun.LeftWidth = 60;
+			this.toggleWprgmRun.Location = new System.Drawing.Point(160, 56);
+			this.toggleWprgmRun.MainWidth = 50;
+			this.toggleWprgmRun.Name = "toggleWprgmRun";
+			this.toggleWprgmRun.RightText = "RUN";
+			this.toggleWprgmRun.RightWidth = 30;
+			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
+			this.toggleWprgmRun.TabIndex = 3;
 			// 
 			// keyA
 			// 
@@ -922,10 +924,10 @@ namespace HP67
 			this.Controls.Add(this.keySST);
 			this.Controls.Add(this.keyf);
 			this.Controls.Add(this.keyA);
-			this.Controls.Add(this.toggle2);
-			this.Controls.Add(this.toggle1);
-			this.Controls.Add(this.cardSlot1);
-			this.Controls.Add(this.display1);
+			this.Controls.Add(this.toggleWprgmRun);
+			this.Controls.Add(this.toggleOffOn);
+			this.Controls.Add(this.cardSlot);
+			this.Controls.Add(this.display);
 			this.Name = "HP67";
 			this.Text = "HP67";
 			this.ResumeLayout(false);

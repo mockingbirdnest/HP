@@ -1,60 +1,115 @@
+using HP67_Control_Library;
 using System;
 
 namespace HP67_Class_Library
 {
 	/// <summary>
-	/// Summary description for Stack.
+	/// Evaluation stack of the HP67 calculator.
 	/// </summary>
 	public class Stack
 	{
+
+		#region Private Data
+
 		private enum Position
 		{
-			x = 0,
-			y = 1,
-			z = 2,
-			t = 3
+			x = -1, // Not stored, see the indexer.
+			y = 0,
+			z = 1,
+			t = 2
 		}
+
 		private double lastX;
 		private double[] stack;
 
-		public Stack()
+		private Display theDisplay;
+
+		#endregion
+
+		#region Contructors & Destructors
+
+		public Stack (Display display)
 		{
+			theDisplay = display;
+
+			// Tricky!  The x element is *not* represented.  See the indexer.
+			stack = new double [Position.t - Position.y + 1];
 			lastX = 0.0;
-			stack = new double[Position.t - Position.x + 1];
+
 			for (int i = 0; i < stack.Length; i++)
 			{
 				stack[i] = 0.0;
 			}
 		}
 
-		void ExchangeXY()
+		#endregion
+
+		#region Private Operations
+
+		private double this [Position p] 
+		{
+
+			// We do not represent the x element of the stack.  Because it is supposedly always
+			// reflected by the display, we read/write it from the display as needed.  This ensures
+			// that we cannot possibly get into an inconsistent state.
+			get 
+			{
+				if (p == Position.x) 
+				{
+					double x = theDisplay.Value;
+					theDisplay.Value = x; // Refresh the display.
+					return x;
+				}
+				else
+				{
+					return stack [(int) p];
+				}
+			}
+			set 
+			{
+				if (p == Position.x) 
+				{
+					theDisplay.Value = value;
+				}
+				else
+				{
+					stack [(int) p] = value;
+				}
+			}
+		}
+
+		#endregion
+
+		#region Public Operations & Properties
+
+		public void XExchangeY()
 		{
 			double temp;
-			temp = stack[(int)Position.x];
-			stack[(int)Position.x] = stack[(int)Position.y];
-			stack[(int)Position.y] = temp;
+			temp = this [Position.x];
+			this [Position.x] = this [Position.y];
+			this [Position.y] = temp;
 		}
 
 		public void RollDown()
 		{
 			double temp;
-			temp = stack[(int)Position.x];
-			for (int i = (int)Position.x; i < (int)Position.t; i++)
+			temp = this [Position.x];
+			for (Position i = Position.x; i < Position.t; i++)
 			{
-				stack[i] = stack[i + 1];
+				this [i] = this [i + 1];
 			}
-			stack[(int)Position.t] = temp;
+			this [Position.t] = temp;
 		}
 
 		public void RollUp()
 		{
 			double temp;
-			temp = stack[(int)Position.t];
-			for (int i = (int)Position.t; i > (int)Position.x; i--)
+			temp = this [Position.t];
+			for (Position i = Position.t; i > Position.x; i--)
 			{
-				stack[i] = stack[i - 1];
+				this [i] = this [i - 1];
 			}
-			stack[(int)Position.x] = temp;
+			this [Position.x] = temp;
 		}
 		
 		public double LastX
@@ -69,11 +124,11 @@ namespace HP67_Class_Library
 		{
 			get 
 			{
-				return stack[(int)Position.x];
+				return this [Position.x];
 			}
 			set 
 			{
-				stack[(int)Position.x] = value;
+				this [Position.x] = value;
 			}
 		}
 
@@ -81,46 +136,40 @@ namespace HP67_Class_Library
 		{
 			get 
 			{
-				return stack[(int)Position.y];
+				return this [Position.y];
 			}
 			set 
 			{
-				stack[(int)Position.y] = value;
+				this [Position.y] = value;
 			}
 		}
 
 		public void Get(out double X)
 		{
-			X = stack[(int)Position.x];
-			lastX = stack[(int)Position.x];
+			X = this [Position.x];
+			lastX = this [Position.x];
 		}
 
 		public void Get(out double X, out double Y)
 		{
-			X = stack[(int)Position.x];
-			Y = stack[(int)Position.y];
-			lastX = stack[(int)Position.x];
-			for (int i = (int)Position.x; i < (int)Position.t; i++)
+			X = this [Position.x];
+			Y = this [Position.y];
+			lastX = this [Position.x];
+			for (Position i = Position.x; i < Position.t; i++)
 			{
-				stack[i] = stack[i + 1];
+				this [i] = this [i + 1];
 			}
 		}
 
 		public void Enter()
 		{
-			for (int i = (int)Position.t; i > (int)Position.x; i--)
+			for (Position i = Position.t; i > Position.x; i--)
 			{
-				stack[i] = stack[i - 1];
+				this [i] = this [i - 1];
 			}
 		}
 
-		public void XExchangeY ()
-		{
-			double temp;
-			temp = stack[(int)Position.x];
-			stack[(int)Position.x] = stack[(int)Position.y];
-			stack[(int)Position.y] = temp;
-		}
+		#endregion
 
 	}
 }

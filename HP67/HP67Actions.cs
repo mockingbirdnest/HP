@@ -40,8 +40,19 @@ namespace HP67Parser
 		private static TraceSwitch classTraceSwitch = 
 			new TraceSwitch ("HP67Parser.Actions", "Parser actions");
 
+		private Engine theEngine;
+
 		private string remainingText;
 		private bool retry = false;
+
+		#endregion
+
+		#region Constructors & Destructors
+
+		public Actions (Engine engine) 
+		{
+			theEngine = engine;
+		}
 
 		#endregion
 
@@ -518,31 +529,31 @@ namespace HP67Parser
         public void ReduceRULE_COMMAND_SST (Token token, Token [] tokens)
         {
             // <Command> ::= Sst
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_COMMAND_H (Token token, Token [] tokens)
         {
             // <Command> ::= h <Bst>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_COMMAND_H2 (Token token, Token [] tokens)
         {
             // <Command> ::= h <Del>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_COMMAND_F (Token token, Token [] tokens)
         {
             // <Command> ::= f <Cl_Prgm>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_COMMAND_GTO_PERIOD (Token token, Token [] tokens)
         {
             // <Command> ::= Gto Period <Digit> <Digit> <Digit>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_SHORTCUT (Token token, Token [] tokens)
@@ -558,19 +569,19 @@ namespace HP67Parser
         public void ReduceRULE_UNSHIFTED_SHORTCUT (Token token, Token [] tokens)
         {
             // <Unshifted_Shortcut> ::= <Gsb_Shortcut>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNSHIFTED_SHORTCUT2 (Token token, Token [] tokens)
         {
             // <Unshifted_Shortcut> ::= <Memory_Shortcut>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_F_SHIFTED_SHORTCUT_F (Token token, Token [] tokens)
         {
             // <F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_GSB_SHORTCUT (Token token, Token [] tokens)
@@ -631,547 +642,547 @@ namespace HP67Parser
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Enter
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Chs
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Eex
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Clx
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= <Digit>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Subtraction
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Addition
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Multiplication
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Division
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= Period
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (Token token, Token [] tokens)
         {
             // <Nullary_Unshifted_Instruction> ::= 'R_S'
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Gto <Label>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Dsp <Digit>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Sto <Memory>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (Token token, Token [] tokens)
         {
             // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_BINARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens)
         {
             // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_Average>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Fix>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Rnd>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Dsz>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Isz>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <W_Data>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Ln>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Log>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Sin>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Cos>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Tan>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Percent>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Int>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens)
         {
             // <Nullary_F_Shifted_Instruction> ::= <Display_X>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <S>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Sci>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Merge>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Exp>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Square>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Arccos>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Arctan>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Frac>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens)
         {
             // <Nullary_G_Shifted_Instruction> ::= <Stk>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Rtn>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Eng>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <St_I>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Deg>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Rad>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Grd>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <SF>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <R_Down>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <R_Up>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <CF>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Abs>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <F_Test>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Pause>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Pi>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Reg>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Factorial>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION25 (Token token, Token [] tokens)
         {
             // <Nullary_H_Shifted_Instruction> ::= <Space>
-			Engine.Execute (tokens);
+			theEngine.Execute (tokens);
 		}
 
         public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens)

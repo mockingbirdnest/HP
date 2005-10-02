@@ -16,26 +16,26 @@ namespace HP67
 
 		#region Private Data
 
-		private static Display theDisplay;
-		private static Memory theMemory;
-		private static Stack theStack;
+		private Display theDisplay;
+		private Memory theMemory;
+		private Stack theStack;
 
 		#endregion
 
 		#region Constructors & Destructors
 
-		static Engine () 
+		public Engine (Display display) 
 		{
-			theDisplay = new Display ();
+			theDisplay = display;
 			theMemory = new Memory ();
-			theStack = new Stack ();
+			theStack = new Stack (display);
 		}
 
 		#endregion
 
 		#region Public Operations
 
-		public static bool Execute (Token [] tokens) 
+		public bool Execute (Token [] tokens) 
 		{
 			Symbol instruction;
 			double x, y;
@@ -60,6 +60,7 @@ namespace HP67
 					theStack.X = y + x;
 					break;
 				case (int)SymbolConstants.SYMBOL_CHS :
+					theDisplay.ChangeSign ();
 					break;
 				case (int)SymbolConstants.SYMBOL_CLX :
 					theStack.X = 0.0;
@@ -76,6 +77,7 @@ namespace HP67
 					theDisplay.Digits = ((Digit) tokens [1].UserObject).Value;
 					break;
 				case (int)SymbolConstants.SYMBOL_EEX :
+					theDisplay.EnterExponent ();
 					break;
 				case (int)SymbolConstants.SYMBOL_ENTER :
 					theStack.Enter ();
@@ -87,6 +89,7 @@ namespace HP67
 					theStack.X = y * x;
 					break;
 				case (int)SymbolConstants.SYMBOL_PERIOD :
+					theDisplay.EnterPeriod ();
 					break;
 				case (int)SymbolConstants.SYMBOL_R_S :
 					break;
@@ -144,6 +147,7 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_DEL :
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
+					theDisplay.EnterDigit (((Digit) tokens [0].UserObject).Value);
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT_LABEL :
 					break;
@@ -327,6 +331,7 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_X_EXCHANGE_I :
 					break;
 				case (int)SymbolConstants.SYMBOL_X_EXCHANGE_Y :
+					theStack.XExchangeY ();
 					break;
 				case (int)SymbolConstants.SYMBOL_X_GT_0 :
 					break;

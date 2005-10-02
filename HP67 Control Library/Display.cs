@@ -86,6 +86,11 @@ namespace HP67_Control_Library
 				userControlTesting = bool.Parse (appSettingsUserControlTesting [0]);
 			}
 
+			// Make the control non-selectable, otherwise the application will select its
+			// text at startup.
+			SetStyle (ControlStyles.Selectable, false);
+			UpdateStyles ();
+
 			enteringExponent = false;
 			enteringMantissa = false;
 			enteringNumber = false;
