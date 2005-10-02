@@ -27,8 +27,18 @@ namespace HP67
 		public Engine (Display display) 
 		{
 			theDisplay = display;
+			theDisplay.EnteringNumber += new Display.EnteringNumberEvent (Enter);
 			theMemory = new Memory ();
 			theStack = new Stack (display);
+		}
+
+		#endregion
+
+		#region Private Operations
+
+		private void Enter (object sender) 
+		{
+			theStack.Enter ();
 		}
 
 		#endregion
@@ -60,7 +70,12 @@ namespace HP67
 					theStack.X = y + x;
 					break;
 				case (int)SymbolConstants.SYMBOL_CHS :
-					theDisplay.ChangeSign ();
+					bool changeSignDone;
+					theDisplay.ChangeSign (out changeSignDone);
+					if (! changeSignDone) 
+					{
+						theStack.X = -theStack.X;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_CLX :
 					theStack.X = 0.0;
@@ -227,6 +242,8 @@ namespace HP67
 					theStack.X = Math.Log10 (x);
 					break;
 				case (int)SymbolConstants.SYMBOL_LST_X :
+					theStack.Enter ();
+					theStack.X = theStack.LastX;
 					break;
 				case (int)SymbolConstants.SYMBOL_MEMORY :
 					break;

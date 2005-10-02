@@ -66,6 +66,13 @@ namespace HP67_Control_Library
 
 		#endregion
 
+		#region Event Definitions
+
+		public delegate void EnteringNumberEvent (object sender);
+		public event EnteringNumberEvent EnteringNumber;
+
+		#endregion
+
 		#region Constructors & Destructors
 
 		public Display()
@@ -348,6 +355,20 @@ namespace HP67_Control_Library
 			currentMantissa = to;
 		}
 
+		private void StartEnteringNumber  ()
+		{
+			if (EnteringNumber != null) 
+			{
+				// Notify whoever is interested that we are starting to enter a number.
+				EnteringNumber (this);
+			}
+			enteringNumber = true;
+			enteringMantissa = true;
+			enteringExponent = false;
+			hasAPeriod = false;
+			ReplaceExponentWithSign (new String (' ', exponentSignLength + exponentLength));
+		}
+
 		#endregion
 
 		#region Public Properties
@@ -537,10 +558,15 @@ namespace HP67_Control_Library
 
 		#region Public Operations
 
-		public void ChangeSign ()
+		public void ChangeSign (out bool done)
 		{
 			char sign;
 
+			// Apologies: this is not ideal.  The CHS key can be used either (1) when entering a
+			// number, in the mantissa or the exponent or (2) when a number has been entered, as
+			// a normal transformation.  This method is only concerned with entering numbers, so
+			// if it detects that we are not entering a number it sets done to false to indicate
+			// that it didn't do its duty.  Clients will have to cope.
 			if (enteringNumber) 
 			{
 				if (enteringMantissa) 
@@ -574,6 +600,11 @@ namespace HP67_Control_Library
 					Trace.Assert (enteringExponent);
 					ReplaceExponentSign (sign);
 				}
+				done = true;
+			}
+			else 
+			{
+				done = false;
 			}
 		}
 
@@ -606,11 +637,7 @@ namespace HP67_Control_Library
 			{
 				if (! enteringNumber) 
 				{
-					enteringNumber = true;
-					enteringMantissa = true;
-					enteringExponent = false;
-					hasAPeriod = false;
-					ReplaceExponentWithSign (new String (' ', exponentSignLength + exponentLength));
+					StartEnteringNumber ();
 					mantissa = " " + d + period;
 				}
 				else 
@@ -656,11 +683,7 @@ namespace HP67_Control_Library
 		{
 			if (! enteringNumber) 
 			{
-				enteringNumber = true;
-				enteringMantissa = true;
-				enteringExponent = false;
-				hasAPeriod = true;
-				ReplaceExponentWithSign (new String (' ', exponentSignLength + exponentLength));
+				StartEnteringNumber ();
 				ReplaceMantissaWithSign (" " + period);
 			}
 			else if (!hasAPeriod) 

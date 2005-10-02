@@ -74,6 +74,10 @@ namespace %Name%
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"ReduceEvent: reducing '" + args.Rule.ToString () + "'", 
+				classTraceSwitch.DisplayName);
+				
 		    // By default, copy the user object from the first token on the rhs.  This will take
 		    // care of most of the reductions, where we just pass the information along.
             if (args.Token.Tokens.Length >= 1)

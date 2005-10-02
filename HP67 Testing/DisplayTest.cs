@@ -405,7 +405,8 @@ namespace HP67_Testing
 
 		private void chs_Click(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.ChangeSign ();
+			bool changeSignDone;
+			DisplayUnderTest.ChangeSign (out changeSignDone);
 		}
 
 		private void period_Click(object sender, System.EventArgs e)
