@@ -25,10 +25,9 @@ namespace %Name%
 ##END-PARAMETERS
 {
 
-    public class Actions : IActions
-    {
-
-		private void Execute (Token [] tokens) 
+	public class Engine
+	{
+		public static bool Execute (Token [] tokens) 
 		{
 			Symbol instruction;
 
@@ -52,15 +51,40 @@ namespace %Name%
 ##END-SYMBOLS
 			}
 		}
+	}
 
+    public class Actions : IActions
+    {
+		
+		public void ParserAccept ()
+		{
+		}
+		
+		public void ParserError (string input, TerminalToken token)
+		{
+		}
+
+		public string RemainingText
+		{
+			get
+				{
+				}
+		}
+		
+        public bool Retry
+        {
+			get
+				{
+				}
+        }
+        
 ##RULES
-        public void %ID% (Token token, Token [] tokens)
+        public void Reduce%ID% (Token token, Token [] tokens)
         {
             // %Description%
         }
 
 ##END-RULES
-
     }
 
 }

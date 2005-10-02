@@ -137,23 +137,22 @@ namespace HP67Parser
         SYMBOL_TO_RECTANGULAR                = 123, // <To_Rectangular>
         SYMBOL_UNARY_F_SHIFTED_INSTRUCTION   = 124, // <Unary_F_Shifted_Instruction>
         SYMBOL_UNARY_G_SHIFTED_INSTRUCTION   = 125, // <Unary_G_Shifted_Instruction>
-        SYMBOL_UNARY_H_SHIFTED_INSTRUCTION   = 126, // <Unary_H_Shifted_Instruction>
-        SYMBOL_UNARY_UNSHIFTED_INSTRUCTION   = 127, // <Unary_Unshifted_Instruction>
-        SYMBOL_UNSHIFTED_INSTRUCTION         = 128, // <Unshifted_Instruction>
-        SYMBOL_UNSHIFTED_SHORTCUT            = 129, // <Unshifted_Shortcut>
-        SYMBOL_W_DATA                        = 130, // <W_Data>
-        SYMBOL_X_AVERAGE                     = 131, // <X_Average>
-        SYMBOL_X_EQ_0                        = 132, // <X_EQ_0>
-        SYMBOL_X_EQ_Y                        = 133, // <X_EQ_Y>
-        SYMBOL_X_EXCHANGE_I                  = 134, // <X_Exchange_I>
-        SYMBOL_X_EXCHANGE_Y                  = 135, // <X_Exchange_Y>
-        SYMBOL_X_GT_0                        = 136, // <X_GT_0>
-        SYMBOL_X_GT_Y                        = 137, // <X_GT_Y>
-        SYMBOL_X_LE_Y                        = 138, // <X_LE_Y>
-        SYMBOL_X_LT_0                        = 139, // <X_LT_0>
-        SYMBOL_X_NE_0                        = 140, // <X_NE_0>
-        SYMBOL_X_NE_Y                        = 141, // <X_NE_Y>
-        SYMBOL_Y_TO_THE_XTH                  = 142  // <Y_To_The_Xth>
+        SYMBOL_UNARY_UNSHIFTED_INSTRUCTION   = 126, // <Unary_Unshifted_Instruction>
+        SYMBOL_UNSHIFTED_INSTRUCTION         = 127, // <Unshifted_Instruction>
+        SYMBOL_UNSHIFTED_SHORTCUT            = 128, // <Unshifted_Shortcut>
+        SYMBOL_W_DATA                        = 129, // <W_Data>
+        SYMBOL_X_AVERAGE                     = 130, // <X_Average>
+        SYMBOL_X_EQ_0                        = 131, // <X_EQ_0>
+        SYMBOL_X_EQ_Y                        = 132, // <X_EQ_Y>
+        SYMBOL_X_EXCHANGE_I                  = 133, // <X_Exchange_I>
+        SYMBOL_X_EXCHANGE_Y                  = 134, // <X_Exchange_Y>
+        SYMBOL_X_GT_0                        = 135, // <X_GT_0>
+        SYMBOL_X_GT_Y                        = 136, // <X_GT_Y>
+        SYMBOL_X_LE_Y                        = 137, // <X_LE_Y>
+        SYMBOL_X_LT_0                        = 138, // <X_LT_0>
+        SYMBOL_X_NE_0                        = 139, // <X_NE_0>
+        SYMBOL_X_NE_Y                        = 140, // <X_NE_Y>
+        SYMBOL_Y_TO_THE_XTH                  = 141  // <Y_To_The_Xth>
     };
 
     enum RuleConstants : int
@@ -261,359 +260,370 @@ namespace HP67Parser
         RULE_G_SHIFTED_INSTRUCTION_G                      = 100, // <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
         RULE_G_SHIFTED_INSTRUCTION_G2                     = 101, // <G_Shifted_Instruction> ::= g <Unary_G_Shifted_Instruction>
         RULE_H_SHIFTED_INSTRUCTION_H                      = 102, // <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
-        RULE_H_SHIFTED_INSTRUCTION_H2                     = 103, // <H_Shifted_Instruction> ::= h <Unary_H_Shifted_Instruction>
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS     = 104, // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER          = 105, // <Nullary_Unshifted_Instruction> ::= Enter
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS            = 106, // <Nullary_Unshifted_Instruction> ::= Chs
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX            = 107, // <Nullary_Unshifted_Instruction> ::= Eex
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX            = 108, // <Nullary_Unshifted_Instruction> ::= Clx
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION                = 109, // <Nullary_Unshifted_Instruction> ::= <Digit>
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION    = 110, // <Nullary_Unshifted_Instruction> ::= Subtraction
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION       = 111, // <Nullary_Unshifted_Instruction> ::= Addition
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION = 112, // <Nullary_Unshifted_Instruction> ::= Multiplication
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION       = 113, // <Nullary_Unshifted_Instruction> ::= Division
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD         = 114, // <Nullary_Unshifted_Instruction> ::= Period
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S            = 115, // <Nullary_Unshifted_Instruction> ::= 'R_S'
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO              = 116, // <Unary_Unshifted_Instruction> ::= Gto <Label>
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP              = 117, // <Unary_Unshifted_Instruction> ::= Dsp <Digit>
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_STO              = 118, // <Unary_Unshifted_Instruction> ::= Sto <Memory>
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL              = 119, // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
-        RULE_BINARY_UNSHIFTED_INSTRUCTION_STO             = 120, // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION                = 121, // <Nullary_F_Shifted_Instruction> ::= <X_Average>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION2               = 122, // <Nullary_F_Shifted_Instruction> ::= <Fix>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION3               = 123, // <Nullary_F_Shifted_Instruction> ::= <Rnd>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION4               = 124, // <Nullary_F_Shifted_Instruction> ::= <Dsz>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION5               = 125, // <Nullary_F_Shifted_Instruction> ::= <Isz>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION6               = 126, // <Nullary_F_Shifted_Instruction> ::= <W_Data>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION7               = 127, // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION8               = 128, // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION9               = 129, // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION10              = 130, // <Nullary_F_Shifted_Instruction> ::= <Ln>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION11              = 131, // <Nullary_F_Shifted_Instruction> ::= <Log>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION12              = 132, // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION13              = 133, // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION14              = 134, // <Nullary_F_Shifted_Instruction> ::= <Sin>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION15              = 135, // <Nullary_F_Shifted_Instruction> ::= <Cos>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION16              = 136, // <Nullary_F_Shifted_Instruction> ::= <Tan>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION17              = 137, // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION18              = 138, // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION19              = 139, // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION20              = 140, // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION21              = 141, // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION22              = 142, // <Nullary_F_Shifted_Instruction> ::= <Percent>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION23              = 143, // <Nullary_F_Shifted_Instruction> ::= <Int>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION24              = 144, // <Nullary_F_Shifted_Instruction> ::= <Display_X>
-        RULE_UNARY_F_SHIFTED_INSTRUCTION                  = 145, // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
-        RULE_UNARY_F_SHIFTED_INSTRUCTION2                 = 146, // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION                = 147, // <Nullary_G_Shifted_Instruction> ::= <S>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION2               = 148, // <Nullary_G_Shifted_Instruction> ::= <Sci>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION3               = 149, // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION4               = 150, // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION5               = 151, // <Nullary_G_Shifted_Instruction> ::= <Merge>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION6               = 152, // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION7               = 153, // <Nullary_G_Shifted_Instruction> ::= <Exp>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION8               = 154, // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION9               = 155, // <Nullary_G_Shifted_Instruction> ::= <Square>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION10              = 156, // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION11              = 157, // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION12              = 158, // <Nullary_G_Shifted_Instruction> ::= <Arccos>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION13              = 159, // <Nullary_G_Shifted_Instruction> ::= <Arctan>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION14              = 160, // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION15              = 161, // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION16              = 162, // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION17              = 163, // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION18              = 164, // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION19              = 165, // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION20              = 166, // <Nullary_G_Shifted_Instruction> ::= <Frac>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION21              = 167, // <Nullary_G_Shifted_Instruction> ::= <Stk>
-        RULE_UNARY_G_SHIFTED_INSTRUCTION                  = 168, // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
-        RULE_UNARY_G_SHIFTED_INSTRUCTION2                 = 169, // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION                = 170, // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION2               = 171, // <Nullary_H_Shifted_Instruction> ::= <Rtn>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION3               = 172, // <Nullary_H_Shifted_Instruction> ::= <Eng>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION4               = 173, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION5               = 174, // <Nullary_H_Shifted_Instruction> ::= <St_I>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION6               = 175, // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION7               = 176, // <Nullary_H_Shifted_Instruction> ::= <Deg>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION8               = 177, // <Nullary_H_Shifted_Instruction> ::= <Rad>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION9               = 178, // <Nullary_H_Shifted_Instruction> ::= <Grd>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION10              = 179, // <Nullary_H_Shifted_Instruction> ::= <SF>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION11              = 180, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION12              = 181, // <Nullary_H_Shifted_Instruction> ::= <R_Down>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION13              = 182, // <Nullary_H_Shifted_Instruction> ::= <R_Up>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION14              = 183, // <Nullary_H_Shifted_Instruction> ::= <CF>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION15              = 184, // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION16              = 185, // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION17              = 186, // <Nullary_H_Shifted_Instruction> ::= <Abs>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION18              = 187, // <Nullary_H_Shifted_Instruction> ::= <F_Test>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION19              = 188, // <Nullary_H_Shifted_Instruction> ::= <Pause>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION20              = 189, // <Nullary_H_Shifted_Instruction> ::= <Pi>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION21              = 190, // <Nullary_H_Shifted_Instruction> ::= <Reg>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION22              = 191, // <Nullary_H_Shifted_Instruction> ::= <Factorial>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION23              = 192, // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION24              = 193, // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION25              = 194, // <Nullary_H_Shifted_Instruction> ::= <Space>
-        RULE_UNARY_H_SHIFTED_INSTRUCTION                  = 195, // <Unary_H_Shifted_Instruction> ::= 
-        RULE_OPERATOR_SUBTRACTION                         = 196, // <Operator> ::= Subtraction
-        RULE_OPERATOR_ADDITION                            = 197, // <Operator> ::= Addition
-        RULE_OPERATOR_MULTIPLICATION                      = 198, // <Operator> ::= Multiplication
-        RULE_OPERATOR_DIVISION                            = 199, // <Operator> ::= Division
-        RULE_DIGIT_ZERO                                   = 200, // <Digit> ::= Zero
-        RULE_DIGIT_ONE                                    = 201, // <Digit> ::= One
-        RULE_DIGIT_TWO                                    = 202, // <Digit> ::= Two
-        RULE_DIGIT_THREE                                  = 203, // <Digit> ::= Three
-        RULE_DIGIT_FOUR                                   = 204, // <Digit> ::= Four
-        RULE_DIGIT_FIVE                                   = 205, // <Digit> ::= Five
-        RULE_DIGIT_SIX                                    = 206, // <Digit> ::= Six
-        RULE_DIGIT_SEVEN                                  = 207, // <Digit> ::= Seven
-        RULE_DIGIT_EIGHT                                  = 208, // <Digit> ::= Eight
-        RULE_DIGIT_NINE                                   = 209, // <Digit> ::= Nine
-        RULE_LETTER_A                                     = 210, // <Letter> ::= A
-        RULE_LETTER_B                                     = 211, // <Letter> ::= B
-        RULE_LETTER_C                                     = 212, // <Letter> ::= C
-        RULE_LETTER_D                                     = 213, // <Letter> ::= D
-        RULE_LETTER_E                                     = 214, // <Letter> ::= E
-        RULE_LETTER_LABEL                                 = 215, // <Letter_Label> ::= <Letter>
-        RULE_DIGIT_LABEL                                  = 216, // <Digit_Label> ::= <Digit>
-        RULE_LABEL                                        = 217, // <Label> ::= <Digit_Label>
-        RULE_LABEL2                                       = 218, // <Label> ::= <Letter_Label>
-        RULE_OPERABLE_MEMORY                              = 219, // <Operable_Memory> ::= <Digit>
-        RULE_OPERABLE_MEMORY_SUB_I                        = 220, // <Operable_Memory> ::= 'Sub_I'
-        RULE_MEMORY                                       = 221, // <Memory> ::= <Operable_Memory>
-        RULE_MEMORY2                                      = 222  // <Memory> ::= <Letter>
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS     = 103, // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER          = 104, // <Nullary_Unshifted_Instruction> ::= Enter
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS            = 105, // <Nullary_Unshifted_Instruction> ::= Chs
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX            = 106, // <Nullary_Unshifted_Instruction> ::= Eex
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX            = 107, // <Nullary_Unshifted_Instruction> ::= Clx
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION                = 108, // <Nullary_Unshifted_Instruction> ::= <Digit>
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION    = 109, // <Nullary_Unshifted_Instruction> ::= Subtraction
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION       = 110, // <Nullary_Unshifted_Instruction> ::= Addition
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION = 111, // <Nullary_Unshifted_Instruction> ::= Multiplication
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION       = 112, // <Nullary_Unshifted_Instruction> ::= Division
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD         = 113, // <Nullary_Unshifted_Instruction> ::= Period
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S            = 114, // <Nullary_Unshifted_Instruction> ::= 'R_S'
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO              = 115, // <Unary_Unshifted_Instruction> ::= Gto <Label>
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP              = 116, // <Unary_Unshifted_Instruction> ::= Dsp <Digit>
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_STO              = 117, // <Unary_Unshifted_Instruction> ::= Sto <Memory>
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL              = 118, // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
+        RULE_BINARY_UNSHIFTED_INSTRUCTION_STO             = 119, // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION                = 120, // <Nullary_F_Shifted_Instruction> ::= <X_Average>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION2               = 121, // <Nullary_F_Shifted_Instruction> ::= <Fix>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION3               = 122, // <Nullary_F_Shifted_Instruction> ::= <Rnd>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION4               = 123, // <Nullary_F_Shifted_Instruction> ::= <Dsz>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION5               = 124, // <Nullary_F_Shifted_Instruction> ::= <Isz>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION6               = 125, // <Nullary_F_Shifted_Instruction> ::= <W_Data>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION7               = 126, // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION8               = 127, // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION9               = 128, // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION10              = 129, // <Nullary_F_Shifted_Instruction> ::= <Ln>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION11              = 130, // <Nullary_F_Shifted_Instruction> ::= <Log>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION12              = 131, // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION13              = 132, // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION14              = 133, // <Nullary_F_Shifted_Instruction> ::= <Sin>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION15              = 134, // <Nullary_F_Shifted_Instruction> ::= <Cos>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION16              = 135, // <Nullary_F_Shifted_Instruction> ::= <Tan>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION17              = 136, // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION18              = 137, // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION19              = 138, // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION20              = 139, // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION21              = 140, // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION22              = 141, // <Nullary_F_Shifted_Instruction> ::= <Percent>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION23              = 142, // <Nullary_F_Shifted_Instruction> ::= <Int>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION24              = 143, // <Nullary_F_Shifted_Instruction> ::= <Display_X>
+        RULE_UNARY_F_SHIFTED_INSTRUCTION                  = 144, // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
+        RULE_UNARY_F_SHIFTED_INSTRUCTION2                 = 145, // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION                = 146, // <Nullary_G_Shifted_Instruction> ::= <S>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION2               = 147, // <Nullary_G_Shifted_Instruction> ::= <Sci>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION3               = 148, // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION4               = 149, // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION5               = 150, // <Nullary_G_Shifted_Instruction> ::= <Merge>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION6               = 151, // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION7               = 152, // <Nullary_G_Shifted_Instruction> ::= <Exp>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION8               = 153, // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION9               = 154, // <Nullary_G_Shifted_Instruction> ::= <Square>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION10              = 155, // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION11              = 156, // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION12              = 157, // <Nullary_G_Shifted_Instruction> ::= <Arccos>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION13              = 158, // <Nullary_G_Shifted_Instruction> ::= <Arctan>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION14              = 159, // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION15              = 160, // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION16              = 161, // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION17              = 162, // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION18              = 163, // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION19              = 164, // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION20              = 165, // <Nullary_G_Shifted_Instruction> ::= <Frac>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION21              = 166, // <Nullary_G_Shifted_Instruction> ::= <Stk>
+        RULE_UNARY_G_SHIFTED_INSTRUCTION                  = 167, // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
+        RULE_UNARY_G_SHIFTED_INSTRUCTION2                 = 168, // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION                = 169, // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION2               = 170, // <Nullary_H_Shifted_Instruction> ::= <Rtn>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION3               = 171, // <Nullary_H_Shifted_Instruction> ::= <Eng>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION4               = 172, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION5               = 173, // <Nullary_H_Shifted_Instruction> ::= <St_I>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION6               = 174, // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION7               = 175, // <Nullary_H_Shifted_Instruction> ::= <Deg>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION8               = 176, // <Nullary_H_Shifted_Instruction> ::= <Rad>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION9               = 177, // <Nullary_H_Shifted_Instruction> ::= <Grd>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION10              = 178, // <Nullary_H_Shifted_Instruction> ::= <SF>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION11              = 179, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION12              = 180, // <Nullary_H_Shifted_Instruction> ::= <R_Down>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION13              = 181, // <Nullary_H_Shifted_Instruction> ::= <R_Up>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION14              = 182, // <Nullary_H_Shifted_Instruction> ::= <CF>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION15              = 183, // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION16              = 184, // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION17              = 185, // <Nullary_H_Shifted_Instruction> ::= <Abs>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION18              = 186, // <Nullary_H_Shifted_Instruction> ::= <F_Test>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION19              = 187, // <Nullary_H_Shifted_Instruction> ::= <Pause>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION20              = 188, // <Nullary_H_Shifted_Instruction> ::= <Pi>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION21              = 189, // <Nullary_H_Shifted_Instruction> ::= <Reg>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION22              = 190, // <Nullary_H_Shifted_Instruction> ::= <Factorial>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION23              = 191, // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION24              = 192, // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION25              = 193, // <Nullary_H_Shifted_Instruction> ::= <Space>
+        RULE_OPERATOR_SUBTRACTION                         = 194, // <Operator> ::= Subtraction
+        RULE_OPERATOR_ADDITION                            = 195, // <Operator> ::= Addition
+        RULE_OPERATOR_MULTIPLICATION                      = 196, // <Operator> ::= Multiplication
+        RULE_OPERATOR_DIVISION                            = 197, // <Operator> ::= Division
+        RULE_DIGIT_ZERO                                   = 198, // <Digit> ::= Zero
+        RULE_DIGIT_ONE                                    = 199, // <Digit> ::= One
+        RULE_DIGIT_TWO                                    = 200, // <Digit> ::= Two
+        RULE_DIGIT_THREE                                  = 201, // <Digit> ::= Three
+        RULE_DIGIT_FOUR                                   = 202, // <Digit> ::= Four
+        RULE_DIGIT_FIVE                                   = 203, // <Digit> ::= Five
+        RULE_DIGIT_SIX                                    = 204, // <Digit> ::= Six
+        RULE_DIGIT_SEVEN                                  = 205, // <Digit> ::= Seven
+        RULE_DIGIT_EIGHT                                  = 206, // <Digit> ::= Eight
+        RULE_DIGIT_NINE                                   = 207, // <Digit> ::= Nine
+        RULE_LETTER_A                                     = 208, // <Letter> ::= A
+        RULE_LETTER_B                                     = 209, // <Letter> ::= B
+        RULE_LETTER_C                                     = 210, // <Letter> ::= C
+        RULE_LETTER_D                                     = 211, // <Letter> ::= D
+        RULE_LETTER_E                                     = 212, // <Letter> ::= E
+        RULE_LETTER_LABEL                                 = 213, // <Letter_Label> ::= <Letter>
+        RULE_DIGIT_LABEL                                  = 214, // <Digit_Label> ::= <Digit>
+        RULE_LABEL                                        = 215, // <Label> ::= <Digit_Label>
+        RULE_LABEL2                                       = 216, // <Label> ::= <Letter_Label>
+        RULE_OPERABLE_MEMORY                              = 217, // <Operable_Memory> ::= <Digit>
+        RULE_OPERABLE_MEMORY_SUB_I                        = 218, // <Operable_Memory> ::= 'Sub_I'
+        RULE_MEMORY                                       = 219, // <Memory> ::= <Operable_Memory>
+        RULE_MEMORY2                                      = 220  // <Memory> ::= <Letter>
     };
 
     public interface IActions
     {
-        void RULE_X_AVERAGE_SIGMA_PLUS (Token token, Token [] tokens);
-        void RULE_GSB_GTO (Token token, Token [] tokens);
-        void RULE_FIX_DSP (Token token, Token [] tokens);
-        void RULE_RND_SUB_I (Token token, Token [] tokens);
-        void RULE_LBL_SST (Token token, Token [] tokens);
-        void RULE_DSZ_STO (Token token, Token [] tokens);
-        void RULE_ISZ_RCL (Token token, Token [] tokens);
-        void RULE_W_DATA_ENTER (Token token, Token [] tokens);
-        void RULE_P_EXCHANGE_S_CHS (Token token, Token [] tokens);
-        void RULE_CL_REG_EEX (Token token, Token [] tokens);
-        void RULE_CL_PRGM_CLX (Token token, Token [] tokens);
-        void RULE_X_EQ_0_SUBTRACTION (Token token, Token [] tokens);
-        void RULE_LN_SEVEN (Token token, Token [] tokens);
-        void RULE_LOG_EIGHT (Token token, Token [] tokens);
-        void RULE_SQRT_NINE (Token token, Token [] tokens);
-        void RULE_X_NE_0_ADDITION (Token token, Token [] tokens);
-        void RULE_SIN_FOUR (Token token, Token [] tokens);
-        void RULE_COS_FIVE (Token token, Token [] tokens);
-        void RULE_TAN_SIX (Token token, Token [] tokens);
-        void RULE_X_LT_0_MULTIPLICATION (Token token, Token [] tokens);
-        void RULE_TO_RECTANGULAR_ONE (Token token, Token [] tokens);
-        void RULE_TO_DEGREES_TWO (Token token, Token [] tokens);
-        void RULE_TO_HOURS_THREE (Token token, Token [] tokens);
-        void RULE_X_GT_0_DIVISION (Token token, Token [] tokens);
-        void RULE_PERCENT_ZERO (Token token, Token [] tokens);
-        void RULE_INT_PERIOD (Token token, Token [] tokens);
-        void RULE_DISPLAY_X_R_S (Token token, Token [] tokens);
-        void RULE_S_SIGMA_PLUS (Token token, Token [] tokens);
-        void RULE_GSB_F_GTO (Token token, Token [] tokens);
-        void RULE_SCI_DSP (Token token, Token [] tokens);
-        void RULE_LBL_F_SST (Token token, Token [] tokens);
-        void RULE_DSZ_SUB_I_STO (Token token, Token [] tokens);
-        void RULE_ISZ_SUB_I_RCL (Token token, Token [] tokens);
-        void RULE_MERGE_ENTER (Token token, Token [] tokens);
-        void RULE_X_EQ_Y_SUBTRACTION (Token token, Token [] tokens);
-        void RULE_EXP_SEVEN (Token token, Token [] tokens);
-        void RULE_TEN_TO_THE_XTH_EIGHT (Token token, Token [] tokens);
-        void RULE_SQUARE_NINE (Token token, Token [] tokens);
-        void RULE_X_NE_Y_ADDITION (Token token, Token [] tokens);
-        void RULE_ARCSIN_FOUR (Token token, Token [] tokens);
-        void RULE_ARCCOS_FIVE (Token token, Token [] tokens);
-        void RULE_ARCTAN_SIX (Token token, Token [] tokens);
-        void RULE_X_LE_Y_MULTIPLICATION (Token token, Token [] tokens);
-        void RULE_TO_POLAR_ONE (Token token, Token [] tokens);
-        void RULE_TO_RADIANS_TWO (Token token, Token [] tokens);
-        void RULE_TO_HMS_THREE (Token token, Token [] tokens);
-        void RULE_X_GT_Y_DIVISION (Token token, Token [] tokens);
-        void RULE_PERCENT_CHANGE_ZERO (Token token, Token [] tokens);
-        void RULE_FRAC_PERIOD (Token token, Token [] tokens);
-        void RULE_STK_R_S (Token token, Token [] tokens);
-        void RULE_SIGMA_MINUS_SIGMA_PLUS (Token token, Token [] tokens);
-        void RULE_RTN_GTO (Token token, Token [] tokens);
-        void RULE_ENG_DSP (Token token, Token [] tokens);
-        void RULE_X_EXCHANGE_I_SUB_I (Token token, Token [] tokens);
-        void RULE_BST_SST (Token token, Token [] tokens);
-        void RULE_ST_I_STO (Token token, Token [] tokens);
-        void RULE_RC_I_RCL (Token token, Token [] tokens);
-        void RULE_DEG_ENTER (Token token, Token [] tokens);
-        void RULE_RAD_CHS (Token token, Token [] tokens);
-        void RULE_GRD_EEX (Token token, Token [] tokens);
-        void RULE_DEL_CLX (Token token, Token [] tokens);
-        void RULE_SF_SUBTRACTION (Token token, Token [] tokens);
-        void RULE_X_EXCHANGE_Y_SEVEN (Token token, Token [] tokens);
-        void RULE_R_DOWN_EIGHT (Token token, Token [] tokens);
-        void RULE_R_UP_NINE (Token token, Token [] tokens);
-        void RULE_CF_ADDITION (Token token, Token [] tokens);
-        void RULE_RECIPROCAL_FOUR (Token token, Token [] tokens);
-        void RULE_Y_TO_THE_XTH_FIVE (Token token, Token [] tokens);
-        void RULE_ABS_SIX (Token token, Token [] tokens);
-        void RULE_F_TEST_MULTIPLICATION (Token token, Token [] tokens);
-        void RULE_PAUSE_ONE (Token token, Token [] tokens);
-        void RULE_PI_TWO (Token token, Token [] tokens);
-        void RULE_REG_THREE (Token token, Token [] tokens);
-        void RULE_FACTORIAL_DIVISION (Token token, Token [] tokens);
-        void RULE_LST_X_ZERO (Token token, Token [] tokens);
-        void RULE_HMS_PLUS_PERIOD (Token token, Token [] tokens);
-        void RULE_SPACE_R_S (Token token, Token [] tokens);
-        void RULE_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_INSTRUCTION3 (Token token, Token [] tokens);
-        void RULE_INSTRUCTION4 (Token token, Token [] tokens);
-        void RULE_INSTRUCTION5 (Token token, Token [] tokens);
-        void RULE_INSTRUCTION6 (Token token, Token [] tokens);
-        void RULE_COMMAND_SST (Token token, Token [] tokens);
-        void RULE_COMMAND_H (Token token, Token [] tokens);
-        void RULE_COMMAND_H2 (Token token, Token [] tokens);
-        void RULE_COMMAND_F (Token token, Token [] tokens);
-        void RULE_COMMAND_GTO_PERIOD (Token token, Token [] tokens);
-        void RULE_SHORTCUT (Token token, Token [] tokens);
-        void RULE_SHORTCUT2 (Token token, Token [] tokens);
-        void RULE_UNSHIFTED_SHORTCUT (Token token, Token [] tokens);
-        void RULE_UNSHIFTED_SHORTCUT2 (Token token, Token [] tokens);
-        void RULE_F_SHIFTED_SHORTCUT_F (Token token, Token [] tokens);
-        void RULE_GSB_SHORTCUT (Token token, Token [] tokens);
-        void RULE_MEMORY_SHORTCUT_SUB_I (Token token, Token [] tokens);
-        void RULE_UNSHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_UNSHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_UNSHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
-        void RULE_F_SHIFTED_INSTRUCTION_F (Token token, Token [] tokens);
-        void RULE_F_SHIFTED_INSTRUCTION_F2 (Token token, Token [] tokens);
-        void RULE_G_SHIFTED_INSTRUCTION_G (Token token, Token [] tokens);
-        void RULE_G_SHIFTED_INSTRUCTION_G2 (Token token, Token [] tokens);
-        void RULE_H_SHIFTED_INSTRUCTION_H (Token token, Token [] tokens);
-        void RULE_H_SHIFTED_INSTRUCTION_H2 (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (Token token, Token [] tokens);
-        void RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (Token token, Token [] tokens);
-        void RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (Token token, Token [] tokens);
-        void RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (Token token, Token [] tokens);
-        void RULE_UNARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens);
-        void RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (Token token, Token [] tokens);
-        void RULE_BINARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens);
-        void RULE_NULLARY_F_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens);
-        void RULE_UNARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_UNARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens);
-        void RULE_NULLARY_G_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens);
-        void RULE_UNARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_UNARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens);
-        void RULE_NULLARY_H_SHIFTED_INSTRUCTION25 (Token token, Token [] tokens);
-        void RULE_UNARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
-        void RULE_OPERATOR_SUBTRACTION (Token token, Token [] tokens);
-        void RULE_OPERATOR_ADDITION (Token token, Token [] tokens);
-        void RULE_OPERATOR_MULTIPLICATION (Token token, Token [] tokens);
-        void RULE_OPERATOR_DIVISION (Token token, Token [] tokens);
-        void RULE_DIGIT_ZERO (Token token, Token [] tokens);
-        void RULE_DIGIT_ONE (Token token, Token [] tokens);
-        void RULE_DIGIT_TWO (Token token, Token [] tokens);
-        void RULE_DIGIT_THREE (Token token, Token [] tokens);
-        void RULE_DIGIT_FOUR (Token token, Token [] tokens);
-        void RULE_DIGIT_FIVE (Token token, Token [] tokens);
-        void RULE_DIGIT_SIX (Token token, Token [] tokens);
-        void RULE_DIGIT_SEVEN (Token token, Token [] tokens);
-        void RULE_DIGIT_EIGHT (Token token, Token [] tokens);
-        void RULE_DIGIT_NINE (Token token, Token [] tokens);
-        void RULE_LETTER_A (Token token, Token [] tokens);
-        void RULE_LETTER_B (Token token, Token [] tokens);
-        void RULE_LETTER_C (Token token, Token [] tokens);
-        void RULE_LETTER_D (Token token, Token [] tokens);
-        void RULE_LETTER_E (Token token, Token [] tokens);
-        void RULE_LETTER_LABEL (Token token, Token [] tokens);
-        void RULE_DIGIT_LABEL (Token token, Token [] tokens);
-        void RULE_LABEL (Token token, Token [] tokens);
-        void RULE_LABEL2 (Token token, Token [] tokens);
-        void RULE_OPERABLE_MEMORY (Token token, Token [] tokens);
-        void RULE_OPERABLE_MEMORY_SUB_I (Token token, Token [] tokens);
-        void RULE_MEMORY (Token token, Token [] tokens);
-        void RULE_MEMORY2 (Token token, Token [] tokens);
+		void ParserAccept ();
+        void ParserError (string input, TerminalToken token);
+        string RemainingText
+        {
+			get;
+        }
+        bool Retry
+        {
+			get;
+        }
+        
+        void ReduceRULE_X_AVERAGE_SIGMA_PLUS (Token token, Token [] tokens);
+        void ReduceRULE_GSB_GTO (Token token, Token [] tokens);
+        void ReduceRULE_FIX_DSP (Token token, Token [] tokens);
+        void ReduceRULE_RND_SUB_I (Token token, Token [] tokens);
+        void ReduceRULE_LBL_SST (Token token, Token [] tokens);
+        void ReduceRULE_DSZ_STO (Token token, Token [] tokens);
+        void ReduceRULE_ISZ_RCL (Token token, Token [] tokens);
+        void ReduceRULE_W_DATA_ENTER (Token token, Token [] tokens);
+        void ReduceRULE_P_EXCHANGE_S_CHS (Token token, Token [] tokens);
+        void ReduceRULE_CL_REG_EEX (Token token, Token [] tokens);
+        void ReduceRULE_CL_PRGM_CLX (Token token, Token [] tokens);
+        void ReduceRULE_X_EQ_0_SUBTRACTION (Token token, Token [] tokens);
+        void ReduceRULE_LN_SEVEN (Token token, Token [] tokens);
+        void ReduceRULE_LOG_EIGHT (Token token, Token [] tokens);
+        void ReduceRULE_SQRT_NINE (Token token, Token [] tokens);
+        void ReduceRULE_X_NE_0_ADDITION (Token token, Token [] tokens);
+        void ReduceRULE_SIN_FOUR (Token token, Token [] tokens);
+        void ReduceRULE_COS_FIVE (Token token, Token [] tokens);
+        void ReduceRULE_TAN_SIX (Token token, Token [] tokens);
+        void ReduceRULE_X_LT_0_MULTIPLICATION (Token token, Token [] tokens);
+        void ReduceRULE_TO_RECTANGULAR_ONE (Token token, Token [] tokens);
+        void ReduceRULE_TO_DEGREES_TWO (Token token, Token [] tokens);
+        void ReduceRULE_TO_HOURS_THREE (Token token, Token [] tokens);
+        void ReduceRULE_X_GT_0_DIVISION (Token token, Token [] tokens);
+        void ReduceRULE_PERCENT_ZERO (Token token, Token [] tokens);
+        void ReduceRULE_INT_PERIOD (Token token, Token [] tokens);
+        void ReduceRULE_DISPLAY_X_R_S (Token token, Token [] tokens);
+        void ReduceRULE_S_SIGMA_PLUS (Token token, Token [] tokens);
+        void ReduceRULE_GSB_F_GTO (Token token, Token [] tokens);
+        void ReduceRULE_SCI_DSP (Token token, Token [] tokens);
+        void ReduceRULE_LBL_F_SST (Token token, Token [] tokens);
+        void ReduceRULE_DSZ_SUB_I_STO (Token token, Token [] tokens);
+        void ReduceRULE_ISZ_SUB_I_RCL (Token token, Token [] tokens);
+        void ReduceRULE_MERGE_ENTER (Token token, Token [] tokens);
+        void ReduceRULE_X_EQ_Y_SUBTRACTION (Token token, Token [] tokens);
+        void ReduceRULE_EXP_SEVEN (Token token, Token [] tokens);
+        void ReduceRULE_TEN_TO_THE_XTH_EIGHT (Token token, Token [] tokens);
+        void ReduceRULE_SQUARE_NINE (Token token, Token [] tokens);
+        void ReduceRULE_X_NE_Y_ADDITION (Token token, Token [] tokens);
+        void ReduceRULE_ARCSIN_FOUR (Token token, Token [] tokens);
+        void ReduceRULE_ARCCOS_FIVE (Token token, Token [] tokens);
+        void ReduceRULE_ARCTAN_SIX (Token token, Token [] tokens);
+        void ReduceRULE_X_LE_Y_MULTIPLICATION (Token token, Token [] tokens);
+        void ReduceRULE_TO_POLAR_ONE (Token token, Token [] tokens);
+        void ReduceRULE_TO_RADIANS_TWO (Token token, Token [] tokens);
+        void ReduceRULE_TO_HMS_THREE (Token token, Token [] tokens);
+        void ReduceRULE_X_GT_Y_DIVISION (Token token, Token [] tokens);
+        void ReduceRULE_PERCENT_CHANGE_ZERO (Token token, Token [] tokens);
+        void ReduceRULE_FRAC_PERIOD (Token token, Token [] tokens);
+        void ReduceRULE_STK_R_S (Token token, Token [] tokens);
+        void ReduceRULE_SIGMA_MINUS_SIGMA_PLUS (Token token, Token [] tokens);
+        void ReduceRULE_RTN_GTO (Token token, Token [] tokens);
+        void ReduceRULE_ENG_DSP (Token token, Token [] tokens);
+        void ReduceRULE_X_EXCHANGE_I_SUB_I (Token token, Token [] tokens);
+        void ReduceRULE_BST_SST (Token token, Token [] tokens);
+        void ReduceRULE_ST_I_STO (Token token, Token [] tokens);
+        void ReduceRULE_RC_I_RCL (Token token, Token [] tokens);
+        void ReduceRULE_DEG_ENTER (Token token, Token [] tokens);
+        void ReduceRULE_RAD_CHS (Token token, Token [] tokens);
+        void ReduceRULE_GRD_EEX (Token token, Token [] tokens);
+        void ReduceRULE_DEL_CLX (Token token, Token [] tokens);
+        void ReduceRULE_SF_SUBTRACTION (Token token, Token [] tokens);
+        void ReduceRULE_X_EXCHANGE_Y_SEVEN (Token token, Token [] tokens);
+        void ReduceRULE_R_DOWN_EIGHT (Token token, Token [] tokens);
+        void ReduceRULE_R_UP_NINE (Token token, Token [] tokens);
+        void ReduceRULE_CF_ADDITION (Token token, Token [] tokens);
+        void ReduceRULE_RECIPROCAL_FOUR (Token token, Token [] tokens);
+        void ReduceRULE_Y_TO_THE_XTH_FIVE (Token token, Token [] tokens);
+        void ReduceRULE_ABS_SIX (Token token, Token [] tokens);
+        void ReduceRULE_F_TEST_MULTIPLICATION (Token token, Token [] tokens);
+        void ReduceRULE_PAUSE_ONE (Token token, Token [] tokens);
+        void ReduceRULE_PI_TWO (Token token, Token [] tokens);
+        void ReduceRULE_REG_THREE (Token token, Token [] tokens);
+        void ReduceRULE_FACTORIAL_DIVISION (Token token, Token [] tokens);
+        void ReduceRULE_LST_X_ZERO (Token token, Token [] tokens);
+        void ReduceRULE_HMS_PLUS_PERIOD (Token token, Token [] tokens);
+        void ReduceRULE_SPACE_R_S (Token token, Token [] tokens);
+        void ReduceRULE_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_INSTRUCTION3 (Token token, Token [] tokens);
+        void ReduceRULE_INSTRUCTION4 (Token token, Token [] tokens);
+        void ReduceRULE_INSTRUCTION5 (Token token, Token [] tokens);
+        void ReduceRULE_INSTRUCTION6 (Token token, Token [] tokens);
+        void ReduceRULE_COMMAND_SST (Token token, Token [] tokens);
+        void ReduceRULE_COMMAND_H (Token token, Token [] tokens);
+        void ReduceRULE_COMMAND_H2 (Token token, Token [] tokens);
+        void ReduceRULE_COMMAND_F (Token token, Token [] tokens);
+        void ReduceRULE_COMMAND_GTO_PERIOD (Token token, Token [] tokens);
+        void ReduceRULE_SHORTCUT (Token token, Token [] tokens);
+        void ReduceRULE_SHORTCUT2 (Token token, Token [] tokens);
+        void ReduceRULE_UNSHIFTED_SHORTCUT (Token token, Token [] tokens);
+        void ReduceRULE_UNSHIFTED_SHORTCUT2 (Token token, Token [] tokens);
+        void ReduceRULE_F_SHIFTED_SHORTCUT_F (Token token, Token [] tokens);
+        void ReduceRULE_GSB_SHORTCUT (Token token, Token [] tokens);
+        void ReduceRULE_MEMORY_SHORTCUT_SUB_I (Token token, Token [] tokens);
+        void ReduceRULE_UNSHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_UNSHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_UNSHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
+        void ReduceRULE_F_SHIFTED_INSTRUCTION_F (Token token, Token [] tokens);
+        void ReduceRULE_F_SHIFTED_INSTRUCTION_F2 (Token token, Token [] tokens);
+        void ReduceRULE_G_SHIFTED_INSTRUCTION_G (Token token, Token [] tokens);
+        void ReduceRULE_G_SHIFTED_INSTRUCTION_G2 (Token token, Token [] tokens);
+        void ReduceRULE_H_SHIFTED_INSTRUCTION_H (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (Token token, Token [] tokens);
+        void ReduceRULE_BINARY_UNSHIFTED_INSTRUCTION_STO (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION2 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION3 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION4 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION5 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION6 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION7 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION8 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION9 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION10 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION11 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION12 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION13 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION14 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION15 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION16 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION17 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION18 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION19 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION20 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION21 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION22 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION23 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION24 (Token token, Token [] tokens);
+        void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION25 (Token token, Token [] tokens);
+        void ReduceRULE_OPERATOR_SUBTRACTION (Token token, Token [] tokens);
+        void ReduceRULE_OPERATOR_ADDITION (Token token, Token [] tokens);
+        void ReduceRULE_OPERATOR_MULTIPLICATION (Token token, Token [] tokens);
+        void ReduceRULE_OPERATOR_DIVISION (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_ZERO (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_ONE (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_TWO (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_THREE (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_FOUR (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_FIVE (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_SIX (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_SEVEN (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_EIGHT (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_NINE (Token token, Token [] tokens);
+        void ReduceRULE_LETTER_A (Token token, Token [] tokens);
+        void ReduceRULE_LETTER_B (Token token, Token [] tokens);
+        void ReduceRULE_LETTER_C (Token token, Token [] tokens);
+        void ReduceRULE_LETTER_D (Token token, Token [] tokens);
+        void ReduceRULE_LETTER_E (Token token, Token [] tokens);
+        void ReduceRULE_LETTER_LABEL (Token token, Token [] tokens);
+        void ReduceRULE_DIGIT_LABEL (Token token, Token [] tokens);
+        void ReduceRULE_LABEL (Token token, Token [] tokens);
+        void ReduceRULE_LABEL2 (Token token, Token [] tokens);
+        void ReduceRULE_OPERABLE_MEMORY (Token token, Token [] tokens);
+        void ReduceRULE_OPERABLE_MEMORY_SUB_I (Token token, Token [] tokens);
+        void ReduceRULE_MEMORY (Token token, Token [] tokens);
+        void ReduceRULE_MEMORY2 (Token token, Token [] tokens);
     }
 
     public class Parser
     {
-        private LALRParser parser;
+		private static TraceSwitch classTraceSwitch = 
+			new TraceSwitch ("HP67Parser.Parser", "Automatically generated parser");
+
         private IActions actions;
+        private LALRParser parser;
+        private string input;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -628,1117 +638,1107 @@ namespace HP67Parser
             {
                 case (int)RuleConstants.RULE_X_AVERAGE_SIGMA_PLUS :
                     // <X_Average> ::= 'Sigma_Plus'
-                    actions.RULE_X_AVERAGE_SIGMA_PLUS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_AVERAGE_SIGMA_PLUS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_GSB_GTO :
                     // <Gsb> ::= Gto
-                    actions.RULE_GSB_GTO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GSB_GTO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_FIX_DSP :
                     // <Fix> ::= Dsp
-                    actions.RULE_FIX_DSP (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FIX_DSP (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_RND_SUB_I :
                     // <Rnd> ::= 'Sub_I'
-                    actions.RULE_RND_SUB_I (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RND_SUB_I (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LBL_SST :
                     // <Lbl> ::= Sst
-                    actions.RULE_LBL_SST (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LBL_SST (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DSZ_STO :
                     // <Dsz> ::= Sto
-                    actions.RULE_DSZ_STO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSZ_STO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ISZ_RCL :
                     // <Isz> ::= Rcl
-                    actions.RULE_ISZ_RCL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ISZ_RCL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_W_DATA_ENTER :
                     // <W_Data> ::= Enter
-                    actions.RULE_W_DATA_ENTER (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_W_DATA_ENTER (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_P_EXCHANGE_S_CHS :
                     // <P_Exchange_S> ::= Chs
-                    actions.RULE_P_EXCHANGE_S_CHS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_P_EXCHANGE_S_CHS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_CL_REG_EEX :
                     // <Cl_Reg> ::= Eex
-                    actions.RULE_CL_REG_EEX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CL_REG_EEX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_CL_PRGM_CLX :
                     // <Cl_Prgm> ::= Clx
-                    actions.RULE_CL_PRGM_CLX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CL_PRGM_CLX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_EQ_0_SUBTRACTION :
                     // <X_EQ_0> ::= Subtraction
-                    actions.RULE_X_EQ_0_SUBTRACTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EQ_0_SUBTRACTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LN_SEVEN :
                     // <Ln> ::= Seven
-                    actions.RULE_LN_SEVEN (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LN_SEVEN (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LOG_EIGHT :
                     // <Log> ::= Eight
-                    actions.RULE_LOG_EIGHT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LOG_EIGHT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SQRT_NINE :
                     // <Sqrt> ::= Nine
-                    actions.RULE_SQRT_NINE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SQRT_NINE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_NE_0_ADDITION :
                     // <X_NE_0> ::= Addition
-                    actions.RULE_X_NE_0_ADDITION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_NE_0_ADDITION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SIN_FOUR :
                     // <Sin> ::= Four
-                    actions.RULE_SIN_FOUR (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIN_FOUR (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_COS_FIVE :
                     // <Cos> ::= Five
-                    actions.RULE_COS_FIVE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COS_FIVE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TAN_SIX :
                     // <Tan> ::= Six
-                    actions.RULE_TAN_SIX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TAN_SIX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_LT_0_MULTIPLICATION :
                     // <X_LT_0> ::= Multiplication
-                    actions.RULE_X_LT_0_MULTIPLICATION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_LT_0_MULTIPLICATION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TO_RECTANGULAR_ONE :
                     // <To_Rectangular> ::= One
-                    actions.RULE_TO_RECTANGULAR_ONE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_RECTANGULAR_ONE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TO_DEGREES_TWO :
                     // <To_Degrees> ::= Two
-                    actions.RULE_TO_DEGREES_TWO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_DEGREES_TWO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TO_HOURS_THREE :
                     // <To_Hours> ::= Three
-                    actions.RULE_TO_HOURS_THREE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_HOURS_THREE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_GT_0_DIVISION :
                     // <X_GT_0> ::= Division
-                    actions.RULE_X_GT_0_DIVISION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_GT_0_DIVISION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_PERCENT_ZERO :
                     // <Percent> ::= Zero
-                    actions.RULE_PERCENT_ZERO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERCENT_ZERO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INT_PERIOD :
                     // <Int> ::= Period
-                    actions.RULE_INT_PERIOD (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INT_PERIOD (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DISPLAY_X_R_S :
                     // <Display_X> ::= 'R_S'
-                    actions.RULE_DISPLAY_X_R_S (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DISPLAY_X_R_S (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_S_SIGMA_PLUS :
                     // <S> ::= 'Sigma_Plus'
-                    actions.RULE_S_SIGMA_PLUS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_S_SIGMA_PLUS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_GSB_F_GTO :
                     // <Gsb_f> ::= Gto
-                    actions.RULE_GSB_F_GTO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GSB_F_GTO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SCI_DSP :
                     // <Sci> ::= Dsp
-                    actions.RULE_SCI_DSP (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SCI_DSP (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LBL_F_SST :
                     // <Lbl_f> ::= Sst
-                    actions.RULE_LBL_F_SST (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LBL_F_SST (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DSZ_SUB_I_STO :
                     // <Dsz_Sub_I> ::= Sto
-                    actions.RULE_DSZ_SUB_I_STO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSZ_SUB_I_STO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ISZ_SUB_I_RCL :
                     // <Isz_Sub_I> ::= Rcl
-                    actions.RULE_ISZ_SUB_I_RCL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ISZ_SUB_I_RCL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_MERGE_ENTER :
                     // <Merge> ::= Enter
-                    actions.RULE_MERGE_ENTER (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MERGE_ENTER (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_EQ_Y_SUBTRACTION :
                     // <X_EQ_Y> ::= Subtraction
-                    actions.RULE_X_EQ_Y_SUBTRACTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EQ_Y_SUBTRACTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_EXP_SEVEN :
                     // <Exp> ::= Seven
-                    actions.RULE_EXP_SEVEN (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EXP_SEVEN (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TEN_TO_THE_XTH_EIGHT :
                     // <Ten_To_The_Xth> ::= Eight
-                    actions.RULE_TEN_TO_THE_XTH_EIGHT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TEN_TO_THE_XTH_EIGHT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SQUARE_NINE :
                     // <Square> ::= Nine
-                    actions.RULE_SQUARE_NINE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SQUARE_NINE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_NE_Y_ADDITION :
                     // <X_NE_Y> ::= Addition
-                    actions.RULE_X_NE_Y_ADDITION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_NE_Y_ADDITION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ARCSIN_FOUR :
                     // <Arcsin> ::= Four
-                    actions.RULE_ARCSIN_FOUR (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCSIN_FOUR (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ARCCOS_FIVE :
                     // <Arccos> ::= Five
-                    actions.RULE_ARCCOS_FIVE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCCOS_FIVE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ARCTAN_SIX :
                     // <Arctan> ::= Six
-                    actions.RULE_ARCTAN_SIX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCTAN_SIX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_LE_Y_MULTIPLICATION :
                     // <X_LE_Y> ::= Multiplication
-                    actions.RULE_X_LE_Y_MULTIPLICATION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_LE_Y_MULTIPLICATION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TO_POLAR_ONE :
                     // <To_Polar> ::= One
-                    actions.RULE_TO_POLAR_ONE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_POLAR_ONE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TO_RADIANS_TWO :
                     // <To_Radians> ::= Two
-                    actions.RULE_TO_RADIANS_TWO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_RADIANS_TWO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_TO_HMS_THREE :
                     // <To_HMS> ::= Three
-                    actions.RULE_TO_HMS_THREE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_HMS_THREE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_GT_Y_DIVISION :
                     // <X_GT_Y> ::= Division
-                    actions.RULE_X_GT_Y_DIVISION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_GT_Y_DIVISION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_PERCENT_CHANGE_ZERO :
                     // <Percent_Change> ::= Zero
-                    actions.RULE_PERCENT_CHANGE_ZERO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERCENT_CHANGE_ZERO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_FRAC_PERIOD :
                     // <Frac> ::= Period
-                    actions.RULE_FRAC_PERIOD (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FRAC_PERIOD (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_STK_R_S :
                     // <Stk> ::= 'R_S'
-                    actions.RULE_STK_R_S (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_STK_R_S (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SIGMA_MINUS_SIGMA_PLUS :
                     // <Sigma_Minus> ::= 'Sigma_Plus'
-                    actions.RULE_SIGMA_MINUS_SIGMA_PLUS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIGMA_MINUS_SIGMA_PLUS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_RTN_GTO :
                     // <Rtn> ::= Gto
-                    actions.RULE_RTN_GTO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RTN_GTO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ENG_DSP :
                     // <Eng> ::= Dsp
-                    actions.RULE_ENG_DSP (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ENG_DSP (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_EXCHANGE_I_SUB_I :
                     // <X_Exchange_I> ::= 'Sub_I'
-                    actions.RULE_X_EXCHANGE_I_SUB_I (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EXCHANGE_I_SUB_I (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_BST_SST :
                     // <Bst> ::= Sst
-                    actions.RULE_BST_SST (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_BST_SST (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ST_I_STO :
                     // <St_I> ::= Sto
-                    actions.RULE_ST_I_STO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ST_I_STO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_RC_I_RCL :
                     // <Rc_I> ::= Rcl
-                    actions.RULE_RC_I_RCL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RC_I_RCL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DEG_ENTER :
                     // <Deg> ::= Enter
-                    actions.RULE_DEG_ENTER (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DEG_ENTER (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_RAD_CHS :
                     // <Rad> ::= Chs
-                    actions.RULE_RAD_CHS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RAD_CHS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_GRD_EEX :
                     // <Grd> ::= Eex
-                    actions.RULE_GRD_EEX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GRD_EEX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DEL_CLX :
                     // <Del> ::= Clx
-                    actions.RULE_DEL_CLX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DEL_CLX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SF_SUBTRACTION :
                     // <SF> ::= Subtraction
-                    actions.RULE_SF_SUBTRACTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SF_SUBTRACTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_X_EXCHANGE_Y_SEVEN :
                     // <X_Exchange_Y> ::= Seven
-                    actions.RULE_X_EXCHANGE_Y_SEVEN (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EXCHANGE_Y_SEVEN (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_R_DOWN_EIGHT :
                     // <R_Down> ::= Eight
-                    actions.RULE_R_DOWN_EIGHT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_DOWN_EIGHT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_R_UP_NINE :
                     // <R_Up> ::= Nine
-                    actions.RULE_R_UP_NINE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_UP_NINE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_CF_ADDITION :
                     // <CF> ::= Addition
-                    actions.RULE_CF_ADDITION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CF_ADDITION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_RECIPROCAL_FOUR :
                     // <Reciprocal> ::= Four
-                    actions.RULE_RECIPROCAL_FOUR (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RECIPROCAL_FOUR (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_Y_TO_THE_XTH_FIVE :
                     // <Y_To_The_Xth> ::= Five
-                    actions.RULE_Y_TO_THE_XTH_FIVE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_Y_TO_THE_XTH_FIVE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_ABS_SIX :
                     // <Abs> ::= Six
-                    actions.RULE_ABS_SIX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ABS_SIX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_F_TEST_MULTIPLICATION :
                     // <F_Test> ::= Multiplication
-                    actions.RULE_F_TEST_MULTIPLICATION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_TEST_MULTIPLICATION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_PAUSE_ONE :
                     // <Pause> ::= One
-                    actions.RULE_PAUSE_ONE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PAUSE_ONE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_PI_TWO :
                     // <Pi> ::= Two
-                    actions.RULE_PI_TWO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PI_TWO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_REG_THREE :
                     // <Reg> ::= Three
-                    actions.RULE_REG_THREE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_REG_THREE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_FACTORIAL_DIVISION :
                     // <Factorial> ::= Division
-                    actions.RULE_FACTORIAL_DIVISION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FACTORIAL_DIVISION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LST_X_ZERO :
                     // <Lst_X> ::= Zero
-                    actions.RULE_LST_X_ZERO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LST_X_ZERO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_HMS_PLUS_PERIOD :
                     // <HMS_Plus> ::= Period
-                    actions.RULE_HMS_PLUS_PERIOD (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_HMS_PLUS_PERIOD (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SPACE_R_S :
                     // <Space> ::= 'R_S'
-                    actions.RULE_SPACE_R_S (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SPACE_R_S (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INSTRUCTION :
                     // <Instruction> ::= <Command>
-                    actions.RULE_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INSTRUCTION2 :
                     // <Instruction> ::= <Shortcut>
-                    actions.RULE_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INSTRUCTION3 :
                     // <Instruction> ::= <Unshifted_Instruction>
-                    actions.RULE_INSTRUCTION3 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION3 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INSTRUCTION4 :
                     // <Instruction> ::= <F_Shifted_Instruction>
-                    actions.RULE_INSTRUCTION4 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION4 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INSTRUCTION5 :
                     // <Instruction> ::= <G_Shifted_Instruction>
-                    actions.RULE_INSTRUCTION5 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION5 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_INSTRUCTION6 :
                     // <Instruction> ::= <H_Shifted_Instruction>
-                    actions.RULE_INSTRUCTION6 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION6 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_COMMAND_SST :
                     // <Command> ::= Sst
-                    actions.RULE_COMMAND_SST (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COMMAND_SST (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_COMMAND_H :
                     // <Command> ::= h <Bst>
-                    actions.RULE_COMMAND_H (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COMMAND_H (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_COMMAND_H2 :
                     // <Command> ::= h <Del>
-                    actions.RULE_COMMAND_H2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COMMAND_H2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_COMMAND_F :
                     // <Command> ::= f <Cl_Prgm>
-                    actions.RULE_COMMAND_F (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COMMAND_F (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_COMMAND_GTO_PERIOD :
                     // <Command> ::= Gto Period <Digit> <Digit> <Digit>
-                    actions.RULE_COMMAND_GTO_PERIOD (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COMMAND_GTO_PERIOD (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SHORTCUT :
                     // <Shortcut> ::= <Unshifted_Shortcut>
-                    actions.RULE_SHORTCUT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SHORTCUT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_SHORTCUT2 :
                     // <Shortcut> ::= <F_Shifted_Shortcut>
-                    actions.RULE_SHORTCUT2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SHORTCUT2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNSHIFTED_SHORTCUT :
                     // <Unshifted_Shortcut> ::= <Gsb_Shortcut>
-                    actions.RULE_UNSHIFTED_SHORTCUT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNSHIFTED_SHORTCUT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNSHIFTED_SHORTCUT2 :
                     // <Unshifted_Shortcut> ::= <Memory_Shortcut>
-                    actions.RULE_UNSHIFTED_SHORTCUT2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNSHIFTED_SHORTCUT2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_F_SHIFTED_SHORTCUT_F :
                     // <F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
-                    actions.RULE_F_SHIFTED_SHORTCUT_F (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_SHIFTED_SHORTCUT_F (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_GSB_SHORTCUT :
                     // <Gsb_Shortcut> ::= <Letter>
-                    actions.RULE_GSB_SHORTCUT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GSB_SHORTCUT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_MEMORY_SHORTCUT_SUB_I :
                     // <Memory_Shortcut> ::= 'Sub_I'
-                    actions.RULE_MEMORY_SHORTCUT_SUB_I (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MEMORY_SHORTCUT_SUB_I (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNSHIFTED_INSTRUCTION :
                     // <Unshifted_Instruction> ::= <Nullary_Unshifted_Instruction>
-                    actions.RULE_UNSHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNSHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNSHIFTED_INSTRUCTION2 :
                     // <Unshifted_Instruction> ::= <Unary_Unshifted_Instruction>
-                    actions.RULE_UNSHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNSHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNSHIFTED_INSTRUCTION3 :
                     // <Unshifted_Instruction> ::= <Binary_Unshifted_Instruction>
-                    actions.RULE_UNSHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNSHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_F_SHIFTED_INSTRUCTION_F :
                     // <F_Shifted_Instruction> ::= f <Nullary_F_Shifted_Instruction>
-                    actions.RULE_F_SHIFTED_INSTRUCTION_F (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_SHIFTED_INSTRUCTION_F (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_F_SHIFTED_INSTRUCTION_F2 :
                     // <F_Shifted_Instruction> ::= f <Unary_F_Shifted_Instruction>
-                    actions.RULE_F_SHIFTED_INSTRUCTION_F2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_SHIFTED_INSTRUCTION_F2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_G_SHIFTED_INSTRUCTION_G :
                     // <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
-                    actions.RULE_G_SHIFTED_INSTRUCTION_G (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_G_SHIFTED_INSTRUCTION_G (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_G_SHIFTED_INSTRUCTION_G2 :
                     // <G_Shifted_Instruction> ::= g <Unary_G_Shifted_Instruction>
-                    actions.RULE_G_SHIFTED_INSTRUCTION_G2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_G_SHIFTED_INSTRUCTION_G2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_H_SHIFTED_INSTRUCTION_H :
                     // <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
-                    actions.RULE_H_SHIFTED_INSTRUCTION_H (args.Token, args.Token.Tokens);
-                    return;
-
-                case (int)RuleConstants.RULE_H_SHIFTED_INSTRUCTION_H2 :
-                    // <H_Shifted_Instruction> ::= h <Unary_H_Shifted_Instruction>
-                    actions.RULE_H_SHIFTED_INSTRUCTION_H2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_H_SHIFTED_INSTRUCTION_H (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS :
                     // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER :
                     // <Nullary_Unshifted_Instruction> ::= Enter
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS :
                     // <Nullary_Unshifted_Instruction> ::= Chs
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX :
                     // <Nullary_Unshifted_Instruction> ::= Eex
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX :
                     // <Nullary_Unshifted_Instruction> ::= Clx
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION :
                     // <Nullary_Unshifted_Instruction> ::= <Digit>
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION :
                     // <Nullary_Unshifted_Instruction> ::= Subtraction
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION :
                     // <Nullary_Unshifted_Instruction> ::= Addition
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION :
                     // <Nullary_Unshifted_Instruction> ::= Multiplication
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION :
                     // <Nullary_Unshifted_Instruction> ::= Division
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD :
                     // <Nullary_Unshifted_Instruction> ::= Period
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S :
                     // <Nullary_Unshifted_Instruction> ::= 'R_S'
-                    actions.RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO :
                     // <Unary_Unshifted_Instruction> ::= Gto <Label>
-                    actions.RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP :
                     // <Unary_Unshifted_Instruction> ::= Dsp <Digit>
-                    actions.RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_UNSHIFTED_INSTRUCTION_STO :
                     // <Unary_Unshifted_Instruction> ::= Sto <Memory>
-                    actions.RULE_UNARY_UNSHIFTED_INSTRUCTION_STO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_STO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL :
                     // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
-                    actions.RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_BINARY_UNSHIFTED_INSTRUCTION_STO :
                     // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-                    actions.RULE_BINARY_UNSHIFTED_INSTRUCTION_STO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_BINARY_UNSHIFTED_INSTRUCTION_STO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION :
                     // <Nullary_F_Shifted_Instruction> ::= <X_Average>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION2 :
                     // <Nullary_F_Shifted_Instruction> ::= <Fix>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION3 :
                     // <Nullary_F_Shifted_Instruction> ::= <Rnd>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION4 :
                     // <Nullary_F_Shifted_Instruction> ::= <Dsz>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION4 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION4 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION5 :
                     // <Nullary_F_Shifted_Instruction> ::= <Isz>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION5 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION5 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION6 :
                     // <Nullary_F_Shifted_Instruction> ::= <W_Data>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION6 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION6 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION7 :
                     // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION7 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION7 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION8 :
                     // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION8 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION8 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION9 :
                     // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION9 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION9 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION10 :
                     // <Nullary_F_Shifted_Instruction> ::= <Ln>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION10 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION10 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION11 :
                     // <Nullary_F_Shifted_Instruction> ::= <Log>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION11 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION11 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION12 :
                     // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION12 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION12 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION13 :
                     // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION13 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION13 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION14 :
                     // <Nullary_F_Shifted_Instruction> ::= <Sin>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION14 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION14 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION15 :
                     // <Nullary_F_Shifted_Instruction> ::= <Cos>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION15 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION15 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION16 :
                     // <Nullary_F_Shifted_Instruction> ::= <Tan>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION16 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION16 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION17 :
                     // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION17 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION17 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION18 :
                     // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION18 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION18 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION19 :
                     // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION19 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION19 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION20 :
                     // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION20 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION20 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION21 :
                     // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION21 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION21 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION22 :
                     // <Nullary_F_Shifted_Instruction> ::= <Percent>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION22 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION22 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION23 :
                     // <Nullary_F_Shifted_Instruction> ::= <Int>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION23 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION23 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_F_SHIFTED_INSTRUCTION24 :
                     // <Nullary_F_Shifted_Instruction> ::= <Display_X>
-                    actions.RULE_NULLARY_F_SHIFTED_INSTRUCTION24 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION24 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_F_SHIFTED_INSTRUCTION :
                     // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
-                    actions.RULE_UNARY_F_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_F_SHIFTED_INSTRUCTION2 :
                     // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
-                    actions.RULE_UNARY_F_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION :
                     // <Nullary_G_Shifted_Instruction> ::= <S>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION2 :
                     // <Nullary_G_Shifted_Instruction> ::= <Sci>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION3 :
                     // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION4 :
                     // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION4 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION4 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION5 :
                     // <Nullary_G_Shifted_Instruction> ::= <Merge>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION5 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION5 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION6 :
                     // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION6 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION6 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION7 :
                     // <Nullary_G_Shifted_Instruction> ::= <Exp>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION7 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION7 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION8 :
                     // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION8 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION8 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION9 :
                     // <Nullary_G_Shifted_Instruction> ::= <Square>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION9 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION9 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION10 :
                     // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION10 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION10 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION11 :
                     // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION11 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION11 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION12 :
                     // <Nullary_G_Shifted_Instruction> ::= <Arccos>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION12 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION12 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION13 :
                     // <Nullary_G_Shifted_Instruction> ::= <Arctan>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION13 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION13 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION14 :
                     // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION14 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION14 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION15 :
                     // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION15 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION15 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION16 :
                     // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION16 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION16 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION17 :
                     // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION17 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION17 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION18 :
                     // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION18 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION18 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION19 :
                     // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION19 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION19 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION20 :
                     // <Nullary_G_Shifted_Instruction> ::= <Frac>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION20 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION20 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_G_SHIFTED_INSTRUCTION21 :
                     // <Nullary_G_Shifted_Instruction> ::= <Stk>
-                    actions.RULE_NULLARY_G_SHIFTED_INSTRUCTION21 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION21 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_G_SHIFTED_INSTRUCTION :
                     // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
-                    actions.RULE_UNARY_G_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_G_SHIFTED_INSTRUCTION2 :
                     // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
-                    actions.RULE_UNARY_G_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION :
                     // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION2 :
                     // <Nullary_H_Shifted_Instruction> ::= <Rtn>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION3 :
                     // <Nullary_H_Shifted_Instruction> ::= <Eng>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION3 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION4 :
                     // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION4 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION4 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION5 :
                     // <Nullary_H_Shifted_Instruction> ::= <St_I>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION5 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION5 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION6 :
                     // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION6 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION6 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION7 :
                     // <Nullary_H_Shifted_Instruction> ::= <Deg>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION7 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION7 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION8 :
                     // <Nullary_H_Shifted_Instruction> ::= <Rad>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION8 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION8 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION9 :
                     // <Nullary_H_Shifted_Instruction> ::= <Grd>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION9 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION9 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION10 :
                     // <Nullary_H_Shifted_Instruction> ::= <SF>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION10 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION10 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION11 :
                     // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION11 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION11 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION12 :
                     // <Nullary_H_Shifted_Instruction> ::= <R_Down>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION12 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION12 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION13 :
                     // <Nullary_H_Shifted_Instruction> ::= <R_Up>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION13 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION13 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION14 :
                     // <Nullary_H_Shifted_Instruction> ::= <CF>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION14 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION14 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION15 :
                     // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION15 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION15 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION16 :
                     // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION16 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION16 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION17 :
                     // <Nullary_H_Shifted_Instruction> ::= <Abs>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION17 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION17 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION18 :
                     // <Nullary_H_Shifted_Instruction> ::= <F_Test>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION18 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION18 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION19 :
                     // <Nullary_H_Shifted_Instruction> ::= <Pause>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION19 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION19 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION20 :
                     // <Nullary_H_Shifted_Instruction> ::= <Pi>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION20 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION20 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION21 :
                     // <Nullary_H_Shifted_Instruction> ::= <Reg>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION21 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION21 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION22 :
                     // <Nullary_H_Shifted_Instruction> ::= <Factorial>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION22 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION22 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION23 :
                     // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION23 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION23 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION24 :
                     // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION24 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION24 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_NULLARY_H_SHIFTED_INSTRUCTION25 :
                     // <Nullary_H_Shifted_Instruction> ::= <Space>
-                    actions.RULE_NULLARY_H_SHIFTED_INSTRUCTION25 (args.Token, args.Token.Tokens);
-                    return;
-
-                case (int)RuleConstants.RULE_UNARY_H_SHIFTED_INSTRUCTION :
-                    // <Unary_H_Shifted_Instruction> ::= 
-                    actions.RULE_UNARY_H_SHIFTED_INSTRUCTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION25 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERATOR_SUBTRACTION :
                     // <Operator> ::= Subtraction
-                    actions.RULE_OPERATOR_SUBTRACTION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR_SUBTRACTION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERATOR_ADDITION :
                     // <Operator> ::= Addition
-                    actions.RULE_OPERATOR_ADDITION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR_ADDITION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERATOR_MULTIPLICATION :
                     // <Operator> ::= Multiplication
-                    actions.RULE_OPERATOR_MULTIPLICATION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR_MULTIPLICATION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERATOR_DIVISION :
                     // <Operator> ::= Division
-                    actions.RULE_OPERATOR_DIVISION (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR_DIVISION (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_ZERO :
                     // <Digit> ::= Zero
-                    actions.RULE_DIGIT_ZERO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_ZERO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_ONE :
                     // <Digit> ::= One
-                    actions.RULE_DIGIT_ONE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_ONE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_TWO :
                     // <Digit> ::= Two
-                    actions.RULE_DIGIT_TWO (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_TWO (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_THREE :
                     // <Digit> ::= Three
-                    actions.RULE_DIGIT_THREE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_THREE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_FOUR :
                     // <Digit> ::= Four
-                    actions.RULE_DIGIT_FOUR (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_FOUR (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_FIVE :
                     // <Digit> ::= Five
-                    actions.RULE_DIGIT_FIVE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_FIVE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_SIX :
                     // <Digit> ::= Six
-                    actions.RULE_DIGIT_SIX (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_SIX (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_SEVEN :
                     // <Digit> ::= Seven
-                    actions.RULE_DIGIT_SEVEN (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_SEVEN (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_EIGHT :
                     // <Digit> ::= Eight
-                    actions.RULE_DIGIT_EIGHT (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_EIGHT (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_NINE :
                     // <Digit> ::= Nine
-                    actions.RULE_DIGIT_NINE (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_NINE (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LETTER_A :
                     // <Letter> ::= A
-                    actions.RULE_LETTER_A (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_A (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LETTER_B :
                     // <Letter> ::= B
-                    actions.RULE_LETTER_B (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_B (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LETTER_C :
                     // <Letter> ::= C
-                    actions.RULE_LETTER_C (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_C (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LETTER_D :
                     // <Letter> ::= D
-                    actions.RULE_LETTER_D (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_D (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LETTER_E :
                     // <Letter> ::= E
-                    actions.RULE_LETTER_E (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_E (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LETTER_LABEL :
                     // <Letter_Label> ::= <Letter>
-                    actions.RULE_LETTER_LABEL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_LABEL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_LABEL :
                     // <Digit_Label> ::= <Digit>
-                    actions.RULE_DIGIT_LABEL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_LABEL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LABEL :
                     // <Label> ::= <Digit_Label>
-                    actions.RULE_LABEL (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LABEL (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_LABEL2 :
                     // <Label> ::= <Letter_Label>
-                    actions.RULE_LABEL2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LABEL2 (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERABLE_MEMORY :
                     // <Operable_Memory> ::= <Digit>
-                    actions.RULE_OPERABLE_MEMORY (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERABLE_MEMORY (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERABLE_MEMORY_SUB_I :
                     // <Operable_Memory> ::= 'Sub_I'
-                    actions.RULE_OPERABLE_MEMORY_SUB_I (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERABLE_MEMORY_SUB_I (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_MEMORY :
                     // <Memory> ::= <Operable_Memory>
-                    actions.RULE_MEMORY (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MEMORY (args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_MEMORY2 :
                     // <Memory> ::= <Letter>
-                    actions.RULE_MEMORY2 (args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MEMORY2 (args.Token, args.Token.Tokens);
                     return;
 
             }
@@ -1747,18 +1747,17 @@ namespace HP67Parser
 
         private void AcceptEvent(LALRParser parser, AcceptEventArgs args)
         {
+			actions.ParserAccept ();
         }
 
         private void TokenErrorEvent(LALRParser parser, TokenErrorEventArgs args)
         {
-            string message = "Token error with input: '"+args.Token.ToString()+"'";
-            //todo: Report message to UI?
+			Trace.Assert (false);
         }
 
         private void ParseErrorEvent(LALRParser parser, ParseErrorEventArgs args)
         {
-            string message = "Parse error caused by token: '"+args.UnexpectedToken.ToString()+"'";
-            //todo: Report message to UI?
+			actions.ParserError (input, args.UnexpectedToken);
         }
 
         private void Initialize (Stream stream)
@@ -1770,10 +1769,8 @@ namespace HP67Parser
 
             parser.OnReduce += new LALRParser.ReduceHandler (ReduceEvent);
             parser.OnAccept += new LALRParser.AcceptHandler (AcceptEvent);
-            parser.OnTokenError +=
-                new LALRParser.TokenErrorHandler (TokenErrorEvent);
-            parser.OnParseError +=
-                new LALRParser.ParseErrorHandler (ParseErrorEvent);
+            parser.OnTokenError += new LALRParser.TokenErrorHandler (TokenErrorEvent);
+            parser.OnParseError += new LALRParser.ParseErrorHandler (ParseErrorEvent);
         }
 
         public Parser (string filename, IActions a)
@@ -1805,9 +1802,28 @@ namespace HP67Parser
             actions = a;
         }
 
-        public void Parse (string source)
+        public void Parse (string s)
         {
-            parser.Parse (source);
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"Parse: called with '" + s + "'",
+				classTraceSwitch.DisplayName);
+
+			input = actions.RemainingText + " " + s;
+
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"Parse: analyzing '" + input + "'",
+				classTraceSwitch.DisplayName);
+
+            parser.Parse (input);
+            while (actions.Retry) {
+				input = actions.RemainingText;
+
+				Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+					"Parse: retrying analysis with '" + input + "'", 
+					classTraceSwitch.DisplayName);
+				
+				parser.Parse (input);
+            }
         }
 
     }

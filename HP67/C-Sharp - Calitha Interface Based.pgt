@@ -45,15 +45,32 @@ namespace %Name%
 
     public interface IActions
     {
+		void ParserAccept ();
+        void ParserError (string input, TerminalToken token);
+        string RemainingText
+        {
+			get;
+        }
+        bool Retry
+        {
+			get;
+        }
+        
 ##RULES
-        void %ID% (Token token, Token [] tokens);
+        void Reduce%ID% (Token token, Token [] tokens);
 ##END-RULES
     }
 
     public class Parser
     {
-        private LALRParser parser;
+		private static TraceSwitch classTraceSwitch = 
+##PARAMETERS
+			new TraceSwitch ("%Name%.Parser", "Automatically generated parser");
+##END-PARAMETERS
+
         private IActions actions;
+        private LALRParser parser;
+        private string input;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -69,7 +86,7 @@ namespace %Name%
 ##RULES
                 case (int)RuleConstants.%ID% :
                     // %Description%
-                    actions.%ID% (args.Token, args.Token.Tokens);
+                    actions.Reduce%ID% (args.Token, args.Token.Tokens);
                     return;
 
 ##END-RULES
@@ -79,18 +96,17 @@ namespace %Name%
 
         private void AcceptEvent(LALRParser parser, AcceptEventArgs args)
         {
+			actions.ParserAccept ();
         }
 
         private void TokenErrorEvent(LALRParser parser, TokenErrorEventArgs args)
         {
-            string message = "Token error with input: '"+args.Token.ToString()+"'";
-            //todo: Report message to UI?
+			Trace.Assert (false);
         }
 
         private void ParseErrorEvent(LALRParser parser, ParseErrorEventArgs args)
         {
-            string message = "Parse error caused by token: '"+args.UnexpectedToken.ToString()+"'";
-            //todo: Report message to UI?
+			actions.ParserError (input, args.UnexpectedToken);
         }
 
         private void Initialize (Stream stream)
@@ -102,10 +118,8 @@ namespace %Name%
 
             parser.OnReduce += new LALRParser.ReduceHandler (ReduceEvent);
             parser.OnAccept += new LALRParser.AcceptHandler (AcceptEvent);
-            parser.OnTokenError +=
-                new LALRParser.TokenErrorHandler (TokenErrorEvent);
-            parser.OnParseError +=
-                new LALRParser.ParseErrorHandler (ParseErrorEvent);
+            parser.OnTokenError += new LALRParser.TokenErrorHandler (TokenErrorEvent);
+            parser.OnParseError += new LALRParser.ParseErrorHandler (ParseErrorEvent);
         }
 
         public Parser (string filename, IActions a)
@@ -137,9 +151,28 @@ namespace %Name%
             actions = a;
         }
 
-        public void Parse (string source)
+        public void Parse (string s)
         {
-            parser.Parse (source);
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"Parse: called with '" + s + "'",
+				classTraceSwitch.DisplayName);
+
+			input = actions.RemainingText + " " + s;
+
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"Parse: analyzing '" + input + "'",
+				classTraceSwitch.DisplayName);
+
+            parser.Parse (input);
+            while (actions.Retry) {
+				input = actions.RemainingText;
+
+				Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+					"Parse: retrying analysis with '" + input + "'", 
+					classTraceSwitch.DisplayName);
+				
+				parser.Parse (input);
+            }
         }
 
     }

@@ -1,5 +1,5 @@
 "Name"              = 'HP67Parser'
-"Version"           = '1.0'
+"Version"           = '1.1'
 "Author"            = 'Pascal & Robin'
 "Case Sensitive"    = 'False'
 "Character Mapping" = Unicode
@@ -183,7 +183,6 @@ R_S            = '84'
 <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
                             | g <Unary_G_Shifted_Instruction>
 <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
-                            | h <Unary_H_Shifted_Instruction>
 
 <Nullary_Unshifted_Instruction> ::= Sigma_Plus
                                           | Enter
@@ -284,8 +283,6 @@ R_S            = '84'
                                           | <HMS_Plus>
                                           | <Space>
                                           
-<Unary_H_Shifted_Instruction> ::=
-
 <Operator> ::= Subtraction | Addition | Multiplication | Division
 <Digit> ::= Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine
 <Letter> ::= A | B | C | D | E

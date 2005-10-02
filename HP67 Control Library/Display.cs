@@ -34,6 +34,13 @@ namespace HP67_Control_Library
 		private const int exponentLength = 2;
 		private const double overflowLimit = 9.999999999E99;
 		private const double underflowLimit = 1.0E-99;
+		private const string period = ".";
+
+		private bool enteringExponent;
+		private bool enteringMantissa;
+		private bool enteringNumber;
+		private bool hasAPeriod;
+		private bool userControlTesting;
 
 		private double currentMantissa;
 		private byte digits;
@@ -65,6 +72,24 @@ namespace HP67_Control_Library
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
+
+			string [] appSettingsUserControlTesting =
+				System.Configuration.ConfigurationSettings.AppSettings.GetValues
+					("UserControlTesting");
+
+			if (appSettingsUserControlTesting == null) 
+			{
+				userControlTesting = false;
+				}
+			else 
+			{
+				userControlTesting = bool.Parse (appSettingsUserControlTesting [0]);
+			}
+
+			enteringExponent = false;
+			enteringMantissa = false;
+			enteringNumber = false;
+			hasAPeriod = false;
 
 			Digits = 2;
 			Format = DisplayFormat.Fixed;
@@ -211,6 +236,57 @@ namespace HP67_Control_Library
 
 		#region Private Operations
 
+		private void ReplaceExponentWithoutSign (string exponent)
+		{
+			string text = Text;
+
+			Text = text.Substring
+				(mantissaSignFirst, mantissaSignLength + mantissaLength + exponentSignLength) +
+				exponent;
+		}
+
+		private void ReplaceExponentWithSign (string exponent)
+		{
+			string text = Text;
+
+			Text = text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
+				exponent;
+		}
+
+		private void ReplaceExponentSign (char sign) 
+		{
+			string text = Text;
+
+			Text = text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
+				sign +
+				text.Substring (exponentFirst, exponentLength);
+		}
+
+		private void ReplaceMantissaSign (char sign) 
+		{
+			string text = Text;
+
+			Text = sign + text.Substring
+				(mantissaFirst, mantissaLength + exponentSignLength + exponentLength);
+		}
+
+		private void ReplaceMantissaWithoutSign (string mantissa)
+		{
+			string text = Text;
+
+			Text = text.Substring (mantissaSignFirst, mantissaSignLength) +
+				mantissa.PadRight (mantissaLength, ' ') +
+				text.Substring (exponentSignFirst, exponentSignLength + exponentLength);
+		}
+
+		private void ReplaceMantissaWithSign (string mantissa)
+		{
+			string text = Text;
+
+			Text = mantissa.PadRight (mantissaSignLength + mantissaLength) +
+				text.Substring (exponentSignFirst, exponentSignLength + exponentLength);
+		}
+
 		private void SetMantissa (double to, bool fixedUnderflowOverflow) 
 		{
 			string mantissa = "Useless initialization required by the compiler";
@@ -263,9 +339,7 @@ namespace HP67_Control_Library
 				}
 			}
 
-			Text = 
-				mantissa +
-				Text.Substring (exponentSignFirst, exponentSignLength + exponentLength);
+			ReplaceMantissaWithSign (mantissa);
 			currentMantissa = to;
 		}
 
@@ -338,6 +412,15 @@ namespace HP67_Control_Library
 		{
 			get
 			{
+				// In normal operation, calling value terminates the operation of entering a
+				// number.  However, if we are debugging the control, we want the termination to
+				// happen explicitly.  This introduces some coupling, but that's managed through
+				// the configuration file.
+				if (! userControlTesting) 
+				{
+					DoneEntering ();
+				}
+
 				if (overflows) 
 				{
 					return overflowValue;
@@ -442,6 +525,142 @@ namespace HP67_Control_Library
 				Exponent = exponent;
 				mantissa = value / Math.Pow (10, exponent);
 				SetMantissa (mantissa, fixedUnderflowOverflow);
+			}
+		}
+
+		#endregion
+
+		#region Public Operations
+
+		public void ChangeSign ()
+		{
+			char sign;
+
+			if (enteringNumber) 
+			{
+				if (enteringMantissa) 
+				{
+					sign = Text.Substring (mantissaSignFirst, mantissaSignLength) [0];
+				}
+				else 
+				{
+					Trace.Assert (enteringExponent);
+					sign = Text.Substring (exponentSignFirst, exponentSignLength) [0];
+				}
+				switch (sign) 
+				{
+					case ' ':
+						sign = '-';
+						break;
+					case '-':
+						sign = ' ';
+						break;
+					default:
+						Trace.Assert (false);
+						break;
+				}
+				if (enteringMantissa) 
+				{
+					currentMantissa = -currentMantissa;
+					ReplaceMantissaSign (sign);
+				}
+				else 
+				{
+					Trace.Assert (enteringExponent);
+					ReplaceExponentSign (sign);
+				}
+			}
+		}
+
+		public void DoneEntering ()
+		{
+			enteringNumber = false;
+		}
+
+		public void EnterDigit (byte b) 
+		{
+			string d = b.ToString ().Trim ();
+			string exponent;
+			string mantissa;
+
+			if (enteringNumber && enteringExponent) 
+			{
+				exponent = Text.Substring 
+					(exponentSignFirst + exponentSignLength, exponentLength).Trim ();
+				if (exponent.Length == exponentLength ) 
+				{
+					exponent = exponent.Substring (1, exponentLength - 1) + d;
+				}
+				else 
+				{
+					exponent += d;
+				}
+				ReplaceExponentWithoutSign (exponent);
+			}
+			else
+			{
+				if (! enteringNumber) 
+				{
+					enteringNumber = true;
+					enteringMantissa = true;
+					enteringExponent = false;
+					hasAPeriod = false;
+					ReplaceExponentWithSign (new String (' ', exponentSignLength + exponentLength));
+					mantissa = " " + d + period;
+				}
+				else 
+				{
+					Trace.Assert (enteringMantissa);
+					mantissa = Text.Substring 
+						(mantissaSignFirst, mantissaSignLength + mantissaLength).TrimEnd (null);
+					if (hasAPeriod)	
+					{
+						mantissa += d;
+					}
+					else 
+					{
+						Trace.Assert (mantissa [mantissa.Length - 1] == period [0]);
+						mantissa = mantissa.Substring (0, mantissa.Length - 1) + d + period;
+					}
+				}
+				currentMantissa = double.Parse (mantissa);
+				ReplaceMantissaWithSign (mantissa);
+			}
+		}
+
+		public void EnterExponent ()
+		{
+			if (! enteringNumber) 
+			{
+				EnterDigit (1);
+				EnterPeriod ();
+			}
+			Trace.Assert (enteringNumber);
+			if (! enteringExponent) 
+			{
+				const byte exponent = 0;
+
+				enteringMantissa = false;
+				enteringExponent = true;
+				ReplaceExponentWithSign (exponent.ToString
+					(exponentTemplate, NumberFormatInfo.InvariantInfo));
+			}
+		}
+
+		public void EnterPeriod ()
+		{
+			if (! enteringNumber) 
+			{
+				enteringNumber = true;
+				enteringMantissa = true;
+				enteringExponent = false;
+				hasAPeriod = true;
+				ReplaceExponentWithSign (new String (' ', exponentSignLength + exponentLength));
+				ReplaceMantissaWithSign (" " + period);
+			}
+			else if (!hasAPeriod) 
+			{
+				hasAPeriod = true;
 			}
 		}
 
