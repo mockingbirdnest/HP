@@ -84,14 +84,14 @@
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "HP67 Control Library"
-                    AssemblyName = "HP67 Control Library"
-                    HintPath = "..\HP67 Control Library\bin\Debug\HP67 Control Library.dll"
-                />
-                <Reference
                     Name = "System.Windows.Forms"
                     AssemblyName = "System.Windows.Forms"
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "HP67 Control Library"
+                    Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>
         </Build>
@@ -106,6 +106,25 @@
                     RelPath = "Card.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "CardDataset.xsd"
+                    BuildAction = "Content"
+                    Generator = "MSDataSetGenerator"
+                    LastGenOutput = "CardDataset.cs"
+                />
+                <File
+                    RelPath = "CardDataset.cs"
+                    DependentUpon = "CardDataset.xsd"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "CardDataset.xsx"
+                    DependentUpon = "CardDataset.xsd"
+                    BuildAction = "None"
                 />
                 <File
                     RelPath = "Memory.cs"

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Data;
 using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HP67_Control_Library
@@ -56,13 +57,7 @@ namespace HP67_Control_Library
 		private double overflowValue;
 		private string positiveOverflow = " 9.999999999 99";
 		private string sciMantissaTemplate;
-
-		internal System.Windows.Forms.TextBox textBox;
-
-		/// <summary> 
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+		private System.Windows.Forms.TextBox textBox;
 
 		#endregion
 
@@ -113,13 +108,6 @@ namespace HP67_Control_Library
 		/// </summary>
 		protected override void Dispose (bool disposing)
 		{
-			if (disposing)
-			{
-				if (components != null)
-				{
-					components.Dispose();
-				}
-			}
 			base.Dispose (disposing);
 		}
 
@@ -191,7 +179,7 @@ namespace HP67_Control_Library
 		{
 			textBox.Enabled = true;
 		}
-
+			
 		#endregion
 
 		#region Private Properties
@@ -464,6 +452,8 @@ namespace HP67_Control_Library
 				double log10;
 				double mantissa;
 
+				DoneEntering ();
+
 				// Not needed, unless the event handling mucked things up...
 				textBox.Enabled = true;
 
@@ -689,6 +679,29 @@ namespace HP67_Control_Library
 			else if (!hasAPeriod) 
 			{
 				hasAPeriod = true;
+			}
+		}
+
+		public void Pause (int ms) 
+		{
+			Update ();
+			Thread.Sleep (ms);
+		}
+
+		public void PauseAndBlink (int ms) 
+		{
+			int interval = ms / 16;
+			string text = Text;
+			string textNoPeriod = text.Replace ('.', ' '); // Not quite i18n-compliant.
+
+			for (int i = 0; i < 8; i++) 
+			{
+				Text = textNoPeriod;
+				Update ();
+				Thread.Sleep (interval);
+				Text = text;
+				Update ();
+				Thread.Sleep (interval);
 			}
 		}
 

@@ -82,7 +82,7 @@ namespace HP67_Class_Library
 
 		#region Public Operations & Properties
 
-		public void XExchangeY()
+		public void XExchangeY ()
 		{
 			double temp;
 			temp = this [Position.x];
@@ -90,7 +90,7 @@ namespace HP67_Class_Library
 			this [Position.y] = temp;
 		}
 
-		public void RollDown()
+		public void RollDown ()
 		{
 			double temp;
 			temp = this [Position.x];
@@ -101,7 +101,7 @@ namespace HP67_Class_Library
 			this [Position.t] = temp;
 		}
 
-		public void RollUp()
+		public void RollUp ()
 		{
 			double temp;
 			temp = this [Position.t];
@@ -144,13 +144,13 @@ namespace HP67_Class_Library
 			}
 		}
 
-		public void Get(out double X)
+		public void Get (out double X)
 		{
 			X = this [Position.x];
 			lastX = this [Position.x];
 		}
 
-		public void Get(out double X, out double Y)
+		public void Get (out double X, out double Y)
 		{
 			X = this [Position.x];
 			Y = this [Position.y];
@@ -161,11 +161,20 @@ namespace HP67_Class_Library
 			}
 		}
 
-		public void Enter()
+		public void Enter ()
 		{
 			for (Position i = Position.t; i > Position.x; i--)
 			{
 				this [i] = this [i - 1];
+			}
+		}
+
+		public void Display ()
+		{
+			for (Position p = Position.x; p <= Position.t; p++) 
+			{
+				RollUp ();
+				theDisplay.Pause (500);
 			}
 		}
 

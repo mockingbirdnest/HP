@@ -185,6 +185,7 @@ R_S            = '84'
 <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
 
 <Nullary_Unshifted_Instruction> ::= Sigma_Plus
+                                          | <Rcl_Sigma_Plus>
                                           | Enter
                                           | Chs
                                           | Eex
@@ -198,7 +199,7 @@ R_S            = '84'
                                           | R_S
                                           
 <Unary_Unshifted_Instruction> ::= Gto <Label>
-                                        | Dsp <Digit>
+                                        | Dsp <Digit_Count>
                                         | Sto <Memory>
                                         | Rcl <Memory>
                                         
@@ -282,9 +283,11 @@ R_S            = '84'
                                           | <Lst_X>
                                           | <HMS_Plus>
                                           | <Space>
-                                          
+
+<Rcl_Sigma_Plus> ::= Rcl Sigma_Plus
 <Operator> ::= Subtraction | Addition | Multiplication | Division
 <Digit> ::= Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine
+<Digit_Count> ::= <Digit> | Sub_I
 <Letter> ::= A | B | C | D | E
 <Letter_Label> ::= <Letter>
 <Digit_Label> ::= <Digit>

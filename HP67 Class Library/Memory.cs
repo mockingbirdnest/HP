@@ -51,7 +51,7 @@ namespace HP67_Class_Library
 
 		public Memory()
 		{
-			registers = new double [25];
+			registers = new double [(int) LetterRegister.I - 0 + 1];
 			for (int i = 0; i < registers.Length; i++)
 			{
 				registers[i] = 0.0;
@@ -78,11 +78,11 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				return this [r];
+				return registers [(int) r];
 			}
 			set
 			{
-				this [r] = value;
+				registers [(int) r] = value;
 			}
 		}
 
@@ -90,11 +90,11 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				return this [r];
+				return registers [(int) r];
 			}
 			set
 			{
-				this [r] = value;
+				registers [(int) r] = value;
 			}
 		}
 
@@ -102,11 +102,11 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				return this [r];
+				return registers [(int) r];
 			}
 			set
 			{
-				this [r] = value;
+				registers [(int) r] = value;
 			}
 		}
 
@@ -140,10 +140,20 @@ namespace HP67_Class_Library
 			y =  this [ΣRegister.Σy] / this [ΣRegister.n];
 		}
 
-		public double S()
+		public void S(out double x, out double y)
 		{
-			return Math.Sqrt((this [ΣRegister.Σx2] - (this [ΣRegister.Σx] * this [ΣRegister.Σx])/
-			this [ΣRegister.n]) / (this [ΣRegister.n] -1));
+			x = Math.Sqrt((this [ΣRegister.Σx2] - (this [ΣRegister.Σx] * this [ΣRegister.Σx])/
+				this [ΣRegister.n]) / (this [ΣRegister.n] -1));
+			y = Math.Sqrt((this [ΣRegister.Σy2] - (this [ΣRegister.Σy] * this [ΣRegister.Σy])/
+				this [ΣRegister.n]) / (this [ΣRegister.n] -1));
+		}
+
+		public double N 
+		{
+			get 
+			{
+				return this [ΣRegister.n];
+			}
 		}
 
 		public void PrimarySecondaryExchange ()
@@ -249,11 +259,6 @@ namespace HP67_Class_Library
 		}
 
 		#endregion
-
-		public void GiveRegisters()
-		{
-
-		}
 
 	}
 }

@@ -94,11 +94,6 @@
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "HP67 Control Library"
-                    Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "GoldParserEngine"
                     AssemblyName = "GoldParserEngine"
                     HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
@@ -112,6 +107,11 @@
                     Name = "HP67 Class Library"
                     AssemblyName = "HP67 Class Library"
                     HintPath = "..\HP67 Class Library\bin\Debug\HP67 Class Library.dll"
+                />
+                <Reference
+                    Name = "HP67 Control Library"
+                    Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>
         </Build>
@@ -139,6 +139,11 @@
                 />
                 <File
                     RelPath = "Engine.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Exceptions.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
