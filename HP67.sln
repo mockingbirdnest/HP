@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67", "HP67\HP67.csproj", "{BBC69744-109D-439E-94ED-CE3EC892241C}"
 	ProjectSection(ProjectDependencies) = postProject
+		{76E1A007-1E22-40BC-826D-834FE3673BD8} = {76E1A007-1E22-40BC-826D-834FE3673BD8}
+		{71A0054A-FD2B-4DDB-91FB-1470909F91E4} = {71A0054A-FD2B-4DDB-91FB-1470909F91E4}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Class Library", "HP67 Class Library\HP67 Class Library.csproj", "{76E1A007-1E22-40BC-826D-834FE3673BD8}"
@@ -23,9 +25,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Documentation", "HP67 
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Parser", "HP67 Parser\HP67 Parser.csproj", "{D97548CE-C80A-4DAE-BA32-1E3FA7273153}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SolutionUniqueID = {878E852C-8F25-4FB7-95ED-DC7CB08F89F4}
@@ -53,6 +59,10 @@ Global
 		SccLocalPath6 = .
 		CanCheckoutShared = false
 		SccProjectFilePathRelativizedFromConnection6 = HP67\u0020Documentation\\
+		SccProjectUniqueName7 = HP67\u0020Parser\\HP67\u0020Parser.csproj
+		SccLocalPath7 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection7 = HP67\u0020Parser\\
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -80,6 +90,10 @@ Global
 		{6CAD584F-29B7-4AFA-AB11-BDD30937BC50}.Debug.ActiveCfg = Debug|.NET
 		{6CAD584F-29B7-4AFA-AB11-BDD30937BC50}.Release.ActiveCfg = Release|.NET
 		{6CAD584F-29B7-4AFA-AB11-BDD30937BC50}.Release.Build.0 = Release|.NET
+		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Debug.ActiveCfg = Debug|.NET
+		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Debug.Build.0 = Debug|.NET
+		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Release.ActiveCfg = Release|.NET
+		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

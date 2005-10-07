@@ -1,0 +1,90 @@
+##TEMPLATE-NAME 'C# - Calitha Engine, Interface Implementation'
+##LANGUAGE 'C#'
+##ENGINE-NAME 'Calitha GOLD Parser Engine'
+##AUTHOR 'Pascal Leroy' 
+##FILE-EXTENSION 'cs'
+##NOTES
+This template creates a class implementing the I...Actions interface.
+
+BEWARE!  It will overwrite all the code in that class!
+##END-NOTES
+##ID-CASE UPPERCASE
+##ID-SEPARATOR '_'
+##ID-SYMBOL-PREFIX 'Symbol'
+##ID-RULE-PREFIX 'Rule'
+
+using com.calitha.commons;
+using com.calitha.goldparser;
+using com.calitha.goldparser.lalr;
+using System;
+using System.Diagnostics;
+using System.IO;
+
+##PARAMETERS
+namespace %Name%
+##END-PARAMETERS
+{
+
+	public class Engine
+	{
+		public static bool Execute (Token [] tokens) 
+		{
+			Symbol instruction;
+
+			if (tokens [0].GetType () == typeof (NonterminalToken)) 
+			{
+				instruction = ((NonterminalToken) tokens [0]).Symbol;
+			}
+			else if (tokens [0].GetType () == typeof (TerminalToken)) 
+			{
+				instruction = ((TerminalToken) tokens [0]).Symbol;
+			}
+			else 
+			{
+				Trace.Assert (false);
+			}
+			switch (instruction.Id) 
+			{
+##SYMBOLS
+                case (int)SymbolConstants.%ID% :
+                    break;
+##END-SYMBOLS
+			}
+		}
+	}
+
+    public class Actions : IActions
+    {
+		
+		public void ParserAccept ()
+		{
+		}
+		
+		public void ParserError (string input, TerminalToken token)
+		{
+		}
+
+		public string RemainingText
+		{
+			get
+				{
+				}
+		}
+		
+        public bool Retry
+        {
+			get
+				{
+				}
+        }
+        
+##RULES
+        public void Reduce%ID% (Token token, Token [] tokens)
+        {
+            // %Description%
+        }
+
+##END-RULES
+    }
+
+}

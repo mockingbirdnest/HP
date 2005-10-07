@@ -1,5 +1,5 @@
 ﻿using HP67_Control_Library;
-using HP67Parser;
+using HP67_Parser;
 using System;
 using System.Drawing;
 using System.Collections;

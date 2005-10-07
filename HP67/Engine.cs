@@ -1,7 +1,7 @@
 ﻿using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using HP67Parser;
+using HP67_Parser;
 using HP67_Class_Library;
 using HP67_Control_Library;
 using System;
