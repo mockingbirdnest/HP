@@ -5,12 +5,10 @@ using System.Xml;
 namespace HP67_Class_Library
 {
 	/// <summary>
-	/// Description résumée de Memory.
+	/// The data registers of the HP67 calculator.
 	/// </summary>
 	public class Memory
 	{
-		public System.ApplicationException BadIndex;
-
 		public enum LetterRegister
 		{
 			A = 20,
@@ -41,7 +39,7 @@ namespace HP67_Class_Library
 		{
 			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > (int) LetterRegister.I)
 			{
-				throw BadIndex;
+				throw new Error ();
 			}
 		}
 
@@ -174,31 +172,15 @@ namespace HP67_Class_Library
 			registers [Index] = Value;
 		}
 
-		public void Store (double Value, Byte Index, Operator Modifier)
-		{
-			Trace.Assert(Index < 9);
-			registers [Index] = Modifier (registers [Index], Value);
-		}
-
-		public double Recall (Byte Index)
-		{
-			Trace.Assert(Index < 9);
-			return registers [Index];
-		}
-
 		public void Store (double Value, LetterRegister Index)
 		{
 			this [Index] = Value;
 		}
 
-		public void Store (double Value, LetterRegister Index, Operator Modifier)
+		public void Store (double Value, Byte Index, Operator Modifier)
 		{
-			this [Index] = Modifier (this [Index], Value);
-		}
-
-		public double Recall (LetterRegister Index)
-		{
-			return this [Index];
+			Trace.Assert(Index < 9);
+			registers [Index] = Modifier (registers [Index], Value);
 		}
 
 		public void StoreIndexed (double Value)
@@ -214,10 +196,27 @@ namespace HP67_Class_Library
 			Modifier (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])), Value);
 		}
 
+		public double Recall (Byte Index)
+		{
+			Trace.Assert(Index < 9);
+			return registers [Index];
+		}
+
+		public double Recall (LetterRegister Index)
+		{
+			return this [Index];
+		}
+
 		public double RecallIndexed ()
 		{
 			CheckIndex ();
 			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))];
+		}
+
+		public void RecallΣPlus (out double x, out double y)
+		{
+			x = this [ΣRegister.Σx];
+			y = this [ΣRegister.Σy];
 		}
 
 		public bool IncrementAndSkipIfZero ()

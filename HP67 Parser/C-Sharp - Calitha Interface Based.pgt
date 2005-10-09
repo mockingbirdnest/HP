@@ -57,7 +57,7 @@ namespace %Name%
         }
         
 ##RULES
-        void Reduce%ID% (Token token, Token [] tokens);
+        void Reduce%ID% (string input, Token token, Token [] tokens);
 ##END-RULES
     }
 
@@ -90,7 +90,7 @@ namespace %Name%
 ##RULES
                 case (int)RuleConstants.%ID% :
                     // %Description%
-                    actions.Reduce%ID% (args.Token, args.Token.Tokens);
+                    actions.Reduce%ID% (input, args.Token, args.Token.Tokens);
                     return;
 
 ##END-RULES

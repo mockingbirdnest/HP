@@ -35,11 +35,39 @@ namespace HP67_Class_Library
 				instruction = ((TerminalToken) tokens [0]).Symbol; // To make the compiler happy.
 			}
 
-			arguments = new Argument [tokens.Length - 1];
-			for (int i = 0; i < arguments.Length; i++) 
+			if (instruction.Id == (int) SymbolConstants.SYMBOL_DIGIT) 
 			{
-				arguments [i] = (Argument) tokens [i + 1].UserObject;
+
+				// Somewhat ugly.  In the case of the DIGIT instruction, the argument is borne by
+				// the instruction symbol itself.  Pretend that it is a separate argument for
+				// uniformity.
+				arguments = new Argument [1] {(Argument) tokens [0].UserObject};
+			}
+			else 
+			{
+				arguments = new Argument [tokens.Length - 1];
+				for (int i = 0; i < arguments.Length; i++) 
+				{
+					arguments [i] = (Argument) tokens [i + 1].UserObject;
+				}
 			}
 		}
+
+		public Argument [] Arguments
+		{
+			get
+			{
+				return arguments;
+			}
+		}
+
+		public Symbol Symbol
+		{
+			get
+			{
+				return instruction;
+			}
+		}
+
 	}
 }

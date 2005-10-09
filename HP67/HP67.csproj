@@ -123,6 +123,11 @@
         <Files>
             <Include>
                 <File
+                    RelPath = "Actions.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "App.config"
                     BuildAction = "None"
                 />
@@ -148,11 +153,6 @@
                     RelPath = "HP67.resx"
                     DependentUpon = "HP67.cs"
                     BuildAction = "EmbeddedResource"
-                />
-                <File
-                    RelPath = "HP67Actions.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

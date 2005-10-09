@@ -72,7 +72,7 @@ namespace HP67
 
 			theEngine = new Engine (display);
 			theActions = new Actions (theEngine);
-			theParser = new Parser ("HP67.HP67Parser", "CGT", theActions);
+			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
 		}
 
 		/// <summary>

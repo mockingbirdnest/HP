@@ -143,16 +143,16 @@ namespace HP67_Class_Library
 
 		public void Store (Memory m, double x, Memory.Operator o)
 		{
-			m.Store (x, (Memory.LetterRegister) Enum.Parse
-				(typeof (Memory.LetterRegister), new String (letter, 1)), o);
+			// A letter is not an operable memory.
+			Trace.Assert (false);
 		}
 
-		public void Goto()
+		public void Goto ()
 		{
 			// TODO:  Add Letter.Goto implementation
 		}
 
-		public void Gosub()
+		public void Gosub ()
 		{
 			// TODO:  Add Letter.Gosub implementation
 		}

@@ -155,13 +155,13 @@ namespace HP67
 
 		#region Public Operations
 
-		public void Execute (Token [] tokens) 
+		public void Execute (Instruction instruction) 
 		{
 			bool neutral = stackLift;
 			double x, y;
 
 			stackLift = true; // Applies to most operations.
-			switch (GetSymbol(tokens [0]).Id) 
+			switch (instruction.Symbol.Id) 
 			{
 				case (int)SymbolConstants.SYMBOL_ABS :
 					theStack.Get (out x);
@@ -225,7 +225,7 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
 					stackLift = neutral;
-					theDisplay.EnterDigit (((Digit) tokens [0].UserObject).Value);
+					theDisplay.EnterDigit (((Digit) instruction.Arguments [0]).Value);
 					break;
 				case (int)SymbolConstants.SYMBOL_DISPLAY_X :
 					theDisplay.PauseAndBlink (5000);
@@ -240,7 +240,7 @@ namespace HP67
 					theStack.X = y / x;
 					break;
 				case (int)SymbolConstants.SYMBOL_DSP :
-					((IDigits) tokens [1].UserObject).SetDigits (theMemory, theDisplay);
+					((IDigits) instruction.Arguments [0]).SetDigits (theMemory, theDisplay);
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DSZ :
@@ -412,10 +412,14 @@ namespace HP67
 					theStack.X = theMemory.Recall (Memory.LetterRegister.I);
 					break;
 				case (int)SymbolConstants.SYMBOL_RCL :
-					theStack.X = ((IAddress) tokens [1].UserObject).Recall (theMemory);
+					theStack.Enter ();
+					theStack.X = ((IAddress) instruction.Arguments [0]).Recall (theMemory);
 					break;
 				case (int)SymbolConstants.SYMBOL_RCL_SIGMA_PLUS :
-					// TODO: Execution.
+					theStack.Get (out x);
+					theMemory.RecallΣPlus (out x, out y);
+					theStack.X = x;
+					theStack.Y = y;
 					break;
 				case (int)SymbolConstants.SYMBOL_RECIPROCAL :
 					theStack.Get (out x);
@@ -490,16 +494,16 @@ namespace HP67
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_STO :
-					if (tokens.Length == 3) 
+					if (instruction.Arguments.Length == 2) 
 					{
-						((IAddress) tokens [2].UserObject).Store
+						((IAddress) instruction.Arguments [1]).Store
 							(theMemory, theStack.X,
-							((Operator) tokens [1].UserObject).Value);
+							((Operator) instruction.Arguments [0]).Value);
 					}
 					else
 					{
-						Trace.Assert (tokens.Length == 2);
-						((IAddress) tokens [1].UserObject).Store (theMemory, theStack.X);
+						Trace.Assert (instruction.Arguments.Length == 1);
+						((IAddress) instruction.Arguments [0]).Store (theMemory, theStack.X);
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_SUB_I :
