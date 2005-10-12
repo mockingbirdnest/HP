@@ -1,5 +1,5 @@
 "Name"              = 'HP67_Parser'
-"Version"           = '1.2'
+"Version"           = '1.3'
 "Author"            = 'Pascal & Robin'
 "Case Sensitive"    = 'False'
 "Character Mapping" = Unicode
@@ -150,19 +150,12 @@ R_S            = '84'
 <HMS_Plus>       ::= Period
 <Space>          ::= R_S
 
-<Instruction> ::= <Command>
-                  | <Shortcut>
+<Instruction> ::= <Shortcut>
                   | <Unshifted_Instruction>
                   | <F_Shifted_Instruction>
                   | <G_Shifted_Instruction>
                   | <H_Shifted_Instruction>
                   
-<Command> ::= Sst
-              | h <Bst>
-              | h <Del>
-              | f <Cl_Prgm>
-              | Gto Period <Digit> <Digit> <Digit>
-                    
 <Shortcut> ::= <Unshifted_Shortcut>
                | <F_Shifted_Shortcut>
 
@@ -186,6 +179,7 @@ R_S            = '84'
 
 <Nullary_Unshifted_Instruction> ::= Sigma_Plus
                                           | <Rcl_Sigma_Plus>
+                                          | Sst
                                           | Enter
                                           | Chs
                                           | Eex
@@ -197,14 +191,16 @@ R_S            = '84'
                                           | Division
                                           | Period
                                           | R_S
-                                          
+
 <Unary_Unshifted_Instruction> ::= Gto <Label>
                                         | Dsp <Digit_Count>
                                         | Sto <Memory>
                                         | Rcl <Memory>
                                         
 <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-                                        
+
+<Ternary_Unshifted_Instruction> ::= Gto Period <Digit> <Digit> <Digit>
+
 <Nullary_F_Shifted_Instruction> ::= <X_Average>
                                           | <Fix>
                                           | <Rnd>
@@ -213,6 +209,7 @@ R_S            = '84'
                                           | <W_Data>
                                           | <P_Exchange_S>
                                           | <Cl_Reg>
+                                          | <Cl_Prgm>
                                           | <X_EQ_0>
                                           | <Ln>
                                           | <Log>
@@ -229,7 +226,7 @@ R_S            = '84'
                                           | <Percent>
                                           | <Int>
                                           | <Display_X>
-                                          
+
 <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
                                         | <Lbl> <Label>
 
@@ -262,11 +259,13 @@ R_S            = '84'
                                           | <Rtn>
                                           | <Eng>
                                           | <X_Exchange_I>
+                                          | <Bst>
                                           | <St_I>
                                           | <Rc_I>
                                           | <Deg>
                                           | <Rad>
                                           | <Grd>
+                                          | <Del>
                                           | <SF>
                                           | <X_Exchange_Y>
                                           | <R_Down>
@@ -283,6 +282,7 @@ R_S            = '84'
                                           | <Lst_X>
                                           | <HMS_Plus>
                                           | <Space>
+
 
 <Rcl_Sigma_Plus> ::= Rcl Sigma_Plus
 <Operator> ::= Subtraction | Addition | Multiplication | Division

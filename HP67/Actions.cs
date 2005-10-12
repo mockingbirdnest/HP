@@ -498,42 +498,7 @@ namespace HP67_Parser
 
 		public void ReduceRULE_INSTRUCTION5 (string input, Token token, Token [] tokens)
 		{
-			// <Instruction> ::= <G_Shifted_Instruction>
-		}
-
-		public void ReduceRULE_INSTRUCTION6 (string input, Token token, Token [] tokens)
-		{
 			// <Instruction> ::= <H_Shifted_Instruction>
-		}
-
-		public void ReduceRULE_COMMAND_SST (string input, Token token, Token [] tokens)
-		{
-			// <Command> ::= Sst
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_COMMAND_H (string input, Token token, Token [] tokens)
-		{
-			// <Command> ::= h <Bst>
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_COMMAND_H2 (string input, Token token, Token [] tokens)
-		{
-			// <Command> ::= h <Del>
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_COMMAND_F (string input, Token token, Token [] tokens)
-		{
-			// <Command> ::= f <Cl_Prgm>
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_COMMAND_GTO_PERIOD (string input, Token token, Token [] tokens)
-		{
-			// <Command> ::= Gto Period <Digit> <Digit> <Digit>
-			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_SHORTCUT (string input, Token token, Token [] tokens)

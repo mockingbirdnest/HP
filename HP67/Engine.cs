@@ -217,7 +217,7 @@ namespace HP67
 					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_CF :
-					flags [(IDigit) instruction.Arguments [0]] = false;
+					flags [((Digit) instruction.Arguments [0]).Value] = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_CHS :
 					bool changeSignDone;
@@ -238,9 +238,6 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_CLX :
 					theStack.X = 0.0;
 					stackLift = false;
-					break;
-				case (int)SymbolConstants.SYMBOL_COMMAND :
-					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_COS :
 					theStack.Get (out x);
@@ -302,7 +299,7 @@ namespace HP67
 					theStack.X = Math.Exp (x);
 					break;
 				case (int)SymbolConstants.SYMBOL_F_TEST :
-					byte flagId = (IDigits) instruction.Arguments [0];
+					byte flagId = ((Digit) instruction.Arguments [0]).Value;
 					switch (flagId) 
 					{
 						case 0 :
@@ -325,6 +322,7 @@ namespace HP67
 						default :
 							// TODO: Not quite right.  This should behave as a syntax error.
 							Trace.Assert (false);
+							break;
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_FACTORIAL :
@@ -386,7 +384,7 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ISZ :
-					if (theMemory.IncrementAndSkipIfZero) 
+					if (theMemory.IncrementAndSkipIfZero ()) 
 					{
 						theProgram.Skip ();
 					}
@@ -507,7 +505,7 @@ namespace HP67
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_SF :
-					flags [(IDigit) instruction.Arguments [0]] = true;
+					flags [((Digit) instruction.Arguments [0]).Value] = true;
 					break;
 				case (int)SymbolConstants.SYMBOL_SIGMA_MINUS :
 					theStack.Get (out x);
