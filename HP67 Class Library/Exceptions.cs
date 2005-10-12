@@ -14,4 +14,17 @@ namespace HP67_Class_Library
 			//
 		}
 	}
+
+	/// <summary>
+	/// The end of the execution of a program.
+	/// </summary>
+	public class Stop : ApplicationException
+	{
+		public Stop ()
+		{
+			//
+			// TODO: Add constructor logic here
+			//
+		}
+	}
 }

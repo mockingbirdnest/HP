@@ -222,27 +222,29 @@ namespace HP67_Class_Library
 		public bool IncrementAndSkipIfZero ()
 		{
 			this [LetterRegister.I]++;
-			return this [LetterRegister.I] == 0.0;
+			return Math.Abs (this [LetterRegister.I]) < 1.0;
 		}
 
 		public bool IncrementAndSkipIfZeroIndexed ()
 		{
 			CheckIndex ();
 			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]++;
-			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] == 0.0;
+			return Math.Abs (
+				this [System.Math.Abs (System.Math.Floor (this [LetterRegister.I]))]) < 1.0;
 		}
 
 		public bool DecrementAndSkipIfZero ()
 		{
 			this [LetterRegister.I]--;
-			return this [LetterRegister.I] == 0.0;
+			return Math.Abs (this [LetterRegister.I]) < 1.0;
 		}
 
 		public bool DecrementAndSkipIfZeroIndexed ()
 		{
 			CheckIndex ();
 			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]--;
-			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] == 0.0;
+			return Math.Abs (
+				this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]) < 1.0;
 		}
 
 		public void ClearRegisters ()

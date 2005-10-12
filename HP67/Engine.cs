@@ -35,7 +35,10 @@ namespace HP67
 		private const double radianToGrade = 200.0 / Math.PI;
 
 		private EngineMode mode;
+		private bool running = false;
 		private bool stackLift = false;
+
+		private bool [] flags;
 		private AngleUnit unit;
 
 		private Display theDisplay;
@@ -49,6 +52,7 @@ namespace HP67
 
 		public Engine (Display display) 
 		{
+			flags = new bool [4];
 			unit = AngleUnit.Degree;
 			theDisplay = display;
 			theDisplay.EnteringNumber += new Display.EnteringNumberEvent (Enter);
@@ -172,9 +176,10 @@ namespace HP67
 				switch (mode)
 				{
 					case EngineMode.Run :
+						theDisplay.Mode = DisplayMode.Numeric;
 						break;
 					case EngineMode.WriteProgram :
-						theProgram.Visible = true;
+						theDisplay.Mode = DisplayMode.Instruction;
 						break;
 				}
 			}
@@ -212,7 +217,7 @@ namespace HP67
 					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_CF :
-					// TODO: Execution.
+					flags [(IDigit) instruction.Arguments [0]] = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_CHS :
 					bool changeSignDone;
@@ -269,10 +274,16 @@ namespace HP67
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DSZ :
-					// TODO: Execution.
+					if (theMemory.DecrementAndSkipIfZero ())
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_DSZ_SUB_I :
-					// TODO: Execution.
+					if (theMemory.DecrementAndSkipIfZeroIndexed ())
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_EEX :
 					stackLift = neutral;
@@ -291,7 +302,30 @@ namespace HP67
 					theStack.X = Math.Exp (x);
 					break;
 				case (int)SymbolConstants.SYMBOL_F_TEST :
-					// TODO: Execution.
+					byte flagId = (IDigits) instruction.Arguments [0];
+					switch (flagId) 
+					{
+						case 0 :
+						case 1 :
+							if (! flags [flagId]) 
+							{
+								theProgram.Skip ();
+							}
+							break;
+						case 2 :
+						case 3 :
+							if (! flags [flagId])
+							{
+								theProgram.Skip ();
+							}
+							flags [flagId] = false;
+							// TODO: F3 is set by data entry (digit) or when SST encounters a
+							// digit.
+							break;
+						default :
+							// TODO: Not quite right.  This should behave as a syntax error.
+							Trace.Assert (false);
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_FACTORIAL :
 					long xLong;
@@ -328,11 +362,13 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_GSB :
 				case (int)SymbolConstants.SYMBOL_GSB_F :
 					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+					Run ();
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
 					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_GTO :
+					((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
 					break;
 				case (int)SymbolConstants.SYMBOL_HMS_PLUS :
 					theStack.Get (out x, out y);
@@ -350,10 +386,16 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ISZ :
-					// TODO: Execution.
+					if (theMemory.IncrementAndSkipIfZero) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ISZ_SUB_I :
-					// TODO: Execution.
+					if (theMemory.IncrementAndSkipIfZeroIndexed ())
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_LBL :
 				case (int)SymbolConstants.SYMBOL_LBL_F :
@@ -420,8 +462,7 @@ namespace HP67
 					theStack.RollDown ();
 					break;
 				case (int)SymbolConstants.SYMBOL_R_S :
-					// TODO: Execution.
-					break;
+					throw new Stop ();
 				case (int)SymbolConstants.SYMBOL_R_UP :
 					theStack.RollUp ();
 					break;
@@ -466,7 +507,7 @@ namespace HP67
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_SF :
-					// TODO: Execution.
+					flags [(IDigit) instruction.Arguments [0]] = true;
 					break;
 				case (int)SymbolConstants.SYMBOL_SIGMA_MINUS :
 					theStack.Get (out x);
@@ -651,6 +692,29 @@ namespace HP67
 				case EngineMode.WriteProgram :
 					theProgram.Insert (instruction);
 					break;
+			}
+		}
+
+		public void Run ()
+		{
+			Instruction instruction;
+
+			if (! running) 
+			{
+				try 
+				{
+					for (;;) 
+					{
+						running = true;
+						instruction = theProgram.Instruction;
+						Execute (instruction);
+					}
+				}
+				catch (Stop)
+				{
+					running = false;
+					return;
+				}
 			}
 		}
 

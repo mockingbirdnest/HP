@@ -36,13 +36,14 @@ namespace HP67_Class_Library
 		private int next;
 		private int [] returns;
 		private Display theDisplay;
-		private bool visible;
 
 		#region Constructors & Destructors
 
 		public Program (Display display)
 		{
 			Token [] r_s_tokens;
+
+			theDisplay = display;
 
 			r_s_tokens = new Token [1] {new TerminalToken (
 									   new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, ""),
@@ -53,10 +54,8 @@ namespace HP67_Class_Library
 			instructions = new Instruction [224];
 			ClearProgram ();
 
-			labels = new int [(int) LetterLabel.E - 0 + 1];
+			labels = new int [(int) LetterLabel.e - 0 + 1];
 			returns = new int [3] {noStep, noStep, noStep};
-			theDisplay = display;
-			visible = false;
 		}
 
 		#endregion
@@ -133,7 +132,7 @@ namespace HP67_Class_Library
 			get 
 			{
 				Instruction i = instructions [next];
-				next++;
+				GotoStep (next + 1);
 				return i;
 			}
 		}
@@ -152,19 +151,19 @@ namespace HP67_Class_Library
 
 		public void Goto (byte label)
 		{
-			next = this [label];
+			GotoStep (this [label]);
 		}
 
 		public void Goto (LetterLabel label)
 		{
-			next = this [label];
+			GotoStep (this [label]);
 		}
 
 		public void Return ()
 		{
 			if (returns [0] == noStep) 
 			{
-				next = returns [0];
+				GotoStep (returns [0]);
 				for (int i = 0; i <= returns.Length - 2; i++) 
 				{
 					returns [i] = returns [i + 1];
@@ -175,7 +174,7 @@ namespace HP67_Class_Library
 
 		public void Skip ()
 		{
-			next++;
+			GotoStep (next + 1);
 		}
 
 		#endregion
@@ -184,12 +183,11 @@ namespace HP67_Class_Library
 
 		public void ClearProgram ()
 		{
-			next = noStep;
+			GotoStep (noStep);
 			for (int i = 0; i < instructions.Length; i++) 
 			{
 				instructions [i] = r_s;
 			}
-			Visible = Visible;
 		}
 
 		public void Delete ()
@@ -200,23 +198,31 @@ namespace HP67_Class_Library
 				instructions [i] = instructions [i + 1];
 			}
 			instructions [instructions.Length - 1] = r_s;
-			Visible = Visible;
 		}
 
 		public void GotoStep (int step) 
 		{
 			next = step;
-			Visible = Visible;
+			if (next == noStep) 
+			{
+				theDisplay.DisplayInstruction (null, 0);
+			}
+			else
+			{
+				theDisplay.DisplayInstruction (instructions [next], next + 1);
+			}
 		}
 
 		public void Insert (Instruction instruction)
 		{
 			UpdateLabelsForDeletion (instructions.Length - 1);
+			next++;
 			for (int i = instructions.Length - 1; i > next + 1; i--) 
 			{
 				instructions [i] = instructions [i - 1];
 			}
 			instructions [next] = instruction;
+			GotoStep (next);
 
 			switch (instruction.Symbol.Id) 
 			{
@@ -237,30 +243,6 @@ namespace HP67_Class_Library
 			}
 
 			UpdateLabelsForInsertion (next);
-			Visible = Visible;
-		}
-
-		public bool Visible
-		{
-			get
-			{
-				return visible;
-			}
-			set 
-			{
-				visible = value;
-				if (visible) 
-				{
-					if (next == noStep) 
-					{
-						theDisplay.DisplayInstruction (instruction, 0);
-					}
-					else
-					{
-						theDisplay.DisplayInstruction (instructions [next], next + 1);
-					}
-				}
-			}
 		}
 
 		#endregion

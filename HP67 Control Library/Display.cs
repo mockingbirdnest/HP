@@ -17,6 +17,12 @@ namespace HP67_Control_Library
 		Scientific
 	}
 
+	public enum DisplayMode
+	{
+		Instruction,
+		Numeric
+	}
+
 	/// <summary>
 	/// The LED display for the HP67 calculator.
 	/// </summary>
@@ -56,13 +62,16 @@ namespace HP67_Control_Library
 		private string fixMantissaTemplate;
 		private string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
 		private DisplayFormat format;
+		private DisplayMode mode;
 		private string negativeOverflow = "-9.999999999 99";
 		private bool overflows;
 		private double overflowValue;
 		private string positiveOverflow = " 9.999999999 99";
 		private string sciMantissaTemplate;
 		private string stepTemplate = "000";
-		private System.Windows.Forms.TextBox textBox;
+
+		private System.Windows.Forms.TextBox numericTextBox;
+		private System.Windows.Forms.TextBox instructionTextBox;
 
 		#endregion
 
@@ -125,30 +134,50 @@ namespace HP67_Control_Library
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox = new System.Windows.Forms.TextBox();
+			this.numericTextBox = new System.Windows.Forms.TextBox();
+			this.instructionTextBox = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
-			// textBox
+			// numericTextBox
 			// 
-			this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.numericTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 				| System.Windows.Forms.AnchorStyles.Left) 
 				| System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox.BackColor = System.Drawing.Color.Black;
-			this.textBox.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.textBox.ForeColor = System.Drawing.Color.Red;
-			this.textBox.Location = new System.Drawing.Point(0, 0);
-			this.textBox.Name = "textBox";
-			this.textBox.ReadOnly = true;
-			this.textBox.Size = new System.Drawing.Size(300, 40);
-			this.textBox.TabIndex = 0;
-			this.textBox.Text = "0.00";
-			this.textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			this.textBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_MouseDown);
-			this.textBox.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
+			this.numericTextBox.BackColor = System.Drawing.Color.Black;
+			this.numericTextBox.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.numericTextBox.ForeColor = System.Drawing.Color.Red;
+			this.numericTextBox.Location = new System.Drawing.Point(0, 0);
+			this.numericTextBox.Name = "numericTextBox";
+			this.numericTextBox.ReadOnly = true;
+			this.numericTextBox.Size = new System.Drawing.Size(300, 40);
+			this.numericTextBox.TabIndex = 0;
+			this.numericTextBox.Text = "0.00";
+			this.numericTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.numericTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_MouseDown);
+			this.numericTextBox.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
+			// 
+			// instructionTextBox
+			// 
+			this.instructionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+				| System.Windows.Forms.AnchorStyles.Left) 
+				| System.Windows.Forms.AnchorStyles.Right)));
+			this.instructionTextBox.BackColor = System.Drawing.Color.Black;
+			this.instructionTextBox.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.instructionTextBox.ForeColor = System.Drawing.Color.Red;
+			this.instructionTextBox.Location = new System.Drawing.Point(0, 0);
+			this.instructionTextBox.Name = "instructionTextBox";
+			this.instructionTextBox.ReadOnly = true;
+			this.instructionTextBox.Size = new System.Drawing.Size(300, 40);
+			this.instructionTextBox.TabIndex = 1;
+			this.instructionTextBox.Text = "0.00";
+			this.instructionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+			this.instructionTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_MouseDown);
+			this.numericTextBox.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
 			// 
 			// Display
 			// 
-			this.Controls.Add(this.textBox);
+			this.Controls.Add(this.numericTextBox);
+			this.Controls.Add(this.instructionTextBox);
 			this.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.ForeColor = System.Drawing.Color.Red;
 			this.Name = "Display";
@@ -177,12 +206,14 @@ namespace HP67_Control_Library
 
 		private void textBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			textBox.Enabled = false;
+			instructionTextBox.Enabled = false;
+			numericTextBox.Enabled = false;
 		}
 
 		private void textBox_MouseLeave(object sender, System.EventArgs e)
 		{
-			textBox.Enabled = true;
+			instructionTextBox.Enabled = true;
+			numericTextBox.Enabled = true;
 		}
 			
 		#endregion
@@ -193,7 +224,7 @@ namespace HP67_Control_Library
 		{
 			get
 			{
-				string exponent = Text.Substring 
+				string exponent = NumericText.Substring 
 					(exponentSignFirst, exponentSignLength + exponentLength).Trim ();
 				if (exponent.Length == 0) 
 				{
@@ -208,8 +239,8 @@ namespace HP67_Control_Library
 			{
 				if (value == 0 && format == DisplayFormat.Fixed) 
 				{
-					Text =
-						Text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
+					NumericText =
+						NumericText.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
 						new String (' ', exponentSignLength + exponentLength);
 				}
 				else
@@ -217,23 +248,23 @@ namespace HP67_Control_Library
 					string exponent = value.ToString
 						(exponentTemplate, NumberFormatInfo.InvariantInfo);
 
-					Text =
-						Text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
+					NumericText =
+						NumericText.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
 						exponent;
 				}
 			}
 		}
 
-		private new string Text 
+		private string NumericText 
 		{
 			get
 			{
-				string s = textBox.Text;
+				string s = numericTextBox.Text;
 				return s.PadRight (exponentFirst + exponentLength);
 			}
 			set
 			{
-				textBox.Text = value.PadRight (exponentFirst + exponentLength);
+				numericTextBox.Text = value.PadRight (exponentFirst + exponentLength);
 			}
 		}
 
@@ -243,52 +274,52 @@ namespace HP67_Control_Library
 
 		private void ReplaceExponentWithoutSign (string exponent)
 		{
-			string text = Text;
+			string text = NumericText;
 
-			Text = text.Substring
+			NumericText = text.Substring
 				(mantissaSignFirst, mantissaSignLength + mantissaLength + exponentSignLength) +
 				exponent;
 		}
 
 		private void ReplaceExponentWithSign (string exponent)
 		{
-			string text = Text;
+			string text = NumericText;
 
-			Text = text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
+			NumericText = text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
 				exponent;
 		}
 
 		private void ReplaceExponentSign (char sign) 
 		{
-			string text = Text;
+			string text = NumericText;
 
-			Text = text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
+			NumericText = text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength) +
 				sign +
 				text.Substring (exponentFirst, exponentLength);
 		}
 
 		private void ReplaceMantissaSign (char sign) 
 		{
-			string text = Text;
+			string text = NumericText;
 
-			Text = sign + text.Substring
+			NumericText = sign + text.Substring
 				(mantissaFirst, mantissaLength + exponentSignLength + exponentLength);
 		}
 
 		private void ReplaceMantissaWithoutSign (string mantissa)
 		{
-			string text = Text;
+			string text = NumericText;
 
-			Text = text.Substring (mantissaSignFirst, mantissaSignLength) +
+			NumericText = text.Substring (mantissaSignFirst, mantissaSignLength) +
 				mantissa.PadRight (mantissaLength, ' ') +
 				text.Substring (exponentSignFirst, exponentSignLength + exponentLength);
 		}
 
 		private void ReplaceMantissaWithSign (string mantissa)
 		{
-			string text = Text;
+			string text = NumericText;
 
-			Text = mantissa.PadRight (mantissaSignLength + mantissaLength) +
+			NumericText = mantissa.PadRight (mantissaSignLength + mantissaLength) +
 				text.Substring (exponentSignFirst, exponentSignLength + exponentLength);
 		}
 
@@ -427,6 +458,25 @@ namespace HP67_Control_Library
 			}
 		}
 
+		public DisplayMode Mode
+		{
+			set
+			{
+				mode = value;
+				switch (mode)
+				{
+					case DisplayMode.Instruction :
+						instructionTextBox.Visible = true;
+						numericTextBox.Visible = false;
+						break;
+					case DisplayMode.Numeric :
+						instructionTextBox.Visible = false;
+						numericTextBox.Visible = true;
+						break;
+				}
+			}
+		}
+
 		public double Value 
 		{
 			get
@@ -460,7 +510,7 @@ namespace HP67_Control_Library
 				DoneEntering ();
 
 				// Not needed, unless the event handling mucked things up...
-				textBox.Enabled = true;
+				numericTextBox.Enabled = true;
 
 				// Deal with possible underflow or overflow.
 				overflows = false;
@@ -468,12 +518,12 @@ namespace HP67_Control_Library
 				{
 					if (value > 0.0) 
 					{
-						Text = positiveOverflow;
+						NumericText = positiveOverflow;
 						overflowValue = double.PositiveInfinity;
 					}
 					else 
 					{
-						Text = negativeOverflow;
+						NumericText = negativeOverflow;
 						overflowValue = double.NegativeInfinity;
 					}
 					overflows = true;
@@ -566,12 +616,12 @@ namespace HP67_Control_Library
 			{
 				if (enteringMantissa) 
 				{
-					sign = Text.Substring (mantissaSignFirst, mantissaSignLength) [0];
+					sign = NumericText.Substring (mantissaSignFirst, mantissaSignLength) [0];
 				}
 				else 
 				{
 					Trace.Assert (enteringExponent);
-					sign = Text.Substring (exponentSignFirst, exponentSignLength) [0];
+					sign = NumericText.Substring (exponentSignFirst, exponentSignLength) [0];
 				}
 				switch (sign) 
 				{
@@ -616,7 +666,7 @@ namespace HP67_Control_Library
 
 			if (enteringNumber && enteringExponent) 
 			{
-				exponent = Text.Substring 
+				exponent = NumericText.Substring 
 					(exponentSignFirst + exponentSignLength, exponentLength).Trim ();
 				if (exponent.Length == exponentLength ) 
 				{
@@ -638,7 +688,7 @@ namespace HP67_Control_Library
 				else 
 				{
 					Trace.Assert (enteringMantissa);
-					mantissa = Text.Substring 
+					mantissa = NumericText.Substring 
 						(mantissaSignFirst, mantissaSignLength + mantissaLength).TrimEnd (null);
 					if (hasAPeriod)	
 					{
@@ -696,15 +746,15 @@ namespace HP67_Control_Library
 		public void PauseAndBlink (int ms) 
 		{
 			int interval = ms / 16;
-			string text = Text;
+			string text = NumericText;
 			string textNoPeriod = text.Replace ('.', ' '); // Not quite i18n-compliant.
 
 			for (int i = 0; i < 8; i++) 
 			{
-				Text = textNoPeriod;
+				NumericText = textNoPeriod;
 				Update ();
 				Thread.Sleep (interval);
-				Text = text;
+				NumericText = text;
 				Update ();
 				Thread.Sleep (interval);
 			}
@@ -727,7 +777,8 @@ namespace HP67_Control_Library
 			{
 				instructionImage = instruction.ToString ();
 			}
-			Text = stepImage + instructionImage.PadLeft (instructionLength, ' ');
+			instructionTextBox.Text = 
+				stepImage + instructionImage.PadLeft (instructionLength, ' ');
 		}
 
 		#endregion
