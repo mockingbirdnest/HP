@@ -554,6 +554,11 @@ namespace HP67_Parser
 			// <Unshifted_Instruction> ::= <Binary_Unshifted_Instruction>
 		}
 
+		public void ReduceRULE_UNSHIFTED_INSTRUCTION4 (string input, Token token, Token [] tokens)
+		{
+			// <Unshifted_Instruction> ::= <Ternary_Unshifted_Instruction>
+		}
+
 		public void ReduceRULE_F_SHIFTED_INSTRUCTION_F (string input, Token token, Token [] tokens)
 		{
 			// <F_Shifted_Instruction> ::= f <Nullary_F_Shifted_Instruction>
@@ -693,9 +698,9 @@ namespace HP67_Parser
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
-		public void ReduceRULE_TERNARY_UNSHIFTED_INSTRUCTION_GTO_PERIOD (string input, Token token, Token [] tokens)
+		public void ReduceRULE_TERNARY_UNSHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
-			// <Ternary_Unshifted_Instruction> ::= Gto Period <Digit> <Digit> <Digit>
+			// <Ternary_Unshifted_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
@@ -1159,6 +1164,11 @@ namespace HP67_Parser
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Space>
 			theEngine.Process (new Instruction (input, tokens));
+		}
+
+		public void ReduceRULE_GTO_PERIOD_GTO_PERIOD (string input, Token token, Token [] tokens)
+		{
+			// <Gto_Period> ::= Gto Period
 		}
 
 		public void ReduceRULE_RCL_SIGMA_PLUS_RCL_SIGMA_PLUS (string input, Token token, Token [] tokens)

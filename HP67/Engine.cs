@@ -29,6 +29,9 @@ namespace HP67
 
 		#region Private Data
 
+		private static TraceSwitch classTraceSwitch = 
+			new TraceSwitch ("HP67.Engine", "Execution engine");
+
 		private const double degreeToRadian = Math.PI / 180.0;
 		private const double gradeToRadian = Math.PI / 200.0;
 		private const double radianToDegree = 180.0 / Math.PI;
@@ -75,12 +78,12 @@ namespace HP67
 
 		private double Factorial (long x)
 		{
-			double fact;
-			for (fact = 1.0; x > 1; x--) 
+			double factorial;
+			for (factorial = 1.0; x > 1; x--) 
 			{
-				fact = fact * (double) x;
+				factorial = factorial * (double) x;
 			}
-			return fact;
+			return factorial;
 		}
 
 		private double FromRadian (double angle) 
@@ -96,23 +99,6 @@ namespace HP67
 				default:
 					Trace.Assert (false);
 					return 0.0;
-			}
-		}
-
-		private Symbol GetSymbol (Token token) 
-		{
-			if (token is NonterminalToken) 
-			{
-				return ((NonterminalToken) token).Symbol;
-			}
-			else if (token is TerminalToken)
-			{
-				return ((TerminalToken) token).Symbol;
-			}
-			else 
-			{
-				Trace.Assert (false);
-				return ((TerminalToken) token).Symbol; // To make the compiler happy.
 			}
 		}
 
@@ -190,7 +176,14 @@ namespace HP67
 			bool neutral = stackLift;
 			double x, y;
 
-			stackLift = true; // Applies to most operations.
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"Execute: " + instruction.Symbol.Name + " " + instruction.ToString (),
+				classTraceSwitch.DisplayName);
+
+			// Applies to most operations.  Set to neutral below when an operation doesn't change
+			// the stack lift after all.
+			stackLift = true;
+
 			switch (instruction.Symbol.Id) 
 			{
 				case (int)SymbolConstants.SYMBOL_ABS :
@@ -230,10 +223,10 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
 					stackLift = neutral;
-					theProgram.ClearProgram ();
+					theProgram.Clear ();
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_REG :
-					theMemory.ClearRegisters ();
+					theMemory.Clear ();
 					break;
 				case (int)SymbolConstants.SYMBOL_CLX :
 					theStack.X = 0.0;
@@ -687,8 +680,37 @@ namespace HP67
 				case EngineMode.Run :
 					Execute (instruction);
 					break;
+
 				case EngineMode.WriteProgram :
-					theProgram.Insert (instruction);
+					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+						"Process: " + instruction.Symbol.Name + " " + instruction.ToString (),
+						classTraceSwitch.DisplayName);
+
+					switch (instruction.Symbol.Id) 
+					{
+						case (int) SymbolConstants.SYMBOL_BST :
+							theProgram.GotoRelative (-1);
+							break;
+						case (int) SymbolConstants.SYMBOL_CL_PRGM :
+							theProgram.Clear ();
+							break;
+						case (int) SymbolConstants.SYMBOL_DEL :
+							theProgram.Delete ();
+							break;
+						case (int) SymbolConstants.SYMBOL_GTO_PERIOD :
+							byte b0, b1, b2;
+							b0 = ((Digit) instruction.Arguments [0]).Value;
+							b1 = ((Digit) instruction.Arguments [1]).Value;
+							b2 = ((Digit) instruction.Arguments [2]).Value;
+							theProgram.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
+							break;
+						case (int) SymbolConstants.SYMBOL_SST :
+							theProgram.GotoRelative (+1);
+							break;
+						default :
+							theProgram.Insert (instruction);
+							break;
+					}
 					break;
 			}
 		}
@@ -701,6 +723,13 @@ namespace HP67
 			{
 				try 
 				{
+					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+						"Run: starting",
+						classTraceSwitch.DisplayName);
+
+					// This is to end any number entry.
+					double x = theStack.X;
+
 					for (;;) 
 					{
 						running = true;
@@ -710,6 +739,10 @@ namespace HP67
 				}
 				catch (Stop)
 				{
+					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+						"Run: stopping",
+						classTraceSwitch.DisplayName);
+
 					running = false;
 					return;
 				}

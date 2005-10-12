@@ -24,7 +24,7 @@ namespace HP67_Class_Library
 			b = 16,
 			c = 17,
 			d = 18,
-			e = 19,
+			e = 19
 		}
 
 		private const int noStep = -1;
@@ -32,7 +32,10 @@ namespace HP67_Class_Library
 		private static Instruction r_s;
 
 		private Instruction [] instructions;
-		private int [] labels;
+
+		// TODO: This is not correct because there can be more than one label with a given name.
+		private int [] labels; 
+
 		private int next;
 		private int [] returns;
 		private Display theDisplay;
@@ -46,13 +49,13 @@ namespace HP67_Class_Library
 			theDisplay = display;
 
 			r_s_tokens = new Token [1] {new TerminalToken (
-									   new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, ""),
+									   new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S"),
 									   "",
 									   new Location (0, 0, 0))};
 			r_s = new Instruction ("84", r_s_tokens);
 
 			instructions = new Instruction [224];
-			ClearProgram ();
+			Clear ();
 
 			labels = new int [(int) LetterLabel.e - 0 + 1];
 			returns = new int [3] {noStep, noStep, noStep};
@@ -83,6 +86,21 @@ namespace HP67_Class_Library
 			set
 			{
 				labels [(int) label] = value;
+			}
+		}
+
+		private void GotoZeroBasedStep (int step) 
+		{
+			// Here step is 0-based.  This is used by all the operations in this class, but we
+			// maintain the fiction of a 1-based program for the clients.
+			next = step;
+			if (next == noStep) 
+			{
+				theDisplay.DisplayInstruction (null, 0);
+			}
+			else
+			{
+				theDisplay.DisplayInstruction (instructions [next], next + 1);
 			}
 		}
 
@@ -132,7 +150,7 @@ namespace HP67_Class_Library
 			get 
 			{
 				Instruction i = instructions [next];
-				GotoStep (next + 1);
+				GotoZeroBasedStep (next + 1);
 				return i;
 			}
 		}
@@ -151,19 +169,19 @@ namespace HP67_Class_Library
 
 		public void Goto (byte label)
 		{
-			GotoStep (this [label]);
+			GotoZeroBasedStep (this [label]);
 		}
 
 		public void Goto (LetterLabel label)
 		{
-			GotoStep (this [label]);
+			GotoZeroBasedStep (this [label]);
 		}
 
 		public void Return ()
 		{
 			if (returns [0] == noStep) 
 			{
-				GotoStep (returns [0]);
+				GotoZeroBasedStep (returns [0]);
 				for (int i = 0; i <= returns.Length - 2; i++) 
 				{
 					returns [i] = returns [i + 1];
@@ -174,16 +192,16 @@ namespace HP67_Class_Library
 
 		public void Skip ()
 		{
-			GotoStep (next + 1);
+			GotoZeroBasedStep (next + 1);
 		}
 
 		#endregion
 
 		#region Editing
 
-		public void ClearProgram ()
+		public void Clear ()
 		{
-			GotoStep (noStep);
+			GotoZeroBasedStep (noStep);
 			for (int i = 0; i < instructions.Length; i++) 
 			{
 				instructions [i] = r_s;
@@ -193,24 +211,23 @@ namespace HP67_Class_Library
 		public void Delete ()
 		{
 			UpdateLabelsForDeletion (next);
-			for (int i = next; i < instructions.Length; i++) 
+			for (int i = next; i < instructions.Length - 1; i++) 
 			{
 				instructions [i] = instructions [i + 1];
 			}
 			instructions [instructions.Length - 1] = r_s;
+			GotoZeroBasedStep (next); // To redisplay the instruction.
 		}
 
-		public void GotoStep (int step) 
+		public void GotoRelative (int displacement)
 		{
-			next = step;
-			if (next == noStep) 
-			{
-				theDisplay.DisplayInstruction (null, 0);
-			}
-			else
-			{
-				theDisplay.DisplayInstruction (instructions [next], next + 1);
-			}
+			GotoZeroBasedStep (next + displacement);
+		}
+
+		public void GotoStep (int step)
+		{
+			// The clients want to see 1-based steps.
+			GotoZeroBasedStep (step - 1);
 		}
 
 		public void Insert (Instruction instruction)
@@ -222,7 +239,7 @@ namespace HP67_Class_Library
 				instructions [i] = instructions [i - 1];
 			}
 			instructions [next] = instruction;
-			GotoStep (next);
+			GotoZeroBasedStep (next);
 
 			switch (instruction.Symbol.Id) 
 			{

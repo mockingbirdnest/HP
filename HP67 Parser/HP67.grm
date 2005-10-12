@@ -171,6 +171,7 @@ R_S            = '84'
 <Unshifted_Instruction> ::= <Nullary_Unshifted_Instruction>
                             | <Unary_Unshifted_Instruction>
                             | <Binary_Unshifted_Instruction>
+                            | <Ternary_Unshifted_Instruction>
 <F_Shifted_Instruction> ::= f <Nullary_F_Shifted_Instruction>
                             | f <Unary_F_Shifted_Instruction>
 <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
@@ -199,7 +200,7 @@ R_S            = '84'
                                         
 <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
 
-<Ternary_Unshifted_Instruction> ::= Gto Period <Digit> <Digit> <Digit>
+<Ternary_Unshifted_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
 
 <Nullary_F_Shifted_Instruction> ::= <X_Average>
                                           | <Fix>
@@ -283,8 +284,9 @@ R_S            = '84'
                                           | <HMS_Plus>
                                           | <Space>
 
-
+<Gto_Period> ::= Gto Period
 <Rcl_Sigma_Plus> ::= Rcl Sigma_Plus
+
 <Operator> ::= Subtraction | Addition | Multiplication | Division
 <Digit> ::= Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine
 <Digit_Count> ::= <Digit> | Sub_I

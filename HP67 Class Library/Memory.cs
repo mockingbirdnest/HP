@@ -247,7 +247,7 @@ namespace HP67_Class_Library
 				this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]) < 1.0;
 		}
 
-		public void ClearRegisters ()
+		public void Clear ()
 		{
 			for (int i = 0; i <= 9; i++)
 			{

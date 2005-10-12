@@ -4,6 +4,7 @@ using com.calitha.goldparser.lalr;
 using HP67_Parser;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace HP67_Class_Library
 {
@@ -12,6 +13,8 @@ namespace HP67_Class_Library
 	/// </summary>
 	public class Instruction
 	{
+
+		private const string digitTemplate = "00";
 
 		private Argument [] arguments;
 		private Symbol instruction;
@@ -40,8 +43,11 @@ namespace HP67_Class_Library
 
 				// Somewhat ugly.  In the case of the DIGIT instruction, the argument is borne by
 				// the instruction symbol itself.  Pretend that it is a separate argument for
-				// uniformity.
+				// uniformity.  Oh and we must patch the text, too, because of the special
+				// convention for numbers.
 				arguments = new Argument [1] {(Argument) tokens [0].UserObject};
+				byte b = ((Digit) arguments [0]).Value;
+				text = b.ToString (digitTemplate, NumberFormatInfo.InvariantInfo);
 			}
 			else 
 			{
@@ -71,7 +77,7 @@ namespace HP67_Class_Library
 
 		public override string ToString ()
 		{
-			return text;
+			return text.Trim ();
 		}
 	}
 }
