@@ -24,7 +24,7 @@
                 PostBuildEvent = ""
                 RootNamespace = "HP67_Testing"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = "HP67_Testing.KeyTest"
+                StartupObject = "HP67_Testing.ToggleTest"
             >
                 <Config
                     Name = "Debug"

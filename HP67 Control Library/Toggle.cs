@@ -166,21 +166,11 @@ namespace HP67_Control_Library
 			switch (position) 
 			{
 				case TogglePosition.Left:
-				{
-					button.Location = new System.Drawing.Point
-						(panel.Location.X + panel.Size.Width - button.Size.Width - marginWidth,
-						 button.Location.Y);
-					position = TogglePosition.Right;
+					Position = TogglePosition.Right;
 					break;
-				}
 				case TogglePosition.Right:
-				{
-					button.Location = new System.Drawing.Point
-						(panel.Location.X + marginWidth,
-						 button.Location.Y);
-					position = TogglePosition.Left;
+					Position = TogglePosition.Left;
 					break;
-				}
 			}
 			if (ToggleClick != null) 
 			{
@@ -291,6 +281,35 @@ namespace HP67_Control_Library
 					(rightLabel.Location.X + ΔWidth, rightLabel.Location.Y);
 
 				AutoSize ();
+			}
+		}
+
+		public TogglePosition Position 
+		{
+			get 
+			{
+				return position;
+			}
+			set 
+			{
+				position = value;
+				switch (position) 
+				{
+					case TogglePosition.Right:
+					{
+						button.Location = new System.Drawing.Point
+							(panel.Location.X + panel.Size.Width - button.Size.Width - marginWidth,
+							button.Location.Y);
+						break;
+					}
+					case TogglePosition.Left:
+					{
+						button.Location = new System.Drawing.Point
+							(panel.Location.X + marginWidth,
+							button.Location.Y);
+						break;
+					}
+				}
 			}
 		}
 

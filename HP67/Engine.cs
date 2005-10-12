@@ -11,11 +11,17 @@ using System.IO;
 namespace HP67
 { 
 
-	enum AngleUnit 
+	public enum AngleUnit 
 	{
-		Grade,
 		Degree,
+		Grade,
 		Radian
+	}
+
+	public enum EngineMode
+	{
+		Run,
+		WriteProgram
 	}
 
 	public class Engine
@@ -28,11 +34,13 @@ namespace HP67
 		private const double radianToDegree = 180.0 / Math.PI;
 		private const double radianToGrade = 200.0 / Math.PI;
 
+		private EngineMode mode;
 		private bool stackLift = false;
 		private AngleUnit unit;
 
 		private Display theDisplay;
 		private Memory theMemory;
+		private Program theProgram;
 		private Stack theStack;
 
 		#endregion
@@ -45,6 +53,7 @@ namespace HP67
 			theDisplay = display;
 			theDisplay.EnteringNumber += new Display.EnteringNumberEvent (Enter);
 			theMemory = new Memory ();
+			theProgram = new Program (display);
 			theStack = new Stack (display);
 		}
 
@@ -155,6 +164,22 @@ namespace HP67
 
 		#region Public Operations
 
+		public EngineMode Mode
+		{
+			set
+			{
+				mode = value;
+				switch (mode)
+				{
+					case EngineMode.Run :
+						break;
+					case EngineMode.WriteProgram :
+						theProgram.Visible = true;
+						break;
+				}
+			}
+		}
+
 		public void Execute (Instruction instruction) 
 		{
 			bool neutral = stackLift;
@@ -199,8 +224,8 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
-					// TODO: Execution.
 					stackLift = neutral;
+					theProgram.ClearProgram ();
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_REG :
 					theMemory.ClearRegisters ();
@@ -301,10 +326,8 @@ namespace HP67
 					unit = AngleUnit.Grade;
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB :
-					// TODO: Execution.
-					break;
 				case (int)SymbolConstants.SYMBOL_GSB_F :
-					// TODO: Execution.
+					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
 					// TODO: Execution.
@@ -333,10 +356,7 @@ namespace HP67
 					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_LBL :
-					// TODO: Execution.
-					break;
 				case (int)SymbolConstants.SYMBOL_LBL_F :
-					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_LN :
 					theStack.Get (out x);
@@ -433,7 +453,7 @@ namespace HP67
 					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_RTN :
-					// TODO: Execution.
+					theProgram.Return ();
 					break;
 				case (int)SymbolConstants.SYMBOL_S :
 					theStack.Get (out x);
@@ -559,10 +579,16 @@ namespace HP67
 					theStack.Y = y;
 					break;
 				case (int)SymbolConstants.SYMBOL_X_EQ_0 :
-					// TODO: Execution.
+					if (theStack.X != 0.0) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_EQ_Y :
-					// TODO: Execution.
+					if (theStack.X != theStack.Y) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_EXCHANGE_I :
 					// TODO: Execution.
@@ -571,22 +597,40 @@ namespace HP67
 					theStack.XExchangeY ();
 					break;
 				case (int)SymbolConstants.SYMBOL_X_GT_0 :
-					// TODO: Execution.
+					if (theStack.X <= 0.0) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_GT_Y :
-					// TODO: Execution.
+					if (theStack.X <= theStack.Y) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_LE_Y :
-					// TODO: Execution.
+					if (theStack.X > theStack.Y) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_LT_0 :
-					// TODO: Execution.
+					if (theStack.X <= 0.0) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_NE_0 :
-					// TODO: Execution.
+					if (theStack.X == 0.0) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_NE_Y :
-					// TODO: Execution.
+					if (theStack.X == theStack.Y) 
+					{
+						theProgram.Skip ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_Y_TO_THE_XTH :
 					theStack.Get (out x, out y);
@@ -594,6 +638,19 @@ namespace HP67
 					break;
 				default:
 					throw new Error ();
+			}
+		}
+
+		public void Process (Instruction instruction) 
+		{
+			switch (mode) 
+			{
+				case EngineMode.Run :
+					Execute (instruction);
+					break;
+				case EngineMode.WriteProgram :
+					theProgram.Insert (instruction);
+					break;
 			}
 		}
 

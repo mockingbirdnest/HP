@@ -167,6 +167,7 @@ namespace HP67
 			this.toggleOffOn.Location = new System.Drawing.Point(8, 56);
 			this.toggleOffOn.MainWidth = 50;
 			this.toggleOffOn.Name = "toggleOffOn";
+			this.toggleOffOn.Position = HP67_Control_Library.TogglePosition.Right;
 			this.toggleOffOn.RightText = "ON";
 			this.toggleOffOn.RightWidth = 30;
 			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
@@ -179,10 +180,12 @@ namespace HP67
 			this.toggleWprgmRun.Location = new System.Drawing.Point(160, 56);
 			this.toggleWprgmRun.MainWidth = 50;
 			this.toggleWprgmRun.Name = "toggleWprgmRun";
+			this.toggleWprgmRun.Position = HP67_Control_Library.TogglePosition.Right;
 			this.toggleWprgmRun.RightText = "RUN";
 			this.toggleWprgmRun.RightWidth = 30;
 			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
 			this.toggleWprgmRun.TabIndex = 3;
+			this.toggleWprgmRun.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
 			// 
 			// keyA
 			// 
@@ -949,6 +952,21 @@ namespace HP67
 			Key key = (Key) sender;
 
 			theParser.Parse ((string) key.Tag);
+		}
+
+		private void toggleWprgmRun_ToggleClick(object sender,
+			System.EventArgs e,
+			HP67_Control_Library.TogglePosition position)
+		{
+			switch (position)
+			{
+				case TogglePosition.Left :
+					theEngine.Mode = EngineMode.WriteProgram;
+					break;
+				case TogglePosition.Right :
+					theEngine.Mode = EngineMode.Run;
+					break;
+			}
 		}
 
 	}

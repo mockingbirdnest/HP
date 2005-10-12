@@ -291,6 +291,6 @@ R_S            = '84'
 <Letter> ::= A | B | C | D | E
 <Letter_Label> ::= <Letter>
 <Digit_Label> ::= <Digit>
-<Label>  ::= <Digit_Label> | <Letter_Label>
+<Label>  ::= <Digit_Label> | <Letter_Label> | Sub_I
 <Operable_Memory> ::= <Digit> | Sub_I
 <Memory> ::= <Operable_Memory> | <Letter>

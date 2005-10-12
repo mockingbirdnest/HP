@@ -69,5 +69,9 @@ namespace HP67_Class_Library
 			}
 		}
 
+		public override string ToString ()
+		{
+			return text;
+		}
 	}
 }

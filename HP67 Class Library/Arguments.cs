@@ -28,8 +28,8 @@ namespace HP67_Class_Library
 
 	public interface ILabel
 	{
-		void Goto ();
-		void Gosub ();
+		void Goto (Memory m, Program p);
+		void Gosub (Memory m, Program p);
 	}
 
 	#endregion
@@ -73,18 +73,18 @@ namespace HP67_Class_Library
 			d.Digits = digit;
 		}
 
-		public void Goto ()
+		public void Goto (Memory m, Program p)
 		{
-			// TODO:  Add Digit.Goto implementation
+			p.Goto (digit);
 		}
 
-		public void Gosub ()
+		public void Gosub (Memory m, Program p)
 		{
-			// TODO:  Add Digit.Gosub implementation
+			p.Gosub (digit);
 		}
 	}
 
-	public class Indexed : Argument, IAddress, IDigits
+	public class Indexed : Argument, IAddress, IDigits, ILabel
 	{
 		public Indexed () 
 		{
@@ -117,6 +117,18 @@ namespace HP67_Class_Library
 				d.Digits = digits;
 			}
 		}
+
+		public void Goto (Memory m, Program p)
+		{
+			byte label = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+			p.Goto (label);
+		}
+
+		public void Gosub (Memory m, Program p)
+		{
+			byte label = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+			p.Gosub (label);
+		}
 	}
 
 	public class Letter : Argument, IAddress, ILabel
@@ -127,6 +139,14 @@ namespace HP67_Class_Library
 		{
 			Trace.Assert (l >= 'A' && l <= 'E');
 			letter = l;
+		}
+
+		public char Value 
+		{
+			get 
+			{
+				return letter;
+			}
 		}
 
 		public double Recall (Memory m) 
@@ -147,14 +167,16 @@ namespace HP67_Class_Library
 			Trace.Assert (false);
 		}
 
-		public void Goto ()
+		public void Goto (Memory m, Program p)
 		{
-			// TODO:  Add Letter.Goto implementation
+			p.Goto ((Program.LetterLabel) Enum.Parse
+				(typeof (Program.LetterLabel), new String (letter, 1)));
 		}
 
-		public void Gosub ()
+		public void Gosub (Memory m, Program p)
 		{
-			// TODO:  Add Letter.Gosub implementation
+			p.Gosub ((Program.LetterLabel) Enum.Parse
+				(typeof (Program.LetterLabel), new String (letter, 1)));
 		}
 	}
 

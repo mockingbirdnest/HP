@@ -380,10 +380,11 @@ namespace HP67_Parser
         RULE_DIGIT_LABEL                                  = 218, // <Digit_Label> ::= <Digit>
         RULE_LABEL                                        = 219, // <Label> ::= <Digit_Label>
         RULE_LABEL2                                       = 220, // <Label> ::= <Letter_Label>
-        RULE_OPERABLE_MEMORY                              = 221, // <Operable_Memory> ::= <Digit>
-        RULE_OPERABLE_MEMORY_SUB_I                        = 222, // <Operable_Memory> ::= 'Sub_I'
-        RULE_MEMORY                                       = 223, // <Memory> ::= <Operable_Memory>
-        RULE_MEMORY2                                      = 224  // <Memory> ::= <Letter>
+        RULE_LABEL_SUB_I                                  = 221, // <Label> ::= 'Sub_I'
+        RULE_OPERABLE_MEMORY                              = 222, // <Operable_Memory> ::= <Digit>
+        RULE_OPERABLE_MEMORY_SUB_I                        = 223, // <Operable_Memory> ::= 'Sub_I'
+        RULE_MEMORY                                       = 224, // <Memory> ::= <Operable_Memory>
+        RULE_MEMORY2                                      = 225  // <Memory> ::= <Letter>
     };
 
     public interface IActions
@@ -620,6 +621,7 @@ namespace HP67_Parser
         void ReduceRULE_DIGIT_LABEL (string input, Token token, Token [] tokens);
         void ReduceRULE_LABEL (string input, Token token, Token [] tokens);
         void ReduceRULE_LABEL2 (string input, Token token, Token [] tokens);
+        void ReduceRULE_LABEL_SUB_I (string input, Token token, Token [] tokens);
         void ReduceRULE_OPERABLE_MEMORY (string input, Token token, Token [] tokens);
         void ReduceRULE_OPERABLE_MEMORY_SUB_I (string input, Token token, Token [] tokens);
         void ReduceRULE_MEMORY (string input, Token token, Token [] tokens);
@@ -1753,6 +1755,11 @@ namespace HP67_Parser
                 case (int)RuleConstants.RULE_LABEL2 :
                     // <Label> ::= <Letter_Label>
                     actions.ReduceRULE_LABEL2 (input, args.Token, args.Token.Tokens);
+                    return;
+
+                case (int)RuleConstants.RULE_LABEL_SUB_I :
+                    // <Label> ::= 'Sub_I'
+                    actions.ReduceRULE_LABEL_SUB_I (input, args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_OPERABLE_MEMORY :
