@@ -4,6 +4,8 @@ using com.calitha.goldparser.lalr;
 using HP67_Control_Library;
 using HP67_Parser;
 using System;
+using System.Data;
+using System.Diagnostics;
 
 namespace HP67_Class_Library
 {
@@ -49,9 +51,9 @@ namespace HP67_Class_Library
 			theDisplay = display;
 
 			r_s_tokens = new Token [1] {new TerminalToken (
-									   new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S"),
-									   "",
-									   new Location (0, 0, 0))};
+										   new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S"),
+										   "",
+										   new Location (0, 0, 0))};
 			r_s = new Instruction ("84", r_s_tokens);
 
 			instructions = new Instruction [224];
@@ -59,6 +61,130 @@ namespace HP67_Class_Library
 
 			labels = new int [(int) LetterLabel.e - 0 + 1];
 			returns = new int [3] {noStep, noStep, noStep};
+			Card.ReadFromDataset += new HP67_Class_Library.Card.DatasetIODelegate(ReadFromDataset);
+			Card.WriteToDataset += new HP67_Class_Library.Card.DatasetIODelegate(WriteToDataset);
+		}
+
+		#endregion
+
+		#region Event Handlers
+
+		public  void ReadFromDataset (CardDataset cds)
+		{
+			// Beware, the XML file uses 1-based step numbers, but we must go back to 0-based
+			// numbers internally.
+			CardDataset.ArgumentRow [] ars;
+			CardDataset.CardRow cr;
+			CardDataset.InstructionRow [] irs;
+			CardDataset.LabelRow [] lrs;
+			CardDataset.ProgramRow pr;
+
+			cr = cds.Card [0]; // TODO: I hate these zeros...
+			pr = cr.GetProgramRows () [0];
+			instructions = new Instruction [pr.InstructionCount];
+			irs = pr.GetInstructionRows ();
+			foreach (CardDataset.InstructionRow ir in irs) 
+			{
+				Argument [] arguments = new Argument [ir.ArgumentCount];
+
+				ars = ir.GetArgumentRows ();
+				foreach (CardDataset.ArgumentRow ar in ars) 
+				{
+					Argument argument;
+					// TODO: Use object factory?
+					if (ar.Type == typeof (Digit).ToString ()) 
+					{
+						argument = new Digit (byte.Parse (ar.Value));
+					}
+					else if (ar.Type == typeof (Letter).ToString ())
+					{
+						argument = new Letter (ar.Value [0]);
+					}
+					else 
+					{
+						Trace.Assert (false);
+						argument = new Digit (0); // To make the compiler happy.
+					}
+					arguments [ar.Id] = argument;
+				}
+
+				// We don't trust the symbol id, we look up the symbol by name.  This has two
+				// drawbacks: (1) it is expensive because of the linear search; (2) it requires
+				// the parser to expose its CGTReader, and in order to avoid having to pass it
+				// around this is done by making it static.
+				// TODO: Improve item (2) above, someday.
+				foreach (Symbol s in Parser.Reader.Symbols) 
+				{
+					if (s.Name == ir.Instruction) 
+					{
+						instructions [ir.Step - 1] = new Instruction (ir.Text, s, arguments);
+						break;
+					}
+				}
+			}
+			labels = new int [pr.LabelCount];
+			lrs = pr.GetLabelRows ();
+			foreach (CardDataset.LabelRow lr in lrs) 
+			{
+				labels [lr.Id] = lr.Step - 1;
+			}
+		}
+
+		public  void WriteToDataset (CardDataset cds)
+		{
+			// Note that we write 1-based step numbers, in case someone wants to look at the
+			// generated XML.
+
+			CardDataset.ArgumentRow ar;
+			CardDataset.InstructionRow ir;
+			CardDataset.LabelRow lr;
+			CardDataset.ProgramRow pr;
+
+			pr = cds.Program.NewProgramRow ();
+			pr.InstructionCount = instructions.Length;
+			pr.LabelCount = labels.Length;
+			pr.CardRow = cds.Card [0]; // TODO: should be passed in.
+			cds.Program.AddProgramRow (pr);
+			for (int i = 0; i < instructions.Length; i++) {
+				ir = cds.Instruction.NewInstructionRow ();
+				ir.Step = i + 1;
+				ir.Text = instructions [i].ToString ();
+				ir.Instruction = instructions [i].Symbol.Name;
+				ir.ArgumentCount = instructions [i].Arguments.Length;
+				ir.ProgramRow = pr;
+				cds.Instruction.AddInstructionRow (ir);
+				for (int j = 0; j < instructions [i].Arguments.Length; j++) 
+				{
+					Argument argument = instructions [i].Arguments [j];
+
+					ar = cds.Argument.NewArgumentRow ();
+					ar.Id = j;
+					ar.Type = argument.GetType ().ToString ();
+					// TODO: Use an object factory.
+					if (argument is Digit) 
+					{
+						ar.Value = (((Digit) argument).Value).ToString ();
+					}
+					else if (argument is Letter) 
+					{
+						ar.Value = new String (((Letter) argument).Value, 1);
+					}
+					else
+					{
+						Trace.Assert (false);
+					}
+					ar.InstructionRow = ir;
+					cds.Argument.AddArgumentRow (ar);
+				}
+			}
+			for (int i = 0; i < labels.Length; i++) 
+			{
+				lr = cds.Label.NewLabelRow ();
+				lr.Id = i;
+				lr.Step = labels [i] + 1;
+				lr.ProgramRow = pr;
+				cds.Label.AddLabelRow (lr);
+			}
 		}
 
 		#endregion

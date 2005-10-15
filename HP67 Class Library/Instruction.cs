@@ -20,7 +20,15 @@ namespace HP67_Class_Library
 		private Symbol instruction;
 		private string text;
 
-		public Instruction(string input, Token [] tokens)
+		public Instruction (string input, Symbol symbol, Argument [] args)
+		{
+			text = input;
+			instruction = symbol;
+			arguments = args;
+		}
+
+
+		public Instruction (string input, Token [] tokens)
 		{
 			text = input;
 			

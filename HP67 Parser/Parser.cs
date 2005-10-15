@@ -639,6 +639,7 @@ namespace HP67_Parser
         private IActions actions;
         private LALRParser parser;
         private string input;
+		private static CGTReader reader;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -1811,7 +1812,7 @@ namespace HP67_Parser
 
         private void Initialize (Stream stream)
         {
-            CGTReader reader = new CGTReader (stream);
+            reader = new CGTReader (stream);
             parser = reader.CreateNewParser ();
             parser.TrimReductions = false; 
             parser.StoreTokens = LALRParser.StoreTokensMode.NoUserObject;
@@ -1874,6 +1875,14 @@ namespace HP67_Parser
 				parser.Parse (input);
             }
         }
+
+		public static CGTReader Reader 
+		{
+			get 
+			{
+				return reader;
+			}
+		}
 
     }
 }

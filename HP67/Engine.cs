@@ -7,6 +7,7 @@ using HP67_Control_Library;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
 namespace HP67
 { 
@@ -62,6 +63,7 @@ namespace HP67
 			theMemory = new Memory ();
 			theProgram = new Program (display);
 			theStack = new Stack (display);
+			Card.WriteToDataset += new Card.DatasetIODelegate (theProgram.WriteToDataset);
 		}
 
 		#endregion
@@ -99,6 +101,22 @@ namespace HP67
 				default:
 					Trace.Assert (false);
 					return 0.0;
+			}
+		}
+
+		private void Save ()
+		{
+			SaveFileDialog dialog = new SaveFileDialog ();
+			Stream stream;
+
+			dialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*"  ;
+			if(dialog.ShowDialog() == DialogResult.OK)
+			{
+				if((stream = dialog.OpenFile()) != null)
+				{
+					Card.Write (stream);
+					stream.Close();
+				}
 			}
 		}
 
@@ -603,6 +621,7 @@ namespace HP67
 					theStack.Y = r * Math.Sin (ToRadian (θ));
 					break;
 				case (int)SymbolConstants.SYMBOL_W_DATA :
+					Save ();
 					break;
 				case (int)SymbolConstants.SYMBOL_X_AVERAGE :
 					theStack.Get (out x);

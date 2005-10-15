@@ -39,11 +39,23 @@ namespace HP67_Class_Library {
         
         private ProgramDataTable tableProgram;
         
+        private InstructionDataTable tableInstruction;
+        
+        private ArgumentDataTable tableArgument;
+        
+        private LabelDataTable tableLabel;
+        
         private DataRelation relationCardSlot_TextBox;
         
         private DataRelation relationCardSlot_RTFBox;
         
         private DataRelation relationEngine_Flag;
+        
+        private DataRelation relationInstruction_Argument;
+        
+        private DataRelation relationProgram_Instruction;
+        
+        private DataRelation relationProgram_Label;
         
         private DataRelation relationCard_CardSlot;
         
@@ -93,6 +105,15 @@ namespace HP67_Class_Library {
                 }
                 if ((ds.Tables["Program"] != null)) {
                     this.Tables.Add(new ProgramDataTable(ds.Tables["Program"]));
+                }
+                if ((ds.Tables["Instruction"] != null)) {
+                    this.Tables.Add(new InstructionDataTable(ds.Tables["Instruction"]));
+                }
+                if ((ds.Tables["Argument"] != null)) {
+                    this.Tables.Add(new ArgumentDataTable(ds.Tables["Argument"]));
+                }
+                if ((ds.Tables["Label"] != null)) {
+                    this.Tables.Add(new LabelDataTable(ds.Tables["Label"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -184,6 +205,30 @@ namespace HP67_Class_Library {
             }
         }
         
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public InstructionDataTable Instruction {
+            get {
+                return this.tableInstruction;
+            }
+        }
+        
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ArgumentDataTable Argument {
+            get {
+                return this.tableArgument;
+            }
+        }
+        
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public LabelDataTable Label {
+            get {
+                return this.tableLabel;
+            }
+        }
+        
         public override DataSet Clone() {
             CardDataset cln = ((CardDataset)(base.Clone()));
             cln.InitVars();
@@ -228,6 +273,15 @@ namespace HP67_Class_Library {
             }
             if ((ds.Tables["Program"] != null)) {
                 this.Tables.Add(new ProgramDataTable(ds.Tables["Program"]));
+            }
+            if ((ds.Tables["Instruction"] != null)) {
+                this.Tables.Add(new InstructionDataTable(ds.Tables["Instruction"]));
+            }
+            if ((ds.Tables["Argument"] != null)) {
+                this.Tables.Add(new ArgumentDataTable(ds.Tables["Argument"]));
+            }
+            if ((ds.Tables["Label"] != null)) {
+                this.Tables.Add(new LabelDataTable(ds.Tables["Label"]));
             }
             this.DataSetName = ds.DataSetName;
             this.Prefix = ds.Prefix;
@@ -283,9 +337,24 @@ namespace HP67_Class_Library {
             if ((this.tableProgram != null)) {
                 this.tableProgram.InitVars();
             }
+            this.tableInstruction = ((InstructionDataTable)(this.Tables["Instruction"]));
+            if ((this.tableInstruction != null)) {
+                this.tableInstruction.InitVars();
+            }
+            this.tableArgument = ((ArgumentDataTable)(this.Tables["Argument"]));
+            if ((this.tableArgument != null)) {
+                this.tableArgument.InitVars();
+            }
+            this.tableLabel = ((LabelDataTable)(this.Tables["Label"]));
+            if ((this.tableLabel != null)) {
+                this.tableLabel.InitVars();
+            }
             this.relationCardSlot_TextBox = this.Relations["CardSlot_TextBox"];
             this.relationCardSlot_RTFBox = this.Relations["CardSlot_RTFBox"];
             this.relationEngine_Flag = this.Relations["Engine_Flag"];
+            this.relationInstruction_Argument = this.Relations["Instruction_Argument"];
+            this.relationProgram_Instruction = this.Relations["Program_Instruction"];
+            this.relationProgram_Label = this.Relations["Program_Label"];
             this.relationCard_CardSlot = this.Relations["Card_CardSlot"];
             this.relationCard_Display = this.Relations["Card_Display"];
             this.relationCard_Engine = this.Relations["Card_Engine"];
@@ -318,6 +387,12 @@ namespace HP67_Class_Library {
             this.Tables.Add(this.tableMemory);
             this.tableProgram = new ProgramDataTable();
             this.Tables.Add(this.tableProgram);
+            this.tableInstruction = new InstructionDataTable();
+            this.Tables.Add(this.tableInstruction);
+            this.tableArgument = new ArgumentDataTable();
+            this.Tables.Add(this.tableArgument);
+            this.tableLabel = new LabelDataTable();
+            this.Tables.Add(this.tableLabel);
             ForeignKeyConstraint fkc;
             fkc = new ForeignKeyConstraint("Card_CardSlot", new DataColumn[] {
                         this.tableCard.Card_IdColumn}, new DataColumn[] {
@@ -375,6 +450,27 @@ namespace HP67_Class_Library {
             fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = System.Data.Rule.Cascade;
             fkc.UpdateRule = System.Data.Rule.Cascade;
+            fkc = new ForeignKeyConstraint("Program_Instruction", new DataColumn[] {
+                        this.tableProgram.Program_IdColumn}, new DataColumn[] {
+                        this.tableInstruction.Program_IdColumn});
+            this.tableInstruction.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = System.Data.Rule.Cascade;
+            fkc.UpdateRule = System.Data.Rule.Cascade;
+            fkc = new ForeignKeyConstraint("Instruction_Argument", new DataColumn[] {
+                        this.tableInstruction.Instruction_IdColumn}, new DataColumn[] {
+                        this.tableArgument.Instruction_IdColumn});
+            this.tableArgument.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = System.Data.Rule.Cascade;
+            fkc.UpdateRule = System.Data.Rule.Cascade;
+            fkc = new ForeignKeyConstraint("Program_Label", new DataColumn[] {
+                        this.tableProgram.Program_IdColumn}, new DataColumn[] {
+                        this.tableLabel.Program_IdColumn});
+            this.tableLabel.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = System.Data.Rule.Cascade;
+            fkc.UpdateRule = System.Data.Rule.Cascade;
             this.relationCardSlot_TextBox = new DataRelation("CardSlot_TextBox", new DataColumn[] {
                         this.tableCardSlot.CardSlot_IdColumn}, new DataColumn[] {
                         this.tableTextBox.CardSlot_IdColumn}, false);
@@ -390,6 +486,21 @@ namespace HP67_Class_Library {
                         this.tableFlag.Engine_IdColumn}, false);
             this.relationEngine_Flag.Nested = true;
             this.Relations.Add(this.relationEngine_Flag);
+            this.relationInstruction_Argument = new DataRelation("Instruction_Argument", new DataColumn[] {
+                        this.tableInstruction.Instruction_IdColumn}, new DataColumn[] {
+                        this.tableArgument.Instruction_IdColumn}, false);
+            this.relationInstruction_Argument.Nested = true;
+            this.Relations.Add(this.relationInstruction_Argument);
+            this.relationProgram_Instruction = new DataRelation("Program_Instruction", new DataColumn[] {
+                        this.tableProgram.Program_IdColumn}, new DataColumn[] {
+                        this.tableInstruction.Program_IdColumn}, false);
+            this.relationProgram_Instruction.Nested = true;
+            this.Relations.Add(this.relationProgram_Instruction);
+            this.relationProgram_Label = new DataRelation("Program_Label", new DataColumn[] {
+                        this.tableProgram.Program_IdColumn}, new DataColumn[] {
+                        this.tableLabel.Program_IdColumn}, false);
+            this.relationProgram_Label.Nested = true;
+            this.Relations.Add(this.relationProgram_Label);
             this.relationCard_CardSlot = new DataRelation("Card_CardSlot", new DataColumn[] {
                         this.tableCard.Card_IdColumn}, new DataColumn[] {
                         this.tableCardSlot.Card_IdColumn}, false);
@@ -453,6 +564,18 @@ namespace HP67_Class_Library {
             return false;
         }
         
+        private bool ShouldSerializeInstruction() {
+            return false;
+        }
+        
+        private bool ShouldSerializeArgument() {
+            return false;
+        }
+        
+        private bool ShouldSerializeLabel() {
+            return false;
+        }
+        
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -476,6 +599,12 @@ namespace HP67_Class_Library {
         public delegate void MemoryRowChangeEventHandler(object sender, MemoryRowChangeEvent e);
         
         public delegate void ProgramRowChangeEventHandler(object sender, ProgramRowChangeEvent e);
+        
+        public delegate void InstructionRowChangeEventHandler(object sender, InstructionRowChangeEvent e);
+        
+        public delegate void ArgumentRowChangeEventHandler(object sender, ArgumentRowChangeEvent e);
+        
+        public delegate void LabelRowChangeEventHandler(object sender, LabelRowChangeEvent e);
         
         [System.Diagnostics.DebuggerStepThrough()]
         public class CardDataTable : DataTable, System.Collections.IEnumerable {
@@ -2296,9 +2425,11 @@ namespace HP67_Class_Library {
         [System.Diagnostics.DebuggerStepThrough()]
         public class ProgramDataTable : DataTable, System.Collections.IEnumerable {
             
-            private DataColumn columnId;
+            private DataColumn columnInstructionCount;
             
-            private DataColumn columnInstruction;
+            private DataColumn columnLabelCount;
+            
+            private DataColumn columnProgram_Id;
             
             private DataColumn columnCard_Id;
             
@@ -2330,15 +2461,21 @@ namespace HP67_Class_Library {
                 }
             }
             
-            internal DataColumn IdColumn {
+            internal DataColumn InstructionCountColumn {
                 get {
-                    return this.columnId;
+                    return this.columnInstructionCount;
                 }
             }
             
-            internal DataColumn InstructionColumn {
+            internal DataColumn LabelCountColumn {
                 get {
-                    return this.columnInstruction;
+                    return this.columnLabelCount;
+                }
+            }
+            
+            internal DataColumn Program_IdColumn {
+                get {
+                    return this.columnProgram_Id;
                 }
             }
             
@@ -2366,11 +2503,12 @@ namespace HP67_Class_Library {
                 this.Rows.Add(row);
             }
             
-            public ProgramRow AddProgramRow(short Id, string Instruction, CardRow parentCardRowByCard_Program) {
+            public ProgramRow AddProgramRow(int InstructionCount, int LabelCount, CardRow parentCardRowByCard_Program) {
                 ProgramRow rowProgramRow = ((ProgramRow)(this.NewRow()));
                 rowProgramRow.ItemArray = new object[] {
-                        Id,
-                        Instruction,
+                        InstructionCount,
+                        LabelCount,
+                        null,
                         parentCardRowByCard_Program[0]};
                 this.Rows.Add(rowProgramRow);
                 return rowProgramRow;
@@ -2391,20 +2529,26 @@ namespace HP67_Class_Library {
             }
             
             internal void InitVars() {
-                this.columnId = this.Columns["Id"];
-                this.columnInstruction = this.Columns["Instruction"];
+                this.columnInstructionCount = this.Columns["InstructionCount"];
+                this.columnLabelCount = this.Columns["LabelCount"];
+                this.columnProgram_Id = this.Columns["Program_Id"];
                 this.columnCard_Id = this.Columns["Card_Id"];
             }
             
             private void InitClass() {
-                this.columnId = new DataColumn("Id", typeof(short), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnId);
-                this.columnInstruction = new DataColumn("Instruction", typeof(string), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnInstruction);
+                this.columnInstructionCount = new DataColumn("InstructionCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnInstructionCount);
+                this.columnLabelCount = new DataColumn("LabelCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnLabelCount);
+                this.columnProgram_Id = new DataColumn("Program_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnProgram_Id);
                 this.columnCard_Id = new DataColumn("Card_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnCard_Id);
-                this.columnId.AllowDBNull = false;
-                this.columnInstruction.AllowDBNull = false;
+                this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
+                                this.columnProgram_Id}, true));
+                this.columnProgram_Id.AutoIncrement = true;
+                this.columnProgram_Id.AllowDBNull = false;
+                this.columnProgram_Id.Unique = true;
             }
             
             public ProgramRow NewProgramRow() {
@@ -2462,21 +2606,31 @@ namespace HP67_Class_Library {
                 this.tableProgram = ((ProgramDataTable)(this.Table));
             }
             
-            public short Id {
+            public int InstructionCount {
                 get {
-                    return ((short)(this[this.tableProgram.IdColumn]));
+                    try {
+                        return ((int)(this[this.tableProgram.InstructionCountColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableProgram.IdColumn] = value;
+                    this[this.tableProgram.InstructionCountColumn] = value;
                 }
             }
             
-            public string Instruction {
+            public int LabelCount {
                 get {
-                    return ((string)(this[this.tableProgram.InstructionColumn]));
+                    try {
+                        return ((int)(this[this.tableProgram.LabelCountColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableProgram.InstructionColumn] = value;
+                    this[this.tableProgram.LabelCountColumn] = value;
                 }
             }
             
@@ -2487,6 +2641,30 @@ namespace HP67_Class_Library {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Card_Program"]);
                 }
+            }
+            
+            public bool IsInstructionCountNull() {
+                return this.IsNull(this.tableProgram.InstructionCountColumn);
+            }
+            
+            public void SetInstructionCountNull() {
+                this[this.tableProgram.InstructionCountColumn] = System.Convert.DBNull;
+            }
+            
+            public bool IsLabelCountNull() {
+                return this.IsNull(this.tableProgram.LabelCountColumn);
+            }
+            
+            public void SetLabelCountNull() {
+                this[this.tableProgram.LabelCountColumn] = System.Convert.DBNull;
+            }
+            
+            public InstructionRow[] GetInstructionRows() {
+                return ((InstructionRow[])(this.GetChildRows(this.Table.ChildRelations["Program_Instruction"])));
+            }
+            
+            public LabelRow[] GetLabelRows() {
+                return ((LabelRow[])(this.GetChildRows(this.Table.ChildRelations["Program_Label"])));
             }
         }
         
@@ -2503,6 +2681,795 @@ namespace HP67_Class_Library {
             }
             
             public ProgramRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            public DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class InstructionDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnStep;
+            
+            private DataColumn columnText;
+            
+            private DataColumn columnInstruction;
+            
+            private DataColumn columnArgumentCount;
+            
+            private DataColumn columnInstruction_Id;
+            
+            private DataColumn columnProgram_Id;
+            
+            internal InstructionDataTable() : 
+                    base("Instruction") {
+                this.InitClass();
+            }
+            
+            internal InstructionDataTable(DataTable table) : 
+                    base(table.TableName) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+                this.DisplayExpression = table.DisplayExpression;
+            }
+            
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            internal DataColumn StepColumn {
+                get {
+                    return this.columnStep;
+                }
+            }
+            
+            internal DataColumn TextColumn {
+                get {
+                    return this.columnText;
+                }
+            }
+            
+            internal DataColumn InstructionColumn {
+                get {
+                    return this.columnInstruction;
+                }
+            }
+            
+            internal DataColumn ArgumentCountColumn {
+                get {
+                    return this.columnArgumentCount;
+                }
+            }
+            
+            internal DataColumn Instruction_IdColumn {
+                get {
+                    return this.columnInstruction_Id;
+                }
+            }
+            
+            internal DataColumn Program_IdColumn {
+                get {
+                    return this.columnProgram_Id;
+                }
+            }
+            
+            public InstructionRow this[int index] {
+                get {
+                    return ((InstructionRow)(this.Rows[index]));
+                }
+            }
+            
+            public event InstructionRowChangeEventHandler InstructionRowChanged;
+            
+            public event InstructionRowChangeEventHandler InstructionRowChanging;
+            
+            public event InstructionRowChangeEventHandler InstructionRowDeleted;
+            
+            public event InstructionRowChangeEventHandler InstructionRowDeleting;
+            
+            public void AddInstructionRow(InstructionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            public InstructionRow AddInstructionRow(int Step, string Text, string Instruction, int ArgumentCount, ProgramRow parentProgramRowByProgram_Instruction) {
+                InstructionRow rowInstructionRow = ((InstructionRow)(this.NewRow()));
+                rowInstructionRow.ItemArray = new object[] {
+                        Step,
+                        Text,
+                        Instruction,
+                        ArgumentCount,
+                        null,
+                        parentProgramRowByProgram_Instruction[2]};
+                this.Rows.Add(rowInstructionRow);
+                return rowInstructionRow;
+            }
+            
+            public System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            public override DataTable Clone() {
+                InstructionDataTable cln = ((InstructionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            protected override DataTable CreateInstance() {
+                return new InstructionDataTable();
+            }
+            
+            internal void InitVars() {
+                this.columnStep = this.Columns["Step"];
+                this.columnText = this.Columns["Text"];
+                this.columnInstruction = this.Columns["Instruction"];
+                this.columnArgumentCount = this.Columns["ArgumentCount"];
+                this.columnInstruction_Id = this.Columns["Instruction_Id"];
+                this.columnProgram_Id = this.Columns["Program_Id"];
+            }
+            
+            private void InitClass() {
+                this.columnStep = new DataColumn("Step", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnStep);
+                this.columnText = new DataColumn("Text", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnText);
+                this.columnInstruction = new DataColumn("Instruction", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnInstruction);
+                this.columnArgumentCount = new DataColumn("ArgumentCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnArgumentCount);
+                this.columnInstruction_Id = new DataColumn("Instruction_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnInstruction_Id);
+                this.columnProgram_Id = new DataColumn("Program_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnProgram_Id);
+                this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
+                                this.columnInstruction_Id}, true));
+                this.columnStep.AllowDBNull = false;
+                this.columnText.AllowDBNull = false;
+                this.columnInstruction.AllowDBNull = false;
+                this.columnInstruction_Id.AutoIncrement = true;
+                this.columnInstruction_Id.AllowDBNull = false;
+                this.columnInstruction_Id.Unique = true;
+            }
+            
+            public InstructionRow NewInstructionRow() {
+                return ((InstructionRow)(this.NewRow()));
+            }
+            
+            protected override DataRow NewRowFromBuilder(DataRowBuilder builder) {
+                return new InstructionRow(builder);
+            }
+            
+            protected override System.Type GetRowType() {
+                return typeof(InstructionRow);
+            }
+            
+            protected override void OnRowChanged(DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.InstructionRowChanged != null)) {
+                    this.InstructionRowChanged(this, new InstructionRowChangeEvent(((InstructionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowChanging(DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.InstructionRowChanging != null)) {
+                    this.InstructionRowChanging(this, new InstructionRowChangeEvent(((InstructionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleted(DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.InstructionRowDeleted != null)) {
+                    this.InstructionRowDeleted(this, new InstructionRowChangeEvent(((InstructionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleting(DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.InstructionRowDeleting != null)) {
+                    this.InstructionRowDeleting(this, new InstructionRowChangeEvent(((InstructionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            public void RemoveInstructionRow(InstructionRow row) {
+                this.Rows.Remove(row);
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class InstructionRow : DataRow {
+            
+            private InstructionDataTable tableInstruction;
+            
+            internal InstructionRow(DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableInstruction = ((InstructionDataTable)(this.Table));
+            }
+            
+            public int Step {
+                get {
+                    return ((int)(this[this.tableInstruction.StepColumn]));
+                }
+                set {
+                    this[this.tableInstruction.StepColumn] = value;
+                }
+            }
+            
+            public string Text {
+                get {
+                    return ((string)(this[this.tableInstruction.TextColumn]));
+                }
+                set {
+                    this[this.tableInstruction.TextColumn] = value;
+                }
+            }
+            
+            public string Instruction {
+                get {
+                    return ((string)(this[this.tableInstruction.InstructionColumn]));
+                }
+                set {
+                    this[this.tableInstruction.InstructionColumn] = value;
+                }
+            }
+            
+            public int ArgumentCount {
+                get {
+                    try {
+                        return ((int)(this[this.tableInstruction.ArgumentCountColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInstruction.ArgumentCountColumn] = value;
+                }
+            }
+            
+            public ProgramRow ProgramRow {
+                get {
+                    return ((ProgramRow)(this.GetParentRow(this.Table.ParentRelations["Program_Instruction"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Program_Instruction"]);
+                }
+            }
+            
+            public bool IsArgumentCountNull() {
+                return this.IsNull(this.tableInstruction.ArgumentCountColumn);
+            }
+            
+            public void SetArgumentCountNull() {
+                this[this.tableInstruction.ArgumentCountColumn] = System.Convert.DBNull;
+            }
+            
+            public ArgumentRow[] GetArgumentRows() {
+                return ((ArgumentRow[])(this.GetChildRows(this.Table.ChildRelations["Instruction_Argument"])));
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class InstructionRowChangeEvent : EventArgs {
+            
+            private InstructionRow eventRow;
+            
+            private DataRowAction eventAction;
+            
+            public InstructionRowChangeEvent(InstructionRow row, DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            public InstructionRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            public DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class ArgumentDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnId;
+            
+            private DataColumn columnType;
+            
+            private DataColumn columnValue;
+            
+            private DataColumn columnInstruction_Id;
+            
+            internal ArgumentDataTable() : 
+                    base("Argument") {
+                this.InitClass();
+            }
+            
+            internal ArgumentDataTable(DataTable table) : 
+                    base(table.TableName) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+                this.DisplayExpression = table.DisplayExpression;
+            }
+            
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            internal DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            internal DataColumn TypeColumn {
+                get {
+                    return this.columnType;
+                }
+            }
+            
+            internal DataColumn ValueColumn {
+                get {
+                    return this.columnValue;
+                }
+            }
+            
+            internal DataColumn Instruction_IdColumn {
+                get {
+                    return this.columnInstruction_Id;
+                }
+            }
+            
+            public ArgumentRow this[int index] {
+                get {
+                    return ((ArgumentRow)(this.Rows[index]));
+                }
+            }
+            
+            public event ArgumentRowChangeEventHandler ArgumentRowChanged;
+            
+            public event ArgumentRowChangeEventHandler ArgumentRowChanging;
+            
+            public event ArgumentRowChangeEventHandler ArgumentRowDeleted;
+            
+            public event ArgumentRowChangeEventHandler ArgumentRowDeleting;
+            
+            public void AddArgumentRow(ArgumentRow row) {
+                this.Rows.Add(row);
+            }
+            
+            public ArgumentRow AddArgumentRow(int Id, string Type, string Value, InstructionRow parentInstructionRowByInstruction_Argument) {
+                ArgumentRow rowArgumentRow = ((ArgumentRow)(this.NewRow()));
+                rowArgumentRow.ItemArray = new object[] {
+                        Id,
+                        Type,
+                        Value,
+                        parentInstructionRowByInstruction_Argument[4]};
+                this.Rows.Add(rowArgumentRow);
+                return rowArgumentRow;
+            }
+            
+            public System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            public override DataTable Clone() {
+                ArgumentDataTable cln = ((ArgumentDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            protected override DataTable CreateInstance() {
+                return new ArgumentDataTable();
+            }
+            
+            internal void InitVars() {
+                this.columnId = this.Columns["Id"];
+                this.columnType = this.Columns["Type"];
+                this.columnValue = this.Columns["Value"];
+                this.columnInstruction_Id = this.Columns["Instruction_Id"];
+            }
+            
+            private void InitClass() {
+                this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnId);
+                this.columnType = new DataColumn("Type", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnType);
+                this.columnValue = new DataColumn("Value", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnValue);
+                this.columnInstruction_Id = new DataColumn("Instruction_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnInstruction_Id);
+                this.columnId.AllowDBNull = false;
+                this.columnType.AllowDBNull = false;
+                this.columnValue.AllowDBNull = false;
+            }
+            
+            public ArgumentRow NewArgumentRow() {
+                return ((ArgumentRow)(this.NewRow()));
+            }
+            
+            protected override DataRow NewRowFromBuilder(DataRowBuilder builder) {
+                return new ArgumentRow(builder);
+            }
+            
+            protected override System.Type GetRowType() {
+                return typeof(ArgumentRow);
+            }
+            
+            protected override void OnRowChanged(DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ArgumentRowChanged != null)) {
+                    this.ArgumentRowChanged(this, new ArgumentRowChangeEvent(((ArgumentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowChanging(DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ArgumentRowChanging != null)) {
+                    this.ArgumentRowChanging(this, new ArgumentRowChangeEvent(((ArgumentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleted(DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ArgumentRowDeleted != null)) {
+                    this.ArgumentRowDeleted(this, new ArgumentRowChangeEvent(((ArgumentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleting(DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ArgumentRowDeleting != null)) {
+                    this.ArgumentRowDeleting(this, new ArgumentRowChangeEvent(((ArgumentRow)(e.Row)), e.Action));
+                }
+            }
+            
+            public void RemoveArgumentRow(ArgumentRow row) {
+                this.Rows.Remove(row);
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class ArgumentRow : DataRow {
+            
+            private ArgumentDataTable tableArgument;
+            
+            internal ArgumentRow(DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableArgument = ((ArgumentDataTable)(this.Table));
+            }
+            
+            public int Id {
+                get {
+                    return ((int)(this[this.tableArgument.IdColumn]));
+                }
+                set {
+                    this[this.tableArgument.IdColumn] = value;
+                }
+            }
+            
+            public string Type {
+                get {
+                    return ((string)(this[this.tableArgument.TypeColumn]));
+                }
+                set {
+                    this[this.tableArgument.TypeColumn] = value;
+                }
+            }
+            
+            public string Value {
+                get {
+                    return ((string)(this[this.tableArgument.ValueColumn]));
+                }
+                set {
+                    this[this.tableArgument.ValueColumn] = value;
+                }
+            }
+            
+            public InstructionRow InstructionRow {
+                get {
+                    return ((InstructionRow)(this.GetParentRow(this.Table.ParentRelations["Instruction_Argument"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Instruction_Argument"]);
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class ArgumentRowChangeEvent : EventArgs {
+            
+            private ArgumentRow eventRow;
+            
+            private DataRowAction eventAction;
+            
+            public ArgumentRowChangeEvent(ArgumentRow row, DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            public ArgumentRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            public DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class LabelDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnId;
+            
+            private DataColumn columnStep;
+            
+            private DataColumn columnProgram_Id;
+            
+            internal LabelDataTable() : 
+                    base("Label") {
+                this.InitClass();
+            }
+            
+            internal LabelDataTable(DataTable table) : 
+                    base(table.TableName) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+                this.DisplayExpression = table.DisplayExpression;
+            }
+            
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            internal DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            internal DataColumn StepColumn {
+                get {
+                    return this.columnStep;
+                }
+            }
+            
+            internal DataColumn Program_IdColumn {
+                get {
+                    return this.columnProgram_Id;
+                }
+            }
+            
+            public LabelRow this[int index] {
+                get {
+                    return ((LabelRow)(this.Rows[index]));
+                }
+            }
+            
+            public event LabelRowChangeEventHandler LabelRowChanged;
+            
+            public event LabelRowChangeEventHandler LabelRowChanging;
+            
+            public event LabelRowChangeEventHandler LabelRowDeleted;
+            
+            public event LabelRowChangeEventHandler LabelRowDeleting;
+            
+            public void AddLabelRow(LabelRow row) {
+                this.Rows.Add(row);
+            }
+            
+            public LabelRow AddLabelRow(int Id, int Step, ProgramRow parentProgramRowByProgram_Label) {
+                LabelRow rowLabelRow = ((LabelRow)(this.NewRow()));
+                rowLabelRow.ItemArray = new object[] {
+                        Id,
+                        Step,
+                        parentProgramRowByProgram_Label[2]};
+                this.Rows.Add(rowLabelRow);
+                return rowLabelRow;
+            }
+            
+            public System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            public override DataTable Clone() {
+                LabelDataTable cln = ((LabelDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            protected override DataTable CreateInstance() {
+                return new LabelDataTable();
+            }
+            
+            internal void InitVars() {
+                this.columnId = this.Columns["Id"];
+                this.columnStep = this.Columns["Step"];
+                this.columnProgram_Id = this.Columns["Program_Id"];
+            }
+            
+            private void InitClass() {
+                this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnId);
+                this.columnStep = new DataColumn("Step", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnStep);
+                this.columnProgram_Id = new DataColumn("Program_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnProgram_Id);
+            }
+            
+            public LabelRow NewLabelRow() {
+                return ((LabelRow)(this.NewRow()));
+            }
+            
+            protected override DataRow NewRowFromBuilder(DataRowBuilder builder) {
+                return new LabelRow(builder);
+            }
+            
+            protected override System.Type GetRowType() {
+                return typeof(LabelRow);
+            }
+            
+            protected override void OnRowChanged(DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.LabelRowChanged != null)) {
+                    this.LabelRowChanged(this, new LabelRowChangeEvent(((LabelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowChanging(DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.LabelRowChanging != null)) {
+                    this.LabelRowChanging(this, new LabelRowChangeEvent(((LabelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleted(DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.LabelRowDeleted != null)) {
+                    this.LabelRowDeleted(this, new LabelRowChangeEvent(((LabelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleting(DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.LabelRowDeleting != null)) {
+                    this.LabelRowDeleting(this, new LabelRowChangeEvent(((LabelRow)(e.Row)), e.Action));
+                }
+            }
+            
+            public void RemoveLabelRow(LabelRow row) {
+                this.Rows.Remove(row);
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class LabelRow : DataRow {
+            
+            private LabelDataTable tableLabel;
+            
+            internal LabelRow(DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableLabel = ((LabelDataTable)(this.Table));
+            }
+            
+            public int Id {
+                get {
+                    try {
+                        return ((int)(this[this.tableLabel.IdColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLabel.IdColumn] = value;
+                }
+            }
+            
+            public int Step {
+                get {
+                    try {
+                        return ((int)(this[this.tableLabel.StepColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLabel.StepColumn] = value;
+                }
+            }
+            
+            public ProgramRow ProgramRow {
+                get {
+                    return ((ProgramRow)(this.GetParentRow(this.Table.ParentRelations["Program_Label"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Program_Label"]);
+                }
+            }
+            
+            public bool IsIdNull() {
+                return this.IsNull(this.tableLabel.IdColumn);
+            }
+            
+            public void SetIdNull() {
+                this[this.tableLabel.IdColumn] = System.Convert.DBNull;
+            }
+            
+            public bool IsStepNull() {
+                return this.IsNull(this.tableLabel.StepColumn);
+            }
+            
+            public void SetStepNull() {
+                this[this.tableLabel.StepColumn] = System.Convert.DBNull;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class LabelRowChangeEvent : EventArgs {
+            
+            private LabelRow eventRow;
+            
+            private DataRowAction eventAction;
+            
+            public LabelRowChangeEvent(LabelRow row, DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            public LabelRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -68,8 +68,35 @@
 							<xs:element name="Program">
 								<xs:complexType>
 									<xs:sequence minOccurs="0" maxOccurs="unbounded">
-										<xs:element name="Id" type="xs:short" />
-										<xs:element name="Instruction" type="xs:string" />
+										<xs:element name="Instruction">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Step" type="xs:int" />
+													<xs:element name="Text" type="xs:string" />
+													<xs:element name="Instruction" type="xs:string" />
+													<xs:element name="Argument">
+														<xs:complexType>
+															<xs:sequence minOccurs="0" maxOccurs="unbounded">
+																<xs:element name="Id" type="xs:int" />
+																<xs:element name="Type" type="xs:string" />
+																<xs:element name="Value" type="xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="ArgumentCount" type="xs:int" minOccurs="0" />
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Label" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="Id" type="xs:int" minOccurs="0" />
+													<xs:element name="Step" type="xs:int" minOccurs="0" />
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="InstructionCount" type="xs:int" minOccurs="0" />
+										<xs:element name="LabelCount" type="xs:int" minOccurs="0" />
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
