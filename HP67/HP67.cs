@@ -69,6 +69,9 @@ namespace HP67
 		private System.Windows.Forms.SaveFileDialog saveFileDialog;
 		private System.Windows.Forms.MenuItem saveAsItem;
 		private System.Windows.Forms.MenuItem saveMenuItem;
+		private System.Windows.Forms.MenuItem editMenuItem;
+		private System.Windows.Forms.MenuItem rtfMenuItem;
+		private System.Windows.Forms.MenuItem menuItem3;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -153,6 +156,9 @@ namespace HP67
 			this.saveAsItem = new System.Windows.Forms.MenuItem();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.editMenuItem = new System.Windows.Forms.MenuItem();
+			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
+			this.menuItem3 = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
 			// display
@@ -909,7 +915,10 @@ namespace HP67
 			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
 																						this.openItem,
 																						this.saveMenuItem,
-																						this.saveAsItem});
+																						this.saveAsItem,
+																						this.menuItem3,
+																						this.editMenuItem,
+																						this.rtfMenuItem});
 			// 
 			// openItem
 			// 
@@ -936,6 +945,23 @@ namespace HP67
 			// saveFileDialog
 			// 
 			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
+			// editMenuItem
+			// 
+			this.editMenuItem.Index = 4;
+			this.editMenuItem.Text = "&Edit Labels";
+			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
+			// 
+			// rtfMenuItem
+			// 
+			this.rtfMenuItem.Index = 5;
+			this.rtfMenuItem.Text = "&Rich Text";
+			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
+			// 
+			// menuItem3
+			// 
+			this.menuItem3.Index = 3;
+			this.menuItem3.Text = "-";
 			// 
 			// HP67
 			// 
@@ -1068,6 +1094,35 @@ namespace HP67
 					Card.Write (stream);
 					stream.Close ();
 				}
+			}
+		}
+
+		private void editMenuItem_Click(object sender, System.EventArgs e)
+		{
+			if (cardSlot.State != CardSlotState.Unloaded) 
+			{
+				bool isChecked = ((MenuItem) sender).Checked;
+				isChecked = ! isChecked;
+				((MenuItem) sender).Checked = isChecked;
+				if (isChecked) 
+				{
+					cardSlot.State = CardSlotState.Editable;
+				}
+				else
+				{
+					cardSlot.State = CardSlotState.ReadWrite;
+				}
+			}
+		}
+
+		private void rtfMenuItem_Click(object sender, System.EventArgs e)
+		{
+			if (cardSlot.State != CardSlotState.Unloaded) 
+			{
+				bool isChecked = ((MenuItem) sender).Checked;
+				isChecked = ! isChecked;
+				((MenuItem) sender).Checked = isChecked;
+				cardSlot.RichText = isChecked;
 			}
 		}
 

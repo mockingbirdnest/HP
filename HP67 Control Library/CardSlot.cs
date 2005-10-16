@@ -678,6 +678,7 @@ namespace HP67_Control_Library
 			}
 			if (editable) 
 			{
+				// TODO: Not exactly user-friendly, as we lose the previous values...
 				titleTextBox.Text = "<TITLE>";
 				textBoxes [0].Text = "<A>";
 				textBoxes [1].Text = "<B>";
@@ -734,6 +735,64 @@ namespace HP67_Control_Library
 		#endregion
 
 		#region Public Properties
+
+		public override System.Drawing.Font Font
+		{
+			get
+			{
+				return font;
+			}
+			set
+			{
+				font = value;
+				largeFont = new System.Drawing.Font
+					(font.Name,
+					font.SizeInPoints * sizeIncrease,
+					System.Drawing.FontStyle.Bold);
+				titleTextBox.Font = font;
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
+				{
+					t.Font = font;
+				}
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)
+				{
+					t.Font = font;
+				}
+				foreach (System.Windows.Forms.Label l in labels)  
+				{
+					l.Font = largeFont;
+				}
+			}
+		}
+
+		public int Margin
+		{
+			get
+			{
+				return margin;
+			}
+			set
+			{
+				int spacing = (this.Size.Width - 2 * value - 5 * textBoxWidth) / 4;
+
+				margin = value;
+				for (int i = 0; i < textBoxes.Length; i++)  
+				{
+					textBoxes [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), textBoxes [i].Location.Y);
+				}
+				for (int i = 0; i < fTextBoxes.Length; i++)  
+				{
+					fTextBoxes [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), fTextBoxes [i].Location.Y);
+				}
+				for (int i = 0; i < labels.Length; i++)  
+				{
+					labels [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), labels [i].Location.Y);
+				}
+			}
+		}
 
 		public bool RichText 
 		{
@@ -842,64 +901,6 @@ namespace HP67_Control_Library
 						SetLoaded (true);
 						break;
 					}
-				}
-			}
-		}
-
-		public override System.Drawing.Font Font
-		{
-			get
-			{
-				return font;
-			}
-			set
-			{
-				font = value;
-				largeFont = new System.Drawing.Font
-					(font.Name,
-					font.SizeInPoints * sizeIncrease,
-					System.Drawing.FontStyle.Bold);
-				titleTextBox.Font = font;
-				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
-				{
-					t.Font = font;
-				}
-				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)
-				{
-					t.Font = font;
-				}
-				foreach (System.Windows.Forms.Label l in labels)  
-				{
-					l.Font = largeFont;
-				}
-			}
-		}
-
-		public int Margin
-		{
-			get
-			{
-				return margin;
-			}
-			set
-			{
-				int spacing = (this.Size.Width - 2 * value - 5 * textBoxWidth) / 4;
-
-				margin = value;
-				for (int i = 0; i < textBoxes.Length; i++)  
-				{
-					textBoxes [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), textBoxes [i].Location.Y);
-				}
-				for (int i = 0; i < fTextBoxes.Length; i++)  
-				{
-					fTextBoxes [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), fTextBoxes [i].Location.Y);
-				}
-				for (int i = 0; i < labels.Length; i++)  
-				{
-					labels [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), labels [i].Location.Y);
 				}
 			}
 		}
