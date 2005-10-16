@@ -3,6 +3,8 @@ using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using HP67_Control_Library;
 using HP67_Parser;
+using HP67_Persistence;
+
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -65,8 +67,8 @@ namespace HP67_Class_Library
 				labels [i] = noStep;
 			}
 			returns = new int [3] {noStep, noStep, noStep};
-			Card.ReadFromDataset += new HP67_Class_Library.Card.DatasetIODelegate(ReadFromDataset);
-			Card.WriteToDataset += new HP67_Class_Library.Card.DatasetIODelegate(WriteToDataset);
+			Card.ReadFromDataset += new HP67_Persistence.Card.DatasetIODelegate(ReadFromDataset);
+			Card.WriteToDataset += new HP67_Persistence.Card.DatasetIODelegate(WriteToDataset);
 		}
 
 		#endregion
