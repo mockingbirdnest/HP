@@ -1,6 +1,8 @@
 using HP67_Control_Library;
+using HP67_Persistence;
 using System;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace HP67_Class_Library
 {
@@ -12,6 +14,45 @@ namespace HP67_Class_Library
 	/// </summary>
 	public abstract class Argument : Object
 	{
+		protected abstract new string ToString ();
+
+		public static object ReadFromArgumentRow (CardDataset.ArgumentRow ar)
+		{
+			Type type = Type.GetType (ar.Type);
+			ConstructorInfo [] constructors =
+				type.GetConstructors (
+					BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+
+			// To build an instance of argument we favor parameterless constructors and
+			// constructors that take a single character.  This could be modified if needed.
+			foreach (ConstructorInfo c in constructors) 
+			{
+				ParameterInfo [] parameters = c.GetParameters ();
+				switch (parameters.Length) 
+				{
+					case 0:
+						return c.Invoke (new object [0]);
+					case 1:
+						if (parameters [0].ParameterType == typeof (char))
+						{
+							char ch = ar.Value [0];
+							return c.Invoke (new object [1] {ch});
+						}
+						break;
+					default:
+						Trace.Assert (false);
+						return null;
+				}
+			}
+			Trace.Assert (false);
+			return null;
+		}
+
+		public void WriteToArgumentRow (CardDataset.ArgumentRow ar)
+		{
+			ar.Type = this.GetType ().ToString ();
+			ar.Value = ToString ();
+		}
 	}
 
 	public interface IAddress 
@@ -39,6 +80,16 @@ namespace HP67_Class_Library
 	public class Digit : Argument, IAddress, IDigits, ILabel
 	{
 		private byte digit;
+
+		protected override string ToString ()
+		{
+			return digit.ToString ();
+		}
+
+		private Digit (char c)
+		{
+			digit = byte.Parse (new String (c, 1));
+		}
 
 		public Digit (byte d) 
 		{
@@ -86,6 +137,11 @@ namespace HP67_Class_Library
 
 	public class Indexed : Argument, IAddress, IDigits, ILabel
 	{
+		protected override string ToString ()
+		{
+			return "";
+		}
+
 		public Indexed () 
 		{
 		}
@@ -134,6 +190,11 @@ namespace HP67_Class_Library
 	public class Letter : Argument, IAddress, ILabel
 	{
 		private char letter;
+
+		protected override string ToString ()
+		{
+			return new String (letter, 1);
+		}
 
 		public Letter (char l) 
 		{
@@ -184,6 +245,31 @@ namespace HP67_Class_Library
 	{
 		private Memory.Operator op;
 
+		protected override string ToString ()
+		{
+			if (op == new Memory.Operator (Addition))
+			{
+				return "+";
+			}
+			else if (op == new Memory.Operator (Subtraction))
+			{
+				return "-";
+			}
+			else if (op == new Memory.Operator (Multiplication))
+			{
+				return "*";
+			}
+			else if (op == new Memory.Operator (Division))
+			{
+				return "/";
+			}
+			else
+			{
+				Trace.Assert (false);
+				return ""; // To make the compiler happy.
+			}
+		}
+
 		static public double Addition (double x, double y)
 		{
 			return x + y;
@@ -208,6 +294,25 @@ namespace HP67_Class_Library
 			else
 			{
 				return x / y;
+			}
+		}
+
+		private Operator (char c) 
+		{
+			switch (c) 
+			{
+				case '+' :
+					op = new Memory.Operator (Addition);
+					break;
+				case '-' :
+					op = new Memory.Operator (Subtraction);
+					break;
+				case '*' :
+					op = new Memory.Operator (Multiplication);
+					break;
+				case '/' :
+					op = new Memory.Operator (Division);
+					break;
 			}
 		}
 

@@ -97,31 +97,7 @@ namespace HP67_Class_Library
 				foreach (CardDataset.ArgumentRow ar in ars) 
 				{
 					Argument argument;
-					// TODO: Use object factory?
-					if (ar.Type == typeof (Digit).ToString ()) 
-					{
-						argument = new Digit (byte.Parse (ar.Value));
-					}
-					else if (ar.Type == typeof (Indexed).ToString ())
-					{
-						argument = new Indexed ();
-						Trace.Assert (ar.Value == "");
-					}
-					else if (ar.Type == typeof (Letter).ToString ())
-					{
-						argument = new Letter (ar.Value [0]);
-					}
-					else if (ar.Type == typeof (Operator).ToString ())
-					{
-						argument =
-							new Operator (
-								(Memory.Operator) Enum.Parse (typeof (Memory.Operator), ar.Value));
-					}
-					else 
-					{
-						Trace.Assert (false);
-						argument = new Digit (0); // To make the compiler happy.
-					}
+					argument = (Argument) Argument.ReadFromArgumentRow (ar);
 					arguments [ar.Id] = argument;
 				}
 				instructions [ir.Step - 1] =
@@ -163,28 +139,7 @@ namespace HP67_Class_Library
 
 					ar = cds.Argument.NewArgumentRow ();
 					ar.Id = j;
-					ar.Type = argument.GetType ().ToString ();
-					// TODO: Use an object factory.
-					if (argument is Digit) 
-					{
-						ar.Value = (((Digit) argument).Value).ToString ();
-					}
-					else if (argument is Indexed)
-					{
-						ar.Value = "";
-					}
-					else if (argument is Letter) 
-					{
-						ar.Value = new String (((Letter) argument).Value, 1);
-					}
-					else if (argument is Operator) 
-					{
-						ar.Value = (((Operator) argument).Value).ToString ();
-					}
-					else
-					{
-						Trace.Assert (false);
-					}
+					argument.WriteToArgumentRow (ar);
 					ar.InstructionRow = ir;
 					cds.Argument.AddArgumentRow (ar);
 				}
