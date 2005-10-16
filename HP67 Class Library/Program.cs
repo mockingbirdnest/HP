@@ -102,14 +102,20 @@ namespace HP67_Class_Library
 					{
 						argument = new Digit (byte.Parse (ar.Value));
 					}
-					else if (ar.Type == typeof (Letter).ToString ())
-					{
-						argument = new Letter (ar.Value [0]);
-					}
 					else if (ar.Type == typeof (Indexed).ToString ())
 					{
 						argument = new Indexed ();
 						Trace.Assert (ar.Value == "");
+					}
+					else if (ar.Type == typeof (Letter).ToString ())
+					{
+						argument = new Letter (ar.Value [0]);
+					}
+					else if (ar.Type == typeof (Operator).ToString ())
+					{
+						argument =
+							new Operator (
+								(Memory.Operator) Enum.Parse (typeof (Memory.Operator), ar.Value));
 					}
 					else 
 					{
@@ -163,13 +169,17 @@ namespace HP67_Class_Library
 					{
 						ar.Value = (((Digit) argument).Value).ToString ();
 					}
+					else if (argument is Indexed)
+					{
+						ar.Value = "";
+					}
 					else if (argument is Letter) 
 					{
 						ar.Value = new String (((Letter) argument).Value, 1);
 					}
-					else if (argument is Indexed)
+					else if (argument is Operator) 
 					{
-						ar.Value = "";
+						ar.Value = (((Operator) argument).Value).ToString ();
 					}
 					else
 					{
