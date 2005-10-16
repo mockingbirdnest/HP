@@ -106,6 +106,11 @@ namespace HP67_Class_Library
 					{
 						argument = new Letter (ar.Value [0]);
 					}
+					else if (ar.Type == typeof (Indexed).ToString ())
+					{
+						argument = new Indexed ();
+						Trace.Assert (ar.Value == "");
+					}
 					else 
 					{
 						Trace.Assert (false);
@@ -161,6 +166,10 @@ namespace HP67_Class_Library
 					else if (argument is Letter) 
 					{
 						ar.Value = new String (((Letter) argument).Value, 1);
+					}
+					else if (argument is Indexed)
+					{
+						ar.Value = "";
 					}
 					else
 					{
