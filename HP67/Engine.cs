@@ -64,15 +64,15 @@ namespace HP67
 			theMemory = new Memory ();
 			theProgram = new Program (display);
 			theStack = new Stack (display);
-			Card.ReadFromDataset += new Card.DatasetIODelegate (ReadFromDataset);
-			Card.WriteToDataset += new Card.DatasetIODelegate (WriteToDataset);
+			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
 
 		#endregion
 
 		#region Event Handlers
 
-		public  void ReadFromDataset (CardDataset cds)
+		public  void ReadFromDataset (CardDataset cds, Parser parser)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.EngineRow er;
@@ -144,22 +144,6 @@ namespace HP67
 				default:
 					Trace.Assert (false);
 					return 0.0;
-			}
-		}
-
-		private void Save ()
-		{
-			SaveFileDialog dialog = new SaveFileDialog ();
-			Stream stream;
-
-			dialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*"  ;
-			if(dialog.ShowDialog() == DialogResult.OK)
-			{
-				if((stream = dialog.OpenFile()) != null)
-				{
-					Card.Write (stream);
-					stream.Close();
-				}
 			}
 		}
 
@@ -283,6 +267,7 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
+					// TODO: Unload the card slot.
 					stackLift = neutral;
 					theProgram.Clear ();
 					break;
@@ -664,7 +649,7 @@ namespace HP67
 					theStack.Y = r * Math.Sin (ToRadian (θ));
 					break;
 				case (int)SymbolConstants.SYMBOL_W_DATA :
-					Save ();
+					// TODO: Instruction.
 					break;
 				case (int)SymbolConstants.SYMBOL_X_AVERAGE :
 					theStack.Get (out x);

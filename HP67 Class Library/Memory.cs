@@ -1,4 +1,5 @@
-﻿using HP67_Persistence;
+﻿using HP67_Parser;
+using HP67_Persistence;
 using System;
 using System.Diagnostics;
 using System.Xml;
@@ -55,15 +56,15 @@ namespace HP67_Class_Library
 			{
 				registers[i] = 0.0;
 			}
-			Card.ReadFromDataset += new Card.DatasetIODelegate (ReadFromDataset);
-			Card.WriteToDataset += new Card.DatasetIODelegate (WriteToDataset);
+			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
 
 		#endregion
 
 		#region Event Handlers
 
-		public  void ReadFromDataset (CardDataset cds)
+		public  void ReadFromDataset (CardDataset cds, Parser parser)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.MemoryRow mr;

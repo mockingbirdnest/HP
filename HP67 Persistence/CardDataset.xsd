@@ -11,15 +11,19 @@
 							<xs:element name="CardSlot" minOccurs="1" maxOccurs="1">
 								<xs:complexType>
 									<xs:all>
-										<xs:element name="Font" type="xs:string" />
-										<xs:element name="LargeFont" type="xs:string" />
+										<xs:element name="FontName" type="xs:string" />
+										<xs:element name="FontSize" type="xs:float" minOccurs="0" />
+										<xs:element name="LargeFontName" type="xs:string" />
+										<xs:element name="LargeFontSize" type="xs:float" minOccurs="0" />
 										<xs:element name="Title" type="xs:string" />
 										<xs:element name="Margin" type="xs:int" />
 										<xs:element name="TextBoxWidth" type="xs:int" />
 										<xs:element name="IsRichText" type="xs:boolean" />
+										<xs:element name="TextBoxCount" type="xs:int" minOccurs="0" />
 										<xs:element name="TextBox">
 											<xs:complexType>
 												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="Id" type="xs:int" minOccurs="0" />
 													<xs:element name="Text" type="xs:string" />
 												</xs:sequence>
 											</xs:complexType>
@@ -27,6 +31,7 @@
 										<xs:element name="RTFBox">
 											<xs:complexType>
 												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="Id" type="xs:int" minOccurs="0" />
 													<xs:element name="RTF" type="xs:string" />
 												</xs:sequence>
 											</xs:complexType>
@@ -38,7 +43,7 @@
 								<xs:complexType>
 									<xs:all>
 										<xs:element name="Format" type="xs:string" />
-										<xs:element name="Digits" type="xs:short" />
+										<xs:element name="Digits" type="xs:unsignedByte" />
 									</xs:all>
 								</xs:complexType>
 							</xs:element>

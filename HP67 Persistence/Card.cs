@@ -1,3 +1,4 @@
+using HP67_Parser;
 using System;
 using System.IO;
 
@@ -12,9 +13,10 @@ namespace HP67_Persistence
 
 		#region Event Definitions
 
-		public delegate void DatasetIODelegate (CardDataset cds);
-		static public event DatasetIODelegate ReadFromDataset;
-		static public event DatasetIODelegate WriteToDataset;
+		public delegate void DatasetExporterDelegate (CardDataset cds);
+		public delegate void DatasetImporterDelegate (CardDataset cds, Parser parser);
+		static public event DatasetImporterDelegate ReadFromDataset;
+		static public event DatasetExporterDelegate WriteToDataset;
 
 		#endregion
 
@@ -28,7 +30,7 @@ namespace HP67_Persistence
 
 		#region Public Operations
 
-		static public void Read (Stream stream)
+		static public void Read (Stream stream, Parser parser)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
@@ -36,7 +38,7 @@ namespace HP67_Persistence
 			{
 				// TODO: Complain.
 			}
-			ReadFromDataset (cds);
+			ReadFromDataset (cds, parser);
 		}
 
 		static public void Write (Stream stream)

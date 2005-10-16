@@ -1,6 +1,9 @@
-﻿using System;
+﻿using HP67_Parser;
+using HP67_Persistence;
+using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
@@ -33,8 +36,8 @@ namespace HP67_Control_Library
 		private CardSlotState state;
 
 		private System.Windows.Forms.Label [] labels;
-		private System.Windows.Forms.Control [] textBoxs;
-		private System.Windows.Forms.Control [] fTextBoxs;
+		private System.Windows.Forms.Control [] textBoxes;
+		private System.Windows.Forms.Control [] fTextBoxes;
 
 		internal System.Windows.Forms.Panel cornerPanel;
 		internal System.Windows.Forms.Panel panel;
@@ -81,9 +84,9 @@ namespace HP67_Control_Library
 
 			labels = new System.Windows.Forms.Label [5]
 				{labelA, labelB, labelC, labelD, labelE};
-			textBoxs = new System.Windows.Forms.TextBox [5] 
+			textBoxes = new System.Windows.Forms.TextBox [5] 
 				{textBoxA, textBoxB, textBoxC, textBoxD, textBoxE};
-			fTextBoxs = new System.Windows.Forms.TextBox [5]
+			fTextBoxes = new System.Windows.Forms.TextBox [5]
 				{textBoxfA, textBoxfB, textBoxfC, textBoxfD, textBoxfE};
 
 			Font = new System.Drawing.Font
@@ -93,6 +96,8 @@ namespace HP67_Control_Library
 			RichText = true;
 			RichText = false;
 			Margin = 16;
+			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
 
 		/// <summary> 
@@ -552,6 +557,110 @@ namespace HP67_Control_Library
 			Margin = Margin;
 		}
 
+		public void ReadFromDataset (CardDataset cds, Parser parser)
+		{
+			// Beware, the XML file uses 1-based step numbers, but we must go back to 0-based
+			// numbers internally.
+			CardDataset.ArgumentRow [] ars;
+			CardDataset.CardRow cr;
+			CardDataset.InstructionRow [] irs;
+			CardDataset.LabelRow [] lrs;
+			CardDataset.ProgramRow pr;
+
+			CardDataset.CardSlotRow csr;
+
+			cr = cds.Card [0]; // TODO: I hate these zeros...
+			csr = cr.GetCardSlotRows () [0];
+			font = new Font (csr.FontName, csr.FontSize);
+			largeFont = new Font (csr.LargeFontName, csr.LargeFontSize);
+			Title = csr.Title;
+			Margin = csr.Margin;
+			TextBoxWidth = csr.TextBoxWidth;
+			RichText = csr.IsRichText;
+			if (richText) 
+			{
+//				textBoxes = new RichTextBox [csr.TextBoxCount];
+//				fTextBoxes = new RichTextBox [csr.TextBoxCount];
+				foreach (CardDataset.RTFBoxRow rbr in csr.GetRTFBoxRows ()) 
+				{
+					if (rbr.Id >= csr.TextBoxCount) 
+					{
+						((RichTextBox) fTextBoxes [rbr.Id - csr.TextBoxCount]).Rtf = rbr.RTF;
+					}
+					else 
+					{
+						((RichTextBox) textBoxes [rbr.Id]).Rtf = rbr.RTF;
+					}
+				}
+			}
+			else 
+			{
+//				textBoxes = new TextBox [csr.TextBoxCount];
+//				fTextBoxes = new TextBox [csr.TextBoxCount];
+				foreach (CardDataset.TextBoxRow tbr in csr.GetTextBoxRows ()) 
+				{
+					if (tbr.Id >= csr.TextBoxCount) 
+					{
+						fTextBoxes [tbr.Id - csr.TextBoxCount].Text = tbr.Text;
+					}
+					else
+					{
+						textBoxes [tbr.Id].Text = tbr.Text;
+					}
+				}
+			}
+		}
+
+		public  void WriteToDataset (CardDataset cds)
+		{
+			CardDataset.CardSlotRow csr;
+			CardDataset.TextBoxRow tbr;
+
+			csr = cds.CardSlot.NewCardSlotRow ();
+			csr.FontName = font.Name;
+			csr.FontSize = font.SizeInPoints;
+			csr.LargeFontName = largeFont.Name;
+			csr.LargeFontSize = largeFont.SizeInPoints;
+			csr.Title = titleTextBox.Text;
+			csr.Margin = margin;
+			csr.TextBoxWidth = textBoxWidth;
+			csr.IsRichText = richText;
+			csr.TextBoxCount = textBoxes.Length;
+			Trace.Assert (textBoxes.Length == fTextBoxes.Length);
+			csr.CardRow = cds.Card [0]; // TODO: should be passed in.
+			cds.CardSlot.AddCardSlotRow (csr);
+			for (int i = 0; i < textBoxes.Length; i++) 
+			{
+				tbr = cds.TextBox.NewTextBoxRow ();
+				tbr.Id = i;
+				if (richText) 
+				{
+					tbr.Text = ((RichTextBox) textBoxes [i]).Rtf;
+				}
+				else
+				{
+					tbr.Text = textBoxes [i].Text;
+				}
+				tbr.CardSlotRow = csr;
+				cds.TextBox.AddTextBoxRow (tbr);
+			}
+			for (int i = 0; i < fTextBoxes.Length; i++) 
+			{
+				tbr = cds.TextBox.NewTextBoxRow ();
+				tbr.Id = i + textBoxes.Length;
+				if (richText) 
+				{
+					tbr.Text = ((RichTextBox) fTextBoxes [i]).Rtf;
+				}
+				else
+				{
+					tbr.Text = fTextBoxes [i].Text;
+				}
+				tbr.CardSlotRow = csr;
+				cds.TextBox.AddTextBoxRow (tbr);
+			}
+		}
+		
 		#endregion
 
 		#region Private Operations
@@ -559,27 +668,27 @@ namespace HP67_Control_Library
 		private void SetEditable (bool editable)
 		{
 			titleTextBox.ReadOnly = !editable;
-			foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
+			foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 			{
 				t.ReadOnly = !editable;
 			}
-			foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)  
+			foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)  
 			{
 				t.ReadOnly = !editable;
 			}
 			if (editable) 
 			{
 				titleTextBox.Text = "<TITLE>";
-				textBoxs [0].Text = "<A>";
-				textBoxs [1].Text = "<B>";
-				textBoxs [2].Text = "<C>";
-				textBoxs [3].Text = "<D>";
-				textBoxs [4].Text = "<E>";
-				fTextBoxs [0].Text = "<fA>";
-				fTextBoxs [1].Text = "<fB>";
-				fTextBoxs [2].Text = "<fC>";
-				fTextBoxs [3].Text = "<fD>";
-				fTextBoxs [4].Text = "<fE>";
+				textBoxes [0].Text = "<A>";
+				textBoxes [1].Text = "<B>";
+				textBoxes [2].Text = "<C>";
+				textBoxes [3].Text = "<D>";
+				textBoxes [4].Text = "<E>";
+				fTextBoxes [0].Text = "<fA>";
+				fTextBoxes [1].Text = "<fB>";
+				fTextBoxes [2].Text = "<fC>";
+				fTextBoxes [3].Text = "<fD>";
+				fTextBoxes [4].Text = "<fE>";
 			}
 		}
 
@@ -589,11 +698,11 @@ namespace HP67_Control_Library
 			{
 				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 0);
 				titleTextBox.Visible = true;
-				foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
 					t.Visible = true;
 				}
-				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)  
 				{
 					t.Visible = true;
 				}
@@ -607,11 +716,11 @@ namespace HP67_Control_Library
 				cornerPanel.Visible = false;
 				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 64);
 				titleTextBox.Visible = false;
-				foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
 					t.Visible = false;
 				}
-				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)  
 				{
 					t.Visible = false;
 				}
@@ -640,31 +749,31 @@ namespace HP67_Control_Library
 				richText = value;
 
 				// Preserve the contents of the text boxes.
-				for (int i = 0; i < textBoxs.Length; i++) 
+				for (int i = 0; i < textBoxes.Length; i++) 
 				{
-					textBoxs [i].Visible = false;
-					text [i] = textBoxs [i].Text;
+					textBoxes [i].Visible = false;
+					text [i] = textBoxes [i].Text;
 				}
-				for (int i = 0; i < fTextBoxs.Length; i++) 
+				for (int i = 0; i < fTextBoxes.Length; i++) 
 				{
-					fTextBoxs [i].Visible = false;
-					fText [i] = fTextBoxs [i].Text;
+					fTextBoxes [i].Visible = false;
+					fText [i] = fTextBoxes [i].Text;
 				}
 				switch (richText) 
 				{
 					case false:
 					{
-						textBoxs = new System.Windows.Forms.TextBox [5] 
+						textBoxes = new System.Windows.Forms.TextBox [5] 
 							{textBoxA, textBoxB, textBoxC, textBoxD, textBoxE};
-						fTextBoxs = new System.Windows.Forms.TextBox [5]
+						fTextBoxes = new System.Windows.Forms.TextBox [5]
 							{textBoxfA, textBoxfB, textBoxfC, textBoxfD, textBoxfE};
 						break;
 					}
 					case true:
 					{
-						textBoxs = new System.Windows.Forms.RichTextBox [5] 
+						textBoxes = new System.Windows.Forms.RichTextBox [5] 
 							{rtfBoxA, rtfBoxB, rtfBoxC, rtfBoxD, rtfBoxE};
-						fTextBoxs = new System.Windows.Forms.RichTextBox [5]
+						fTextBoxes = new System.Windows.Forms.RichTextBox [5]
 							{rtfBoxFA, rtfBoxFB, rtfBoxFC, rtfBoxFD, rtfBoxFE};
 						break;
 					}
@@ -672,22 +781,22 @@ namespace HP67_Control_Library
 				State = State;
 
 				// Finally, restore the text and center it if need be.
-				for (int i = 0; i < textBoxs.Length; i++) 
+				for (int i = 0; i < textBoxes.Length; i++) 
 				{
-					textBoxs [i].Text = text [i];
+					textBoxes [i].Text = text [i];
 				}
-				for (int i = 0; i < fTextBoxs.Length; i++) 
+				for (int i = 0; i < fTextBoxes.Length; i++) 
 				{
-					fTextBoxs [i].Text = fText [i];
+					fTextBoxes [i].Text = fText [i];
 				}
 				if (richText) 
 				{
-					foreach (System.Windows.Forms.RichTextBox r in textBoxs) 
+					foreach (System.Windows.Forms.RichTextBox r in textBoxes) 
 					{
 						r.SelectAll ();
 						r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
 					}
-					foreach (System.Windows.Forms.RichTextBox r in fTextBoxs) 
+					foreach (System.Windows.Forms.RichTextBox r in fTextBoxes) 
 					{
 						r.SelectAll ();
 						r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -751,11 +860,11 @@ namespace HP67_Control_Library
 					font.SizeInPoints * sizeIncrease,
 					System.Drawing.FontStyle.Bold);
 				titleTextBox.Font = font;
-				foreach (System.Windows.Forms.TextBoxBase t in textBoxs)  
+				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
 					t.Font = font;
 				}
-				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxs)
+				foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)
 				{
 					t.Font = font;
 				}
@@ -777,15 +886,15 @@ namespace HP67_Control_Library
 				int spacing = (this.Size.Width - 2 * value - 5 * textBoxWidth) / 4;
 
 				margin = value;
-				for (int i = 0; i < textBoxs.Length; i++)  
+				for (int i = 0; i < textBoxes.Length; i++)  
 				{
-					textBoxs [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), textBoxs [i].Location.Y);
+					textBoxes [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), textBoxes [i].Location.Y);
 				}
-				for (int i = 0; i < fTextBoxs.Length; i++)  
+				for (int i = 0; i < fTextBoxes.Length; i++)  
 				{
-					fTextBoxs [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), fTextBoxs [i].Location.Y);
+					fTextBoxes [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), fTextBoxes [i].Location.Y);
 				}
 				for (int i = 0; i < labels.Length; i++)  
 				{
@@ -806,17 +915,17 @@ namespace HP67_Control_Library
 				int spacing = (this.Size.Width - 2 * margin - 5 * value) / 4;
 
 				textBoxWidth = value;
-				for (int i = 0; i < textBoxs.Length; i++)  
+				for (int i = 0; i < textBoxes.Length; i++)  
 				{
-					textBoxs [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), textBoxs [i].Location.Y);
-					textBoxs [i].Size = new System.Drawing.Size (value, textBoxs [i].Size.Height);
+					textBoxes [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), textBoxes [i].Location.Y);
+					textBoxes [i].Size = new System.Drawing.Size (value, textBoxes [i].Size.Height);
 				}
-				for (int i = 0; i < fTextBoxs.Length; i++)  
+				for (int i = 0; i < fTextBoxes.Length; i++)  
 				{
-					fTextBoxs [i].Location = new System.Drawing.Point
-						(margin + i * (textBoxWidth + spacing), fTextBoxs [i].Location.Y);
-					fTextBoxs [i].Size = new System.Drawing.Size (value, fTextBoxs [i].Size.Height);
+					fTextBoxes [i].Location = new System.Drawing.Point
+						(margin + i * (textBoxWidth + spacing), fTextBoxes [i].Location.Y);
+					fTextBoxes [i].Size = new System.Drawing.Size (value, fTextBoxes [i].Size.Height);
 				}
 				for (int i = 0; i < labels.Length; i++)  
 				{

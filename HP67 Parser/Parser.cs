@@ -3,6 +3,7 @@ using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 
@@ -637,9 +638,10 @@ namespace HP67_Parser
 			new TraceSwitch ("HP67_Parser.Parser", "Automatically generated parser");
 
         private IActions actions;
-        private LALRParser parser;
+        private Hashtable hashtable;
         private string input;
-		private static CGTReader reader;
+        private LALRParser parser;
+        private CGTReader reader;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -1875,14 +1877,24 @@ namespace HP67_Parser
 				parser.Parse (input);
             }
         }
-
-		public static CGTReader Reader 
-		{
-			get 
+        
+        public Symbol ToSymbol (string name)
+        {
+			// When persisting a program, we store the symbol names rather than the symbol ids
+			// because they are supposed to be more resilient in the face of changes to the
+			// grammar.  To read a program, we must be able to convert the name back to a symbol.
+			// This subprogram does that.  For performance, it builds a dictionary the first
+			// type it is called, and later does look up in this dictionary.
+			if (hashtable == null)
 			{
-				return reader;
+				hashtable = new Hashtable ();
+				foreach (Symbol s in reader.Symbols) 
+				{
+					hashtable.Add (s.Name, s);
+				}
 			}
-		}
+			return (Symbol) hashtable [name];
+        }
 
     }
 }

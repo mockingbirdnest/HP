@@ -67,15 +67,15 @@ namespace HP67_Class_Library
 				labels [i] = noStep;
 			}
 			returns = new int [3] {noStep, noStep, noStep};
-			Card.ReadFromDataset += new HP67_Persistence.Card.DatasetIODelegate(ReadFromDataset);
-			Card.WriteToDataset += new HP67_Persistence.Card.DatasetIODelegate(WriteToDataset);
+			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
 
 		#endregion
 
 		#region Event Handlers
 
-		public  void ReadFromDataset (CardDataset cds)
+		public  void ReadFromDataset (CardDataset cds, Parser parser)
 		{
 			// Beware, the XML file uses 1-based step numbers, but we must go back to 0-based
 			// numbers internally.
@@ -113,20 +113,8 @@ namespace HP67_Class_Library
 					}
 					arguments [ar.Id] = argument;
 				}
-
-				// We don't trust the symbol id, we look up the symbol by name.  This has two
-				// drawbacks: (1) it is expensive because of the linear search; (2) it requires
-				// the parser to expose its CGTReader, and in order to avoid having to pass it
-				// around this is done by making it static.
-				// TODO: Improve item (2) above, someday.
-				foreach (Symbol s in Parser.Reader.Symbols) 
-				{
-					if (s.Name == ir.Instruction) 
-					{
-						instructions [ir.Step - 1] = new Instruction (ir.Text, s, arguments);
-						break;
-					}
-				}
+				instructions [ir.Step - 1] =
+					new Instruction (ir.Text, parser.ToSymbol (ir.Instruction), arguments);				
 			}
 			labels = new int [pr.LabelCount];
 			lrs = pr.GetLabelRows ();
@@ -140,7 +128,6 @@ namespace HP67_Class_Library
 		{
 			// Note that we write 1-based step numbers, in case someone wants to look at the
 			// generated XML.
-
 			CardDataset.ArgumentRow ar;
 			CardDataset.InstructionRow ir;
 			CardDataset.LabelRow lr;

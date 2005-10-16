@@ -880,9 +880,13 @@ namespace HP67_Persistence {
         [System.Diagnostics.DebuggerStepThrough()]
         public class CardSlotDataTable : DataTable, System.Collections.IEnumerable {
             
-            private DataColumn columnFont;
+            private DataColumn columnFontName;
             
-            private DataColumn columnLargeFont;
+            private DataColumn columnFontSize;
+            
+            private DataColumn columnLargeFontName;
+            
+            private DataColumn columnLargeFontSize;
             
             private DataColumn columnTitle;
             
@@ -891,6 +895,8 @@ namespace HP67_Persistence {
             private DataColumn columnTextBoxWidth;
             
             private DataColumn columnIsRichText;
+            
+            private DataColumn columnTextBoxCount;
             
             private DataColumn columnCardSlot_Id;
             
@@ -924,15 +930,27 @@ namespace HP67_Persistence {
                 }
             }
             
-            internal DataColumn FontColumn {
+            internal DataColumn FontNameColumn {
                 get {
-                    return this.columnFont;
+                    return this.columnFontName;
                 }
             }
             
-            internal DataColumn LargeFontColumn {
+            internal DataColumn FontSizeColumn {
                 get {
-                    return this.columnLargeFont;
+                    return this.columnFontSize;
+                }
+            }
+            
+            internal DataColumn LargeFontNameColumn {
+                get {
+                    return this.columnLargeFontName;
+                }
+            }
+            
+            internal DataColumn LargeFontSizeColumn {
+                get {
+                    return this.columnLargeFontSize;
                 }
             }
             
@@ -957,6 +975,12 @@ namespace HP67_Persistence {
             internal DataColumn IsRichTextColumn {
                 get {
                     return this.columnIsRichText;
+                }
+            }
+            
+            internal DataColumn TextBoxCountColumn {
+                get {
+                    return this.columnTextBoxCount;
                 }
             }
             
@@ -990,15 +1014,18 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public CardSlotRow AddCardSlotRow(string Font, string LargeFont, string Title, int Margin, int TextBoxWidth, bool IsRichText, CardRow parentCardRowByCard_CardSlot) {
+            public CardSlotRow AddCardSlotRow(string FontName, System.Single FontSize, string LargeFontName, System.Single LargeFontSize, string Title, int Margin, int TextBoxWidth, bool IsRichText, int TextBoxCount, CardRow parentCardRowByCard_CardSlot) {
                 CardSlotRow rowCardSlotRow = ((CardSlotRow)(this.NewRow()));
                 rowCardSlotRow.ItemArray = new object[] {
-                        Font,
-                        LargeFont,
+                        FontName,
+                        FontSize,
+                        LargeFontName,
+                        LargeFontSize,
                         Title,
                         Margin,
                         TextBoxWidth,
                         IsRichText,
+                        TextBoxCount,
                         null,
                         parentCardRowByCard_CardSlot[1]};
                 this.Rows.Add(rowCardSlotRow);
@@ -1020,21 +1047,28 @@ namespace HP67_Persistence {
             }
             
             internal void InitVars() {
-                this.columnFont = this.Columns["Font"];
-                this.columnLargeFont = this.Columns["LargeFont"];
+                this.columnFontName = this.Columns["FontName"];
+                this.columnFontSize = this.Columns["FontSize"];
+                this.columnLargeFontName = this.Columns["LargeFontName"];
+                this.columnLargeFontSize = this.Columns["LargeFontSize"];
                 this.columnTitle = this.Columns["Title"];
                 this.columnMargin = this.Columns["Margin"];
                 this.columnTextBoxWidth = this.Columns["TextBoxWidth"];
                 this.columnIsRichText = this.Columns["IsRichText"];
+                this.columnTextBoxCount = this.Columns["TextBoxCount"];
                 this.columnCardSlot_Id = this.Columns["CardSlot_Id"];
                 this.columnCard_Id = this.Columns["Card_Id"];
             }
             
             private void InitClass() {
-                this.columnFont = new DataColumn("Font", typeof(string), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnFont);
-                this.columnLargeFont = new DataColumn("LargeFont", typeof(string), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnLargeFont);
+                this.columnFontName = new DataColumn("FontName", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnFontName);
+                this.columnFontSize = new DataColumn("FontSize", typeof(System.Single), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnFontSize);
+                this.columnLargeFontName = new DataColumn("LargeFontName", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnLargeFontName);
+                this.columnLargeFontSize = new DataColumn("LargeFontSize", typeof(System.Single), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnLargeFontSize);
                 this.columnTitle = new DataColumn("Title", typeof(string), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnTitle);
                 this.columnMargin = new DataColumn("Margin", typeof(int), null, System.Data.MappingType.Element);
@@ -1043,14 +1077,16 @@ namespace HP67_Persistence {
                 this.Columns.Add(this.columnTextBoxWidth);
                 this.columnIsRichText = new DataColumn("IsRichText", typeof(bool), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnIsRichText);
+                this.columnTextBoxCount = new DataColumn("TextBoxCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnTextBoxCount);
                 this.columnCardSlot_Id = new DataColumn("CardSlot_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnCardSlot_Id);
                 this.columnCard_Id = new DataColumn("Card_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnCard_Id);
                 this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
                                 this.columnCardSlot_Id}, true));
-                this.columnFont.AllowDBNull = false;
-                this.columnLargeFont.AllowDBNull = false;
+                this.columnFontName.AllowDBNull = false;
+                this.columnLargeFontName.AllowDBNull = false;
                 this.columnTitle.AllowDBNull = false;
                 this.columnMargin.AllowDBNull = false;
                 this.columnTextBoxWidth.AllowDBNull = false;
@@ -1115,21 +1151,49 @@ namespace HP67_Persistence {
                 this.tableCardSlot = ((CardSlotDataTable)(this.Table));
             }
             
-            public string Font {
+            public string FontName {
                 get {
-                    return ((string)(this[this.tableCardSlot.FontColumn]));
+                    return ((string)(this[this.tableCardSlot.FontNameColumn]));
                 }
                 set {
-                    this[this.tableCardSlot.FontColumn] = value;
+                    this[this.tableCardSlot.FontNameColumn] = value;
                 }
             }
             
-            public string LargeFont {
+            public System.Single FontSize {
                 get {
-                    return ((string)(this[this.tableCardSlot.LargeFontColumn]));
+                    try {
+                        return ((System.Single)(this[this.tableCardSlot.FontSizeColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableCardSlot.LargeFontColumn] = value;
+                    this[this.tableCardSlot.FontSizeColumn] = value;
+                }
+            }
+            
+            public string LargeFontName {
+                get {
+                    return ((string)(this[this.tableCardSlot.LargeFontNameColumn]));
+                }
+                set {
+                    this[this.tableCardSlot.LargeFontNameColumn] = value;
+                }
+            }
+            
+            public System.Single LargeFontSize {
+                get {
+                    try {
+                        return ((System.Single)(this[this.tableCardSlot.LargeFontSizeColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCardSlot.LargeFontSizeColumn] = value;
                 }
             }
             
@@ -1169,6 +1233,20 @@ namespace HP67_Persistence {
                 }
             }
             
+            public int TextBoxCount {
+                get {
+                    try {
+                        return ((int)(this[this.tableCardSlot.TextBoxCountColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCardSlot.TextBoxCountColumn] = value;
+                }
+            }
+            
             public CardRow CardRow {
                 get {
                     return ((CardRow)(this.GetParentRow(this.Table.ParentRelations["Card_CardSlot"])));
@@ -1176,6 +1254,30 @@ namespace HP67_Persistence {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Card_CardSlot"]);
                 }
+            }
+            
+            public bool IsFontSizeNull() {
+                return this.IsNull(this.tableCardSlot.FontSizeColumn);
+            }
+            
+            public void SetFontSizeNull() {
+                this[this.tableCardSlot.FontSizeColumn] = System.Convert.DBNull;
+            }
+            
+            public bool IsLargeFontSizeNull() {
+                return this.IsNull(this.tableCardSlot.LargeFontSizeColumn);
+            }
+            
+            public void SetLargeFontSizeNull() {
+                this[this.tableCardSlot.LargeFontSizeColumn] = System.Convert.DBNull;
+            }
+            
+            public bool IsTextBoxCountNull() {
+                return this.IsNull(this.tableCardSlot.TextBoxCountColumn);
+            }
+            
+            public void SetTextBoxCountNull() {
+                this[this.tableCardSlot.TextBoxCountColumn] = System.Convert.DBNull;
             }
             
             public TextBoxRow[] GetTextBoxRows() {
@@ -1215,6 +1317,8 @@ namespace HP67_Persistence {
         [System.Diagnostics.DebuggerStepThrough()]
         public class TextBoxDataTable : DataTable, System.Collections.IEnumerable {
             
+            private DataColumn columnId;
+            
             private DataColumn columnText;
             
             private DataColumn columnCardSlot_Id;
@@ -1244,6 +1348,12 @@ namespace HP67_Persistence {
             public int Count {
                 get {
                     return this.Rows.Count;
+                }
+            }
+            
+            internal DataColumn IdColumn {
+                get {
+                    return this.columnId;
                 }
             }
             
@@ -1277,11 +1387,12 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public TextBoxRow AddTextBoxRow(string Text, CardSlotRow parentCardSlotRowByCardSlot_TextBox) {
+            public TextBoxRow AddTextBoxRow(int Id, string Text, CardSlotRow parentCardSlotRowByCardSlot_TextBox) {
                 TextBoxRow rowTextBoxRow = ((TextBoxRow)(this.NewRow()));
                 rowTextBoxRow.ItemArray = new object[] {
+                        Id,
                         Text,
-                        parentCardSlotRowByCardSlot_TextBox[6]};
+                        parentCardSlotRowByCardSlot_TextBox[9]};
                 this.Rows.Add(rowTextBoxRow);
                 return rowTextBoxRow;
             }
@@ -1301,11 +1412,14 @@ namespace HP67_Persistence {
             }
             
             internal void InitVars() {
+                this.columnId = this.Columns["Id"];
                 this.columnText = this.Columns["Text"];
                 this.columnCardSlot_Id = this.Columns["CardSlot_Id"];
             }
             
             private void InitClass() {
+                this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnId);
                 this.columnText = new DataColumn("Text", typeof(string), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnText);
                 this.columnCardSlot_Id = new DataColumn("CardSlot_Id", typeof(int), null, System.Data.MappingType.Hidden);
@@ -1368,6 +1482,20 @@ namespace HP67_Persistence {
                 this.tableTextBox = ((TextBoxDataTable)(this.Table));
             }
             
+            public int Id {
+                get {
+                    try {
+                        return ((int)(this[this.tableTextBox.IdColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTextBox.IdColumn] = value;
+                }
+            }
+            
             public string Text {
                 get {
                     return ((string)(this[this.tableTextBox.TextColumn]));
@@ -1384,6 +1512,14 @@ namespace HP67_Persistence {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["CardSlot_TextBox"]);
                 }
+            }
+            
+            public bool IsIdNull() {
+                return this.IsNull(this.tableTextBox.IdColumn);
+            }
+            
+            public void SetIdNull() {
+                this[this.tableTextBox.IdColumn] = System.Convert.DBNull;
             }
         }
         
@@ -1414,6 +1550,8 @@ namespace HP67_Persistence {
         
         [System.Diagnostics.DebuggerStepThrough()]
         public class RTFBoxDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnId;
             
             private DataColumn columnRTF;
             
@@ -1447,6 +1585,12 @@ namespace HP67_Persistence {
                 }
             }
             
+            internal DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
             internal DataColumn RTFColumn {
                 get {
                     return this.columnRTF;
@@ -1477,11 +1621,12 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public RTFBoxRow AddRTFBoxRow(string RTF, CardSlotRow parentCardSlotRowByCardSlot_RTFBox) {
+            public RTFBoxRow AddRTFBoxRow(int Id, string RTF, CardSlotRow parentCardSlotRowByCardSlot_RTFBox) {
                 RTFBoxRow rowRTFBoxRow = ((RTFBoxRow)(this.NewRow()));
                 rowRTFBoxRow.ItemArray = new object[] {
+                        Id,
                         RTF,
-                        parentCardSlotRowByCardSlot_RTFBox[6]};
+                        parentCardSlotRowByCardSlot_RTFBox[9]};
                 this.Rows.Add(rowRTFBoxRow);
                 return rowRTFBoxRow;
             }
@@ -1501,11 +1646,14 @@ namespace HP67_Persistence {
             }
             
             internal void InitVars() {
+                this.columnId = this.Columns["Id"];
                 this.columnRTF = this.Columns["RTF"];
                 this.columnCardSlot_Id = this.Columns["CardSlot_Id"];
             }
             
             private void InitClass() {
+                this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnId);
                 this.columnRTF = new DataColumn("RTF", typeof(string), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnRTF);
                 this.columnCardSlot_Id = new DataColumn("CardSlot_Id", typeof(int), null, System.Data.MappingType.Hidden);
@@ -1568,6 +1716,20 @@ namespace HP67_Persistence {
                 this.tableRTFBox = ((RTFBoxDataTable)(this.Table));
             }
             
+            public int Id {
+                get {
+                    try {
+                        return ((int)(this[this.tableRTFBox.IdColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRTFBox.IdColumn] = value;
+                }
+            }
+            
             public string RTF {
                 get {
                     return ((string)(this[this.tableRTFBox.RTFColumn]));
@@ -1584,6 +1746,14 @@ namespace HP67_Persistence {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["CardSlot_RTFBox"]);
                 }
+            }
+            
+            public bool IsIdNull() {
+                return this.IsNull(this.tableRTFBox.IdColumn);
+            }
+            
+            public void SetIdNull() {
+                this[this.tableRTFBox.IdColumn] = System.Convert.DBNull;
             }
         }
         
@@ -1685,7 +1855,7 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public DisplayRow AddDisplayRow(string Format, short Digits, CardRow parentCardRowByCard_Display) {
+            public DisplayRow AddDisplayRow(string Format, System.Byte Digits, CardRow parentCardRowByCard_Display) {
                 DisplayRow rowDisplayRow = ((DisplayRow)(this.NewRow()));
                 rowDisplayRow.ItemArray = new object[] {
                         Format,
@@ -1718,7 +1888,7 @@ namespace HP67_Persistence {
             private void InitClass() {
                 this.columnFormat = new DataColumn("Format", typeof(string), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnFormat);
-                this.columnDigits = new DataColumn("Digits", typeof(short), null, System.Data.MappingType.Element);
+                this.columnDigits = new DataColumn("Digits", typeof(System.Byte), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnDigits);
                 this.columnCard_Id = new DataColumn("Card_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnCard_Id);
@@ -1790,9 +1960,9 @@ namespace HP67_Persistence {
                 }
             }
             
-            public short Digits {
+            public System.Byte Digits {
                 get {
-                    return ((short)(this[this.tableDisplay.DigitsColumn]));
+                    return ((System.Byte)(this[this.tableDisplay.DigitsColumn]));
                 }
                 set {
                     this[this.tableDisplay.DigitsColumn] = value;

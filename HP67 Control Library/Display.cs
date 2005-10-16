@@ -1,3 +1,5 @@
+using HP67_Parser;
+using HP67_Persistence;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -115,6 +117,9 @@ namespace HP67_Control_Library
 			Digits = 2;
 			Format = DisplayFormat.Fixed;
 			Value = 0.0;
+
+			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
 
 		/// <summary> 
@@ -216,6 +221,28 @@ namespace HP67_Control_Library
 			numericTextBox.Enabled = true;
 		}
 			
+		public  void ReadFromDataset (CardDataset cds, Parser parser)
+		{
+			CardDataset.CardRow cr;
+			CardDataset.DisplayRow dr;
+
+			cr = cds.Card [0];
+			dr = cr.GetDisplayRows () [0];
+			Digits = dr.Digits;
+			Format = (DisplayFormat) Enum.Parse (typeof (DisplayFormat), dr.Format);
+		}
+
+		public  void WriteToDataset (CardDataset cds)
+		{
+			CardDataset.DisplayRow dr;
+
+			dr = cds.Display.NewDisplayRow ();
+			dr.Digits = digits;
+			dr.Format = format.ToString ();
+			dr.CardRow = cds.Card [0]; // TODO: Should be passed in.
+			cds.Display.AddDisplayRow (dr);
+		}
+
 		#endregion
 
 		#region Private Properties

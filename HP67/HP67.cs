@@ -18,6 +18,8 @@ namespace HP67
 	public class HP67 : System.Windows.Forms.Form
 	{
 
+		private string fileName;
+
 		private Actions theActions;
 		private Engine theEngine;
 		private Parser theParser;
@@ -66,6 +68,7 @@ namespace HP67
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog;
 		private System.Windows.Forms.MenuItem saveAsItem;
+		private System.Windows.Forms.MenuItem saveMenuItem;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -146,6 +149,7 @@ namespace HP67
 			this.keyPlus = new HP67_Control_Library.Key();
 			this.contextMenu = new System.Windows.Forms.ContextMenu();
 			this.openItem = new System.Windows.Forms.MenuItem();
+			this.saveMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveAsItem = new System.Windows.Forms.MenuItem();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -904,6 +908,7 @@ namespace HP67
 			// 
 			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
 																						this.openItem,
+																						this.saveMenuItem,
 																						this.saveAsItem});
 			// 
 			// openItem
@@ -912,10 +917,16 @@ namespace HP67
 			this.openItem.Text = "&Open...";
 			this.openItem.Click += new System.EventHandler(this.openItem_Click);
 			// 
+			// saveMenuItem
+			// 
+			this.saveMenuItem.Index = 1;
+			this.saveMenuItem.Text = "&Save";
+			this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
+			// 
 			// saveAsItem
 			// 
-			this.saveAsItem.Index = 1;
-			this.saveAsItem.Text = "&Save As...";
+			this.saveAsItem.Index = 2;
+			this.saveAsItem.Text = "Save &As...";
 			this.saveAsItem.Click += new System.EventHandler(this.saveAsItem_Click);
 			// 
 			// openFileDialog
@@ -1009,32 +1020,56 @@ namespace HP67
 			}
 		}
 
-		private void openItem_Click(object sender, System.EventArgs e)
+		private void openItem_Click (object sender, System.EventArgs e)
 		{
 			Stream stream;
 
-			if(openFileDialog.ShowDialog() == DialogResult.OK)
+			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
-				if((stream = openFileDialog.OpenFile()) != null)
+				if ((stream = openFileDialog.OpenFile ()) != null)
 				{
-					Card.Read (stream);
-					stream.Close();
+					Card.Read (stream, theParser);
+					stream.Close ();
 				}
+				cardSlot.State = CardSlotState.ReadWrite;
 			}			
 		}
 
-		private void saveAsItem_Click(object sender, System.EventArgs e)
+		private void saveMenuItem_Click(object sender, System.EventArgs e)
 		{
 			Stream stream;
 
-			if(saveFileDialog.ShowDialog() == DialogResult.OK)
+			if (fileName == null) 
 			{
-				if((stream = saveFileDialog.OpenFile()) != null)
+				saveFileDialog.FileName = "Untitled"; // TODO: Localize.
+				saveAsItem_Click (sender, e);
+			}
+			else 
+			{
+				stream = new FileStream (fileName, FileMode.Create);
+				Card.Write (stream);
+				stream.Close ();
+			}
+		}
+
+		private void saveAsItem_Click (object sender, System.EventArgs e)
+		{
+			Stream stream;
+
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				fileName = saveFileDialog.FileName;
+				if (cardSlot.State == CardSlotState.Unloaded) 
+				{
+					cardSlot.State = CardSlotState.ReadWrite;
+				}
+				if ((stream = saveFileDialog.OpenFile ()) != null)
 				{
 					Card.Write (stream);
-					stream.Close();
+					stream.Close ();
 				}
 			}
 		}
+
 	}
 }
