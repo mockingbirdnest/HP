@@ -1,11 +1,13 @@
-﻿using HP67_Control_Library;
+﻿using HP67_Class_Library;
+using HP67_Control_Library;
 using HP67_Parser;
 using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Data;
+using System.IO;
+using System.Windows.Forms;
 
 namespace HP67
 {
@@ -58,6 +60,11 @@ namespace HP67
 		private HP67_Control_Library.CardSlot cardSlot;
 		private HP67_Control_Library.Toggle toggleOffOn;
 		private HP67_Control_Library.Toggle toggleWprgmRun;
+		private System.Windows.Forms.ContextMenu contextMenu;
+		private System.Windows.Forms.MenuItem openItem;
+		private System.Windows.Forms.OpenFileDialog openFileDialog;
+		private System.Windows.Forms.SaveFileDialog saveFileDialog;
+		private System.Windows.Forms.MenuItem saveAsItem;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -136,6 +143,11 @@ namespace HP67
 			this.keyDiv = new HP67_Control_Library.Key();
 			this.keyMult = new HP67_Control_Library.Key();
 			this.keyPlus = new HP67_Control_Library.Key();
+			this.contextMenu = new System.Windows.Forms.ContextMenu();
+			this.openItem = new System.Windows.Forms.MenuItem();
+			this.saveAsItem = new System.Windows.Forms.MenuItem();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.SuspendLayout();
 			// 
 			// display
@@ -887,11 +899,38 @@ namespace HP67
 			this.keyPlus.Tag = "61";
 			this.keyPlus.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClick);
 			// 
+			// contextMenu
+			// 
+			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+																						this.openItem,
+																						this.saveAsItem});
+			// 
+			// openItem
+			// 
+			this.openItem.Index = 0;
+			this.openItem.Text = "&Open...";
+			this.openItem.Click += new System.EventHandler(this.openItem_Click);
+			// 
+			// saveAsItem
+			// 
+			this.saveAsItem.Index = 1;
+			this.saveAsItem.Text = "&Save As...";
+			this.saveAsItem.Click += new System.EventHandler(this.saveAsItem_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
+			// saveFileDialog
+			// 
+			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
 			// HP67
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.ClientSize = new System.Drawing.Size(304, 590);
+			this.ContextMenu = this.contextMenu;
 			this.Controls.Add(this.keyPlus);
 			this.Controls.Add(this.keyMult);
 			this.Controls.Add(this.keyDiv);
@@ -969,5 +1008,32 @@ namespace HP67
 			}
 		}
 
+		private void openItem_Click(object sender, System.EventArgs e)
+		{
+			Stream stream;
+
+			if(openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				if((stream = openFileDialog.OpenFile()) != null)
+				{
+					Card.Read (stream);
+					stream.Close();
+				}
+			}			
+		}
+
+		private void saveAsItem_Click(object sender, System.EventArgs e)
+		{
+			Stream stream;
+
+			if(saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				if((stream = saveFileDialog.OpenFile()) != null)
+				{
+					Card.Write (stream);
+					stream.Close();
+				}
+			}
+		}
 	}
 }

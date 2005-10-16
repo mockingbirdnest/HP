@@ -54,6 +54,47 @@ namespace HP67_Class_Library
 			{
 				registers[i] = 0.0;
 			}
+			Card.ReadFromDataset += new Card.DatasetIODelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetIODelegate (WriteToDataset);
+		}
+
+		#endregion
+
+		#region Event Handlers
+
+		public  void ReadFromDataset (CardDataset cds)
+		{
+			CardDataset.CardRow cr;
+			CardDataset.MemoryRow mr;
+			CardDataset.RegisterRow [] rrs;
+
+			cr = cds.Card [0];
+			mr = cr.GetMemoryRows () [0];
+			registers = new double [mr.RegisterCount];
+			rrs = mr.GetRegisterRows ();
+			foreach (CardDataset.RegisterRow rr in rrs) 
+			{
+				registers [rr.Id] = rr.Value;
+			}
+		}
+
+		public  void WriteToDataset (CardDataset cds)
+		{
+			CardDataset.MemoryRow mr;
+			CardDataset.RegisterRow rr;
+
+			mr = cds.Memory.NewMemoryRow ();
+			mr.RegisterCount = registers.Length;
+			mr.CardRow = cds.Card [0]; // TODO: Should be passed in.
+			cds.Memory.AddMemoryRow (mr);
+			for (int i = 0; i < registers.Length; i++) 
+			{
+				rr = cds.Register.NewRegisterRow ();
+				rr.Id = i;
+				rr.Value = registers [i];
+				rr.MemoryRow = mr;
+				cds.Register.AddRegisterRow (rr);
+			}
 		}
 
 		#endregion

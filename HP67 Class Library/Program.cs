@@ -60,6 +60,10 @@ namespace HP67_Class_Library
 			Clear ();
 
 			labels = new int [(int) LetterLabel.e - 0 + 1];
+			for (int i = 0; i < labels.Length; i++) 
+			{
+				labels [i] = noStep;
+			}
 			returns = new int [3] {noStep, noStep, noStep};
 			Card.ReadFromDataset += new HP67_Class_Library.Card.DatasetIODelegate(ReadFromDataset);
 			Card.WriteToDataset += new HP67_Class_Library.Card.DatasetIODelegate(WriteToDataset);

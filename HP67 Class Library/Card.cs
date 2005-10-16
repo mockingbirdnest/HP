@@ -9,6 +9,7 @@ namespace HP67_Class_Library
 	/// </summary>
 	public class Card
 	{
+		private const float Version = 1.2F;
 
 		#region Event Definitions
 
@@ -28,9 +29,14 @@ namespace HP67_Class_Library
 
 		#region Public Operations
 
-		static public void Read ()
+		static public void Read (Stream stream)
 		{
 			CardDataset cds = new CardDataset ();
+			cds.ReadXml (stream);
+			if (cds.Card [0].Version != Version) 
+			{
+				// TODO: Complain.
+			}
 			ReadFromDataset (cds);
 		}
 
@@ -40,6 +46,7 @@ namespace HP67_Class_Library
 			CardDataset.CardRow cr;
 
 			cr = cds.Card.NewCardRow ();
+			cr.Version = Version;
 			cds.Card.AddCardRow (cr);
 			WriteToDataset (cds);
 			cds.WriteXml (stream);

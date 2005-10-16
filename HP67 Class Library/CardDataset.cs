@@ -37,6 +37,8 @@ namespace HP67_Class_Library {
         
         private MemoryDataTable tableMemory;
         
+        private RegisterDataTable tableRegister;
+        
         private ProgramDataTable tableProgram;
         
         private InstructionDataTable tableInstruction;
@@ -50,6 +52,8 @@ namespace HP67_Class_Library {
         private DataRelation relationCardSlot_RTFBox;
         
         private DataRelation relationEngine_Flag;
+        
+        private DataRelation relationMemory_Register;
         
         private DataRelation relationInstruction_Argument;
         
@@ -102,6 +106,9 @@ namespace HP67_Class_Library {
                 }
                 if ((ds.Tables["Memory"] != null)) {
                     this.Tables.Add(new MemoryDataTable(ds.Tables["Memory"]));
+                }
+                if ((ds.Tables["Register"] != null)) {
+                    this.Tables.Add(new RegisterDataTable(ds.Tables["Register"]));
                 }
                 if ((ds.Tables["Program"] != null)) {
                     this.Tables.Add(new ProgramDataTable(ds.Tables["Program"]));
@@ -199,6 +206,14 @@ namespace HP67_Class_Library {
         
         [System.ComponentModel.Browsable(false)]
         [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public RegisterDataTable Register {
+            get {
+                return this.tableRegister;
+            }
+        }
+        
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Content)]
         public ProgramDataTable Program {
             get {
                 return this.tableProgram;
@@ -271,6 +286,9 @@ namespace HP67_Class_Library {
             if ((ds.Tables["Memory"] != null)) {
                 this.Tables.Add(new MemoryDataTable(ds.Tables["Memory"]));
             }
+            if ((ds.Tables["Register"] != null)) {
+                this.Tables.Add(new RegisterDataTable(ds.Tables["Register"]));
+            }
             if ((ds.Tables["Program"] != null)) {
                 this.Tables.Add(new ProgramDataTable(ds.Tables["Program"]));
             }
@@ -333,6 +351,10 @@ namespace HP67_Class_Library {
             if ((this.tableMemory != null)) {
                 this.tableMemory.InitVars();
             }
+            this.tableRegister = ((RegisterDataTable)(this.Tables["Register"]));
+            if ((this.tableRegister != null)) {
+                this.tableRegister.InitVars();
+            }
             this.tableProgram = ((ProgramDataTable)(this.Tables["Program"]));
             if ((this.tableProgram != null)) {
                 this.tableProgram.InitVars();
@@ -352,6 +374,7 @@ namespace HP67_Class_Library {
             this.relationCardSlot_TextBox = this.Relations["CardSlot_TextBox"];
             this.relationCardSlot_RTFBox = this.Relations["CardSlot_RTFBox"];
             this.relationEngine_Flag = this.Relations["Engine_Flag"];
+            this.relationMemory_Register = this.Relations["Memory_Register"];
             this.relationInstruction_Argument = this.Relations["Instruction_Argument"];
             this.relationProgram_Instruction = this.Relations["Program_Instruction"];
             this.relationProgram_Label = this.Relations["Program_Label"];
@@ -385,6 +408,8 @@ namespace HP67_Class_Library {
             this.Tables.Add(this.tableFlag);
             this.tableMemory = new MemoryDataTable();
             this.Tables.Add(this.tableMemory);
+            this.tableRegister = new RegisterDataTable();
+            this.Tables.Add(this.tableRegister);
             this.tableProgram = new ProgramDataTable();
             this.Tables.Add(this.tableProgram);
             this.tableInstruction = new InstructionDataTable();
@@ -443,6 +468,13 @@ namespace HP67_Class_Library {
             fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = System.Data.Rule.Cascade;
             fkc.UpdateRule = System.Data.Rule.Cascade;
+            fkc = new ForeignKeyConstraint("Memory_Register", new DataColumn[] {
+                        this.tableMemory.Memory_IdColumn}, new DataColumn[] {
+                        this.tableRegister.Memory_IdColumn});
+            this.tableRegister.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = System.Data.Rule.Cascade;
+            fkc.UpdateRule = System.Data.Rule.Cascade;
             fkc = new ForeignKeyConstraint("Card_Program", new DataColumn[] {
                         this.tableCard.Card_IdColumn}, new DataColumn[] {
                         this.tableProgram.Card_IdColumn});
@@ -486,6 +518,11 @@ namespace HP67_Class_Library {
                         this.tableFlag.Engine_IdColumn}, false);
             this.relationEngine_Flag.Nested = true;
             this.Relations.Add(this.relationEngine_Flag);
+            this.relationMemory_Register = new DataRelation("Memory_Register", new DataColumn[] {
+                        this.tableMemory.Memory_IdColumn}, new DataColumn[] {
+                        this.tableRegister.Memory_IdColumn}, false);
+            this.relationMemory_Register.Nested = true;
+            this.Relations.Add(this.relationMemory_Register);
             this.relationInstruction_Argument = new DataRelation("Instruction_Argument", new DataColumn[] {
                         this.tableInstruction.Instruction_IdColumn}, new DataColumn[] {
                         this.tableArgument.Instruction_IdColumn}, false);
@@ -560,6 +597,10 @@ namespace HP67_Class_Library {
             return false;
         }
         
+        private bool ShouldSerializeRegister() {
+            return false;
+        }
+        
         private bool ShouldSerializeProgram() {
             return false;
         }
@@ -598,6 +639,8 @@ namespace HP67_Class_Library {
         
         public delegate void MemoryRowChangeEventHandler(object sender, MemoryRowChangeEvent e);
         
+        public delegate void RegisterRowChangeEventHandler(object sender, RegisterRowChangeEvent e);
+        
         public delegate void ProgramRowChangeEventHandler(object sender, ProgramRowChangeEvent e);
         
         public delegate void InstructionRowChangeEventHandler(object sender, InstructionRowChangeEvent e);
@@ -608,6 +651,8 @@ namespace HP67_Class_Library {
         
         [System.Diagnostics.DebuggerStepThrough()]
         public class CardDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnVersion;
             
             private DataColumn columnCard_Id;
             
@@ -639,6 +684,12 @@ namespace HP67_Class_Library {
                 }
             }
             
+            internal DataColumn VersionColumn {
+                get {
+                    return this.columnVersion;
+                }
+            }
+            
             internal DataColumn Card_IdColumn {
                 get {
                     return this.columnCard_Id;
@@ -663,9 +714,10 @@ namespace HP67_Class_Library {
                 this.Rows.Add(row);
             }
             
-            public CardRow AddCardRow() {
+            public CardRow AddCardRow(System.Single Version) {
                 CardRow rowCardRow = ((CardRow)(this.NewRow()));
                 rowCardRow.ItemArray = new object[] {
+                        Version,
                         null};
                 this.Rows.Add(rowCardRow);
                 return rowCardRow;
@@ -686,10 +738,13 @@ namespace HP67_Class_Library {
             }
             
             internal void InitVars() {
+                this.columnVersion = this.Columns["Version"];
                 this.columnCard_Id = this.Columns["Card_Id"];
             }
             
             private void InitClass() {
+                this.columnVersion = new DataColumn("Version", typeof(System.Single), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnVersion);
                 this.columnCard_Id = new DataColumn("Card_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnCard_Id);
                 this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
@@ -752,6 +807,28 @@ namespace HP67_Class_Library {
             internal CardRow(DataRowBuilder rb) : 
                     base(rb) {
                 this.tableCard = ((CardDataTable)(this.Table));
+            }
+            
+            public System.Single Version {
+                get {
+                    try {
+                        return ((System.Single)(this[this.tableCard.VersionColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCard.VersionColumn] = value;
+                }
+            }
+            
+            public bool IsVersionNull() {
+                return this.IsNull(this.tableCard.VersionColumn);
+            }
+            
+            public void SetVersionNull() {
+                this[this.tableCard.VersionColumn] = System.Convert.DBNull;
             }
             
             public CardSlotRow[] GetCardSlotRows() {
@@ -923,7 +1000,7 @@ namespace HP67_Class_Library {
                         TextBoxWidth,
                         IsRichText,
                         null,
-                        parentCardRowByCard_CardSlot[0]};
+                        parentCardRowByCard_CardSlot[1]};
                 this.Rows.Add(rowCardSlotRow);
                 return rowCardSlotRow;
             }
@@ -1613,7 +1690,7 @@ namespace HP67_Class_Library {
                 rowDisplayRow.ItemArray = new object[] {
                         Format,
                         Digits,
-                        parentCardRowByCard_Display[0]};
+                        parentCardRowByCard_Display[1]};
                 this.Rows.Add(rowDisplayRow);
                 return rowDisplayRow;
             }
@@ -1762,6 +1839,8 @@ namespace HP67_Class_Library {
             
             private DataColumn columnAngleUnit;
             
+            private DataColumn columnFlagCount;
+            
             private DataColumn columnEngine_Id;
             
             private DataColumn columnCard_Id;
@@ -1800,6 +1879,12 @@ namespace HP67_Class_Library {
                 }
             }
             
+            internal DataColumn FlagCountColumn {
+                get {
+                    return this.columnFlagCount;
+                }
+            }
+            
             internal DataColumn Engine_IdColumn {
                 get {
                     return this.columnEngine_Id;
@@ -1830,12 +1915,13 @@ namespace HP67_Class_Library {
                 this.Rows.Add(row);
             }
             
-            public EngineRow AddEngineRow(string AngleUnit, CardRow parentCardRowByCard_Engine) {
+            public EngineRow AddEngineRow(string AngleUnit, int FlagCount, CardRow parentCardRowByCard_Engine) {
                 EngineRow rowEngineRow = ((EngineRow)(this.NewRow()));
                 rowEngineRow.ItemArray = new object[] {
                         AngleUnit,
+                        FlagCount,
                         null,
-                        parentCardRowByCard_Engine[0]};
+                        parentCardRowByCard_Engine[1]};
                 this.Rows.Add(rowEngineRow);
                 return rowEngineRow;
             }
@@ -1856,6 +1942,7 @@ namespace HP67_Class_Library {
             
             internal void InitVars() {
                 this.columnAngleUnit = this.Columns["AngleUnit"];
+                this.columnFlagCount = this.Columns["FlagCount"];
                 this.columnEngine_Id = this.Columns["Engine_Id"];
                 this.columnCard_Id = this.Columns["Card_Id"];
             }
@@ -1863,6 +1950,8 @@ namespace HP67_Class_Library {
             private void InitClass() {
                 this.columnAngleUnit = new DataColumn("AngleUnit", typeof(string), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnAngleUnit);
+                this.columnFlagCount = new DataColumn("FlagCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnFlagCount);
                 this.columnEngine_Id = new DataColumn("Engine_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnEngine_Id);
                 this.columnCard_Id = new DataColumn("Card_Id", typeof(int), null, System.Data.MappingType.Hidden);
@@ -1870,6 +1959,7 @@ namespace HP67_Class_Library {
                 this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
                                 this.columnEngine_Id}, true));
                 this.columnAngleUnit.AllowDBNull = false;
+                this.columnFlagCount.AllowDBNull = false;
                 this.columnEngine_Id.AutoIncrement = true;
                 this.columnEngine_Id.AllowDBNull = false;
                 this.columnEngine_Id.Unique = true;
@@ -1936,6 +2026,15 @@ namespace HP67_Class_Library {
                 }
                 set {
                     this[this.tableEngine.AngleUnitColumn] = value;
+                }
+            }
+            
+            public int FlagCount {
+                get {
+                    return ((int)(this[this.tableEngine.FlagCountColumn]));
+                }
+                set {
+                    this[this.tableEngine.FlagCountColumn] = value;
                 }
             }
             
@@ -2051,12 +2150,12 @@ namespace HP67_Class_Library {
                 this.Rows.Add(row);
             }
             
-            public FlagRow AddFlagRow(short Id, bool Value, EngineRow parentEngineRowByEngine_Flag) {
+            public FlagRow AddFlagRow(int Id, bool Value, EngineRow parentEngineRowByEngine_Flag) {
                 FlagRow rowFlagRow = ((FlagRow)(this.NewRow()));
                 rowFlagRow.ItemArray = new object[] {
                         Id,
                         Value,
-                        parentEngineRowByEngine_Flag[1]};
+                        parentEngineRowByEngine_Flag[2]};
                 this.Rows.Add(rowFlagRow);
                 return rowFlagRow;
             }
@@ -2082,7 +2181,7 @@ namespace HP67_Class_Library {
             }
             
             private void InitClass() {
-                this.columnId = new DataColumn("Id", typeof(short), null, System.Data.MappingType.Element);
+                this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnId);
                 this.columnValue = new DataColumn("Value", typeof(bool), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnValue);
@@ -2147,9 +2246,9 @@ namespace HP67_Class_Library {
                 this.tableFlag = ((FlagDataTable)(this.Table));
             }
             
-            public short Id {
+            public int Id {
                 get {
-                    return ((short)(this[this.tableFlag.IdColumn]));
+                    return ((int)(this[this.tableFlag.IdColumn]));
                 }
                 set {
                     this[this.tableFlag.IdColumn] = value;
@@ -2203,9 +2302,9 @@ namespace HP67_Class_Library {
         [System.Diagnostics.DebuggerStepThrough()]
         public class MemoryDataTable : DataTable, System.Collections.IEnumerable {
             
-            private DataColumn columnId;
+            private DataColumn columnRegisterCount;
             
-            private DataColumn columnValue;
+            private DataColumn columnMemory_Id;
             
             private DataColumn columnCard_Id;
             
@@ -2237,15 +2336,15 @@ namespace HP67_Class_Library {
                 }
             }
             
-            internal DataColumn IdColumn {
+            internal DataColumn RegisterCountColumn {
                 get {
-                    return this.columnId;
+                    return this.columnRegisterCount;
                 }
             }
             
-            internal DataColumn ValueColumn {
+            internal DataColumn Memory_IdColumn {
                 get {
-                    return this.columnValue;
+                    return this.columnMemory_Id;
                 }
             }
             
@@ -2273,12 +2372,12 @@ namespace HP67_Class_Library {
                 this.Rows.Add(row);
             }
             
-            public MemoryRow AddMemoryRow(short Id, System.Double Value, CardRow parentCardRowByCard_Memory) {
+            public MemoryRow AddMemoryRow(int RegisterCount, CardRow parentCardRowByCard_Memory) {
                 MemoryRow rowMemoryRow = ((MemoryRow)(this.NewRow()));
                 rowMemoryRow.ItemArray = new object[] {
-                        Id,
-                        Value,
-                        parentCardRowByCard_Memory[0]};
+                        RegisterCount,
+                        null,
+                        parentCardRowByCard_Memory[1]};
                 this.Rows.Add(rowMemoryRow);
                 return rowMemoryRow;
             }
@@ -2298,20 +2397,24 @@ namespace HP67_Class_Library {
             }
             
             internal void InitVars() {
-                this.columnId = this.Columns["Id"];
-                this.columnValue = this.Columns["Value"];
+                this.columnRegisterCount = this.Columns["RegisterCount"];
+                this.columnMemory_Id = this.Columns["Memory_Id"];
                 this.columnCard_Id = this.Columns["Card_Id"];
             }
             
             private void InitClass() {
-                this.columnId = new DataColumn("Id", typeof(short), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnId);
-                this.columnValue = new DataColumn("Value", typeof(System.Double), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnValue);
+                this.columnRegisterCount = new DataColumn("RegisterCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnRegisterCount);
+                this.columnMemory_Id = new DataColumn("Memory_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnMemory_Id);
                 this.columnCard_Id = new DataColumn("Card_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnCard_Id);
-                this.columnId.AllowDBNull = false;
-                this.columnValue.AllowDBNull = false;
+                this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
+                                this.columnMemory_Id}, true));
+                this.columnRegisterCount.AllowDBNull = false;
+                this.columnMemory_Id.AutoIncrement = true;
+                this.columnMemory_Id.AllowDBNull = false;
+                this.columnMemory_Id.Unique = true;
             }
             
             public MemoryRow NewMemoryRow() {
@@ -2369,21 +2472,12 @@ namespace HP67_Class_Library {
                 this.tableMemory = ((MemoryDataTable)(this.Table));
             }
             
-            public short Id {
+            public int RegisterCount {
                 get {
-                    return ((short)(this[this.tableMemory.IdColumn]));
+                    return ((int)(this[this.tableMemory.RegisterCountColumn]));
                 }
                 set {
-                    this[this.tableMemory.IdColumn] = value;
-                }
-            }
-            
-            public System.Double Value {
-                get {
-                    return ((System.Double)(this[this.tableMemory.ValueColumn]));
-                }
-                set {
-                    this[this.tableMemory.ValueColumn] = value;
+                    this[this.tableMemory.RegisterCountColumn] = value;
                 }
             }
             
@@ -2394,6 +2488,10 @@ namespace HP67_Class_Library {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Card_Memory"]);
                 }
+            }
+            
+            public RegisterRow[] GetRegisterRows() {
+                return ((RegisterRow[])(this.GetChildRows(this.Table.ChildRelations["Memory_Register"])));
             }
         }
         
@@ -2410,6 +2508,228 @@ namespace HP67_Class_Library {
             }
             
             public MemoryRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            public DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class RegisterDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnId;
+            
+            private DataColumn columnValue;
+            
+            private DataColumn columnMemory_Id;
+            
+            internal RegisterDataTable() : 
+                    base("Register") {
+                this.InitClass();
+            }
+            
+            internal RegisterDataTable(DataTable table) : 
+                    base(table.TableName) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+                this.DisplayExpression = table.DisplayExpression;
+            }
+            
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            internal DataColumn IdColumn {
+                get {
+                    return this.columnId;
+                }
+            }
+            
+            internal DataColumn ValueColumn {
+                get {
+                    return this.columnValue;
+                }
+            }
+            
+            internal DataColumn Memory_IdColumn {
+                get {
+                    return this.columnMemory_Id;
+                }
+            }
+            
+            public RegisterRow this[int index] {
+                get {
+                    return ((RegisterRow)(this.Rows[index]));
+                }
+            }
+            
+            public event RegisterRowChangeEventHandler RegisterRowChanged;
+            
+            public event RegisterRowChangeEventHandler RegisterRowChanging;
+            
+            public event RegisterRowChangeEventHandler RegisterRowDeleted;
+            
+            public event RegisterRowChangeEventHandler RegisterRowDeleting;
+            
+            public void AddRegisterRow(RegisterRow row) {
+                this.Rows.Add(row);
+            }
+            
+            public RegisterRow AddRegisterRow(int Id, System.Double Value, MemoryRow parentMemoryRowByMemory_Register) {
+                RegisterRow rowRegisterRow = ((RegisterRow)(this.NewRow()));
+                rowRegisterRow.ItemArray = new object[] {
+                        Id,
+                        Value,
+                        parentMemoryRowByMemory_Register[1]};
+                this.Rows.Add(rowRegisterRow);
+                return rowRegisterRow;
+            }
+            
+            public System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            public override DataTable Clone() {
+                RegisterDataTable cln = ((RegisterDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            protected override DataTable CreateInstance() {
+                return new RegisterDataTable();
+            }
+            
+            internal void InitVars() {
+                this.columnId = this.Columns["Id"];
+                this.columnValue = this.Columns["Value"];
+                this.columnMemory_Id = this.Columns["Memory_Id"];
+            }
+            
+            private void InitClass() {
+                this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnId);
+                this.columnValue = new DataColumn("Value", typeof(System.Double), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnValue);
+                this.columnMemory_Id = new DataColumn("Memory_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnMemory_Id);
+                this.columnId.AllowDBNull = false;
+                this.columnValue.AllowDBNull = false;
+            }
+            
+            public RegisterRow NewRegisterRow() {
+                return ((RegisterRow)(this.NewRow()));
+            }
+            
+            protected override DataRow NewRowFromBuilder(DataRowBuilder builder) {
+                return new RegisterRow(builder);
+            }
+            
+            protected override System.Type GetRowType() {
+                return typeof(RegisterRow);
+            }
+            
+            protected override void OnRowChanged(DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.RegisterRowChanged != null)) {
+                    this.RegisterRowChanged(this, new RegisterRowChangeEvent(((RegisterRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowChanging(DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.RegisterRowChanging != null)) {
+                    this.RegisterRowChanging(this, new RegisterRowChangeEvent(((RegisterRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleted(DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.RegisterRowDeleted != null)) {
+                    this.RegisterRowDeleted(this, new RegisterRowChangeEvent(((RegisterRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleting(DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.RegisterRowDeleting != null)) {
+                    this.RegisterRowDeleting(this, new RegisterRowChangeEvent(((RegisterRow)(e.Row)), e.Action));
+                }
+            }
+            
+            public void RemoveRegisterRow(RegisterRow row) {
+                this.Rows.Remove(row);
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class RegisterRow : DataRow {
+            
+            private RegisterDataTable tableRegister;
+            
+            internal RegisterRow(DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRegister = ((RegisterDataTable)(this.Table));
+            }
+            
+            public int Id {
+                get {
+                    return ((int)(this[this.tableRegister.IdColumn]));
+                }
+                set {
+                    this[this.tableRegister.IdColumn] = value;
+                }
+            }
+            
+            public System.Double Value {
+                get {
+                    return ((System.Double)(this[this.tableRegister.ValueColumn]));
+                }
+                set {
+                    this[this.tableRegister.ValueColumn] = value;
+                }
+            }
+            
+            public MemoryRow MemoryRow {
+                get {
+                    return ((MemoryRow)(this.GetParentRow(this.Table.ParentRelations["Memory_Register"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Memory_Register"]);
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class RegisterRowChangeEvent : EventArgs {
+            
+            private RegisterRow eventRow;
+            
+            private DataRowAction eventAction;
+            
+            public RegisterRowChangeEvent(RegisterRow row, DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            public RegisterRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2509,7 +2829,7 @@ namespace HP67_Class_Library {
                         InstructionCount,
                         LabelCount,
                         null,
-                        parentCardRowByCard_Program[0]};
+                        parentCardRowByCard_Program[1]};
                 this.Rows.Add(rowProgramRow);
                 return rowProgramRow;
             }

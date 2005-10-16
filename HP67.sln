@@ -29,9 +29,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Parser", "HP67 Parser\
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Persistence", "HP67 Persistence\HP67 Persistence.csproj", "{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SolutionUniqueID = {878E852C-8F25-4FB7-95ED-DC7CB08F89F4}
@@ -63,6 +67,10 @@ Global
 		SccLocalPath7 = .
 		CanCheckoutShared = false
 		SccProjectFilePathRelativizedFromConnection7 = HP67\u0020Parser\\
+		SccProjectUniqueName8 = HP67\u0020Persistence\\HP67\u0020Persistence.csproj
+		SccLocalPath8 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection8 = HP67\u0020Persistence\\
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -94,6 +102,10 @@ Global
 		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Debug.Build.0 = Debug|.NET
 		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Release.ActiveCfg = Release|.NET
 		{D97548CE-C80A-4DAE-BA32-1E3FA7273153}.Release.Build.0 = Release|.NET
+		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Debug.ActiveCfg = Debug|.NET
+		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Debug.Build.0 = Debug|.NET
+		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Release.ActiveCfg = Release|.NET
+		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

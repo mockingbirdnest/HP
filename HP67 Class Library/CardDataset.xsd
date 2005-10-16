@@ -49,20 +49,28 @@
 										<xs:element name="Flag">
 											<xs:complexType>
 												<xs:sequence minOccurs="0" maxOccurs="unbounded">
-													<xs:element name="Id" type="xs:short" />
+													<xs:element name="Id" type="xs:int" />
 													<xs:element name="Value" type="xs:boolean" />
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
+										<xs:element name="FlagCount" type="xs:int" />
 									</xs:all>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="Memory">
 								<xs:complexType>
-									<xs:sequence minOccurs="0" maxOccurs="unbounded">
-										<xs:element name="Id" type="xs:short" />
-										<xs:element name="Value" type="xs:double" />
-									</xs:sequence>
+									<xs:all>
+										<xs:element name="RegisterCount" type="xs:int" />
+										<xs:element name="Register" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="Id" type="xs:int" />
+													<xs:element name="Value" type="xs:double" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="Program">
@@ -100,6 +108,7 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
+							<xs:element name="Version" type="xs:float" minOccurs="0" />
 						</xs:all>
 					</xs:complexType>
 				</xs:element>

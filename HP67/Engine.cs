@@ -63,7 +63,49 @@ namespace HP67
 			theMemory = new Memory ();
 			theProgram = new Program (display);
 			theStack = new Stack (display);
-			Card.WriteToDataset += new Card.DatasetIODelegate (theProgram.WriteToDataset);
+			Card.ReadFromDataset += new Card.DatasetIODelegate (ReadFromDataset);
+			Card.WriteToDataset += new Card.DatasetIODelegate (WriteToDataset);
+		}
+
+		#endregion
+
+		#region Event Handlers
+
+		public  void ReadFromDataset (CardDataset cds)
+		{
+			CardDataset.CardRow cr;
+			CardDataset.EngineRow er;
+			CardDataset.FlagRow [] frs;
+
+			cr = cds.Card [0];
+			er = cr.GetEngineRows () [0];
+			unit = (AngleUnit) Enum.Parse (typeof (AngleUnit), er.AngleUnit);
+			flags = new bool [er.FlagCount];
+			frs = er.GetFlagRows ();
+			foreach (CardDataset.FlagRow fr in frs) 
+			{
+				flags [fr.Id] = fr.Value;
+			}
+		}
+
+		public  void WriteToDataset (CardDataset cds)
+		{
+			CardDataset.EngineRow er;
+			CardDataset.FlagRow fr;
+
+			er = cds.Engine.NewEngineRow ();
+			er.AngleUnit = unit.ToString ();
+			er.FlagCount = flags.Length;
+			er.CardRow = cds.Card [0]; // TODO: Should be passed in.
+			cds.Engine.AddEngineRow (er);
+			for (int i = 0; i < flags.Length; i++) 
+			{
+				fr = cds.Flag.NewFlagRow ();
+				fr.Id = i;
+				fr.Value = flags [i];
+				fr.EngineRow = er;
+				cds.Flag.AddFlagRow (fr);
+			}
 		}
 
 		#endregion
