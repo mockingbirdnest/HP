@@ -787,6 +787,15 @@ namespace HP67_Control_Library
 			}
 		}
 
+		public void Round ()
+		{
+			string text = NumericText;
+
+			currentMantissa =
+				double.Parse (
+					text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength));
+		}
+
 		public void DisplayInstruction (Object instruction, int step)
 		{
 			// We would like to say that instruction is of class Instruction, but the silly

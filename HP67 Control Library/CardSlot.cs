@@ -559,14 +559,7 @@ namespace HP67_Control_Library
 
 		public void ReadFromDataset (CardDataset cds, Parser parser)
 		{
-			// Beware, the XML file uses 1-based step numbers, but we must go back to 0-based
-			// numbers internally.
-			CardDataset.ArgumentRow [] ars;
 			CardDataset.CardRow cr;
-			CardDataset.InstructionRow [] irs;
-			CardDataset.LabelRow [] lrs;
-			CardDataset.ProgramRow pr;
-
 			CardDataset.CardSlotRow csr;
 
 			cr = cds.Card [0]; // TODO: I hate these zeros...
@@ -579,8 +572,6 @@ namespace HP67_Control_Library
 			RichText = csr.IsRichText;
 			if (richText) 
 			{
-//				textBoxes = new RichTextBox [csr.TextBoxCount];
-//				fTextBoxes = new RichTextBox [csr.TextBoxCount];
 				foreach (CardDataset.RTFBoxRow rbr in csr.GetRTFBoxRows ()) 
 				{
 					if (rbr.Id >= csr.TextBoxCount) 
@@ -595,8 +586,6 @@ namespace HP67_Control_Library
 			}
 			else 
 			{
-//				textBoxes = new TextBox [csr.TextBoxCount];
-//				fTextBoxes = new TextBox [csr.TextBoxCount];
 				foreach (CardDataset.TextBoxRow tbr in csr.GetTextBoxRows ()) 
 				{
 					if (tbr.Id >= csr.TextBoxCount) 

@@ -1052,12 +1052,15 @@ namespace HP67
 
 			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
+				fileName = openFileDialog.FileName;
 				if ((stream = openFileDialog.OpenFile ()) != null)
 				{
-					Card.Read (stream, theParser);
+					if (Card.Read (stream, theParser)) 
+					{
+						cardSlot.State = CardSlotState.ReadWrite;
+					}
 					stream.Close ();
 				}
-				cardSlot.State = CardSlotState.ReadWrite;
 			}			
 		}
 

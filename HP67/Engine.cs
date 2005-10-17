@@ -528,7 +528,7 @@ namespace HP67
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_RND :
-					// TODO: Execution.
+					theDisplay.Round ();
 					break;
 				case (int)SymbolConstants.SYMBOL_RTN :
 					theProgram.Return ();

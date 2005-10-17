@@ -1,6 +1,7 @@
 using HP67_Parser;
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace HP67_Persistence
 {
@@ -30,15 +31,24 @@ namespace HP67_Persistence
 
 		#region Public Operations
 
-		static public void Read (Stream stream, Parser parser)
+		static public bool Read (Stream stream, Parser parser)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
 			if (cds.Card [0].Version != Version) 
 			{
-				// TODO: Complain.
+				// TODO: Localization.
+				MessageBox.Show ("Incompatible version: file has version " +
+					cds.Card [0].Version.ToString () + " but program expects version " +
+					Version.ToString (), "Incompatible Version", MessageBoxButtons.OK,
+					MessageBoxIcon.Error);
+				return false;
 			}
-			ReadFromDataset (cds, parser);
+			else
+			{
+				ReadFromDataset (cds, parser);
+				return true;
+			}
 		}
 
 		static public void Write (Stream stream)
