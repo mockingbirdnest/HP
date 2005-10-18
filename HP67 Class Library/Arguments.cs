@@ -14,7 +14,15 @@ namespace HP67_Class_Library
 	/// </summary>
 	public abstract class Argument : Object
 	{
-		protected abstract new string ToString ();
+		protected abstract string PersistableText
+		{
+			get;
+		}
+
+		public abstract string PrintableText
+		{
+			get;
+		}
 
 		public static object ReadFromArgumentRow (CardDataset.ArgumentRow ar)
 		{
@@ -51,7 +59,7 @@ namespace HP67_Class_Library
 		public void WriteToArgumentRow (CardDataset.ArgumentRow ar)
 		{
 			ar.Type = this.GetType ().ToString ();
-			ar.Value = ToString ();
+			ar.Value = PersistableText;
 		}
 	}
 
@@ -81,11 +89,6 @@ namespace HP67_Class_Library
 	{
 		private byte digit;
 
-		protected override string ToString ()
-		{
-			return digit.ToString ();
-		}
-
 		private Digit (char c)
 		{
 			digit = byte.Parse (new String (c, 1));
@@ -94,6 +97,22 @@ namespace HP67_Class_Library
 		public Digit (byte d) 
 		{
 			digit = d;
+		}
+
+		protected override string PersistableText
+		{
+			get
+			{
+				return digit.ToString ();
+			}
+		}
+
+		public override string PrintableText
+		{
+			get
+			{
+				return PersistableText;
+			}
 		}
 
 		public byte Value 
@@ -137,13 +156,24 @@ namespace HP67_Class_Library
 
 	public class Indexed : Argument, IAddress, IDigits, ILabel
 	{
-		protected override string ToString ()
-		{
-			return "";
-		}
-
 		public Indexed () 
 		{
+		}
+
+		protected override string PersistableText
+		{
+			get 
+			{
+				return "";
+			}
+		}
+
+		public override string PrintableText
+		{
+			get
+			{
+				return "(i)";
+			}
 		}
 
 		public double Recall (Memory m) 
@@ -191,15 +221,26 @@ namespace HP67_Class_Library
 	{
 		private char letter;
 
-		protected override string ToString ()
-		{
-			return new String (letter, 1);
-		}
-
 		public Letter (char l) 
 		{
 			Trace.Assert (l >= 'A' && l <= 'E');
 			letter = l;
+		}
+
+		protected override string PersistableText
+		{
+			get 
+			{
+				return new String (letter, 1);
+			}
+		}
+
+		public override string PrintableText
+		{
+			get
+			{
+				return PersistableText;
+			}
 		}
 
 		public char Value 
@@ -244,31 +285,6 @@ namespace HP67_Class_Library
 	public class Operator : Argument
 	{
 		private Memory.Operator op;
-
-		protected override string ToString ()
-		{
-			if (op == new Memory.Operator (Addition))
-			{
-				return "+";
-			}
-			else if (op == new Memory.Operator (Subtraction))
-			{
-				return "-";
-			}
-			else if (op == new Memory.Operator (Multiplication))
-			{
-				return "*";
-			}
-			else if (op == new Memory.Operator (Division))
-			{
-				return "/";
-			}
-			else
-			{
-				Trace.Assert (false);
-				return ""; // To make the compiler happy.
-			}
-		}
 
 		static public double Addition (double x, double y)
 		{
@@ -319,6 +335,42 @@ namespace HP67_Class_Library
 		public Operator (Memory.Operator o)
 		{
 			op = o;
+		}
+
+		protected override string PersistableText
+		{
+			get 
+			{
+				if (op == new Memory.Operator (Addition))
+				{
+					return "+";
+				}
+				else if (op == new Memory.Operator (Subtraction))
+				{
+					return "-";
+				}
+				else if (op == new Memory.Operator (Multiplication))
+				{
+					return "*";
+				}
+				else if (op == new Memory.Operator (Division))
+				{
+					return "/";
+				}
+				else
+				{
+					Trace.Assert (false);
+					return ""; // To make the compiler happy.
+				}
+			}
+		}
+
+		public override string PrintableText
+		{
+			get
+			{
+				return PersistableText;
+			}
 		}
 
 		public Memory.Operator Value

@@ -8,6 +8,10 @@ using HP67_Persistence;
 using System;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
+using System.Globalization;
 
 namespace HP67_Class_Library
 {
@@ -31,7 +35,11 @@ namespace HP67_Class_Library
 			e = 19
 		}
 
+		private const string nInstructionTemplate = "00 00 00"; // Not really a template.
 		private const int noStep = -1;
+		private const string stepTemplate = "000"; // Same declaration in Display.  Groan.
+		private const float spacingFactor = 0.5F;
+		private const string tInstructionTemplate = "HHH H H"; // Not really a template.
 
 		private static Instruction r_s;
 
@@ -40,6 +48,7 @@ namespace HP67_Class_Library
 		// TODO: This is not correct because there can be more than one label with a given name.
 		private int [] labels; 
 
+		private int lastPrinted;
 		private int next;
 		private int [] returns;
 		private Display theDisplay;
@@ -128,7 +137,7 @@ namespace HP67_Class_Library
 			for (int i = 0; i < instructions.Length; i++) {
 				ir = cds.Instruction.NewInstructionRow ();
 				ir.Step = i + 1;
-				ir.Text = instructions [i].ToString ();
+				ir.Text = instructions [i].Text;
 				ir.Instruction = instructions [i].Symbol.Name;
 				ir.ArgumentCount = instructions [i].Arguments.Length;
 				ir.ProgramRow = pr;
@@ -189,11 +198,11 @@ namespace HP67_Class_Library
 			next = step;
 			if (next == noStep) 
 			{
-				theDisplay.DisplayInstruction (null, 0);
+				theDisplay.ShowInstruction ("", 0);
 			}
 			else
 			{
-				theDisplay.DisplayInstruction (instructions [next], next + 1);
+				theDisplay.ShowInstruction (instructions [next].Text, next + 1);
 			}
 		}
 
@@ -294,6 +303,7 @@ namespace HP67_Class_Library
 
 		public void Clear ()
 		{
+			lastPrinted = noStep;
 			GotoZeroBasedStep (noStep);
 			for (int i = 0; i < instructions.Length; i++) 
 			{
@@ -309,7 +319,7 @@ namespace HP67_Class_Library
 				instructions [i] = instructions [i + 1];
 			}
 			instructions [instructions.Length - 1] = r_s;
-			GotoZeroBasedStep (next); // To redisplay the instruction.
+			GotoZeroBasedStep (next - 1); // To redisplay the instruction.
 		}
 
 		public void GotoRelative (int displacement)
@@ -327,7 +337,7 @@ namespace HP67_Class_Library
 		{
 			UpdateLabelsForDeletion (instructions.Length - 1);
 			next++;
-			for (int i = instructions.Length - 1; i > next + 1; i--) 
+			for (int i = instructions.Length - 1; i > next; i--) 
 			{
 				instructions [i] = instructions [i - 1];
 			}
@@ -353,6 +363,124 @@ namespace HP67_Class_Library
 			}
 
 			UpdateLabelsForInsertion (next);
+		}
+
+		#endregion
+
+		#region Printing
+
+		public void PrintOnePage (PrintPageEventArgs e, Font font) 
+		{
+			float fontHeight = font.GetHeight (e.Graphics);
+			string instructionImage;
+			int last;
+			int linesPerPage;
+			int leftMargin = e.MarginBounds.Left;
+			Point p1;
+			Point p2;
+			int step;
+			string stepImage;
+			Pen thickPen = new Pen (Color.Black, 1.0F);
+			float [] thinPenDashes = {1, 1};
+			Pen thinPen = new Pen (Color.Black, 0.5F);
+			int topMargin = e.MarginBounds.Top;
+			float x;
+			float xLineWidth;
+			float xSpacing;
+			float xStepWidth;
+			float xNInstructionWidth;
+			float xTInstructionWidth;
+			float y;
+
+			thickPen.StartCap = LineCap.NoAnchor;
+			thickPen.EndCap = LineCap.ArrowAnchor;
+			thinPen.DashPattern = thinPenDashes;
+
+			// Don't print the trailing R/S instructions.
+			last = instructions.Length - 1;
+			for (int i = instructions.Length - 1; i >= 0; i--) 
+			{
+				if (instructions [i].Symbol.Id != (int) SymbolConstants.SYMBOL_R_S) 
+				{
+					last = i;
+					break;
+				}
+			}
+
+			// Compute the horizontal position of the various columns.
+			xStepWidth = e.Graphics.MeasureString (stepTemplate, font).Width;
+			xLineWidth = xStepWidth;
+			xTInstructionWidth = e.Graphics.MeasureString (tInstructionTemplate, font).Width;
+			xNInstructionWidth = e.Graphics.MeasureString (nInstructionTemplate, font).Width;
+			xSpacing = spacingFactor * xStepWidth;
+
+			linesPerPage = (int) (e.MarginBounds.Height / fontHeight);
+			for (int i = 0; i < 2; i++) 
+			{
+				for (int j = 0; j < linesPerPage; j++) 
+				{
+					y = topMargin + (j * fontHeight);
+					//step = j + i * linesPerPage;
+					step = lastPrinted + 1;
+					if (step > last + 1 || step >= instructions.Length) 
+					{
+						goto donePrinting;
+					}
+					lastPrinted = step;
+					stepImage = (step + 1).ToString
+						(stepTemplate, NumberFormatInfo.InvariantInfo);
+
+					// Step number.
+					x = leftMargin + i * e.MarginBounds.Width / 2.0F;
+					e.Graphics.DrawString (stepImage, font, Brushes.Black, x, y);
+
+					// Horizontal line every five steps.
+					x += xStepWidth + xSpacing;
+					if ((step + 1) % 5 == 0) 
+					{
+						p1 = new Point ((int) x, (int) (y + fontHeight / 2.0F));
+						p2 = new Point
+							((int) (x + xLineWidth), (int) (y + fontHeight / 2.0F));
+						e.Graphics.DrawLine (thinPen, p1, p2);
+					}
+
+					// Frame for labels.
+					x += xLineWidth + xSpacing;
+					switch (instructions [step].Symbol.Id) 
+					{
+						case (int) SymbolConstants.SYMBOL_LBL :
+						case (int) SymbolConstants.SYMBOL_LBL_F :
+							e.Graphics.DrawRectangle
+								(thickPen,
+								x,
+								y,
+								xTInstructionWidth + xSpacing + xNInstructionWidth,
+								fontHeight);
+							break;
+					}
+
+					// Instruction in text form.  This field is right-justified, so it's a bit
+					// more delicate.
+					instructionImage = instructions [step].PrintableText;
+					e.Graphics.DrawString
+						(instructionImage,
+						font,
+						Brushes.Black,
+						x + xTInstructionWidth -
+							e.Graphics.MeasureString (instructionImage, font).Width,
+						y);
+
+					// Instruction in numeric form, left-justified.
+					x += xTInstructionWidth + xSpacing;
+					e.Graphics.DrawString 
+						(instructions [step].Text, font, Brushes.Black, x, y);
+				}
+			}
+			e.HasMorePages = true;
+			return;
+			donePrinting:
+			lastPrinted = noStep;
+			e.HasMorePages = false ;
 		}
 
 		#endregion

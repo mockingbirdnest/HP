@@ -41,13 +41,18 @@ namespace HP67_Control_Library
 		private const int exponentSignLength = 1;
 		private const int exponentFirst = 13;
 		private const int exponentLength = 2;
+		private const string exponentTemplate = " 00;-00";
+		private const string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
 		private const int instructionFirst = 3;
 		private const int instructionLength = 11;
+		private const string negativeOverflow = "-9.999999999 99";
+		private const double overflowLimit = 9.999999999E99;
+		private const string period = ".";
+		private const string positiveOverflow = " 9.999999999 99";
 		private const int stepFirst = 0;
 		private const int stepLength = 3;
-		private const double overflowLimit = 9.999999999E99;
+		private const string stepTemplate = "000";
 		private const double underflowLimit = 1.0E-99;
-		private const string period = ".";
 
 		private bool enteringExponent;
 		private bool enteringMantissa;
@@ -60,17 +65,12 @@ namespace HP67_Control_Library
 		private string engMantissaTemplate1;
 		private string engMantissaTemplate10;
 		private string engMantissaTemplate100;
-		private string exponentTemplate = " 00;-00";
 		private string fixMantissaTemplate;
-		private string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
 		private DisplayFormat format;
 		private DisplayMode mode;
-		private string negativeOverflow = "-9.999999999 99";
 		private bool overflows;
 		private double overflowValue;
-		private string positiveOverflow = " 9.999999999 99";
 		private string sciMantissaTemplate;
-		private string stepTemplate = "000";
 
 		private System.Windows.Forms.TextBox numericTextBox;
 		private System.Windows.Forms.TextBox instructionTextBox;
@@ -796,25 +796,13 @@ namespace HP67_Control_Library
 					text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength));
 		}
 
-		public void DisplayInstruction (Object instruction, int step)
+		public void ShowInstruction (string instruction, int step)
 		{
-			// We would like to say that instruction is of class Instruction, but the silly
-			// language won't let us do that because it creates a circular dependency.  So instead
-			// we say that it's of type Object, and we override ToString.  Sigh.
-			string instructionImage;
 			string stepImage = step.ToString
 				(stepTemplate, NumberFormatInfo.InvariantInfo);
 			
-			if (instruction == null) 
-			{
-				instructionImage = "";
-			}
-			else
-			{
-				instructionImage = instruction.ToString ();
-			}
 			instructionTextBox.Text = 
-				stepImage + instructionImage.PadLeft (instructionLength, ' ');
+				stepImage + instruction.PadLeft (instructionLength, ' ');
 		}
 
 		#endregion

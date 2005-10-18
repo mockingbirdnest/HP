@@ -4,7 +4,6 @@ using HP67_Parser;
 using HP67_Persistence;
 using System;
 using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
@@ -22,7 +21,10 @@ namespace HP67
 
 		private Actions theActions;
 		private Engine theEngine;
+		private Memory theMemory;
 		private Parser theParser;
+		private Program theProgram;
+		private Stack theStack;
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -72,6 +74,8 @@ namespace HP67
 		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem rtfMenuItem;
 		private System.Windows.Forms.MenuItem menuItem3;
+		private System.Drawing.Printing.PrintDocument printDocument;
+		private System.Windows.Forms.MenuItem printItem;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -84,7 +88,10 @@ namespace HP67
 			//
 			InitializeComponent();
 
-			theEngine = new Engine (display);
+			theMemory = new Memory ();
+			theProgram = new Program (display);
+			theStack = new Stack (display);
+			theEngine = new Engine (display, theMemory, theProgram, theStack);
 			theActions = new Actions (theEngine);
 			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
 		}
@@ -154,11 +161,13 @@ namespace HP67
 			this.openItem = new System.Windows.Forms.MenuItem();
 			this.saveMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveAsItem = new System.Windows.Forms.MenuItem();
-			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.menuItem3 = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.printDocument = new System.Drawing.Printing.PrintDocument();
+			this.printItem = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
 			// display
@@ -916,6 +925,7 @@ namespace HP67
 																						this.openItem,
 																						this.saveMenuItem,
 																						this.saveAsItem,
+																						this.printItem,
 																						this.menuItem3,
 																						this.editMenuItem,
 																						this.rtfMenuItem});
@@ -938,6 +948,23 @@ namespace HP67
 			this.saveAsItem.Text = "Save &As...";
 			this.saveAsItem.Click += new System.EventHandler(this.saveAsItem_Click);
 			// 
+			// menuItem3
+			// 
+			this.menuItem3.Index = 4;
+			this.menuItem3.Text = "-";
+			// 
+			// editMenuItem
+			// 
+			this.editMenuItem.Index = 5;
+			this.editMenuItem.Text = "&Edit Labels";
+			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
+			// 
+			// rtfMenuItem
+			// 
+			this.rtfMenuItem.Index = 6;
+			this.rtfMenuItem.Text = "&Rich Text";
+			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
+			// 
 			// openFileDialog
 			// 
 			this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
@@ -946,22 +973,15 @@ namespace HP67
 			// 
 			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
 			// 
-			// editMenuItem
+			// printDocument
 			// 
-			this.editMenuItem.Index = 4;
-			this.editMenuItem.Text = "&Edit Labels";
-			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
+			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
 			// 
-			// rtfMenuItem
+			// printItem
 			// 
-			this.rtfMenuItem.Index = 5;
-			this.rtfMenuItem.Text = "&Rich Text";
-			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
-			// 
-			// menuItem3
-			// 
-			this.menuItem3.Index = 3;
-			this.menuItem3.Text = "-";
+			this.printItem.Index = 3;
+			this.printItem.Text = "Print";
+			this.printItem.Click += new System.EventHandler(this.printItem_Click);
 			// 
 			// HP67
 			// 
@@ -1127,6 +1147,17 @@ namespace HP67
 				((MenuItem) sender).Checked = isChecked;
 				cardSlot.RichText = isChecked;
 			}
+		}
+
+		private void printDocument_PrintPage(object sender,
+			                                 System.Drawing.Printing.PrintPageEventArgs e)
+		{
+			theProgram.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
+		}
+
+		private void printItem_Click(object sender, System.EventArgs e)
+		{
+			printDocument.Print ();
 		}
 
 	}

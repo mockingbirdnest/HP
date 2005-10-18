@@ -55,15 +55,15 @@ namespace HP67
 
 		#region Constructors & Destructors
 
-		public Engine (Display display) 
+		public Engine (Display display, Memory memory, Program program, Stack stack) 
 		{
 			flags = new bool [4];
 			unit = AngleUnit.Degree;
 			theDisplay = display;
 			theDisplay.EnteringNumber += new Display.EnteringNumberEvent (Enter);
-			theMemory = new Memory ();
-			theProgram = new Program (display);
-			theStack = new Stack (display);
+			theMemory = memory;
+			theProgram = program;
+			theStack = stack;
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
