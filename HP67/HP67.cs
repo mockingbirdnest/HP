@@ -88,7 +88,7 @@ namespace HP67
 			//
 			InitializeComponent();
 
-			theMemory = new Memory ();
+			theMemory = new Memory (display);
 			theProgram = new Program (display);
 			theStack = new Stack (display);
 			theEngine = new Engine (display, theMemory, theProgram, theStack);

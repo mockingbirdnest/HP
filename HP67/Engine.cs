@@ -225,9 +225,24 @@ namespace HP67
 				"Execute: " + instruction.PrintableText,
 				classTraceSwitch.DisplayName);
 
-			// Applies to most operations.  Set to neutral below when an operation doesn't change
-			// the stack lift after all.
-			stackLift = true;
+			switch (instruction.Symbol.Id) 
+			{
+				case (int) SymbolConstants.SYMBOL_CHS :
+				case (int) SymbolConstants.SYMBOL_DIGIT :
+				case (int) SymbolConstants.SYMBOL_EEX :
+				case (int) SymbolConstants.SYMBOL_PERIOD:
+					// The digit entry operations must not change the stack lift.  That's because
+					// we will use stackLift in the event handler for EnteringNumber.
+					stackLift = neutral;
+					break;
+				default :
+					// Most operations terminate digit entry and lift the stack.  Set
+					// stackLift to neutral below when an operation doesn't change the stack lift
+					// after all.
+					stackLift = true;
+					theDisplay.DoneEntering ();
+					break;
+			}
 
 			switch (instruction.Symbol.Id) 
 			{
@@ -259,7 +274,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_CHS :
 					bool changeSignDone;
-					stackLift = neutral;
 					theDisplay.ChangeSign (out changeSignDone);
 					if (! changeSignDone) 
 					{
@@ -290,7 +304,6 @@ namespace HP67
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
-					stackLift = neutral;
 					theDisplay.EnterDigit (((Digit) instruction.Arguments [0]).Value);
 					break;
 				case (int)SymbolConstants.SYMBOL_DISPLAY_X :
@@ -322,7 +335,6 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_EEX :
-					stackLift = neutral;
 					theDisplay.EnterExponent ();
 					break;
 				case (int)SymbolConstants.SYMBOL_ENG :
@@ -397,8 +409,11 @@ namespace HP67
 					unit = AngleUnit.Grade;
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB :
+					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram, false);
+					Run ();
+					break;
 				case (int)SymbolConstants.SYMBOL_GSB_F :
-					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram, true);
 					Run ();
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
@@ -489,7 +504,6 @@ namespace HP67
 					theStack.X = (x - y) * 100.0 / y;
 					break;
 				case (int)SymbolConstants.SYMBOL_PERIOD :
-					stackLift = neutral;
 					theDisplay.EnterPeriod ();
 					break;
 				case (int)SymbolConstants.SYMBOL_PI :
@@ -524,8 +538,8 @@ namespace HP67
 					theStack.X = 1.0 / x;
 					break;
 				case (int)SymbolConstants.SYMBOL_REG :
-					// TODO: Execution.
 					stackLift = neutral;
+					theMemory.Display ();
 					break;
 				case (int)SymbolConstants.SYMBOL_RND :
 					theDisplay.Round ();
@@ -774,14 +788,12 @@ namespace HP67
 						"Run: starting",
 						classTraceSwitch.DisplayName);
 
-					// This is to end any number entry.
-					double x = theStack.X;
-
 					for (;;) 
 					{
 						running = true;
 						instruction = theProgram.Instruction;
 						Execute (instruction);
+						theDisplay.Update ();
 					}
 				}
 				catch (Stop)

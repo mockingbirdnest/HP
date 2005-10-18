@@ -78,7 +78,7 @@ namespace HP67_Class_Library
 	public interface ILabel
 	{
 		void Goto (Memory m, Program p);
-		void Gosub (Memory m, Program p);
+		void Gosub (Memory m, Program p, bool lower);
 	}
 
 	#endregion
@@ -148,7 +148,7 @@ namespace HP67_Class_Library
 			p.Goto (digit);
 		}
 
-		public void Gosub (Memory m, Program p)
+		public void Gosub (Memory m, Program p, bool lower)
 		{
 			p.Gosub (digit);
 		}
@@ -210,7 +210,7 @@ namespace HP67_Class_Library
 			p.Goto (label);
 		}
 
-		public void Gosub (Memory m, Program p)
+		public void Gosub (Memory m, Program p, bool lower)
 		{
 			byte label = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
 			p.Gosub (label);
@@ -275,10 +275,15 @@ namespace HP67_Class_Library
 				(typeof (Program.LetterLabel), new String (letter, 1)));
 		}
 
-		public void Gosub (Memory m, Program p)
+		public void Gosub (Memory m, Program p, bool lower)
 		{
-			p.Gosub ((Program.LetterLabel) Enum.Parse
-				(typeof (Program.LetterLabel), new String (letter, 1)));
+			string labelName = new String (letter, 1);
+
+			if (lower) 
+			{
+				labelName = labelName.ToLower ();
+			}
+			p.Gosub ((Program.LetterLabel) Enum.Parse (typeof (Program.LetterLabel), labelName));
 		}
 	}
 

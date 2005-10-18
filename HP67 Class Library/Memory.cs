@@ -1,4 +1,5 @@
-﻿using HP67_Parser;
+﻿using HP67_Control_Library;
+using HP67_Parser;
 using HP67_Persistence;
 using System;
 using System.Diagnostics;
@@ -26,6 +27,7 @@ namespace HP67_Class_Library
 		#region Private Declarations
 
 		private double[] registers;
+		private Display theDisplay;
 
 		private enum ΣRegister
 		{
@@ -49,8 +51,9 @@ namespace HP67_Class_Library
 
 		#region Constructors & Destructors
 
-		public Memory()
+		public Memory (Display display)
 		{
+			theDisplay = display;
 			registers = new double [(int) LetterRegister.I - 0 + 1];
 			for (int i = 0; i < registers.Length; i++)
 			{
@@ -299,6 +302,18 @@ namespace HP67_Class_Library
 			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
 			{
 				this [i] = 0.0;
+			}
+		}
+
+		public void Display ()
+		{
+			for (int i = 0; i <= 9; i++) 
+			{
+				theDisplay.ShowMemory (i, this [i], 800);
+			}
+			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++) 
+			{
+				theDisplay.ShowMemory ((int) i, this [i], 800);
 			}
 		}
 

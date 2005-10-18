@@ -758,10 +758,7 @@ namespace HP67_Control_Library
 				StartEnteringNumber ();
 				ReplaceMantissaWithSign (" " + period);
 			}
-			else if (!hasAPeriod) 
-			{
-				hasAPeriod = true;
-			}
+			hasAPeriod = true;
 		}
 
 		public void Pause (int ms) 
@@ -803,6 +800,22 @@ namespace HP67_Control_Library
 			
 			instructionTextBox.Text = 
 				stepImage + instruction.PadLeft (instructionLength, ' ');
+		}
+
+		public void ShowMemory (int address, double register, int ms)
+		{
+			string addressImage = address.ToString ();
+			double savedValue = Value;
+
+			numericTextBox.Text =
+				addressImage.PadLeft
+				(mantissaSignLength + mantissaLength + exponentSignLength + exponentLength, ' ');
+			Update ();
+			Thread.Sleep (ms);
+			Value = register;
+			Update ();
+			Thread.Sleep (ms);
+			Value = savedValue;
 		}
 
 		#endregion
