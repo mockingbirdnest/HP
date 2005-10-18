@@ -727,7 +727,7 @@ namespace HP67_Control_Library
 						mantissa = mantissa.Substring (0, mantissa.Length - 1) + d + period;
 					}
 				}
-				currentMantissa = double.Parse (mantissa);
+				currentMantissa = double.Parse (mantissa, NumberFormatInfo.InvariantInfo);
 				ReplaceMantissaWithSign (mantissa);
 			}
 		}
@@ -790,7 +790,8 @@ namespace HP67_Control_Library
 
 			currentMantissa =
 				double.Parse (
-					text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength));
+					text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength),
+					NumberFormatInfo.InvariantInfo);
 		}
 
 		public void ShowInstruction (string instruction, int step)
