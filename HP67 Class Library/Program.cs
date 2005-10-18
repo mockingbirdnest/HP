@@ -281,7 +281,11 @@ namespace HP67_Class_Library
 
 		public void Return ()
 		{
-			if (returns [0] == noStep) 
+			if (returns [0] == noStep)
+			{
+				throw new Stop ();
+			}
+			else
 			{
 				GotoZeroBasedStep (returns [0]);
 				for (int i = 0; i <= returns.Length - 2; i++) 
@@ -335,6 +339,8 @@ namespace HP67_Class_Library
 
 		public void Insert (Instruction instruction)
 		{
+			string labelImage;
+
 			UpdateLabelsForDeletion (instructions.Length - 1);
 			next++;
 			for (int i = instructions.Length - 1; i > next; i--) 
@@ -356,8 +362,12 @@ namespace HP67_Class_Library
 					}
 					else if (arg is Letter) 
 					{
-						this [(LetterLabel) Enum.Parse
-							(typeof (LetterLabel), new String (((Letter) arg).Value, 1))] = next;
+						labelImage = new String (((Letter) arg).Value, 1);
+						if (instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_LBL_F) 
+						{
+							labelImage = labelImage.ToLower ();
+						}
+						this [(LetterLabel) Enum.Parse (typeof (LetterLabel), labelImage)] = next;
 					}
 					break;
 			}

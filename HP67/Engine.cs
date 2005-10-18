@@ -222,7 +222,7 @@ namespace HP67
 			double x, y;
 
 			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-				"Execute: " + instruction.Symbol.Name + " " + instruction.ToString (),
+				"Execute: " + instruction.PrintableText,
 				classTraceSwitch.DisplayName);
 
 			// Applies to most operations.  Set to neutral below when an operation doesn't change
