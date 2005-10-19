@@ -339,8 +339,6 @@ namespace HP67_Class_Library
 
 		public void Insert (Instruction instruction)
 		{
-			string labelImage;
-
 			UpdateLabelsForDeletion (instructions.Length - 1);
 			next++;
 			for (int i = instructions.Length - 1; i > next; i--) 
@@ -362,12 +360,8 @@ namespace HP67_Class_Library
 					}
 					else if (arg is Letter) 
 					{
-						labelImage = new String (((Letter) arg).Value, 1);
-						if (instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_LBL_F) 
-						{
-							labelImage = labelImage.ToLower ();
-						}
-						this [(LetterLabel) Enum.Parse (typeof (LetterLabel), labelImage)] = next;
+						this [(LetterLabel) Enum.Parse (typeof (LetterLabel), 
+								new String (((Letter) arg).Value, 1))] = next;
 					}
 					break;
 			}

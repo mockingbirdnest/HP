@@ -80,83 +80,85 @@ namespace HP67_Parser
         SYMBOL_GRD                           = 65 , // <Grd>
         SYMBOL_GSB                           = 66 , // <Gsb>
         SYMBOL_GSB_F                         = 67 , // <Gsb_f>
-        SYMBOL_GSB_SHORTCUT                  = 68 , // <Gsb_Shortcut>
-        SYMBOL_GTO_PERIOD                    = 69 , // <Gto_Period>
-        SYMBOL_H_SHIFTED_INSTRUCTION         = 70 , // <H_Shifted_Instruction>
-        SYMBOL_HMS_PLUS                      = 71 , // <HMS_Plus>
-        SYMBOL_INSTRUCTION                   = 72 , // <Instruction>
-        SYMBOL_INT                           = 73 , // <Int>
-        SYMBOL_ISZ                           = 74 , // <Isz>
-        SYMBOL_ISZ_SUB_I                     = 75 , // <Isz_Sub_I>
-        SYMBOL_LABEL                         = 76 , // <Label>
-        SYMBOL_LBL                           = 77 , // <Lbl>
-        SYMBOL_LBL_F                         = 78 , // <Lbl_f>
-        SYMBOL_LETTER                        = 79 , // <Letter>
-        SYMBOL_LETTER_LABEL                  = 80 , // <Letter_Label>
-        SYMBOL_LN                            = 81 , // <Ln>
-        SYMBOL_LOG                           = 82 , // <Log>
-        SYMBOL_LST_X                         = 83 , // <Lst_X>
-        SYMBOL_MEMORY                        = 84 , // <Memory>
-        SYMBOL_MEMORY_SHORTCUT               = 85 , // <Memory_Shortcut>
-        SYMBOL_MERGE                         = 86 , // <Merge>
-        SYMBOL_NULLARY_F_SHIFTED_INSTRUCTION = 87 , // <Nullary_F_Shifted_Instruction>
-        SYMBOL_NULLARY_G_SHIFTED_INSTRUCTION = 88 , // <Nullary_G_Shifted_Instruction>
-        SYMBOL_NULLARY_H_SHIFTED_INSTRUCTION = 89 , // <Nullary_H_Shifted_Instruction>
-        SYMBOL_NULLARY_UNSHIFTED_INSTRUCTION = 90 , // <Nullary_Unshifted_Instruction>
-        SYMBOL_OPERABLE_MEMORY               = 91 , // <Operable_Memory>
-        SYMBOL_OPERATOR                      = 92 , // <Operator>
-        SYMBOL_P_EXCHANGE_S                  = 93 , // <P_Exchange_S>
-        SYMBOL_PAUSE                         = 94 , // <Pause>
-        SYMBOL_PERCENT                       = 95 , // <Percent>
-        SYMBOL_PERCENT_CHANGE                = 96 , // <Percent_Change>
-        SYMBOL_PI                            = 97 , // <Pi>
-        SYMBOL_R_DOWN                        = 98 , // <R_Down>
-        SYMBOL_R_UP                          = 99 , // <R_Up>
-        SYMBOL_RAD                           = 100, // <Rad>
-        SYMBOL_RC_I                          = 101, // <Rc_I>
-        SYMBOL_RCL_SIGMA_PLUS                = 102, // <Rcl_Sigma_Plus>
-        SYMBOL_RECIPROCAL                    = 103, // <Reciprocal>
-        SYMBOL_REG                           = 104, // <Reg>
-        SYMBOL_RND                           = 105, // <Rnd>
-        SYMBOL_RTN                           = 106, // <Rtn>
-        SYMBOL_S                             = 107, // <S>
-        SYMBOL_SCI                           = 108, // <Sci>
-        SYMBOL_SF                            = 109, // <SF>
-        SYMBOL_SHORTCUT                      = 110, // <Shortcut>
-        SYMBOL_SIGMA_MINUS                   = 111, // <Sigma_Minus>
-        SYMBOL_SIN                           = 112, // <Sin>
-        SYMBOL_SPACE                         = 113, // <Space>
-        SYMBOL_SQRT                          = 114, // <Sqrt>
-        SYMBOL_SQUARE                        = 115, // <Square>
-        SYMBOL_ST_I                          = 116, // <St_I>
-        SYMBOL_STK                           = 117, // <Stk>
-        SYMBOL_TAN                           = 118, // <Tan>
-        SYMBOL_TEN_TO_THE_XTH                = 119, // <Ten_To_The_Xth>
-        SYMBOL_TERNARY_UNSHIFTED_INSTRUCTION = 120, // <Ternary_Unshifted_Instruction>
-        SYMBOL_TO_DEGREES                    = 121, // <To_Degrees>
-        SYMBOL_TO_HMS                        = 122, // <To_HMS>
-        SYMBOL_TO_HOURS                      = 123, // <To_Hours>
-        SYMBOL_TO_POLAR                      = 124, // <To_Polar>
-        SYMBOL_TO_RADIANS                    = 125, // <To_Radians>
-        SYMBOL_TO_RECTANGULAR                = 126, // <To_Rectangular>
-        SYMBOL_UNARY_F_SHIFTED_INSTRUCTION   = 127, // <Unary_F_Shifted_Instruction>
-        SYMBOL_UNARY_G_SHIFTED_INSTRUCTION   = 128, // <Unary_G_Shifted_Instruction>
-        SYMBOL_UNARY_UNSHIFTED_INSTRUCTION   = 129, // <Unary_Unshifted_Instruction>
-        SYMBOL_UNSHIFTED_INSTRUCTION         = 130, // <Unshifted_Instruction>
-        SYMBOL_UNSHIFTED_SHORTCUT            = 131, // <Unshifted_Shortcut>
-        SYMBOL_W_DATA                        = 132, // <W_Data>
-        SYMBOL_X_AVERAGE                     = 133, // <X_Average>
-        SYMBOL_X_EQ_0                        = 134, // <X_EQ_0>
-        SYMBOL_X_EQ_Y                        = 135, // <X_EQ_Y>
-        SYMBOL_X_EXCHANGE_I                  = 136, // <X_Exchange_I>
-        SYMBOL_X_EXCHANGE_Y                  = 137, // <X_Exchange_Y>
-        SYMBOL_X_GT_0                        = 138, // <X_GT_0>
-        SYMBOL_X_GT_Y                        = 139, // <X_GT_Y>
-        SYMBOL_X_LE_Y                        = 140, // <X_LE_Y>
-        SYMBOL_X_LT_0                        = 141, // <X_LT_0>
-        SYMBOL_X_NE_0                        = 142, // <X_NE_0>
-        SYMBOL_X_NE_Y                        = 143, // <X_NE_Y>
-        SYMBOL_Y_TO_THE_XTH                  = 144  // <Y_To_The_Xth>
+        SYMBOL_GSB_F_SHORTCUT                = 68 , // <Gsb_f_Shortcut>
+        SYMBOL_GSB_SHORTCUT                  = 69 , // <Gsb_Shortcut>
+        SYMBOL_GTO_PERIOD                    = 70 , // <Gto_Period>
+        SYMBOL_H_SHIFTED_INSTRUCTION         = 71 , // <H_Shifted_Instruction>
+        SYMBOL_HMS_PLUS                      = 72 , // <HMS_Plus>
+        SYMBOL_INSTRUCTION                   = 73 , // <Instruction>
+        SYMBOL_INT                           = 74 , // <Int>
+        SYMBOL_ISZ                           = 75 , // <Isz>
+        SYMBOL_ISZ_SUB_I                     = 76 , // <Isz_Sub_I>
+        SYMBOL_LABEL                         = 77 , // <Label>
+        SYMBOL_LBL                           = 78 , // <Lbl>
+        SYMBOL_LBL_F                         = 79 , // <Lbl_f>
+        SYMBOL_LETTER                        = 80 , // <Letter>
+        SYMBOL_LETTER_LABEL                  = 81 , // <Letter_Label>
+        SYMBOL_LN                            = 82 , // <Ln>
+        SYMBOL_LOG                           = 83 , // <Log>
+        SYMBOL_LOWERCASE_LETTER_LABEL        = 84 , // <Lowercase_Letter_Label>
+        SYMBOL_LST_X                         = 85 , // <Lst_X>
+        SYMBOL_MEMORY                        = 86 , // <Memory>
+        SYMBOL_MEMORY_SHORTCUT               = 87 , // <Memory_Shortcut>
+        SYMBOL_MERGE                         = 88 , // <Merge>
+        SYMBOL_NULLARY_F_SHIFTED_INSTRUCTION = 89 , // <Nullary_F_Shifted_Instruction>
+        SYMBOL_NULLARY_G_SHIFTED_INSTRUCTION = 90 , // <Nullary_G_Shifted_Instruction>
+        SYMBOL_NULLARY_H_SHIFTED_INSTRUCTION = 91 , // <Nullary_H_Shifted_Instruction>
+        SYMBOL_NULLARY_UNSHIFTED_INSTRUCTION = 92 , // <Nullary_Unshifted_Instruction>
+        SYMBOL_OPERABLE_MEMORY               = 93 , // <Operable_Memory>
+        SYMBOL_OPERATOR                      = 94 , // <Operator>
+        SYMBOL_P_EXCHANGE_S                  = 95 , // <P_Exchange_S>
+        SYMBOL_PAUSE                         = 96 , // <Pause>
+        SYMBOL_PERCENT                       = 97 , // <Percent>
+        SYMBOL_PERCENT_CHANGE                = 98 , // <Percent_Change>
+        SYMBOL_PI                            = 99 , // <Pi>
+        SYMBOL_R_DOWN                        = 100, // <R_Down>
+        SYMBOL_R_UP                          = 101, // <R_Up>
+        SYMBOL_RAD                           = 102, // <Rad>
+        SYMBOL_RC_I                          = 103, // <Rc_I>
+        SYMBOL_RCL_SIGMA_PLUS                = 104, // <Rcl_Sigma_Plus>
+        SYMBOL_RECIPROCAL                    = 105, // <Reciprocal>
+        SYMBOL_REG                           = 106, // <Reg>
+        SYMBOL_RND                           = 107, // <Rnd>
+        SYMBOL_RTN                           = 108, // <Rtn>
+        SYMBOL_S                             = 109, // <S>
+        SYMBOL_SCI                           = 110, // <Sci>
+        SYMBOL_SF                            = 111, // <SF>
+        SYMBOL_SHORTCUT                      = 112, // <Shortcut>
+        SYMBOL_SIGMA_MINUS                   = 113, // <Sigma_Minus>
+        SYMBOL_SIN                           = 114, // <Sin>
+        SYMBOL_SPACE                         = 115, // <Space>
+        SYMBOL_SQRT                          = 116, // <Sqrt>
+        SYMBOL_SQUARE                        = 117, // <Square>
+        SYMBOL_ST_I                          = 118, // <St_I>
+        SYMBOL_STK                           = 119, // <Stk>
+        SYMBOL_TAN                           = 120, // <Tan>
+        SYMBOL_TEN_TO_THE_XTH                = 121, // <Ten_To_The_Xth>
+        SYMBOL_TERNARY_UNSHIFTED_INSTRUCTION = 122, // <Ternary_Unshifted_Instruction>
+        SYMBOL_TO_DEGREES                    = 123, // <To_Degrees>
+        SYMBOL_TO_HMS                        = 124, // <To_HMS>
+        SYMBOL_TO_HOURS                      = 125, // <To_Hours>
+        SYMBOL_TO_POLAR                      = 126, // <To_Polar>
+        SYMBOL_TO_RADIANS                    = 127, // <To_Radians>
+        SYMBOL_TO_RECTANGULAR                = 128, // <To_Rectangular>
+        SYMBOL_UNARY_F_SHIFTED_INSTRUCTION   = 129, // <Unary_F_Shifted_Instruction>
+        SYMBOL_UNARY_G_SHIFTED_INSTRUCTION   = 130, // <Unary_G_Shifted_Instruction>
+        SYMBOL_UNARY_UNSHIFTED_INSTRUCTION   = 131, // <Unary_Unshifted_Instruction>
+        SYMBOL_UNSHIFTED_INSTRUCTION         = 132, // <Unshifted_Instruction>
+        SYMBOL_UNSHIFTED_SHORTCUT            = 133, // <Unshifted_Shortcut>
+        SYMBOL_W_DATA                        = 134, // <W_Data>
+        SYMBOL_X_AVERAGE                     = 135, // <X_Average>
+        SYMBOL_X_EQ_0                        = 136, // <X_EQ_0>
+        SYMBOL_X_EQ_Y                        = 137, // <X_EQ_Y>
+        SYMBOL_X_EXCHANGE_I                  = 138, // <X_Exchange_I>
+        SYMBOL_X_EXCHANGE_Y                  = 139, // <X_Exchange_Y>
+        SYMBOL_X_GT_0                        = 140, // <X_GT_0>
+        SYMBOL_X_GT_Y                        = 141, // <X_GT_Y>
+        SYMBOL_X_LE_Y                        = 142, // <X_LE_Y>
+        SYMBOL_X_LT_0                        = 143, // <X_LT_0>
+        SYMBOL_X_NE_0                        = 144, // <X_NE_0>
+        SYMBOL_X_NE_Y                        = 145, // <X_NE_Y>
+        SYMBOL_Y_TO_THE_XTH                  = 146  // <Y_To_The_Xth>
     };
 
     enum RuleConstants : int
@@ -247,147 +249,149 @@ namespace HP67_Parser
         RULE_SHORTCUT2                                    = 83 , // <Shortcut> ::= <F_Shifted_Shortcut>
         RULE_UNSHIFTED_SHORTCUT                           = 84 , // <Unshifted_Shortcut> ::= <Gsb_Shortcut>
         RULE_UNSHIFTED_SHORTCUT2                          = 85 , // <Unshifted_Shortcut> ::= <Memory_Shortcut>
-        RULE_F_SHIFTED_SHORTCUT_F                         = 86 , // <F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
-        RULE_GSB_SHORTCUT                                 = 87 , // <Gsb_Shortcut> ::= <Letter>
-        RULE_MEMORY_SHORTCUT_SUB_I                        = 88 , // <Memory_Shortcut> ::= 'Sub_I'
-        RULE_UNSHIFTED_INSTRUCTION                        = 89 , // <Unshifted_Instruction> ::= <Nullary_Unshifted_Instruction>
-        RULE_UNSHIFTED_INSTRUCTION2                       = 90 , // <Unshifted_Instruction> ::= <Unary_Unshifted_Instruction>
-        RULE_UNSHIFTED_INSTRUCTION3                       = 91 , // <Unshifted_Instruction> ::= <Binary_Unshifted_Instruction>
-        RULE_UNSHIFTED_INSTRUCTION4                       = 92 , // <Unshifted_Instruction> ::= <Ternary_Unshifted_Instruction>
-        RULE_F_SHIFTED_INSTRUCTION_F                      = 93 , // <F_Shifted_Instruction> ::= f <Nullary_F_Shifted_Instruction>
-        RULE_F_SHIFTED_INSTRUCTION_F2                     = 94 , // <F_Shifted_Instruction> ::= f <Unary_F_Shifted_Instruction>
-        RULE_G_SHIFTED_INSTRUCTION_G                      = 95 , // <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
-        RULE_G_SHIFTED_INSTRUCTION_G2                     = 96 , // <G_Shifted_Instruction> ::= g <Unary_G_Shifted_Instruction>
-        RULE_H_SHIFTED_INSTRUCTION_H                      = 97 , // <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS     = 98 , // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION                = 99 , // <Nullary_Unshifted_Instruction> ::= <Rcl_Sigma_Plus>
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SST            = 100, // <Nullary_Unshifted_Instruction> ::= Sst
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER          = 101, // <Nullary_Unshifted_Instruction> ::= Enter
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS            = 102, // <Nullary_Unshifted_Instruction> ::= Chs
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX            = 103, // <Nullary_Unshifted_Instruction> ::= Eex
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX            = 104, // <Nullary_Unshifted_Instruction> ::= Clx
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION2               = 105, // <Nullary_Unshifted_Instruction> ::= <Digit>
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION    = 106, // <Nullary_Unshifted_Instruction> ::= Subtraction
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION       = 107, // <Nullary_Unshifted_Instruction> ::= Addition
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION = 108, // <Nullary_Unshifted_Instruction> ::= Multiplication
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION       = 109, // <Nullary_Unshifted_Instruction> ::= Division
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD         = 110, // <Nullary_Unshifted_Instruction> ::= Period
-        RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S            = 111, // <Nullary_Unshifted_Instruction> ::= 'R_S'
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO              = 112, // <Unary_Unshifted_Instruction> ::= Gto <Label>
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP              = 113, // <Unary_Unshifted_Instruction> ::= Dsp <Digit_Count>
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_STO              = 114, // <Unary_Unshifted_Instruction> ::= Sto <Memory>
-        RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL              = 115, // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
-        RULE_BINARY_UNSHIFTED_INSTRUCTION_STO             = 116, // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-        RULE_TERNARY_UNSHIFTED_INSTRUCTION                = 117, // <Ternary_Unshifted_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION                = 118, // <Nullary_F_Shifted_Instruction> ::= <X_Average>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION2               = 119, // <Nullary_F_Shifted_Instruction> ::= <Fix>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION3               = 120, // <Nullary_F_Shifted_Instruction> ::= <Rnd>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION4               = 121, // <Nullary_F_Shifted_Instruction> ::= <Dsz>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION5               = 122, // <Nullary_F_Shifted_Instruction> ::= <Isz>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION6               = 123, // <Nullary_F_Shifted_Instruction> ::= <W_Data>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION7               = 124, // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION8               = 125, // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION9               = 126, // <Nullary_F_Shifted_Instruction> ::= <Cl_Prgm>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION10              = 127, // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION11              = 128, // <Nullary_F_Shifted_Instruction> ::= <Ln>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION12              = 129, // <Nullary_F_Shifted_Instruction> ::= <Log>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION13              = 130, // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION14              = 131, // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION15              = 132, // <Nullary_F_Shifted_Instruction> ::= <Sin>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION16              = 133, // <Nullary_F_Shifted_Instruction> ::= <Cos>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION17              = 134, // <Nullary_F_Shifted_Instruction> ::= <Tan>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION18              = 135, // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION19              = 136, // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION20              = 137, // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION21              = 138, // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION22              = 139, // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION23              = 140, // <Nullary_F_Shifted_Instruction> ::= <Percent>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION24              = 141, // <Nullary_F_Shifted_Instruction> ::= <Int>
-        RULE_NULLARY_F_SHIFTED_INSTRUCTION25              = 142, // <Nullary_F_Shifted_Instruction> ::= <Display_X>
-        RULE_UNARY_F_SHIFTED_INSTRUCTION                  = 143, // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
-        RULE_UNARY_F_SHIFTED_INSTRUCTION2                 = 144, // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION                = 145, // <Nullary_G_Shifted_Instruction> ::= <S>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION2               = 146, // <Nullary_G_Shifted_Instruction> ::= <Sci>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION3               = 147, // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION4               = 148, // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION5               = 149, // <Nullary_G_Shifted_Instruction> ::= <Merge>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION6               = 150, // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION7               = 151, // <Nullary_G_Shifted_Instruction> ::= <Exp>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION8               = 152, // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION9               = 153, // <Nullary_G_Shifted_Instruction> ::= <Square>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION10              = 154, // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION11              = 155, // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION12              = 156, // <Nullary_G_Shifted_Instruction> ::= <Arccos>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION13              = 157, // <Nullary_G_Shifted_Instruction> ::= <Arctan>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION14              = 158, // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION15              = 159, // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION16              = 160, // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION17              = 161, // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION18              = 162, // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION19              = 163, // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION20              = 164, // <Nullary_G_Shifted_Instruction> ::= <Frac>
-        RULE_NULLARY_G_SHIFTED_INSTRUCTION21              = 165, // <Nullary_G_Shifted_Instruction> ::= <Stk>
-        RULE_UNARY_G_SHIFTED_INSTRUCTION                  = 166, // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
-        RULE_UNARY_G_SHIFTED_INSTRUCTION2                 = 167, // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION                = 168, // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION2               = 169, // <Nullary_H_Shifted_Instruction> ::= <Rtn>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION3               = 170, // <Nullary_H_Shifted_Instruction> ::= <Eng>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION4               = 171, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION5               = 172, // <Nullary_H_Shifted_Instruction> ::= <Bst>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION6               = 173, // <Nullary_H_Shifted_Instruction> ::= <St_I>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION7               = 174, // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION8               = 175, // <Nullary_H_Shifted_Instruction> ::= <Deg>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION9               = 176, // <Nullary_H_Shifted_Instruction> ::= <Rad>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION10              = 177, // <Nullary_H_Shifted_Instruction> ::= <Grd>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION11              = 178, // <Nullary_H_Shifted_Instruction> ::= <Del>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION12              = 179, // <Nullary_H_Shifted_Instruction> ::= <SF>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION13              = 180, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION14              = 181, // <Nullary_H_Shifted_Instruction> ::= <R_Down>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION15              = 182, // <Nullary_H_Shifted_Instruction> ::= <R_Up>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION16              = 183, // <Nullary_H_Shifted_Instruction> ::= <CF>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION17              = 184, // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION18              = 185, // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION19              = 186, // <Nullary_H_Shifted_Instruction> ::= <Abs>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION20              = 187, // <Nullary_H_Shifted_Instruction> ::= <F_Test>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION21              = 188, // <Nullary_H_Shifted_Instruction> ::= <Pause>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION22              = 189, // <Nullary_H_Shifted_Instruction> ::= <Pi>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION23              = 190, // <Nullary_H_Shifted_Instruction> ::= <Reg>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION24              = 191, // <Nullary_H_Shifted_Instruction> ::= <Factorial>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION25              = 192, // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION26              = 193, // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-        RULE_NULLARY_H_SHIFTED_INSTRUCTION27              = 194, // <Nullary_H_Shifted_Instruction> ::= <Space>
-        RULE_GTO_PERIOD_GTO_PERIOD                        = 195, // <Gto_Period> ::= Gto Period
-        RULE_RCL_SIGMA_PLUS_RCL_SIGMA_PLUS                = 196, // <Rcl_Sigma_Plus> ::= Rcl 'Sigma_Plus'
-        RULE_OPERATOR_SUBTRACTION                         = 197, // <Operator> ::= Subtraction
-        RULE_OPERATOR_ADDITION                            = 198, // <Operator> ::= Addition
-        RULE_OPERATOR_MULTIPLICATION                      = 199, // <Operator> ::= Multiplication
-        RULE_OPERATOR_DIVISION                            = 200, // <Operator> ::= Division
-        RULE_DIGIT_ZERO                                   = 201, // <Digit> ::= Zero
-        RULE_DIGIT_ONE                                    = 202, // <Digit> ::= One
-        RULE_DIGIT_TWO                                    = 203, // <Digit> ::= Two
-        RULE_DIGIT_THREE                                  = 204, // <Digit> ::= Three
-        RULE_DIGIT_FOUR                                   = 205, // <Digit> ::= Four
-        RULE_DIGIT_FIVE                                   = 206, // <Digit> ::= Five
-        RULE_DIGIT_SIX                                    = 207, // <Digit> ::= Six
-        RULE_DIGIT_SEVEN                                  = 208, // <Digit> ::= Seven
-        RULE_DIGIT_EIGHT                                  = 209, // <Digit> ::= Eight
-        RULE_DIGIT_NINE                                   = 210, // <Digit> ::= Nine
-        RULE_DIGIT_COUNT                                  = 211, // <Digit_Count> ::= <Digit>
-        RULE_DIGIT_COUNT_SUB_I                            = 212, // <Digit_Count> ::= 'Sub_I'
-        RULE_LETTER_A                                     = 213, // <Letter> ::= A
-        RULE_LETTER_B                                     = 214, // <Letter> ::= B
-        RULE_LETTER_C                                     = 215, // <Letter> ::= C
-        RULE_LETTER_D                                     = 216, // <Letter> ::= D
-        RULE_LETTER_E                                     = 217, // <Letter> ::= E
-        RULE_LETTER_LABEL                                 = 218, // <Letter_Label> ::= <Letter>
-        RULE_DIGIT_LABEL                                  = 219, // <Digit_Label> ::= <Digit>
-        RULE_LABEL                                        = 220, // <Label> ::= <Digit_Label>
-        RULE_LABEL2                                       = 221, // <Label> ::= <Letter_Label>
-        RULE_LABEL_SUB_I                                  = 222, // <Label> ::= 'Sub_I'
-        RULE_OPERABLE_MEMORY                              = 223, // <Operable_Memory> ::= <Digit>
-        RULE_OPERABLE_MEMORY_SUB_I                        = 224, // <Operable_Memory> ::= 'Sub_I'
-        RULE_MEMORY                                       = 225, // <Memory> ::= <Operable_Memory>
-        RULE_MEMORY2                                      = 226  // <Memory> ::= <Letter>
+        RULE_F_SHIFTED_SHORTCUT                           = 86 , // <F_Shifted_Shortcut> ::= <Gsb_f_Shortcut>
+        RULE_GSB_SHORTCUT                                 = 87 , // <Gsb_Shortcut> ::= <Letter_Label>
+        RULE_GSB_F_SHORTCUT_F                             = 88 , // <Gsb_f_Shortcut> ::= f <Lowercase_Letter_Label>
+        RULE_MEMORY_SHORTCUT_SUB_I                        = 89 , // <Memory_Shortcut> ::= 'Sub_I'
+        RULE_UNSHIFTED_INSTRUCTION                        = 90 , // <Unshifted_Instruction> ::= <Nullary_Unshifted_Instruction>
+        RULE_UNSHIFTED_INSTRUCTION2                       = 91 , // <Unshifted_Instruction> ::= <Unary_Unshifted_Instruction>
+        RULE_UNSHIFTED_INSTRUCTION3                       = 92 , // <Unshifted_Instruction> ::= <Binary_Unshifted_Instruction>
+        RULE_UNSHIFTED_INSTRUCTION4                       = 93 , // <Unshifted_Instruction> ::= <Ternary_Unshifted_Instruction>
+        RULE_F_SHIFTED_INSTRUCTION_F                      = 94 , // <F_Shifted_Instruction> ::= f <Nullary_F_Shifted_Instruction>
+        RULE_F_SHIFTED_INSTRUCTION_F2                     = 95 , // <F_Shifted_Instruction> ::= f <Unary_F_Shifted_Instruction>
+        RULE_G_SHIFTED_INSTRUCTION_G                      = 96 , // <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
+        RULE_G_SHIFTED_INSTRUCTION_G2                     = 97 , // <G_Shifted_Instruction> ::= g <Unary_G_Shifted_Instruction>
+        RULE_H_SHIFTED_INSTRUCTION_H                      = 98 , // <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS     = 99 , // <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION                = 100, // <Nullary_Unshifted_Instruction> ::= <Rcl_Sigma_Plus>
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SST            = 101, // <Nullary_Unshifted_Instruction> ::= Sst
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER          = 102, // <Nullary_Unshifted_Instruction> ::= Enter
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS            = 103, // <Nullary_Unshifted_Instruction> ::= Chs
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX            = 104, // <Nullary_Unshifted_Instruction> ::= Eex
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX            = 105, // <Nullary_Unshifted_Instruction> ::= Clx
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION2               = 106, // <Nullary_Unshifted_Instruction> ::= <Digit>
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION    = 107, // <Nullary_Unshifted_Instruction> ::= Subtraction
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION       = 108, // <Nullary_Unshifted_Instruction> ::= Addition
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION = 109, // <Nullary_Unshifted_Instruction> ::= Multiplication
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION       = 110, // <Nullary_Unshifted_Instruction> ::= Division
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD         = 111, // <Nullary_Unshifted_Instruction> ::= Period
+        RULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S            = 112, // <Nullary_Unshifted_Instruction> ::= 'R_S'
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_GTO              = 113, // <Unary_Unshifted_Instruction> ::= Gto <Label>
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_DSP              = 114, // <Unary_Unshifted_Instruction> ::= Dsp <Digit_Count>
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_STO              = 115, // <Unary_Unshifted_Instruction> ::= Sto <Memory>
+        RULE_UNARY_UNSHIFTED_INSTRUCTION_RCL              = 116, // <Unary_Unshifted_Instruction> ::= Rcl <Memory>
+        RULE_BINARY_UNSHIFTED_INSTRUCTION_STO             = 117, // <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
+        RULE_TERNARY_UNSHIFTED_INSTRUCTION                = 118, // <Ternary_Unshifted_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION                = 119, // <Nullary_F_Shifted_Instruction> ::= <X_Average>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION2               = 120, // <Nullary_F_Shifted_Instruction> ::= <Fix>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION3               = 121, // <Nullary_F_Shifted_Instruction> ::= <Rnd>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION4               = 122, // <Nullary_F_Shifted_Instruction> ::= <Dsz>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION5               = 123, // <Nullary_F_Shifted_Instruction> ::= <Isz>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION6               = 124, // <Nullary_F_Shifted_Instruction> ::= <W_Data>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION7               = 125, // <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION8               = 126, // <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION9               = 127, // <Nullary_F_Shifted_Instruction> ::= <Cl_Prgm>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION10              = 128, // <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION11              = 129, // <Nullary_F_Shifted_Instruction> ::= <Ln>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION12              = 130, // <Nullary_F_Shifted_Instruction> ::= <Log>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION13              = 131, // <Nullary_F_Shifted_Instruction> ::= <Sqrt>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION14              = 132, // <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION15              = 133, // <Nullary_F_Shifted_Instruction> ::= <Sin>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION16              = 134, // <Nullary_F_Shifted_Instruction> ::= <Cos>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION17              = 135, // <Nullary_F_Shifted_Instruction> ::= <Tan>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION18              = 136, // <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION19              = 137, // <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION20              = 138, // <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION21              = 139, // <Nullary_F_Shifted_Instruction> ::= <To_Hours>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION22              = 140, // <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION23              = 141, // <Nullary_F_Shifted_Instruction> ::= <Percent>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION24              = 142, // <Nullary_F_Shifted_Instruction> ::= <Int>
+        RULE_NULLARY_F_SHIFTED_INSTRUCTION25              = 143, // <Nullary_F_Shifted_Instruction> ::= <Display_X>
+        RULE_UNARY_F_SHIFTED_INSTRUCTION                  = 144, // <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
+        RULE_UNARY_F_SHIFTED_INSTRUCTION2                 = 145, // <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION                = 146, // <Nullary_G_Shifted_Instruction> ::= <S>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION2               = 147, // <Nullary_G_Shifted_Instruction> ::= <Sci>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION3               = 148, // <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION4               = 149, // <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION5               = 150, // <Nullary_G_Shifted_Instruction> ::= <Merge>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION6               = 151, // <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION7               = 152, // <Nullary_G_Shifted_Instruction> ::= <Exp>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION8               = 153, // <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION9               = 154, // <Nullary_G_Shifted_Instruction> ::= <Square>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION10              = 155, // <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION11              = 156, // <Nullary_G_Shifted_Instruction> ::= <Arcsin>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION12              = 157, // <Nullary_G_Shifted_Instruction> ::= <Arccos>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION13              = 158, // <Nullary_G_Shifted_Instruction> ::= <Arctan>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION14              = 159, // <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION15              = 160, // <Nullary_G_Shifted_Instruction> ::= <To_Polar>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION16              = 161, // <Nullary_G_Shifted_Instruction> ::= <To_Radians>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION17              = 162, // <Nullary_G_Shifted_Instruction> ::= <To_HMS>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION18              = 163, // <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION19              = 164, // <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION20              = 165, // <Nullary_G_Shifted_Instruction> ::= <Frac>
+        RULE_NULLARY_G_SHIFTED_INSTRUCTION21              = 166, // <Nullary_G_Shifted_Instruction> ::= <Stk>
+        RULE_UNARY_G_SHIFTED_INSTRUCTION                  = 167, // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Lowercase_Letter_Label>
+        RULE_UNARY_G_SHIFTED_INSTRUCTION2                 = 168, // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Lowercase_Letter_Label>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION                = 169, // <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION2               = 170, // <Nullary_H_Shifted_Instruction> ::= <Rtn>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION3               = 171, // <Nullary_H_Shifted_Instruction> ::= <Eng>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION4               = 172, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION5               = 173, // <Nullary_H_Shifted_Instruction> ::= <Bst>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION6               = 174, // <Nullary_H_Shifted_Instruction> ::= <St_I>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION7               = 175, // <Nullary_H_Shifted_Instruction> ::= <Rc_I>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION8               = 176, // <Nullary_H_Shifted_Instruction> ::= <Deg>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION9               = 177, // <Nullary_H_Shifted_Instruction> ::= <Rad>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION10              = 178, // <Nullary_H_Shifted_Instruction> ::= <Grd>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION11              = 179, // <Nullary_H_Shifted_Instruction> ::= <Del>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION12              = 180, // <Nullary_H_Shifted_Instruction> ::= <SF>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION13              = 181, // <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION14              = 182, // <Nullary_H_Shifted_Instruction> ::= <R_Down>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION15              = 183, // <Nullary_H_Shifted_Instruction> ::= <R_Up>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION16              = 184, // <Nullary_H_Shifted_Instruction> ::= <CF>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION17              = 185, // <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION18              = 186, // <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION19              = 187, // <Nullary_H_Shifted_Instruction> ::= <Abs>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION20              = 188, // <Nullary_H_Shifted_Instruction> ::= <F_Test>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION21              = 189, // <Nullary_H_Shifted_Instruction> ::= <Pause>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION22              = 190, // <Nullary_H_Shifted_Instruction> ::= <Pi>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION23              = 191, // <Nullary_H_Shifted_Instruction> ::= <Reg>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION24              = 192, // <Nullary_H_Shifted_Instruction> ::= <Factorial>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION25              = 193, // <Nullary_H_Shifted_Instruction> ::= <Lst_X>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION26              = 194, // <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
+        RULE_NULLARY_H_SHIFTED_INSTRUCTION27              = 195, // <Nullary_H_Shifted_Instruction> ::= <Space>
+        RULE_GTO_PERIOD_GTO_PERIOD                        = 196, // <Gto_Period> ::= Gto Period
+        RULE_RCL_SIGMA_PLUS_RCL_SIGMA_PLUS                = 197, // <Rcl_Sigma_Plus> ::= Rcl 'Sigma_Plus'
+        RULE_OPERATOR_SUBTRACTION                         = 198, // <Operator> ::= Subtraction
+        RULE_OPERATOR_ADDITION                            = 199, // <Operator> ::= Addition
+        RULE_OPERATOR_MULTIPLICATION                      = 200, // <Operator> ::= Multiplication
+        RULE_OPERATOR_DIVISION                            = 201, // <Operator> ::= Division
+        RULE_DIGIT_ZERO                                   = 202, // <Digit> ::= Zero
+        RULE_DIGIT_ONE                                    = 203, // <Digit> ::= One
+        RULE_DIGIT_TWO                                    = 204, // <Digit> ::= Two
+        RULE_DIGIT_THREE                                  = 205, // <Digit> ::= Three
+        RULE_DIGIT_FOUR                                   = 206, // <Digit> ::= Four
+        RULE_DIGIT_FIVE                                   = 207, // <Digit> ::= Five
+        RULE_DIGIT_SIX                                    = 208, // <Digit> ::= Six
+        RULE_DIGIT_SEVEN                                  = 209, // <Digit> ::= Seven
+        RULE_DIGIT_EIGHT                                  = 210, // <Digit> ::= Eight
+        RULE_DIGIT_NINE                                   = 211, // <Digit> ::= Nine
+        RULE_DIGIT_COUNT                                  = 212, // <Digit_Count> ::= <Digit>
+        RULE_DIGIT_COUNT_SUB_I                            = 213, // <Digit_Count> ::= 'Sub_I'
+        RULE_LETTER_A                                     = 214, // <Letter> ::= A
+        RULE_LETTER_B                                     = 215, // <Letter> ::= B
+        RULE_LETTER_C                                     = 216, // <Letter> ::= C
+        RULE_LETTER_D                                     = 217, // <Letter> ::= D
+        RULE_LETTER_E                                     = 218, // <Letter> ::= E
+        RULE_LETTER_LABEL                                 = 219, // <Letter_Label> ::= <Letter>
+        RULE_LOWERCASE_LETTER_LABEL                       = 220, // <Lowercase_Letter_Label> ::= <Letter_Label>
+        RULE_DIGIT_LABEL                                  = 221, // <Digit_Label> ::= <Digit>
+        RULE_LABEL                                        = 222, // <Label> ::= <Digit_Label>
+        RULE_LABEL2                                       = 223, // <Label> ::= <Letter_Label>
+        RULE_LABEL_SUB_I                                  = 224, // <Label> ::= 'Sub_I'
+        RULE_OPERABLE_MEMORY                              = 225, // <Operable_Memory> ::= <Digit>
+        RULE_OPERABLE_MEMORY_SUB_I                        = 226, // <Operable_Memory> ::= 'Sub_I'
+        RULE_MEMORY                                       = 227, // <Memory> ::= <Operable_Memory>
+        RULE_MEMORY2                                      = 228  // <Memory> ::= <Letter>
     };
 
     public interface IActions
@@ -489,8 +493,9 @@ namespace HP67_Parser
         void ReduceRULE_SHORTCUT2 (string input, Token token, Token [] tokens);
         void ReduceRULE_UNSHIFTED_SHORTCUT (string input, Token token, Token [] tokens);
         void ReduceRULE_UNSHIFTED_SHORTCUT2 (string input, Token token, Token [] tokens);
-        void ReduceRULE_F_SHIFTED_SHORTCUT_F (string input, Token token, Token [] tokens);
+        void ReduceRULE_F_SHIFTED_SHORTCUT (string input, Token token, Token [] tokens);
         void ReduceRULE_GSB_SHORTCUT (string input, Token token, Token [] tokens);
+        void ReduceRULE_GSB_F_SHORTCUT_F (string input, Token token, Token [] tokens);
         void ReduceRULE_MEMORY_SHORTCUT_SUB_I (string input, Token token, Token [] tokens);
         void ReduceRULE_UNSHIFTED_INSTRUCTION (string input, Token token, Token [] tokens);
         void ReduceRULE_UNSHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens);
@@ -622,6 +627,7 @@ namespace HP67_Parser
         void ReduceRULE_LETTER_D (string input, Token token, Token [] tokens);
         void ReduceRULE_LETTER_E (string input, Token token, Token [] tokens);
         void ReduceRULE_LETTER_LABEL (string input, Token token, Token [] tokens);
+        void ReduceRULE_LOWERCASE_LETTER_LABEL (string input, Token token, Token [] tokens);
         void ReduceRULE_DIGIT_LABEL (string input, Token token, Token [] tokens);
         void ReduceRULE_LABEL (string input, Token token, Token [] tokens);
         void ReduceRULE_LABEL2 (string input, Token token, Token [] tokens);
@@ -1088,14 +1094,19 @@ namespace HP67_Parser
                     actions.ReduceRULE_UNSHIFTED_SHORTCUT2 (input, args.Token, args.Token.Tokens);
                     return;
 
-                case (int)RuleConstants.RULE_F_SHIFTED_SHORTCUT_F :
-                    // <F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
-                    actions.ReduceRULE_F_SHIFTED_SHORTCUT_F (input, args.Token, args.Token.Tokens);
+                case (int)RuleConstants.RULE_F_SHIFTED_SHORTCUT :
+                    // <F_Shifted_Shortcut> ::= <Gsb_f_Shortcut>
+                    actions.ReduceRULE_F_SHIFTED_SHORTCUT (input, args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_GSB_SHORTCUT :
-                    // <Gsb_Shortcut> ::= <Letter>
+                    // <Gsb_Shortcut> ::= <Letter_Label>
                     actions.ReduceRULE_GSB_SHORTCUT (input, args.Token, args.Token.Tokens);
+                    return;
+
+                case (int)RuleConstants.RULE_GSB_F_SHORTCUT_F :
+                    // <Gsb_f_Shortcut> ::= f <Lowercase_Letter_Label>
+                    actions.ReduceRULE_GSB_F_SHORTCUT_F (input, args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_MEMORY_SHORTCUT_SUB_I :
@@ -1489,12 +1500,12 @@ namespace HP67_Parser
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_G_SHIFTED_INSTRUCTION :
-                    // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
+                    // <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Lowercase_Letter_Label>
                     actions.ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION (input, args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_UNARY_G_SHIFTED_INSTRUCTION2 :
-                    // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
+                    // <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Lowercase_Letter_Label>
                     actions.ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION2 (input, args.Token, args.Token.Tokens);
                     return;
 
@@ -1751,6 +1762,11 @@ namespace HP67_Parser
                 case (int)RuleConstants.RULE_LETTER_LABEL :
                     // <Letter_Label> ::= <Letter>
                     actions.ReduceRULE_LETTER_LABEL (input, args.Token, args.Token.Tokens);
+                    return;
+
+                case (int)RuleConstants.RULE_LOWERCASE_LETTER_LABEL :
+                    // <Lowercase_Letter_Label> ::= <Letter_Label>
+                    actions.ReduceRULE_LOWERCASE_LETTER_LABEL (input, args.Token, args.Token.Tokens);
                     return;
 
                 case (int)RuleConstants.RULE_DIGIT_LABEL :

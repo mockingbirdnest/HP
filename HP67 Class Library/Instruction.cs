@@ -47,21 +47,23 @@ namespace HP67_Class_Library
 				instruction = ((TerminalToken) tokens [0]).Symbol; // To make the compiler happy.
 			}
 
-			if (instruction.Id == (int) SymbolConstants.SYMBOL_DIGIT) 
-			{
+			switch (instruction.Id) {
+				case (int) SymbolConstants.SYMBOL_DIGIT :
+				case (int) SymbolConstants.SYMBOL_GSB_SHORTCUT :
+				case (int) SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
 
-				// Somewhat ugly.  In the case of the DIGIT instruction, the argument is borne by
-				// the instruction symbol itself.  Pretend that it is a separate argument for
-				// uniformity.
-				arguments = new Argument [1] {(Argument) tokens [0].UserObject};
-			}
-			else 
-			{
-				arguments = new Argument [tokens.Length - 1];
-				for (int i = 0; i < arguments.Length; i++) 
-				{
-					arguments [i] = (Argument) tokens [i + 1].UserObject;
-				}
+					// Somewhat ugly.  There are a few instructions where the argument is borne by
+					// the instruction symbol itself.  Pretend that it is a separate argument for
+					// uniformity.
+					arguments = new Argument [1] {(Argument) tokens [0].UserObject};
+					break;
+				default:
+					arguments = new Argument [tokens.Length - 1];
+					for (int i = 0; i < arguments.Length; i++) 
+					{
+						arguments [i] = (Argument) tokens [i + 1].UserObject;
+					}
+					break;
 			}
 
 			// Beware! This must occurs last, as it causes the text to be patched.
@@ -104,8 +106,6 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				bool argumentToLower = false;
-				string argumentPrintableText;
 				string result;
 
 				switch (Symbol.Id) 
@@ -126,12 +126,12 @@ namespace HP67_Class_Library
 						result = "eˣ";
 						break;
 					case (int) SymbolConstants.SYMBOL_GSB_F :
+					case (int) SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
+					case (int) SymbolConstants.SYMBOL_GSB_SHORTCUT :
 						result = "GSB";
-						argumentToLower = true;
 						break;
 					case (int) SymbolConstants.SYMBOL_LBL_F :
 						result = "LBL";
-						argumentToLower = true;
 						break;
 					case (int) SymbolConstants.SYMBOL_MULTIPLICATION :
 						result = "×";
@@ -196,12 +196,7 @@ namespace HP67_Class_Library
 				}
 				for (int i = 0; i < arguments.Length; i++) 
 				{
-					argumentPrintableText = arguments [i].PrintableText;
-					if (argumentToLower) 
-					{
-						argumentPrintableText = argumentPrintableText.ToLower ();
-					}
-					result += " " + argumentPrintableText;
+					result += " " + arguments [i].PrintableText;
 				}
 				return result;
 			}

@@ -408,15 +408,11 @@ namespace HP67
 					unit = AngleUnit.Grade;
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB :
-					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram, false);
-					Run ();
-					break;
 				case (int)SymbolConstants.SYMBOL_GSB_F :
-					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram, true);
-					Run ();
-					break;
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
-					// TODO: Execution.
+				case (int)SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
+					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+					Run ();
 					break;
 				case (int)SymbolConstants.SYMBOL_GTO :
 					((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);

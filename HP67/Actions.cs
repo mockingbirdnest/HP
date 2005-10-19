@@ -523,15 +523,22 @@ namespace HP67_Parser
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
-		public void ReduceRULE_F_SHIFTED_SHORTCUT_F (string input, Token token, Token [] tokens)
+		public void ReduceRULE_F_SHIFTED_SHORTCUT (string input, Token token, Token [] tokens)
 		{
-			// <F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
+			// <F_Shifted_Shortcut> ::= <Gsb_f_Shortcut>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_GSB_SHORTCUT (string input, Token token, Token [] tokens)
 		{
-			// <Gsb_Shortcut> ::= <Letter>
+			// <Gsb_Shortcut> ::= <Letter_Label>
+		}
+
+		public void ReduceRULE_GSB_F_SHORTCUT_F (string input, Token token, Token [] tokens)
+		{
+			// <Gsb_f_Shortcut> ::= f <Lowercase_Letter_Label>
+			// Ignore the f and pass the (lowercase) letter to the caller.
+			token.UserObject = tokens [1].UserObject;
 		}
 
 		public void ReduceRULE_MEMORY_SHORTCUT_SUB_I (string input, Token token, Token [] tokens)
@@ -994,13 +1001,13 @@ namespace HP67_Parser
 
 		public void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
-			// <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
+			// <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Lowercase_Letter_Label>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
-			// <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Letter_Label>
+			// <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Lowercase_Letter_Label>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
@@ -1304,6 +1311,12 @@ namespace HP67_Parser
 		public void ReduceRULE_LETTER_LABEL (string input, Token token, Token [] tokens)
 		{
 			// <Letter_Label> ::= <Letter>
+		}
+
+		public void ReduceRULE_LOWERCASE_LETTER_LABEL (string input, Token token, Token [] tokens)
+		{
+			// <Lowercase_Letter_Label> ::= <Letter_Label>
+			((Letter) token.UserObject).ToLower ();
 		}
 
 		public void ReduceRULE_DIGIT_LABEL (string input, Token token, Token [] tokens)

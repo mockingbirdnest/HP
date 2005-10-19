@@ -162,9 +162,11 @@ R_S            = '84'
 <Unshifted_Shortcut> ::= <Gsb_Shortcut>
                          | <Memory_Shortcut>
                          
-<F_Shifted_Shortcut> ::= f <Gsb_Shortcut>
+<F_Shifted_Shortcut> ::= <Gsb_f_Shortcut>
 
-<Gsb_Shortcut> ::= <Letter>
+<Gsb_Shortcut> ::= <Letter_Label>
+
+<Gsb_f_Shortcut> ::= f <Lowercase_Letter_Label>
 
 <Memory_Shortcut> ::= Sub_I
 
@@ -253,8 +255,8 @@ R_S            = '84'
                                           | <Frac>
                                           | <Stk>
                                           
-<Unary_G_Shifted_Instruction> ::= <Gsb_f> <Letter_Label>
-                                        | <Lbl_f> <Letter_Label>
+<Unary_G_Shifted_Instruction> ::= <Gsb_f> <Lowercase_Letter_Label>
+                                        | <Lbl_f> <Lowercase_Letter_Label>
                                         
 <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
                                           | <Rtn>
@@ -292,6 +294,7 @@ R_S            = '84'
 <Digit_Count> ::= <Digit> | Sub_I
 <Letter> ::= A | B | C | D | E
 <Letter_Label> ::= <Letter>
+<Lowercase_Letter_Label> ::= <Letter_Label>
 <Digit_Label> ::= <Digit>
 <Label>  ::= <Digit_Label> | <Letter_Label> | Sub_I
 <Operable_Memory> ::= <Digit> | Sub_I

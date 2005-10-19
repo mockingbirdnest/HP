@@ -78,7 +78,7 @@ namespace HP67_Class_Library
 	public interface ILabel
 	{
 		void Goto (Memory m, Program p);
-		void Gosub (Memory m, Program p, bool lower);
+		void Gosub (Memory m, Program p);
 	}
 
 	#endregion
@@ -148,7 +148,7 @@ namespace HP67_Class_Library
 			p.Goto (digit);
 		}
 
-		public void Gosub (Memory m, Program p, bool lower)
+		public void Gosub (Memory m, Program p)
 		{
 			p.Gosub (digit);
 		}
@@ -210,7 +210,7 @@ namespace HP67_Class_Library
 			p.Goto (label);
 		}
 
-		public void Gosub (Memory m, Program p, bool lower)
+		public void Gosub (Memory m, Program p)
 		{
 			byte label = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
 			p.Gosub (label);
@@ -223,7 +223,8 @@ namespace HP67_Class_Library
 
 		public Letter (char l) 
 		{
-			Trace.Assert (l >= 'A' && l <= 'E');
+			// We only expect to get a lower case letter here when reading from a dataset.
+			Trace.Assert ((l >= 'A' && l <= 'E') || (l >= 'a' && l <= 'e'));
 			letter = l;
 		}
 
@@ -251,6 +252,11 @@ namespace HP67_Class_Library
 			}
 		}
 
+		public void ToLower ()
+		{
+			letter = char.ToLower (letter);
+		}
+
 		public double Recall (Memory m) 
 		{
 			return m.Recall ((Memory.LetterRegister) Enum.Parse
@@ -275,15 +281,10 @@ namespace HP67_Class_Library
 				(typeof (Program.LetterLabel), new String (letter, 1)));
 		}
 
-		public void Gosub (Memory m, Program p, bool lower)
+		public void Gosub (Memory m, Program p)
 		{
-			string labelName = new String (letter, 1);
-
-			if (lower) 
-			{
-				labelName = labelName.ToLower ();
-			}
-			p.Gosub ((Program.LetterLabel) Enum.Parse (typeof (Program.LetterLabel), labelName));
+			p.Gosub ((Program.LetterLabel)
+				Enum.Parse (typeof (Program.LetterLabel), new String (letter, 1)));
 		}
 	}
 
