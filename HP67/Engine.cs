@@ -300,7 +300,6 @@ namespace HP67
 					unit = AngleUnit.Degree;
 					break;
 				case (int)SymbolConstants.SYMBOL_DEL :
-					// TODO: Execution.
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
