@@ -283,7 +283,7 @@ namespace HP67_Class_Library
 		{
 			if (returns [0] == noStep)
 			{
-				throw new Stop ();
+				Stop ();
 			}
 			else
 			{
@@ -299,6 +299,15 @@ namespace HP67_Class_Library
 		public void Skip ()
 		{
 			GotoZeroBasedStep (next + 1);
+		}
+
+		public void Stop ()
+		{
+			for (int i = 0; i <= returns.Length - 1; i++) 
+			{
+				returns [i] = noStep;
+			}
+			throw new Stop ();
 		}
 
 		#endregion

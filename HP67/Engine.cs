@@ -147,6 +147,45 @@ namespace HP67
 			}
 		}
 
+		public void Gosub (ILabel label)
+		{
+			Instruction instruction;
+
+			if (running) 
+			{
+				label.Gosub (theMemory, theProgram);
+			}
+			else
+			{
+				try 
+				{
+					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+						"Run: starting",
+						classTraceSwitch.DisplayName);
+
+					// We don't want the initial call to push anything on the stack, hence Goto.
+					label.Goto (theMemory, theProgram);
+					for (;;) 
+					{
+						running = true;
+						instruction = theProgram.Instruction;
+						Execute (instruction);
+						theDisplay.Update ();
+					}
+				}
+				catch (Stop)
+				{
+					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+						"Run: stopping",
+						classTraceSwitch.DisplayName);
+				}
+				finally 
+				{
+					running = false;
+				}
+			}
+		}
+
 		private double ToH (double x) 
 		{
 			double absX = Math.Abs (x);
@@ -411,8 +450,7 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_GSB_F :
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
 				case (int)SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
-					((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
-					Run ();
+					Gosub ((ILabel) instruction.Arguments [0]);
 					break;
 				case (int)SymbolConstants.SYMBOL_GTO :
 					((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
@@ -508,7 +546,8 @@ namespace HP67
 					theStack.RollDown ();
 					break;
 				case (int)SymbolConstants.SYMBOL_R_S :
-					throw new Stop ();
+					theProgram.Stop ();
+					break;
 				case (int)SymbolConstants.SYMBOL_R_UP :
 					theStack.RollUp ();
 					break;
@@ -768,38 +807,6 @@ namespace HP67
 							break;
 					}
 					break;
-			}
-		}
-
-		public void Run ()
-		{
-			Instruction instruction;
-
-			if (! running) 
-			{
-				try 
-				{
-					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Run: starting",
-						classTraceSwitch.DisplayName);
-
-					for (;;) 
-					{
-						running = true;
-						instruction = theProgram.Instruction;
-						Execute (instruction);
-						theDisplay.Update ();
-					}
-				}
-				catch (Stop)
-				{
-					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Run: stopping",
-						classTraceSwitch.DisplayName);
-
-					running = false;
-					return;
-				}
 			}
 		}
 
