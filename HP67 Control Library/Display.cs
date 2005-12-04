@@ -630,6 +630,11 @@ namespace HP67_Control_Library
 
 		#region Public Operations
 
+		public void Abort ()
+		{
+			enteringNumber = false;
+		}
+
 		public void ChangeSign (out bool done)
 		{
 			char sign;
@@ -808,15 +813,22 @@ namespace HP67_Control_Library
 			string addressImage = address.ToString ();
 			double savedValue = Value;
 
-			numericTextBox.Text =
-				addressImage.PadLeft
-				(mantissaSignLength + mantissaLength + exponentSignLength + exponentLength, ' ');
-			Update ();
-			Thread.Sleep (ms);
-			Value = register;
-			Update ();
-			Thread.Sleep (ms);
-			Value = savedValue;
+			try 
+			{
+				numericTextBox.Text =
+					addressImage.PadLeft
+					(mantissaSignLength + mantissaLength + exponentSignLength + exponentLength, ' ');
+				Update ();
+				Thread.Sleep (ms);
+				Value = register;
+				Update ();
+				Thread.Sleep (ms);
+			}
+			finally 
+			{
+				// Restore the value here to protect against abort.
+				Value = savedValue;
+			}
 		}
 
 		#endregion

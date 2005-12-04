@@ -251,9 +251,22 @@ namespace HP67_Class_Library
 		{
 			get 
 			{
+				if (next == noStep) 
+				{
+					// This is useful when we hit R/S at the beginning of the program memory.
+					next = 0;
+				}
 				Instruction i = instructions [next];
 				GotoZeroBasedStep (next + 1);
 				return i;
+			}
+		}
+
+		public void Abort ()
+		{
+			for (int i = 0; i <= returns.Length - 1; i++) 
+			{
+				returns [i] = noStep;
 			}
 		}
 

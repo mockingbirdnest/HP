@@ -8,6 +8,7 @@ using HP67_Persistence;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HP67
@@ -160,14 +161,19 @@ namespace HP67
 				try 
 				{
 					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Run: starting",
+						"Gosub: starting",
 						classTraceSwitch.DisplayName);
 
-					// We don't want the initial call to push anything on the stack, hence Goto.
-					label.Goto (theMemory, theProgram);
+					// We don't want the initial call to push anything on the stack, hence Goto.  The case where label
+					// is null corresponds to execution resuming from the instruction following the one on which we
+					// stopped.
+					if (label != null) 
+					{
+						label.Goto (theMemory, theProgram);
+					}
+					running = true;
 					for (;;) 
 					{
-						running = true;
 						instruction = theProgram.Instruction;
 						Execute (instruction);
 						theDisplay.Update ();
@@ -176,12 +182,24 @@ namespace HP67
 				catch (Stop)
 				{
 					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Run: stopping",
+						"Gosub: stopping",
+						classTraceSwitch.DisplayName);
+				}
+				catch (ThreadAbortException)
+				{
+					// The Abort () calls are used to put the various objects back into a
+					// consistent state.  That's important because we'll use them again in the 
+					// next computation.
+					theDisplay.Abort ();
+					theProgram.Abort ();
+					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+						"Gosub: aborting",
 						classTraceSwitch.DisplayName);
 				}
 				finally 
 				{
 					running = false;
+					stackLift = true;
 				}
 			}
 		}
@@ -529,8 +547,8 @@ namespace HP67
 					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_PERCENT :
-					theStack.Get (out x, out y);
-					theStack.X = y * x / 100.0;
+					theStack.Get (out x);
+					theStack.X = theStack.Y * x / 100.0;
 					break;
 				case (int)SymbolConstants.SYMBOL_PERCENT_CHANGE :
 					theStack.Get (out x, out y);
@@ -546,7 +564,15 @@ namespace HP67
 					theStack.RollDown ();
 					break;
 				case (int)SymbolConstants.SYMBOL_R_S :
-					theProgram.Stop ();
+					if (running) 
+					{
+						theProgram.Stop ();
+					}
+					else 
+					{
+						// Resume execution from the current location.
+						Gosub (null);
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_R_UP :
 					theStack.RollUp ();

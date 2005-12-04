@@ -3,10 +3,12 @@ using HP67_Control_Library;
 using HP67_Parser;
 using HP67_Persistence;
 using System;
+using System.Collections;
 using System.Drawing;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace HP67
@@ -19,12 +21,17 @@ namespace HP67
 
 		private string fileName;
 
-		private Actions theActions;
+		// As much as possible, we hide the execution state in the Execution function.  But
+		// some other things need these object.  This is going to cause trouble.  Sigh.
 		private Engine theEngine;
-		private Memory theMemory;
 		private Parser theParser;
 		private Program theProgram;
-		private Stack theStack;
+
+		private Thread executionThread;
+		private bool executionThreadIdle;
+		private bool executionThreadMustAbort;
+		private Queue communicationQueue;
+		private AutoResetEvent synchronizationEvent;
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -66,16 +73,16 @@ namespace HP67
 		private HP67_Control_Library.Toggle toggleOffOn;
 		private HP67_Control_Library.Toggle toggleWprgmRun;
 		private System.Windows.Forms.ContextMenu contextMenu;
-		private System.Windows.Forms.MenuItem openItem;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog;
-		private System.Windows.Forms.MenuItem saveAsItem;
 		private System.Windows.Forms.MenuItem saveMenuItem;
 		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem rtfMenuItem;
-		private System.Windows.Forms.MenuItem menuItem3;
 		private System.Drawing.Printing.PrintDocument printDocument;
-		private System.Windows.Forms.MenuItem printItem;
+		private System.Windows.Forms.MenuItem openMenuItem;
+		private System.Windows.Forms.MenuItem saveAsMenuItem;
+		private System.Windows.Forms.MenuItem printMenuItem;
+		private System.Windows.Forms.MenuItem menuSeparator;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -88,12 +95,13 @@ namespace HP67
 			//
 			InitializeComponent();
 
-			theMemory = new Memory (display);
-			theProgram = new Program (display);
-			theStack = new Stack (display);
-			theEngine = new Engine (display, theMemory, theProgram, theStack);
-			theActions = new Actions (theEngine);
-			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
+			// Create the execution thread and wait until it is ready to process requests.
+			communicationQueue = Queue.Synchronized (new Queue ());
+			synchronizationEvent = new AutoResetEvent (false);
+			executionThreadMustAbort = false;
+			executionThread = new Thread (new ThreadStart (Execution));
+			executionThread.Start ();
+			synchronizationEvent.WaitOne (); // Pairs with Set #1.
 		}
 
 		/// <summary>
@@ -118,7 +126,6 @@ namespace HP67
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.display = new HP67_Control_Library.Display();
 			this.cardSlot = new HP67_Control_Library.CardSlot();
 			this.toggleOffOn = new HP67_Control_Library.Toggle();
 			this.toggleWprgmRun = new HP67_Control_Library.Toggle();
@@ -158,27 +165,17 @@ namespace HP67
 			this.keyMult = new HP67_Control_Library.Key();
 			this.keyPlus = new HP67_Control_Library.Key();
 			this.contextMenu = new System.Windows.Forms.ContextMenu();
-			this.openItem = new System.Windows.Forms.MenuItem();
+			this.openMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveMenuItem = new System.Windows.Forms.MenuItem();
-			this.saveAsItem = new System.Windows.Forms.MenuItem();
-			this.menuItem3 = new System.Windows.Forms.MenuItem();
+			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
+			this.printMenuItem = new System.Windows.Forms.MenuItem();
+			this.menuSeparator = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.printDocument = new System.Drawing.Printing.PrintDocument();
-			this.printItem = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
-			// 
-			// display
-			// 
-			this.display.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.display.ForeColor = System.Drawing.Color.Red;
-			this.display.Location = new System.Drawing.Point(8, 8);
-			this.display.Name = "display";
-			this.display.Size = new System.Drawing.Size(288, 40);
-			this.display.TabIndex = 0;
-			this.display.Value = 0;
 			// 
 			// cardSlot
 			// 
@@ -922,19 +919,19 @@ namespace HP67
 			// contextMenu
 			// 
 			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						this.openItem,
+																						this.openMenuItem,
 																						this.saveMenuItem,
-																						this.saveAsItem,
-																						this.printItem,
-																						this.menuItem3,
+																						this.saveAsMenuItem,
+																						this.printMenuItem,
+																						this.menuSeparator,
 																						this.editMenuItem,
 																						this.rtfMenuItem});
 			// 
-			// openItem
+			// openMenuItem
 			// 
-			this.openItem.Index = 0;
-			this.openItem.Text = "&Open...";
-			this.openItem.Click += new System.EventHandler(this.openItem_Click);
+			this.openMenuItem.Index = 0;
+			this.openMenuItem.Text = "&Open...";
+			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
 			// 
 			// saveMenuItem
 			// 
@@ -942,16 +939,22 @@ namespace HP67
 			this.saveMenuItem.Text = "&Save";
 			this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
 			// 
-			// saveAsItem
+			// saveAsMenuItem
 			// 
-			this.saveAsItem.Index = 2;
-			this.saveAsItem.Text = "Save &As...";
-			this.saveAsItem.Click += new System.EventHandler(this.saveAsItem_Click);
+			this.saveAsMenuItem.Index = 2;
+			this.saveAsMenuItem.Text = "Save &As...";
+			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
 			// 
-			// menuItem3
+			// printMenuItem
 			// 
-			this.menuItem3.Index = 4;
-			this.menuItem3.Text = "-";
+			this.printMenuItem.Index = 3;
+			this.printMenuItem.Text = "Print";
+			this.printMenuItem.Click += new System.EventHandler(this.printMenuItem_Click);
+			// 
+			// menuSeparator
+			// 
+			this.menuSeparator.Index = 4;
+			this.menuSeparator.Text = "-";
 			// 
 			// editMenuItem
 			// 
@@ -976,12 +979,6 @@ namespace HP67
 			// printDocument
 			// 
 			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
-			// 
-			// printItem
-			// 
-			this.printItem.Index = 3;
-			this.printItem.Text = "Print";
-			this.printItem.Click += new System.EventHandler(this.printItem_Click);
 			// 
 			// HP67
 			// 
@@ -1027,9 +1024,9 @@ namespace HP67
 			this.Controls.Add(this.toggleWprgmRun);
 			this.Controls.Add(this.toggleOffOn);
 			this.Controls.Add(this.cardSlot);
-			this.Controls.Add(this.display);
 			this.Name = "HP67";
 			this.Text = "HP67";
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.HP67_Closing);
 			this.ResumeLayout(false);
 
 		}
@@ -1039,16 +1036,110 @@ namespace HP67
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main() 
+		static void Main () 
 		{
-			Application.Run(new HP67());
+			Application.Run (new HP67());
+		}
+
+		void Execution ()
+		{
+			Actions theActions;
+			Memory theMemory;
+			HP67_Class_Library.Stack theStack;
+		
+			// Controls must be accessed from the thread that created them.  For most control,
+			// this is the main thread.  But the display is special, as it is mostly updated
+			// during execution.  So it is created by the execution thread.
+			this.display = new HP67_Control_Library.Display();
+			this.display.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.display.ForeColor = System.Drawing.Color.Red;
+			this.display.Location = new System.Drawing.Point(8, 8);
+			this.display.Name = "display";
+			this.display.Size = new System.Drawing.Size(288, 40);
+			this.display.TabIndex = 0;
+			this.display.Value = 0;
+			this.Controls.Add(this.display);
+
+			// Create the components that depend on the display.
+			theMemory = new Memory (display);
+			theProgram = new Program (display);
+			theStack = new HP67_Class_Library.Stack (display);
+			theEngine = new Engine (display, theMemory, theProgram, theStack);
+			theActions = new Actions (theEngine);
+			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
+
+			// Notify the main thread that we are ready to go.
+			synchronizationEvent.Set (); // Pairs with WaitOne #1.
+			for (;;) 
+			{
+				try 
+				{
+
+					// There is no need to protect executionThreadIdle.  It is only updated by
+					// this thread, and the main thread only reads it.
+					executionThreadIdle = true;
+					synchronizationEvent.WaitOne (); // Pairs with Set #2.
+					executionThreadIdle = false;
+
+					// No need to wait if there is stuff remaining in the queue.
+					while (communicationQueue.Count > 0) 
+					{
+						theParser.Parse ((string) communicationQueue.Dequeue ());
+					}
+				}
+				catch (ThreadAbortException)
+				{
+					if (! executionThreadMustAbort) 
+					{
+						Thread.ResetAbort ();
+					}
+				}
+			}
+		}
+
+		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+
+			// Tell the execution thread to abort for good.  No need to protect
+			// executionThreadMustAbort, it is only written by this thread, and only read by the
+			// execution thread.
+			executionThreadMustAbort = true;
+			executionThread.Abort ();
 		}
 
 		private void KeyClick(object sender, System.EventArgs e)
 		{
 			Key key = (Key) sender;
 
-			theParser.Parse ((string) key.Tag);
+			if ((key == keyRS) && ! executionThreadIdle) 
+			{
+
+				// There is an unavoidable race condition here: R/S means Run or Stop depending
+				// on the execution state.  We test above that the execution thread is busy (not
+				// stuck on WaitOne #2), but by the time we come here, it may actually be idle.  
+				// That's not really a problem: the user pressed R/S very close to the end of the
+				// execution anyway, and they cannot tell whether it should have been a Run or a
+				// Stop.  But it means that the execution thread must be prepared to be
+				// aborted while waiting.
+				// Note that we couldn't just check for the execution thread being in the
+				// WaitSleepJoin state, because it will go into that state as part of executing
+				// some instructions.
+				executionThread.Abort ();
+			}
+			else
+			{
+
+				// Queue a request to process the key, and notify the execution thread that its
+				// queue is not empty.
+				communicationQueue.Enqueue ((string) key.Tag);
+				synchronizationEvent.Set (); // Pairs with WaitOne #2.
+			}
+		}
+
+		private void printDocument_PrintPage(object sender,
+			System.Drawing.Printing.PrintPageEventArgs e)
+		{
+			theProgram.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
 		}
 
 		private void toggleWprgmRun_ToggleClick(object sender,
@@ -1066,7 +1157,7 @@ namespace HP67
 			}
 		}
 
-		private void openItem_Click (object sender, System.EventArgs e)
+		private void openMenuItem_Click (object sender, System.EventArgs e)
 		{
 			Stream stream;
 
@@ -1091,7 +1182,7 @@ namespace HP67
 			if (fileName == null) 
 			{
 				saveFileDialog.FileName = "Untitled"; // TODO: Localize.
-				saveAsItem_Click (sender, e);
+				saveAsMenuItem_Click (sender, e);
 			}
 			else 
 			{
@@ -1101,7 +1192,7 @@ namespace HP67
 			}
 		}
 
-		private void saveAsItem_Click (object sender, System.EventArgs e)
+		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
 		{
 			Stream stream;
 
@@ -1149,13 +1240,7 @@ namespace HP67
 			}
 		}
 
-		private void printDocument_PrintPage(object sender,
-			                                 System.Drawing.Printing.PrintPageEventArgs e)
-		{
-			theProgram.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
-		}
-
-		private void printItem_Click(object sender, System.EventArgs e)
+		private void printMenuItem_Click(object sender, System.EventArgs e)
 		{
 			printDocument.Print ();
 		}
