@@ -23,6 +23,7 @@ namespace HP67
 
 		// As much as possible, we hide the execution state in the Execution function.  But
 		// some other things need these object.  This is going to cause trouble.  Sigh.
+		private Actions theActions;
 		private Engine theEngine;
 		private Parser theParser;
 		private Program theProgram;
@@ -30,8 +31,10 @@ namespace HP67
 		private Thread executionThread;
 		private bool executionThreadIdle;
 		private bool executionThreadMustAbort;
-		private Queue communicationQueue;
-		private AutoResetEvent synchronizationEvent;
+		private Queue keystrokesQueue;
+		private AutoResetEvent executionAbortingEvent = new AutoResetEvent (false);
+		private AutoResetEvent initializingEvent = new AutoResetEvent (false);
+		private AutoResetEvent keyTypedEvent = new AutoResetEvent (false);
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -96,12 +99,11 @@ namespace HP67
 			InitializeComponent();
 
 			// Create the execution thread and wait until it is ready to process requests.
-			communicationQueue = Queue.Synchronized (new Queue ());
-			synchronizationEvent = new AutoResetEvent (false);
+			keystrokesQueue = Queue.Synchronized (new Queue ());
 			executionThreadMustAbort = false;
 			executionThread = new Thread (new ThreadStart (Execution));
 			executionThread.Start ();
-			synchronizationEvent.WaitOne (); // Pairs with Set #1.
+			initializingEvent.WaitOne ();
 		}
 
 		/// <summary>
@@ -1041,16 +1043,35 @@ namespace HP67
 			Application.Run (new HP67());
 		}
 
+		void ExecutionAcceptKeystrokes ()
+		{
+			while (keystrokesQueue.Count > 0) 
+			{
+				theParser.Parse ((string) keystrokesQueue.Dequeue ());
+			}
+		}
+
+		void ExecutionCancelKeystrokes ()
+		{
+			// Unclear if clearing the queue is right, because it will remove keys that were typed
+			// before we entered PauseAndBlink.  On the other hand, we surely want to remove the
+			// "interrupting" key, and we don't have a way to delete the newest entries in the queue.
+			keystrokesQueue.Clear ();
+
+			// Pretend that we accepted the input in order to put the parser back into a pristine
+			// state (in particular, drop any remaining text).
+			theActions.ParserAccept ();
+		}
+
 		void Execution ()
 		{
-			Actions theActions;
 			Memory theMemory;
 			HP67_Class_Library.Stack theStack;
 		
 			// Controls must be accessed from the thread that created them.  For most control,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
-			this.display = new HP67_Control_Library.Display (communicationQueue);
+			this.display = new HP67_Control_Library.Display (keyTypedEvent);
 			this.display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.display.ForeColor = System.Drawing.Color.Red;
 			this.display.Location = new System.Drawing.Point (8, 8);
@@ -1058,6 +1079,12 @@ namespace HP67
 			this.display.Size = new System.Drawing.Size (288, 40);
 			this.display.TabIndex = 0;
 			this.display.Value = 0;
+			this.display.AcceptKeystrokes +=
+				new HP67_Control_Library.Display.ProcessKeystrokesEvent 
+					(ExecutionAcceptKeystrokes);
+			this.display.CancelKeystrokes +=
+				new HP67_Control_Library.Display.ProcessKeystrokesEvent
+					(ExecutionCancelKeystrokes);
 			this.Controls.Add (this.display);
 
 			// Create the components that depend on the display.
@@ -1068,23 +1095,26 @@ namespace HP67
 			theActions = new Actions (theEngine);
 			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
 
-			// Notify the main thread that we are ready to go.
-			synchronizationEvent.Set (); // Pairs with WaitOne #1.
+			// Notify the main thread that we are ready to process requests.
+			initializingEvent.Set ();
+
 			for (;;) 
 			{
 				try 
 				{
+					// Tell the main thread that we are ready to deal with abortion.
+					executionAbortingEvent.Set ();
 
 					// There is no need to protect executionThreadIdle.  It is only updated by
 					// this thread, and the main thread only reads it.
 					executionThreadIdle = true;
-					synchronizationEvent.WaitOne (); // Pairs with Set #2.
+					keyTypedEvent.WaitOne ();
 					executionThreadIdle = false;
 
 					// No need to wait if there is stuff remaining in the queue.
-					while (communicationQueue.Count > 0) 
+					while (keystrokesQueue.Count > 0) 
 					{
-						theParser.Parse ((string) communicationQueue.Dequeue ());
+						theParser.Parse ((string) keystrokesQueue.Dequeue ());
 					}
 				}
 				catch (ThreadAbortException)
@@ -1125,14 +1155,19 @@ namespace HP67
 				// WaitSleepJoin state, because it will go into that state as part of executing
 				// some instructions.
 				executionThread.Abort ();
+
+				// We need to suspend here until the execution thread has reentered a region where
+				// it can handle abortion.  Otherwise we might run the risk of aborting it again
+				// while it is in a handler or some other non-protected region.
+				executionAbortingEvent.WaitOne ();
 			}
 			else
 			{
 
 				// Queue a request to process the key, and notify the execution thread that its
 				// queue is not empty.
-				communicationQueue.Enqueue ((string) key.Tag);
-				synchronizationEvent.Set (); // Pairs with WaitOne #2.
+				keystrokesQueue.Enqueue ((string) key.Tag);
+				keyTypedEvent.Set ();
 			}
 		}
 

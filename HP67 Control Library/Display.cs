@@ -75,7 +75,7 @@ namespace HP67_Control_Library
 		private System.Windows.Forms.TextBox numericTextBox;
 		private System.Windows.Forms.TextBox instructionTextBox;
 
-		private Queue communicationQueue;
+		private AutoResetEvent keyTypedEvent;
 
 		#endregion
 
@@ -84,11 +84,15 @@ namespace HP67_Control_Library
 		public delegate void EnteringNumberEvent (object sender);
 		public event EnteringNumberEvent EnteringNumber;
 
+		public delegate void ProcessKeystrokesEvent ();
+		public event ProcessKeystrokesEvent AcceptKeystrokes;
+		public event ProcessKeystrokesEvent CancelKeystrokes;
+
 		#endregion
 
 		#region Constructors & Destructors
 
-		public Display (Queue queue)
+		public Display (AutoResetEvent keyTypedEvent)
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -106,7 +110,7 @@ namespace HP67_Control_Library
 				userControlTesting = bool.Parse (appSettingsUserControlTesting [0]);
 			}
 
-			communicationQueue = queue;
+			this.keyTypedEvent = keyTypedEvent;
 
 			// Make the control non-selectable, otherwise the application will select its
 			// text at startup.
@@ -776,9 +780,19 @@ namespace HP67_Control_Library
 			Thread.Sleep (ms);
 		}
 
+		public void PauseAndAcceptKeystrokes (int ms)
+		{
+			Update ();
+			while (keyTypedEvent.WaitOne (ms, false)) 
+			{
+				AcceptKeystrokes ();
+				Update ();
+			}
+			CancelKeystrokes ();
+		}
+
 		public void PauseAndBlink (int ms) 
 		{
-			int count = communicationQueue.Count;
 			int interval = ms / 16;
 			string period = NumberFormatInfo.InvariantInfo.NumberDecimalSeparator;
 			string textWithPeriod = NumericText;
@@ -794,19 +808,14 @@ namespace HP67_Control_Library
 					{
 						NumericText = texts [j];
 						Update ();
-						Thread.Sleep (interval);
-						if (communicationQueue.Count > count) 
+
+						// Most of the time the following call will just be equivalent to
+						// Thread.Sleep.  However, typing a key during PauseAndBlink causes the
+						// current computation to abort.  We detect this because keyTypedEvent is
+						// signalled.
+						if (keyTypedEvent.WaitOne (interval, false)) 
 						{
-							// Typing a key during PauseAndBlink causes the current computation to
-							// abort.  If a key is typed, its tag is pushed on the communication
-							// queue, which causes the length of the queue to increase.  Note that
-							// the length of the queue while we are executing an instruction.
-							//
-							// Unclear if clearing the queue is right, because it will remove keys
-							// that were typed before we entered PauseAndBlink.  On the other hand,
-							// we surely want to remove the "interrupting" key, and we don't have a
-							// way to delete the newest entries in the queue.
-							communicationQueue.Clear ();
+							CancelKeystrokes ();
 							Thread.CurrentThread.Abort ();
 						}
 					}

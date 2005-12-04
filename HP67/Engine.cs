@@ -544,7 +544,7 @@ namespace HP67
 					theMemory.PrimarySecondaryExchange ();
 					break;
 				case (int)SymbolConstants.SYMBOL_PAUSE :
-					// TODO: Execution.
+					theDisplay.PauseAndAcceptKeystrokes (1000);
 					break;
 				case (int)SymbolConstants.SYMBOL_PERCENT :
 					theStack.Get (out x);
@@ -558,6 +558,7 @@ namespace HP67
 					theDisplay.EnterPeriod ();
 					break;
 				case (int)SymbolConstants.SYMBOL_PI :
+					theStack.Enter ();
 					theStack.X = Math.PI;
 					break;
 				case (int)SymbolConstants.SYMBOL_R_DOWN :
