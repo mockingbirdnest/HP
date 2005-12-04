@@ -69,7 +69,7 @@ namespace HP67_Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-			this.DisplayUnderTest = new HP67_Control_Library.Display();
+			this.DisplayUnderTest = new HP67_Control_Library.Display(new Queue ());
 			this.numericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.labelDigits = new System.Windows.Forms.Label();
 			this.radioButtonScientific = new System.Windows.Forms.RadioButton();

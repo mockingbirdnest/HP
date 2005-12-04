@@ -1050,15 +1050,15 @@ namespace HP67
 			// Controls must be accessed from the thread that created them.  For most control,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
-			this.display = new HP67_Control_Library.Display();
-			this.display.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.display = new HP67_Control_Library.Display (communicationQueue);
+			this.display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.display.ForeColor = System.Drawing.Color.Red;
-			this.display.Location = new System.Drawing.Point(8, 8);
+			this.display.Location = new System.Drawing.Point (8, 8);
 			this.display.Name = "display";
-			this.display.Size = new System.Drawing.Size(288, 40);
+			this.display.Size = new System.Drawing.Size (288, 40);
 			this.display.TabIndex = 0;
 			this.display.Value = 0;
-			this.Controls.Add(this.display);
+			this.Controls.Add (this.display);
 
 			// Create the components that depend on the display.
 			theMemory = new Memory (display);

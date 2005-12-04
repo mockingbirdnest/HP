@@ -75,6 +75,8 @@ namespace HP67_Control_Library
 		private System.Windows.Forms.TextBox numericTextBox;
 		private System.Windows.Forms.TextBox instructionTextBox;
 
+		private Queue communicationQueue;
+
 		#endregion
 
 		#region Event Definitions
@@ -86,7 +88,7 @@ namespace HP67_Control_Library
 
 		#region Constructors & Destructors
 
-		public Display()
+		public Display (Queue queue)
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -103,6 +105,8 @@ namespace HP67_Control_Library
 			{
 				userControlTesting = bool.Parse (appSettingsUserControlTesting [0]);
 			}
+
+			communicationQueue = queue;
 
 			// Make the control non-selectable, otherwise the application will select its
 			// text at startup.
@@ -774,18 +778,44 @@ namespace HP67_Control_Library
 
 		public void PauseAndBlink (int ms) 
 		{
+			int count = communicationQueue.Count;
 			int interval = ms / 16;
-			string text = NumericText;
-			string textNoPeriod = text.Replace ('.', ' '); // Not quite i18n-compliant.
+			string period = NumberFormatInfo.InvariantInfo.NumberDecimalSeparator;
+			string textWithPeriod = NumericText;
+			string textWithoutPeriod =
+				textWithPeriod.Replace (period, new String(' ', period.Length));
+			string [] texts = new String [] {textWithoutPeriod, textWithPeriod};
 
-			for (int i = 0; i < 8; i++) 
+			try 
 			{
-				NumericText = textNoPeriod;
-				Update ();
-				Thread.Sleep (interval);
-				NumericText = text;
-				Update ();
-				Thread.Sleep (interval);
+				for (int i = 0; i < 8; i++) 
+				{
+					for (int j = 0; j < 2; j++) 
+					{
+						NumericText = texts [j];
+						Update ();
+						Thread.Sleep (interval);
+						if (communicationQueue.Count > count) 
+						{
+							// Typing a key during PauseAndBlink causes the current computation to
+							// abort.  If a key is typed, its tag is pushed on the communication
+							// queue, which causes the length of the queue to increase.  Note that
+							// the length of the queue while we are executing an instruction.
+							//
+							// Unclear if clearing the queue is right, because it will remove keys
+							// that were typed before we entered PauseAndBlink.  On the other hand,
+							// we surely want to remove the "interrupting" key, and we don't have a
+							// way to delete the newest entries in the queue.
+							communicationQueue.Clear ();
+							Thread.CurrentThread.Abort ();
+						}
+					}
+				}
+			}
+			finally 
+			{
+				// Restore the original text here to protect against abort.
+				NumericText = textWithPeriod;
 			}
 		}
 
