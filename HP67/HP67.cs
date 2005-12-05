@@ -28,13 +28,18 @@ namespace HP67
 		private Parser theParser;
 		private Program theProgram;
 
-		private Thread executionThread;
+		// The booleans are assumed to be read/updated atomically.  Other than that, they don't
+		// need any special protection.
 		private bool executionThreadIdle;
 		private bool executionThreadMustAbort;
+
+		private Thread executionThread;
 		private Queue keystrokesQueue;
-		private AutoResetEvent executionAbortingEvent = new AutoResetEvent (false);
-		private AutoResetEvent initializingEvent = new AutoResetEvent (false);
-		private AutoResetEvent keyTypedEvent = new AutoResetEvent (false);
+
+		// Events used to synchronize the two threads.
+		private AutoResetEvent executionIsAbortSafe = new AutoResetEvent (false);
+		private AutoResetEvent executionIsInitialized = new AutoResetEvent (false);
+		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -103,7 +108,7 @@ namespace HP67
 			executionThreadMustAbort = false;
 			executionThread = new Thread (new ThreadStart (Execution));
 			executionThread.Start ();
-			initializingEvent.WaitOne ();
+			executionIsInitialized.WaitOne ();
 		}
 
 		/// <summary>
@@ -1043,7 +1048,33 @@ namespace HP67
 			Application.Run (new HP67());
 		}
 
-		void ExecutionAcceptKeystrokes ()
+		void ExecutionAbortComputation (object sender)
+		{
+			// Remember that this function can be called by either thread (internal abort or
+			// external abort).  So we use a lock to ensure that we don't have two abort attempts
+			// going on concurrently.  Also, we maintain the invariant that when entering and
+			// exiting this function the execution thread is in an abort-safe region.
+			lock (executionThread) 
+			{
+
+				// We are very soon going to put the execution thread in an abort-unsafe state. 
+				// Reset couldn't be called by the execution thread, as for an external abort there
+				// would be a race condition between the time we enter the abort handler and the
+				// time we call Reset.  Note that we are sure that Set won't be called between now
+				// and the time we actually do the abort.
+				executionIsAbortSafe.Reset ();
+
+				// The real thing.
+				executionThread.Abort ();
+
+				// We need to suspend until the execution thread has reentered a region where it
+				// can handle abortion.  Otherwise we might run the risk of aborting it again
+				// while it is in a handler or some other unsafe region.
+				executionIsAbortSafe.WaitOne ();
+			}
+		}
+
+		void ExecutionAcceptKeystrokes (object sender)
 		{
 			while (keystrokesQueue.Count > 0) 
 			{
@@ -1051,7 +1082,7 @@ namespace HP67
 			}
 		}
 
-		void ExecutionCancelKeystrokes ()
+		void ExecutionCancelKeystrokes (object sender)
 		{
 			// Unclear if clearing the queue is right, because it will remove keys that were typed
 			// before we entered PauseAndBlink.  On the other hand, we surely want to remove the
@@ -1065,13 +1096,14 @@ namespace HP67
 
 		void Execution ()
 		{
+			bool firstExecution = true;
 			Memory theMemory;
 			HP67_Class_Library.Stack theStack;
 		
 			// Controls must be accessed from the thread that created them.  For most control,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
-			this.display = new HP67_Control_Library.Display (keyTypedEvent);
+			this.display = new HP67_Control_Library.Display (keyWasTyped);
 			this.display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.display.ForeColor = System.Drawing.Color.Red;
 			this.display.Location = new System.Drawing.Point (8, 8);
@@ -1079,12 +1111,12 @@ namespace HP67
 			this.display.Size = new System.Drawing.Size (288, 40);
 			this.display.TabIndex = 0;
 			this.display.Value = 0;
+			this.display.AbortComputation +=
+				new HP67_Control_Library.Display.DisplayEvent (ExecutionAbortComputation);
 			this.display.AcceptKeystrokes +=
-				new HP67_Control_Library.Display.ProcessKeystrokesEvent 
-					(ExecutionAcceptKeystrokes);
+				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
 			this.display.CancelKeystrokes +=
-				new HP67_Control_Library.Display.ProcessKeystrokesEvent
-					(ExecutionCancelKeystrokes);
+				new HP67_Control_Library.Display.DisplayEvent (ExecutionCancelKeystrokes);
 			this.Controls.Add (this.display);
 
 			// Create the components that depend on the display.
@@ -1095,26 +1127,33 @@ namespace HP67
 			theActions = new Actions (theEngine);
 			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
 
-			// Notify the main thread that we are ready to process requests.
-			initializingEvent.Set ();
-
 			for (;;) 
 			{
 				try 
 				{
-					// Tell the main thread that we are ready to deal with abortion.
-					executionAbortingEvent.Set ();
+					executionIsAbortSafe.Set ();
 
-					// There is no need to protect executionThreadIdle.  It is only updated by
-					// this thread, and the main thread only reads it.
-					executionThreadIdle = true;
-					keyTypedEvent.WaitOne ();
-					executionThreadIdle = false;
-
-					// No need to wait if there is stuff remaining in the queue.
-					while (keystrokesQueue.Count > 0) 
+					// Notify the main thread that we are ready to process keystrokes.  This has to
+					// happen once we notified that we are abort-safe, because it will release the
+					// main thread and we depend on executionIsAbortSafe being set while we are
+					// processing keystrokes.
+					if (firstExecution) 
 					{
-						theParser.Parse ((string) keystrokesQueue.Dequeue ());
+						executionIsInitialized.Set ();
+						firstExecution = false;
+					}
+
+					for (;;) 
+					{
+						executionThreadIdle = true;
+						keyWasTyped.WaitOne ();
+						executionThreadIdle = false;
+
+						// No need to wait if there is stuff remaining in the queue.
+						while (keystrokesQueue.Count > 0) 
+						{
+							theParser.Parse ((string) keystrokesQueue.Dequeue ());
+						}
 					}
 				}
 				catch (ThreadAbortException)
@@ -1130,9 +1169,7 @@ namespace HP67
 		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 
-			// Tell the execution thread to abort for good.  No need to protect
-			// executionThreadMustAbort, it is only written by this thread, and only read by the
-			// execution thread.
+			// Tell the execution thread to abort for good.
 			executionThreadMustAbort = true;
 			executionThread.Abort ();
 		}
@@ -1149,17 +1186,10 @@ namespace HP67
 				// stuck on WaitOne #2), but by the time we come here, it may actually be idle.  
 				// That's not really a problem: the user pressed R/S very close to the end of the
 				// execution anyway, and they cannot tell whether it should have been a Run or a
-				// Stop.  But it means that the execution thread must be prepared to be
-				// aborted while waiting.
-				// Note that we couldn't just check for the execution thread being in the
-				// WaitSleepJoin state, because it will go into that state as part of executing
-				// some instructions.
-				executionThread.Abort ();
-
-				// We need to suspend here until the execution thread has reentered a region where
-				// it can handle abortion.  Otherwise we might run the risk of aborting it again
-				// while it is in a handler or some other non-protected region.
-				executionAbortingEvent.WaitOne ();
+				// Stop.  We couldn't just check for the execution thread being in the
+				// WaitSleepJoin state, because it will do that during the execution of some
+				// instructions.
+				ExecutionAbortComputation (this);
 			}
 			else
 			{
@@ -1167,7 +1197,7 @@ namespace HP67
 				// Queue a request to process the key, and notify the execution thread that its
 				// queue is not empty.
 				keystrokesQueue.Enqueue ((string) key.Tag);
-				keyTypedEvent.Set ();
+				keyWasTyped.Set ();
 			}
 		}
 

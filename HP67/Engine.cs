@@ -61,7 +61,7 @@ namespace HP67
 			flags = new bool [4];
 			unit = AngleUnit.Degree;
 			theDisplay = display;
-			theDisplay.EnteringNumber += new Display.EnteringNumberEvent (Enter);
+			theDisplay.EnteringNumber += new Display.DisplayEvent (Enter);
 			theMemory = memory;
 			theProgram = program;
 			theStack = stack;

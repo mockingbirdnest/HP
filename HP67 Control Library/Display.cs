@@ -75,24 +75,25 @@ namespace HP67_Control_Library
 		private System.Windows.Forms.TextBox numericTextBox;
 		private System.Windows.Forms.TextBox instructionTextBox;
 
-		private AutoResetEvent keyTypedEvent;
+		private AutoResetEvent keyWasTyped;
 
 		#endregion
 
 		#region Event Definitions
 
-		public delegate void EnteringNumberEvent (object sender);
-		public event EnteringNumberEvent EnteringNumber;
+		// TODO: Should these be provided in the constructor?
 
-		public delegate void ProcessKeystrokesEvent ();
-		public event ProcessKeystrokesEvent AcceptKeystrokes;
-		public event ProcessKeystrokesEvent CancelKeystrokes;
+		public delegate void DisplayEvent (object sender);
+		public event DisplayEvent AbortComputation;
+		public event DisplayEvent AcceptKeystrokes;
+		public event DisplayEvent CancelKeystrokes;
+		public event DisplayEvent EnteringNumber;
 
 		#endregion
 
 		#region Constructors & Destructors
 
-		public Display (AutoResetEvent keyTypedEvent)
+		public Display (AutoResetEvent keyWasTyped)
 		{
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
@@ -110,7 +111,7 @@ namespace HP67_Control_Library
 				userControlTesting = bool.Parse (appSettingsUserControlTesting [0]);
 			}
 
-			this.keyTypedEvent = keyTypedEvent;
+			this.keyWasTyped = keyWasTyped;
 
 			// Make the control non-selectable, otherwise the application will select its
 			// text at startup.
@@ -783,12 +784,18 @@ namespace HP67_Control_Library
 		public void PauseAndAcceptKeystrokes (int ms)
 		{
 			Update ();
-			while (keyTypedEvent.WaitOne (ms, false)) 
+			while (keyWasTyped.WaitOne (ms, false)) 
 			{
-				AcceptKeystrokes ();
+				if (AcceptKeystrokes != null) 
+				{
+					AcceptKeystrokes (this);
+				}
 				Update ();
 			}
-			CancelKeystrokes ();
+			if (CancelKeystrokes != null) 
+			{
+				CancelKeystrokes (this);
+			}
 		}
 
 		public void PauseAndBlink (int ms) 
@@ -811,12 +818,14 @@ namespace HP67_Control_Library
 
 						// Most of the time the following call will just be equivalent to
 						// Thread.Sleep.  However, typing a key during PauseAndBlink causes the
-						// current computation to abort.  We detect this because keyTypedEvent is
+						// current computation to abort.  We detect this because keyWasTyped is
 						// signalled.
-						if (keyTypedEvent.WaitOne (interval, false)) 
+						if (keyWasTyped.WaitOne (interval, false) &&
+							(CancelKeystrokes != null) &&
+							(AbortComputation != null))
 						{
-							CancelKeystrokes ();
-							Thread.CurrentThread.Abort ();
+							CancelKeystrokes (this);
+							AbortComputation (this);
 						}
 					}
 				}
