@@ -46,8 +46,9 @@ namespace HP67_Control_Library
 
 		#region Event Definitions
 
-		public delegate void KeyClickEvent (object sender, System.EventArgs e);
-		public event KeyClickEvent KeyClick;
+		public delegate void KeystrokeEvent (object sender, System.Windows.Forms.MouseEventArgs e);
+		public event KeystrokeEvent LeftMouseDown;
+		public event KeystrokeEvent LeftMouseUp;
 
 		#endregion
 
@@ -185,44 +186,49 @@ namespace HP67_Control_Library
 		{
 			Control control = (Control)sender;
         
-//			if (control.Size.Width > Math.Max (FGWidth, MainWidth)) 
-//			{
-				FGWidth = control.Size.Width;
-				MainWidth = control.Size.Width;
-//			}
-		}
-
-		private void button_Click(object sender, System.EventArgs e)
-		{
-			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			if (KeyClick != null) 
-			{
-				KeyClick (this, e);
-			}
+			FGWidth = control.Size.Width;
+			MainWidth = control.Size.Width;
 		}
 
 		private void hButton_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			if (e.Button == MouseButtons.Left) 
+			{
+				button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+				button_MouseDown (sender, e);
+			}
 		}
 
 		private void hButton_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			button.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-			button_MouseUp (sender, e);
+			if (e.Button == MouseButtons.Left) 
+			{
+				button.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+				button_MouseUp (sender, e);
+			}
 		}
 
 		private void button_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;		
+			if (e.Button == MouseButtons.Left) 
+			{
+				hButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;	
+				if (LeftMouseDown != null) 
+				{
+					LeftMouseDown (this, e);
+				}
+			}
 		}
 
 		private void button_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			hButton.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-			if (KeyClick != null) 
+			if (e.Button == MouseButtons.Left) 
 			{
-				KeyClick (this, e);
+				hButton.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+				if (LeftMouseUp != null) 
+				{
+					LeftMouseUp (this, e);
+				}
 			}
 		}
 

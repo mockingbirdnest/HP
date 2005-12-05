@@ -638,7 +638,7 @@ namespace HP67
 					theStack.X = Math.Sin (ToRadian (x));
 					break;
 				case (int)SymbolConstants.SYMBOL_SPACE :
-					// TODO: Execution.
+					// No-op on HP67.
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_SQRT :

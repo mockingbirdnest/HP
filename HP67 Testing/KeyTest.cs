@@ -84,7 +84,7 @@ namespace HP67_Testing
 			this.KeyUnderTest.Name = "KeyUnderTest";
 			this.KeyUnderTest.Size = new System.Drawing.Size(48, 51);
 			this.KeyUnderTest.TabIndex = 2;
-			this.KeyUnderTest.KeyClick += new HP67_Control_Library.Key.KeyClickEvent(this.KeyClickHandler);
+			this.KeyUnderTest.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUpHandler);
 			// 
 			// KeyTest
 			// 
@@ -99,9 +99,9 @@ namespace HP67_Testing
 		}
 		#endregion
 
-		private void KeyClickHandler (object sender, System.EventArgs e)
+		private void LeftMouseUpHandler (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			MessageBox.Show ("Click event handled!");
+			MessageBox.Show ("Left mouse up event handled!");
 		}
 
 		/// <summary>
