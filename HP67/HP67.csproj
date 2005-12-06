@@ -155,6 +155,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "HP67.fr.resx"
+                    DependentUpon = "HP67.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "HP67.resx"
                     DependentUpon = "HP67.cs"
                     BuildAction = "EmbeddedResource"
