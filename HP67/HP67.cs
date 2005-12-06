@@ -4,10 +4,11 @@ using HP67_Parser;
 using HP67_Persistence;
 using System;
 using System.Collections;
-using System.Drawing;
 using System.ComponentModel;
+using System.Drawing;
 using System.Data;
 using System.IO;
+using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -19,14 +20,18 @@ namespace HP67
 	public class HP67 : System.Windows.Forms.Form
 	{
 
+		private const string untitledFileName = "UNTITLED FILE NAME";
+
 		private string fileName;
 
 		// As much as possible, we hide the execution state in the Execution function.  But
-		// some other things need these object.  This is going to cause trouble.  Sigh.
+		// some other things need these objects.  This is going to cause trouble.  Sigh.
 		private Actions theActions;
 		private Engine theEngine;
 		private Parser theParser;
 		private Program theProgram;
+
+		private ResourceManager theResources;
 
 		// The booleans are assumed to be read/updated atomically.  Other than that, they don't
 		// need any special protection.
@@ -102,6 +107,8 @@ namespace HP67
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+
+			theResources = new ResourceManager ("HP67.HP67", this.GetType().Assembly);
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
@@ -1246,7 +1253,7 @@ namespace HP67
 
 			if (fileName == null) 
 			{
-				saveFileDialog.FileName = "Untitled"; // TODO: Localize.
+				saveFileDialog.FileName = theResources.GetString (untitledFileName);
 				saveAsMenuItem_Click (sender, e);
 			}
 			else 
