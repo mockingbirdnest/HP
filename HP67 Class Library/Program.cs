@@ -57,16 +57,12 @@ namespace HP67_Class_Library
 
 		public Program (Display display)
 		{
-			Token [] r_s_tokens;
+			Symbol r_s_symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S");
+			Argument [] r_s_args = new Argument [0];
 
 			theDisplay = display;
 
-			r_s_tokens = new Token [1] {new TerminalToken (
-										   new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S"),
-										   "",
-										   new Location (0, 0, 0))};
-			r_s = new Instruction ("84", r_s_tokens);
-
+			r_s = new Instruction ("84", r_s_symbol, r_s_args);
 			instructions = new Instruction [224];
 			Clear ();
 
@@ -362,14 +358,15 @@ namespace HP67_Class_Library
 		public void Insert (Instruction instruction)
 		{
 			UpdateLabelsForDeletion (instructions.Length - 1);
+
+			// Make room for insertion.
 			next++;
 			for (int i = instructions.Length - 1; i > next; i--) 
 			{
 				instructions [i] = instructions [i - 1];
 			}
-			instructions [next] = instruction;
-			GotoZeroBasedStep (next);
 
+			// For labels, update the labels lookup tables.
 			switch (instruction.Symbol.Id) 
 			{
 				case (int) SymbolConstants.SYMBOL_LBL :
@@ -383,11 +380,48 @@ namespace HP67_Class_Library
 					else if (arg is Letter) 
 					{
 						this [(LetterLabel) Enum.Parse (typeof (LetterLabel), 
-								new String (((Letter) arg).Value, 1))] = next;
+							new String (((Letter) arg).Value, 1))] = next;
 					}
 					break;
 			}
 
+			// For shortcuts, substitute the expanded form for the short form.  Otherwise, merely
+			// store the instruction.
+			switch (instruction.Symbol.Id) 
+			{
+				case (int) SymbolConstants.SYMBOL_GSB_SHORTCUT :
+					Symbol gsb_symbol =
+						new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB, "GSB");
+					Instruction gsb = new Instruction
+											("31 22 " + instruction.Text,
+											 gsb_symbol,
+											 instruction.Arguments);
+					instructions [next] = gsb;
+					break;
+				case (int) SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
+					String [] args = instruction.Text.Split (' ');
+					Trace.Assert (args.Length == 2);
+					Symbol gsb_f_symbol =
+						new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB_F, "GSB_F");
+					Instruction gsb_f = new Instruction
+												("32 22 " + args [1],
+												 gsb_f_symbol,
+												 instruction.Arguments);
+					instructions [next] = gsb_f;
+					break;
+				case (int) SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
+					Symbol rcl_symbol =
+						new SymbolTerminal ((int) SymbolConstants.SYMBOL_RCL, "RCL");
+					Argument [] rcl_args = new Argument [1] {new Indexed ()};
+					Instruction rcl = new Instruction ("34 24", rcl_symbol, rcl_args);
+					instructions [next] = rcl;
+					break;
+				default :
+					instructions [next] = instruction;
+					break;
+			}
+
+			GotoZeroBasedStep (next);
 			UpdateLabelsForInsertion (next);
 		}
 

@@ -530,7 +530,8 @@ namespace HP67
 					theStack.X = theStack.LastX;
 					break;
 				case (int)SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
-					// TODO: Execution.
+					theStack.Enter ();
+					theStack.X = theMemory.RecallIndexed ();
 					break;
 				case (int)SymbolConstants.SYMBOL_MERGE :
 					// TODO: Execution.
@@ -678,9 +679,6 @@ namespace HP67
 						Trace.Assert (instruction.Arguments.Length == 1);
 						((IAddress) instruction.Arguments [0]).Store (theMemory, theStack.X);
 					}
-					break;
-				case (int)SymbolConstants.SYMBOL_SUB_I :
-					// TODO: Execution.
 					break;
 				case (int)SymbolConstants.SYMBOL_SUBTRACTION :
 					theStack.Get (out x, out y);
