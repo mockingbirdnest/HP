@@ -1,3 +1,4 @@
+using HP67_Class_Library;
 using HP67_Parser;
 using System;
 using System.IO;
@@ -37,11 +38,15 @@ namespace HP67_Persistence
 			cds.ReadXml (stream);
 			if (cds.Card [0].Version != Version) 
 			{
-				// TODO: Localization.
-				MessageBox.Show ("Incompatible version: file has version " +
-					cds.Card [0].Version.ToString () + " but program expects version " +
-					Version.ToString (), "Incompatible Version", MessageBoxButtons.OK,
-					MessageBoxIcon.Error);
+				// For some reason (read: compiler bug) we must compute text and caption separately,
+				// we cannot just write one humongous statement.
+				string text = string.Format (
+						Localization.GetString (Localization.FileHasVersion),
+						cds.Card [0].Version.ToString (),
+						Version.ToString ());
+				string caption = Localization.GetString (Localization.IncompatibleVersion);
+
+				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 			else

@@ -100,4 +100,28 @@
   <data name="UNTITLED FILE NAME">
     <value>Sans Titre</value>
   </data>
+  <data name="INCOMPATIBLE VERSION">
+    <value>Version Incompatible</value>
+  </data>
+  <data name="FILE HAS VERSION">
+    <value>Version incompatible : le fichier a la version {0} mais le programme attend la version {1}.</value>
+  </data>
+  <data name="SAVE MENU ITEM">
+    <value>Enregistrer</value>
+  </data>
+  <data name="EDIT MENU ITEM">
+    <value>Modifier les Étiquettes</value>
+  </data>
+  <data name="OPEN MENU ITEM">
+    <value>Ouvrir...</value>
+  </data>
+  <data name="SAVE AS MENU ITEM">
+    <value>Enregistrer Sous...</value>
+  </data>
+  <data name="RTF MENU ITEM">
+    <value>Texte Enrichi</value>
+  </data>
+  <data name="PRINT MENU ITEM">
+    <value>Imprimer</value>
+  </data>
 </root>

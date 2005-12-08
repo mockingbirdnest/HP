@@ -82,13 +82,13 @@ namespace HP67
 		private System.Windows.Forms.ContextMenu contextMenu;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog;
-		private System.Windows.Forms.MenuItem saveMenuItem;
-		private System.Windows.Forms.MenuItem editMenuItem;
-		private System.Windows.Forms.MenuItem rtfMenuItem;
 		private System.Drawing.Printing.PrintDocument printDocument;
+		private System.Windows.Forms.MenuItem editMenuItem;
 		private System.Windows.Forms.MenuItem openMenuItem;
-		private System.Windows.Forms.MenuItem saveAsMenuItem;
 		private System.Windows.Forms.MenuItem printMenuItem;
+		private System.Windows.Forms.MenuItem rtfMenuItem;
+		private System.Windows.Forms.MenuItem saveMenuItem;
+		private System.Windows.Forms.MenuItem saveAsMenuItem;
 		private System.Windows.Forms.MenuItem menuSeparator;
 		/// <summary>
 		/// Required designer variable.
@@ -101,6 +101,14 @@ namespace HP67
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+
+			// Localize the UI.
+			editMenuItem.Text = Localization.GetString (Localization.EditMenuItem);
+			openMenuItem.Text = Localization.GetString (Localization.OpenMenuItem);
+			printMenuItem.Text = Localization.GetString (Localization.PrintMenuItem);
+			rtfMenuItem.Text = Localization.GetString (Localization.RtfMenuItem);
+			saveMenuItem.Text = Localization.GetString (Localization.SaveMenuItem);
+			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
@@ -1245,7 +1253,7 @@ namespace HP67
 
 			if (fileName == null) 
 			{
-				saveFileDialog.FileName = Localization.GetString (Localization.untitledFileName);
+				saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
 				saveAsMenuItem_Click (sender, e);
 			}
 			else 
