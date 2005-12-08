@@ -361,6 +361,11 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
 					theDisplay.EnterDigit (((Digit) instruction.Arguments [0]).Value);
+					if (! running) 
+					{
+						// Flag 3 is the data entry flag.
+						flags [3] = true;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_DISPLAY_X :
 					theDisplay.PauseAndBlink (5000);
@@ -407,28 +412,18 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_F_TEST :
 					byte flagId = ((Digit) instruction.Arguments [0]).Value;
+					if (! flags [flagId]) 
+					{
+						theProgram.Skip ();
+					}
 					switch (flagId) 
 					{
 						case 0 :
 						case 1 :
-							if (! flags [flagId]) 
-							{
-								theProgram.Skip ();
-							}
 							break;
 						case 2 :
 						case 3 :
-							if (! flags [flagId])
-							{
-								theProgram.Skip ();
-							}
 							flags [flagId] = false;
-							// TODO: F3 is set by data entry (digit) or when SST encounters a
-							// digit.
-							break;
-						default :
-							// TODO: Not quite right.  This should behave as a syntax error.
-							Trace.Assert (false);
 							break;
 					}
 					break;
@@ -743,7 +738,9 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_EXCHANGE_I :
-					// TODO: Execution.
+					double i = theMemory.Recall (Memory.LetterRegister.I);
+					theMemory.Store(theStack.X, Memory.LetterRegister.I);
+					theStack.X = i;
 					break;
 				case (int)SymbolConstants.SYMBOL_X_EXCHANGE_Y :
 					theStack.XExchangeY ();

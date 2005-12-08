@@ -592,6 +592,11 @@ namespace HP67
 			// <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
 		}
 
+		public void ReduceRULE_H_SHIFTED_INSTRUCTION_H2 (string input, Token token, Token [] tokens)
+		{
+			// <H_Shifted_Instruction> ::= h <Unary_H_Shifted_Instruction>
+		}
+
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
@@ -1080,97 +1085,97 @@ namespace HP67
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION12 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <SF>
+			// <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION13 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
+			// <Nullary_H_Shifted_Instruction> ::= <R_Down>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION14 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <R_Down>
+			// <Nullary_H_Shifted_Instruction> ::= <R_Up>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION15 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <R_Up>
+			// <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION16 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <CF>
+			// <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION17 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
+			// <Nullary_H_Shifted_Instruction> ::= <Abs>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION18 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
+			// <Nullary_H_Shifted_Instruction> ::= <Pause>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION19 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Abs>
+			// <Nullary_H_Shifted_Instruction> ::= <Pi>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION20 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <F_Test>
+			// <Nullary_H_Shifted_Instruction> ::= <Reg>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION21 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Pause>
+			// <Nullary_H_Shifted_Instruction> ::= <Factorial>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION22 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Pi>
+			// <Nullary_H_Shifted_Instruction> ::= <Lst_X>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION23 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Reg>
+			// <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION24 (string input, Token token, Token [] tokens)
 		{
-			// <Nullary_H_Shifted_Instruction> ::= <Factorial>
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION25 (string input, Token token, Token [] tokens)
-		{
-			// <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION26 (string input, Token token, Token [] tokens)
-		{
-			// <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-			theEngine.Process (new Instruction (input, tokens));
-		}
-
-		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION27 (string input, Token token, Token [] tokens)
-		{
 			// <Nullary_H_Shifted_Instruction> ::= <Space>
+			theEngine.Process (new Instruction (input, tokens));
+		}
+
+		public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
+		{
+			// <Unary_H_Shifted_Instruction> ::= <SF> <Flag>
+			theEngine.Process (new Instruction (input, tokens));
+		}
+
+		public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
+		{
+			// <Unary_H_Shifted_Instruction> ::= <CF> <Flag>
+			theEngine.Process (new Instruction (input, tokens));
+		}
+
+		public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION3 (string input, Token token, Token [] tokens)
+		{
+			// <Unary_H_Shifted_Instruction> ::= <F_Test> <Flag>
 			theEngine.Process (new Instruction (input, tokens));
 		}
 
@@ -1277,6 +1282,30 @@ namespace HP67
 		{
 			// <Digit_Count> ::= 'Sub_I'
 			token.UserObject = new Indexed ();
+		}
+
+		public void ReduceRULE_FLAG_ZERO (string input, Token token, Token [] tokens)
+		{
+			// <Flag> ::= Zero
+			token.UserObject = new Digit (0);
+		}
+
+		public void ReduceRULE_FLAG_ONE (string input, Token token, Token [] tokens)
+		{
+			// <Flag> ::= One
+			token.UserObject = new Digit (1);
+		}
+
+		public void ReduceRULE_FLAG_TWO (string input, Token token, Token [] tokens)
+		{
+			// <Flag> ::= Two
+			token.UserObject = new Digit (2);
+		}
+
+		public void ReduceRULE_FLAG_THREE (string input, Token token, Token [] tokens)
+		{
+			// <Flag> ::= Three
+			token.UserObject = new Digit (3);
 		}
 
 		public void ReduceRULE_LETTER_A (string input, Token token, Token [] tokens)

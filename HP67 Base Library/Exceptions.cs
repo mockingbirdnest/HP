@@ -9,9 +9,6 @@ namespace HP67_Class_Library
 	{
 		public Error ()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
 		}
 	}
 
@@ -22,9 +19,6 @@ namespace HP67_Class_Library
 	{
 		public Stop ()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
 		}
 	}
 }

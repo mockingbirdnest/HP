@@ -179,6 +179,7 @@ R_S            = '84'
 <G_Shifted_Instruction> ::= g <Nullary_G_Shifted_Instruction>
                             | g <Unary_G_Shifted_Instruction>
 <H_Shifted_Instruction> ::= h <Nullary_H_Shifted_Instruction>
+                            | h <Unary_H_Shifted_Instruction>
 
 <Nullary_Unshifted_Instruction> ::= Sigma_Plus
                                           | <Rcl_Sigma_Plus>
@@ -269,15 +270,12 @@ R_S            = '84'
                                           | <Rad>
                                           | <Grd>
                                           | <Del>
-                                          | <SF>
                                           | <X_Exchange_Y>
                                           | <R_Down>
                                           | <R_Up>
-                                          | <CF>
                                           | <Reciprocal>
                                           | <Y_To_The_Xth>
                                           | <Abs>
-                                          | <F_Test>
                                           | <Pause>
                                           | <Pi>
                                           | <Reg>
@@ -286,12 +284,17 @@ R_S            = '84'
                                           | <HMS_Plus>
                                           | <Space>
 
+<Unary_H_Shifted_Instruction> ::= <SF> <Flag>
+                                  | <CF> <Flag>
+                                  | <F_Test> <Flag>
+
 <Gto_Period> ::= Gto Period
 <Rcl_Sigma_Plus> ::= Rcl Sigma_Plus
 
 <Operator> ::= Subtraction | Addition | Multiplication | Division
 <Digit> ::= Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine
 <Digit_Count> ::= <Digit> | Sub_I
+<Flag> ::= Zero | One | Two | Three
 <Letter> ::= A | B | C | D | E
 <Letter_Label> ::= <Letter>
 <Lowercase_Letter_Label> ::= <Letter_Label>
