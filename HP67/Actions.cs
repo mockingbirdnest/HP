@@ -5,11 +5,12 @@ using com.calitha.goldparser.lalr;
 using HP67;
 using HP67_Class_Library;
 using HP67_Control_Library;
+using HP67_Parser;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace HP67_Parser
+namespace HP67
 {
 
 	public class Actions : IActions

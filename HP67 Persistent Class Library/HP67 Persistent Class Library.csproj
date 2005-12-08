@@ -119,7 +119,7 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "HP67 Base Library"
+                    Name = "HP67 Transient Class Library"
                     Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />

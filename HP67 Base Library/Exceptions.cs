@@ -1,6 +1,6 @@
 using System;
 
-namespace HP67_Base_Library
+namespace HP67_Class_Library
 {
 	/// <summary>
 	/// An error during the execution of an instruction.

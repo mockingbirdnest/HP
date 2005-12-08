@@ -5,12 +5,9 @@ using HP67_Persistence;
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Configuration;
 using System.Drawing;
 using System.Data;
 using System.IO;
-using System.Globalization;
-using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -21,11 +18,6 @@ namespace HP67
 	/// </summary>
 	public class HP67 : System.Windows.Forms.Form
 	{
-
-		private const string cultureAppSetting = "Culture";
-		private const string resourceBase = "HP67.HP67";
-		private const string untitledFileName = "UNTITLED FILE NAME";
-
 		private string fileName;
 
 		// As much as possible, we hide the execution state in the Execution function.  But
@@ -34,9 +26,6 @@ namespace HP67
 		private Engine theEngine;
 		private Parser theParser;
 		private Program theProgram;
-
-		private CultureInfo theCulture;
-		private ResourceManager theResources;
 
 		// The booleans are assumed to be read/updated atomically.  Other than that, they don't
 		// need any special protection.
@@ -108,26 +97,10 @@ namespace HP67
 
 		public HP67()
 		{
-			String cultureName;
-
 			//
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
-
-			theResources = new ResourceManager (resourceBase, this.GetType().Assembly);
-			theCulture = Thread.CurrentThread.CurrentCulture;
-			cultureName = ConfigurationSettings.AppSettings.GetValues(cultureAppSetting) [0];
-			if (cultureName != "") 
-			{
-				try 
-				{
-					theCulture = new CultureInfo (cultureName);
-				}
-				catch (ArgumentException)
-				{
-				}
-			}
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
@@ -1272,7 +1245,7 @@ namespace HP67
 
 			if (fileName == null) 
 			{
-				saveFileDialog.FileName = theResources.GetString (untitledFileName, theCulture);
+				saveFileDialog.FileName = Localization.GetString (Localization.untitledFileName);
 				saveAsMenuItem_Click (sender, e);
 			}
 			else 
