@@ -5,10 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67", "HP67\HP67.csproj", 
 		{71A0054A-FD2B-4DDB-91FB-1470909F91E4} = {71A0054A-FD2B-4DDB-91FB-1470909F91E4}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Class Library", "HP67 Class Library\HP67 Class Library.csproj", "{76E1A007-1E22-40BC-826D-834FE3673BD8}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Control Library", "HP67 Control Library\HP67 Control Library.csproj", "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -33,44 +29,56 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Persistence", "HP67 Pe
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Persistent Class Library", "HP67 Persistent Class Library\HP67 Persistent Class Library.csproj", "{76E1A007-1E22-40BC-826D-834FE3673BD8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Transient Class Library", "HP67 Transient Class Library\HP67 Transient Class Library.csproj", "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 10
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SolutionUniqueID = {878E852C-8F25-4FB7-95ED-DC7CB08F89F4}
-		SccProjectUniqueName1 = HP67\u0020Class\u0020Library\\HP67\u0020Class\u0020Library.csproj
+		SccProjectUniqueName1 = HP67\u0020Control\u0020Library\\HP67\u0020Control\u0020Library.csproj
 		SccLocalPath1 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection1 = HP67\u0020Class\u0020Library\\
-		SccProjectUniqueName2 = HP67\u0020Control\u0020Library\\HP67\u0020Control\u0020Library.csproj
+		SccProjectFilePathRelativizedFromConnection1 = HP67\u0020Control\u0020Library\\
+		SccProjectUniqueName2 = HP67\u0020Setup\\HP67\u0020Setup.vdproj
 		SccLocalPath2 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection2 = HP67\u0020Control\u0020Library\\
-		SccProjectUniqueName3 = HP67\u0020Setup\\HP67\u0020Setup.vdproj
+		SccProjectFilePathRelativizedFromConnection2 = HP67\u0020Setup\\
+		SccProjectUniqueName3 = HP67\\HP67.csproj
 		SccLocalPath3 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection3 = HP67\u0020Setup\\
-		SccProjectUniqueName4 = HP67\\HP67.csproj
+		SccProjectFilePathRelativizedFromConnection3 = HP67\\
+		SccProjectUniqueName4 = HP67\u0020Testing\\HP67\u0020Testing.csproj
 		SccLocalPath4 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection4 = HP67\\
-		SccProjectUniqueName5 = HP67\u0020Testing\\HP67\u0020Testing.csproj
+		SccProjectFilePathRelativizedFromConnection4 = HP67\u0020Testing\\
+		SccProjectUniqueName5 = HP67\u0020Documentation\\HP67\u0020Documentation.csproj
 		SccLocalPath5 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection5 = HP67\u0020Testing\\
-		SccProjectUniqueName6 = HP67\u0020Documentation\\HP67\u0020Documentation.csproj
+		SccProjectFilePathRelativizedFromConnection5 = HP67\u0020Documentation\\
+		SccProjectUniqueName6 = HP67\u0020Parser\\HP67\u0020Parser.csproj
 		SccLocalPath6 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection6 = HP67\u0020Documentation\\
-		SccProjectUniqueName7 = HP67\u0020Parser\\HP67\u0020Parser.csproj
+		SccProjectFilePathRelativizedFromConnection6 = HP67\u0020Parser\\
+		SccProjectUniqueName7 = HP67\u0020Persistence\\HP67\u0020Persistence.csproj
 		SccLocalPath7 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection7 = HP67\u0020Parser\\
-		SccProjectUniqueName8 = HP67\u0020Persistence\\HP67\u0020Persistence.csproj
+		SccProjectFilePathRelativizedFromConnection7 = HP67\u0020Persistence\\
+		SccProjectUniqueName8 = HP67\u0020Persistent\u0020Class\u0020Library\\HP67\u0020Persistent\u0020Class\u0020Library.csproj
 		SccLocalPath8 = .
 		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection8 = HP67\u0020Persistence\\
+		SccProjectFilePathRelativizedFromConnection8 = HP67\u0020Persistent\u0020Class\u0020Library\\
+		SccProjectUniqueName9 = HP67\u0020Transient\u0020Class\u0020Library\\HP67\u0020Transient\u0020Class\u0020Library.csproj
+		SccProjectName9 = \u0022$/HP67/HP67\u0020Base\u0020Library\u0022,\u0020VRAAAAAA
+		SccLocalPath9 = HP67\u0020Transient\u0020Class\u0020Library
+		CanCheckoutShared = false
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -81,10 +89,6 @@ Global
 		{BBC69744-109D-439E-94ED-CE3EC892241C}.Debug.Build.0 = Debug|.NET
 		{BBC69744-109D-439E-94ED-CE3EC892241C}.Release.ActiveCfg = Release|.NET
 		{BBC69744-109D-439E-94ED-CE3EC892241C}.Release.Build.0 = Release|.NET
-		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Debug.ActiveCfg = Debug|.NET
-		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Debug.Build.0 = Debug|.NET
-		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Release.ActiveCfg = Release|.NET
-		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Release.Build.0 = Release|.NET
 		{71A0054A-FD2B-4DDB-91FB-1470909F91E4}.Debug.ActiveCfg = Debug|.NET
 		{71A0054A-FD2B-4DDB-91FB-1470909F91E4}.Debug.Build.0 = Debug|.NET
 		{71A0054A-FD2B-4DDB-91FB-1470909F91E4}.Release.ActiveCfg = Release|.NET
@@ -106,6 +110,17 @@ Global
 		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Debug.Build.0 = Debug|.NET
 		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Release.ActiveCfg = Release|.NET
 		{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}.Release.Build.0 = Release|.NET
+		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Debug.ActiveCfg = Debug|.NET
+		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Debug.Build.0 = Debug|.NET
+		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Release.ActiveCfg = Release|.NET
+		{76E1A007-1E22-40BC-826D-834FE3673BD8}.Release.Build.0 = Release|.NET
+		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Debug.ActiveCfg = Debug|.NET
+		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Debug.Build.0 = Debug|.NET
+		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Release.ActiveCfg = Release|.NET
+		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		HP67.vsd = HP67.vsd
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
