@@ -40,6 +40,9 @@ namespace HP67
 		private AutoResetEvent executionIsInitialized = new AutoResetEvent (false);
 		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
 
+		// Delegates used for cross-thread invocation.
+		private delegate void CrossThreadInvocation0 ();
+
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
 		private HP67_Control_Library.Key keyC;
@@ -75,7 +78,6 @@ namespace HP67
 		private HP67_Control_Library.Key keyRS;
 		private HP67_Control_Library.Key key0;
 		private HP67_Control_Library.Key keyPeriod;
-		private HP67_Control_Library.Display display;
 		private HP67_Control_Library.CardSlot cardSlot;
 		private HP67_Control_Library.Toggle toggleOffOn;
 		private HP67_Control_Library.Toggle toggleWprgmRun;
@@ -97,9 +99,7 @@ namespace HP67
 
 		public HP67()
 		{
-			//
 			// Required for Windows Form Designer support
-			//
 			InitializeComponent();
 
 			// Localize the UI.
@@ -109,6 +109,9 @@ namespace HP67
 			rtfMenuItem.Text = Localization.GetString (Localization.RtfMenuItem);
 			saveMenuItem.Text = Localization.GetString (Localization.SaveMenuItem);
 			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
+
+			// Enable/disable the popup menu items.
+			EnableOpenOrSave ();
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
@@ -201,7 +204,6 @@ namespace HP67
 			this.cardSlot.State = HP67_Control_Library.CardSlotState.Unloaded;
 			this.cardSlot.TabIndex = 1;
 			this.cardSlot.TextBoxWidth = 48;
-			this.cardSlot.Title = "TITLE";
 			// 
 			// toggleOffOn
 			// 
@@ -1055,8 +1057,11 @@ namespace HP67
 			Application.Run (new HP67());
 		}
 
+		#region Multithreading
+
 		void ExecutionAbortComputation (object sender)
 		{
+
 			// Remember that this function can be called by either thread (internal abort or
 			// external abort).  So we use a lock to ensure that we don't have two abort attempts
 			// going on concurrently.  Also, we maintain the invariant that when entering and
@@ -1083,14 +1088,12 @@ namespace HP67
 
 		void ExecutionAcceptKeystrokes (object sender)
 		{
-			while (keystrokesQueue.Count > 0) 
-			{
-				theParser.Parse ((string) keystrokesQueue.Dequeue ());
-			}
+			theParser.Parse ((string) keystrokesQueue.Dequeue ());
 		}
 
 		void ExecutionCancelKeystrokes (object sender)
 		{
+
 			// Unclear if clearing the queue is right, because it will remove keys that were typed
 			// before we entered PauseAndBlink.  On the other hand, we surely want to remove the
 			// "interrupting" key, and we don't have a way to delete the newest entries in the queue.
@@ -1103,6 +1106,7 @@ namespace HP67
 
 		void Execution ()
 		{
+			HP67_Control_Library.Display display;
 			bool firstExecution = true;
 			Memory theMemory;
 			HP67_Class_Library.Stack theStack;
@@ -1110,21 +1114,21 @@ namespace HP67
 			// Controls must be accessed from the thread that created them.  For most control,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
-			this.display = new HP67_Control_Library.Display (keyWasTyped);
-			this.display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.display.ForeColor = System.Drawing.Color.Red;
-			this.display.Location = new System.Drawing.Point (8, 8);
-			this.display.Name = "display";
-			this.display.Size = new System.Drawing.Size (288, 40);
-			this.display.TabIndex = 0;
-			this.display.Value = 0;
-			this.display.AbortComputation +=
+			display = new HP67_Control_Library.Display (keyWasTyped);
+			display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			display.ForeColor = System.Drawing.Color.Red;
+			display.Location = new System.Drawing.Point (8, 8);
+			display.Name = "display";
+			display.Size = new System.Drawing.Size (288, 40);
+			display.TabIndex = 0;
+			display.Value = 0;
+			display.AbortComputation +=
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionAbortComputation);
-			this.display.AcceptKeystrokes +=
+			display.AcceptKeystrokes +=
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
-			this.display.CancelKeystrokes +=
+			display.CancelKeystrokes +=
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionCancelKeystrokes);
-			this.Controls.Add (this.display);
+			this.Controls.Add (display);
 
 			// Create the components that depend on the display.
 			theMemory = new Memory (display);
@@ -1142,25 +1146,31 @@ namespace HP67
 
 					// Notify the main thread that we are ready to process keystrokes.  This has to
 					// happen once we notified that we are abort-safe, because it will release the
-					// main thread and we depend on executionIsAbortSafe being set while we are
-					// processing keystrokes.
+					// main thread which will send us keystrokes and we depend on
+					// executionIsAbortSafe being set while we are processing keystrokes.  Also,
+					// the boolean cannot be reset _after_ notifying the main thread, because an
+					// abort could come in-between.
 					if (firstExecution) 
 					{
-						executionIsInitialized.Set ();
 						firstExecution = false;
+						executionIsInitialized.Set ();
 					}
 
 					for (;;) 
 					{
 						executionThreadIdle = true;
 						keyWasTyped.WaitOne ();
+						this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
 						executionThreadIdle = false;
+						theParser.Parse ((string) keystrokesQueue.Dequeue ());
 
-						// No need to wait if there is stuff remaining in the queue.
-						while (keystrokesQueue.Count > 0) 
-						{
-							theParser.Parse ((string) keystrokesQueue.Dequeue ());
-						}
+						// This invocation cannot be made before the main window has initialized.
+						// We do not know exactly when that happens, but we are sure that when we
+						// get the first keystroke it has initialized.  So this call could not be
+						// moved before keyWasTyped.WaitOne.  However, having it here means that we
+						// could be aborted before reenabling the menus, so the abort handler must
+						// reenable them, too.
+						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
 					}
 				}
 				catch (ThreadAbortException)
@@ -1168,10 +1178,49 @@ namespace HP67
 					if (! executionThreadMustAbort) 
 					{
 						Thread.ResetAbort ();
+						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
 					}
 				}
 			}
 		}
+
+		#endregion
+
+		#region UI Utilities
+
+		void DisableOpenAndSave () 
+		{
+			openMenuItem.Enabled = false;
+			saveMenuItem.Enabled = false;
+			saveAsMenuItem.Enabled = false;
+		}
+
+		void EnableOpenOrSave () 
+		{
+			switch (toggleWprgmRun.Position)
+			{
+				case TogglePosition.Left :
+
+					// W/PRGM, can only save.
+					openMenuItem.Enabled = false;
+					saveMenuItem.Enabled = true;
+					saveAsMenuItem.Enabled = true;
+					theEngine.Mode = EngineMode.WriteProgram;
+					break;
+				case TogglePosition.Right :
+
+					// RUN, can only open.
+					openMenuItem.Enabled = true;
+					saveMenuItem.Enabled = false;
+					saveAsMenuItem.Enabled = false;
+					theEngine.Mode = EngineMode.Run;
+					break;
+			}
+		}
+
+		#endregion
+
+		#region UI Event Handlers
 
 		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
@@ -1190,10 +1239,10 @@ namespace HP67
 
 				// There is an unavoidable race condition here: R/S means Run or Stop depending
 				// on the execution state.  We test above that the execution thread is busy (not
-				// stuck on WaitOne #2), but by the time we come here, it may actually be idle.  
-				// That's not really a problem: the user pressed R/S very close to the end of the
-				// execution anyway, and they cannot tell whether it should have been a Run or a
-				// Stop.  We couldn't just check for the execution thread being in the
+				// stuck on keyWasTyped.WaitOne), but by the time we come here, it may actually be
+				// idle.  That's not really a problem: the user pressed R/S very close to the end
+				// of the execution anyway, and they cannot tell whether it should have been a Run
+				// or a Stop.  We couldn't just check for the execution thread being in the
 				// WaitSleepJoin state, because it will do that during the execution of some
 				// instructions.
 				ExecutionAbortComputation (this);
@@ -1218,14 +1267,19 @@ namespace HP67
 			System.EventArgs e,
 			HP67_Control_Library.TogglePosition position)
 		{
-			switch (position)
+			// TODO: Race condition.
+			if (executionThreadIdle) 
 			{
-				case TogglePosition.Left :
-					theEngine.Mode = EngineMode.WriteProgram;
-					break;
-				case TogglePosition.Right :
-					theEngine.Mode = EngineMode.Run;
-					break;
+				EnableOpenOrSave ();
+				switch (position)
+				{
+					case TogglePosition.Left :
+						theEngine.Mode = EngineMode.WriteProgram;
+						break;
+					case TogglePosition.Right :
+						theEngine.Mode = EngineMode.Run;
+						break;
+				}
 			}
 		}
 
@@ -1253,7 +1307,6 @@ namespace HP67
 
 			if (fileName == null) 
 			{
-				saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
 				saveAsMenuItem_Click (sender, e);
 			}
 			else 
@@ -1268,6 +1321,14 @@ namespace HP67
 		{
 			Stream stream;
 
+			if (fileName == null) 
+			{
+				saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
+			}
+			else 
+			{
+				saveFileDialog.FileName = fileName;
+			}
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				fileName = saveFileDialog.FileName;
@@ -1316,6 +1377,8 @@ namespace HP67
 		{
 			printDocument.Print ();
 		}
+
+		#endregion
 
 	}
 }

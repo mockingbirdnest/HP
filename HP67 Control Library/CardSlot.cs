@@ -207,7 +207,7 @@ namespace HP67_Control_Library
 			this.rtfBoxFB.Name = "rtfBoxFB";
 			this.rtfBoxFB.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxFB.TabIndex = 26;
-			this.rtfBoxFB.Text = "fB";
+			this.rtfBoxFB.Text = "<fB>";
 			// 
 			// rtfBoxFE
 			// 
@@ -220,7 +220,7 @@ namespace HP67_Control_Library
 			this.rtfBoxFE.Name = "rtfBoxFE";
 			this.rtfBoxFE.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxFE.TabIndex = 25;
-			this.rtfBoxFE.Text = "fE";
+			this.rtfBoxFE.Text = "<fE>";
 			// 
 			// rtfBoxFD
 			// 
@@ -233,7 +233,7 @@ namespace HP67_Control_Library
 			this.rtfBoxFD.Name = "rtfBoxFD";
 			this.rtfBoxFD.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxFD.TabIndex = 24;
-			this.rtfBoxFD.Text = "fD";
+			this.rtfBoxFD.Text = "<fD>";
 			// 
 			// rtfBoxFC
 			// 
@@ -246,7 +246,7 @@ namespace HP67_Control_Library
 			this.rtfBoxFC.Name = "rtfBoxFC";
 			this.rtfBoxFC.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxFC.TabIndex = 23;
-			this.rtfBoxFC.Text = "fC";
+			this.rtfBoxFC.Text = "<fC>";
 			// 
 			// rtfBoxFA
 			// 
@@ -259,7 +259,7 @@ namespace HP67_Control_Library
 			this.rtfBoxFA.Name = "rtfBoxFA";
 			this.rtfBoxFA.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxFA.TabIndex = 22;
-			this.rtfBoxFA.Text = "fA";
+			this.rtfBoxFA.Text = "<fA>";
 			// 
 			// rtfBoxE
 			// 
@@ -272,7 +272,7 @@ namespace HP67_Control_Library
 			this.rtfBoxE.Name = "rtfBoxE";
 			this.rtfBoxE.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxE.TabIndex = 21;
-			this.rtfBoxE.Text = "E";
+			this.rtfBoxE.Text = "<E>";
 			// 
 			// rtfBoxD
 			// 
@@ -285,7 +285,7 @@ namespace HP67_Control_Library
 			this.rtfBoxD.Name = "rtfBoxD";
 			this.rtfBoxD.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxD.TabIndex = 20;
-			this.rtfBoxD.Text = "D";
+			this.rtfBoxD.Text = "<D>";
 			// 
 			// rtfBoxC
 			// 
@@ -298,7 +298,7 @@ namespace HP67_Control_Library
 			this.rtfBoxC.Name = "rtfBoxC";
 			this.rtfBoxC.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxC.TabIndex = 19;
-			this.rtfBoxC.Text = "C";
+			this.rtfBoxC.Text = "<C>";
 			// 
 			// rtfBoxB
 			// 
@@ -311,7 +311,7 @@ namespace HP67_Control_Library
 			this.rtfBoxB.Name = "rtfBoxB";
 			this.rtfBoxB.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxB.TabIndex = 18;
-			this.rtfBoxB.Text = "B";
+			this.rtfBoxB.Text = "<B>";
 			// 
 			// rtfBoxA
 			// 
@@ -324,7 +324,7 @@ namespace HP67_Control_Library
 			this.rtfBoxA.Name = "rtfBoxA";
 			this.rtfBoxA.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxA.TabIndex = 17;
-			this.rtfBoxA.Text = "A";
+			this.rtfBoxA.Text = "<A>";
 			// 
 			// titleTextBox
 			// 
@@ -336,7 +336,7 @@ namespace HP67_Control_Library
 			this.titleTextBox.Name = "titleTextBox";
 			this.titleTextBox.Size = new System.Drawing.Size(180, 13);
 			this.titleTextBox.TabIndex = 1;
-			this.titleTextBox.Text = "TITLE";
+			this.titleTextBox.Text = "<TITLE>";
 			this.titleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// cornerPanel
@@ -357,7 +357,7 @@ namespace HP67_Control_Library
 			this.textBoxA.Name = "textBoxA";
 			this.textBoxA.Size = new System.Drawing.Size(48, 13);
 			this.textBoxA.TabIndex = 7;
-			this.textBoxA.Text = "A";
+			this.textBoxA.Text = "<A>";
 			this.textBoxA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxB
@@ -370,7 +370,7 @@ namespace HP67_Control_Library
 			this.textBoxB.Name = "textBoxB";
 			this.textBoxB.Size = new System.Drawing.Size(48, 13);
 			this.textBoxB.TabIndex = 8;
-			this.textBoxB.Text = "B";
+			this.textBoxB.Text = "<B>";
 			this.textBoxB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxC
@@ -383,7 +383,7 @@ namespace HP67_Control_Library
 			this.textBoxC.Name = "textBoxC";
 			this.textBoxC.Size = new System.Drawing.Size(48, 13);
 			this.textBoxC.TabIndex = 9;
-			this.textBoxC.Text = "C";
+			this.textBoxC.Text = "<C>";
 			this.textBoxC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxD
@@ -396,7 +396,7 @@ namespace HP67_Control_Library
 			this.textBoxD.Name = "textBoxD";
 			this.textBoxD.Size = new System.Drawing.Size(48, 13);
 			this.textBoxD.TabIndex = 10;
-			this.textBoxD.Text = "D";
+			this.textBoxD.Text = "<D>";
 			this.textBoxD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxE
@@ -409,7 +409,7 @@ namespace HP67_Control_Library
 			this.textBoxE.Name = "textBoxE";
 			this.textBoxE.Size = new System.Drawing.Size(48, 13);
 			this.textBoxE.TabIndex = 11;
-			this.textBoxE.Text = "E";
+			this.textBoxE.Text = "<E>";
 			this.textBoxE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxfA
@@ -422,7 +422,7 @@ namespace HP67_Control_Library
 			this.textBoxfA.Name = "textBoxfA";
 			this.textBoxfA.Size = new System.Drawing.Size(48, 13);
 			this.textBoxfA.TabIndex = 2;
-			this.textBoxfA.Text = "fA";
+			this.textBoxfA.Text = "<fA>";
 			this.textBoxfA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxfB
@@ -435,7 +435,7 @@ namespace HP67_Control_Library
 			this.textBoxfB.Name = "textBoxfB";
 			this.textBoxfB.Size = new System.Drawing.Size(48, 13);
 			this.textBoxfB.TabIndex = 3;
-			this.textBoxfB.Text = "fB";
+			this.textBoxfB.Text = "<fB>";
 			this.textBoxfB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxfE
@@ -448,7 +448,7 @@ namespace HP67_Control_Library
 			this.textBoxfE.Name = "textBoxfE";
 			this.textBoxfE.Size = new System.Drawing.Size(48, 13);
 			this.textBoxfE.TabIndex = 6;
-			this.textBoxfE.Text = "fE";
+			this.textBoxfE.Text = "<fE>";
 			this.textBoxfE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxfC
@@ -461,7 +461,7 @@ namespace HP67_Control_Library
 			this.textBoxfC.Name = "textBoxfC";
 			this.textBoxfC.Size = new System.Drawing.Size(48, 13);
 			this.textBoxfC.TabIndex = 4;
-			this.textBoxfC.Text = "fC";
+			this.textBoxfC.Text = "<fC>";
 			this.textBoxfC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// textBoxfD
@@ -474,7 +474,7 @@ namespace HP67_Control_Library
 			this.textBoxfD.Name = "textBoxfD";
 			this.textBoxfD.Size = new System.Drawing.Size(48, 13);
 			this.textBoxfD.TabIndex = 5;
-			this.textBoxfD.Text = "fD";
+			this.textBoxfD.Text = "<fD>";
 			this.textBoxfD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// labelA
@@ -664,21 +664,6 @@ namespace HP67_Control_Library
 			foreach (System.Windows.Forms.TextBoxBase t in fTextBoxes)  
 			{
 				t.ReadOnly = !editable;
-			}
-			if (editable) 
-			{
-				// TODO: Not exactly user-friendly, as we lose the previous values...
-				titleTextBox.Text = "<TITLE>";
-				textBoxes [0].Text = "<A>";
-				textBoxes [1].Text = "<B>";
-				textBoxes [2].Text = "<C>";
-				textBoxes [3].Text = "<D>";
-				textBoxes [4].Text = "<E>";
-				fTextBoxes [0].Text = "<fA>";
-				fTextBoxes [1].Text = "<fB>";
-				fTextBoxes [2].Text = "<fC>";
-				fTextBoxes [3].Text = "<fD>";
-				fTextBoxes [4].Text = "<fE>";
 			}
 		}
 
