@@ -28,12 +28,17 @@ namespace HP67
 		private Program theProgram;
 
 		// The booleans are assumed to be read/updated atomically.  Other than that, they don't
-		// need any special protection.
-		private bool executionThreadIdle;
-		private bool executionThreadMustAbort;
+		// need any special protection.  They must be volatile, though, to ensure that changes are
+		// immediately visible to both threads.
+		private volatile bool executionThreadIsIdle;
+		private volatile bool executionThreadMustAbort;
 
 		private Thread executionThread;
 		private Queue keystrokesQueue;
+
+		// Locks for critical sections.
+		private object executionThreadIsBeingAborted = new object ();
+		private object executionThreadIsBusy = new object ();
 
 		// Events used to synchronize the two threads.
 		private AutoResetEvent executionIsAbortSafe = new AutoResetEvent (false);
@@ -1066,7 +1071,7 @@ namespace HP67
 			// external abort).  So we use a lock to ensure that we don't have two abort attempts
 			// going on concurrently.  Also, we maintain the invariant that when entering and
 			// exiting this function the execution thread is in an abort-safe region.
-			lock (executionThread) 
+			lock (executionThreadIsBeingAborted) 
 			{
 
 				// We are very soon going to put the execution thread in an abort-unsafe state. 
@@ -1155,21 +1160,35 @@ namespace HP67
 						firstExecution = false;
 						executionIsInitialized.Set ();
 					}
+					else 
+					{
+
+						// The cross-thread invocation cannot be made before the main window has
+						// initialized.  The invocation here is only useful to reenable the menus
+						// after an abort.  It has to happen after notifying the main thread that
+						// we are abort-safe: doing it in the abort handler would lead to a
+						// deadlock because the main thread would be stuck on
+						// executionIsAbortSafe.WaitOne.
+						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+					}
 
 					for (;;) 
 					{
-						executionThreadIdle = true;
+						executionThreadIsIdle = true;
 						keyWasTyped.WaitOne ();
-						this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
-						executionThreadIdle = false;
-						theParser.Parse ((string) keystrokesQueue.Dequeue ());
+						executionThreadIsIdle = false;
 
-						// This invocation cannot be made before the main window has initialized.
-						// We do not know exactly when that happens, but we are sure that when we
-						// get the first keystroke it has initialized.  So this call could not be
-						// moved before keyWasTyped.WaitOne.  However, having it here means that we
-						// could be aborted before reenabling the menus, so the abort handler must
-						// reenable them, too.
+						// We want to protect this sequence against asynchronous changes to the
+						// menus.
+						lock (executionThreadIsBusy)
+						{
+							this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
+							theParser.Parse ((string) keystrokesQueue.Dequeue ());
+						}
+
+						// This cross-thread invocation can be interrupted (or skipped) because of
+						// an abort.  Hence the need for a separate invocation above to clean things
+						// up after an abort.
 						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
 					}
 				}
@@ -1178,7 +1197,6 @@ namespace HP67
 					if (! executionThreadMustAbort) 
 					{
 						Thread.ResetAbort ();
-						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
 					}
 				}
 			}
@@ -1205,7 +1223,10 @@ namespace HP67
 					openMenuItem.Enabled = false;
 					saveMenuItem.Enabled = true;
 					saveAsMenuItem.Enabled = true;
-					theEngine.Mode = EngineMode.WriteProgram;
+					if (theEngine != null) 
+					{
+						theEngine.Mode = EngineMode.WriteProgram;
+					}
 					break;
 				case TogglePosition.Right :
 
@@ -1213,7 +1234,10 @@ namespace HP67
 					openMenuItem.Enabled = true;
 					saveMenuItem.Enabled = false;
 					saveAsMenuItem.Enabled = false;
-					theEngine.Mode = EngineMode.Run;
+					if (theEngine != null) 
+					{
+						theEngine.Mode = EngineMode.Run;
+					}
 					break;
 			}
 		}
@@ -1234,17 +1258,16 @@ namespace HP67
 		{
 			Key key = (Key) sender;
 
-			if ((key == keyRS) && ! executionThreadIdle) 
+			if ((key == keyRS) && ! executionThreadIsIdle) 
 			{
 
 				// There is an unavoidable race condition here: R/S means Run or Stop depending
-				// on the execution state.  We test above that the execution thread is busy (not
-				// stuck on keyWasTyped.WaitOne), but by the time we come here, it may actually be
-				// idle.  That's not really a problem: the user pressed R/S very close to the end
-				// of the execution anyway, and they cannot tell whether it should have been a Run
-				// or a Stop.  We couldn't just check for the execution thread being in the
-				// WaitSleepJoin state, because it will do that during the execution of some
-				// instructions.
+				// on the execution state.  We test above that the execution thread is busy, but by
+				// the time we come here, it may actually be idle.  That's not really a problem: the
+				// user pressed R/S very close to the end of the execution anyway, and they cannot
+				// tell whether it should have been a Run or a Stop.  We couldn't just check for the
+				// execution thread being in the WaitSleepJoin state, because it will do that during
+				// the execution of some instructions.
 				ExecutionAbortComputation (this);
 			}
 			else
@@ -1267,18 +1290,21 @@ namespace HP67
 			System.EventArgs e,
 			HP67_Control_Library.TogglePosition position)
 		{
-			// TODO: Race condition.
-			if (executionThreadIdle) 
+
+			// Changes to this toggle are actually delayed until the end of the current execution.
+			// If the execution thread is idle, we are going to be able to grab the lock and
+			// proceed immediately.  If it is busy, we won't be able to grab the lock, and we will
+			// return without doing anything.  That's not a problem because the execution thread
+			// will update the menus as soon as the current computation finishes.
+			if (Monitor.TryEnter (executionThreadIsBusy)) 
 			{
-				EnableOpenOrSave ();
-				switch (position)
+				try
 				{
-					case TogglePosition.Left :
-						theEngine.Mode = EngineMode.WriteProgram;
-						break;
-					case TogglePosition.Right :
-						theEngine.Mode = EngineMode.Run;
-						break;
+					EnableOpenOrSave ();
+				}
+				finally 
+				{
+					Monitor.Exit (executionThreadIsBusy);
 				}
 			}
 		}
