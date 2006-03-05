@@ -47,6 +47,7 @@ namespace HP67
 		private bool [] flags;
 		private AngleUnit unit;
 
+		private AutoResetEvent keyWasTyped;
 		private Display theDisplay;
 		private Memory theMemory;
 		private Program theProgram;
@@ -54,9 +55,22 @@ namespace HP67
 
 		#endregion
 
+		#region Event Definitions
+
+		// TODO: Should these be provided in the constructor?
+
+		public delegate void EngineEvent (object sender);
+		public event EngineEvent StopComputation;
+
+		#endregion
+
 		#region Constructors & Destructors
 
-		public Engine (Display display, Memory memory, Program program, Stack stack) 
+		public Engine (Display display,
+						Memory memory,
+						Program program,
+						Stack stack,
+						AutoResetEvent keyWasTyped) 
 		{
 			flags = new bool [4];
 			unit = AngleUnit.Degree;
@@ -65,6 +79,7 @@ namespace HP67
 			theMemory = memory;
 			theProgram = program;
 			theStack = stack;
+			this.keyWasTyped = keyWasTyped;
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
@@ -73,7 +88,7 @@ namespace HP67
 
 		#region Event Handlers
 
-		public  void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Parser parser)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.EngineRow er;
@@ -90,7 +105,7 @@ namespace HP67
 			}
 		}
 
-		public  void WriteToDataset (CardDataset cds)
+		public void WriteToDataset (CardDataset cds)
 		{
 			CardDataset.EngineRow er;
 			CardDataset.FlagRow fr;
@@ -164,12 +179,14 @@ namespace HP67
 						"Gosub: starting",
 						classTraceSwitch.DisplayName);
 
-					// We don't want the initial call to push anything on the stack, hence Goto.  The case where label
-					// is null corresponds to execution resuming from the instruction following the one on which we
-					// stopped.
+					// The case where label is null corresponds to execution resuming from the
+					// instruction following the one on which we stopped (aka RUN in R/S).  
+					// Executing a new subprogram from the top-level clears any return address left
+					// on the stack from the last execution, hence the call to Reset.
 					if (label != null) 
 					{
-						label.Goto (theMemory, theProgram);
+						label.Gosub (theMemory, theProgram);
+						theProgram.Reset ();
 					}
 					running = true;
 					for (;;) 
@@ -184,17 +201,7 @@ namespace HP67
 					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 						"Gosub: stopping",
 						classTraceSwitch.DisplayName);
-				}
-				catch (ThreadAbortException)
-				{
-					// The Abort () calls are used to put the various objects back into a
-					// consistent state.  That's important because we'll use them again in the 
-					// next computation.
-					theDisplay.Abort ();
-					theProgram.Abort ();
-					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Gosub: aborting",
-						classTraceSwitch.DisplayName);
+					throw new Stop ();
 				}
 				finally 
 				{
@@ -563,7 +570,7 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_R_S :
 					if (running) 
 					{
-						theProgram.Stop ();
+						throw new Stop ();
 					}
 					else 
 					{
@@ -787,6 +794,14 @@ namespace HP67
 					break;
 				default:
 					throw new Error ();
+			}
+
+			// Now check if some key was typed while we were executing the instruction.  If it was,
+			// stop the computation.  Note that this is done synchronously to make sure that we can
+			// resume execution with the proper state if the user types R/S again.
+			if (keyWasTyped.WaitOne (0, false))
+			{
+				StopComputation (this);
 			}
 		}
 

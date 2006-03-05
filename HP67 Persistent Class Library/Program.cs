@@ -258,14 +258,6 @@ namespace HP67_Class_Library
 			}
 		}
 
-		public void Abort ()
-		{
-			for (int i = 0; i <= returns.Length - 1; i++) 
-			{
-				returns [i] = noStep;
-			}
-		}
-
 		public void Gosub (byte label)
 		{
 			SaveReturnAddress ();
@@ -288,11 +280,21 @@ namespace HP67_Class_Library
 			GotoZeroBasedStep (this [label]);
 		}
 
+		public void Reset () 
+		{
+
+			// Prepare for a new execution by clearing the call stack.
+			for (int i = 0; i <= returns.Length - 1; i++) 
+			{
+				returns [i] = noStep;
+			}
+		}
+
 		public void Return ()
 		{
 			if (returns [0] == noStep)
 			{
-				Stop ();
+				throw new Stop ();
 			}
 			else
 			{
@@ -308,15 +310,6 @@ namespace HP67_Class_Library
 		public void Skip ()
 		{
 			GotoZeroBasedStep (next + 1);
-		}
-
-		public void Stop ()
-		{
-			for (int i = 0; i <= returns.Length - 1; i++) 
-			{
-				returns [i] = noStep;
-			}
-			throw new Stop ();
 		}
 
 		#endregion

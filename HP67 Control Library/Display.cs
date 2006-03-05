@@ -84,10 +84,10 @@ namespace HP67_Control_Library
 		// TODO: Should these be provided in the constructor?
 
 		public delegate void DisplayEvent (object sender);
-		public event DisplayEvent AbortComputation;
 		public event DisplayEvent AcceptKeystrokes;
-		public event DisplayEvent CancelKeystrokes;
+		public event DisplayEvent CompleteKeystrokes;
 		public event DisplayEvent EnteringNumber;
+		public event DisplayEvent StopComputation;
 
 		#endregion
 
@@ -639,11 +639,6 @@ namespace HP67_Control_Library
 
 		#region Public Operations
 
-		public void Abort ()
-		{
-			enteringNumber = false;
-		}
-
 		public void ChangeSign (out bool done)
 		{
 			char sign;
@@ -792,9 +787,9 @@ namespace HP67_Control_Library
 				}
 				Update ();
 			}
-			if (CancelKeystrokes != null) 
+			if (CompleteKeystrokes != null) 
 			{
-				CancelKeystrokes (this);
+				CompleteKeystrokes (this);
 			}
 		}
 
@@ -818,21 +813,18 @@ namespace HP67_Control_Library
 
 						// Most of the time the following call will just be equivalent to
 						// Thread.Sleep.  However, typing a key during PauseAndBlink causes the
-						// current computation to abort.  We detect this because keyWasTyped is
+						// current computation to stop.  We detect this because keyWasTyped is
 						// signalled.
-						if (keyWasTyped.WaitOne (interval, false) &&
-							(CancelKeystrokes != null) &&
-							(AbortComputation != null))
+						if (keyWasTyped.WaitOne (interval, false))
 						{
-							CancelKeystrokes (this);
-							AbortComputation (this);
+							StopComputation (this);
 						}
 					}
 				}
 			}
 			finally 
 			{
-				// Restore the original text here to protect against abort.
+				// Restore the original text here to protect against exceptions.
 				NumericText = textWithPeriod;
 			}
 		}
@@ -874,7 +866,7 @@ namespace HP67_Control_Library
 			}
 			finally 
 			{
-				// Restore the value here to protect against abort.
+				// Restore the value here to protect against exceptions.
 				Value = savedValue;
 			}
 		}
