@@ -200,6 +200,7 @@ namespace HP67
 			this.cardSlot.State = HP67_Control_Library.CardSlotState.Unloaded;
 			this.cardSlot.TabIndex = 1;
 			this.cardSlot.TextBoxWidth = 48;
+			this.cardSlot.Title = "<TITLE>";
 			// 
 			// toggleOffOn
 			// 
@@ -247,6 +248,7 @@ namespace HP67
 			this.keyA.TabIndex = 1;
 			this.keyA.Tag = "11";
 			this.keyA.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyA.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyf
 			// 
@@ -267,6 +269,7 @@ namespace HP67
 			this.keyf.TabIndex = 11;
 			this.keyf.Tag = "31";
 			this.keyf.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyf.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keySST
 			// 
@@ -287,6 +290,7 @@ namespace HP67
 			this.keySST.TabIndex = 10;
 			this.keySST.Tag = "25";
 			this.keySST.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keySST.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyi
 			// 
@@ -307,6 +311,7 @@ namespace HP67
 			this.keyi.TabIndex = 9;
 			this.keyi.Tag = "24";
 			this.keyi.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyi.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyDSP
 			// 
@@ -327,6 +332,7 @@ namespace HP67
 			this.keyDSP.TabIndex = 8;
 			this.keyDSP.Tag = "23";
 			this.keyDSP.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyDSP.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyGTO
 			// 
@@ -347,6 +353,7 @@ namespace HP67
 			this.keyGTO.TabIndex = 7;
 			this.keyGTO.Tag = "22";
 			this.keyGTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyGTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyΣ
 			// 
@@ -367,6 +374,7 @@ namespace HP67
 			this.keyΣ.TabIndex = 6;
 			this.keyΣ.Tag = "21";
 			this.keyΣ.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyΣ.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyE
 			// 
@@ -387,6 +395,7 @@ namespace HP67
 			this.keyE.TabIndex = 5;
 			this.keyE.Tag = "15";
 			this.keyE.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyE.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyD
 			// 
@@ -407,6 +416,7 @@ namespace HP67
 			this.keyD.TabIndex = 4;
 			this.keyD.Tag = "14";
 			this.keyD.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyD.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyC
 			// 
@@ -427,6 +437,7 @@ namespace HP67
 			this.keyC.TabIndex = 3;
 			this.keyC.Tag = "13";
 			this.keyC.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyC.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyB
 			// 
@@ -447,6 +458,7 @@ namespace HP67
 			this.keyB.TabIndex = 2;
 			this.keyB.Tag = "12";
 			this.keyB.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyB.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyENTER
 			// 
@@ -467,6 +479,7 @@ namespace HP67
 			this.keyENTER.TabIndex = 16;
 			this.keyENTER.Tag = "41";
 			this.keyENTER.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyENTER.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyEEX
 			// 
@@ -487,6 +500,7 @@ namespace HP67
 			this.keyEEX.TabIndex = 18;
 			this.keyEEX.Tag = "43";
 			this.keyEEX.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyEEX.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyCLx
 			// 
@@ -507,6 +521,7 @@ namespace HP67
 			this.keyCLx.TabIndex = 19;
 			this.keyCLx.Tag = "44";
 			this.keyCLx.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyCLx.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyCHS
 			// 
@@ -527,6 +542,7 @@ namespace HP67
 			this.keyCHS.TabIndex = 17;
 			this.keyCHS.Tag = "42";
 			this.keyCHS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyCHS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyh
 			// 
@@ -547,6 +563,7 @@ namespace HP67
 			this.keyh.TabIndex = 15;
 			this.keyh.Tag = "35";
 			this.keyh.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyh.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyRCL
 			// 
@@ -567,6 +584,7 @@ namespace HP67
 			this.keyRCL.TabIndex = 14;
 			this.keyRCL.Tag = "34";
 			this.keyRCL.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyRCL.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keySTO
 			// 
@@ -587,6 +605,7 @@ namespace HP67
 			this.keySTO.TabIndex = 13;
 			this.keySTO.Tag = "33";
 			this.keySTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keySTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyg
 			// 
@@ -607,6 +626,7 @@ namespace HP67
 			this.keyg.TabIndex = 12;
 			this.keyg.Tag = "32";
 			this.keyg.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyg.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key8
 			// 
@@ -627,6 +647,7 @@ namespace HP67
 			this.key8.TabIndex = 22;
 			this.key8.Tag = "53";
 			this.key8.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key8.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyRS
 			// 
@@ -647,6 +668,7 @@ namespace HP67
 			this.keyRS.TabIndex = 35;
 			this.keyRS.Tag = "84";
 			this.keyRS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyRS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyPeriod
 			// 
@@ -667,6 +689,7 @@ namespace HP67
 			this.keyPeriod.TabIndex = 34;
 			this.keyPeriod.Tag = "83";
 			this.keyPeriod.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyPeriod.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key0
 			// 
@@ -687,6 +710,7 @@ namespace HP67
 			this.key0.TabIndex = 33;
 			this.key0.Tag = "82";
 			this.key0.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key0.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key9
 			// 
@@ -707,6 +731,7 @@ namespace HP67
 			this.key9.TabIndex = 23;
 			this.key9.Tag = "54";
 			this.key9.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key9.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key3
 			// 
@@ -727,6 +752,7 @@ namespace HP67
 			this.key3.TabIndex = 31;
 			this.key3.Tag = "74";
 			this.key3.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key3.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key2
 			// 
@@ -747,6 +773,7 @@ namespace HP67
 			this.key2.TabIndex = 30;
 			this.key2.Tag = "73";
 			this.key2.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key2.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key1
 			// 
@@ -767,6 +794,7 @@ namespace HP67
 			this.key1.TabIndex = 29;
 			this.key1.Tag = "72";
 			this.key1.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key1.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key6
 			// 
@@ -787,6 +815,7 @@ namespace HP67
 			this.key6.TabIndex = 27;
 			this.key6.Tag = "64";
 			this.key6.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key6.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key5
 			// 
@@ -807,6 +836,7 @@ namespace HP67
 			this.key5.TabIndex = 26;
 			this.key5.Tag = "63";
 			this.key5.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key5.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key4
 			// 
@@ -827,6 +857,7 @@ namespace HP67
 			this.key4.TabIndex = 25;
 			this.key4.Tag = "62";
 			this.key4.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key4.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// key7
 			// 
@@ -847,6 +878,7 @@ namespace HP67
 			this.key7.TabIndex = 21;
 			this.key7.Tag = "52";
 			this.key7.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.key7.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyMinus
 			// 
@@ -867,6 +899,7 @@ namespace HP67
 			this.keyMinus.TabIndex = 20;
 			this.keyMinus.Tag = "51";
 			this.keyMinus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyMinus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyDiv
 			// 
@@ -887,6 +920,7 @@ namespace HP67
 			this.keyDiv.TabIndex = 32;
 			this.keyDiv.Tag = "81";
 			this.keyDiv.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyDiv.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyMult
 			// 
@@ -907,6 +941,7 @@ namespace HP67
 			this.keyMult.TabIndex = 28;
 			this.keyMult.Tag = "71";
 			this.keyMult.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyMult.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// keyPlus
 			// 
@@ -927,6 +962,7 @@ namespace HP67
 			this.keyPlus.TabIndex = 24;
 			this.keyPlus.Tag = "61";
 			this.keyPlus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
+			this.keyPlus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
 			// contextMenu
 			// 
@@ -1059,7 +1095,7 @@ namespace HP67
 		{
 
 			// Send the key that was just typed (in pause mode) to the parser for execution.
-			theParser.Parse ((string) keystrokesQueue.Dequeue ());
+			theParser.Parse (((Keystroke) keystrokesQueue.Dequeue ()).Tag);
 		}
 
 		void ExecutionCompleteKeystrokes (object sender)
@@ -1084,7 +1120,9 @@ namespace HP67
 		void Execution ()
 		{
 			HP67_Control_Library.Display display;
-			Memory theMemory;
+			HP67_Control_Library.Key key;
+			HP67_Class_Library.Keystroke keystroke;
+			HP67_Class_Library.Memory theMemory;
 			HP67_Class_Library.Stack theStack;
 		
 			// Controls must be accessed from the thread that created them.  For most control,
@@ -1126,23 +1164,48 @@ namespace HP67
 					// Wait until we get a keystroke from the UI.
 					keyWasTyped.WaitOne ();
 
-					// We want to protect this sequence against asynchronous changes to the menus
-					// which may happen because the W/PGRM-RUN switch is moved.  This is important
-					// to ensure that the state of the menus accurately reflect the execution
-					// state.
-					lock (executionThreadIsBusy)
+					keystroke = (Keystroke) keystrokesQueue.Dequeue ();
+					switch (keystroke.Motion) 
 					{
-						this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
-						theParser.Parse ((string) keystrokesQueue.Dequeue ());
-					}
+						case KeystrokeMotion.Up:
+						{
 
-					// This invocation doesn't have to be locked: the changes to the menus take
-					// place on the main thread, as does the click event to move the W/PGRM-RUN
-					// switch.  Therefore, they are automatically sequentialized.
-					this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+							// We want to protect this sequence against asynchronous changes to the
+							// menus which may happen because the W/PGRM-RUN switch is moved.  This
+							// is important to ensure that the state of the menus accurately
+							// reflect the execution state.
+							lock (executionThreadIsBusy)
+							{
+								this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
+								theParser.Parse (keystroke.Tag);
+							}
+
+							// This invocation doesn't have to be locked: the changes to the menus
+							// take place on the main thread, as does the click event to move the
+							// W/PGRM-RUN switch.  Therefore, they are automatically sequentialized.
+							this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+							break;
+						}
+						case KeystrokeMotion.Down:
+						{
+							key = (Key) keystroke.Control;
+							if ((key == keyRS) || (key == keySST))
+							{
+								// The display mode will be reset by EnableOpenOrSave after
+								// execution of the next instruction (i.e., when the key goes up).
+								display.Mode = DisplayMode.Instruction;
+								theProgram.PreviewInstruction ();
+							}
+							// TODO: BST.  Need to go through the parser?
+							break;
+						}
+					}
 				}
 				catch (Stop)
 				{
+					// This invocation makes sure that we correctly reset the display mode after the
+					// execution of each instruction, including one that stops the program.
+					this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
 				}
 			}
 		}
@@ -1198,13 +1261,21 @@ namespace HP67
 			executionThread.Abort ();
 		}
 
+		private void LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+
+			// Queue a keystroke, and notify the execution thread that its queue is not empty.
+			keystrokesQueue.Enqueue
+				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Down));
+			keyWasTyped.Set ();
+		}
+
 		private void LeftMouseUp (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
-			Key key = (Key) sender;
 
-			// Queue a request to process the key, and notify the execution thread that its
-			// queue is not empty.
-			keystrokesQueue.Enqueue ((string) key.Tag);
+			// Queue a keystroke, and notify the execution thread that its queue is not empty.
+			keystrokesQueue.Enqueue
+				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Up));
 			keyWasTyped.Set ();
 		}
 

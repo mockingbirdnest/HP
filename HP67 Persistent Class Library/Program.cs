@@ -280,6 +280,11 @@ namespace HP67_Class_Library
 			GotoZeroBasedStep (this [label]);
 		}
 
+		public void PreviewInstruction ()
+		{
+			GotoZeroBasedStep (next);
+		}
+
 		public void Reset () 
 		{
 

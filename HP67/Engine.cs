@@ -299,10 +299,13 @@ namespace HP67
 					// we will use stackLift in the event handler for EnteringNumber.
 					stackLift = neutral;
 					break;
+				case (int) SymbolConstants.SYMBOL_SST :
+					// SST must not change the state of the engine at all.
+					stackLift = neutral;
+					break;
 				default :
-					// Most operations terminate digit entry and lift the stack.  Set
-					// stackLift to neutral below when an operation doesn't change the stack lift
-					// after all.
+					// Most operations terminate digit entry and lift the stack.  Set stackLift to
+					// neutral below when an operation doesn't change the stack lift after all.
 					stackLift = true;
 					theDisplay.DoneEntering ();
 					break;
@@ -660,7 +663,15 @@ namespace HP67
 					theStack.X = x * x;
 					break;
 				case (int)SymbolConstants.SYMBOL_SST :
-					// TODO: Execution.
+					try 
+					{
+						running = true;
+						Execute (theProgram.Instruction);
+					}
+					finally 
+					{
+						running = false;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ST_I :
 					theMemory.Store (theStack.X, Memory.LetterRegister.I);
