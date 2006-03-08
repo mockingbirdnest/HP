@@ -187,19 +187,30 @@ namespace HP67_Class_Library
 			}
 		}
 
+		private void GotoBegin ()
+		{
+			next = noStep;
+			theDisplay.ShowInstruction ("", 0);
+		}
+
 		private void GotoZeroBasedStep (int step) 
 		{
 			// Here step is 0-based.  This is used by all the operations in this class, but we
-			// maintain the fiction of a 1-based program for the clients.
-			next = step;
-			if (next == noStep) 
+			// maintain the fiction of a 1-based program for the clients.  This subprogram also
+			// implements the wrap-around whereby step 224 is followed by step 1.
+			if (step == noStep) 
 			{
-				theDisplay.ShowInstruction ("", 0);
+				next = instructions.Length - 1;
 			}
-			else
+			else if (step == instructions.Length) 
 			{
-				theDisplay.ShowInstruction (instructions [next].Text, next + 1);
+				next = 0;
 			}
+			else 
+			{
+				next = step;
+			}
+			theDisplay.ShowInstruction (instructions [next].Text, next + 1);
 		}
 
 		private void SaveReturnAddress ()
@@ -324,7 +335,7 @@ namespace HP67_Class_Library
 		public void Clear ()
 		{
 			lastPrinted = noStep;
-			GotoZeroBasedStep (noStep);
+			GotoBegin ();
 			for (int i = 0; i < instructions.Length; i++) 
 			{
 				instructions [i] = r_s;

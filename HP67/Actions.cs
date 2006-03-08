@@ -21,7 +21,8 @@ namespace HP67
 		private static TraceSwitch classTraceSwitch = 
 			new TraceSwitch ("HP67_Parser.Actions", "Parser actions");
 
-		private Engine theEngine;
+		private Engine engine;
+		private KeystrokeMotion motion;
 
 		private string remainingText;
 		private bool retry = false;
@@ -30,9 +31,10 @@ namespace HP67
 
 		#region Constructors & Destructors
 
-		public Actions (Engine engine) 
+		public Actions (Engine engine, KeystrokeMotion motion) 
 		{
-			theEngine = engine;
+			this.engine = engine;
+			this.motion = motion;
 		}
 
 		#endregion
@@ -515,19 +517,19 @@ namespace HP67
 		public void ReduceRULE_UNSHIFTED_SHORTCUT (string input, Token token, Token [] tokens)
 		{
 			// <Unshifted_Shortcut> ::= <Gsb_Shortcut>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNSHIFTED_SHORTCUT2 (string input, Token token, Token [] tokens)
 		{
 			// <Unshifted_Shortcut> ::= <Memory_Shortcut>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_F_SHIFTED_SHORTCUT (string input, Token token, Token [] tokens)
 		{
 			// <F_Shifted_Shortcut> ::= <Gsb_f_Shortcut>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_GSB_SHORTCUT (string input, Token token, Token [] tokens)
@@ -600,583 +602,583 @@ namespace HP67
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SIGMA_PLUS (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= 'Sigma_Plus'
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= <Rcl_Sigma_Plus>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SST (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Sst
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ENTER (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Enter
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CHS (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Chs
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_EEX (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Eex
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_CLX (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Clx
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= <Digit>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_SUBTRACTION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Subtraction
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_ADDITION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Addition
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_MULTIPLICATION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Multiplication
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_DIVISION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Division
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_PERIOD (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= Period
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_UNSHIFTED_INSTRUCTION_R_S (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_Unshifted_Instruction> ::= 'R_S'
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_GTO (string input, Token token, Token [] tokens)
 		{
 			// <Unary_Unshifted_Instruction> ::= Gto <Label>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_DSP (string input, Token token, Token [] tokens)
 		{
 			// <Unary_Unshifted_Instruction> ::= Dsp <Digit_Count>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_STO (string input, Token token, Token [] tokens)
 		{
 			// <Unary_Unshifted_Instruction> ::= Sto <Memory>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_UNSHIFTED_INSTRUCTION_RCL (string input, Token token, Token [] tokens)
 		{
 			// <Unary_Unshifted_Instruction> ::= Rcl <Memory>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_BINARY_UNSHIFTED_INSTRUCTION_STO (string input, Token token, Token [] tokens)
 		{
 			// <Binary_Unshifted_Instruction> ::= Sto <Operator> <Operable_Memory>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_TERNARY_UNSHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Ternary_Unshifted_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <X_Average>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Fix>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION3 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Rnd>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION4 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Dsz>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION5 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Isz>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION6 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <W_Data>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION7 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <P_Exchange_S>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION8 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Cl_Reg>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION9 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Cl_Prgm>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION10 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <X_EQ_0>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION11 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Ln>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION12 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Log>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION13 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Sqrt>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION14 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <X_NE_0>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION15 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Sin>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION16 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Cos>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION17 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Tan>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION18 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <X_LT_0>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION19 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <To_Rectangular>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION20 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <To_Degrees>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION21 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <To_Hours>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION22 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <X_GT_0>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION23 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Percent>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION24 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Int>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_F_SHIFTED_INSTRUCTION25 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_F_Shifted_Instruction> ::= <Display_X>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Unary_F_Shifted_Instruction> ::= <Gsb> <Label>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_F_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Unary_F_Shifted_Instruction> ::= <Lbl> <Label>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <S>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Sci>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION3 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Dsz_Sub_I>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION4 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Isz_Sub_I>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION5 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Merge>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION6 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <X_EQ_Y>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION7 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Exp>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION8 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Ten_To_The_Xth>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION9 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Square>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION10 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <X_NE_Y>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION11 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Arcsin>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION12 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Arccos>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION13 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Arctan>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION14 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <X_LE_Y>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION15 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <To_Polar>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION16 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <To_Radians>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION17 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <To_HMS>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION18 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <X_GT_Y>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION19 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Percent_Change>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION20 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Frac>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_G_SHIFTED_INSTRUCTION21 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_G_Shifted_Instruction> ::= <Stk>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Unary_G_Shifted_Instruction> ::= <Gsb_f> <Lowercase_Letter_Label>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_G_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Unary_G_Shifted_Instruction> ::= <Lbl_f> <Lowercase_Letter_Label>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Sigma_Minus>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Rtn>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION3 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Eng>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION4 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <X_Exchange_I>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION5 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Bst>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION6 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <St_I>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION7 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Rc_I>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION8 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Deg>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION9 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Rad>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION10 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Grd>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION11 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Del>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION12 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <X_Exchange_Y>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION13 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <R_Down>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION14 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <R_Up>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION15 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Reciprocal>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION16 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Y_To_The_Xth>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION17 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Abs>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION18 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Pause>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION19 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Pi>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION20 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Reg>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION21 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Factorial>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION22 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Lst_X>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION23 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <HMS_Plus>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_NULLARY_H_SHIFTED_INSTRUCTION24 (string input, Token token, Token [] tokens)
 		{
 			// <Nullary_H_Shifted_Instruction> ::= <Space>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION (string input, Token token, Token [] tokens)
 		{
 			// <Unary_H_Shifted_Instruction> ::= <SF> <Flag>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION2 (string input, Token token, Token [] tokens)
 		{
 			// <Unary_H_Shifted_Instruction> ::= <CF> <Flag>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_H_SHIFTED_INSTRUCTION3 (string input, Token token, Token [] tokens)
 		{
 			// <Unary_H_Shifted_Instruction> ::= <F_Test> <Flag>
-			theEngine.Process (new Instruction (input, tokens));
+			engine.Process (new Instruction (input, tokens), motion);
 		}
 
 		public void ReduceRULE_GTO_PERIOD_GTO_PERIOD (string input, Token token, Token [] tokens)

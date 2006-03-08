@@ -334,7 +334,7 @@ namespace HP67
 					theStack.X = FromRadian (Math.Atan (x));
 					break;
 				case (int)SymbolConstants.SYMBOL_BST :
-					// TODO: Execution.
+					// Does nothing, moved backward on MouseDown.
 					break;
 				case (int)SymbolConstants.SYMBOL_CF :
 					flags [((Digit) instruction.Arguments [0]).Value] = false;
@@ -816,42 +816,74 @@ namespace HP67
 			}
 		}
 
-		public void Process (Instruction instruction) 
+		public void Process (Instruction instruction, KeystrokeMotion motion) 
 		{
 			switch (mode) 
 			{
 				case EngineMode.Run :
-					Execute (instruction);
+					switch (motion) 
+					{
+						case KeystrokeMotion.Down :
+							switch (instruction.Symbol.Id) 
+							{
+								case (int)SymbolConstants.SYMBOL_BST :
+									theProgram.GotoRelative (-1);
+									theDisplay.Mode = DisplayMode.Instruction;
+									theProgram.PreviewInstruction ();									
+									break;
+								case (int)SymbolConstants.SYMBOL_R_S :
+								case (int)SymbolConstants.SYMBOL_SST :
+
+									// The display mode will be reset by EnableOpenOrSave after
+									// execution of the next instruction (i.e., when the key goes up).
+									theDisplay.Mode = DisplayMode.Instruction;
+									theProgram.PreviewInstruction ();
+									break;
+								default:
+									break;
+							};
+							break;
+						case KeystrokeMotion.Up :
+							Execute (instruction);
+							break;
+					}
 					break;
 
 				case EngineMode.WriteProgram :
-					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Process: " + instruction.Symbol.Name + " " + instruction.ToString (),
-						classTraceSwitch.DisplayName);
-
-					switch (instruction.Symbol.Id) 
+					switch (motion) 
 					{
-						case (int) SymbolConstants.SYMBOL_BST :
-							theProgram.GotoRelative (-1);
+						case KeystrokeMotion.Down :
 							break;
-						case (int) SymbolConstants.SYMBOL_CL_PRGM :
-							theProgram.Clear ();
-							break;
-						case (int) SymbolConstants.SYMBOL_DEL :
-							theProgram.Delete ();
-							break;
-						case (int) SymbolConstants.SYMBOL_GTO_PERIOD :
-							byte b0, b1, b2;
-							b0 = ((Digit) instruction.Arguments [0]).Value;
-							b1 = ((Digit) instruction.Arguments [1]).Value;
-							b2 = ((Digit) instruction.Arguments [2]).Value;
-							theProgram.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
-							break;
-						case (int) SymbolConstants.SYMBOL_SST :
-							theProgram.GotoRelative (+1);
-							break;
-						default :
-							theProgram.Insert (instruction);
+						case KeystrokeMotion.Up :
+							Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+								"Process: " + instruction.Symbol.Name + " " + instruction.ToString (),
+								classTraceSwitch.DisplayName);
+
+							switch (instruction.Symbol.Id) 
+							{
+								case (int) SymbolConstants.SYMBOL_BST :
+									theProgram.GotoRelative (-1);
+									break;
+								case (int) SymbolConstants.SYMBOL_CL_PRGM :
+									theProgram.Clear ();
+									break;
+								case (int) SymbolConstants.SYMBOL_DEL :
+									theProgram.Delete ();
+									break;
+								case (int) SymbolConstants.SYMBOL_GTO_PERIOD :
+									byte b0, b1, b2;
+									b0 = ((Digit) instruction.Arguments [0]).Value;
+									b1 = ((Digit) instruction.Arguments [1]).Value;
+									b2 = ((Digit) instruction.Arguments [2]).Value;
+									theProgram.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
+									break;
+								case (int) SymbolConstants.SYMBOL_SST :
+									theProgram.GotoRelative (+1);
+									break;
+								default :
+									theProgram.Insert (instruction);
+									break;
+							}
 							break;
 					}
 					break;

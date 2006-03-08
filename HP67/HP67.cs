@@ -22,10 +22,12 @@ namespace HP67
 
 		// As much as possible, we hide the execution state in the Execution function.  But
 		// some other things need these objects.  This is going to cause trouble.  Sigh.
-		private Actions theActions;
 		private Engine theEngine;
-		private Parser theParser;
 		private Program theProgram;
+		private Actions downActions;
+		private Parser downParser;
+		private Parser upParser;
+		private Actions upActions;
 
 		private Thread executionThread;
 		private Queue keystrokesQueue;
@@ -1095,7 +1097,7 @@ namespace HP67
 		{
 
 			// Send the key that was just typed (in pause mode) to the parser for execution.
-			theParser.Parse (((Keystroke) keystrokesQueue.Dequeue ()).Tag);
+			upParser.Parse (((Keystroke) keystrokesQueue.Dequeue ()).Tag);
 		}
 
 		void ExecutionCompleteKeystrokes (object sender)
@@ -1103,7 +1105,8 @@ namespace HP67
 
 			// Pretend that we accepted the input in order to put the parser back into a pristine
 			// state (in particular, drop any remaining text).
-			theActions.ParserAccept ();
+			downActions.ParserAccept ();
+			upActions.ParserAccept ();
 		}
 
 		void ExecutionStopComputation (object sender)
@@ -1120,11 +1123,10 @@ namespace HP67
 		void Execution ()
 		{
 			HP67_Control_Library.Display display;
-			HP67_Control_Library.Key key;
 			HP67_Class_Library.Keystroke keystroke;
 			HP67_Class_Library.Memory theMemory;
 			HP67_Class_Library.Stack theStack;
-		
+
 			// Controls must be accessed from the thread that created them.  For most control,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
@@ -1150,8 +1152,16 @@ namespace HP67
 			theStack = new HP67_Class_Library.Stack (display);
 			theEngine = new Engine (display, theMemory, theProgram, theStack, keyWasTyped);
 			theEngine.StopComputation += new Engine.EngineEvent (ExecutionStopComputation);
-			theActions = new Actions (theEngine);
-			theParser = new Parser ("HP67_Parser.Parser", "CGT", theActions);
+
+			// We need two parsers: one that processes the MouseDown events, and one that processes
+			// the MouseUp events, because both events have different effects for a given key (e.g.,
+			// R/S displays the next instruction when depressed, and runs the program when
+			// released).  The two parsers will go through exactly the same productions, but they
+			// will pass a different motion indicator to the engine.
+			downActions = new Actions (theEngine, KeystrokeMotion.Down);
+			downParser = new Parser ("HP67_Parser.Parser", "CGT", downActions);
+			upActions = new Actions (theEngine, KeystrokeMotion.Up);
+			upParser = new Parser ("HP67_Parser.Parser", "CGT", upActions);
 
 			// Notify the main thread that we are ready to process keystrokes.
 			executionIsInitialized.Set ();
@@ -1165,44 +1175,34 @@ namespace HP67
 					keyWasTyped.WaitOne ();
 
 					keystroke = (Keystroke) keystrokesQueue.Dequeue ();
-					switch (keystroke.Motion) 
+
+					// We want to protect this sequence against asynchronous changes to the menus
+					// which may happen because the W/PGRM-RUN switch is moved.  This is important
+					// to ensure that the state of the menus accurately reflect the execution state.
+					lock (executionThreadIsBusy)
 					{
-						case KeystrokeMotion.Up:
+						this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
+						switch (keystroke.Motion) 
 						{
+							case KeystrokeMotion.Up :
+								upParser.Parse (keystroke.Tag);
 
-							// We want to protect this sequence against asynchronous changes to the
-							// menus which may happen because the W/PGRM-RUN switch is moved.  This
-							// is important to ensure that the state of the menus accurately
-							// reflect the execution state.
-							lock (executionThreadIsBusy)
-							{
-								this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
-								theParser.Parse (keystroke.Tag);
-							}
-
-							// This invocation doesn't have to be locked: the changes to the menus
-							// take place on the main thread, as does the click event to move the
-							// W/PGRM-RUN switch.  Therefore, they are automatically sequentialized.
-							this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
-							break;
-						}
-						case KeystrokeMotion.Down:
-						{
-							key = (Key) keystroke.Control;
-							if ((key == keyRS) || (key == keySST))
-							{
-								// The display mode will be reset by EnableOpenOrSave after
-								// execution of the next instruction (i.e., when the key goes up).
-								display.Mode = DisplayMode.Instruction;
-								theProgram.PreviewInstruction ();
-							}
-							// TODO: BST.  Need to go through the parser?
-							break;
+								// Strictly speaking, this invocation doesn't have to be locked:
+								// the changes to the menus take place on the main thread, as does
+								// the click event to move the W/PGRM-RUN switch, therefore, they
+								// are automatically sequentialized.  However, it must not be done
+								// when the key goes down, so this is a convenient place.
+								this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+								break;
+							case KeystrokeMotion.Down :
+								downParser.Parse (keystroke.Tag);
+								break;
 						}
 					}
 				}
 				catch (Stop)
 				{
+
 					// This invocation makes sure that we correctly reset the display mode after the
 					// execution of each instruction, including one that stops the program.
 					this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
@@ -1317,7 +1317,7 @@ namespace HP67
 				fileName = openFileDialog.FileName;
 				if ((stream = openFileDialog.OpenFile ()) != null)
 				{
-					if (Card.Read (stream, theParser)) 
+					if (Card.Read (stream, upParser)) 
 					{
 						cardSlot.State = CardSlotState.ReadWrite;
 					}
