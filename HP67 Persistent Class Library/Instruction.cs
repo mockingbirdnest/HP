@@ -151,6 +151,9 @@ namespace HP67_Class_Library
 					case (int) SymbolConstants.SYMBOL_R_UP :
 						result = "R↑";
 						break;
+					case (int) SymbolConstants.SYMBOL_SQRT :
+						result = "√̄̄̄̄x̄";
+						break;
 					case (int) SymbolConstants.SYMBOL_SUBTRACTION :
 						result = "-";
 						break;

@@ -48,6 +48,7 @@ namespace HP67_Class_Library
 		// TODO: This is not correct because there can be more than one label with a given name.
 		private int [] labels; 
 
+		private bool isEmpty;
 		private int lastPrinted;
 		private int next;
 		private int [] returns;
@@ -167,7 +168,16 @@ namespace HP67_Class_Library
 		{
 			get 
 			{
-				return labels [label];
+				int step = labels [label];
+
+				if (step == noStep) 
+				{
+					throw new Error ();
+				}
+				else 
+				{
+					return step;
+				}
 			}
 			set
 			{
@@ -179,7 +189,16 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				return labels [(int) label];
+				int step = labels [(int) label];
+
+				if (step == noStep) 
+				{
+					throw new Error ();
+				}
+				else 
+				{
+					return step;
+				}
 			}
 			set
 			{
@@ -334,6 +353,7 @@ namespace HP67_Class_Library
 
 		public void Clear ()
 		{
+			isEmpty = true;
 			lastPrinted = noStep;
 			GotoBegin ();
 			for (int i = 0; i < instructions.Length; i++) 
@@ -344,13 +364,24 @@ namespace HP67_Class_Library
 
 		public void Delete ()
 		{
+			// Note that this doesn't cause the program to become empty, even if this is the last
+			// instruction.
 			UpdateLabelsForDeletion (next);
 			for (int i = next; i < instructions.Length - 1; i++) 
 			{
 				instructions [i] = instructions [i + 1];
 			}
 			instructions [instructions.Length - 1] = r_s;
-			GotoZeroBasedStep (next - 1); // To redisplay the instruction.
+
+			// Redisplay the instruction.
+			if (next - 1 == noStep) 
+			{
+				GotoBegin ();
+			}
+			else 
+			{
+				GotoZeroBasedStep (next - 1);
+			}
 		}
 
 		public void GotoRelative (int displacement)
@@ -366,6 +397,9 @@ namespace HP67_Class_Library
 
 		public void Insert (Instruction instruction)
 		{
+
+			// The program becomes non-empty, even if the instruction is a R/S.
+			isEmpty = false;
 			UpdateLabelsForDeletion (instructions.Length - 1);
 
 			// Make room for insertion.
@@ -432,6 +466,14 @@ namespace HP67_Class_Library
 
 			GotoZeroBasedStep (next);
 			UpdateLabelsForInsertion (next);
+		}
+
+		public bool IsEmpty
+		{
+			get 
+			{
+				return isEmpty;
+			}
 		}
 
 		#endregion

@@ -470,8 +470,8 @@ namespace HP67
 					unit = AngleUnit.Grade;
 					break;
 				case (int)SymbolConstants.SYMBOL_GSB :
-				case (int)SymbolConstants.SYMBOL_GSB_F :
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
+				case (int)SymbolConstants.SYMBOL_GSB_F :
 				case (int)SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
 					Gosub ((ILabel) instruction.Arguments [0]);
 					break;
@@ -803,7 +803,7 @@ namespace HP67
 					theStack.Get (out x, out y);
 					theStack.X = Math.Pow (y, x);
 					break;
-				default:
+				default :
 					throw new Error ();
 			}
 
@@ -816,8 +816,44 @@ namespace HP67
 			}
 		}
 
+		public Instruction ExpandShortcut (Letter letter) 
+		{
+			Argument [] no_args = new Argument [0];
+			Symbol symbol;
+			switch (letter.Value) 
+			{
+				case 'A' :
+					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_RECIPROCAL, "Reciprocal");
+					return new Instruction ("35 62", symbol, no_args);
+				case 'B' :
+					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_SQRT, "Sqrt");
+					return new Instruction ("31 54", symbol, no_args);
+				case 'C' :
+					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_Y_TO_THE_XTH, "Y_To_The_Xth");
+					return new Instruction ("35 63", symbol, no_args);
+				case 'D' :
+					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_DOWN, "R_Down");
+					return new Instruction ("35 53", symbol, no_args);
+				case 'E' :
+					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_X_EXCHANGE_Y, "X_Exchange_Y");
+					return new Instruction ("35 52", symbol, no_args);
+				default :
+					Trace.Assert (false);
+					return null;
+			}
+		}
+
 		public void Process (Instruction instruction, KeystrokeMotion motion) 
 		{
+
+			// When the program memory is empty, the keys A to E have a different function, both
+			// in RUN mode and in W/PRGM mode.  Perform the substitution here.
+			if (theProgram.IsEmpty &&
+				instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_GSB_SHORTCUT) 
+			{
+				instruction = ExpandShortcut ((Letter) instruction.Arguments [0]);
+			}
+
 			switch (mode) 
 			{
 				case EngineMode.Run :

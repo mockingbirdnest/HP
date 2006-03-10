@@ -12,6 +12,7 @@ namespace HP67_Class_Library
 	public class Localization
 	{
 		public const string EditMenuItem = "EDIT MENU ITEM";
+		public const string Error = "ERROR";
 		public const string FileHasVersion = "FILE HAS VERSION";
 		public const string IncompatibleVersion = "INCOMPATIBLE VERSION";
 		public const string OpenMenuItem = "OPEN MENU ITEM";

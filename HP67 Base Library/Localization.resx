@@ -97,8 +97,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="UNTITLED FILE NAME">
-    <value>Untitled</value>
+  <data name="EDIT MENU ITEM">
+    <value>Edit Labels</value>
   </data>
   <data name="FILE HAS VERSION">
     <value>Incompatible version: file has version {0} but program expects version {1}.</value>
@@ -106,14 +106,17 @@
   <data name="INCOMPATIBLE VERSION">
     <value>Incompatible Version</value>
   </data>
-  <data name="SAVE MENU ITEM">
-    <value>Save</value>
-  </data>
-  <data name="EDIT MENU ITEM">
-    <value>Edit Labels</value>
-  </data>
   <data name="OPEN MENU ITEM">
     <value>Open...</value>
+  </data>
+  <data name="RTF MENU ITEM">
+    <value>Rich Text</value>
+  </data>
+  <data name="UNTITLED FILE NAME">
+    <value>Untitled</value>
+  </data>
+  <data name="SAVE MENU ITEM">
+    <value>Save</value>
   </data>
   <data name="PRINT MENU ITEM">
     <value>Print</value>
@@ -121,7 +124,7 @@
   <data name="SAVE AS MENU ITEM">
     <value>Save As...</value>
   </data>
-  <data name="RTF MENU ITEM">
-    <value>Rich Text</value>
+  <data name="ERROR">
+    <value>Error</value>
   </data>
 </root>
