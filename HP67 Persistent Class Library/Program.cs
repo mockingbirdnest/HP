@@ -312,6 +312,12 @@ namespace HP67_Class_Library
 
 		public void PreviewInstruction ()
 		{
+
+			// Don't preview the beginning of the program, show the first instruction instead.
+			if (next == noStep) 
+			{
+				next++;
+			}
 			GotoZeroBasedStep (next);
 		}
 

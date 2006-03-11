@@ -1127,6 +1127,9 @@ namespace HP67
 			HP67_Class_Library.Memory theMemory;
 			HP67_Class_Library.Stack theStack;
 
+			bool errorCaught = false;
+			bool mustEnableOpenOrSave = true;
+
 			// Controls must be accessed from the thread that created them.  For most control,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
@@ -1177,35 +1180,66 @@ namespace HP67
 					keystroke = (Keystroke) keystrokesQueue.Dequeue ();
 
 					// We want to protect this sequence against asynchronous changes to the menus
-					// which may happen because the W/PGRM-RUN switch is moved.  This is important
-					// to ensure that the state of the menus accurately reflect the execution state.
+					// which may happen if the W/PGRM-RUN switch is moved: we wouldn't want the 
+					// menus to be changed by the main thread between the invocation of
+					// DisableOpenAndSave and the call to the parser, or during the execution of
+					// the keystroke.
 					lock (executionThreadIsBusy)
 					{
 						this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
 						switch (keystroke.Motion) 
 						{
 							case KeystrokeMotion.Up :
-								upParser.Parse (keystroke.Tag);
 
-								// Strictly speaking, this invocation doesn't have to be locked:
-								// the changes to the menus take place on the main thread, as does
-								// the click event to move the W/PGRM-RUN switch, therefore, they
-								// are automatically sequentialized.  However, it must not be done
-								// when the key goes down, so this is a convenient place.
-								this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+								// The first up-keystroke after an error is ignored.
+								if (errorCaught) 
+								{
+									errorCaught = false;
+								}
+								else 
+								{
+									upParser.Parse (keystroke.Tag);
+								}
+								mustEnableOpenOrSave = true;
 								break;
+
 							case KeystrokeMotion.Down :
-								downParser.Parse (keystroke.Tag);
+
+								// On the first down-keystroke after an error, we reset the display.
+								// We do not clear errorCaught, though, because we want to ensure
+								// that the next up-keystroke will be ignored, too.  A normal 
+								// down-keystroke may show the current instruction, so we don't
+								// refresh the display mode in that case.
+								mustEnableOpenOrSave = errorCaught;
+								if (! errorCaught) 
+								{
+									downParser.Parse (keystroke.Tag);
+								}
 								break;
 						}
 					}
 				}
+				catch (Error)
+				{
+					display.Value = display.Value; // Refresh the numeric display.
+					display.Mode = DisplayMode.Alphabetic;
+					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
+					errorCaught = true;
+					mustEnableOpenOrSave = false;
+					ExecutionCompleteKeystrokes (this);
+				}
 				catch (Stop)
 				{
-
-					// This invocation makes sure that we correctly reset the display mode after the
-					// execution of each instruction, including one that stops the program.
-					this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+					// The display mode must be reset after the execution of each instruction,
+					// including one that stops the program.
+					mustEnableOpenOrSave = true;
+				}
+				finally 
+				{
+					if (mustEnableOpenOrSave) 
+					{
+						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+					}
 				}
 			}
 		}
@@ -1223,6 +1257,8 @@ namespace HP67
 
 		void EnableOpenOrSave () 
 		{
+			// TODO: The engine mode should be set on the execution thread, because it will affect
+			// the display.  The engine itself should be a variable local to Execution.
 			switch (toggleWprgmRun.Position)
 			{
 				case TogglePosition.Left :

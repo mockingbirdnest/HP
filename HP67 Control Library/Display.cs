@@ -21,6 +21,7 @@ namespace HP67_Control_Library
 
 	public enum DisplayMode
 	{
+		Alphabetic,
 		Instruction,
 		Numeric
 	}
@@ -74,6 +75,7 @@ namespace HP67_Control_Library
 
 		private System.Windows.Forms.TextBox numericTextBox;
 		private System.Windows.Forms.TextBox instructionTextBox;
+		private System.Windows.Forms.TextBox alphabeticTextBox;
 
 		private AutoResetEvent keyWasTyped;
 
@@ -125,6 +127,7 @@ namespace HP67_Control_Library
 
 			Digits = 2;
 			Format = DisplayFormat.Fixed;
+			Mode = DisplayMode.Numeric;
 			Value = 0.0;
 
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
@@ -150,6 +153,7 @@ namespace HP67_Control_Library
 		{
 			this.numericTextBox = new System.Windows.Forms.TextBox();
 			this.instructionTextBox = new System.Windows.Forms.TextBox();
+			this.alphabeticTextBox = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// numericTextBox
@@ -183,13 +187,29 @@ namespace HP67_Control_Library
 			this.instructionTextBox.ReadOnly = true;
 			this.instructionTextBox.Size = new System.Drawing.Size(300, 40);
 			this.instructionTextBox.TabIndex = 1;
-			this.instructionTextBox.Text = "0.00";
+			this.instructionTextBox.Text = "Instruction";
 			this.instructionTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			this.instructionTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_MouseDown);
-			this.numericTextBox.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
+			// 
+			// alphabeticTextBox
+			// 
+			this.alphabeticTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+				| System.Windows.Forms.AnchorStyles.Left) 
+				| System.Windows.Forms.AnchorStyles.Right)));
+			this.alphabeticTextBox.BackColor = System.Drawing.Color.Black;
+			this.alphabeticTextBox.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.alphabeticTextBox.ForeColor = System.Drawing.Color.Red;
+			this.alphabeticTextBox.Location = new System.Drawing.Point(0, 0);
+			this.alphabeticTextBox.Name = "alphabeticTextBox";
+			this.alphabeticTextBox.ReadOnly = true;
+			this.alphabeticTextBox.Size = new System.Drawing.Size(300, 40);
+			this.alphabeticTextBox.TabIndex = 2;
+			this.alphabeticTextBox.Text = "Alphabetic";
+			this.alphabeticTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// Display
 			// 
+			this.Controls.Add(this.alphabeticTextBox);
 			this.Controls.Add(this.numericTextBox);
 			this.Controls.Add(this.instructionTextBox);
 			this.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
@@ -220,12 +240,14 @@ namespace HP67_Control_Library
 
 		private void textBox_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
+			alphabeticTextBox.Enabled = false;
 			instructionTextBox.Enabled = false;
 			numericTextBox.Enabled = false;
 		}
 
 		private void textBox_MouseLeave(object sender, System.EventArgs e)
 		{
+			alphabeticTextBox.Enabled = true;
 			instructionTextBox.Enabled = true;
 			numericTextBox.Enabled = true;
 		}
@@ -501,13 +523,14 @@ namespace HP67_Control_Library
 				mode = value;
 				switch (mode)
 				{
+					case DisplayMode.Alphabetic :
+						alphabeticTextBox.BringToFront ();
+						break;
 					case DisplayMode.Instruction :
-						instructionTextBox.Visible = true;
-						numericTextBox.Visible = false;
+						instructionTextBox.BringToFront ();
 						break;
 					case DisplayMode.Numeric :
-						instructionTextBox.Visible = false;
-						numericTextBox.Visible = true;
+						numericTextBox.BringToFront ();
 						break;
 				}
 			}
@@ -869,6 +892,20 @@ namespace HP67_Control_Library
 				// Restore the value here to protect against exceptions.
 				Value = savedValue;
 			}
+		}
+
+		public void ShowText (string text, int msOn, int msOff) 
+		{
+			// TODO: Alignment should not include the sign.
+			string s = text.PadRight (mantissaSignLength + mantissaLength +
+										exponentSignLength + exponentLength);
+			alphabeticTextBox.Text = s;
+			Update ();
+			Thread.Sleep (msOn);
+			alphabeticTextBox.Text = "";
+			Update ();
+			Thread.Sleep (msOff);
+			alphabeticTextBox.Text = s;
 		}
 
 		#endregion
