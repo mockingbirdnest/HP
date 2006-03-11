@@ -22,7 +22,6 @@ namespace HP67
 
 		// As much as possible, we hide the execution state in the Execution function.  But
 		// some other things need these objects.  This is going to cause trouble.  Sigh.
-		private Engine theEngine;
 		private Program theProgram;
 		private Actions downActions;
 		private Parser downParser;
@@ -40,7 +39,8 @@ namespace HP67
 		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
 
 		// Delegates used for cross-thread invocation.
-		private delegate void CrossThreadInvocation0 ();
+		private delegate void DisableOpenAndSaveCrossThreadInvocation ();
+		private delegate EngineMode EnableOpenOrSaveCrossThreadInvocation ();
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -1112,11 +1112,11 @@ namespace HP67
 		void ExecutionStopComputation (object sender)
 		{
 
-			// Unclear if clearing the queue is right, because it will remove keys that were typed
-			// before we entered PauseAndBlink.  On the other hand, we surely want to remove the
-			// "interrupting" key, and we don't have a way to delete the newest entries in the queue.
-			keystrokesQueue.Clear ();
-
+			// We land here if a character was typed during a computation.  In this case, we have
+			// a keystroke in the queue, but the keyWasTyped event was cleared by the code that
+			// detected the keystroke.  We must set it again here to make sure that the queue and
+			// the event are consistent.
+			keyWasTyped.Set ();
 			throw new Stop ();
 		}
 
@@ -1124,10 +1124,11 @@ namespace HP67
 		{
 			HP67_Control_Library.Display display;
 			HP67_Class_Library.Keystroke keystroke;
+			Engine theEngine;
 			HP67_Class_Library.Memory theMemory;
 			HP67_Class_Library.Stack theStack;
 
-			bool errorCaught = false;
+			bool ignoreNext = false;
 			bool mustEnableOpenOrSave = true;
 
 			// Controls must be accessed from the thread that created them.  For most control,
@@ -1173,6 +1174,8 @@ namespace HP67
 			{
 				try 
 				{
+					// TODO: What if we get several keys in the queue and keyWasTyped is set only
+					// once?
 
 					// Wait until we get a keystroke from the UI.
 					keyWasTyped.WaitOne ();
@@ -1186,15 +1189,16 @@ namespace HP67
 					// the keystroke.
 					lock (executionThreadIsBusy)
 					{
-						this.Invoke (new CrossThreadInvocation0 (DisableOpenAndSave));
+						this.Invoke
+							(new DisableOpenAndSaveCrossThreadInvocation (DisableOpenAndSave));
 						switch (keystroke.Motion) 
 						{
 							case KeystrokeMotion.Up :
 
 								// The first up-keystroke after an error is ignored.
-								if (errorCaught) 
+								if (ignoreNext) 
 								{
-									errorCaught = false;
+									ignoreNext = false;
 								}
 								else 
 								{
@@ -1206,12 +1210,12 @@ namespace HP67
 							case KeystrokeMotion.Down :
 
 								// On the first down-keystroke after an error, we reset the display.
-								// We do not clear errorCaught, though, because we want to ensure
+								// We do not clear ignoreNext, though, because we want to ensure
 								// that the next up-keystroke will be ignored, too.  A normal 
 								// down-keystroke may show the current instruction, so we don't
 								// refresh the display mode in that case.
-								mustEnableOpenOrSave = errorCaught;
-								if (! errorCaught) 
+								mustEnableOpenOrSave = ignoreNext;
+								if (! ignoreNext) 
 								{
 									downParser.Parse (keystroke.Tag);
 								}
@@ -1224,21 +1228,24 @@ namespace HP67
 					display.Value = display.Value; // Refresh the numeric display.
 					display.Mode = DisplayMode.Alphabetic;
 					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
-					errorCaught = true;
 					mustEnableOpenOrSave = false;
+					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
 				}
 				catch (Stop)
 				{
-					// The display mode must be reset after the execution of each instruction,
-					// including one that stops the program.
+					display.Value = display.Value; // Refresh the numeric display.
 					mustEnableOpenOrSave = true;
+					ignoreNext = true;
+					ExecutionCompleteKeystrokes (this);
 				}
 				finally 
 				{
 					if (mustEnableOpenOrSave) 
 					{
-						this.Invoke (new CrossThreadInvocation0 (EnableOpenOrSave));
+						theEngine.Mode = 
+							(EngineMode) this.Invoke
+								(new EnableOpenOrSaveCrossThreadInvocation (EnableOpenOrSave));
 					}
 				}
 			}
@@ -1255,7 +1262,7 @@ namespace HP67
 			saveAsMenuItem.Enabled = false;
 		}
 
-		void EnableOpenOrSave () 
+		EngineMode EnableOpenOrSave () 
 		{
 			// TODO: The engine mode should be set on the execution thread, because it will affect
 			// the display.  The engine itself should be a variable local to Execution.
@@ -1267,22 +1274,18 @@ namespace HP67
 					openMenuItem.Enabled = false;
 					saveMenuItem.Enabled = true;
 					saveAsMenuItem.Enabled = true;
-					if (theEngine != null) 
-					{
-						theEngine.Mode = EngineMode.WriteProgram;
-					}
-					break;
+					return EngineMode.WriteProgram;
+
 				case TogglePosition.Right :
 
 					// RUN, can only open.
 					openMenuItem.Enabled = true;
 					saveMenuItem.Enabled = false;
 					saveAsMenuItem.Enabled = false;
-					if (theEngine != null) 
-					{
-						theEngine.Mode = EngineMode.Run;
-					}
-					break;
+					return EngineMode.Run;
+
+				default :
+					return EngineMode.Run; // To make the compiler happy.
 			}
 		}
 
@@ -1335,7 +1338,14 @@ namespace HP67
 			{
 				try
 				{
-					EnableOpenOrSave ();
+
+					// One of the things we want to do is change the display mode, and that can
+					// only be done by the execution thread.  So force it to go through its loop
+					// once by sending a no-op keystroke.  We know that the execution thread is 
+					// idle, so this won't have nasty effects like interrupting the current
+					// computation.
+					keystrokesQueue.Enqueue (Keystroke.Noop);
+					keyWasTyped.Set ();
 				}
 				finally 
 				{

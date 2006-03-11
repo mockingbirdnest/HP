@@ -217,11 +217,11 @@ namespace HP67_Class_Library
 			// Here step is 0-based.  This is used by all the operations in this class, but we
 			// maintain the fiction of a 1-based program for the clients.  This subprogram also
 			// implements the wrap-around whereby step 224 is followed by step 1.
-			if (step == noStep) 
+			if (step <= noStep) 
 			{
 				next = instructions.Length - 1;
 			}
-			else if (step == instructions.Length) 
+			else if (step >= instructions.Length) 
 			{
 				next = 0;
 			}
@@ -372,21 +372,24 @@ namespace HP67_Class_Library
 		{
 			// Note that this doesn't cause the program to become empty, even if this is the last
 			// instruction.
-			UpdateLabelsForDeletion (next);
-			for (int i = next; i < instructions.Length - 1; i++) 
+			if (next != noStep) 
 			{
-				instructions [i] = instructions [i + 1];
-			}
-			instructions [instructions.Length - 1] = r_s;
+				UpdateLabelsForDeletion (next);
+				for (int i = next; i < instructions.Length - 1; i++) 
+				{
+					instructions [i] = instructions [i + 1];
+				}
+				instructions [instructions.Length - 1] = r_s;
 
-			// Redisplay the instruction.
-			if (next - 1 == noStep) 
-			{
-				GotoBegin ();
-			}
-			else 
-			{
-				GotoZeroBasedStep (next - 1);
+				// Redisplay the instruction.
+				if (next - 1 == noStep) 
+				{
+					GotoBegin ();
+				}
+				else 
+				{
+					GotoZeroBasedStep (next - 1);
+				}
 			}
 		}
 
