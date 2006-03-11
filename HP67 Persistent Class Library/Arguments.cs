@@ -206,14 +206,38 @@ namespace HP67_Class_Library
 
 		public void Goto (Memory m, Program p)
 		{
-			byte label = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
-			p.Goto (label);
+			int label = (int) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+
+			if (label <= -1000 || label >= 20) 
+			{
+				throw new Error ();
+			}
+			else if (label < 0)
+			{
+				// TODO: Rapid reverse branching.
+			}
+			else
+			{
+				p.Goto ((byte) label);
+			}
 		}
 
 		public void Gosub (Memory m, Program p)
 		{
-			byte label = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
-			p.Gosub (label);
+			int label = (int) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+
+			if (label <= -1000 || label >= 20) 
+			{
+				throw new Error ();
+			}
+			else if (label < 0)
+			{
+				// TODO: Rapid reverse branching.
+			}
+			else
+			{
+				p.Gosub ((byte) label);
+			}
 		}
 	}
 

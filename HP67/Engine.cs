@@ -323,11 +323,25 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_ARCCOS :
 					theStack.Get (out x);
-					theStack.X = FromRadian (Math.Acos (x));
+					if (Math.Abs (x) > 1.0) 
+					{
+						throw new Error ();
+					}
+					else 
+					{
+						theStack.X = FromRadian (Math.Acos (x));
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ARCSIN :
 					theStack.Get (out x);
-					theStack.X = FromRadian (Math.Asin (x));
+					if (Math.Abs (x) > 1.0) 
+					{
+						throw new Error ();
+					}
+					else 
+					{
+						theStack.X = FromRadian (Math.Asin (x));
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ARCTAN :
 					theStack.Get (out x);
@@ -387,7 +401,10 @@ namespace HP67
 					{
 						throw new Error ();
 					}
-					theStack.X = y / x;
+					else 
+					{
+						theStack.X = y / x;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_DSP :
 					((IDigits) instruction.Arguments [0]).SetDigits (theMemory, theDisplay);
@@ -438,13 +455,10 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_FACTORIAL :
-					long xLong;
-
 					theStack.Get (out x);
-					xLong = (long) x;
-					if (x >= 0 && (double) xLong == x) 
+					if (x >= 0 && x == Math.Floor (x)) 
 					{
-						theStack.X = Factorial (xLong);
+						theStack.X = Factorial ((long) x);
 					}
 					else 
 					{
@@ -558,7 +572,14 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_PERCENT_CHANGE :
 					theStack.Get (out x, out y);
-					theStack.X = (x - y) * 100.0 / y;
+					if (y == 0) 
+					{
+						throw new Error ();
+					}
+					else 
+					{
+						theStack.X = (x - y) * 100.0 / y;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_PERIOD :
 					theDisplay.EnterPeriod ();
@@ -602,7 +623,14 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_RECIPROCAL :
 					theStack.Get (out x);
-					theStack.X = 1.0 / x;
+					if (x == 0.0) 
+					{
+						throw new Error ();
+					}
+					else 
+					{
+						theStack.X = 1.0 / x;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_REG :
 					stackLift = neutral;
@@ -801,7 +829,18 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_Y_TO_THE_XTH :
 					theStack.Get (out x, out y);
-					theStack.X = Math.Pow (y, x);
+					if (y == 0.0 && x <= 0.0) 
+					{
+						throw new Error ();
+					}
+					else if (y < 0 && x != Math.Floor (x)) 
+					{
+						throw new Error ();
+					}
+					else 
+					{
+						theStack.X = Math.Pow (y, x);
+					}
 					break;
 				default :
 					throw new Error ();

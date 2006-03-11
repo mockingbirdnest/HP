@@ -180,16 +180,34 @@ namespace HP67_Class_Library
 
 		public void X̄ (out double x, out double y)
 		{
-			x =  this [ΣRegister.Σx] / this [ΣRegister.n];
-			y =  this [ΣRegister.Σy] / this [ΣRegister.n];
+			int n = (int) this [ΣRegister.n];
+
+			if (n == 0) 
+			{
+				throw new Error ();
+			}
+			else 
+			{
+				x =  this [ΣRegister.Σx] / n;
+				y =  this [ΣRegister.Σy] / n;
+			}
 		}
 
 		public void S(out double x, out double y)
 		{
-			x = Math.Sqrt((this [ΣRegister.Σx2] - (this [ΣRegister.Σx] * this [ΣRegister.Σx])/
-				this [ΣRegister.n]) / (this [ΣRegister.n] -1));
-			y = Math.Sqrt((this [ΣRegister.Σy2] - (this [ΣRegister.Σy] * this [ΣRegister.Σy])/
-				this [ΣRegister.n]) / (this [ΣRegister.n] -1));
+			int n = (int) this [ΣRegister.n];
+
+			if (n <= 1) 
+			{
+				throw new Error ();
+			}
+			else 
+			{
+				x = Math.Sqrt ((this [ΣRegister.Σx2] - (this [ΣRegister.Σx] * this [ΣRegister.Σx])/
+					n) / (n - 1));
+				y = Math.Sqrt ((this [ΣRegister.Σy2] - (this [ΣRegister.Σy] * this [ΣRegister.Σy])/
+					n) / (n - 1));
+			}
 		}
 
 		public double N 
