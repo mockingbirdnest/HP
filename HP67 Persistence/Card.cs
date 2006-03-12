@@ -6,6 +6,13 @@ using System.Windows.Forms;
 
 namespace HP67_Persistence
 {
+
+	public enum CardPart
+	{
+		Data,
+		Program
+	}
+
 	/// <summary>
 	/// A card used to store the program, memory and other state of the HP67 calculator.
 	/// </summary>
@@ -15,7 +22,7 @@ namespace HP67_Persistence
 
 		#region Event Definitions
 
-		public delegate void DatasetExporterDelegate (CardDataset cds);
+		public delegate void DatasetExporterDelegate (CardDataset cds, CardPart part);
 		public delegate void DatasetImporterDelegate (CardDataset cds, Parser parser);
 		static public event DatasetImporterDelegate ReadFromDataset;
 		static public event DatasetExporterDelegate WriteToDataset;
@@ -30,42 +37,72 @@ namespace HP67_Persistence
 
 		#endregion
 
+		#region Private Operations
+
+		static private bool CheckVersion (CardDataset cds) 
+		{
+			if (cds.Card [0].Version == Version) 
+			{
+				return true;
+				}
+			else
+			{
+				// For some reason (read: compiler bug) we must compute text and caption separately,
+				// we cannot just write one humongous statement.
+				string text = string.Format (
+					Localization.GetString (Localization.FileHasVersion),
+					cds.Card [0].Version.ToString (),
+					Version.ToString ());
+				string caption = Localization.GetString (Localization.IncompatibleVersion);
+
+				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		#endregion
+
 		#region Public Operations
 
 		static public bool Read (Stream stream, Parser parser)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
-			if (cds.Card [0].Version != Version) 
-			{
-				// For some reason (read: compiler bug) we must compute text and caption separately,
-				// we cannot just write one humongous statement.
-				string text = string.Format (
-						Localization.GetString (Localization.FileHasVersion),
-						cds.Card [0].Version.ToString (),
-						Version.ToString ());
-				string caption = Localization.GetString (Localization.IncompatibleVersion);
-
-				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
-			}
-			else
+			if (CheckVersion (cds)) 
 			{
 				ReadFromDataset (cds, parser);
 				return true;
 			}
+			else 
+			{
+				return false;
+			}
 		}
 
-		static public void Write (Stream stream)
+		static public bool Write (Stream stream, CardPart part)
 		{
 			CardDataset cds = new CardDataset ();
-			CardDataset.CardRow cr;
 
-			cr = cds.Card.NewCardRow ();
-			cr.Version = Version;
-			cds.Card.AddCardRow (cr);
-			WriteToDataset (cds);
+			if (stream.Length > 0) 
+			{
+				cds.ReadXml (stream);
+				if (! CheckVersion (cds)) 
+				{
+					return false;
+				}
+			}
+			else 
+			{
+				CardDataset.CardRow cr;
+
+				cr = cds.Card.NewCardRow ();
+				cr.Version = Version;
+				cds.Card.AddCardRow (cr);
+			}
+			WriteToDataset (cds, part);
+			stream.SetLength (0);
 			cds.WriteXml (stream);
+			return true;
 		}
 
 		#endregion

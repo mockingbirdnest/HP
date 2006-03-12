@@ -255,26 +255,34 @@ namespace HP67_Control_Library
 			numericTextBox.Enabled = true;
 		}
 			
-		public  void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Parser parser)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.DisplayRow dr;
+			CardDataset.DisplayRow [] drs;
 
 			cr = cds.Card [0];
-			dr = cr.GetDisplayRows () [0];
-			Digits = dr.Digits;
-			Format = (DisplayFormat) Enum.Parse (typeof (DisplayFormat), dr.Format);
+			drs = cr.GetDisplayRows ();
+			if (drs.Length > 0) 
+			{
+				dr = drs [0];
+				Digits = dr.Digits;
+				Format = (DisplayFormat) Enum.Parse (typeof (DisplayFormat), dr.Format);
+			}
 		}
 
-		public  void WriteToDataset (CardDataset cds)
+		public void WriteToDataset (CardDataset cds, CardPart part)
 		{
-			CardDataset.DisplayRow dr;
+			if (part == CardPart.Program) 
+			{
+				CardDataset.DisplayRow dr;
 
-			dr = cds.Display.NewDisplayRow ();
-			dr.Digits = digits;
-			dr.Format = format.ToString ();
-			dr.CardRow = cds.Card [0]; // TODO: Should be passed in.
-			cds.Display.AddDisplayRow (dr);
+				dr = cds.Display.NewDisplayRow ();
+				dr.Digits = digits;
+				dr.Format = format.ToString ();
+				dr.CardRow = cds.Card [0]; // TODO: Should be passed in.
+				cds.Display.AddDisplayRow (dr);
+			}
 		}
 
 		#endregion

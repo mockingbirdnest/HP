@@ -90,73 +90,84 @@ namespace HP67_Class_Library
 			CardDataset.InstructionRow [] irs;
 			CardDataset.LabelRow [] lrs;
 			CardDataset.ProgramRow pr;
+			CardDataset.ProgramRow [] prs;
 
 			cr = cds.Card [0]; // TODO: I hate these zeros...
-			pr = cr.GetProgramRows () [0];
-			instructions = new Instruction [pr.InstructionCount];
-			irs = pr.GetInstructionRows ();
-			foreach (CardDataset.InstructionRow ir in irs) 
+			prs = cr.GetProgramRows ();
+			if (prs.Length > 0) 
 			{
-				Argument [] arguments = new Argument [ir.ArgumentCount];
-
-				ars = ir.GetArgumentRows ();
-				foreach (CardDataset.ArgumentRow ar in ars) 
+				pr = prs [0];
+				instructions = new Instruction [pr.InstructionCount];
+				irs = pr.GetInstructionRows ();
+				foreach (CardDataset.InstructionRow ir in irs) 
 				{
-					Argument argument;
-					argument = (Argument) Argument.ReadFromArgumentRow (ar);
-					arguments [ar.Id] = argument;
+					Argument [] arguments = new Argument [ir.ArgumentCount];
+
+					ars = ir.GetArgumentRows ();
+					foreach (CardDataset.ArgumentRow ar in ars) 
+					{
+						Argument argument;
+						argument = (Argument) Argument.ReadFromArgumentRow (ar);
+						arguments [ar.Id] = argument;
+					}
+					instructions [ir.Step - 1] =
+						new Instruction (ir.Text, parser.ToSymbol (ir.Instruction), arguments);				
 				}
-				instructions [ir.Step - 1] =
-					new Instruction (ir.Text, parser.ToSymbol (ir.Instruction), arguments);				
-			}
-			labels = new int [pr.LabelCount];
-			lrs = pr.GetLabelRows ();
-			foreach (CardDataset.LabelRow lr in lrs) 
-			{
-				labels [lr.Id] = lr.Step - 1;
+				labels = new int [pr.LabelCount];
+				lrs = pr.GetLabelRows ();
+				foreach (CardDataset.LabelRow lr in lrs) 
+				{
+					labels [lr.Id] = lr.Step - 1;
+				}
+				isEmpty = false;
 			}
 		}
 
-		public  void WriteToDataset (CardDataset cds)
+		public void WriteToDataset (CardDataset cds, CardPart part)
 		{
-			// Note that we write 1-based step numbers, in case someone wants to look at the
-			// generated XML.
-			CardDataset.ArgumentRow ar;
-			CardDataset.InstructionRow ir;
-			CardDataset.LabelRow lr;
-			CardDataset.ProgramRow pr;
-
-			pr = cds.Program.NewProgramRow ();
-			pr.InstructionCount = instructions.Length;
-			pr.LabelCount = labels.Length;
-			pr.CardRow = cds.Card [0]; // TODO: should be passed in.
-			cds.Program.AddProgramRow (pr);
-			for (int i = 0; i < instructions.Length; i++) {
-				ir = cds.Instruction.NewInstructionRow ();
-				ir.Step = i + 1;
-				ir.Text = instructions [i].Text;
-				ir.Instruction = instructions [i].Symbol.Name;
-				ir.ArgumentCount = instructions [i].Arguments.Length;
-				ir.ProgramRow = pr;
-				cds.Instruction.AddInstructionRow (ir);
-				for (int j = 0; j < instructions [i].Arguments.Length; j++) 
-				{
-					Argument argument = instructions [i].Arguments [j];
-
-					ar = cds.Argument.NewArgumentRow ();
-					ar.Id = j;
-					argument.WriteToArgumentRow (ar);
-					ar.InstructionRow = ir;
-					cds.Argument.AddArgumentRow (ar);
-				}
-			}
-			for (int i = 0; i < labels.Length; i++) 
+			if (part == CardPart.Program) 
 			{
-				lr = cds.Label.NewLabelRow ();
-				lr.Id = i;
-				lr.Step = labels [i] + 1;
-				lr.ProgramRow = pr;
-				cds.Label.AddLabelRow (lr);
+
+				// Note that we write 1-based step numbers, in case someone wants to look at the
+				// generated XML.
+				CardDataset.ArgumentRow ar;
+				CardDataset.InstructionRow ir;
+				CardDataset.LabelRow lr;
+				CardDataset.ProgramRow pr;
+
+				pr = cds.Program.NewProgramRow ();
+				pr.InstructionCount = instructions.Length;
+				pr.LabelCount = labels.Length;
+				pr.CardRow = cds.Card [0]; // TODO: should be passed in.
+				cds.Program.AddProgramRow (pr);
+				for (int i = 0; i < instructions.Length; i++) 
+				{
+					ir = cds.Instruction.NewInstructionRow ();
+					ir.Step = i + 1;
+					ir.Text = instructions [i].Text;
+					ir.Instruction = instructions [i].Symbol.Name;
+					ir.ArgumentCount = instructions [i].Arguments.Length;
+					ir.ProgramRow = pr;
+					cds.Instruction.AddInstructionRow (ir);
+					for (int j = 0; j < instructions [i].Arguments.Length; j++) 
+					{
+						Argument argument = instructions [i].Arguments [j];
+
+						ar = cds.Argument.NewArgumentRow ();
+						ar.Id = j;
+						argument.WriteToArgumentRow (ar);
+						ar.InstructionRow = ir;
+						cds.Argument.AddArgumentRow (ar);
+					}
+				}
+				for (int i = 0; i < labels.Length; i++) 
+				{
+					lr = cds.Label.NewLabelRow ();
+					lr.Id = i;
+					lr.Step = labels [i] + 1;
+					lr.ProgramRow = pr;
+					cds.Label.AddLabelRow (lr);
+				}
 			}
 		}
 

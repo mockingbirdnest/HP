@@ -96,36 +96,44 @@ namespace HP67
 		{
 			CardDataset.CardRow cr;
 			CardDataset.EngineRow er;
+			CardDataset.EngineRow [] ers;
 			CardDataset.FlagRow [] frs;
 
 			cr = cds.Card [0];
-			er = cr.GetEngineRows () [0];
-			unit = (AngleUnit) Enum.Parse (typeof (AngleUnit), er.AngleUnit);
-			flags = new bool [er.FlagCount];
-			frs = er.GetFlagRows ();
-			foreach (CardDataset.FlagRow fr in frs) 
+			ers = cr.GetEngineRows ();
+			if (ers.Length > 0) 
 			{
-				flags [fr.Id] = fr.Value;
+				er = ers [0];
+				unit = (AngleUnit) Enum.Parse (typeof (AngleUnit), er.AngleUnit);
+				flags = new bool [er.FlagCount];
+				frs = er.GetFlagRows ();
+				foreach (CardDataset.FlagRow fr in frs) 
+				{
+					flags [fr.Id] = fr.Value;
+				}
 			}
 		}
 
-		public void WriteToDataset (CardDataset cds)
+		public void WriteToDataset (CardDataset cds, CardPart part)
 		{
-			CardDataset.EngineRow er;
-			CardDataset.FlagRow fr;
-
-			er = cds.Engine.NewEngineRow ();
-			er.AngleUnit = unit.ToString ();
-			er.FlagCount = flags.Length;
-			er.CardRow = cds.Card [0]; // TODO: Should be passed in.
-			cds.Engine.AddEngineRow (er);
-			for (int i = 0; i < flags.Length; i++) 
+			if (part == CardPart.Program) 
 			{
-				fr = cds.Flag.NewFlagRow ();
-				fr.Id = i;
-				fr.Value = flags [i];
-				fr.EngineRow = er;
-				cds.Flag.AddFlagRow (fr);
+				CardDataset.EngineRow er;
+				CardDataset.FlagRow fr;
+
+				er = cds.Engine.NewEngineRow ();
+				er.AngleUnit = unit.ToString ();
+				er.FlagCount = flags.Length;
+				er.CardRow = cds.Card [0]; // TODO: Should be passed in.
+				cds.Engine.AddEngineRow (er);
+				for (int i = 0; i < flags.Length; i++) 
+				{
+					fr = cds.Flag.NewFlagRow ();
+					fr.Id = i;
+					fr.Value = flags [i];
+					fr.EngineRow = er;
+					cds.Flag.AddFlagRow (fr);
+				}
 			}
 		}
 
@@ -377,8 +385,8 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
+					// Cancels the f key.
 					stackLift = neutral;
-					theProgram.Clear ();
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_REG :
 					theMemory.Clear ();
@@ -395,6 +403,7 @@ namespace HP67
 					unit = AngleUnit.Degree;
 					break;
 				case (int)SymbolConstants.SYMBOL_DEL :
+					// Cancel the h key.
 					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
@@ -777,7 +786,12 @@ namespace HP67
 					theStack.Y = r * Math.Sin (ToRadian (θ));
 					break;
 				case (int)SymbolConstants.SYMBOL_W_DATA :
-					// TODO: Instruction.
+					HP67 form = (HP67) theDisplay.TopLevelControl;
+					if (! (bool) form.Invoke
+									(new HP67.SaveDataAsCrossThreadInvocation (form.SaveDataAs))) 
+					{
+						throw new Error ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_AVERAGE :
 					theStack.Get (out x);

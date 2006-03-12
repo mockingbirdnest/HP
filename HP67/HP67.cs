@@ -41,6 +41,7 @@ namespace HP67
 		// Delegates used for cross-thread invocation.
 		private delegate void DisableUICrossThreadInvocation ();
 		private delegate EngineMode EnableUICrossThreadInvocation ();
+		public delegate bool SaveDataAsCrossThreadInvocation ();
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -1088,7 +1089,7 @@ namespace HP67
 		[STAThread]
 		static void Main () 
 		{
-			Application.Run (new HP67());
+			Application.Run (new HP67 ());
 		}
 
 		#region Multithreading
@@ -1313,6 +1314,34 @@ namespace HP67
 			}
 		}
 
+		public bool SaveDataAs () 
+		{
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				bool result;
+				FileStream stream;
+
+				// Use OpenOrCreate to read the part of the file that we won't overwrite.  Do not
+				// try to grab the lock here, because we are called from the execution thread, so
+				// we are properly synchronized.
+				if ((stream = new FileStream (saveFileDialog.FileName, FileMode.OpenOrCreate)) !=
+					null)
+				{
+					result = Card.Write (stream, CardPart.Data);
+					stream.Close ();
+					return result;
+				}
+				else 
+				{
+					return false;
+				}
+			}
+			else 
+			{
+				return false;
+			}
+		}
+
 		#endregion
 
 		#region UI Event Handlers
@@ -1389,7 +1418,8 @@ namespace HP67
 				{
 					lock (executionThreadIsBusy) 
 					{
-						if (Card.Read (stream, upParser)) 
+						// We hold the lock, so looking at the program is fine.
+						if (Card.Read (stream, upParser) && ! theProgram.IsEmpty) 
 						{
 							cardSlot.State = CardSlotState.ReadWrite;
 						}
@@ -1409,12 +1439,15 @@ namespace HP67
 			}
 			else 
 			{
-				stream = new FileStream (fileName, FileMode.Create);
-				lock (executionThreadIsBusy) 
+				// Use OpenOrCreate to read the part of the file that we won't overwrite.
+				if ((stream = new FileStream (fileName, FileMode.OpenOrCreate)) != null) 
 				{
-					Card.Write (stream);
+					lock (executionThreadIsBusy) 
+					{
+						Card.Write (stream, CardPart.Program);
+					}
+					stream.Close ();
 				}
-				stream.Close ();
 			}
 		}
 
@@ -1433,15 +1466,13 @@ namespace HP67
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				fileName = saveFileDialog.FileName;
-				if (cardSlot.State == CardSlotState.Unloaded) 
-				{
-					cardSlot.State = CardSlotState.ReadWrite;
-				}
-				if ((stream = saveFileDialog.OpenFile ()) != null)
+
+				// Use OpenOrCreate to read the part of the file that we won't overwrite.
+				if ((stream = new FileStream (fileName, FileMode.OpenOrCreate)) != null)
 				{
 					lock (executionThreadIsBusy) 
 					{
-						Card.Write (stream);
+						Card.Write (stream, CardPart.Program);
 					}
 					stream.Close ();
 				}

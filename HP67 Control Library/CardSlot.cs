@@ -561,92 +561,100 @@ namespace HP67_Control_Library
 		{
 			CardDataset.CardRow cr;
 			CardDataset.CardSlotRow csr;
+			CardDataset.CardSlotRow [] csrs;
 
 			cr = cds.Card [0]; // TODO: I hate these zeros...
-			csr = cr.GetCardSlotRows () [0];
-			font = new Font (csr.FontName, csr.FontSize);
-			largeFont = new Font (csr.LargeFontName, csr.LargeFontSize);
-			Title = csr.Title;
-			Margin = csr.Margin;
-			TextBoxWidth = csr.TextBoxWidth;
-			RichText = csr.IsRichText;
-			if (richText) 
+			csrs = cr.GetCardSlotRows ();
+			if (csrs.Length > 0) 
 			{
-				foreach (CardDataset.RTFBoxRow rbr in csr.GetRTFBoxRows ()) 
+				csr = csrs [0];
+				font = new Font (csr.FontName, csr.FontSize);
+				largeFont = new Font (csr.LargeFontName, csr.LargeFontSize);
+				Title = csr.Title;
+				Margin = csr.Margin;
+				TextBoxWidth = csr.TextBoxWidth;
+				RichText = csr.IsRichText;
+				if (richText) 
 				{
-					if (rbr.Id >= csr.TextBoxCount) 
+					foreach (CardDataset.RTFBoxRow rbr in csr.GetRTFBoxRows ()) 
 					{
-						((RichTextBox) fTextBoxes [rbr.Id - csr.TextBoxCount]).Rtf = rbr.RTF;
-					}
-					else 
-					{
-						((RichTextBox) textBoxes [rbr.Id]).Rtf = rbr.RTF;
+						if (rbr.Id >= csr.TextBoxCount) 
+						{
+							((RichTextBox) fTextBoxes [rbr.Id - csr.TextBoxCount]).Rtf = rbr.RTF;
+						}
+						else 
+						{
+							((RichTextBox) textBoxes [rbr.Id]).Rtf = rbr.RTF;
+						}
 					}
 				}
-			}
-			else 
-			{
-				foreach (CardDataset.TextBoxRow tbr in csr.GetTextBoxRows ()) 
+				else 
 				{
-					if (tbr.Id >= csr.TextBoxCount) 
+					foreach (CardDataset.TextBoxRow tbr in csr.GetTextBoxRows ()) 
 					{
-						fTextBoxes [tbr.Id - csr.TextBoxCount].Text = tbr.Text;
-					}
-					else
-					{
-						textBoxes [tbr.Id].Text = tbr.Text;
+						if (tbr.Id >= csr.TextBoxCount) 
+						{
+							fTextBoxes [tbr.Id - csr.TextBoxCount].Text = tbr.Text;
+						}
+						else
+						{
+							textBoxes [tbr.Id].Text = tbr.Text;
+						}
 					}
 				}
 			}
 		}
 
-		public  void WriteToDataset (CardDataset cds)
+		public void WriteToDataset (CardDataset cds, CardPart part)
 		{
-			CardDataset.CardSlotRow csr;
-			CardDataset.TextBoxRow tbr;
+			if (part == CardPart.Program) 
+			{
+				CardDataset.CardSlotRow csr;
+				CardDataset.TextBoxRow tbr;
 
-			csr = cds.CardSlot.NewCardSlotRow ();
-			csr.FontName = font.Name;
-			csr.FontSize = font.SizeInPoints;
-			csr.LargeFontName = largeFont.Name;
-			csr.LargeFontSize = largeFont.SizeInPoints;
-			csr.Title = titleTextBox.Text;
-			csr.Margin = margin;
-			csr.TextBoxWidth = textBoxWidth;
-			csr.IsRichText = richText;
-			csr.TextBoxCount = textBoxes.Length;
-			Trace.Assert (textBoxes.Length == fTextBoxes.Length);
-			csr.CardRow = cds.Card [0]; // TODO: should be passed in.
-			cds.CardSlot.AddCardSlotRow (csr);
-			for (int i = 0; i < textBoxes.Length; i++) 
-			{
-				tbr = cds.TextBox.NewTextBoxRow ();
-				tbr.Id = i;
-				if (richText) 
+				csr = cds.CardSlot.NewCardSlotRow ();
+				csr.FontName = font.Name;
+				csr.FontSize = font.SizeInPoints;
+				csr.LargeFontName = largeFont.Name;
+				csr.LargeFontSize = largeFont.SizeInPoints;
+				csr.Title = titleTextBox.Text;
+				csr.Margin = margin;
+				csr.TextBoxWidth = textBoxWidth;
+				csr.IsRichText = richText;
+				csr.TextBoxCount = textBoxes.Length;
+				Trace.Assert (textBoxes.Length == fTextBoxes.Length);
+				csr.CardRow = cds.Card [0]; // TODO: should be passed in.
+				cds.CardSlot.AddCardSlotRow (csr);
+				for (int i = 0; i < textBoxes.Length; i++) 
 				{
-					tbr.Text = ((RichTextBox) textBoxes [i]).Rtf;
+					tbr = cds.TextBox.NewTextBoxRow ();
+					tbr.Id = i;
+					if (richText) 
+					{
+						tbr.Text = ((RichTextBox) textBoxes [i]).Rtf;
+					}
+					else
+					{
+						tbr.Text = textBoxes [i].Text;
+					}
+					tbr.CardSlotRow = csr;
+					cds.TextBox.AddTextBoxRow (tbr);
 				}
-				else
+				for (int i = 0; i < fTextBoxes.Length; i++) 
 				{
-					tbr.Text = textBoxes [i].Text;
+					tbr = cds.TextBox.NewTextBoxRow ();
+					tbr.Id = i + textBoxes.Length;
+					if (richText) 
+					{
+						tbr.Text = ((RichTextBox) fTextBoxes [i]).Rtf;
+					}
+					else
+					{
+						tbr.Text = fTextBoxes [i].Text;
+					}
+					tbr.CardSlotRow = csr;
+					cds.TextBox.AddTextBoxRow (tbr);
 				}
-				tbr.CardSlotRow = csr;
-				cds.TextBox.AddTextBoxRow (tbr);
-			}
-			for (int i = 0; i < fTextBoxes.Length; i++) 
-			{
-				tbr = cds.TextBox.NewTextBoxRow ();
-				tbr.Id = i + textBoxes.Length;
-				if (richText) 
-				{
-					tbr.Text = ((RichTextBox) fTextBoxes [i]).Rtf;
-				}
-				else
-				{
-					tbr.Text = fTextBoxes [i].Text;
-				}
-				tbr.CardSlotRow = csr;
-				cds.TextBox.AddTextBoxRow (tbr);
 			}
 		}
 		
