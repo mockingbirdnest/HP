@@ -13,13 +13,16 @@ namespace HP67_Class_Library
 	{
 		public const string EditMenuItem = "EDIT MENU ITEM";
 		public const string Error = "ERROR";
+		public const string ErrorDescription = "ERROR DESCRIPTION";
 		public const string FileHasVersion = "FILE HAS VERSION";
 		public const string IncompatibleVersion = "INCOMPATIBLE VERSION";
+		public const string InterruptDescription = "INTERRUPT DESCRIPTION";
 		public const string OpenMenuItem = "OPEN MENU ITEM";
 		public const string PrintMenuItem = "PRINT MENU ITEM";
 		public const string RtfMenuItem = "RTF MENU ITEM";
 		public const string SaveAsMenuItem = "SAVE AS MENU ITEM";
 		public const string SaveMenuItem = "SAVE MENU ITEM";
+		public const string StopDescription = "STOP DESCRIPTION";
 		public const string UntitledFileName = "UNTITLED FILE NAME";
 
 		private const string cultureAppSetting = "Culture";

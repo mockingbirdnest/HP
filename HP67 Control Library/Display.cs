@@ -1,3 +1,4 @@
+using HP67_Class_Library;
 using HP67_Parser;
 using HP67_Persistence;
 using System;
@@ -53,6 +54,7 @@ namespace HP67_Control_Library
 		private const int stepFirst = 0;
 		private const int stepLength = 3;
 		private const string stepTemplate = "000";
+		private const int textLength = 15;
 		private const double underflowLimit = 1.0E-99;
 
 		private bool enteringExponent;
@@ -89,7 +91,6 @@ namespace HP67_Control_Library
 		public event DisplayEvent AcceptKeystrokes;
 		public event DisplayEvent CompleteKeystrokes;
 		public event DisplayEvent EnteringNumber;
-		public event DisplayEvent StopComputation;
 
 		#endregion
 
@@ -369,7 +370,7 @@ namespace HP67_Control_Library
 			string text = NumericText;
 
 			NumericText = text.Substring (mantissaSignFirst, mantissaSignLength) +
-				mantissa.PadRight (mantissaLength, ' ') +
+				mantissa.PadRight (mantissaLength) +
 				text.Substring (exponentSignFirst, exponentSignLength + exponentLength);
 		}
 
@@ -749,6 +750,11 @@ namespace HP67_Control_Library
 					Trace.Assert (enteringMantissa);
 					mantissa = NumericText.Substring 
 						(mantissaSignFirst, mantissaSignLength + mantissaLength).TrimEnd (null);
+					if (mantissa.Length == mantissaSignLength + mantissaLength) 
+					{
+						// Extraneous digits are simply ignored.
+						return;
+					}
 					if (hasAPeriod)	
 					{
 						mantissa += d;
@@ -840,7 +846,7 @@ namespace HP67_Control_Library
 						// signalled.
 						if (keyWasTyped.WaitOne (interval, false))
 						{
-							StopComputation (this);
+							throw new Interrupt ();
 						}
 					}
 				}
@@ -868,7 +874,8 @@ namespace HP67_Control_Library
 				(stepTemplate, NumberFormatInfo.InvariantInfo);
 			
 			instructionTextBox.Text = 
-				stepImage + instruction.PadLeft (instructionLength, ' ');
+				new string (' ', mantissaSignLength) +
+				stepImage + instruction.PadLeft (instructionLength);
 		}
 
 		public void ShowMemory (int address, double register, int ms)
@@ -880,7 +887,7 @@ namespace HP67_Control_Library
 			{
 				numericTextBox.Text =
 					addressImage.PadLeft
-					(mantissaSignLength + mantissaLength + exponentSignLength + exponentLength, ' ');
+					(mantissaSignLength + mantissaLength + exponentSignLength + exponentLength);
 				Update ();
 				Thread.Sleep (ms);
 				Value = register;
@@ -896,9 +903,8 @@ namespace HP67_Control_Library
 
 		public void ShowText (string text, int msOn, int msOff) 
 		{
-			// TODO: Alignment should not include the sign.
-			string s = text.PadRight (mantissaSignLength + mantissaLength +
-										exponentSignLength + exponentLength);
+			string s = new string (' ', mantissaSignLength) +
+						text.PadRight (textLength - mantissaSignLength);
 			alphabeticTextBox.Text = s;
 			Update ();
 			Thread.Sleep (msOn);

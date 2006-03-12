@@ -55,15 +55,6 @@ namespace HP67
 
 		#endregion
 
-		#region Event Definitions
-
-		// TODO: Should these be provided in the constructor?
-
-		public delegate void EngineEvent (object sender);
-		public event EngineEvent StopComputation;
-
-		#endregion
-
 		#region Constructors & Destructors
 
 		public Engine (Display display,
@@ -196,12 +187,12 @@ namespace HP67
 						theDisplay.Update ();
 					}
 				}
-				catch (Stop)
+				catch (ApplicationException e)
 				{
 					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Gosub: stopping",
+						"Gosub: Exception " + e.ToString (),
 						classTraceSwitch.DisplayName);
-					throw new Stop ();
+					throw;
 				}
 				finally 
 				{
@@ -851,7 +842,7 @@ namespace HP67
 			// resume execution with the proper state if the user types R/S again.
 			if (keyWasTyped.WaitOne (0, false))
 			{
-				StopComputation (this);
+				throw new Interrupt ();
 			}
 		}
 
@@ -919,7 +910,17 @@ namespace HP67
 							};
 							break;
 						case KeystrokeMotion.Up :
-							Execute (instruction);
+							try 
+							{
+								Execute (instruction);
+							}
+							catch (ApplicationException e)
+							{
+								Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+									"Process: Exception " + e.ToString (),
+									classTraceSwitch.DisplayName);
+								throw;
+							}
 							break;
 					}
 					break;

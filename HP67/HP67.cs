@@ -1117,7 +1117,7 @@ namespace HP67
 			// detected the keystroke.  We must set it again here to make sure that the queue and
 			// the event are consistent.
 			keyWasTyped.Set ();
-			throw new Stop ();
+			throw new Interrupt ();
 		}
 
 		void Execution ()
@@ -1146,8 +1146,6 @@ namespace HP67
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
 			display.CompleteKeystrokes +=
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
-			display.StopComputation +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionStopComputation);
 			this.Controls.Add (display);
 
 			// Create the components that depend on the display.
@@ -1155,7 +1153,6 @@ namespace HP67
 			theProgram = new Program (display);
 			theStack = new HP67_Class_Library.Stack (display);
 			theEngine = new Engine (display, theMemory, theProgram, theStack, keyWasTyped);
-			theEngine.StopComputation += new Engine.EngineEvent (ExecutionStopComputation);
 
 			// We need two parsers: one that processes the MouseDown events, and one that processes
 			// the MouseUp events, because both events have different effects for a given key (e.g.,
@@ -1232,12 +1229,22 @@ namespace HP67
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
 				}
-				catch (Stop)
+				catch (Interrupt)
 				{
+
+					// We land here if a character was typed during a computation.  In this case,
+					// we have a keystroke in the queue, but the keyWasTyped event was cleared by 
+					// the code that detected the keystroke.  We must set it again here to make sure
+					// that the queue and the event are consistent.
+					keyWasTyped.Set ();
 					display.Value = display.Value; // Refresh the numeric display.
 					mustEnableOpenOrSave = true;
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
+				}
+				catch (Stop)
+				{
+					mustEnableOpenOrSave = true;
 				}
 				finally 
 				{
@@ -1264,8 +1271,6 @@ namespace HP67
 
 		EngineMode EnableOpenOrSave () 
 		{
-			// TODO: The engine mode should be set on the execution thread, because it will affect
-			// the display.  The engine itself should be a variable local to Execution.
 			switch (toggleWprgmRun.Position)
 			{
 				case TogglePosition.Left :

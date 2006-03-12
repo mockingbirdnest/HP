@@ -400,8 +400,15 @@ namespace HP67_Class_Library
 
 		public void GotoStep (int step)
 		{
-			// The clients want to see 1-based steps.
-			GotoZeroBasedStep (step - 1);
+			// This is used by GTO . nnn, and it wants to see 1-based steps.
+			if (step == 0) 
+			{
+				GotoBegin ();
+			}
+			else 
+			{
+				GotoZeroBasedStep (step - 1);
+			}
 		}
 
 		public void Insert (Instruction instruction)

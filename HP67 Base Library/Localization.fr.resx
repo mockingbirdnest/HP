@@ -115,6 +115,9 @@
   <data name="UNTITLED FILE NAME">
     <value>Sans Titre</value>
   </data>
+  <data name="ERROR">
+    <value>Erreur</value>
+  </data>
   <data name="SAVE MENU ITEM">
     <value>Enregistrer</value>
   </data>
@@ -124,7 +127,13 @@
   <data name="SAVE AS MENU ITEM">
     <value>Enregistrer Sous...</value>
   </data>
-  <data name="ERROR">
-    <value>Erreur</value>
+  <data name="ERROR DESCRIPTION">
+    <value>Argument invalide dans un calcul</value>
+  </data>
+  <data name="INTERRUPT DESCRIPTION">
+    <value>Execution interrompue par l'utilisateur</value>
+  </data>
+  <data name="STOP DESCRIPTION">
+    <value>Programme terminé normalement</value>
   </data>
 </root>
