@@ -80,6 +80,7 @@ namespace HP67_Control_Library
 		private System.Windows.Forms.TextBox alphabeticTextBox;
 
 		private AutoResetEvent keyWasTyped;
+		private Random random;
 
 		#endregion
 
@@ -115,6 +116,7 @@ namespace HP67_Control_Library
 			}
 
 			this.keyWasTyped = keyWasTyped;
+			random = new Random ();
 
 			// Make the control non-selectable, otherwise the application will select its
 			// text at startup.
@@ -866,6 +868,29 @@ namespace HP67_Control_Library
 				double.Parse (
 					text.Substring (mantissaSignFirst, mantissaSignLength + mantissaLength),
 					NumberFormatInfo.InvariantInfo);
+		}
+
+		public void ShowBlur () 
+		{
+			string s = new string (' ', 0);
+
+			for (int i = 0; i < mantissaSignLength; i++) 
+			{
+				s += random.Next (2) == 1 ? '-' : ' '; 
+			}
+			for (int i = 0; i < mantissaLength; i++) 
+			{
+				s += random.Next (10).ToString ();
+			}
+			for (int i = 0; i < exponentSignLength; i++) 
+			{
+				s += random.Next (2) == 1 ? '-' : ' ';
+			}
+			for (int i = 0; i < exponentLength; i++) 
+			{
+				s += random.Next (10).ToString ();
+			}
+			alphabeticTextBox.Text = s;
 		}
 
 		public void ShowInstruction (string instruction, int step)

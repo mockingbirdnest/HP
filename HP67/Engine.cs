@@ -40,6 +40,7 @@ namespace HP67
 		private const double radianToDegree = 180.0 / Math.PI;
 		private const double radianToGrade = 200.0 / Math.PI;
 
+		private bool enableBlur;
 		private EngineMode mode;
 		private bool running = false;
 		private bool stackLift = false;
@@ -63,6 +64,18 @@ namespace HP67
 						Stack stack,
 						AutoResetEvent keyWasTyped) 
 		{
+			string [] appSettingsEnableBlur =
+				System.Configuration.ConfigurationSettings.AppSettings.GetValues
+				("EnableBlur");
+			if (appSettingsEnableBlur == null) 
+			{
+				enableBlur = true;
+			}
+			else
+			{
+				enableBlur = bool.Parse (appSettingsEnableBlur [0]);
+			}
+
 			flags = new bool [4];
 			unit = AngleUnit.Degree;
 			theDisplay = display;
@@ -179,12 +192,23 @@ namespace HP67
 						label.Gosub (theMemory, theProgram);
 						theProgram.Reset ();
 					}
+
+					// The display mode will be reset at the end of the execution of the program,
+					// so we can freely change it here.
+					if (enableBlur) 
+					{
+						theDisplay.Mode = DisplayMode.Alphabetic;
+					}
+
 					running = true;
 					for (;;) 
 					{
 						instruction = theProgram.Instruction;
 						Execute (instruction);
-						theDisplay.Update ();
+						if (enableBlur) 
+						{
+							theDisplay.ShowBlur ();
+						}
 					}
 				}
 				catch (ApplicationException e)
