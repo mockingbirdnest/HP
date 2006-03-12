@@ -353,7 +353,6 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
-					// TODO: Unload the card slot.
 					stackLift = neutral;
 					theProgram.Clear ();
 					break;

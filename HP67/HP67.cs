@@ -39,8 +39,8 @@ namespace HP67
 		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
 
 		// Delegates used for cross-thread invocation.
-		private delegate void DisableOpenAndSaveCrossThreadInvocation ();
-		private delegate EngineMode EnableOpenOrSaveCrossThreadInvocation ();
+		private delegate void DisableUICrossThreadInvocation ();
+		private delegate EngineMode EnableUICrossThreadInvocation ();
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -110,7 +110,7 @@ namespace HP67
 			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
 
 			// Enable/disable the popup menu items.
-			EnableOpenOrSave ();
+			EnableUI ();
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
@@ -124,14 +124,14 @@ namespace HP67
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
-			if( disposing )
+			if (disposing)
 			{
 				if (components != null) 
 				{
 					components.Dispose();
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose (disposing);
 		}
 
 		#region Windows Form Designer generated code
@@ -1109,17 +1109,6 @@ namespace HP67
 			upActions.ParserAccept ();
 		}
 
-		void ExecutionStopComputation (object sender)
-		{
-
-			// We land here if a character was typed during a computation.  In this case, we have
-			// a keystroke in the queue, but the keyWasTyped event was cleared by the code that
-			// detected the keystroke.  We must set it again here to make sure that the queue and
-			// the event are consistent.
-			keyWasTyped.Set ();
-			throw new Interrupt ();
-		}
-
 		void Execution ()
 		{
 			HP67_Control_Library.Display display;
@@ -1129,9 +1118,9 @@ namespace HP67
 			HP67_Class_Library.Stack theStack;
 
 			bool ignoreNext = false;
-			bool mustEnableOpenOrSave = true;
+			bool mustEnableUI = true;
 
-			// Controls must be accessed from the thread that created them.  For most control,
+			// Controls must be accessed from the thread that created them.  For most controls,
 			// this is the main thread.  But the display is special, as it is mostly updated
 			// during execution.  So it is created by the execution thread.
 			display = new HP67_Control_Library.Display (keyWasTyped);
@@ -1182,12 +1171,12 @@ namespace HP67
 					// We want to protect this sequence against asynchronous changes to the menus
 					// which may happen if the W/PGRM-RUN switch is moved: we wouldn't want the 
 					// menus to be changed by the main thread between the invocation of
-					// DisableOpenAndSave and the call to the parser, or during the execution of
+					// DisableUI and the call to the parser, or during the execution of
 					// the keystroke.
 					lock (executionThreadIsBusy)
 					{
 						this.Invoke
-							(new DisableOpenAndSaveCrossThreadInvocation (DisableOpenAndSave));
+							(new DisableUICrossThreadInvocation (DisableUI));
 						switch (keystroke.Motion) 
 						{
 							case KeystrokeMotion.Up :
@@ -1201,7 +1190,7 @@ namespace HP67
 								{
 									upParser.Parse (keystroke.Tag);
 								}
-								mustEnableOpenOrSave = true;
+								mustEnableUI = true;
 								break;
 
 							case KeystrokeMotion.Down :
@@ -1211,7 +1200,7 @@ namespace HP67
 								// that the next up-keystroke will be ignored, too.  A normal 
 								// down-keystroke may show the current instruction, so we don't
 								// refresh the display mode in that case.
-								mustEnableOpenOrSave = ignoreNext;
+								mustEnableUI = ignoreNext;
 								if (! ignoreNext) 
 								{
 									downParser.Parse (keystroke.Tag);
@@ -1225,7 +1214,7 @@ namespace HP67
 					display.Value = display.Value; // Refresh the numeric display.
 					display.Mode = DisplayMode.Alphabetic;
 					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
-					mustEnableOpenOrSave = false;
+					mustEnableUI = false;
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
 				}
@@ -1238,21 +1227,21 @@ namespace HP67
 					// that the queue and the event are consistent.
 					keyWasTyped.Set ();
 					display.Value = display.Value; // Refresh the numeric display.
-					mustEnableOpenOrSave = true;
+					mustEnableUI = true;
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
 				}
 				catch (Stop)
 				{
-					mustEnableOpenOrSave = true;
+					mustEnableUI = true;
 				}
 				finally 
 				{
-					if (mustEnableOpenOrSave) 
+					if (mustEnableUI) 
 					{
 						theEngine.Mode = 
 							(EngineMode) this.Invoke
-								(new EnableOpenOrSaveCrossThreadInvocation (EnableOpenOrSave));
+								(new EnableUICrossThreadInvocation (EnableUI));
 					}
 				}
 			}
@@ -1262,15 +1251,45 @@ namespace HP67
 
 		#region UI Utilities
 
-		void DisableOpenAndSave () 
+		void DisableUI () 
 		{
+
+			// Disabling the menu items makes it clear to the user which operations are forbidden
+			// while the program runs.  It is doesn't help thread-safety, though: it could be
+			// possible for a print operation to start, followed immediately by the execution of a
+			// program, in which case both would proceed in parallel.  Thread safety is achieved by
+			// locking the operations that must access the execution data structures.
 			openMenuItem.Enabled = false;
+			printMenuItem.Enabled = false;
 			saveMenuItem.Enabled = false;
 			saveAsMenuItem.Enabled = false;
 		}
 
-		EngineMode EnableOpenOrSave () 
+		EngineMode EnableUI () 
 		{
+			printMenuItem.Enabled = true;
+
+			// Make sure that the state of the card slot reflects the state of the program memory.
+			// We can access the program without synchronization, because we only come here through
+			// a cross-thread invocation, and therefore the two threads are synchronized.
+			if (theProgram != null) 
+			{
+				if (theProgram.IsEmpty) 
+				{
+					if (cardSlot.State != CardSlotState.Unloaded) 
+					{
+						cardSlot.State = CardSlotState.Unloaded;
+					}
+				}
+				else 
+				{
+					if (cardSlot.State == CardSlotState.Unloaded) 
+					{
+						cardSlot.State = CardSlotState.ReadWrite;
+					}				
+				}
+			}
+
 			switch (toggleWprgmRun.Position)
 			{
 				case TogglePosition.Left :
@@ -1368,11 +1387,14 @@ namespace HP67
 				fileName = openFileDialog.FileName;
 				if ((stream = openFileDialog.OpenFile ()) != null)
 				{
-					if (Card.Read (stream, upParser)) 
+					lock (executionThreadIsBusy) 
 					{
-						cardSlot.State = CardSlotState.ReadWrite;
+						if (Card.Read (stream, upParser)) 
+						{
+							cardSlot.State = CardSlotState.ReadWrite;
+						}
+						stream.Close ();
 					}
-					stream.Close ();
 				}
 			}			
 		}
@@ -1388,7 +1410,10 @@ namespace HP67
 			else 
 			{
 				stream = new FileStream (fileName, FileMode.Create);
-				Card.Write (stream);
+				lock (executionThreadIsBusy) 
+				{
+					Card.Write (stream);
+				}
 				stream.Close ();
 			}
 		}
@@ -1414,7 +1439,10 @@ namespace HP67
 				}
 				if ((stream = saveFileDialog.OpenFile ()) != null)
 				{
-					Card.Write (stream);
+					lock (executionThreadIsBusy) 
+					{
+						Card.Write (stream);
+					}
 					stream.Close ();
 				}
 			}
@@ -1451,7 +1479,10 @@ namespace HP67
 
 		private void printMenuItem_Click(object sender, System.EventArgs e)
 		{
-			printDocument.Print ();
+			lock (executionThreadIsBusy) 
+			{
+				printDocument.Print ();
+			}
 		}
 
 		#endregion
