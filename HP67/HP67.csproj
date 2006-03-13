@@ -11,7 +11,7 @@
     >
         <Build>
             <Settings
-                ApplicationIcon = "App.ico"
+                ApplicationIcon = "HP67 Application.ico"
                 AssemblyKeyContainerName = ""
                 AssemblyName = "HP67"
                 AssemblyOriginatorKeyFile = ""
@@ -142,10 +142,6 @@
                     BuildAction = "None"
                 />
                 <File
-                    RelPath = "App.ico"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "AssemblyInfo.cs"
                     BuildAction = "Compile"
                 />
@@ -153,6 +149,10 @@
                     RelPath = "Engine.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HP67 Application.ico"
+                    BuildAction = "Content"
                 />
                 <File
                     RelPath = "HP67.cs"

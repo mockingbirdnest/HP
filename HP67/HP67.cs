@@ -142,6 +142,7 @@ namespace HP67
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP67));
 			this.cardSlot = new HP67_Control_Library.CardSlot();
 			this.toggleOffOn = new HP67_Control_Library.Toggle();
 			this.toggleWprgmRun = new HP67_Control_Library.Toggle();
@@ -1075,6 +1076,7 @@ namespace HP67
 			this.Controls.Add(this.toggleWprgmRun);
 			this.Controls.Add(this.toggleOffOn);
 			this.Controls.Add(this.cardSlot);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "HP67";
 			this.Text = "HP67";
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.HP67_Closing);
