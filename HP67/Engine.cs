@@ -124,7 +124,7 @@ namespace HP67
 				er = cds.Engine.NewEngineRow ();
 				er.AngleUnit = unit.ToString ();
 				er.FlagCount = flags.Length;
-				er.CardRow = cds.Card [0]; // TODO: Should be passed in.
+				er.CardRow = cds.Card [0];
 				cds.Engine.AddEngineRow (er);
 				for (int i = 0; i < flags.Length; i++) 
 				{

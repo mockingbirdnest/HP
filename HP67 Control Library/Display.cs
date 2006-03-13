@@ -280,7 +280,7 @@ namespace HP67_Control_Library
 				dr = cds.Display.NewDisplayRow ();
 				dr.Digits = digits;
 				dr.Format = format.ToString ();
-				dr.CardRow = cds.Card [0]; // TODO: Should be passed in.
+				dr.CardRow = cds.Card [0];
 				cds.Display.AddDisplayRow (dr);
 			}
 		}

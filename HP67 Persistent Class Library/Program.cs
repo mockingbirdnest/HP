@@ -92,7 +92,7 @@ namespace HP67_Class_Library
 			CardDataset.ProgramRow pr;
 			CardDataset.ProgramRow [] prs;
 
-			cr = cds.Card [0]; // TODO: I hate these zeros...
+			cr = cds.Card [0];
 			prs = cr.GetProgramRows ();
 			if (prs.Length > 0) 
 			{
@@ -138,7 +138,7 @@ namespace HP67_Class_Library
 				pr = cds.Program.NewProgramRow ();
 				pr.InstructionCount = instructions.Length;
 				pr.LabelCount = labels.Length;
-				pr.CardRow = cds.Card [0]; // TODO: should be passed in.
+				pr.CardRow = cds.Card [0];
 				cds.Program.AddProgramRow (pr);
 				for (int i = 0; i < instructions.Length; i++) 
 				{

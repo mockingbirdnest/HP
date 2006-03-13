@@ -97,7 +97,7 @@ namespace HP67_Class_Library
 
 				mr = cds.Memory.NewMemoryRow ();
 				mr.RegisterCount = registers.Length;
-				mr.CardRow = cds.Card [0]; // TODO: Should be passed in.
+				mr.CardRow = cds.Card [0];
 				cds.Memory.AddMemoryRow (mr);
 				for (int i = 0; i < registers.Length; i++) 
 				{

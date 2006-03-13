@@ -563,7 +563,7 @@ namespace HP67_Control_Library
 			CardDataset.CardSlotRow csr;
 			CardDataset.CardSlotRow [] csrs;
 
-			cr = cds.Card [0]; // TODO: I hate these zeros...
+			cr = cds.Card [0];
 			csrs = cr.GetCardSlotRows ();
 			if (csrs.Length > 0) 
 			{
@@ -623,7 +623,7 @@ namespace HP67_Control_Library
 				csr.IsRichText = richText;
 				csr.TextBoxCount = textBoxes.Length;
 				Trace.Assert (textBoxes.Length == fTextBoxes.Length);
-				csr.CardRow = cds.Card [0]; // TODO: should be passed in.
+				csr.CardRow = cds.Card [0];
 				cds.CardSlot.AddCardSlotRow (csr);
 				for (int i = 0; i < textBoxes.Length; i++) 
 				{
