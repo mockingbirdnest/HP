@@ -104,7 +104,14 @@
 											<xs:complexType>
 												<xs:all>
 													<xs:element name="Id" type="xs:int" minOccurs="0" />
-													<xs:element name="Step" type="xs:int" minOccurs="0" />
+													<xs:element name="Step">
+														<xs:complexType>
+															<xs:sequence minOccurs="0" maxOccurs="unbounded">
+																<xs:element name="Step" type="xs:int" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="StepCount" type="xs:int" minOccurs="0" />
 												</xs:all>
 											</xs:complexType>
 										</xs:element>

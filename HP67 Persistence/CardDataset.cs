@@ -47,6 +47,8 @@ namespace HP67_Persistence {
         
         private LabelDataTable tableLabel;
         
+        private StepDataTable tableStep;
+        
         private DataRelation relationCardSlot_TextBox;
         
         private DataRelation relationCardSlot_RTFBox;
@@ -56,6 +58,8 @@ namespace HP67_Persistence {
         private DataRelation relationMemory_Register;
         
         private DataRelation relationInstruction_Argument;
+        
+        private DataRelation relationLabel_Step;
         
         private DataRelation relationProgram_Instruction;
         
@@ -121,6 +125,9 @@ namespace HP67_Persistence {
                 }
                 if ((ds.Tables["Label"] != null)) {
                     this.Tables.Add(new LabelDataTable(ds.Tables["Label"]));
+                }
+                if ((ds.Tables["Step"] != null)) {
+                    this.Tables.Add(new StepDataTable(ds.Tables["Step"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -244,6 +251,14 @@ namespace HP67_Persistence {
             }
         }
         
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public StepDataTable Step {
+            get {
+                return this.tableStep;
+            }
+        }
+        
         public override DataSet Clone() {
             CardDataset cln = ((CardDataset)(base.Clone()));
             cln.InitVars();
@@ -300,6 +315,9 @@ namespace HP67_Persistence {
             }
             if ((ds.Tables["Label"] != null)) {
                 this.Tables.Add(new LabelDataTable(ds.Tables["Label"]));
+            }
+            if ((ds.Tables["Step"] != null)) {
+                this.Tables.Add(new StepDataTable(ds.Tables["Step"]));
             }
             this.DataSetName = ds.DataSetName;
             this.Prefix = ds.Prefix;
@@ -371,11 +389,16 @@ namespace HP67_Persistence {
             if ((this.tableLabel != null)) {
                 this.tableLabel.InitVars();
             }
+            this.tableStep = ((StepDataTable)(this.Tables["Step"]));
+            if ((this.tableStep != null)) {
+                this.tableStep.InitVars();
+            }
             this.relationCardSlot_TextBox = this.Relations["CardSlot_TextBox"];
             this.relationCardSlot_RTFBox = this.Relations["CardSlot_RTFBox"];
             this.relationEngine_Flag = this.Relations["Engine_Flag"];
             this.relationMemory_Register = this.Relations["Memory_Register"];
             this.relationInstruction_Argument = this.Relations["Instruction_Argument"];
+            this.relationLabel_Step = this.Relations["Label_Step"];
             this.relationProgram_Instruction = this.Relations["Program_Instruction"];
             this.relationProgram_Label = this.Relations["Program_Label"];
             this.relationCard_CardSlot = this.Relations["Card_CardSlot"];
@@ -418,6 +441,8 @@ namespace HP67_Persistence {
             this.Tables.Add(this.tableArgument);
             this.tableLabel = new LabelDataTable();
             this.Tables.Add(this.tableLabel);
+            this.tableStep = new StepDataTable();
+            this.Tables.Add(this.tableStep);
             ForeignKeyConstraint fkc;
             fkc = new ForeignKeyConstraint("Card_CardSlot", new DataColumn[] {
                         this.tableCard.Card_IdColumn}, new DataColumn[] {
@@ -503,6 +528,13 @@ namespace HP67_Persistence {
             fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = System.Data.Rule.Cascade;
             fkc.UpdateRule = System.Data.Rule.Cascade;
+            fkc = new ForeignKeyConstraint("Label_Step", new DataColumn[] {
+                        this.tableLabel.Label_IdColumn}, new DataColumn[] {
+                        this.tableStep.Label_IdColumn});
+            this.tableStep.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = System.Data.Rule.Cascade;
+            fkc.UpdateRule = System.Data.Rule.Cascade;
             this.relationCardSlot_TextBox = new DataRelation("CardSlot_TextBox", new DataColumn[] {
                         this.tableCardSlot.CardSlot_IdColumn}, new DataColumn[] {
                         this.tableTextBox.CardSlot_IdColumn}, false);
@@ -528,6 +560,11 @@ namespace HP67_Persistence {
                         this.tableArgument.Instruction_IdColumn}, false);
             this.relationInstruction_Argument.Nested = true;
             this.Relations.Add(this.relationInstruction_Argument);
+            this.relationLabel_Step = new DataRelation("Label_Step", new DataColumn[] {
+                        this.tableLabel.Label_IdColumn}, new DataColumn[] {
+                        this.tableStep.Label_IdColumn}, false);
+            this.relationLabel_Step.Nested = true;
+            this.Relations.Add(this.relationLabel_Step);
             this.relationProgram_Instruction = new DataRelation("Program_Instruction", new DataColumn[] {
                         this.tableProgram.Program_IdColumn}, new DataColumn[] {
                         this.tableInstruction.Program_IdColumn}, false);
@@ -617,6 +654,10 @@ namespace HP67_Persistence {
             return false;
         }
         
+        private bool ShouldSerializeStep() {
+            return false;
+        }
+        
         private void SchemaChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -648,6 +689,8 @@ namespace HP67_Persistence {
         public delegate void ArgumentRowChangeEventHandler(object sender, ArgumentRowChangeEvent e);
         
         public delegate void LabelRowChangeEventHandler(object sender, LabelRowChangeEvent e);
+        
+        public delegate void StepRowChangeEventHandler(object sender, StepRowChangeEvent e);
         
         [System.Diagnostics.DebuggerStepThrough()]
         public class CardDataTable : DataTable, System.Collections.IEnumerable {
@@ -3731,7 +3774,9 @@ namespace HP67_Persistence {
             
             private DataColumn columnId;
             
-            private DataColumn columnStep;
+            private DataColumn columnStepCount;
+            
+            private DataColumn columnLabel_Id;
             
             private DataColumn columnProgram_Id;
             
@@ -3769,9 +3814,15 @@ namespace HP67_Persistence {
                 }
             }
             
-            internal DataColumn StepColumn {
+            internal DataColumn StepCountColumn {
                 get {
-                    return this.columnStep;
+                    return this.columnStepCount;
+                }
+            }
+            
+            internal DataColumn Label_IdColumn {
+                get {
+                    return this.columnLabel_Id;
                 }
             }
             
@@ -3799,11 +3850,12 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public LabelRow AddLabelRow(int Id, int Step, ProgramRow parentProgramRowByProgram_Label) {
+            public LabelRow AddLabelRow(int Id, int StepCount, ProgramRow parentProgramRowByProgram_Label) {
                 LabelRow rowLabelRow = ((LabelRow)(this.NewRow()));
                 rowLabelRow.ItemArray = new object[] {
                         Id,
-                        Step,
+                        StepCount,
+                        null,
                         parentProgramRowByProgram_Label[2]};
                 this.Rows.Add(rowLabelRow);
                 return rowLabelRow;
@@ -3825,17 +3877,25 @@ namespace HP67_Persistence {
             
             internal void InitVars() {
                 this.columnId = this.Columns["Id"];
-                this.columnStep = this.Columns["Step"];
+                this.columnStepCount = this.Columns["StepCount"];
+                this.columnLabel_Id = this.Columns["Label_Id"];
                 this.columnProgram_Id = this.Columns["Program_Id"];
             }
             
             private void InitClass() {
                 this.columnId = new DataColumn("Id", typeof(int), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnId);
-                this.columnStep = new DataColumn("Step", typeof(int), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnStep);
+                this.columnStepCount = new DataColumn("StepCount", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnStepCount);
+                this.columnLabel_Id = new DataColumn("Label_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnLabel_Id);
                 this.columnProgram_Id = new DataColumn("Program_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnProgram_Id);
+                this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
+                                this.columnLabel_Id}, true));
+                this.columnLabel_Id.AutoIncrement = true;
+                this.columnLabel_Id.AllowDBNull = false;
+                this.columnLabel_Id.Unique = true;
             }
             
             public LabelRow NewLabelRow() {
@@ -3907,17 +3967,17 @@ namespace HP67_Persistence {
                 }
             }
             
-            public int Step {
+            public int StepCount {
                 get {
                     try {
-                        return ((int)(this[this.tableLabel.StepColumn]));
+                        return ((int)(this[this.tableLabel.StepCountColumn]));
                     }
                     catch (InvalidCastException e) {
                         throw new StrongTypingException("Cannot get value because it is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableLabel.StepColumn] = value;
+                    this[this.tableLabel.StepCountColumn] = value;
                 }
             }
             
@@ -3938,12 +3998,16 @@ namespace HP67_Persistence {
                 this[this.tableLabel.IdColumn] = System.Convert.DBNull;
             }
             
-            public bool IsStepNull() {
-                return this.IsNull(this.tableLabel.StepColumn);
+            public bool IsStepCountNull() {
+                return this.IsNull(this.tableLabel.StepCountColumn);
             }
             
-            public void SetStepNull() {
-                this[this.tableLabel.StepColumn] = System.Convert.DBNull;
+            public void SetStepCountNull() {
+                this[this.tableLabel.StepCountColumn] = System.Convert.DBNull;
+            }
+            
+            public StepRow[] GetStepRows() {
+                return ((StepRow[])(this.GetChildRows(this.Table.ChildRelations["Label_Step"])));
             }
         }
         
@@ -3960,6 +4024,218 @@ namespace HP67_Persistence {
             }
             
             public LabelRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            public DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class StepDataTable : DataTable, System.Collections.IEnumerable {
+            
+            private DataColumn columnStep;
+            
+            private DataColumn columnLabel_Id;
+            
+            internal StepDataTable() : 
+                    base("Step") {
+                this.InitClass();
+            }
+            
+            internal StepDataTable(DataTable table) : 
+                    base(table.TableName) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+                this.DisplayExpression = table.DisplayExpression;
+            }
+            
+            [System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            internal DataColumn StepColumn {
+                get {
+                    return this.columnStep;
+                }
+            }
+            
+            internal DataColumn Label_IdColumn {
+                get {
+                    return this.columnLabel_Id;
+                }
+            }
+            
+            public StepRow this[int index] {
+                get {
+                    return ((StepRow)(this.Rows[index]));
+                }
+            }
+            
+            public event StepRowChangeEventHandler StepRowChanged;
+            
+            public event StepRowChangeEventHandler StepRowChanging;
+            
+            public event StepRowChangeEventHandler StepRowDeleted;
+            
+            public event StepRowChangeEventHandler StepRowDeleting;
+            
+            public void AddStepRow(StepRow row) {
+                this.Rows.Add(row);
+            }
+            
+            public StepRow AddStepRow(int Step, LabelRow parentLabelRowByLabel_Step) {
+                StepRow rowStepRow = ((StepRow)(this.NewRow()));
+                rowStepRow.ItemArray = new object[] {
+                        Step,
+                        parentLabelRowByLabel_Step[2]};
+                this.Rows.Add(rowStepRow);
+                return rowStepRow;
+            }
+            
+            public System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            public override DataTable Clone() {
+                StepDataTable cln = ((StepDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            protected override DataTable CreateInstance() {
+                return new StepDataTable();
+            }
+            
+            internal void InitVars() {
+                this.columnStep = this.Columns["Step"];
+                this.columnLabel_Id = this.Columns["Label_Id"];
+            }
+            
+            private void InitClass() {
+                this.columnStep = new DataColumn("Step", typeof(int), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnStep);
+                this.columnLabel_Id = new DataColumn("Label_Id", typeof(int), null, System.Data.MappingType.Hidden);
+                this.Columns.Add(this.columnLabel_Id);
+            }
+            
+            public StepRow NewStepRow() {
+                return ((StepRow)(this.NewRow()));
+            }
+            
+            protected override DataRow NewRowFromBuilder(DataRowBuilder builder) {
+                return new StepRow(builder);
+            }
+            
+            protected override System.Type GetRowType() {
+                return typeof(StepRow);
+            }
+            
+            protected override void OnRowChanged(DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.StepRowChanged != null)) {
+                    this.StepRowChanged(this, new StepRowChangeEvent(((StepRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowChanging(DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.StepRowChanging != null)) {
+                    this.StepRowChanging(this, new StepRowChangeEvent(((StepRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleted(DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.StepRowDeleted != null)) {
+                    this.StepRowDeleted(this, new StepRowChangeEvent(((StepRow)(e.Row)), e.Action));
+                }
+            }
+            
+            protected override void OnRowDeleting(DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.StepRowDeleting != null)) {
+                    this.StepRowDeleting(this, new StepRowChangeEvent(((StepRow)(e.Row)), e.Action));
+                }
+            }
+            
+            public void RemoveStepRow(StepRow row) {
+                this.Rows.Remove(row);
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class StepRow : DataRow {
+            
+            private StepDataTable tableStep;
+            
+            internal StepRow(DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableStep = ((StepDataTable)(this.Table));
+            }
+            
+            public int Step {
+                get {
+                    try {
+                        return ((int)(this[this.tableStep.StepColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStep.StepColumn] = value;
+                }
+            }
+            
+            public LabelRow LabelRow {
+                get {
+                    return ((LabelRow)(this.GetParentRow(this.Table.ParentRelations["Label_Step"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Label_Step"]);
+                }
+            }
+            
+            public bool IsStepNull() {
+                return this.IsNull(this.tableStep.StepColumn);
+            }
+            
+            public void SetStepNull() {
+                this[this.tableStep.StepColumn] = System.Convert.DBNull;
+            }
+        }
+        
+        [System.Diagnostics.DebuggerStepThrough()]
+        public class StepRowChangeEvent : EventArgs {
+            
+            private StepRow eventRow;
+            
+            private DataRowAction eventAction;
+            
+            public StepRowChangeEvent(StepRow row, DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            public StepRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -531,18 +531,21 @@ namespace HP67_Control_Library
 		{
 			set
 			{
-				mode = value;
-				switch (mode)
+				if (mode != value) 
 				{
-					case DisplayMode.Alphabetic :
-						alphabeticTextBox.BringToFront ();
-						break;
-					case DisplayMode.Instruction :
-						instructionTextBox.BringToFront ();
-						break;
-					case DisplayMode.Numeric :
-						numericTextBox.BringToFront ();
-						break;
+					mode = value;
+					switch (mode)
+					{
+						case DisplayMode.Alphabetic :
+							alphabeticTextBox.BringToFront ();
+							break;
+						case DisplayMode.Instruction :
+							instructionTextBox.BringToFront ();
+							break;
+						case DisplayMode.Numeric :
+							numericTextBox.BringToFront ();
+							break;
+					}
 				}
 			}
 		}
@@ -817,6 +820,7 @@ namespace HP67_Control_Library
 
 		public void PauseAndAcceptKeystrokes (int ms)
 		{
+			Mode = DisplayMode.Numeric;
 			Update ();
 			while (keyWasTyped.WaitOne (ms, false)) 
 			{
@@ -841,6 +845,7 @@ namespace HP67_Control_Library
 				textWithPeriod.Replace (period, new String(' ', period.Length));
 			string [] texts = new String [] {textWithoutPeriod, textWithPeriod};
 
+			Mode = DisplayMode.Numeric;
 			try 
 			{
 				for (int i = 0; i < 8; i++) 
@@ -882,6 +887,7 @@ namespace HP67_Control_Library
 		{
 			string s = new string (' ', 0);
 
+			Mode = DisplayMode.Alphabetic;
 			for (int i = 0; i < mantissaSignLength; i++) 
 			{
 				s += random.Next (2) == 1 ? '-' : ' '; 
@@ -901,11 +907,15 @@ namespace HP67_Control_Library
 			alphabeticTextBox.Text = s;
 		}
 
-		public void ShowInstruction (string instruction, int step)
+		public void ShowInstruction (string instruction, int step, bool setMode)
 		{
 			string stepImage = step.ToString
 				(stepTemplate, NumberFormatInfo.InvariantInfo);
 			
+			if (setMode) 
+			{
+				Mode = DisplayMode.Instruction;
+			}
 			instructionTextBox.Text = 
 				new string (' ', mantissaSignLength) +
 				stepImage + instruction.PadLeft (instructionLength);
@@ -916,6 +926,7 @@ namespace HP67_Control_Library
 			string addressImage = address.ToString ();
 			double savedValue = Value;
 
+			Mode = DisplayMode.Numeric;
 			try 
 			{
 				numericTextBox.Text =
@@ -938,6 +949,8 @@ namespace HP67_Control_Library
 		{
 			string s = new string (' ', mantissaSignLength) +
 						text.PadRight (textLength - mantissaSignLength);
+
+			Mode = DisplayMode.Alphabetic;
 			alphabeticTextBox.Text = s;
 			Update ();
 			Thread.Sleep (msOn);

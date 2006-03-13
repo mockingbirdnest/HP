@@ -1213,7 +1213,6 @@ namespace HP67
 				catch (Error)
 				{
 					display.Value = display.Value; // Refresh the numeric display.
-					display.Mode = DisplayMode.Alphabetic;
 					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
 					mustEnableUI = false;
 					ignoreNext = true;
@@ -1419,7 +1418,11 @@ namespace HP67
 					lock (executionThreadIsBusy) 
 					{
 						// We hold the lock, so looking at the program is fine.
-						if (Card.Read (stream, upParser) && ! theProgram.IsEmpty) 
+						if (! Card.Read (stream, upParser)) 
+						{
+							fileName = null;
+						}
+						else if (! theProgram.IsEmpty) 
 						{
 							cardSlot.State = CardSlotState.ReadWrite;
 						}

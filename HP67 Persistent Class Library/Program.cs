@@ -6,6 +6,7 @@ using HP67_Parser;
 using HP67_Persistence;
 
 using System;
+using System.Collections;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -44,14 +45,12 @@ namespace HP67_Class_Library
 		private static Instruction r_s;
 
 		private Instruction [] instructions;
-
-		// TODO: This is not correct because there can be more than one label with a given name.
-		private int [] labels; 
+		private ArrayList [] labels; 
+		private int [] returns;
 
 		private bool isEmpty;
 		private int lastPrinted;
 		private int next;
-		private int [] returns;
 		private Display theDisplay;
 
 		#region Constructors & Destructors
@@ -67,10 +66,10 @@ namespace HP67_Class_Library
 			instructions = new Instruction [224];
 			Clear ();
 
-			labels = new int [(int) LetterLabel.e - 0 + 1];
+			labels = new ArrayList [(int) LetterLabel.e - 0 + 1];
 			for (int i = 0; i < labels.Length; i++) 
 			{
-				labels [i] = noStep;
+				labels [i] = new ArrayList ();
 			}
 			returns = new int [3] {noStep, noStep, noStep};
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
@@ -91,6 +90,7 @@ namespace HP67_Class_Library
 			CardDataset.LabelRow [] lrs;
 			CardDataset.ProgramRow pr;
 			CardDataset.ProgramRow [] prs;
+			CardDataset.StepRow [] srs;
 
 			cr = cds.Card [0];
 			prs = cr.GetProgramRows ();
@@ -113,11 +113,19 @@ namespace HP67_Class_Library
 					instructions [ir.Step - 1] =
 						new Instruction (ir.Text, parser.ToSymbol (ir.Instruction), arguments);				
 				}
-				labels = new int [pr.LabelCount];
+				labels = new ArrayList [pr.LabelCount];
 				lrs = pr.GetLabelRows ();
 				foreach (CardDataset.LabelRow lr in lrs) 
 				{
-					labels [lr.Id] = lr.Step - 1;
+					labels [lr.Id] = new ArrayList ();
+					srs = lr.GetStepRows ();
+					foreach (CardDataset.StepRow sr in srs) 
+					{
+						labels [lr.Id].Add (sr.Step - 1);
+					}
+
+					// Should already be sorted, but just to be safe...
+					labels [lr.Id].Sort ();
 				}
 				isEmpty = false;
 			}
@@ -134,6 +142,7 @@ namespace HP67_Class_Library
 				CardDataset.InstructionRow ir;
 				CardDataset.LabelRow lr;
 				CardDataset.ProgramRow pr;
+				CardDataset.StepRow sr;
 
 				pr = cds.Program.NewProgramRow ();
 				pr.InstructionCount = instructions.Length;
@@ -164,9 +173,16 @@ namespace HP67_Class_Library
 				{
 					lr = cds.Label.NewLabelRow ();
 					lr.Id = i;
-					lr.Step = labels [i] + 1;
+					lr.StepCount = labels [i].Count;
 					lr.ProgramRow = pr;
 					cds.Label.AddLabelRow (lr);
+					for (int j = 0; j < labels [i].Count; j++) 
+					{
+						sr = cds.Step.NewStepRow ();
+						sr.Step = (int) labels [i] [j] + 1;
+						sr.LabelRow = lr;
+						cds.Step.AddStepRow (sr);
+					}
 				}
 			}
 		}
@@ -179,20 +195,33 @@ namespace HP67_Class_Library
 		{
 			get 
 			{
-				int step = labels [label];
+				ArrayList a = labels [label];
+				int pos = a.BinarySearch (next);
 
-				if (step == noStep) 
+				if (pos >= 0) 
 				{
-					throw new Error ();
+					return (int) a [pos]; // next found in the array.
 				}
-				else 
+				else if (~pos < a.Count) 
 				{
-					return step;
+					return (int) a [~pos]; // next not found in the array, return the next higher.
+				}
+				else if (a.Count == 0)
+				{
+					throw new Error (); // empty array.
+				}
+				else
+				{
+					return (int) a [0]; // wrap around.
 				}
 			}
 			set
 			{
-				labels [label] = value;
+				ArrayList a = labels [label];
+
+				Trace.Assert (! a.Contains (value));
+				a.Add (value);
+				a.Sort ();
 			}
 		}
 
@@ -200,27 +229,40 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				int step = labels [(int) label];
+				ArrayList a = labels [(int) label];
+				int pos = a.BinarySearch (next);
 
-				if (step == noStep) 
+				if (pos >= 0) 
 				{
-					throw new Error ();
+					return (int) a [pos]; // next found in the array.
 				}
-				else 
+				else if (~pos < a.Count) 
 				{
-					return step;
+					return (int) a [~pos]; // next not found in the array, return the next higher.
+				}
+				else if (a.Count == 0)
+				{
+					throw new Error (); // empty array.
+				}
+				else
+				{
+					return (int) a [0]; // wrap around.
 				}
 			}
 			set
 			{
-				labels [(int) label] = value;
+				ArrayList a = labels [(int) label];
+
+				Trace.Assert (! a.Contains (value));
+				a.Add (value);
+				a.Sort ();
 			}
 		}
 
 		private void GotoBegin ()
 		{
 			next = noStep;
-			theDisplay.ShowInstruction ("", 0);
+			theDisplay.ShowInstruction ("", 0, false);
 		}
 
 		private void GotoZeroBasedStep (int step) 
@@ -240,7 +282,7 @@ namespace HP67_Class_Library
 			{
 				next = step;
 			}
-			theDisplay.ShowInstruction (instructions [next].Text, next + 1);
+			theDisplay.ShowInstruction (instructions [next].Text, next + 1, false);
 		}
 
 		private void SaveReturnAddress ()
@@ -256,13 +298,15 @@ namespace HP67_Class_Library
 		{
 			for (int i = 0; i < labels.Length; i++) 
 			{
-				if (labels [i] > step) 
+				ArrayList a = labels [i];
+
+				a.Remove (step);
+				for (int j = 0; j < a.Count; j++) 
 				{
-					labels [i]--;
-				}
-				else if (labels [i] == step)
-				{
-					labels [i] = noStep;
+					if ((int) a [j] > step) 
+					{
+						a [j] = (int) a [j] - 1;
+					}
 				}
 			}
 		}
@@ -271,9 +315,14 @@ namespace HP67_Class_Library
 		{
 			for (int i = 0; i < labels.Length; i++) 
 			{
-				if (labels [i] > step) 
+				ArrayList a = labels [i];
+
+				for (int j = 0; j < a.Count; j++) 
 				{
-					labels [i]++;
+					if ((int) a [j] > step) 
+					{
+						a [j] = (int) a [j] + 1;
+					}
 				}
 			}
 		}

@@ -201,13 +201,6 @@ namespace HP67
 						theProgram.Reset ();
 					}
 
-					// The display mode will be reset at the end of the execution of the program,
-					// so we can freely change it here.
-					if (enableBlur) 
-					{
-						theDisplay.Mode = DisplayMode.Alphabetic;
-					}
-
 					running = true;
 					for (;;) 
 					{
@@ -215,6 +208,9 @@ namespace HP67
 						Execute (instruction);
 						if (enableBlur) 
 						{
+
+							// The display mode will be reset at the end of the execution of the
+							// program, so we can freely change it here.
 							theDisplay.ShowBlur ();
 						}
 					}
