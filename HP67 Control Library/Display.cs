@@ -51,6 +51,8 @@ namespace HP67_Control_Library
 		private const double overflowLimit = 9.999999999E99;
 		private const string period = ".";
 		private const string positiveOverflow = " 9.999999999 99";
+		private const string randomChars = "0123456789ACFHNU";
+		private const string randomSign = " -";
 		private const int stepFirst = 0;
 		private const int stepLength = 3;
 		private const string stepTemplate = "000";
@@ -889,26 +891,36 @@ namespace HP67_Control_Library
 
 		public void ShowBlur () 
 		{
-			string s = new string (' ', 0);
+			byte [] b = new byte [mantissaSignLength + mantissaLength +
+									exponentSignLength + exponentLength];
+			char [] c = new char [mantissaSignLength + mantissaLength +
+									exponentSignLength + exponentLength];
+			int i;
 
 			Mode = DisplayMode.Alphabetic;
-			for (int i = 0; i < mantissaSignLength; i++) 
+			random.NextBytes (b);
+			i = 0;
+			while (i < mantissaSignLength) 
 			{
-				s += random.Next (2) == 1 ? '-' : ' '; 
+				c [i] = randomSign [b [i] % 2];
+				i++;
 			}
-			for (int i = 0; i < mantissaLength; i++) 
+			while (i < mantissaSignLength + mantissaLength) 
 			{
-				s += random.Next (10).ToString ();
+				c [i] = randomChars [b [i] % 16];
+				i++;
 			}
-			for (int i = 0; i < exponentSignLength; i++) 
+			while (i < mantissaSignLength + mantissaLength + exponentSignLength) 
 			{
-				s += random.Next (2) == 1 ? '-' : ' ';
+				c [i] = randomSign [b [i] % 2];
+				i++;
 			}
-			for (int i = 0; i < exponentLength; i++) 
+			while (i < mantissaSignLength + mantissaLength + exponentSignLength + exponentLength) 
 			{
-				s += random.Next (10).ToString ();
+				c [i] = randomChars [b [i] % 16];
+				i++;
 			}
-			alphabeticTextBox.Text = s;
+			alphabeticTextBox.Text = new string (c);
 		}
 
 		public void ShowInstruction (string instruction, int step, bool setMode)
