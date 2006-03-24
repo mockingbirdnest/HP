@@ -206,7 +206,7 @@ namespace HP67_Class_Library
 
 		public void Goto (Memory m, Program p)
 		{
-			int label = (int) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+			int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
 
 			if (label <= -1000 || label >= 20) 
 			{
@@ -214,7 +214,9 @@ namespace HP67_Class_Library
 			}
 			else if (label < 0)
 			{
-				// TODO: Rapid reverse branching.
+				// The - 1 is because the program counter has already moved to the next
+				// instruction.
+				p.GotoRelative (label - 1);
 			}
 			else
 			{
@@ -224,7 +226,7 @@ namespace HP67_Class_Library
 
 		public void Gosub (Memory m, Program p)
 		{
-			int label = (int) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+			int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
 
 			if (label <= -1000 || label >= 20) 
 			{
@@ -232,7 +234,9 @@ namespace HP67_Class_Library
 			}
 			else if (label < 0)
 			{
-				// TODO: Rapid reverse branching.
+				// The - 1 is because the program counter has already moved to the next
+				// instruction.
+				p.GosubRelative (label - 1);
 			}
 			else
 			{

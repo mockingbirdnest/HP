@@ -1156,6 +1156,17 @@ namespace HP67
 			upActions = new Actions (theEngine, KeystrokeMotion.Up);
 			upParser = new Parser ("HP67_Parser.Parser", "CGT", upActions);
 
+			// For some reason the first exception that is raised on this thread takes a long time
+			// to propagate.  It is better to raise it here, while the thread initializes, than
+			// later, when it could cause a delay visible to the user.
+			try 
+			{
+				throw new Stop ();
+			}
+			catch 
+			{
+			}
+
 			// Notify the main thread that we are ready to process keystrokes.
 			executionIsInitialized.Set ();
 
@@ -1349,8 +1360,6 @@ namespace HP67
 
 		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-
-			// TODO: What if we are busy writing a file?
 			executionThread.Abort ();
 		}
 

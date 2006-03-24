@@ -276,7 +276,12 @@ namespace HP67_Class_Library
 			// implements the wrap-around whereby step 224 is followed by step 1.
 			if (step <= noStep) 
 			{
-				next = instructions.Length - 1;
+				next = step;
+				do 
+				{
+					next += instructions.Length;
+				}
+				while (next <= noStep);
 			}
 			else if (step >= instructions.Length) 
 			{
@@ -364,6 +369,12 @@ namespace HP67_Class_Library
 			Goto (label);
 		}
 
+		public void GosubRelative (int displacement)
+		{
+			SaveReturnAddress ();
+			GotoRelative (displacement);
+		}
+
 		public void Goto (byte label)
 		{
 			GotoZeroBasedStep (this [label]);
@@ -372,6 +383,11 @@ namespace HP67_Class_Library
 		public void Goto (LetterLabel label)
 		{
 			GotoZeroBasedStep (this [label]);
+		}
+
+		public void GotoRelative (int displacement)
+		{
+			GotoZeroBasedStep (next + displacement);
 		}
 
 		public void PreviewInstruction ()
@@ -455,11 +471,6 @@ namespace HP67_Class_Library
 					GotoZeroBasedStep (next - 1);
 				}
 			}
-		}
-
-		public void GotoRelative (int displacement)
-		{
-			GotoZeroBasedStep (next + displacement);
 		}
 
 		public void GotoStep (int step)
