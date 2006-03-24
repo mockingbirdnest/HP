@@ -248,6 +248,8 @@ namespace HP67
 			this.keyA.MainText = "A";
 			this.keyA.MainWidth = 48;
 			this.keyA.Name = "keyA";
+			this.keyA.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.A};
 			this.keyA.Size = new System.Drawing.Size(48, 51);
 			this.keyA.TabIndex = 1;
 			this.keyA.Tag = "11";
@@ -269,6 +271,8 @@ namespace HP67
 			this.keyf.MainText = "f";
 			this.keyf.MainWidth = 48;
 			this.keyf.Name = "keyf";
+			this.keyf.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.F};
 			this.keyf.Size = new System.Drawing.Size(48, 51);
 			this.keyf.TabIndex = 11;
 			this.keyf.Tag = "31";
@@ -290,6 +294,7 @@ namespace HP67
 			this.keySST.MainText = "SST";
 			this.keySST.MainWidth = 48;
 			this.keySST.Name = "keySST";
+			this.keySST.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keySST.Size = new System.Drawing.Size(48, 51);
 			this.keySST.TabIndex = 10;
 			this.keySST.Tag = "25";
@@ -311,6 +316,7 @@ namespace HP67
 			this.keyi.MainText = "(i)";
 			this.keyi.MainWidth = 48;
 			this.keyi.Name = "keyi";
+			this.keyi.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyi.Size = new System.Drawing.Size(48, 51);
 			this.keyi.TabIndex = 9;
 			this.keyi.Tag = "24";
@@ -332,6 +338,7 @@ namespace HP67
 			this.keyDSP.MainText = "DSP";
 			this.keyDSP.MainWidth = 48;
 			this.keyDSP.Name = "keyDSP";
+			this.keyDSP.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyDSP.Size = new System.Drawing.Size(48, 51);
 			this.keyDSP.TabIndex = 8;
 			this.keyDSP.Tag = "23";
@@ -353,6 +360,7 @@ namespace HP67
 			this.keyGTO.MainText = "GTO";
 			this.keyGTO.MainWidth = 48;
 			this.keyGTO.Name = "keyGTO";
+			this.keyGTO.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyGTO.Size = new System.Drawing.Size(48, 51);
 			this.keyGTO.TabIndex = 7;
 			this.keyGTO.Tag = "22";
@@ -374,6 +382,7 @@ namespace HP67
 			this.keyΣ.MainText = "Σ+";
 			this.keyΣ.MainWidth = 48;
 			this.keyΣ.Name = "keyΣ";
+			this.keyΣ.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyΣ.Size = new System.Drawing.Size(48, 51);
 			this.keyΣ.TabIndex = 6;
 			this.keyΣ.Tag = "21";
@@ -395,6 +404,8 @@ namespace HP67
 			this.keyE.MainText = "E";
 			this.keyE.MainWidth = 48;
 			this.keyE.Name = "keyE";
+			this.keyE.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.E};
 			this.keyE.Size = new System.Drawing.Size(48, 51);
 			this.keyE.TabIndex = 5;
 			this.keyE.Tag = "15";
@@ -416,6 +427,8 @@ namespace HP67
 			this.keyD.MainText = "D";
 			this.keyD.MainWidth = 48;
 			this.keyD.Name = "keyD";
+			this.keyD.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D};
 			this.keyD.Size = new System.Drawing.Size(48, 51);
 			this.keyD.TabIndex = 4;
 			this.keyD.Tag = "14";
@@ -437,6 +450,8 @@ namespace HP67
 			this.keyC.MainText = "C";
 			this.keyC.MainWidth = 48;
 			this.keyC.Name = "keyC";
+			this.keyC.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.C};
 			this.keyC.Size = new System.Drawing.Size(48, 51);
 			this.keyC.TabIndex = 3;
 			this.keyC.Tag = "13";
@@ -458,6 +473,8 @@ namespace HP67
 			this.keyB.MainText = "B";
 			this.keyB.MainWidth = 48;
 			this.keyB.Name = "keyB";
+			this.keyB.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.B};
 			this.keyB.Size = new System.Drawing.Size(48, 51);
 			this.keyB.TabIndex = 2;
 			this.keyB.Tag = "12";
@@ -479,6 +496,8 @@ namespace HP67
 			this.keyENTER.MainText = "ENTER ↑";
 			this.keyENTER.MainWidth = 104;
 			this.keyENTER.Name = "keyENTER";
+			this.keyENTER.Shortcuts = new System.Windows.Forms.Keys[] {
+																		  System.Windows.Forms.Keys.Enter};
 			this.keyENTER.Size = new System.Drawing.Size(120, 51);
 			this.keyENTER.TabIndex = 16;
 			this.keyENTER.Tag = "41";
@@ -500,6 +519,7 @@ namespace HP67
 			this.keyEEX.MainText = "EEX";
 			this.keyEEX.MainWidth = 48;
 			this.keyEEX.Name = "keyEEX";
+			this.keyEEX.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyEEX.Size = new System.Drawing.Size(48, 51);
 			this.keyEEX.TabIndex = 18;
 			this.keyEEX.Tag = "43";
@@ -521,6 +541,7 @@ namespace HP67
 			this.keyCLx.MainText = "CLx";
 			this.keyCLx.MainWidth = 48;
 			this.keyCLx.Name = "keyCLx";
+			this.keyCLx.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyCLx.Size = new System.Drawing.Size(64, 51);
 			this.keyCLx.TabIndex = 19;
 			this.keyCLx.Tag = "44";
@@ -542,6 +563,7 @@ namespace HP67
 			this.keyCHS.MainText = "CHS";
 			this.keyCHS.MainWidth = 48;
 			this.keyCHS.Name = "keyCHS";
+			this.keyCHS.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyCHS.Size = new System.Drawing.Size(48, 51);
 			this.keyCHS.TabIndex = 17;
 			this.keyCHS.Tag = "42";
@@ -563,6 +585,8 @@ namespace HP67
 			this.keyh.MainText = "h";
 			this.keyh.MainWidth = 48;
 			this.keyh.Name = "keyh";
+			this.keyh.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.H};
 			this.keyh.Size = new System.Drawing.Size(48, 51);
 			this.keyh.TabIndex = 15;
 			this.keyh.Tag = "35";
@@ -584,6 +608,7 @@ namespace HP67
 			this.keyRCL.MainText = "RCL";
 			this.keyRCL.MainWidth = 48;
 			this.keyRCL.Name = "keyRCL";
+			this.keyRCL.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyRCL.Size = new System.Drawing.Size(48, 51);
 			this.keyRCL.TabIndex = 14;
 			this.keyRCL.Tag = "34";
@@ -605,6 +630,7 @@ namespace HP67
 			this.keySTO.MainText = "STO";
 			this.keySTO.MainWidth = 48;
 			this.keySTO.Name = "keySTO";
+			this.keySTO.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keySTO.Size = new System.Drawing.Size(48, 51);
 			this.keySTO.TabIndex = 13;
 			this.keySTO.Tag = "33";
@@ -626,6 +652,8 @@ namespace HP67
 			this.keyg.MainText = "g";
 			this.keyg.MainWidth = 48;
 			this.keyg.Name = "keyg";
+			this.keyg.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.G};
 			this.keyg.Size = new System.Drawing.Size(48, 51);
 			this.keyg.TabIndex = 12;
 			this.keyg.Tag = "32";
@@ -647,6 +675,9 @@ namespace HP67
 			this.key8.MainText = "8";
 			this.key8.MainWidth = 56;
 			this.key8.Name = "key8";
+			this.key8.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D8,
+																	  System.Windows.Forms.Keys.NumPad8};
 			this.key8.Size = new System.Drawing.Size(56, 51);
 			this.key8.TabIndex = 22;
 			this.key8.Tag = "53";
@@ -668,6 +699,7 @@ namespace HP67
 			this.keyRS.MainText = "R/S";
 			this.keyRS.MainWidth = 56;
 			this.keyRS.Name = "keyRS";
+			this.keyRS.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyRS.Size = new System.Drawing.Size(56, 51);
 			this.keyRS.TabIndex = 35;
 			this.keyRS.Tag = "84";
@@ -689,6 +721,8 @@ namespace HP67
 			this.keyPeriod.MainText = " ・";
 			this.keyPeriod.MainWidth = 56;
 			this.keyPeriod.Name = "keyPeriod";
+			this.keyPeriod.Shortcuts = new System.Windows.Forms.Keys[] {
+																		   System.Windows.Forms.Keys.Decimal};
 			this.keyPeriod.Size = new System.Drawing.Size(72, 51);
 			this.keyPeriod.TabIndex = 34;
 			this.keyPeriod.Tag = "83";
@@ -710,6 +744,9 @@ namespace HP67
 			this.key0.MainText = "0";
 			this.key0.MainWidth = 56;
 			this.key0.Name = "key0";
+			this.key0.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D0,
+																	  System.Windows.Forms.Keys.NumPad0};
 			this.key0.Size = new System.Drawing.Size(56, 51);
 			this.key0.TabIndex = 33;
 			this.key0.Tag = "82";
@@ -731,6 +768,9 @@ namespace HP67
 			this.key9.MainText = "9";
 			this.key9.MainWidth = 56;
 			this.key9.Name = "key9";
+			this.key9.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D9,
+																	  System.Windows.Forms.Keys.NumPad9};
 			this.key9.Size = new System.Drawing.Size(56, 51);
 			this.key9.TabIndex = 23;
 			this.key9.Tag = "54";
@@ -752,6 +792,9 @@ namespace HP67
 			this.key3.MainText = "3";
 			this.key3.MainWidth = 56;
 			this.key3.Name = "key3";
+			this.key3.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D3,
+																	  System.Windows.Forms.Keys.NumPad3};
 			this.key3.Size = new System.Drawing.Size(56, 51);
 			this.key3.TabIndex = 31;
 			this.key3.Tag = "74";
@@ -773,6 +816,9 @@ namespace HP67
 			this.key2.MainText = "2";
 			this.key2.MainWidth = 56;
 			this.key2.Name = "key2";
+			this.key2.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D2,
+																	  System.Windows.Forms.Keys.NumPad2};
 			this.key2.Size = new System.Drawing.Size(56, 51);
 			this.key2.TabIndex = 30;
 			this.key2.Tag = "73";
@@ -794,6 +840,9 @@ namespace HP67
 			this.key1.MainText = "1";
 			this.key1.MainWidth = 56;
 			this.key1.Name = "key1";
+			this.key1.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D1,
+																	  System.Windows.Forms.Keys.NumPad1};
 			this.key1.Size = new System.Drawing.Size(56, 51);
 			this.key1.TabIndex = 29;
 			this.key1.Tag = "72";
@@ -815,6 +864,9 @@ namespace HP67
 			this.key6.MainText = "6";
 			this.key6.MainWidth = 56;
 			this.key6.Name = "key6";
+			this.key6.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D6,
+																	  System.Windows.Forms.Keys.NumPad6};
 			this.key6.Size = new System.Drawing.Size(56, 51);
 			this.key6.TabIndex = 27;
 			this.key6.Tag = "64";
@@ -836,6 +888,9 @@ namespace HP67
 			this.key5.MainText = "5";
 			this.key5.MainWidth = 56;
 			this.key5.Name = "key5";
+			this.key5.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D5,
+																	  System.Windows.Forms.Keys.NumPad5};
 			this.key5.Size = new System.Drawing.Size(56, 51);
 			this.key5.TabIndex = 26;
 			this.key5.Tag = "63";
@@ -857,6 +912,9 @@ namespace HP67
 			this.key4.MainText = "4";
 			this.key4.MainWidth = 56;
 			this.key4.Name = "key4";
+			this.key4.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D4,
+																	  System.Windows.Forms.Keys.NumPad4};
 			this.key4.Size = new System.Drawing.Size(56, 51);
 			this.key4.TabIndex = 25;
 			this.key4.Tag = "62";
@@ -878,6 +936,9 @@ namespace HP67
 			this.key7.MainText = "7";
 			this.key7.MainWidth = 56;
 			this.key7.Name = "key7";
+			this.key7.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D7,
+																	  System.Windows.Forms.Keys.NumPad7};
 			this.key7.Size = new System.Drawing.Size(56, 51);
 			this.key7.TabIndex = 21;
 			this.key7.Tag = "52";
@@ -899,6 +960,8 @@ namespace HP67
 			this.keyMinus.MainText = "–";
 			this.keyMinus.MainWidth = 32;
 			this.keyMinus.Name = "keyMinus";
+			this.keyMinus.Shortcuts = new System.Windows.Forms.Keys[] {
+																		  System.Windows.Forms.Keys.Subtract};
 			this.keyMinus.Size = new System.Drawing.Size(48, 51);
 			this.keyMinus.TabIndex = 20;
 			this.keyMinus.Tag = "51";
@@ -920,6 +983,8 @@ namespace HP67
 			this.keyDiv.MainText = "÷";
 			this.keyDiv.MainWidth = 32;
 			this.keyDiv.Name = "keyDiv";
+			this.keyDiv.Shortcuts = new System.Windows.Forms.Keys[] {
+																		System.Windows.Forms.Keys.Divide};
 			this.keyDiv.Size = new System.Drawing.Size(48, 51);
 			this.keyDiv.TabIndex = 32;
 			this.keyDiv.Tag = "81";
@@ -941,6 +1006,8 @@ namespace HP67
 			this.keyMult.MainText = "×";
 			this.keyMult.MainWidth = 32;
 			this.keyMult.Name = "keyMult";
+			this.keyMult.Shortcuts = new System.Windows.Forms.Keys[] {
+																		 System.Windows.Forms.Keys.Multiply};
 			this.keyMult.Size = new System.Drawing.Size(48, 51);
 			this.keyMult.TabIndex = 28;
 			this.keyMult.Tag = "71";
@@ -962,6 +1029,8 @@ namespace HP67
 			this.keyPlus.MainText = "+";
 			this.keyPlus.MainWidth = 32;
 			this.keyPlus.Name = "keyPlus";
+			this.keyPlus.Shortcuts = new System.Windows.Forms.Keys[] {
+																		 System.Windows.Forms.Keys.Add};
 			this.keyPlus.Size = new System.Drawing.Size(48, 51);
 			this.keyPlus.TabIndex = 24;
 			this.keyPlus.Tag = "61";
@@ -1077,9 +1146,12 @@ namespace HP67
 			this.Controls.Add(this.toggleOffOn);
 			this.Controls.Add(this.cardSlot);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.KeyPreview = true;
 			this.Name = "HP67";
 			this.Text = "HP67";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HP67_KeyDown);
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.HP67_Closing);
+			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HP67_KeyUp);
 			this.ResumeLayout(false);
 
 		}
@@ -1361,6 +1433,42 @@ namespace HP67
 		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			executionThread.Abort ();
+		}
+
+		private void HP67_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			foreach (Control c in this.Controls) 
+			{
+				if (c.GetType () == typeof (Key)) 
+				{
+					foreach (Keys k in ((Key) c).Shortcuts) 
+					{
+						if (k == e.KeyCode) 
+						{
+							LeftMouseDown
+								((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
+						}
+					}
+				}
+			}
+		}
+
+		private void HP67_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+			foreach (Control c in this.Controls) 
+			{
+				if (c.GetType () == typeof (Key)) 
+				{
+					foreach (Keys k in ((Key) c).Shortcuts) 
+					{
+						if (k == e.KeyCode) 
+						{
+							LeftMouseUp
+								((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
+						}
+					}
+				}
+			}		
 		}
 
 		private void LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)

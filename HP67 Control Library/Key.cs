@@ -29,6 +29,7 @@ namespace HP67_Control_Library
 		private TextAlign fgTextAlign;
 		private int fgWidth;
 		private System.Drawing.Font font;
+		private Keys [] shortcuts;
 		private System.Drawing.Color mainBackColor;
 		private int mainWidth;
 
@@ -61,6 +62,7 @@ namespace HP67_Control_Library
 
 			fgTextAlign = TextAlign.Justified;
 			fgWidth = button.Size.Width;
+			shortcuts = new Keys [0];
 			mainWidth = button.Width;
 
 			FText = "f";
@@ -588,6 +590,18 @@ namespace HP67_Control_Library
 			}
 		}
 		
+		public Keys [] Shortcuts 
+		{
+			get 
+			{
+				return shortcuts;
+			}
+			set 
+			{
+				shortcuts = value;
+			}
+		}
+
 		#endregion
 
 	}
