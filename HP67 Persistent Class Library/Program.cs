@@ -80,7 +80,7 @@ namespace HP67_Class_Library
 
 		#region Event Handlers
 
-		public  void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Parser parser)
 		{
 			// Beware, the XML file uses 1-based step numbers, but we must go back to 0-based
 			// numbers internally.
@@ -144,6 +144,10 @@ namespace HP67_Class_Library
 				CardDataset.ProgramRow pr;
 				CardDataset.StepRow sr;
 
+				for (int i = 0; i < cds.Program.Count; i++)
+				{
+					cds.Program.RemoveProgramRow (cds.Program [i]);
+				}
 				pr = cds.Program.NewProgramRow ();
 				pr.InstructionCount = instructions.Length;
 				pr.LabelCount = labels.Length;

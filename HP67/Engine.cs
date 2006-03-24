@@ -121,6 +121,10 @@ namespace HP67
 				CardDataset.EngineRow er;
 				CardDataset.FlagRow fr;
 
+				for (int i = 0; i < cds.Engine.Count; i++)
+				{
+					cds.Engine.RemoveEngineRow (cds.Engine [i]);
+				}
 				er = cds.Engine.NewEngineRow ();
 				er.AngleUnit = unit.ToString ();
 				er.FlagCount = flags.Length;

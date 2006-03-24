@@ -277,6 +277,10 @@ namespace HP67_Control_Library
 			{
 				CardDataset.DisplayRow dr;
 
+				for (int i = 0; i < cds.Display.Count; i++)
+				{
+					cds.Display.RemoveDisplayRow (cds.Display [i]);
+				}
 				dr = cds.Display.NewDisplayRow ();
 				dr.Digits = digits;
 				dr.Format = format.ToString ();

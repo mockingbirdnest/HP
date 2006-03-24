@@ -613,6 +613,10 @@ namespace HP67_Control_Library
 				CardDataset.RTFBoxRow rbr;
 				CardDataset.TextBoxRow tbr;
 
+				for (int i = 0; i < cds.CardSlot.Count; i++)
+				{
+					cds.CardSlot.RemoveCardSlotRow (cds.CardSlot [i]);
+				}
 				csr = cds.CardSlot.NewCardSlotRow ();
 				csr.FontName = font.Name;
 				csr.FontSize = font.SizeInPoints;
