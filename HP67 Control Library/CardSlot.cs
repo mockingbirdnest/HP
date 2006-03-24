@@ -610,6 +610,7 @@ namespace HP67_Control_Library
 			if (part == CardPart.Program) 
 			{
 				CardDataset.CardSlotRow csr;
+				CardDataset.RTFBoxRow rbr;
 				CardDataset.TextBoxRow tbr;
 
 				csr = cds.CardSlot.NewCardSlotRow ();
@@ -627,33 +628,41 @@ namespace HP67_Control_Library
 				cds.CardSlot.AddCardSlotRow (csr);
 				for (int i = 0; i < textBoxes.Length; i++) 
 				{
-					tbr = cds.TextBox.NewTextBoxRow ();
-					tbr.Id = i;
 					if (richText) 
 					{
-						tbr.Text = ((RichTextBox) textBoxes [i]).Rtf;
+						rbr = cds.RTFBox.NewRTFBoxRow ();
+						rbr.RTF = ((RichTextBox) textBoxes [i]).Rtf;
+						rbr.Id = i;
+						rbr.CardSlotRow = csr;
+						cds.RTFBox.AddRTFBoxRow (rbr);
 					}
 					else
 					{
+						tbr = cds.TextBox.NewTextBoxRow ();
 						tbr.Text = textBoxes [i].Text;
+						tbr.Id = i;
+						tbr.CardSlotRow = csr;
+						cds.TextBox.AddTextBoxRow (tbr);
 					}
-					tbr.CardSlotRow = csr;
-					cds.TextBox.AddTextBoxRow (tbr);
 				}
 				for (int i = 0; i < fTextBoxes.Length; i++) 
 				{
-					tbr = cds.TextBox.NewTextBoxRow ();
-					tbr.Id = i + textBoxes.Length;
 					if (richText) 
 					{
-						tbr.Text = ((RichTextBox) fTextBoxes [i]).Rtf;
+						rbr = cds.RTFBox.NewRTFBoxRow ();
+						rbr.RTF = ((RichTextBox) fTextBoxes [i]).Rtf;
+						rbr.Id = i + textBoxes.Length;
+						rbr.CardSlotRow = csr;
+						cds.RTFBox.AddRTFBoxRow (rbr);
 					}
 					else
 					{
+						tbr = cds.TextBox.NewTextBoxRow ();
 						tbr.Text = fTextBoxes [i].Text;
+						tbr.Id = i + textBoxes.Length;
+						tbr.CardSlotRow = csr;
+						cds.TextBox.AddTextBoxRow (tbr);
 					}
-					tbr.CardSlotRow = csr;
-					cds.TextBox.AddTextBoxRow (tbr);
 				}
 			}
 		}
@@ -821,7 +830,7 @@ namespace HP67_Control_Library
 				}
 				State = State;
 
-				// Finally, restore the text and center it if need be.
+				// Restore the text and center it if need be.
 				for (int i = 0; i < textBoxes.Length; i++) 
 				{
 					textBoxes [i].Text = text [i];
@@ -843,6 +852,9 @@ namespace HP67_Control_Library
 						r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
 					}
 				}
+
+				// Finally position the text boxes.
+				Margin = Margin;
 			}
 		}
 

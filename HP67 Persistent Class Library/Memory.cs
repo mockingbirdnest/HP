@@ -95,6 +95,10 @@ namespace HP67_Class_Library
 				CardDataset.MemoryRow mr;
 				CardDataset.RegisterRow rr;
 
+				for (int i = 0; i < cds.Memory.Count; i++)
+				{
+					cds.Memory.RemoveMemoryRow (cds.Memory [i]);
+				}
 				mr = cds.Memory.NewMemoryRow ();
 				mr.RegisterCount = registers.Length;
 				mr.CardRow = cds.Card [0];
