@@ -88,6 +88,7 @@ namespace HP67_Control_Library
 				{textBoxA, textBoxB, textBoxC, textBoxD, textBoxE};
 			fTextBoxes = new System.Windows.Forms.TextBox [5]
 				{textBoxfA, textBoxfB, textBoxfC, textBoxfD, textBoxfE};
+			Clear ();
 
 			Font = new System.Drawing.Font
 				("Arial Unicode MS", 7.0F, System.Drawing.FontStyle.Regular);
@@ -675,6 +676,31 @@ namespace HP67_Control_Library
 
 		#region Private Operations
 
+		private void Clear ()
+		{
+			this.titleTextBox.Text = "<TITLE>";
+			this.textBoxA.Text = "<A>";
+			this.textBoxB.Text = "<B>";
+			this.textBoxC.Text = "<C>";
+			this.textBoxD.Text = "<D>";
+			this.textBoxE.Text = "<E>";
+			this.textBoxfA.Text = "<fA>";
+			this.textBoxfB.Text = "<fB>";
+			this.textBoxfC.Text = "<fC>";
+			this.textBoxfD.Text = "<fD>";
+			this.textBoxfE.Text = "<fE>";
+			this.rtfBoxFA.Text = "<fA>";
+			this.rtfBoxFB.Text = "<fB>";
+			this.rtfBoxFC.Text = "<fC>";
+			this.rtfBoxFD.Text = "<fD>";
+			this.rtfBoxFE.Text = "<fE>";
+			this.rtfBoxA.Text = "<A>";
+			this.rtfBoxB.Text = "<B>";
+			this.rtfBoxC.Text = "<C>";
+			this.rtfBoxD.Text = "<D>";
+			this.rtfBoxE.Text = "<E>";
+		}
+
 		private void SetEditable (bool editable)
 		{
 			titleTextBox.ReadOnly = !editable;
@@ -870,11 +896,14 @@ namespace HP67_Control_Library
 			}
 			set
 			{
-				state = value;
-				switch (state) 
+				switch (value) 
 				{
 					case CardSlotState.Unloaded:
 					{
+						if (state > CardSlotState.Unloaded) 
+						{
+							Clear ();
+						}
 						SetEditable (false);
 						SetLoaded (false);
 						break;
@@ -900,6 +929,7 @@ namespace HP67_Control_Library
 						break;
 					}
 				}
+				state = value;
 			}
 		}
 

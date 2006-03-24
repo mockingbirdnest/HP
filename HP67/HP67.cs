@@ -1437,16 +1437,22 @@ namespace HP67
 
 		private void HP67_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
-			foreach (Control c in this.Controls) 
+			// If a key event is received when the user is not editing the card slot, we look for
+			// a key that has the corresponding code as one of its shortcuts, and we send it a
+			// mouse event.
+			if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus) 
 			{
-				if (c.GetType () == typeof (Key)) 
+				foreach (Control c in this.Controls) 
 				{
-					foreach (Keys k in ((Key) c).Shortcuts) 
+					if (c.GetType () == typeof (Key)) 
 					{
-						if (k == e.KeyCode) 
+						foreach (Keys k in ((Key) c).Shortcuts) 
 						{
-							LeftMouseDown
-								((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
+							if (k == e.KeyCode) 
+							{
+								LeftMouseDown
+									((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
+							}
 						}
 					}
 				}
@@ -1455,20 +1461,23 @@ namespace HP67
 
 		private void HP67_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
-			foreach (Control c in this.Controls) 
+			if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus) 
 			{
-				if (c.GetType () == typeof (Key)) 
+				foreach (Control c in this.Controls) 
 				{
-					foreach (Keys k in ((Key) c).Shortcuts) 
+					if (c.GetType () == typeof (Key)) 
 					{
-						if (k == e.KeyCode) 
+						foreach (Keys k in ((Key) c).Shortcuts) 
 						{
-							LeftMouseUp
-								((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
+							if (k == e.KeyCode) 
+							{
+								LeftMouseUp
+									((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
+							}
 						}
 					}
 				}
-			}		
+			}
 		}
 
 		private void LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
