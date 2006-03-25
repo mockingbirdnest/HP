@@ -734,7 +734,11 @@ namespace HP67_Control_Library
 
 		public void DoneEntering ()
 		{
-			enteringNumber = false;
+			if (enteringNumber) 
+			{
+				enteringNumber = false;
+				Value = Value;
+			}
 		}
 
 		public void EnterDigit (byte b) 

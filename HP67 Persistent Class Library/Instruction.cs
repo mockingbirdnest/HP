@@ -113,6 +113,18 @@ namespace HP67_Class_Library
 					case (int) SymbolConstants.SYMBOL_ADDITION :
 						result = "+";
 						break;
+					case (int) SymbolConstants.SYMBOL_ARCCOS :
+						result = "COS⁻¹";
+						break;
+					case (int) SymbolConstants.SYMBOL_ARCSIN :
+						result = "SIN⁻¹";
+						break;
+					case (int) SymbolConstants.SYMBOL_ARCTAN :
+						result = "TAN⁻¹";
+						break;
+					case (int) SymbolConstants.SYMBOL_CLX :
+						result = "CLx";
+						break;
 					case (int) SymbolConstants.SYMBOL_DIGIT :
 						result = "";
 						break;
@@ -125,13 +137,25 @@ namespace HP67_Class_Library
 					case (int) SymbolConstants.SYMBOL_EXP :
 						result = "eˣ";
 						break;
+					case (int) SymbolConstants.SYMBOL_F_TEST :
+						result = "F?";
+						break;
+					case (int) SymbolConstants.SYMBOL_FACTORIAL :
+						result = "N!";
+						break;
 					case (int) SymbolConstants.SYMBOL_GSB_F :
 					case (int) SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
 					case (int) SymbolConstants.SYMBOL_GSB_SHORTCUT :
 						result = "GSB";
 						break;
+					case (int) SymbolConstants.SYMBOL_HMS_PLUS :
+						result = "H.MS+";
+						break;
 					case (int) SymbolConstants.SYMBOL_LBL_F :
 						result = "LBL";
+						break;
+					case (int) SymbolConstants.SYMBOL_LST_X :
+						result = "LST x";
 						break;
 					case (int) SymbolConstants.SYMBOL_MULTIPLICATION :
 						result = "×";
@@ -139,8 +163,17 @@ namespace HP67_Class_Library
 					case (int) SymbolConstants.SYMBOL_P_EXCHANGE_S :
 						result = "P⇄S";
 						break;
+					case (int) SymbolConstants.SYMBOL_PERCENT :
+						result = "%";
+						break;
+					case (int) SymbolConstants.SYMBOL_PERCENT_CHANGE :
+						result = "%CH";
+						break;
 					case (int) SymbolConstants.SYMBOL_PERIOD :
 						result = "⋅";
+						break;
+					case (int) SymbolConstants.SYMBOL_PI :
+						result = "π";
 						break;
 					case (int) SymbolConstants.SYMBOL_R_DOWN :
 						result = "R↓";
@@ -151,8 +184,26 @@ namespace HP67_Class_Library
 					case (int) SymbolConstants.SYMBOL_R_UP :
 						result = "R↑";
 						break;
+					case (int) SymbolConstants.SYMBOL_RCL_SIGMA_PLUS :
+						result = "RCL Σ+";
+						break;
+					case (int) SymbolConstants.SYMBOL_RECIPROCAL :
+						result = "1/x";
+						break;
+					case (int) SymbolConstants.SYMBOL_S :
+						result = "s";
+						break;
+					case (int) SymbolConstants.SYMBOL_SIGMA_MINUS :
+						result = "Σ-";
+						break;
+					case (int) SymbolConstants.SYMBOL_SIGMA_PLUS :
+						result = "Σ+";
+						break;
 					case (int) SymbolConstants.SYMBOL_SQRT :
 						result = "√̄̄̄̄x̄";
+						break;
+					case (int) SymbolConstants.SYMBOL_SQUARE :
+						result = "x²";
 						break;
 					case (int) SymbolConstants.SYMBOL_SUBTRACTION :
 						result = "-";
@@ -160,11 +211,38 @@ namespace HP67_Class_Library
 					case (int) SymbolConstants.SYMBOL_TEN_TO_THE_XTH :
 						result = "10ˣ";
 						break;
+					case (int) SymbolConstants.SYMBOL_TO_DEGREES :
+						result = "D←";
+						break;
+					case (int) SymbolConstants.SYMBOL_TO_HMS :
+						result = "→H.MS";
+						break;
+					case (int) SymbolConstants.SYMBOL_TO_HOURS :
+						result = "H←";
+						break;
+					case (int) SymbolConstants.SYMBOL_TO_POLAR :
+						result = "→P";
+						break;
+					case (int) SymbolConstants.SYMBOL_TO_RADIANS :
+						result = "→R";
+						break;
+					case (int) SymbolConstants.SYMBOL_TO_RECTANGULAR :
+						result = "R←";
+						break;
+					case (int) SymbolConstants.SYMBOL_W_DATA :
+						result = "W/DATA";
+						break;
+					case (int) SymbolConstants.SYMBOL_X_AVERAGE :
+						result = "x̄";
+						break;
 					case (int) SymbolConstants.SYMBOL_X_EQ_0 :
 						result = "x=0?";
 						break;
 					case (int) SymbolConstants.SYMBOL_X_EQ_Y :
 						result = "x=y?";
+						break;
+					case (int) SymbolConstants.SYMBOL_X_EXCHANGE_I :
+						result = "x⇄I";
 						break;
 					case (int) SymbolConstants.SYMBOL_X_EXCHANGE_Y :
 						result = "x⇄y";
@@ -189,9 +267,6 @@ namespace HP67_Class_Library
 						break;
 					case (int) SymbolConstants.SYMBOL_Y_TO_THE_XTH :
 						result = "yˣ";
-						break;
-					case (int) SymbolConstants.SYMBOL_W_DATA :
-						result = "W/DATA";
 						break;
 					default:
 						result = Symbol.Name.ToUpper ().Replace ('_', ' ');
