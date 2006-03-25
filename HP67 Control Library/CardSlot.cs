@@ -62,11 +62,11 @@ namespace HP67_Control_Library
 		internal System.Windows.Forms.RichTextBox rtfBoxC;
 		internal System.Windows.Forms.RichTextBox rtfBoxD;
 		internal System.Windows.Forms.RichTextBox rtfBoxE;
-		internal System.Windows.Forms.RichTextBox rtfBoxFA;
-		internal System.Windows.Forms.RichTextBox rtfBoxFB;
-		internal System.Windows.Forms.RichTextBox rtfBoxFC;
-		internal System.Windows.Forms.RichTextBox rtfBoxFD;
-		internal System.Windows.Forms.RichTextBox rtfBoxFE;
+		internal System.Windows.Forms.RichTextBox rtfBoxfB;
+		internal System.Windows.Forms.RichTextBox rtfBoxfE;
+		internal System.Windows.Forms.RichTextBox rtfBoxfD;
+		internal System.Windows.Forms.RichTextBox rtfBoxfC;
+		internal System.Windows.Forms.RichTextBox rtfBoxfA;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -127,11 +127,11 @@ namespace HP67_Control_Library
 		{
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(CardSlot));
 			this.panel = new System.Windows.Forms.Panel();
-			this.rtfBoxFB = new System.Windows.Forms.RichTextBox();
-			this.rtfBoxFE = new System.Windows.Forms.RichTextBox();
-			this.rtfBoxFD = new System.Windows.Forms.RichTextBox();
-			this.rtfBoxFC = new System.Windows.Forms.RichTextBox();
-			this.rtfBoxFA = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxfB = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxfE = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxfD = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxfC = new System.Windows.Forms.RichTextBox();
+			this.rtfBoxfA = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxE = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxD = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxC = new System.Windows.Forms.RichTextBox();
@@ -164,11 +164,11 @@ namespace HP67_Control_Library
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.panel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
 			this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.panel.Controls.Add(this.rtfBoxFB);
-			this.panel.Controls.Add(this.rtfBoxFE);
-			this.panel.Controls.Add(this.rtfBoxFD);
-			this.panel.Controls.Add(this.rtfBoxFC);
-			this.panel.Controls.Add(this.rtfBoxFA);
+			this.panel.Controls.Add(this.rtfBoxfB);
+			this.panel.Controls.Add(this.rtfBoxfE);
+			this.panel.Controls.Add(this.rtfBoxfD);
+			this.panel.Controls.Add(this.rtfBoxfC);
+			this.panel.Controls.Add(this.rtfBoxfA);
 			this.panel.Controls.Add(this.rtfBoxE);
 			this.panel.Controls.Add(this.rtfBoxD);
 			this.panel.Controls.Add(this.rtfBoxC);
@@ -197,70 +197,70 @@ namespace HP67_Control_Library
 			this.panel.Size = new System.Drawing.Size(300, 50);
 			this.panel.TabIndex = 0;
 			// 
-			// rtfBoxFB
+			// rtfBoxfB
 			// 
-			this.rtfBoxFB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.rtfBoxFB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtfBoxFB.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.rtfBoxFB.ForeColor = System.Drawing.Color.Gold;
-			this.rtfBoxFB.Location = new System.Drawing.Point(72, 18);
-			this.rtfBoxFB.Multiline = false;
-			this.rtfBoxFB.Name = "rtfBoxFB";
-			this.rtfBoxFB.Size = new System.Drawing.Size(48, 13);
-			this.rtfBoxFB.TabIndex = 26;
-			this.rtfBoxFB.Text = "<fB>";
+			this.rtfBoxfB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxfB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxfB.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxfB.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxfB.Location = new System.Drawing.Point(72, 18);
+			this.rtfBoxfB.Multiline = false;
+			this.rtfBoxfB.Name = "rtfBoxfB";
+			this.rtfBoxfB.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxfB.TabIndex = 13;
+			this.rtfBoxfB.Text = "<fB>";
 			// 
-			// rtfBoxFE
+			// rtfBoxfE
 			// 
-			this.rtfBoxFE.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.rtfBoxFE.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtfBoxFE.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.rtfBoxFE.ForeColor = System.Drawing.Color.Gold;
-			this.rtfBoxFE.Location = new System.Drawing.Point(240, 18);
-			this.rtfBoxFE.Multiline = false;
-			this.rtfBoxFE.Name = "rtfBoxFE";
-			this.rtfBoxFE.Size = new System.Drawing.Size(48, 13);
-			this.rtfBoxFE.TabIndex = 25;
-			this.rtfBoxFE.Text = "<fE>";
+			this.rtfBoxfE.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxfE.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxfE.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxfE.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxfE.Location = new System.Drawing.Point(240, 18);
+			this.rtfBoxfE.Multiline = false;
+			this.rtfBoxfE.Name = "rtfBoxfE";
+			this.rtfBoxfE.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxfE.TabIndex = 16;
+			this.rtfBoxfE.Text = "<fE>";
 			// 
-			// rtfBoxFD
+			// rtfBoxfD
 			// 
-			this.rtfBoxFD.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.rtfBoxFD.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtfBoxFD.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.rtfBoxFD.ForeColor = System.Drawing.Color.Gold;
-			this.rtfBoxFD.Location = new System.Drawing.Point(184, 18);
-			this.rtfBoxFD.Multiline = false;
-			this.rtfBoxFD.Name = "rtfBoxFD";
-			this.rtfBoxFD.Size = new System.Drawing.Size(48, 13);
-			this.rtfBoxFD.TabIndex = 24;
-			this.rtfBoxFD.Text = "<fD>";
+			this.rtfBoxfD.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxfD.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxfD.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxfD.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxfD.Location = new System.Drawing.Point(184, 18);
+			this.rtfBoxfD.Multiline = false;
+			this.rtfBoxfD.Name = "rtfBoxfD";
+			this.rtfBoxfD.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxfD.TabIndex = 15;
+			this.rtfBoxfD.Text = "<fD>";
 			// 
-			// rtfBoxFC
+			// rtfBoxfC
 			// 
-			this.rtfBoxFC.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.rtfBoxFC.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtfBoxFC.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.rtfBoxFC.ForeColor = System.Drawing.Color.Gold;
-			this.rtfBoxFC.Location = new System.Drawing.Point(128, 18);
-			this.rtfBoxFC.Multiline = false;
-			this.rtfBoxFC.Name = "rtfBoxFC";
-			this.rtfBoxFC.Size = new System.Drawing.Size(48, 13);
-			this.rtfBoxFC.TabIndex = 23;
-			this.rtfBoxFC.Text = "<fC>";
+			this.rtfBoxfC.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxfC.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxfC.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxfC.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxfC.Location = new System.Drawing.Point(128, 18);
+			this.rtfBoxfC.Multiline = false;
+			this.rtfBoxfC.Name = "rtfBoxfC";
+			this.rtfBoxfC.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxfC.TabIndex = 14;
+			this.rtfBoxfC.Text = "<fC>";
 			// 
-			// rtfBoxFA
+			// rtfBoxfA
 			// 
-			this.rtfBoxFA.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.rtfBoxFA.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.rtfBoxFA.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.rtfBoxFA.ForeColor = System.Drawing.Color.Gold;
-			this.rtfBoxFA.Location = new System.Drawing.Point(16, 18);
-			this.rtfBoxFA.Multiline = false;
-			this.rtfBoxFA.Name = "rtfBoxFA";
-			this.rtfBoxFA.Size = new System.Drawing.Size(48, 13);
-			this.rtfBoxFA.TabIndex = 22;
-			this.rtfBoxFA.Text = "<fA>";
+			this.rtfBoxfA.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.rtfBoxfA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.rtfBoxfA.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.rtfBoxfA.ForeColor = System.Drawing.Color.Gold;
+			this.rtfBoxfA.Location = new System.Drawing.Point(16, 18);
+			this.rtfBoxfA.Multiline = false;
+			this.rtfBoxfA.Name = "rtfBoxfA";
+			this.rtfBoxfA.Size = new System.Drawing.Size(48, 13);
+			this.rtfBoxfA.TabIndex = 12;
+			this.rtfBoxfA.Text = "<fA>";
 			// 
 			// rtfBoxE
 			// 
@@ -689,11 +689,11 @@ namespace HP67_Control_Library
 			this.textBoxfC.Text = "<fC>";
 			this.textBoxfD.Text = "<fD>";
 			this.textBoxfE.Text = "<fE>";
-			this.rtfBoxFA.Text = "<fA>";
-			this.rtfBoxFB.Text = "<fB>";
-			this.rtfBoxFC.Text = "<fC>";
-			this.rtfBoxFD.Text = "<fD>";
-			this.rtfBoxFE.Text = "<fE>";
+			this.rtfBoxfA.Text = "<fA>";
+			this.rtfBoxfB.Text = "<fB>";
+			this.rtfBoxfC.Text = "<fC>";
+			this.rtfBoxfD.Text = "<fD>";
+			this.rtfBoxfE.Text = "<fE>";
 			this.rtfBoxA.Text = "<A>";
 			this.rtfBoxB.Text = "<B>";
 			this.rtfBoxC.Text = "<C>";
@@ -854,7 +854,7 @@ namespace HP67_Control_Library
 						textBoxes = new System.Windows.Forms.RichTextBox [5] 
 							{rtfBoxA, rtfBoxB, rtfBoxC, rtfBoxD, rtfBoxE};
 						fTextBoxes = new System.Windows.Forms.RichTextBox [5]
-							{rtfBoxFA, rtfBoxFB, rtfBoxFC, rtfBoxFD, rtfBoxFE};
+							{rtfBoxfA, rtfBoxfB, rtfBoxfC, rtfBoxfD, rtfBoxfE};
 						break;
 					}
 				}

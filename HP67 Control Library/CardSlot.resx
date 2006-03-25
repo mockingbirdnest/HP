@@ -115,49 +115,49 @@
   <data name="panel.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Assembly</value>
   </data>
-  <data name="rtfBoxFB.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfB.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </data>
-  <data name="rtfBoxFB.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfB.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Assembly</value>
   </data>
-  <data name="rtfBoxFB.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfB.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Private</value>
   </data>
-  <data name="rtfBoxFE.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfE.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </data>
-  <data name="rtfBoxFE.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfE.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Assembly</value>
   </data>
-  <data name="rtfBoxFE.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfE.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Private</value>
   </data>
-  <data name="rtfBoxFD.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfD.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </data>
-  <data name="rtfBoxFD.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfD.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Assembly</value>
   </data>
-  <data name="rtfBoxFD.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfD.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Private</value>
   </data>
-  <data name="rtfBoxFC.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfC.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </data>
-  <data name="rtfBoxFC.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfC.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Assembly</value>
   </data>
-  <data name="rtfBoxFC.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfC.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Private</value>
   </data>
-  <data name="rtfBoxFA.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfA.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </data>
-  <data name="rtfBoxFA.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfA.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Assembly</value>
   </data>
-  <data name="rtfBoxFA.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="rtfBoxfA.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>Private</value>
   </data>
   <data name="rtfBoxE.Locked" type="System.Boolean, mscorlib, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -235,18 +235,18 @@
   <data name="cornerPanel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk0GAwAAAAAAADYAAAAoAAAADwAAAA8AAAABABgAAAAAAAAAAADEDgAAxA4AAAAAAAAAAAAAwMDAAEBA
-        AEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAAAAgICAwMDAAEBAAEBAAEBAAEBA
-        AEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAAAAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBA
-        AEBAAEBAAEBAAEBAAEBAAAAAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBA
-        AEBAAAAAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAAAAQEBAQEBA
-        QEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAAAAQEBAQEBAQEBAQEBAQEBAgICA
-        wMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBA
-        AEBAAEBAAEBAAEBAAEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBA
-        AEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAAAAQEBAQEBA
-        QEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBA
-        QEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBA
-        QEBAgICAwMDAAEBAAEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDA
-        AEBAAAAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAAAA
+        AEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAckUAgICAwMDAAEBAAEBAAEBAAEBA
+        AEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAckUAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBA
+        AEBAAEBAAEBAAEBAAEBAckUAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBA
+        AEBAckUAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAckUAQEBAQEBA
+        QEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAckUAQEBAQEBAQEBAQEBAQEBAgICA
+        wMDAAEBAAEBAAEBAAEBAAEBAAEBAAEBAAEBAckUAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBA
+        AEBAAEBAAEBAAEBAAEBAckUAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBA
+        AEBAckUAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAAEBAckUAQEBAQEBA
+        QEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAAEBAckUAQEBAQEBAQEBAQEBAQEBAQEBA
+        QEBAQEBAQEBAQEBAgICAwMDAAEBAAEBAAEBAckUAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBA
+        QEBAgICAwMDAAEBAAEBAckUAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDA
+        AEBAckUAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAgICAwMDAckUA
 </value>
   </data>
   <data name="textBoxA.DefaultModifiers" type="System.CodeDom.MemberAttributes, System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
