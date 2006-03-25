@@ -59,6 +59,7 @@ namespace HP67_Class_Library
 			{
 				registers[i] = 0.0;
 			}
+			Card.MergeFromDataset += new Card.DatasetImporterDelegate (MergeFromDataset);
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
@@ -66,6 +67,11 @@ namespace HP67_Class_Library
 		#endregion
 
 		#region Event Handlers
+
+		public void MergeFromDataset (CardDataset cds, Parser parser)
+		{
+			// TODO: Implement.
+		}
 
 		public void ReadFromDataset (CardDataset cds, Parser parser)
 		{

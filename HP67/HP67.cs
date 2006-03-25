@@ -41,6 +41,7 @@ namespace HP67
 		// Delegates used for cross-thread invocation.
 		private delegate void DisableUICrossThreadInvocation ();
 		private delegate EngineMode EnableUICrossThreadInvocation ();
+		public delegate bool MergeCrossThreadInvocation ();
 		public delegate bool SaveDataAsCrossThreadInvocation ();
 
 		private HP67_Control_Library.Key keyA;
@@ -1395,6 +1396,40 @@ namespace HP67
 
 				default :
 					return EngineMode.Run; // To make the compiler happy.
+			}
+		}
+
+		public bool Merge () 
+		{
+			Stream stream;
+
+			if (openFileDialog.ShowDialog () == DialogResult.OK)
+			{
+				if ((stream = openFileDialog.OpenFile ()) != null)
+				{
+					lock (executionThreadIsBusy) 
+					{
+						// We hold the lock, so looking at the program is fine.
+						bool programWasEmpty = theProgram.IsEmpty;
+						bool result = Card.Merge (stream, upParser);
+
+						if (programWasEmpty && ! theProgram.IsEmpty) 
+						{
+							cardSlot.State = CardSlotState.ReadWrite;
+						}
+						stream.Close ();
+
+						return result;
+					}
+				}
+				else 
+				{
+					return false;
+				}
+			}			
+			else 
+			{
+				return false;
 			}
 		}
 

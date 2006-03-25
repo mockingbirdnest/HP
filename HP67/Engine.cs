@@ -305,6 +305,7 @@ namespace HP67
 
 		public void Execute (Instruction instruction) 
 		{
+			HP67 form = (HP67) theDisplay.TopLevelControl;
 			bool neutral = stackLift;
 			double x, y;
 
@@ -312,24 +313,18 @@ namespace HP67
 				"Execute: " + instruction.PrintableText,
 				classTraceSwitch.DisplayName);
 
+			// Most operations terminate digit entry.  The only ones that don't are those that are
+			// used to construct digits, and SST which does not change the state of the engine at
+			// all.
 			switch (instruction.Symbol.Id) 
 			{
 				case (int) SymbolConstants.SYMBOL_CHS :
 				case (int) SymbolConstants.SYMBOL_DIGIT :
 				case (int) SymbolConstants.SYMBOL_EEX :
 				case (int) SymbolConstants.SYMBOL_PERIOD:
-					// The digit entry operations must not change the stack lift.  That's because
-					// we will use stackLift in the event handler for EnteringNumber.
-					stackLift = neutral;
-					break;
 				case (int) SymbolConstants.SYMBOL_SST :
-					// SST must not change the state of the engine at all.
-					stackLift = neutral;
 					break;
 				default :
-					// Most operations terminate digit entry and lift the stack.  Set stackLift to
-					// neutral below when an operation doesn't change the stack lift after all.
-					stackLift = true;
 					theDisplay.DoneEntering ();
 					break;
 			}
@@ -386,14 +381,12 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
 					// Cancels the f key.
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_REG :
 					theMemory.Clear ();
 					break;
 				case (int)SymbolConstants.SYMBOL_CLX :
 					theStack.X = 0.0;
-					stackLift = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_COS :
 					theStack.Get (out x);
@@ -404,7 +397,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_DEL :
 					// Cancel the h key.
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DIGIT :
 					theDisplay.EnterDigit (((Digit) instruction.Arguments [0]).Value);
@@ -416,7 +408,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_DISPLAY_X :
 					theDisplay.PauseAndBlink (5000);
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DIVISION :
 					theStack.Get (out x, out y);
@@ -431,7 +422,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_DSP :
 					((IDigits) instruction.Arguments [0]).SetDigits (theMemory, theDisplay);
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_DSZ :
 					if (theMemory.DecrementAndSkipIfZero ())
@@ -450,11 +440,9 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_ENG :
 					theDisplay.Format = DisplayFormat.Engineering;
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_ENTER :
 					theStack.Enter ();
-					stackLift = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_EXP :
 					theStack.Get (out x);
@@ -490,7 +478,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_FIX :
 					theDisplay.Format = DisplayFormat.Fixed;
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_FRAC :
 					theStack.Get (out x);
@@ -572,12 +559,15 @@ namespace HP67
 					theStack.X = theStack.LastX;
 					break;
 				case (int)SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
-					theStack.Enter ();
+					Enter (this);
 					theStack.X = theMemory.RecallIndexed ();
 					break;
 				case (int)SymbolConstants.SYMBOL_MERGE :
-					// TODO: Execution.
-					stackLift = neutral;
+					if (! (bool) form.Invoke
+						(new HP67.MergeCrossThreadInvocation (form.Merge))) 
+					{
+						throw new Error ();
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_MULTIPLICATION :
 					theStack.Get (out x, out y);
@@ -608,7 +598,7 @@ namespace HP67
 					theDisplay.EnterPeriod ();
 					break;
 				case (int)SymbolConstants.SYMBOL_PI :
-					theStack.Enter ();
+					Enter (this);
 					theStack.X = Math.PI;
 					break;
 				case (int)SymbolConstants.SYMBOL_R_DOWN :
@@ -632,10 +622,11 @@ namespace HP67
 					unit = AngleUnit.Radian;
 					break;
 				case (int)SymbolConstants.SYMBOL_RC_I :
+					Enter (this);
 					theStack.X = theMemory.Recall (Memory.LetterRegister.I);
 					break;
 				case (int)SymbolConstants.SYMBOL_RCL :
-					theStack.Enter ();
+					Enter (this);
 					theStack.X = ((IAddress) instruction.Arguments [0]).Recall (theMemory);
 					break;
 				case (int)SymbolConstants.SYMBOL_RCL_SIGMA_PLUS :
@@ -656,7 +647,6 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_REG :
-					stackLift = neutral;
 					theMemory.Display ();
 					break;
 				case (int)SymbolConstants.SYMBOL_RND :
@@ -673,7 +663,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_SCI :
 					theDisplay.Format = DisplayFormat.Scientific;
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_SF :
 					flags [((Digit) instruction.Arguments [0]).Value] = true;
@@ -682,13 +671,11 @@ namespace HP67
 					theStack.Get (out x);
 					theMemory.ΣMinus (x, theStack.Y);
 					theStack.X = theMemory.N;
-					stackLift = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_SIGMA_PLUS :
 					theStack.Get (out x);
 					theMemory.ΣPlus (x, theStack.Y);
 					theStack.X = theMemory.N;
-					stackLift = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_SIN :
 					theStack.Get (out x);
@@ -696,7 +683,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_SPACE :
 					// No-op on HP67.
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_SQRT :
 					theStack.Get (out x);
@@ -729,7 +715,6 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_STK :
 					theStack.Display ();
-					stackLift = neutral;
 					break;
 				case (int)SymbolConstants.SYMBOL_STO :
 					if (instruction.Arguments.Length == 2) 
@@ -786,7 +771,6 @@ namespace HP67
 					theStack.Y = r * Math.Sin (ToRadian (θ));
 					break;
 				case (int)SymbolConstants.SYMBOL_W_DATA :
-					HP67 form = (HP67) theDisplay.TopLevelControl;
 					if (! (bool) form.Invoke
 									(new HP67.SaveDataAsCrossThreadInvocation (form.SaveDataAs))) 
 					{
@@ -872,6 +856,34 @@ namespace HP67
 					break;
 				default :
 					throw new Error ();
+			}
+
+			// Set the stack lift as specified in Appendix D of the Programming Guide.
+			switch (instruction.Symbol.Id) 
+			{
+				case (int)SymbolConstants.SYMBOL_CLX :
+				case (int)SymbolConstants.SYMBOL_ENTER :
+				case (int)SymbolConstants.SYMBOL_SIGMA_MINUS :
+				case (int)SymbolConstants.SYMBOL_SIGMA_PLUS :
+					stackLift = false;
+					break;
+				case (int)SymbolConstants.SYMBOL_CL_PRGM :
+				case (int)SymbolConstants.SYMBOL_DEL :
+				case (int)SymbolConstants.SYMBOL_DISPLAY_X :
+				case (int)SymbolConstants.SYMBOL_DSP :
+				case (int)SymbolConstants.SYMBOL_ENG :
+				case (int)SymbolConstants.SYMBOL_FIX :
+				case (int)SymbolConstants.SYMBOL_MERGE :
+				case (int)SymbolConstants.SYMBOL_REG :
+				case (int)SymbolConstants.SYMBOL_SCI :
+				case (int)SymbolConstants.SYMBOL_SPACE :
+				case (int)SymbolConstants.SYMBOL_SST :
+				case (int)SymbolConstants.SYMBOL_STK :
+					stackLift = neutral;
+					break;
+				default :
+					stackLift = true;
+					break;
 			}
 
 			// Now check if some key was typed while we were executing the instruction.  If it was,

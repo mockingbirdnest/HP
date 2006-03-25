@@ -72,6 +72,7 @@ namespace HP67_Class_Library
 				labels [i] = new ArrayList ();
 			}
 			returns = new int [3] {noStep, noStep, noStep};
+			Card.MergeFromDataset += new Card.DatasetImporterDelegate (MergeFromDataset);
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 		}
@@ -79,6 +80,63 @@ namespace HP67_Class_Library
 		#endregion
 
 		#region Event Handlers
+
+		public void MergeFromDataset (CardDataset cds, Parser parser)
+		{
+			CardDataset.ArgumentRow [] ars;
+			CardDataset.CardRow cr;
+			CardDataset.InstructionRow [] irs;
+			CardDataset.ProgramRow pr;
+			CardDataset.ProgramRow [] prs;
+			bool sourceProgramIsEmpty;
+
+			cr = cds.Card [0];
+			prs = cr.GetProgramRows ();
+			if (prs.Length > 0) 
+			{
+				pr = prs [0];
+				irs = pr.GetInstructionRows ();
+
+				// A source program that only contains R/S is considered empty.  No merge takes
+				// place in this case.
+				sourceProgramIsEmpty = false;
+				foreach (CardDataset.InstructionRow ir in irs) 
+				{
+					if (parser.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
+					{
+						sourceProgramIsEmpty = true;
+						break;
+					}
+				}
+
+				if (! sourceProgramIsEmpty) 
+				{
+					foreach (CardDataset.InstructionRow ir in irs) 
+					{
+						Argument [] arguments = new Argument [ir.ArgumentCount];
+
+						if (next == instructions.Length - 1) 
+						{
+							break;
+						}
+						ars = ir.GetArgumentRows ();
+						foreach (CardDataset.ArgumentRow ar in ars) 
+						{
+							Argument argument;
+							argument = (Argument) Argument.ReadFromArgumentRow (ar);
+							arguments [ar.Id] = argument;
+						}
+
+						// We have to go through instruction insertion to make sure that the label
+						// table is properly updated.
+						Insert (new Instruction (ir.Text,
+												parser.ToSymbol (ir.Instruction),
+												arguments));	
+					}
+					isEmpty = false;
+				}
+			}
+		}
 
 		public void ReadFromDataset (CardDataset cds, Parser parser)
 		{
@@ -94,6 +152,7 @@ namespace HP67_Class_Library
 
 			cr = cds.Card [0];
 			prs = cr.GetProgramRows ();
+			isEmpty = true;
 			if (prs.Length > 0) 
 			{
 				pr = prs [0];
@@ -103,6 +162,10 @@ namespace HP67_Class_Library
 				{
 					Argument [] arguments = new Argument [ir.ArgumentCount];
 
+					if (parser.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
+					{
+						isEmpty = false;
+					}
 					ars = ir.GetArgumentRows ();
 					foreach (CardDataset.ArgumentRow ar in ars) 
 					{
@@ -127,7 +190,6 @@ namespace HP67_Class_Library
 					// Should already be sorted, but just to be safe...
 					labels [lr.Id].Sort ();
 				}
-				isEmpty = false;
 			}
 		}
 
