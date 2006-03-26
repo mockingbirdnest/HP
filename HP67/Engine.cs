@@ -44,6 +44,7 @@ namespace HP67
 		private EngineMode mode;
 		private bool running = false;
 		private bool stackLift = false;
+		private bool stepping = false;
 
 		private bool [] flags;
 		private AngleUnit unit;
@@ -182,55 +183,61 @@ namespace HP67
 		public void Gosub (ILabel label)
 		{
 			Instruction instruction;
+			bool wasRunning = running;
 
-			if (running) 
+			try 
 			{
-				label.Gosub (theMemory, theProgram);
-			}
-			else
-			{
-				try 
+				if (! running) 
 				{
 					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 						"Gosub: starting",
 						classTraceSwitch.DisplayName);
 
-					// The case where label is null corresponds to execution resuming from the
-					// instruction following the one on which we stopped (aka RUN in R/S).  
 					// Executing a new subprogram from the top-level clears any return address left
-					// on the stack from the last execution, hence the call to Reset.
-					if (label != null) 
+					// on the stack from the last execution, unless of course we are in
+					// step-by-step execution.
+					if (! stepping) 
 					{
-						label.Gosub (theMemory, theProgram);
 						theProgram.Reset ();
 					}
+				}
 
-					running = true;
-					for (;;) 
+				// The case where label is null corresponds to execution resuming from the
+				// instruction following the one on which we stopped (aka RUN in R/S).  
+				if (label != null) 
+				{
+					label.Gosub (theMemory, theProgram);
+				}
+
+				running = true;
+				for (;;) 
+				{
+					instruction = theProgram.Instruction;
+					Execute (instruction);
+					if (instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_RTN) 
 					{
-						instruction = theProgram.Instruction;
-						Execute (instruction);
-						if (enableBlur) 
-						{
+						break;
+					}
+					else if (enableBlur) 
+					{
 
-							// The display mode will be reset at the end of the execution of the
-							// program, so we can freely change it here.
-							theDisplay.ShowBlur ();
-						}
+						// The display mode will be reset at the end of the execution of the
+						// program, so we can freely change it here.
+						theDisplay.ShowBlur ();
 					}
 				}
-				catch (ApplicationException e)
-				{
-					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Gosub: Exception " + e.ToString (),
-						classTraceSwitch.DisplayName);
-					throw;
-				}
-				finally 
-				{
-					running = false;
-					stackLift = true;
-				}
+			}
+			catch (ApplicationException e)
+			{
+				Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+					"Gosub: Exception " + e.ToString (),
+					classTraceSwitch.DisplayName);
+				throw;
+			}
+			finally 
+			{
+				running = wasRunning;
+				stackLift = true;
 			}
 		}
 
@@ -702,12 +709,13 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_SST :
 					try 
 					{
-						running = true;
+						Trace.Assert (! running);
+						stepping = true;
 						Execute (theProgram.Instruction);
 					}
 					finally 
 					{
-						running = false;
+						stepping = false;
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ST_I :
@@ -861,6 +869,10 @@ namespace HP67
 			// Set the stack lift as specified in Appendix D of the Programming Guide.
 			switch (instruction.Symbol.Id) 
 			{
+				case (int)SymbolConstants.SYMBOL_SST :
+					// Don't change the stack lift, not even to neutral: the necessary changes have
+					// been done by the instruction called by SST.
+					break;
 				case (int)SymbolConstants.SYMBOL_CLX :
 				case (int)SymbolConstants.SYMBOL_ENTER :
 				case (int)SymbolConstants.SYMBOL_SIGMA_MINUS :
@@ -877,7 +889,6 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_REG :
 				case (int)SymbolConstants.SYMBOL_SCI :
 				case (int)SymbolConstants.SYMBOL_SPACE :
-				case (int)SymbolConstants.SYMBOL_SST :
 				case (int)SymbolConstants.SYMBOL_STK :
 					stackLift = neutral;
 					break;
