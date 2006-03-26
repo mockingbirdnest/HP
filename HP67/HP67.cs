@@ -1407,20 +1407,18 @@ namespace HP67
 			{
 				if ((stream = openFileDialog.OpenFile ()) != null)
 				{
-					lock (executionThreadIsBusy) 
+					// Do not grab the lock here, because we are called from the execution thread,
+					// so we are properly synchronized.
+					bool programWasEmpty = theProgram.IsEmpty;
+					bool result = Card.Merge (stream, upParser);
+
+					if (programWasEmpty && ! theProgram.IsEmpty) 
 					{
-						// We hold the lock, so looking at the program is fine.
-						bool programWasEmpty = theProgram.IsEmpty;
-						bool result = Card.Merge (stream, upParser);
-
-						if (programWasEmpty && ! theProgram.IsEmpty) 
-						{
-							cardSlot.State = CardSlotState.ReadWrite;
-						}
-						stream.Close ();
-
-						return result;
+						cardSlot.State = CardSlotState.ReadWrite;
 					}
+					stream.Close ();
+
+					return result;
 				}
 				else 
 				{

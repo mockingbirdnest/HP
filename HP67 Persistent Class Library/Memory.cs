@@ -41,7 +41,7 @@ namespace HP67_Class_Library
 
 		private void CheckIndex ()
 		{
-			if (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])) > (int) LetterRegister.I)
+			if (Math.Floor (Math.Abs (this [LetterRegister.I])) > (int) LetterRegister.I)
 			{
 				throw new Error ();
 			}
@@ -70,7 +70,44 @@ namespace HP67_Class_Library
 
 		public void MergeFromDataset (CardDataset cds, Parser parser)
 		{
-			// TODO: Implement.
+			CardDataset.CardRow cr;
+			CardDataset.MemoryRow mr;
+			CardDataset.MemoryRow [] mrs;
+			CardDataset.RegisterRow [] rrs;
+			bool sourceMemoryIsEmpty;
+
+			cr = cds.Card [0];
+			mrs = cr.GetMemoryRows ();
+			if (mrs.Length > 0) 
+			{
+				mr = mrs [0];
+				rrs = mr.GetRegisterRows ();
+
+				// A source card that only constains zeros is considered empty.  No merge takes
+				// place in this case.
+				sourceMemoryIsEmpty = true;
+				foreach (CardDataset.RegisterRow rr in rrs) 
+				{
+					if (rr.Value != 0.0) 
+					{
+						sourceMemoryIsEmpty = false;
+						break;
+					}
+				}
+
+				if (! sourceMemoryIsEmpty) 
+				{
+					int last = (int) Math.Floor (Math.Abs (this [LetterRegister.I]));
+
+					foreach (CardDataset.RegisterRow rr in rrs) 
+					{
+						if (rr.Id <= last) 
+						{
+							registers [rr.Id] = rr.Value;
+						}
+					}
+				}
+			}
 		}
 
 		public void ReadFromDataset (CardDataset cds, Parser parser)
@@ -240,7 +277,7 @@ namespace HP67_Class_Library
 		{
 			double temp;
 			
-			for (int i = 0; i < 9; i++)
+			for (int i = 0; i <= 9; i++)
 			{
 				temp = registers [i];
 				registers [i] = registers [i + 10];
@@ -268,14 +305,14 @@ namespace HP67_Class_Library
 		public void StoreIndexed (double Value)
 		{
 			CheckIndex ();
-			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] = Value;
+			this [Math.Floor (Math.Abs (this [LetterRegister.I]))] = Value;
 		}
 
 		public void StoreIndexed (double Value, Operator Modifier)
 		{
 			CheckIndex ();
-			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))] = 
-			Modifier (System.Math.Abs(System.Math.Floor(this [LetterRegister.I])), Value);
+			this [Math.Floor (Math.Abs (this [LetterRegister.I]))] = 
+				Modifier (Math.Floor (Math.Abs (this [LetterRegister.I])), Value);
 		}
 
 		public double Recall (Byte Index)
@@ -292,7 +329,7 @@ namespace HP67_Class_Library
 		public double RecallIndexed ()
 		{
 			CheckIndex ();
-			return this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))];
+			return this [Math.Floor (Math.Abs (this [LetterRegister.I]))];
 		}
 
 		public void RecallΣPlus (out double x, out double y)
@@ -310,9 +347,8 @@ namespace HP67_Class_Library
 		public bool IncrementAndSkipIfZeroIndexed ()
 		{
 			CheckIndex ();
-			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]++;
-			return Math.Abs (
-				this [System.Math.Abs (System.Math.Floor (this [LetterRegister.I]))]) < 1.0;
+			this [Math.Floor (Math.Abs (this [LetterRegister.I]))]++;
+			return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
 		}
 
 		public bool DecrementAndSkipIfZero ()
@@ -324,9 +360,8 @@ namespace HP67_Class_Library
 		public bool DecrementAndSkipIfZeroIndexed ()
 		{
 			CheckIndex ();
-			this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]--;
-			return Math.Abs (
-				this [System.Math.Abs(System.Math.Floor(this [LetterRegister.I]))]) < 1.0;
+			this [Math.Floor (Math.Abs (this [LetterRegister.I]))]--;
+			return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
 		}
 
 		public void Clear ()

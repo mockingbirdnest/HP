@@ -509,6 +509,13 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_GTO :
 					((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
 					break;
+				case (int) SymbolConstants.SYMBOL_GTO_PERIOD :
+					byte b0, b1, b2;
+					b0 = ((Digit) instruction.Arguments [0]).Value;
+					b1 = ((Digit) instruction.Arguments [1]).Value;
+					b2 = ((Digit) instruction.Arguments [2]).Value;
+					theProgram.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
+					break;
 				case (int)SymbolConstants.SYMBOL_HMS_PLUS :
 					theStack.Get (out x, out y);
 					theStack.X = ToHMS (ToH (y) + ToH (x));
@@ -1007,11 +1014,7 @@ namespace HP67
 									theProgram.Delete ();
 									break;
 								case (int) SymbolConstants.SYMBOL_GTO_PERIOD :
-									byte b0, b1, b2;
-									b0 = ((Digit) instruction.Arguments [0]).Value;
-									b1 = ((Digit) instruction.Arguments [1]).Value;
-									b2 = ((Digit) instruction.Arguments [2]).Value;
-									theProgram.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
+									Execute (instruction);
 									break;
 								case (int) SymbolConstants.SYMBOL_SST :
 									theProgram.GotoRelative (+1);

@@ -99,12 +99,12 @@ namespace HP67_Class_Library
 
 				// A source program that only contains R/S is considered empty.  No merge takes
 				// place in this case.
-				sourceProgramIsEmpty = false;
+				sourceProgramIsEmpty = true;
 				foreach (CardDataset.InstructionRow ir in irs) 
 				{
 					if (parser.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
 					{
-						sourceProgramIsEmpty = true;
+						sourceProgramIsEmpty = false;
 						break;
 					}
 				}
