@@ -75,68 +75,74 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
+        "MsmKey" = "8:_3E210DD2EE4345B78D3FE396B1738837"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_2B1536439287E1C90BE6F59BFA373A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_75577D46CE394070860C716E0F073656"
+        "MsmKey" = "8:_6885EC7D14E343EFA05350F123399B7D"
         "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
+        "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
+        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -300,7 +306,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2277.18188, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2277.18768, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_0235350F5583F68F56A3AF36CA76D13C"
@@ -398,6 +404,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_3E210DD2EE4345B78D3FE396B1738837"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Standard Pac\\Triangles.hp67"
+            "TargetName" = "8:Triangles.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_6E65C11D756E0B53F57253C3BFE67D02"
             {
             "AssemblyRegister" = "3:1"
@@ -464,7 +490,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2277.18188, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2277.18768, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_9407E3CB686335C2CD065D78BB5BB019"
@@ -546,7 +572,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2277.18189, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2277.18768, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_F7407765D4389CEB1221ABCA1B65FCB6"
@@ -703,7 +729,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP67"
         "ProductCode" = "8:{9A389F95-72D1-4E1B-9D56-85D69E97300E}"
-        "PackageCode" = "8:{4CDBAA97-B4F1-4F5A-A87C-33BE2143A069}"
+        "PackageCode" = "8:{F978C826-5407-419D-8C74-80B09114D35B}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -713,10 +739,10 @@
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:HP67 Setup"
-        "Subject" = "8:Ga"
+        "Subject" = "8:"
         "ARPCONTACT" = "8:Pascal & Robin Leroy"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Bu"
+        "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
@@ -823,12 +849,12 @@
             "Arguments" = "8:"
             "Description" = "8:Launch the HP67 calculator"
             "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
+            "IconIndex" = "3:32512"
             "Transitive" = "11:FALSE"
             "Target" = "8:_0044B043B0FA47EB89455E19AA48A799"
             "Folder" = "8:_DD71596A3C1D443FBBE44AE31246CC61"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:"
+            "Icon" = "8:_0044B043B0FA47EB89455E19AA48A799"
             "Feature" = "8:"
             }
         }
@@ -1224,7 +1250,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_75577D46CE394070860C716E0F073656"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_6885EC7D14E343EFA05350F123399B7D"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
