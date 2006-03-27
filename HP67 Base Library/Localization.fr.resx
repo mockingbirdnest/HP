@@ -100,6 +100,12 @@
   <data name="EDIT MENU ITEM">
     <value>Modifier les Étiquettes</value>
   </data>
+  <data name="STOP DESCRIPTION">
+    <value>Programme terminé normalement</value>
+  </data>
+  <data name="ERROR DESCRIPTION">
+    <value>Argument invalide dans un calcul</value>
+  </data>
   <data name="FILE HAS VERSION">
     <value>Version incompatible : le fichier a la version {0} mais le programme attend la version {1}.</value>
   </data>
@@ -118,6 +124,9 @@
   <data name="ERROR">
     <value>Erreur</value>
   </data>
+  <data name="INTERRUPT DESCRIPTION">
+    <value>Execution interrompue par l'utilisateur</value>
+  </data>
   <data name="SAVE MENU ITEM">
     <value>Enregistrer</value>
   </data>
@@ -127,13 +136,22 @@
   <data name="SAVE AS MENU ITEM">
     <value>Enregistrer Sous...</value>
   </data>
-  <data name="ERROR DESCRIPTION">
-    <value>Argument invalide dans un calcul</value>
+  <data name="CANNOT OPEN FILE">
+    <value>Impossible d'ouvrir le fichier {0}</value>
   </data>
-  <data name="INTERRUPT DESCRIPTION">
-    <value>Execution interrompue par l'utilisateur</value>
+  <data name="INCORRECT ARGUMENT COUNT">
+    <value>Commande appelée avec {0} arguments ; {1} ou {2} arguments attendus</value>
   </data>
-  <data name="STOP DESCRIPTION">
-    <value>Programme terminé normalement</value>
+  <data name="INCORRECT COMMAND">
+    <value>Commande {0} incorrecte ; {1} ou {2} attendus</value>
+  </data>
+  <data name="INCORRECT COMMAND LINE ARGUMENTS">
+    <value>Ligne de Command Incorrecte</value>
+  </data>
+  <data name="SHUTDOWN DESCRIPTION">
+    <value>Arrêt de l'application</value>
+  </data>
+  <data name="FILE NOT FOUND">
+    <value>Fichier inexistant</value>
   </data>
 </root>

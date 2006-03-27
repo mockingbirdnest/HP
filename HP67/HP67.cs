@@ -18,6 +18,9 @@ namespace HP67
 	/// </summary>
 	public class HP67 : System.Windows.Forms.Form
 	{
+		private const string commandOpen = "/open";
+		private const string commandPrint = "/print";
+
 		private string fileName;
 
 		// As much as possible, we hide the execution state in the Execution function.  But
@@ -98,8 +101,10 @@ namespace HP67
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public HP67()
+		public HP67 (string [] arguments)
 		{
+			string caption = Localization.GetString (Localization.IncorrectCommandLineArguments);
+
 			// Required for Windows Form Designer support
 			InitializeComponent();
 
@@ -119,6 +124,44 @@ namespace HP67
 			executionThread = new Thread (new ThreadStart (Execution));
 			executionThread.Start ();
 			executionIsInitialized.WaitOne ();
+
+			// Now see if we were called from the command line with arguments.
+			switch (arguments.Length) 
+			{
+				case 0 :
+					break;
+				case 2 :
+					if (arguments [0] == commandOpen) 
+					{
+						Open (arguments [1]);
+					}
+					else if (arguments [0] == commandPrint) 
+					{
+						Print (arguments [1]);
+
+						// For some reason Close and Application.Exit won't have an effect here
+						// (maybe because we are in the constructor?).  So I am calling the cleanup
+						// code by hand, and raising an exception to get out of the constructor.
+						HP67_Closing (null, null);
+						throw new Shutdown ();
+					}
+					else
+					{
+						MessageBox.Show (string.Format (
+							Localization.GetString (Localization.IncorrectCommand),
+							arguments [0],
+							commandOpen,
+							commandPrint),
+							caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+					break;
+				default :
+					MessageBox.Show (string.Format (
+						Localization.GetString (Localization.IncorrectArgumentCount),
+						arguments.Length.ToString (), 0, 2),
+						caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+					break;
+			}
 		}
 
 		/// <summary>
@@ -1162,9 +1205,15 @@ namespace HP67
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main () 
+		static void Main (string [] arguments) 
 		{
-			Application.Run (new HP67 ());
+			try 
+			{
+				Application.Run (new HP67 (arguments));
+			}
+			catch (Shutdown)
+			{
+			}
 		}
 
 		#region Multithreading
@@ -1335,7 +1384,7 @@ namespace HP67
 
 		#endregion
 
-		#region UI Utilities
+		#region Cross-Thread Services
 
 		void DisableUI () 
 		{
@@ -1461,6 +1510,49 @@ namespace HP67
 
 		#endregion
 
+		#region Command Execution
+
+		public void Open (string name) 
+		{
+			FileStream stream;
+
+			fileName = name;
+			try 
+			{
+				stream = new FileStream (name, FileMode.Open);
+				lock (executionThreadIsBusy) 
+				{
+					// We hold the lock, so looking at the program is fine.
+					if (! Card.Read (stream, upParser)) 
+					{
+						fileName = null;
+					}
+					else if (! theProgram.IsEmpty) 
+					{
+						cardSlot.State = CardSlotState.ReadWrite;
+					}
+					stream.Close ();
+				}
+			}
+			catch (FileNotFoundException)
+			{
+				string text = string.Format (
+					Localization.GetString (Localization.CannotOpenFile),
+					name);
+				string caption = Localization.GetString (Localization.FileNotFound);
+
+				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		public void Print (string name) 
+		{
+			Open (name);
+			printMenuItem_Click (null, null);
+		}
+
+		#endregion
+
 		#region UI Event Handlers
 
 		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -1569,27 +1661,9 @@ namespace HP67
 
 		private void openMenuItem_Click (object sender, System.EventArgs e)
 		{
-			Stream stream;
-
 			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
-				fileName = openFileDialog.FileName;
-				if ((stream = openFileDialog.OpenFile ()) != null)
-				{
-					lock (executionThreadIsBusy) 
-					{
-						// We hold the lock, so looking at the program is fine.
-						if (! Card.Read (stream, upParser)) 
-						{
-							fileName = null;
-						}
-						else if (! theProgram.IsEmpty) 
-						{
-							cardSlot.State = CardSlotState.ReadWrite;
-						}
-						stream.Close ();
-					}
-				}
+				Open (openFileDialog.FileName);
 			}			
 		}
 

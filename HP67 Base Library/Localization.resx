@@ -100,6 +100,12 @@
   <data name="EDIT MENU ITEM">
     <value>Edit Labels</value>
   </data>
+  <data name="STOP DESCRIPTION">
+    <value>Program completed normally</value>
+  </data>
+  <data name="ERROR DESCRIPTION">
+    <value>Invalid argument in a computation</value>
+  </data>
   <data name="FILE HAS VERSION">
     <value>Incompatible version: file has version {0} but program expects version {1}.</value>
   </data>
@@ -118,6 +124,9 @@
   <data name="ERROR">
     <value>Error</value>
   </data>
+  <data name="INTERRUPT DESCRIPTION">
+    <value>Execution interrupted by user</value>
+  </data>
   <data name="SAVE MENU ITEM">
     <value>Save</value>
   </data>
@@ -127,13 +136,22 @@
   <data name="SAVE AS MENU ITEM">
     <value>Save As...</value>
   </data>
-  <data name="ERROR DESCRIPTION">
-    <value>Invalid argument in a computation</value>
+  <data name="CANNOT OPEN FILE">
+    <value>File {0} not found</value>
   </data>
-  <data name="INTERRUPT DESCRIPTION">
-    <value>Execution interrupted by user</value>
+  <data name="FILE NOT FOUND">
+    <value>File Not Found</value>
   </data>
-  <data name="STOP DESCRIPTION">
-    <value>Program completed normally</value>
+  <data name="INCORRECT ARGUMENT COUNT">
+    <value>Incorrect argument count {0}; expected to be {1} or {2}</value>
+  </data>
+  <data name="INCORRECT COMMAND">
+    <value>Incorrect command {0}; expected to be {1} or {2}</value>
+  </data>
+  <data name="INCORRECT COMMAND LINE ARGUMENTS">
+    <value>Incorrect Command Line Arguments</value>
+  </data>
+  <data name="SHUTDOWN DESCRIPTION">
+    <value>Application shutdown</value>
   </data>
 </root>
