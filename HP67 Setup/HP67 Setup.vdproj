@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_002E59618DF94AEEA77B4E9A618BCBCC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -201,12 +207,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CE58845DC293450A8D9DD4FFE12CA241"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
@@ -276,6 +276,26 @@
         }
         "File"
         {
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_002E59618DF94AEEA77B4E9A618BCBCC"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\GCD, LCM, Dec-Frac.hp67"
+            "TargetName" = "8:GCD, LCM, Dec-Frac.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_0235350F5583F68F56A3AF36CA76D13C"
             {
             "AssemblyRegister" = "3:1"
@@ -508,26 +528,6 @@
             "TargetName" = "8:Setup Banner.JPG"
             "Tag" = "8:"
             "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_CE58845DC293450A8D9DD4FFE12CA241"
-            {
-            "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\GCD, LCM, Dec→Frac.hp67"
-            "TargetName" = "8:GCD, LCM, Dec→Frac.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
