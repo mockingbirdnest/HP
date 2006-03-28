@@ -837,7 +837,7 @@ namespace HP67
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_X_LT_0 :
-					if (theStack.X <= 0.0) 
+					if (theStack.X >= 0.0) 
 					{
 						theProgram.Skip ();
 					}
