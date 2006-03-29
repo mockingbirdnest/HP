@@ -196,7 +196,9 @@ namespace HP67
 					// Executing a new subprogram from the top-level clears any return address left
 					// on the stack from the last execution, unless of course we are in
 					// step-by-step execution.
-					if (! stepping) 
+					// TODO: and done :-) R/S must not clear the call stack
+
+					if (! stepping && label != null) 
 					{
 						theProgram.Reset ();
 					}
@@ -204,9 +206,10 @@ namespace HP67
 
 				// The case where label is null corresponds to execution resuming from the
 				// instruction following the one on which we stopped (aka RUN in R/S).  
-				if (label != null) 
+				// TODO: GSB from the top level must not save a return address
+				if (label != null && wasRunning) 
 				{
-					label.Gosub (theMemory, theProgram);
+					label.Gosub (theMemory, theProgram, wasRunning);
 				}
 
 				running = true;
@@ -214,7 +217,8 @@ namespace HP67
 				{
 					instruction = theProgram.Instruction;
 					Execute (instruction);
-					if (instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_RTN) 
+					// TODO: and done :-) if the GSB comes from a R/S, RTN must not stop the execution
+					if ((instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_RTN && label != null))
 					{
 						break;
 					}
