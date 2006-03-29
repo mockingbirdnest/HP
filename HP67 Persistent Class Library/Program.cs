@@ -51,6 +51,8 @@ namespace HP67_Class_Library
 		private bool isEmpty;
 		private int lastPrinted;
 		private int next;
+		private bool segregated;
+		private int segregation;
 		private Display theDisplay;
 
 		#region Constructors & Destructors
@@ -72,6 +74,7 @@ namespace HP67_Class_Library
 				labels [i] = new ArrayList ();
 			}
 			returns = new int [3] {noStep, noStep, noStep};
+			segregated = false;
 			Card.MergeFromDataset += new Card.DatasetImporterDelegate (MergeFromDataset);
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
@@ -363,6 +366,10 @@ namespace HP67_Class_Library
 				returns [i] = returns [i - 1];
 			}
 			returns [0] = next;
+			if (segregated) 
+			{
+				segregation++;
+			}
 		}
 
 		private void UpdateLabelsForDeletion (int step) 
@@ -477,6 +484,7 @@ namespace HP67_Class_Library
 		{
 			if (returns [0] == noStep)
 			{
+				segregated = false;
 				throw new Stop ();
 			}
 			else
@@ -487,6 +495,25 @@ namespace HP67_Class_Library
 					returns [i] = returns [i + 1];
 				}
 				returns [returns.Length - 1] = noStep;
+
+				if (segregated) 
+				{
+					segregation--;
+					if (segregation == 0)
+					{
+						segregated = false;
+						throw new Stop ();
+					}
+				}
+			}
+		}
+
+		public void Segregate () 
+		{
+			if (! segregated) 
+			{
+				segregated = true;
+				segregation = 0;
 			}
 		}
 

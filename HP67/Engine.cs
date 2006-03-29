@@ -180,71 +180,6 @@ namespace HP67
 			}
 		}
 
-		public void Gosub (ILabel label)
-		{
-			Instruction instruction;
-			bool wasRunning = running;
-
-			try 
-			{
-				if (! running) 
-				{
-					Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-						"Gosub: starting",
-						classTraceSwitch.DisplayName);
-
-					// Executing a new subprogram from the top-level clears any return address left
-					// on the stack from the last execution, unless of course we are in
-					// step-by-step execution.
-					// TODO: and done :-) R/S must not clear the call stack
-
-					if (! stepping && label != null) 
-					{
-						theProgram.Reset ();
-					}
-				}
-
-				// The case where label is null corresponds to execution resuming from the
-				// instruction following the one on which we stopped (aka RUN in R/S).  
-				// TODO: GSB from the top level must not save a return address
-				if (label != null && wasRunning) 
-				{
-					label.Gosub (theMemory, theProgram, wasRunning);
-				}
-
-				running = true;
-				for (;;) 
-				{
-					instruction = theProgram.Instruction;
-					Execute (instruction);
-					// TODO: and done :-) if the GSB comes from a R/S, RTN must not stop the execution
-					if ((instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_RTN && label != null))
-					{
-						break;
-					}
-					else if (enableBlur) 
-					{
-
-						// The display mode will be reset at the end of the execution of the
-						// program, so we can freely change it here.
-						theDisplay.ShowBlur ();
-					}
-				}
-			}
-			catch (ApplicationException e)
-			{
-				Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-					"Gosub: Exception " + e.ToString (),
-					classTraceSwitch.DisplayName);
-				throw;
-			}
-			finally 
-			{
-				running = wasRunning;
-				stackLift = true;
-			}
-		}
-
 		private double ToH (double x) 
 		{
 			double absX = Math.Abs (x);
@@ -508,7 +443,25 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_GSB_SHORTCUT :
 				case (int)SymbolConstants.SYMBOL_GSB_F :
 				case (int)SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
-					Gosub ((ILabel) instruction.Arguments [0]);
+					if (running) 
+					{
+						((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+					}
+					else if (stepping) 
+					{
+						theProgram.Segregate ();
+						((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+						running = true;
+					}
+					else 
+					{
+						((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
+						theProgram.Reset ();
+						Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+							"Running",
+							classTraceSwitch.DisplayName);
+						running = true;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_GTO :
 					((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
@@ -627,10 +580,15 @@ namespace HP67
 					{
 						throw new Stop ();
 					}
-					else 
+					else if (stepping) 
 					{
-						// Resume execution from the current location.
-						Gosub (null);
+					}
+					else
+					{
+						Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+							"Running",
+							classTraceSwitch.DisplayName);
+						running = true;
 					}
 					break;
 				case (int)SymbolConstants.SYMBOL_R_UP :
@@ -718,16 +676,6 @@ namespace HP67
 					theStack.X = x * x;
 					break;
 				case (int)SymbolConstants.SYMBOL_SST :
-					try 
-					{
-						Trace.Assert (! running);
-						stepping = true;
-						Execute (theProgram.Instruction);
-					}
-					finally 
-					{
-						stepping = false;
-					}
 					break;
 				case (int)SymbolConstants.SYMBOL_ST_I :
 					theMemory.Store (theStack.X, Memory.LetterRegister.I);
@@ -883,12 +831,14 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_SST :
 					// Don't change the stack lift, not even to neutral: the necessary changes have
 					// been done by the instruction called by SST.
+					stepping = true;
 					break;
 				case (int)SymbolConstants.SYMBOL_CLX :
 				case (int)SymbolConstants.SYMBOL_ENTER :
 				case (int)SymbolConstants.SYMBOL_SIGMA_MINUS :
 				case (int)SymbolConstants.SYMBOL_SIGMA_PLUS :
 					stackLift = false;
+					stepping = false;
 					break;
 				case (int)SymbolConstants.SYMBOL_CL_PRGM :
 				case (int)SymbolConstants.SYMBOL_DEL :
@@ -902,9 +852,11 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_SPACE :
 				case (int)SymbolConstants.SYMBOL_STK :
 					stackLift = neutral;
+					stepping = false;
 					break;
 				default :
 					stackLift = true;
+					stepping = false;
 					break;
 			}
 
@@ -946,6 +898,10 @@ namespace HP67
 
 		public void Process (Instruction instruction, KeystrokeMotion motion) 
 		{
+			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+				"Process: " + motion.ToString () + " " +
+				instruction.Symbol.Name + " " + instruction.ToString (),
+				classTraceSwitch.DisplayName);
 
 			// When the program memory is empty, the keys A to E have a different function, both
 			// in RUN mode and in W/PRGM mode.  Perform the substitution here.
@@ -972,7 +928,8 @@ namespace HP67
 								case (int)SymbolConstants.SYMBOL_SST :
 
 									// The display mode will be reset by EnableOpenOrSave after
-									// execution of the next instruction (i.e., when the key goes up).
+									// execution of the next instruction (i.e., when the key goes
+									// up).
 									theDisplay.Mode = DisplayMode.Instruction;
 									theProgram.PreviewInstruction ();
 									break;
@@ -983,13 +940,32 @@ namespace HP67
 						case KeystrokeMotion.Up :
 							try 
 							{
-								Execute (instruction);
+								Trace.Assert (! running);
+								for (;;) 
+								{
+									Execute (instruction);
+									if (! running && ! stepping) 
+									{
+										break;
+									}
+									instruction = theProgram.Instruction;
+									if (enableBlur) 
+									{
+
+										// The display mode will be reset at the end of the
+										// execution of the program, so we can freely change it
+										// here.
+										theDisplay.ShowBlur ();
+									}
+								}
 							}
 							catch (ApplicationException e)
 							{
 								Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 									"Process: Exception " + e.ToString (),
 									classTraceSwitch.DisplayName);
+								running = false;
+								stackLift = true;
 								throw;
 							}
 							break;
@@ -1002,10 +978,6 @@ namespace HP67
 						case KeystrokeMotion.Down :
 							break;
 						case KeystrokeMotion.Up :
-							Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-								"Process: " + instruction.Symbol.Name + " " + instruction.ToString (),
-								classTraceSwitch.DisplayName);
-
 							switch (instruction.Symbol.Id) 
 							{
 								case (int) SymbolConstants.SYMBOL_BST :
