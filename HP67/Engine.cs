@@ -964,9 +964,12 @@ namespace HP67
 								Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 									"Process: Exception " + e.ToString (),
 									classTraceSwitch.DisplayName);
+								throw;
+							}
+							finally 
+							{
 								running = false;
 								stackLift = true;
-								throw;
 							}
 							break;
 					}
