@@ -51,6 +51,54 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_E3040C905A245367AE6D803976E0280A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4960D8C99058492E8B6D453D860D0E12"
+        "OwnerKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
         "OwnerKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
         "MsmSig" = "8:_UNDEFINED"
@@ -107,60 +155,18 @@
         {
         "MsmKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
         "OwnerKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9F75795632364E099E4E4766F3D29663"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_E3040C905A245367AE6D803976E0280A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_BB05653A04604B9489FE49DD019444C4"
-        "OwnerKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -297,7 +303,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -317,7 +323,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -337,7 +343,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -481,11 +487,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_9F75795632364E099E4E4766F3D29663"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Base Conversions.hp67"
+            "TargetName" = "8:Base Conversions.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2278.32812, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2280.35401, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
@@ -567,7 +593,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2278.32811, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2280.35400, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_E3040C905A245367AE6D803976E0280A"
@@ -598,7 +624,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2278.32812, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2280.35400, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_EC2CAA8EFC47CBE0823C96AAF58046F9"
@@ -755,7 +781,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP67"
         "ProductCode" = "8:{9A389F95-72D1-4E1B-9D56-85D69E97300E}"
-        "PackageCode" = "8:{EB610572-8583-4803-AAE9-262CF63C667F}"
+        "PackageCode" = "8:{44573DC7-C5E3-42E4-ACDF-F60AF73CDD1D}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -1276,7 +1302,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_BB05653A04604B9489FE49DD019444C4"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_4960D8C99058492E8B6D453D860D0E12"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
