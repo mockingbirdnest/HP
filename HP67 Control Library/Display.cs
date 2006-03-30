@@ -971,12 +971,18 @@ namespace HP67_Control_Library
 						text.PadRight (textLength - mantissaSignLength);
 
 			Mode = DisplayMode.Alphabetic;
-			alphabeticTextBox.Text = s;
-			Update ();
-			Thread.Sleep (msOn);
-			alphabeticTextBox.Text = "";
-			Update ();
-			Thread.Sleep (msOff);
+			if (msOn > 0) 
+			{
+				alphabeticTextBox.Text = s;
+				Update ();
+				Thread.Sleep (msOn);
+			}
+			if (msOff > 0) 
+			{
+				alphabeticTextBox.Text = "";
+				Update ();
+				Thread.Sleep (msOff);
+			}
 			alphabeticTextBox.Text = s;
 		}
 

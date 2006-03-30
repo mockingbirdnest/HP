@@ -39,6 +39,7 @@ namespace HP67
 
 		// Events used to synchronize the two threads.
 		private AutoResetEvent executionIsInitialized = new AutoResetEvent (false);
+		private AutoResetEvent executionMayRun = new AutoResetEvent (false);
 		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
 
 		// Delegates used for cross-thread invocation.
@@ -162,6 +163,9 @@ namespace HP67
 						caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					break;
 			}
+
+			// Power on.
+			executionMayRun.Set ();
 		}
 
 		/// <summary>
@@ -262,6 +266,7 @@ namespace HP67
 			this.toggleOffOn.RightWidth = 30;
 			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
 			this.toggleOffOn.TabIndex = 2;
+			this.toggleOffOn.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
 			// 
 			// toggleWprgmRun
 			// 
@@ -1236,19 +1241,36 @@ namespace HP67
 
 		void Execution ()
 		{
-			HP67_Control_Library.Display display;
-			HP67_Class_Library.Keystroke keystroke;
+			Display display;
+			Keystroke keystroke;
 			Engine theEngine;
-			HP67_Class_Library.Memory theMemory;
+			Memory theMemory;
 			HP67_Class_Library.Stack theStack;
 
 			bool ignoreNext = false;
+			bool mustCreateDisplay = true;
 			bool mustEnableUI = true;
 
 			// Controls must be accessed from the thread that created them.  For most controls,
 			// this is the main thread.  But the display is special, as it is mostly updated
-			// during execution.  So it is created by the execution thread.
-			display = new HP67_Control_Library.Display (keyWasTyped);
+			// during execution.  So it is created by the execution thread.  If the display already
+			// exists because it was created by a previous incarnation of the execution thread, we
+			// reuse it.
+			display = null;
+			foreach (Control c in Controls) 
+			{
+				if (c.GetType () == typeof (Display)) 
+				{
+					mustCreateDisplay = false;
+					display = (Display) c;
+					break;
+				}
+			}
+			if (mustCreateDisplay) 
+			{
+				display = new Display (keyWasTyped);
+				Controls.Add (display);
+			}
 			display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			display.ForeColor = System.Drawing.Color.Red;
 			display.Location = new System.Drawing.Point (8, 8);
@@ -1260,7 +1282,6 @@ namespace HP67
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
 			display.CompleteKeystrokes +=
 				new HP67_Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
-			this.Controls.Add (display);
 
 			// Create the components that depend on the display.
 			theMemory = new Memory (display);
@@ -1278,6 +1299,9 @@ namespace HP67
 			upActions = new Actions (theEngine, KeystrokeMotion.Up);
 			upParser = new Parser ("HP67_Parser.Parser", "CGT", upActions);
 
+			// The display is initially black, as when the calculator is powered off.
+			display.ShowText ("", 0, 0);
+
 			// For some reason the first exception that is raised on this thread takes a long time
 			// to propagate.  It is better to raise it here, while the thread initializes, than
 			// later, when it could cause a delay visible to the user.
@@ -1291,6 +1315,14 @@ namespace HP67
 
 			// Notify the main thread that we are ready to process keystrokes.
 			executionIsInitialized.Set ();
+
+			// Now wait until the main thread tells us that we may run, i.e., that the calculator
+			// has been powered on.  The display is set to numeric mode, which is appropriate when
+			// the application has just started.  In case of a power cycle the main thread will
+			// force us to refresh the display mode based on the W/PRGM-RUN toggle: we couldn't call
+			// EnableUI here, because the main window may not be built yet.
+			executionMayRun.WaitOne ();
+			display.Mode = DisplayMode.Numeric;
 
 			for (;;) 
 			{
@@ -1370,13 +1402,18 @@ namespace HP67
 				{
 					mustEnableUI = true;
 				}
+				catch (ThreadAbortException) 
+				{
+				}
 				finally 
 				{
-					if (mustEnableUI) 
+					// No cross-thread invocation if we are being aborted.
+					if (mustEnableUI && 
+						((Thread.CurrentThread.ThreadState & ThreadState.AbortRequested) == 0)) 
 					{
 						theEngine.Mode = 
 							(EngineMode) this.Invoke
-								(new EnableUICrossThreadInvocation (EnableUI));
+							(new EnableUICrossThreadInvocation (EnableUI));
 					}
 				}
 			}
@@ -1642,7 +1679,34 @@ namespace HP67
 			theProgram.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
 		}
 
-		private void toggleWprgmRun_ToggleClick(object sender,
+		private void toggleOffOn_ToggleClick (object sender,
+			System.EventArgs e,
+			HP67_Control_Library.TogglePosition position)
+		{
+			switch (toggleOffOn.Position)
+			{
+				case TogglePosition.Left :
+					// OFF.  We abort the execution thread and start a new one.  We leave it in the
+					// state where its display is black and it doesn't accept keystrokes.
+					cardSlot.State = CardSlotState.Unloaded;
+					executionThread.Abort (); 
+					executionThread = new Thread (new ThreadStart (Execution));
+					executionThread.Start ();
+					executionIsInitialized.WaitOne ();
+					break;
+				case TogglePosition.Right :
+					// ON.  First, we cancel any key typed when the power was off.  Then we pretend
+					// that the W/PRGM-RUN switch just moved to set the display mode appropriately.
+					// Finally we release the execution thread.
+					keyWasTyped.Reset ();
+					keystrokesQueue.Clear ();
+					toggleWprgmRun_ToggleClick (sender, e, toggleWprgmRun.Position);
+					executionMayRun.Set ();
+					break;
+			}		
+		}
+
+		private void toggleWprgmRun_ToggleClick (object sender,
 			System.EventArgs e,
 			HP67_Control_Library.TogglePosition position)
 		{
