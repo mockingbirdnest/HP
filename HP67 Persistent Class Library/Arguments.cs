@@ -403,7 +403,27 @@ namespace HP67_Class_Library
 		{
 			get
 			{
-				return PersistableText;
+				if (op == new Memory.Operator (Addition))
+				{
+					return "+";
+				}
+				else if (op == new Memory.Operator (Subtraction))
+				{
+					return "-";
+				}
+				else if (op == new Memory.Operator (Multiplication))
+				{
+					return "×";
+				}
+				else if (op == new Memory.Operator (Division))
+				{
+					return "÷";
+				}
+				else
+				{
+					Trace.Assert (false);
+					return ""; // To make the compiler happy.
+				}
 			}
 		}
 

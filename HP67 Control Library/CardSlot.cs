@@ -130,6 +130,7 @@ namespace HP67_Control_Library
 		{
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(CardSlot));
 			this.panel = new System.Windows.Forms.Panel();
+			this.titleRTFBox = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxfB = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxfE = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxfD = new System.Windows.Forms.RichTextBox();
@@ -157,7 +158,6 @@ namespace HP67_Control_Library
 			this.labelC = new System.Windows.Forms.Label();
 			this.labelD = new System.Windows.Forms.Label();
 			this.labelE = new System.Windows.Forms.Label();
-			this.titleRTFBox = new System.Windows.Forms.RichTextBox();
 			this.panel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -202,6 +202,19 @@ namespace HP67_Control_Library
 			this.panel.Size = new System.Drawing.Size(300, 50);
 			this.panel.TabIndex = 0;
 			// 
+			// titleRTFBox
+			// 
+			this.titleRTFBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.titleRTFBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.titleRTFBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.titleRTFBox.ForeColor = System.Drawing.Color.White;
+			this.titleRTFBox.Location = new System.Drawing.Point(16, 4);
+			this.titleRTFBox.Name = "titleRTFBox";
+			this.titleRTFBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+			this.titleRTFBox.Size = new System.Drawing.Size(180, 14);
+			this.titleRTFBox.TabIndex = 22;
+			this.titleRTFBox.Text = "<TITLE>";
+			// 
 			// rtfBoxfB
 			// 
 			this.rtfBoxfB.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
@@ -211,6 +224,7 @@ namespace HP67_Control_Library
 			this.rtfBoxfB.Location = new System.Drawing.Point(72, 18);
 			this.rtfBoxfB.Multiline = false;
 			this.rtfBoxfB.Name = "rtfBoxfB";
+			this.rtfBoxfB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxfB.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxfB.TabIndex = 13;
 			this.rtfBoxfB.Text = "<fB>";
@@ -224,6 +238,7 @@ namespace HP67_Control_Library
 			this.rtfBoxfE.Location = new System.Drawing.Point(240, 18);
 			this.rtfBoxfE.Multiline = false;
 			this.rtfBoxfE.Name = "rtfBoxfE";
+			this.rtfBoxfE.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxfE.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxfE.TabIndex = 16;
 			this.rtfBoxfE.Text = "<fE>";
@@ -237,6 +252,7 @@ namespace HP67_Control_Library
 			this.rtfBoxfD.Location = new System.Drawing.Point(184, 18);
 			this.rtfBoxfD.Multiline = false;
 			this.rtfBoxfD.Name = "rtfBoxfD";
+			this.rtfBoxfD.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxfD.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxfD.TabIndex = 15;
 			this.rtfBoxfD.Text = "<fD>";
@@ -250,6 +266,7 @@ namespace HP67_Control_Library
 			this.rtfBoxfC.Location = new System.Drawing.Point(128, 18);
 			this.rtfBoxfC.Multiline = false;
 			this.rtfBoxfC.Name = "rtfBoxfC";
+			this.rtfBoxfC.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxfC.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxfC.TabIndex = 14;
 			this.rtfBoxfC.Text = "<fC>";
@@ -263,6 +280,7 @@ namespace HP67_Control_Library
 			this.rtfBoxfA.Location = new System.Drawing.Point(16, 18);
 			this.rtfBoxfA.Multiline = false;
 			this.rtfBoxfA.Name = "rtfBoxfA";
+			this.rtfBoxfA.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxfA.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxfA.TabIndex = 12;
 			this.rtfBoxfA.Text = "<fA>";
@@ -276,6 +294,7 @@ namespace HP67_Control_Library
 			this.rtfBoxE.Location = new System.Drawing.Point(240, 32);
 			this.rtfBoxE.Multiline = false;
 			this.rtfBoxE.Name = "rtfBoxE";
+			this.rtfBoxE.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxE.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxE.TabIndex = 21;
 			this.rtfBoxE.Text = "<E>";
@@ -289,6 +308,7 @@ namespace HP67_Control_Library
 			this.rtfBoxD.Location = new System.Drawing.Point(184, 32);
 			this.rtfBoxD.Multiline = false;
 			this.rtfBoxD.Name = "rtfBoxD";
+			this.rtfBoxD.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxD.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxD.TabIndex = 20;
 			this.rtfBoxD.Text = "<D>";
@@ -302,6 +322,7 @@ namespace HP67_Control_Library
 			this.rtfBoxC.Location = new System.Drawing.Point(128, 32);
 			this.rtfBoxC.Multiline = false;
 			this.rtfBoxC.Name = "rtfBoxC";
+			this.rtfBoxC.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxC.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxC.TabIndex = 19;
 			this.rtfBoxC.Text = "<C>";
@@ -315,6 +336,7 @@ namespace HP67_Control_Library
 			this.rtfBoxB.Location = new System.Drawing.Point(72, 32);
 			this.rtfBoxB.Multiline = false;
 			this.rtfBoxB.Name = "rtfBoxB";
+			this.rtfBoxB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxB.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxB.TabIndex = 18;
 			this.rtfBoxB.Text = "<B>";
@@ -328,6 +350,7 @@ namespace HP67_Control_Library
 			this.rtfBoxA.Location = new System.Drawing.Point(16, 32);
 			this.rtfBoxA.Multiline = false;
 			this.rtfBoxA.Name = "rtfBoxA";
+			this.rtfBoxA.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
 			this.rtfBoxA.Size = new System.Drawing.Size(48, 13);
 			this.rtfBoxA.TabIndex = 17;
 			this.rtfBoxA.Text = "<A>";
@@ -537,18 +560,6 @@ namespace HP67_Control_Library
 			this.labelE.TabIndex = 16;
 			this.labelE.Text = "x⇄y";
 			this.labelE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			// 
-			// titleRTFBox
-			// 
-			this.titleRTFBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
-			this.titleRTFBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.titleRTFBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.titleRTFBox.ForeColor = System.Drawing.Color.White;
-			this.titleRTFBox.Location = new System.Drawing.Point(16, 4);
-			this.titleRTFBox.Name = "titleRTFBox";
-			this.titleRTFBox.Size = new System.Drawing.Size(180, 13);
-			this.titleRTFBox.TabIndex = 22;
-			this.titleRTFBox.Text = "<TITLE>";
 			// 
 			// CardSlot
 			// 

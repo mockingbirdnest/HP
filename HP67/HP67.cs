@@ -1696,6 +1696,7 @@ namespace HP67
 					// OFF.  We abort the execution thread and start a new one.  We leave it in the
 					// state where its display is black and it doesn't accept keystrokes.
 					cardSlot.State = CardSlotState.Unloaded;
+					DisableUI ();
 					executionThread.Abort (); 
 					executionThread = new Thread (new ThreadStart (Execution));
 					executionThread.Start ();
