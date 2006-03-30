@@ -1519,7 +1519,7 @@ namespace HP67
 			fileName = name;
 			try 
 			{
-				stream = new FileStream (name, FileMode.Open);
+				stream = new FileStream (name, FileMode.Open, FileAccess.Read);
 				lock (executionThreadIsBusy) 
 				{
 					// We hold the lock, so looking at the program is fine.
@@ -1529,7 +1529,10 @@ namespace HP67
 					}
 					else if (! theProgram.IsEmpty) 
 					{
-						cardSlot.State = CardSlotState.ReadWrite;
+						cardSlot.State =
+							((File.GetAttributes (name) &  FileAttributes.ReadOnly) != 0) ?
+							CardSlotState.ReadOnly :
+							CardSlotState.ReadWrite;
 					}
 					stream.Close ();
 				}
@@ -1540,6 +1543,16 @@ namespace HP67
 					Localization.GetString (Localization.CannotOpenFile),
 					name);
 				string caption = Localization.GetString (Localization.FileNotFound);
+
+				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			catch (Exception ex) 
+			{
+				string text = string.Format (
+					Localization.GetString (Localization.ExceptionOpeningFile),
+					name,
+					ex.Message);
+				string caption = Localization.GetString (Localization.ErrorDuringOpen);
 
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
@@ -1669,31 +1682,48 @@ namespace HP67
 
 		private void saveMenuItem_Click(object sender, System.EventArgs e)
 		{
+			bool fileIsReadOnly = false;
 			Stream stream;
 
-			if (fileName == null) 
+			fileIsReadOnly = File.Exists (fileName) &&
+				((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0);
+			if (fileName == null || fileIsReadOnly) 
 			{
 				saveAsMenuItem_Click (sender, e);
 			}
 			else 
 			{
-				// Use OpenOrCreate to read the part of the file that we won't overwrite.
-				if ((stream = new FileStream (fileName, FileMode.OpenOrCreate)) != null) 
+				try 
 				{
+					// Use OpenOrCreate to read the part of the file that we won't overwrite.
+					stream = new FileStream (fileName, FileMode.OpenOrCreate);
 					lock (executionThreadIsBusy) 
 					{
 						Card.Write (stream, CardPart.Program);
 					}
 					stream.Close ();
 				}
+				catch (Exception ex) 
+				{
+					string text = string.Format (
+						Localization.GetString (Localization.ExceptionSavingFile),
+						fileName,
+						ex.Message);
+					string caption = Localization.GetString (Localization.ErrorDuringSave);
+
+					MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 		}
 
 		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
 		{
+			bool fileIsReadOnly = false;
 			Stream stream;
 
-			if (fileName == null) 
+			fileIsReadOnly = File.Exists (fileName) &&
+				((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0);
+			if (fileName == null || fileIsReadOnly) 
 			{
 				saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
 			}
@@ -1704,15 +1734,25 @@ namespace HP67
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
 				fileName = saveFileDialog.FileName;
-
-				// Use OpenOrCreate to read the part of the file that we won't overwrite.
-				if ((stream = new FileStream (fileName, FileMode.OpenOrCreate)) != null)
+				try 
 				{
+					// Use OpenOrCreate to read the part of the file that we won't overwrite.
+					stream = new FileStream (fileName, FileMode.OpenOrCreate);
 					lock (executionThreadIsBusy) 
 					{
 						Card.Write (stream, CardPart.Program);
 					}
 					stream.Close ();
+				}
+				catch (Exception ex) 
+				{
+					string text = string.Format (
+						Localization.GetString (Localization.ExceptionSavingFile),
+						fileName,
+						ex.Message);
+					string caption = Localization.GetString (Localization.ErrorDuringSave);
+
+					MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 		}

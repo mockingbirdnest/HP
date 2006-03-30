@@ -66,7 +66,6 @@ namespace HP67_Class_Library
 
 			r_s = new Instruction ("84", r_s_symbol, r_s_args);
 			instructions = new Instruction [224];
-			Clear ();
 
 			labels = new ArrayList [(int) LetterLabel.e - 0 + 1];
 			for (int i = 0; i < labels.Length; i++) 
@@ -74,7 +73,8 @@ namespace HP67_Class_Library
 				labels [i] = new ArrayList ();
 			}
 			returns = new int [3] {noStep, noStep, noStep};
-			segregated = false;
+
+			Clear ();
 			Card.MergeFromDataset += new Card.DatasetImporterDelegate (MergeFromDataset);
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
@@ -530,10 +530,15 @@ namespace HP67_Class_Library
 		{
 			isEmpty = true;
 			lastPrinted = noStep;
+			segregated = false;
 			GotoBegin ();
 			for (int i = 0; i < instructions.Length; i++) 
 			{
 				instructions [i] = r_s;
+			}
+			for (int i = 0; i < labels.Length; i++) 
+			{
+				labels [i].Clear ();
 			}
 		}
 

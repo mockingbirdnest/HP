@@ -97,50 +97,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EDIT MENU ITEM">
-    <value>Edit Labels</value>
-  </data>
   <data name="STOP DESCRIPTION">
     <value>Program completed normally</value>
   </data>
-  <data name="ERROR DESCRIPTION">
-    <value>Invalid argument in a computation</value>
-  </data>
-  <data name="FILE HAS VERSION">
-    <value>Incompatible version: file has version {0} but program expects version {1}.</value>
-  </data>
-  <data name="INCOMPATIBLE VERSION">
-    <value>Incompatible Version</value>
-  </data>
-  <data name="OPEN MENU ITEM">
-    <value>Open...</value>
-  </data>
-  <data name="RTF MENU ITEM">
-    <value>Rich Text</value>
+  <data name="INCORRECT COMMAND LINE ARGUMENTS">
+    <value>Incorrect Command Line Arguments</value>
   </data>
   <data name="UNTITLED FILE NAME">
     <value>Untitled</value>
   </data>
-  <data name="ERROR">
-    <value>Error</value>
+  <data name="RTF MENU ITEM">
+    <value>Rich Text</value>
   </data>
-  <data name="INTERRUPT DESCRIPTION">
-    <value>Execution interrupted by user</value>
+  <data name="OPEN MENU ITEM">
+    <value>Open...</value>
   </data>
-  <data name="SAVE MENU ITEM">
-    <value>Save</value>
-  </data>
-  <data name="PRINT MENU ITEM">
-    <value>Print</value>
-  </data>
-  <data name="SAVE AS MENU ITEM">
-    <value>Save As...</value>
-  </data>
-  <data name="CANNOT OPEN FILE">
-    <value>File {0} not found</value>
-  </data>
-  <data name="FILE NOT FOUND">
-    <value>File Not Found</value>
+  <data name="INCOMPATIBLE VERSION">
+    <value>Incompatible Version</value>
   </data>
   <data name="INCORRECT ARGUMENT COUNT">
     <value>Incorrect argument count {0}; expected to be {1} or {2}</value>
@@ -148,10 +121,49 @@
   <data name="INCORRECT COMMAND">
     <value>Incorrect command {0}; expected to be {1} or {2}</value>
   </data>
-  <data name="INCORRECT COMMAND LINE ARGUMENTS">
-    <value>Incorrect Command Line Arguments</value>
+  <data name="FILE NOT FOUND">
+    <value>File Not Found</value>
+  </data>
+  <data name="PRINT MENU ITEM">
+    <value>Print</value>
+  </data>
+  <data name="SAVE AS MENU ITEM">
+    <value>Save As...</value>
   </data>
   <data name="SHUTDOWN DESCRIPTION">
     <value>Application shutdown</value>
+  </data>
+  <data name="ERROR DESCRIPTION">
+    <value>Invalid argument in a computation</value>
+  </data>
+  <data name="INTERRUPT DESCRIPTION">
+    <value>Execution interrupted by user</value>
+  </data>
+  <data name="ERROR">
+    <value>Error</value>
+  </data>
+  <data name="SAVE MENU ITEM">
+    <value>Save</value>
+  </data>
+  <data name="CANNOT OPEN FILE">
+    <value>File {0} not found</value>
+  </data>
+  <data name="FILE HAS VERSION">
+    <value>Incompatible version: file has version {0} but program expects version {1}.</value>
+  </data>
+  <data name="EDIT MENU ITEM">
+    <value>Edit Labels</value>
+  </data>
+  <data name="ERROR DURING SAVE">
+    <value>Save Failed</value>
+  </data>
+  <data name="ERROR DURING OPEN">
+    <value>Open Failed</value>
+  </data>
+  <data name="EXCEPTION OPENING FILE">
+    <value>Unable to open file {0} because {1}</value>
+  </data>
+  <data name="EXCEPTION SAVING FILE">
+    <value>Unable to save file {0} because {1}</value>
   </data>
 </root>
