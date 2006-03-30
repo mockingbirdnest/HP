@@ -18,7 +18,7 @@ namespace HP67_Persistence
 	/// </summary>
 	public class Card
 	{
-		private const float Version = 1.3F;
+		private const float Version = 1.4F;
 
 		#region Event Definitions
 

@@ -15,7 +15,8 @@
 										<xs:element name="FontSize" type="xs:float" minOccurs="0" />
 										<xs:element name="LargeFontName" type="xs:string" />
 										<xs:element name="LargeFontSize" type="xs:float" minOccurs="0" />
-										<xs:element name="Title" type="xs:string" />
+										<xs:element name="TextTitle" type="xs:string" minOccurs="0" />
+										<xs:element name="RTFTitle" type="xs:string" minOccurs="0" />
 										<xs:element name="Margin" type="xs:int" />
 										<xs:element name="TextBoxWidth" type="xs:int" />
 										<xs:element name="IsRichText" type="xs:boolean" />

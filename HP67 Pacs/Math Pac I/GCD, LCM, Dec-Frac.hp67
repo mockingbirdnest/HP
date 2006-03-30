@@ -1,12 +1,12 @@
-<CardDataset xmlns="http://tempuri.org/CardDataset.xsd">
+﻿<CardDataset xmlns="http://tempuri.org/CardDataset.xsd">
   <Card>
-    <Version>1.3</Version>
+    <Version>1.4</Version>
     <CardSlot>
       <FontName>Arial Unicode MS</FontName>
       <FontSize>7</FontSize>
       <LargeFontName>Arial Unicode MS</LargeFontName>
       <LargeFontSize>8.75</LargeFontSize>
-      <Title>GCD, LCM, DEC→FRAC</Title>
+      <TextTitle>GCD, LCM, DEC→FRAC</TextTitle>
       <Margin>8</Margin>
       <TextBoxWidth>48</TextBoxWidth>
       <IsRichText>false</IsRichText>

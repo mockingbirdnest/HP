@@ -1551,7 +1551,7 @@ namespace HP67
 
 		public void Open (string name) 
 		{
-			FileStream stream;
+			FileStream stream = null;
 
 			fileName = name;
 			try 
@@ -1581,6 +1581,9 @@ namespace HP67
 					name);
 				string caption = Localization.GetString (Localization.FileNotFound);
 
+				if (stream != null) {
+					stream.Close ();
+				}
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			catch (Exception ex) 
@@ -1591,6 +1594,10 @@ namespace HP67
 					ex.Message);
 				string caption = Localization.GetString (Localization.ErrorDuringOpen);
 
+				if (stream != null) 
+				{
+					stream.Close ();
+				}
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
@@ -1747,7 +1754,7 @@ namespace HP67
 		private void saveMenuItem_Click(object sender, System.EventArgs e)
 		{
 			bool fileIsReadOnly = false;
-			Stream stream;
+			Stream stream = null;
 
 			fileIsReadOnly = File.Exists (fileName) &&
 				((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0);
@@ -1775,6 +1782,10 @@ namespace HP67
 						ex.Message);
 					string caption = Localization.GetString (Localization.ErrorDuringSave);
 
+					if (stream != null) 
+					{
+						stream.Close ();
+					}
 					MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
@@ -1783,7 +1794,7 @@ namespace HP67
 		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
 		{
 			bool fileIsReadOnly = false;
-			Stream stream;
+			Stream stream = null;
 
 			fileIsReadOnly = File.Exists (fileName) &&
 				((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0);
@@ -1816,6 +1827,10 @@ namespace HP67
 						ex.Message);
 					string caption = Localization.GetString (Localization.ErrorDuringSave);
 
+					if (stream != null) 
+					{
+						stream.Close ();
+					}
 					MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}

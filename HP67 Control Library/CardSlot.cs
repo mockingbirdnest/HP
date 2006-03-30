@@ -36,11 +36,13 @@ namespace HP67_Control_Library
 		private CardSlotState state;
 
 		private System.Windows.Forms.Label [] labels;
-		private System.Windows.Forms.Control [] textBoxes;
-		private System.Windows.Forms.Control [] fTextBoxes;
+		private System.Windows.Forms.TextBoxBase [] textBoxes;
+		private System.Windows.Forms.TextBoxBase [] fTextBoxes;
+		private System.Windows.Forms.TextBoxBase title;
 
 		internal System.Windows.Forms.Panel cornerPanel;
 		internal System.Windows.Forms.Panel panel;
+		internal System.Windows.Forms.RichTextBox titleRTFBox;
 		internal System.Windows.Forms.TextBox titleTextBox;
 		internal System.Windows.Forms.TextBox textBoxA;
 		internal System.Windows.Forms.TextBox textBoxB;
@@ -53,8 +55,8 @@ namespace HP67_Control_Library
 		internal System.Windows.Forms.TextBox textBoxfD;
 		internal System.Windows.Forms.TextBox textBoxfE;
 		internal System.Windows.Forms.Label labelA;
-		internal System.Windows.Forms.Label labelC;
 		internal System.Windows.Forms.Label labelB;
+		internal System.Windows.Forms.Label labelC;
 		internal System.Windows.Forms.Label labelE;
 		internal System.Windows.Forms.Label labelD;
 		internal System.Windows.Forms.RichTextBox rtfBoxA;
@@ -62,11 +64,11 @@ namespace HP67_Control_Library
 		internal System.Windows.Forms.RichTextBox rtfBoxC;
 		internal System.Windows.Forms.RichTextBox rtfBoxD;
 		internal System.Windows.Forms.RichTextBox rtfBoxE;
-		internal System.Windows.Forms.RichTextBox rtfBoxfB;
-		internal System.Windows.Forms.RichTextBox rtfBoxfE;
-		internal System.Windows.Forms.RichTextBox rtfBoxfD;
-		internal System.Windows.Forms.RichTextBox rtfBoxfC;
 		internal System.Windows.Forms.RichTextBox rtfBoxfA;
+		internal System.Windows.Forms.RichTextBox rtfBoxfB;
+		internal System.Windows.Forms.RichTextBox rtfBoxfC;
+		internal System.Windows.Forms.RichTextBox rtfBoxfD;
+		internal System.Windows.Forms.RichTextBox rtfBoxfE;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -82,6 +84,7 @@ namespace HP67_Control_Library
 			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
+			title = titleTextBox;
 			labels = new System.Windows.Forms.Label [5]
 				{labelA, labelB, labelC, labelD, labelE};
 			textBoxes = new System.Windows.Forms.TextBox [5] 
@@ -154,6 +157,7 @@ namespace HP67_Control_Library
 			this.labelC = new System.Windows.Forms.Label();
 			this.labelD = new System.Windows.Forms.Label();
 			this.labelE = new System.Windows.Forms.Label();
+			this.titleRTFBox = new System.Windows.Forms.RichTextBox();
 			this.panel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -164,6 +168,7 @@ namespace HP67_Control_Library
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.panel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
 			this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panel.Controls.Add(this.titleRTFBox);
 			this.panel.Controls.Add(this.rtfBoxfB);
 			this.panel.Controls.Add(this.rtfBoxfE);
 			this.panel.Controls.Add(this.rtfBoxfD);
@@ -533,6 +538,18 @@ namespace HP67_Control_Library
 			this.labelE.Text = "x⇄y";
 			this.labelE.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
 			// 
+			// titleRTFBox
+			// 
+			this.titleRTFBox.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
+			this.titleRTFBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.titleRTFBox.Font = new System.Drawing.Font("Arial Unicode MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.titleRTFBox.ForeColor = System.Drawing.Color.White;
+			this.titleRTFBox.Location = new System.Drawing.Point(16, 4);
+			this.titleRTFBox.Name = "titleRTFBox";
+			this.titleRTFBox.Size = new System.Drawing.Size(180, 13);
+			this.titleRTFBox.TabIndex = 22;
+			this.titleRTFBox.Text = "<TITLE>";
+			// 
 			// CardSlot
 			// 
 			this.Controls.Add(this.panel);
@@ -571,12 +588,12 @@ namespace HP67_Control_Library
 				csr = csrs [0];
 				font = new Font (csr.FontName, csr.FontSize);
 				largeFont = new Font (csr.LargeFontName, csr.LargeFontSize);
-				Title = csr.Title;
 				Margin = csr.Margin;
 				TextBoxWidth = csr.TextBoxWidth;
 				RichText = csr.IsRichText;
 				if (richText) 
 				{
+					titleRTFBox.Rtf = csr.RTFTitle;
 					foreach (CardDataset.RTFBoxRow rbr in csr.GetRTFBoxRows ()) 
 					{
 						if (rbr.Id >= csr.TextBoxCount) 
@@ -591,6 +608,7 @@ namespace HP67_Control_Library
 				}
 				else 
 				{
+					titleTextBox.Text = csr.TextTitle;
 					foreach (CardDataset.TextBoxRow tbr in csr.GetTextBoxRows ()) 
 					{
 						if (tbr.Id >= csr.TextBoxCount) 
@@ -623,7 +641,14 @@ namespace HP67_Control_Library
 				csr.FontSize = font.SizeInPoints;
 				csr.LargeFontName = largeFont.Name;
 				csr.LargeFontSize = largeFont.SizeInPoints;
-				csr.Title = titleTextBox.Text;
+				if (richText) 
+				{
+					csr.RTFTitle = titleRTFBox.Rtf;
+				}
+				else 
+				{
+					csr.TextTitle = titleTextBox.Text;
+				}
 				csr.Margin = margin;
 				csr.TextBoxWidth = textBoxWidth;
 				csr.IsRichText = richText;
@@ -679,6 +704,7 @@ namespace HP67_Control_Library
 		private void Clear ()
 		{
 			this.titleTextBox.Text = "<TITLE>";
+			this.titleRTFBox.Text = "<TITLE>";
 			this.textBoxA.Text = "<A>";
 			this.textBoxB.Text = "<B>";
 			this.textBoxC.Text = "<C>";
@@ -689,21 +715,21 @@ namespace HP67_Control_Library
 			this.textBoxfC.Text = "<fC>";
 			this.textBoxfD.Text = "<fD>";
 			this.textBoxfE.Text = "<fE>";
-			this.rtfBoxfA.Text = "<fA>";
-			this.rtfBoxfB.Text = "<fB>";
-			this.rtfBoxfC.Text = "<fC>";
-			this.rtfBoxfD.Text = "<fD>";
-			this.rtfBoxfE.Text = "<fE>";
 			this.rtfBoxA.Text = "<A>";
 			this.rtfBoxB.Text = "<B>";
 			this.rtfBoxC.Text = "<C>";
 			this.rtfBoxD.Text = "<D>";
 			this.rtfBoxE.Text = "<E>";
+			this.rtfBoxfA.Text = "<fA>";
+			this.rtfBoxfB.Text = "<fB>";
+			this.rtfBoxfC.Text = "<fC>";
+			this.rtfBoxfD.Text = "<fD>";
+			this.rtfBoxfE.Text = "<fE>";
 		}
 
 		private void SetEditable (bool editable)
 		{
-			titleTextBox.ReadOnly = !editable;
+			title.ReadOnly = !editable;
 			foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 			{
 				t.ReadOnly = !editable;
@@ -719,7 +745,7 @@ namespace HP67_Control_Library
 			if (loaded) 
 			{
 				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 0);
-				titleTextBox.Visible = true;
+				title.Visible = true;
 				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
 					t.Visible = true;
@@ -737,7 +763,7 @@ namespace HP67_Control_Library
 			{
 				cornerPanel.Visible = false;
 				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 64);
-				titleTextBox.Visible = false;
+				title.Visible = false;
 				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
 					t.Visible = false;
@@ -770,7 +796,7 @@ namespace HP67_Control_Library
 					(font.Name,
 					font.SizeInPoints * sizeIncrease,
 					System.Drawing.FontStyle.Bold);
-				titleTextBox.Font = font;
+				title.Font = font;
 				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
 					t.Font = font;
@@ -823,12 +849,15 @@ namespace HP67_Control_Library
 			}
 			set
 			{
+				string titleText;
 				string [] text = new string [5];
 				string [] fText = new string [5];
 
 				richText = value;
 
 				// Preserve the contents of the text boxes.
+				title.Visible = false;
+				titleText = title.Text;
 				for (int i = 0; i < textBoxes.Length; i++) 
 				{
 					textBoxes [i].Visible = false;
@@ -843,6 +872,7 @@ namespace HP67_Control_Library
 				{
 					case false:
 					{
+						title = titleTextBox;
 						textBoxes = new System.Windows.Forms.TextBox [5] 
 							{textBoxA, textBoxB, textBoxC, textBoxD, textBoxE};
 						fTextBoxes = new System.Windows.Forms.TextBox [5]
@@ -851,6 +881,7 @@ namespace HP67_Control_Library
 					}
 					case true:
 					{
+						title = titleRTFBox;
 						textBoxes = new System.Windows.Forms.RichTextBox [5] 
 							{rtfBoxA, rtfBoxB, rtfBoxC, rtfBoxD, rtfBoxE};
 						fTextBoxes = new System.Windows.Forms.RichTextBox [5]
@@ -861,6 +892,7 @@ namespace HP67_Control_Library
 				State = State;
 
 				// Restore the text and center it if need be.
+				title.Text = titleText;
 				for (int i = 0; i < textBoxes.Length; i++) 
 				{
 					textBoxes [i].Text = text [i];
@@ -871,6 +903,9 @@ namespace HP67_Control_Library
 				}
 				if (richText) 
 				{
+					titleRTFBox.SelectAll ();
+					titleRTFBox.SelectionAlignment = 
+						System.Windows.Forms.HorizontalAlignment.Center;
 					foreach (System.Windows.Forms.RichTextBox r in textBoxes) 
 					{
 						r.SelectAll ();
@@ -969,11 +1004,11 @@ namespace HP67_Control_Library
 		{
 			get
 			{
-				return titleTextBox.Text;
+				return title.Text;
 			}
 			set
 			{
-				titleTextBox.Text = value;
+				title.Text = value;
 			}
 		}
 

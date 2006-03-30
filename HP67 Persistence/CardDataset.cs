@@ -931,7 +931,9 @@ namespace HP67_Persistence {
             
             private DataColumn columnLargeFontSize;
             
-            private DataColumn columnTitle;
+            private DataColumn columnTextTitle;
+            
+            private DataColumn columnRTFTitle;
             
             private DataColumn columnMargin;
             
@@ -997,9 +999,15 @@ namespace HP67_Persistence {
                 }
             }
             
-            internal DataColumn TitleColumn {
+            internal DataColumn TextTitleColumn {
                 get {
-                    return this.columnTitle;
+                    return this.columnTextTitle;
+                }
+            }
+            
+            internal DataColumn RTFTitleColumn {
+                get {
+                    return this.columnRTFTitle;
                 }
             }
             
@@ -1057,14 +1065,15 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public CardSlotRow AddCardSlotRow(string FontName, System.Single FontSize, string LargeFontName, System.Single LargeFontSize, string Title, int Margin, int TextBoxWidth, bool IsRichText, int TextBoxCount, CardRow parentCardRowByCard_CardSlot) {
+            public CardSlotRow AddCardSlotRow(string FontName, System.Single FontSize, string LargeFontName, System.Single LargeFontSize, string TextTitle, string RTFTitle, int Margin, int TextBoxWidth, bool IsRichText, int TextBoxCount, CardRow parentCardRowByCard_CardSlot) {
                 CardSlotRow rowCardSlotRow = ((CardSlotRow)(this.NewRow()));
                 rowCardSlotRow.ItemArray = new object[] {
                         FontName,
                         FontSize,
                         LargeFontName,
                         LargeFontSize,
-                        Title,
+                        TextTitle,
+                        RTFTitle,
                         Margin,
                         TextBoxWidth,
                         IsRichText,
@@ -1094,7 +1103,8 @@ namespace HP67_Persistence {
                 this.columnFontSize = this.Columns["FontSize"];
                 this.columnLargeFontName = this.Columns["LargeFontName"];
                 this.columnLargeFontSize = this.Columns["LargeFontSize"];
-                this.columnTitle = this.Columns["Title"];
+                this.columnTextTitle = this.Columns["TextTitle"];
+                this.columnRTFTitle = this.Columns["RTFTitle"];
                 this.columnMargin = this.Columns["Margin"];
                 this.columnTextBoxWidth = this.Columns["TextBoxWidth"];
                 this.columnIsRichText = this.Columns["IsRichText"];
@@ -1112,8 +1122,10 @@ namespace HP67_Persistence {
                 this.Columns.Add(this.columnLargeFontName);
                 this.columnLargeFontSize = new DataColumn("LargeFontSize", typeof(System.Single), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnLargeFontSize);
-                this.columnTitle = new DataColumn("Title", typeof(string), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnTitle);
+                this.columnTextTitle = new DataColumn("TextTitle", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnTextTitle);
+                this.columnRTFTitle = new DataColumn("RTFTitle", typeof(string), null, System.Data.MappingType.Element);
+                this.Columns.Add(this.columnRTFTitle);
                 this.columnMargin = new DataColumn("Margin", typeof(int), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnMargin);
                 this.columnTextBoxWidth = new DataColumn("TextBoxWidth", typeof(int), null, System.Data.MappingType.Element);
@@ -1130,7 +1142,6 @@ namespace HP67_Persistence {
                                 this.columnCardSlot_Id}, true));
                 this.columnFontName.AllowDBNull = false;
                 this.columnLargeFontName.AllowDBNull = false;
-                this.columnTitle.AllowDBNull = false;
                 this.columnMargin.AllowDBNull = false;
                 this.columnTextBoxWidth.AllowDBNull = false;
                 this.columnIsRichText.AllowDBNull = false;
@@ -1240,12 +1251,31 @@ namespace HP67_Persistence {
                 }
             }
             
-            public string Title {
+            public string TextTitle {
                 get {
-                    return ((string)(this[this.tableCardSlot.TitleColumn]));
+                    try {
+                        return ((string)(this[this.tableCardSlot.TextTitleColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableCardSlot.TitleColumn] = value;
+                    this[this.tableCardSlot.TextTitleColumn] = value;
+                }
+            }
+            
+            public string RTFTitle {
+                get {
+                    try {
+                        return ((string)(this[this.tableCardSlot.RTFTitleColumn]));
+                    }
+                    catch (InvalidCastException e) {
+                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCardSlot.RTFTitleColumn] = value;
                 }
             }
             
@@ -1313,6 +1343,22 @@ namespace HP67_Persistence {
             
             public void SetLargeFontSizeNull() {
                 this[this.tableCardSlot.LargeFontSizeColumn] = System.Convert.DBNull;
+            }
+            
+            public bool IsTextTitleNull() {
+                return this.IsNull(this.tableCardSlot.TextTitleColumn);
+            }
+            
+            public void SetTextTitleNull() {
+                this[this.tableCardSlot.TextTitleColumn] = System.Convert.DBNull;
+            }
+            
+            public bool IsRTFTitleNull() {
+                return this.IsNull(this.tableCardSlot.RTFTitleColumn);
+            }
+            
+            public void SetRTFTitleNull() {
+                this[this.tableCardSlot.RTFTitleColumn] = System.Convert.DBNull;
             }
             
             public bool IsTextBoxCountNull() {
@@ -1435,7 +1481,7 @@ namespace HP67_Persistence {
                 rowTextBoxRow.ItemArray = new object[] {
                         Id,
                         Text,
-                        parentCardSlotRowByCardSlot_TextBox[9]};
+                        parentCardSlotRowByCardSlot_TextBox[10]};
                 this.Rows.Add(rowTextBoxRow);
                 return rowTextBoxRow;
             }
@@ -1669,7 +1715,7 @@ namespace HP67_Persistence {
                 rowRTFBoxRow.ItemArray = new object[] {
                         Id,
                         RTF,
-                        parentCardSlotRowByCardSlot_RTFBox[9]};
+                        parentCardSlotRowByCardSlot_RTFBox[10]};
                 this.Rows.Add(rowRTFBoxRow);
                 return rowRTFBoxRow;
             }
@@ -4134,6 +4180,7 @@ namespace HP67_Persistence {
                 this.Columns.Add(this.columnStep);
                 this.columnLabel_Id = new DataColumn("Label_Id", typeof(int), null, System.Data.MappingType.Hidden);
                 this.Columns.Add(this.columnLabel_Id);
+                this.columnStep.AllowDBNull = false;
             }
             
             public StepRow NewStepRow() {
@@ -4193,12 +4240,7 @@ namespace HP67_Persistence {
             
             public int Step {
                 get {
-                    try {
-                        return ((int)(this[this.tableStep.StepColumn]));
-                    }
-                    catch (InvalidCastException e) {
-                        throw new StrongTypingException("Cannot get value because it is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableStep.StepColumn]));
                 }
                 set {
                     this[this.tableStep.StepColumn] = value;
@@ -4212,14 +4254,6 @@ namespace HP67_Persistence {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Label_Step"]);
                 }
-            }
-            
-            public bool IsStepNull() {
-                return this.IsNull(this.tableStep.StepColumn);
-            }
-            
-            public void SetStepNull() {
-                this[this.tableStep.StepColumn] = System.Convert.DBNull;
             }
         }
         
