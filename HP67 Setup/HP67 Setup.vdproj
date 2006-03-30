@@ -755,7 +755,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP67"
         "ProductCode" = "8:{9A389F95-72D1-4E1B-9D56-85D69E97300E}"
-        "PackageCode" = "8:{7F6B732F-6735-4D0A-BEA3-EC516CA9C13A}"
+        "PackageCode" = "8:{EB610572-8583-4803-AAE9-262CF63C667F}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
