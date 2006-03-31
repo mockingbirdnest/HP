@@ -88,8 +88,6 @@ namespace HP67_Control_Library
 
 		#region Event Definitions
 
-		// TODO: Should these be provided in the constructor?
-
 		public delegate void DisplayEvent (object sender);
 		public event DisplayEvent AcceptKeystrokes;
 		public event DisplayEvent CompleteKeystrokes;

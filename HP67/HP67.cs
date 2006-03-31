@@ -1583,20 +1583,15 @@ namespace HP67
 				case TogglePosition.Left :
 					// OFF.  We abort the execution thread and start a new one.  We leave it in the
 					// state where its display is black and it doesn't accept keystrokes.
-					cardSlot.State = CardSlotState.Unloaded;
 					Busy ();
-					executionThread.Abort (); 
-					executionThread =
-						new ExecutionThread
-							(this,
-							reader,
-							new ExecutionThread.CrossThreadUINotification (CrossThreadNotifyUI),
-							out program);
+					executionThread.Reset (out program); 
+					UpdateCardSlot (/* alreadyLocked */ false);
 					break;
 				case TogglePosition.Right :
 					// ON.  First, we cancel any key typed when the power was off.  Then we enqueue
 					// a dummy keystroke to cause the execution thread to set the display mode.
 					// Finally we release the execution thread.
+					executionThread.Clear ();
 					executionThread.Enqueue (Keystroke.Noop);
 					executionThread.PowerOn.Set ();
 					break;

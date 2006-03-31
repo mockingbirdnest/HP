@@ -45,6 +45,8 @@ namespace HP67
 		private Reader reader;
 		private Thread thread;
 
+		private volatile bool mustAbort;
+
 		#endregion
 
 		#region Constructors & Destructors
@@ -81,68 +83,7 @@ namespace HP67
 			Stack stack;
 
 			bool ignoreNext = false;
-			bool mustCreateDisplay = true;
 			bool mustUnbusyUI = true;
-
-			// Controls must be accessed from the thread that created them.  For most controls,
-			// this is the main thread.  But the display is special, as it is mostly updated
-			// during execution.  So it is created by the execution thread.  If the display already
-			// exists because it was created by a previous incarnation of the execution thread, we
-			// reuse it.
-			display = null;
-			foreach (Control c in main.Controls) 
-			{
-				if (c.GetType () == typeof (Display)) 
-				{
-					mustCreateDisplay = false;
-					display = (Display) c;
-					display.Digits = 2;
-					display.Format = DisplayFormat.Fixed;
-					// TODO: This won't work: the display belongs to a dead thread.
-					break;
-				}
-			}
-			if (mustCreateDisplay) 
-			{
-				display = new Display (keyWasTyped);
-				main.Controls.Add (display);
-			}
-			display.Font =
-				new System.Drawing.Font
-					("Quartz",
-					26.25F,
-					System.Drawing.FontStyle.Regular,
-					System.Drawing.GraphicsUnit.Point,
-					((System.Byte)(0)));
-			display.ForeColor = System.Drawing.Color.Red;
-			display.Location = new System.Drawing.Point (8, 8);
-			display.Name = "display";
-			display.Size = new System.Drawing.Size (288, 40);
-			display.TabIndex = 0;
-			display.Value = 0;
-			display.AcceptKeystrokes +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
-			display.CompleteKeystrokes +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
-
-			// Create the components that depend on the display.
-			memory = new Memory (display);
-			program = new Program (display);
-			stack = new HP67_Class_Library.Stack (display);
-			engine = new Engine (display, memory, program, stack, keyWasTyped);
-
-			// We need two parsers: one that processes the MouseDown events, and one that processes
-			// the MouseUp events, because both events have different effects for a given key (e.g.,
-			// R/S displays the next instruction when depressed, and runs the program when
-			// released).  The two parsers will go through exactly the same productions, but they
-			// will pass a different motion indicator to the engine.
-			downActions = new Actions (engine, KeystrokeMotion.Down);
-			downParser = new Parser (reader, downActions);
-			upActions = new Actions (engine, KeystrokeMotion.Up);
-			upParser = new Parser (reader, upActions);
-
-			// The display is initially black, as when the calculator is powered off.
-			display.ShowText ("", 0, 0);
 
 			// For some reason the first exception that is raised on this thread takes a long time
 			// to propagate.  It is better to raise it here, while the thread initializes, than
@@ -155,98 +96,158 @@ namespace HP67
 			{
 			}
 
-			// Notify the main thread that we are ready to process keystrokes.
-			isInitialized.Set ();
-
-			// Now wait until the main thread tells us that we may run, i.e., that the calculator
-			// has been powered on.  The display is set to numeric mode, which is appropriate when
-			// the application has just started.  In case of a power cycle the main thread will
-			// force us to refresh the display mode based on the W/PRGM-RUN toggle: we couldn't call
-			// notifyUI here, because the main window may not be built yet.
-			PowerOn.WaitOne ();
-			display.Mode = DisplayMode.Numeric;
+			// Controls must be accessed from the thread that created them.  For most controls,
+			// this is the main thread.  But the display is special, as it is mostly updated
+			// during execution.  So it is created by the execution thread. 
+			display = new Display (keyWasTyped);
+			display.Font =
+				new System.Drawing.Font
+					("Quartz",
+					26.25F,
+					System.Drawing.FontStyle.Regular,
+					System.Drawing.GraphicsUnit.Point,
+					((System.Byte)(0)));
+			display.ForeColor = System.Drawing.Color.Red;
+			display.Location = new System.Drawing.Point (8, 8);
+			display.Name = "display";
+			display.Size = new System.Drawing.Size (288, 40);
+			display.TabIndex = 0;
+			display.AcceptKeystrokes +=
+				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
+			display.CompleteKeystrokes +=
+				new HP67_Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
+			main.Controls.Add (display);
 
 			for (;;) 
 			{
-				try 
+		
+				// The display is initially black, as when the calculator is powered off.
+				display.ShowText ("", 0, 0);
+
+				// Create the components that depend on the display.
+				memory = new Memory (display);
+				program = new Program (display);
+				stack = new HP67_Class_Library.Stack (display);
+				engine = new Engine (display, memory, program, stack, keyWasTyped);
+
+				// We need two parsers: one that processes the MouseDown events, and one that
+				// processes the MouseUp events, because both events have different effects for a
+				// given key (e.g., R/S displays the next instruction when depressed, and runs the
+				// program when released).  The two parsers will go through exactly the same
+				// productions, but they will pass a different motion indicator to the engine.
+				downActions = new Actions (engine, KeystrokeMotion.Down);
+				downParser = new Parser (reader, downActions);
+				upActions = new Actions (engine, KeystrokeMotion.Up);
+				upParser = new Parser (reader, upActions);
+
+				// Notify the main thread that we are ready to process keystrokes.
+				isInitialized.Set ();
+
+				// Now wait until the main thread tells us that the calculator has been powered on.
+				// Note that we couldn't call notifyUI here to set the display mode, because the
+				// main window may not be built yet.  The main thread will have to send a dummy
+				// keystroke when it wants the display mode to be refreshed.
+				PowerOn.WaitOne ();
+
+				// Reinitialize the display to its power-on state.
+				display.Digits = 2;
+				display.Format = DisplayFormat.Fixed;
+				display.Mode = DisplayMode.Numeric;
+				display.Value = 0;
+
+				for (;;) 
 				{
-					// TODO: What if we get several keys in the queue and keyWasTyped is set only
-					// once?
-
-					// Wait until we get a keystroke from the UI.
-					keyWasTyped.WaitOne ();
-
-					keystroke = (Keystroke) keystrokesQueue.Dequeue ();
-
-					// We want to protect this sequence against asynchronous changes to the menus
-					// which may happen if the W/PGRM-RUN switch is moved: we wouldn't want the 
-					// menus to be changed by the main thread between the invocation of
-					// DisableUI and the call to the parser, or during the execution of
-					// the keystroke.
-					lock (IsBusy)
+					try 
 					{
-						main.Invoke (notifyUI, new object [] {true});
-						switch (keystroke.Motion) 
+						// TODO: What if we get several keys in the queue and keyWasTyped is set only
+						// once?
+
+						// Wait until we get a keystroke from the UI.
+						keyWasTyped.WaitOne ();
+
+						keystroke = (Keystroke) keystrokesQueue.Dequeue ();
+
+						// We want to protect this sequence against asynchronous changes to the
+						// menus which may happen if the W/PGRM-RUN switch is moved: we wouldn't
+						// want the menus to be changed by the main thread between the invocation
+						// of notifyUI and the call to the parser, or during the execution of the
+						// keystroke.
+						lock (IsBusy)
 						{
-							case KeystrokeMotion.Up :
+							main.Invoke (notifyUI, new object [] {true});
+							switch (keystroke.Motion) 
+							{
+								case KeystrokeMotion.Up :
 
-								// The first up-keystroke after an error is ignored.
-								if (ignoreNext) 
-								{
-									ignoreNext = false;
-								}
-								else 
-								{
-									upParser.Parse (keystroke.Tag);
-								}
-								mustUnbusyUI = true;
-								break;
+									// The first up-keystroke after an error is ignored.
+									if (ignoreNext) 
+									{
+										ignoreNext = false;
+									}
+									else 
+									{
+										upParser.Parse (keystroke.Tag);
+									}
+									mustUnbusyUI = true;
+									break;
 
-							case KeystrokeMotion.Down :
+								case KeystrokeMotion.Down :
 
-								// On the first down-keystroke after an error, we reset the display.
-								// We do not clear ignoreNext, though, because we want to ensure
-								// that the next up-keystroke will be ignored, too.  A normal 
-								// down-keystroke may show the current instruction, so we don't
-								// refresh the display mode in that case.
-								mustUnbusyUI = ignoreNext;
-								if (! ignoreNext) 
-								{
-									downParser.Parse (keystroke.Tag);
-								}
-								break;
+									// On the first down-keystroke after an error, we reset the
+									// display.  We do not clear ignoreNext, though, because we want
+									// to ensure that the next up-keystroke will be ignored, too.  A
+									// normal down-keystroke may show the current instruction, so we
+									// don't refresh the display mode in that case.
+									mustUnbusyUI = ignoreNext;
+									if (! ignoreNext) 
+									{
+										downParser.Parse (keystroke.Tag);
+									}
+									break;
+							}
 						}
 					}
-				}
-				catch (Error)
-				{
-					display.Value = display.Value; // Refresh the numeric display.
-					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
-					mustUnbusyUI = false;
-					ignoreNext = true;
-					ExecutionCompleteKeystrokes (this);
-				}
-				catch (Interrupt)
-				{
-
-					// We land here if a character was typed during a computation.  In this case,
-					// we have a keystroke in the queue, but the keyWasTyped event was cleared by 
-					// the code that detected the keystroke.  We must set it again here to make sure
-					// that the queue and the event are consistent.
-					keyWasTyped.Set ();
-					display.Value = display.Value; // Refresh the numeric display.
-					mustUnbusyUI = true;
-					ignoreNext = true;
-					ExecutionCompleteKeystrokes (this);
-				}
-				finally 
-				{
-					// No cross-thread notification if we are being aborted.
-					if (mustUnbusyUI &&
-						((thread.ThreadState & ThreadState.AbortRequested) == 0)) 
+					catch (Error)
 					{
-						engine.Mode = 
-							(EngineMode) main.Invoke (notifyUI, new object [] {false});
+						display.Value = display.Value; // Refresh the numeric display.
+						display.ShowText (Localization.GetString (Localization.Error), 500, 100);
+						mustUnbusyUI = false;
+						ignoreNext = true;
+						ExecutionCompleteKeystrokes (this);
+					}
+					catch (Interrupt)
+					{
+
+						// We land here if a character was typed during a computation.  In this
+						// case, we have a keystroke in the queue, but the keyWasTyped event was
+						// cleared by the code that detected the keystroke.  We must set it again
+						// here to make sure that the queue and the event are consistent.
+						keyWasTyped.Set ();
+						display.Value = display.Value; // Refresh the numeric display.
+						mustUnbusyUI = true;
+						ignoreNext = true;
+						ExecutionCompleteKeystrokes (this);
+					}
+					catch (ThreadAbortException) 
+					{
+						mustUnbusyUI = false;
+						if (! mustAbort) 
+						{
+
+							// A fake abort for reinitialization.  Exit the inner loop and go back
+							// to the initialization code in the outer loop.
+							Thread.ResetAbort ();
+							break;
+						}
+					}
+					finally 
+					{
+						// No cross-thread notification if we are being aborted.
+						if (mustUnbusyUI) 
+						{
+							engine.Mode = 
+								(EngineMode) main.Invoke (notifyUI, new object [] {false});
+						}
 					}
 				}
 			}
@@ -274,13 +275,34 @@ namespace HP67
 
 		public void Abort () 
 		{
+			mustAbort = true;
 			thread.Abort ();
+		}
+
+		public void Clear () 
+		{
+			keystrokesQueue.Clear ();
+			keyWasTyped.Reset ();
 		}
 
 		public void Enqueue (Keystroke keystroke) 
 		{
 			keystrokesQueue.Enqueue (keystroke);
 			keyWasTyped.Set ();
+		}
+
+		public void Reset (out Program program)
+		{
+
+			// In order to power-off the calculator, we send an abort to the execution thread.  
+			// That's the only way that we can interrupt a calcutation in a fully asynchronous
+			// manner.  The boolean mustAbort is used to indicate whether we want the thread to
+			// abort for good, or merely to reinitialize all of its objects.
+			mustAbort = false;
+			thread.Abort ();
+			isInitialized.WaitOne ();
+
+			program = this.program;
 		}
 
 		#endregion
