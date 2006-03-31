@@ -47,19 +47,4 @@ namespace HP67_Class_Library
 		}
 	}
 
-	/// <summary>
-	/// Synchronously ends the execution of a program.
-	/// </summary>
-	public class Stop : ApplicationException
-	{
-		public Stop ()
-		{
-		}
-		public override string ToString () 
-		{
-			return this.GetType ().FullName +
-				": " + Localization.GetString (Localization.StopDescription);
-		}
-	}
-
 }

@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1D04F1E28D574AF4B96CC3BBBA5ABD86"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1E77A8C4134C4F4DB68ADD7E3EDCE167"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -318,7 +324,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2281.30291, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2281.30456, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_0235350F5583F68F56A3AF36CA76D13C"
@@ -349,6 +355,26 @@
             {
             "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Factors and Primes.hp67"
             "TargetName" = "8:Factors and Primes.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_1D04F1E28D574AF4B96CC3BBBA5ABD86"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Hyperbolics.hp67"
+            "TargetName" = "8:Hyperbolics.hp67"
             "Tag" = "8:"
             "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Condition" = "8:"
@@ -522,7 +548,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2281.30290, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2281.30455, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_9407E3CB686335C2CD065D78BB5BB019"
@@ -624,7 +650,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2281.30291, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2281.30456, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_F7407765D4389CEB1221ABCA1B65FCB6"
@@ -781,7 +807,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP67"
         "ProductCode" = "8:{F217BD04-FE30-4442-B5BF-B1A3AFF2291B}"
-        "PackageCode" = "8:{6C80903D-8865-4C3E-B2E4-3F78845B6FE9}"
+        "PackageCode" = "8:{D4EE6759-B1D5-4FFB-B8B7-45D445C4D8B1}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -1321,7 +1347,7 @@
         {
             "{8062640A-2EEE-46E9-AB67-688E9A886E9F}:_0044B043B0FA47EB89455E19AA48A799"
             {
-            "SourcePath" = "8:..\\HP67\\obj\\Release\\HP67.exe"
+            "SourcePath" = "8:..\\HP67\\obj\\Debug\\HP67.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"

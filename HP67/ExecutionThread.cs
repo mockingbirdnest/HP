@@ -96,6 +96,8 @@ namespace HP67
 				{
 					mustCreateDisplay = false;
 					display = (Display) c;
+					display.Digits = 2;
+					display.Format = DisplayFormat.Fixed;
 					// TODO: This won't work: the display belongs to a dead thread.
 					break;
 				}
@@ -147,7 +149,7 @@ namespace HP67
 			// later, when it could cause a delay visible to the user.
 			try 
 			{
-				throw new Stop ();
+				throw new Error ();
 			}
 			catch 
 			{
@@ -236,10 +238,6 @@ namespace HP67
 					mustUnbusyUI = true;
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
-				}
-				catch (Stop)
-				{
-					mustUnbusyUI = true;
 				}
 				finally 
 				{

@@ -480,12 +480,13 @@ namespace HP67_Class_Library
 			}
 		}
 
-		public void Return ()
+		public void Return (out bool stop)
 		{
+			stop = false;
 			if (returns [0] == noStep)
 			{
 				segregated = false;
-				throw new Stop ();
+				stop = true;
 			}
 			else
 			{
@@ -502,7 +503,7 @@ namespace HP67_Class_Library
 					if (segregation == 0)
 					{
 						segregated = false;
-						throw new Stop ();
+						stop = true;
 					}
 				}
 			}

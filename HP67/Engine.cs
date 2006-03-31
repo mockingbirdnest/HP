@@ -578,7 +578,7 @@ namespace HP67
 				case (int)SymbolConstants.SYMBOL_R_S :
 					if (running) 
 					{
-						throw new Stop ();
+						running = false;
 					}
 					else if (stepping) 
 					{
@@ -629,7 +629,12 @@ namespace HP67
 					theDisplay.Round ();
 					break;
 				case (int)SymbolConstants.SYMBOL_RTN :
-					theProgram.Return ();
+					bool stop;
+					theProgram.Return (out stop);
+					if (stop) 
+					{
+						running = false;
+					}
 					break;
 				case (int)SymbolConstants.SYMBOL_S :
 					theStack.Get (out x);

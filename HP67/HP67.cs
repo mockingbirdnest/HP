@@ -21,13 +21,13 @@ namespace HP67
 		private const string commandOpen = "/open";
 		private const string commandPrint = "/print";
 
-		private string fileName;
-		private Reader reader;
+		private string fileName = null;
+		private Reader reader = null;
 
 		// As much as possible, we hide the execution state in the Execution function.  But
 		// some things need the program.  It must only be accessed with proper synchronization,
 		// e.g., while holding the IsBusy lock or when in a cross-thread invocation.
-		private Program program;
+		private Program program = null;
 
 		private ExecutionThread executionThread;
 
@@ -100,8 +100,9 @@ namespace HP67
 			saveMenuItem.Text = Localization.GetString (Localization.SaveMenuItem);
 			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
 
-			// Enable/disable the popup menu items.
+			// Initialize the UI.
 			Unbusy ();
+			UpdateCardSlot (/* alreadyLocked */ true);
 
 			// Read the parser tables.
 			reader = new Reader ("HP67_Parser.Parser", "CGT");
@@ -122,7 +123,8 @@ namespace HP67
 				case 2 :
 					if (arguments [0] == commandOpen) 
 					{
-						Open (/* alreadyLocked */ false, /* merge */ false, ref arguments [1]);
+						fileName = arguments [1];
+						Open (/* alreadyLocked */ true, /* merge */ false, ref fileName);
 					}
 					else if (arguments [0] == commandPrint) 
 					{
@@ -1431,25 +1433,9 @@ namespace HP67
 
 			// Make sure that the state of the card slot reflects the state of the program memory.
 			// We can access the program without synchronization, because we only come here through
-			// a cross-thread invocation, and therefore the two threads are synchronized.
-			if (program != null) 
-			{
-				if (program.IsEmpty) 
-				{
-					if (cardSlot.State != CardSlotState.Unloaded) 
-					{
-						cardSlot.State = CardSlotState.Unloaded;
-					}
-				}
-				else 
-				{
-					if (cardSlot.State == CardSlotState.Unloaded) 
-					{
-						cardSlot.State = CardSlotState.ReadWrite;
-					}				
-				}
-			}
-
+			// a cross-thread invocation or at startup, and therefore the two threads are
+			// synchronized.
+			UpdateCardSlot (/* alreadyLocked */ true);
 			switch (toggleWprgmRun.Position)
 			{
 				case TogglePosition.Left :
@@ -1483,36 +1469,24 @@ namespace HP67
 			}
 			try 
 			{
-				if (program != null) 
+				if ((program == null) || (program.IsEmpty))
 				{
-					if (program.IsEmpty) 
-					{
-						if (cardSlot.State != CardSlotState.Unloaded) 
-						{
-							cardSlot.State = CardSlotState.Unloaded;
-							editMenuItem.Enabled = false;
-							rtfMenuItem.Enabled = false;
-						}
-					}
-					else 
-					{
-						if (cardSlot.State == CardSlotState.Unloaded) 
-						{
-							if (fileName != null &&
-								((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0))
-							{
-								cardSlot.State = CardSlotState.ReadOnly;
-								editMenuItem.Enabled = false;
-								rtfMenuItem.Enabled = false;
-							}
-							else 
-							{
-								cardSlot.State = CardSlotState.ReadWrite;
-								editMenuItem.Enabled = true;
-								rtfMenuItem.Enabled = true;
-							}
-						}				
-					}
+					cardSlot.State = CardSlotState.Unloaded;
+					editMenuItem.Enabled = false;
+					rtfMenuItem.Enabled = false;
+				}
+				else if (fileName != null &&
+					((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0))
+				{
+					cardSlot.State = CardSlotState.ReadOnly;
+					editMenuItem.Enabled = false;
+					rtfMenuItem.Enabled = false;
+				}
+				else 
+				{
+					cardSlot.State = CardSlotState.ReadWrite;
+					editMenuItem.Enabled = true;
+					rtfMenuItem.Enabled = true;
 				}
 			}
 			finally 
