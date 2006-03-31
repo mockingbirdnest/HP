@@ -122,7 +122,7 @@ namespace HP67
 				case 2 :
 					if (arguments [0] == commandOpen) 
 					{
-						Open (arguments [1]);
+						Open (/* alreadyLocked */ false, /* merge */ false, ref arguments [1]);
 					}
 					else if (arguments [0] == commandPrint) 
 					{
@@ -1211,30 +1211,45 @@ namespace HP67
 
 		#region Command Execution
 
-		public void Open (string name) 
+		public bool Open (bool alreadyLocked, bool merge, ref string name) 
 		{
+			bool status = false;
 			FileStream stream = null;
 
-			fileName = name;
 			try 
 			{
 				stream = new FileStream (name, FileMode.Open, FileAccess.Read);
-				lock (executionThread.IsBusy) 
+
+				if (! alreadyLocked) 
 				{
-					// We hold the lock, so looking at the program is fine.
-					if (! Card.Read (stream, reader)) 
-					{
-						fileName = null;
-					}
-					else if (! program.IsEmpty) 
-					{
-						cardSlot.State =
-							((File.GetAttributes (name) &  FileAttributes.ReadOnly) != 0) ?
-							CardSlotState.ReadOnly :
-							CardSlotState.ReadWrite;
-					}
-					stream.Close ();
+					Monitor.Enter (executionThread.IsBusy);
 				}
+				try 
+				{
+					if (merge) 
+					{
+						status = Card.Merge (stream, reader);
+					}
+					else 
+					{
+						status = Card.Read (stream, reader);
+					}
+					UpdateCardSlot (/* alreadyLocked */ true);
+				}
+				finally 
+				{
+					if (! alreadyLocked) 
+					{
+						Monitor.Exit (executionThread.IsBusy);
+					}
+				}
+
+				if (! status) 
+				{
+					name = null;
+				}
+				stream.Close ();
+				return status;
 			}
 			catch (FileNotFoundException)
 			{
@@ -1247,6 +1262,7 @@ namespace HP67
 					stream.Close ();
 				}
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
 			}
 			catch (Exception ex) 
 			{
@@ -1261,16 +1277,17 @@ namespace HP67
 					stream.Close ();
 				}
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
 			}
 		}
 
 		public void Print (string name) 
 		{
-			Open (name);
+			Open (/* alreadyLocked */ false, /* merge */ false, ref name);
 			printMenuItem_Click (null, null);
 		}
 
-		private bool Save (bool mustLock, bool saveAs, CardPart part, ref string name)
+		private bool Save (bool alreadyLocked, bool saveAs, CardPart part, ref string name)
 		{
 			bool fileIsNullOrReadOnly;
 			bool fileIsReadOnly;
@@ -1314,17 +1331,23 @@ namespace HP67
 			try 
 			{
 				stream = new FileStream (name, FileMode.OpenOrCreate);
-				if (mustLock) 
+				
+				if (! alreadyLocked) 
 				{
-					lock (executionThread.IsBusy) 
-					{
-						status = Card.Write (stream, part);
-					}
+					Monitor.Enter (executionThread.IsBusy);
 				}
-				else 
+				try 
 				{
 					status = Card.Write (stream, part);
 				}
+				finally 
+				{
+					if (! alreadyLocked) 
+					{
+						Monitor.Exit (executionThread.IsBusy);
+					}
+				}
+
 				stream.Close ();
 				return status;
 			}
@@ -1351,30 +1374,13 @@ namespace HP67
 
 		public bool CrossThreadMerge () 
 		{
-			Stream stream;
+			string name;
 
 			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
-				if ((stream = openFileDialog.OpenFile ()) != null)
-				{
-					// Do not grab the lock here, because we are called from the execution thread,
-					// so we are properly synchronized.
-					bool programWasEmpty = program.IsEmpty;
-					bool result = Card.Merge (stream, reader);
-
-					if (programWasEmpty && ! program.IsEmpty) 
-					{
-						cardSlot.State = CardSlotState.ReadWrite;
-					}
-					stream.Close ();
-
-					return result;
-				}
-				else 
-				{
-					return false;
-				}
-			}			
+				name = openFileDialog.FileName;
+				return Open (/* alreadyLocked */ true, /* merge */ true, ref name);
+			}
 			else 
 			{
 				return false;
@@ -1398,7 +1404,7 @@ namespace HP67
 		{
 			string name = null;
 
-			return Save (/* mustLock */ false, /* saveAs */ true, CardPart.Data, ref name);
+			return Save (/* alreadyLocked */ true, /* saveAs */ true, CardPart.Data, ref name);
 		}
 
 		#endregion
@@ -1464,6 +1470,57 @@ namespace HP67
 
 				default :
 					return EngineMode.Run; // To make the compiler happy.
+			}
+		}
+
+		void UpdateCardSlot (bool alreadyLocked) 
+		{
+
+			// Make sure that the state of the card slot reflects the state of the program memory.
+			if (! alreadyLocked) 
+			{
+				Monitor.Enter (executionThread.IsBusy);
+			}
+			try 
+			{
+				if (program != null) 
+				{
+					if (program.IsEmpty) 
+					{
+						if (cardSlot.State != CardSlotState.Unloaded) 
+						{
+							cardSlot.State = CardSlotState.Unloaded;
+							editMenuItem.Enabled = false;
+							rtfMenuItem.Enabled = false;
+						}
+					}
+					else 
+					{
+						if (cardSlot.State == CardSlotState.Unloaded) 
+						{
+							if (fileName != null &&
+								((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0))
+							{
+								cardSlot.State = CardSlotState.ReadOnly;
+								editMenuItem.Enabled = false;
+								rtfMenuItem.Enabled = false;
+							}
+							else 
+							{
+								cardSlot.State = CardSlotState.ReadWrite;
+								editMenuItem.Enabled = true;
+								rtfMenuItem.Enabled = true;
+							}
+						}				
+					}
+				}
+			}
+			finally 
+			{
+				if (! alreadyLocked) 
+				{
+					Monitor.Exit (executionThread.IsBusy);
+				}
 			}
 		}
 
@@ -1605,18 +1662,19 @@ namespace HP67
 		{
 			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
-				Open (openFileDialog.FileName);
+				fileName = openFileDialog.FileName;
+				Open (/* alreadyLocked */ false, /* merge */ false, ref fileName);
 			}			
 		}
 
 		private void saveMenuItem_Click(object sender, System.EventArgs e)
 		{
-			Save (/* mustLock */ true, /* saveAs */ false, CardPart.Program, ref fileName);
+			Save (/* alreadyLocked */ false, /* saveAs */ false, CardPart.Program, ref fileName);
 		}
 
 		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
 		{
-			Save (/* mustLock */ true, /* saveAs */ true, CardPart.Program, ref fileName);
+			Save (/* alreadyLocked */ false, /* saveAs */ true, CardPart.Program, ref fileName);
 		}
 
 		private void editMenuItem_Click(object sender, System.EventArgs e)
@@ -1632,7 +1690,7 @@ namespace HP67
 				}
 				else
 				{
-					cardSlot.State = CardSlotState.ReadWrite;
+					UpdateCardSlot (/* alreadyLocked */ false);
 				}
 			}
 		}
