@@ -68,7 +68,7 @@ namespace HP67_Class_Library
 
 		#region Event Handlers
 
-		public void MergeFromDataset (CardDataset cds, Parser parser)
+		public void MergeFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.MemoryRow mr;
@@ -110,7 +110,7 @@ namespace HP67_Class_Library
 			}
 		}
 
-		public void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.MemoryRow mr;

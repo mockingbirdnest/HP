@@ -23,7 +23,7 @@ namespace HP67_Persistence
 		#region Event Definitions
 
 		public delegate void DatasetExporterDelegate (CardDataset cds, CardPart part);
-		public delegate void DatasetImporterDelegate (CardDataset cds, Parser parser);
+		public delegate void DatasetImporterDelegate (CardDataset cds, Reader reader);
 		static public event DatasetImporterDelegate MergeFromDataset;
 		static public event DatasetImporterDelegate ReadFromDataset;
 		static public event DatasetExporterDelegate WriteToDataset;
@@ -65,13 +65,13 @@ namespace HP67_Persistence
 
 		#region Public Operations
 
-		static public bool Merge (Stream stream, Parser parser)
+		static public bool Merge (Stream stream, Reader reader)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
 			if (CheckVersion (cds)) 
 			{
-				MergeFromDataset (cds, parser);
+				MergeFromDataset (cds, reader);
 				return true;
 			}
 			else 
@@ -80,13 +80,13 @@ namespace HP67_Persistence
 			}
 		}
 
-		static public bool Read (Stream stream, Parser parser)
+		static public bool Read (Stream stream, Reader reader)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
 			if (CheckVersion (cds)) 
 			{
-				ReadFromDataset (cds, parser);
+				ReadFromDataset (cds, reader);
 				return true;
 			}
 			else 

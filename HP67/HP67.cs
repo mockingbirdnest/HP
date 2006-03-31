@@ -22,31 +22,14 @@ namespace HP67
 		private const string commandPrint = "/print";
 
 		private string fileName;
+		private Reader reader;
 
 		// As much as possible, we hide the execution state in the Execution function.  But
-		// some other things need these objects.  This is going to cause trouble.  Sigh.
-		private Program theProgram;
-		private Actions downActions;
-		private Parser downParser;
-		private Parser upParser;
-		private Actions upActions;
+		// some things need the program.  It must only be accessed with proper synchronization,
+		// e.g., while holding the IsBusy lock or when in a cross-thread invocation.
+		private Program program;
 
-		private Thread executionThread;
-		private Queue keystrokesQueue;
-
-		// Locks for critical sections.
-		private object executionThreadIsBusy = new object ();
-
-		// Events used to synchronize the two threads.
-		private AutoResetEvent executionIsInitialized = new AutoResetEvent (false);
-		private AutoResetEvent executionMayRun = new AutoResetEvent (false);
-		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
-
-		// Delegates used for cross-thread invocation.
-		private delegate void DisableUICrossThreadInvocation ();
-		private delegate EngineMode EnableUICrossThreadInvocation ();
-		public delegate bool MergeCrossThreadInvocation ();
-		public delegate bool SaveDataAsCrossThreadInvocation ();
+		private ExecutionThread executionThread;
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -118,13 +101,18 @@ namespace HP67
 			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
 
 			// Enable/disable the popup menu items.
-			EnableUI ();
+			Unbusy ();
+
+			// Read the parser tables.
+			reader = new Reader ("HP67_Parser.Parser", "CGT");
 
 			// Create the execution thread and wait until it is ready to process requests.
-			keystrokesQueue = Queue.Synchronized (new Queue ());
-			executionThread = new Thread (new ThreadStart (Execution));
-			executionThread.Start ();
-			executionIsInitialized.WaitOne ();
+			executionThread =
+				new ExecutionThread
+					(this,
+					reader,
+					new ExecutionThread.CrossThreadUINotification (CrossThreadNotifyUI),
+					out program);
 
 			// Now see if we were called from the command line with arguments.
 			switch (arguments.Length) 
@@ -165,7 +153,7 @@ namespace HP67
 			}
 
 			// Power on.
-			executionMayRun.Set ();
+			executionThread.PowerOn.Set ();
 		}
 
 		/// <summary>
@@ -1221,332 +1209,6 @@ namespace HP67
 			}
 		}
 
-		#region Multithreading
-
-		void ExecutionAcceptKeystrokes (object sender)
-		{
-
-			// Send the key that was just typed (in pause mode) to the parser for execution.
-			upParser.Parse (((Keystroke) keystrokesQueue.Dequeue ()).Tag);
-		}
-
-		void ExecutionCompleteKeystrokes (object sender)
-		{
-
-			// Pretend that we accepted the input in order to put the parser back into a pristine
-			// state (in particular, drop any remaining text).
-			downActions.ParserAccept ();
-			upActions.ParserAccept ();
-		}
-
-		void Execution ()
-		{
-			Display display;
-			Keystroke keystroke;
-			Engine theEngine;
-			Memory theMemory;
-			HP67_Class_Library.Stack theStack;
-
-			bool ignoreNext = false;
-			bool mustCreateDisplay = true;
-			bool mustEnableUI = true;
-
-			// Controls must be accessed from the thread that created them.  For most controls,
-			// this is the main thread.  But the display is special, as it is mostly updated
-			// during execution.  So it is created by the execution thread.  If the display already
-			// exists because it was created by a previous incarnation of the execution thread, we
-			// reuse it.
-			display = null;
-			foreach (Control c in Controls) 
-			{
-				if (c.GetType () == typeof (Display)) 
-				{
-					mustCreateDisplay = false;
-					display = (Display) c;
-					break;
-				}
-			}
-			if (mustCreateDisplay) 
-			{
-				display = new Display (keyWasTyped);
-				Controls.Add (display);
-			}
-			display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			display.ForeColor = System.Drawing.Color.Red;
-			display.Location = new System.Drawing.Point (8, 8);
-			display.Name = "display";
-			display.Size = new System.Drawing.Size (288, 40);
-			display.TabIndex = 0;
-			display.Value = 0;
-			display.AcceptKeystrokes +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
-			display.CompleteKeystrokes +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
-
-			// Create the components that depend on the display.
-			theMemory = new Memory (display);
-			theProgram = new Program (display);
-			theStack = new HP67_Class_Library.Stack (display);
-			theEngine = new Engine (display, theMemory, theProgram, theStack, keyWasTyped);
-
-			// We need two parsers: one that processes the MouseDown events, and one that processes
-			// the MouseUp events, because both events have different effects for a given key (e.g.,
-			// R/S displays the next instruction when depressed, and runs the program when
-			// released).  The two parsers will go through exactly the same productions, but they
-			// will pass a different motion indicator to the engine.
-			downActions = new Actions (theEngine, KeystrokeMotion.Down);
-			downParser = new Parser ("HP67_Parser.Parser", "CGT", downActions);
-			upActions = new Actions (theEngine, KeystrokeMotion.Up);
-			upParser = new Parser ("HP67_Parser.Parser", "CGT", upActions);
-
-			// The display is initially black, as when the calculator is powered off.
-			display.ShowText ("", 0, 0);
-
-			// For some reason the first exception that is raised on this thread takes a long time
-			// to propagate.  It is better to raise it here, while the thread initializes, than
-			// later, when it could cause a delay visible to the user.
-			try 
-			{
-				throw new Stop ();
-			}
-			catch 
-			{
-			}
-
-			// Notify the main thread that we are ready to process keystrokes.
-			executionIsInitialized.Set ();
-
-			// Now wait until the main thread tells us that we may run, i.e., that the calculator
-			// has been powered on.  The display is set to numeric mode, which is appropriate when
-			// the application has just started.  In case of a power cycle the main thread will
-			// force us to refresh the display mode based on the W/PRGM-RUN toggle: we couldn't call
-			// EnableUI here, because the main window may not be built yet.
-			executionMayRun.WaitOne ();
-			display.Mode = DisplayMode.Numeric;
-
-			for (;;) 
-			{
-				try 
-				{
-					// TODO: What if we get several keys in the queue and keyWasTyped is set only
-					// once?
-
-					// Wait until we get a keystroke from the UI.
-					keyWasTyped.WaitOne ();
-
-					keystroke = (Keystroke) keystrokesQueue.Dequeue ();
-
-					// We want to protect this sequence against asynchronous changes to the menus
-					// which may happen if the W/PGRM-RUN switch is moved: we wouldn't want the 
-					// menus to be changed by the main thread between the invocation of
-					// DisableUI and the call to the parser, or during the execution of
-					// the keystroke.
-					lock (executionThreadIsBusy)
-					{
-						this.Invoke
-							(new DisableUICrossThreadInvocation (DisableUI));
-						switch (keystroke.Motion) 
-						{
-							case KeystrokeMotion.Up :
-
-								// The first up-keystroke after an error is ignored.
-								if (ignoreNext) 
-								{
-									ignoreNext = false;
-								}
-								else 
-								{
-									upParser.Parse (keystroke.Tag);
-								}
-								mustEnableUI = true;
-								break;
-
-							case KeystrokeMotion.Down :
-
-								// On the first down-keystroke after an error, we reset the display.
-								// We do not clear ignoreNext, though, because we want to ensure
-								// that the next up-keystroke will be ignored, too.  A normal 
-								// down-keystroke may show the current instruction, so we don't
-								// refresh the display mode in that case.
-								mustEnableUI = ignoreNext;
-								if (! ignoreNext) 
-								{
-									downParser.Parse (keystroke.Tag);
-								}
-								break;
-						}
-					}
-				}
-				catch (Error)
-				{
-					display.Value = display.Value; // Refresh the numeric display.
-					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
-					mustEnableUI = false;
-					ignoreNext = true;
-					ExecutionCompleteKeystrokes (this);
-				}
-				catch (Interrupt)
-				{
-
-					// We land here if a character was typed during a computation.  In this case,
-					// we have a keystroke in the queue, but the keyWasTyped event was cleared by 
-					// the code that detected the keystroke.  We must set it again here to make sure
-					// that the queue and the event are consistent.
-					keyWasTyped.Set ();
-					display.Value = display.Value; // Refresh the numeric display.
-					mustEnableUI = true;
-					ignoreNext = true;
-					ExecutionCompleteKeystrokes (this);
-				}
-				catch (Stop)
-				{
-					mustEnableUI = true;
-				}
-				catch (ThreadAbortException) 
-				{
-				}
-				finally 
-				{
-					// No cross-thread invocation if we are being aborted.
-					if (mustEnableUI && 
-						((Thread.CurrentThread.ThreadState & ThreadState.AbortRequested) == 0)) 
-					{
-						theEngine.Mode = 
-							(EngineMode) this.Invoke
-							(new EnableUICrossThreadInvocation (EnableUI));
-					}
-				}
-			}
-		}
-
-		#endregion
-
-		#region Cross-Thread Services
-
-		void DisableUI () 
-		{
-
-			// Disabling the menu items makes it clear to the user which operations are forbidden
-			// while the program runs.  It is doesn't help thread-safety, though: it could be
-			// possible for a print operation to start, followed immediately by the execution of a
-			// program, in which case both would proceed in parallel.  Thread safety is achieved by
-			// locking the operations that must access the execution data structures.
-			openMenuItem.Enabled = false;
-			printMenuItem.Enabled = false;
-			saveMenuItem.Enabled = false;
-			saveAsMenuItem.Enabled = false;
-		}
-
-		EngineMode EnableUI () 
-		{
-			printMenuItem.Enabled = true;
-
-			// Make sure that the state of the card slot reflects the state of the program memory.
-			// We can access the program without synchronization, because we only come here through
-			// a cross-thread invocation, and therefore the two threads are synchronized.
-			if (theProgram != null) 
-			{
-				if (theProgram.IsEmpty) 
-				{
-					if (cardSlot.State != CardSlotState.Unloaded) 
-					{
-						cardSlot.State = CardSlotState.Unloaded;
-					}
-				}
-				else 
-				{
-					if (cardSlot.State == CardSlotState.Unloaded) 
-					{
-						cardSlot.State = CardSlotState.ReadWrite;
-					}				
-				}
-			}
-
-			switch (toggleWprgmRun.Position)
-			{
-				case TogglePosition.Left :
-
-					// W/PRGM, can only save.
-					openMenuItem.Enabled = false;
-					saveMenuItem.Enabled = true;
-					saveAsMenuItem.Enabled = true;
-					return EngineMode.WriteProgram;
-
-				case TogglePosition.Right :
-
-					// RUN, can only open.
-					openMenuItem.Enabled = true;
-					saveMenuItem.Enabled = false;
-					saveAsMenuItem.Enabled = false;
-					return EngineMode.Run;
-
-				default :
-					return EngineMode.Run; // To make the compiler happy.
-			}
-		}
-
-		public bool Merge () 
-		{
-			Stream stream;
-
-			if (openFileDialog.ShowDialog () == DialogResult.OK)
-			{
-				if ((stream = openFileDialog.OpenFile ()) != null)
-				{
-					// Do not grab the lock here, because we are called from the execution thread,
-					// so we are properly synchronized.
-					bool programWasEmpty = theProgram.IsEmpty;
-					bool result = Card.Merge (stream, upParser);
-
-					if (programWasEmpty && ! theProgram.IsEmpty) 
-					{
-						cardSlot.State = CardSlotState.ReadWrite;
-					}
-					stream.Close ();
-
-					return result;
-				}
-				else 
-				{
-					return false;
-				}
-			}			
-			else 
-			{
-				return false;
-			}
-		}
-
-		public bool SaveDataAs () 
-		{
-			if (saveFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				bool result;
-				FileStream stream;
-
-				// Use OpenOrCreate to read the part of the file that we won't overwrite.  Do not
-				// try to grab the lock here, because we are called from the execution thread, so
-				// we are properly synchronized.
-				if ((stream = new FileStream (saveFileDialog.FileName, FileMode.OpenOrCreate)) !=
-					null)
-				{
-					result = Card.Write (stream, CardPart.Data);
-					stream.Close ();
-					return result;
-				}
-				else 
-				{
-					return false;
-				}
-			}
-			else 
-			{
-				return false;
-			}
-		}
-
-		#endregion
-
 		#region Command Execution
 
 		public void Open (string name) 
@@ -1557,14 +1219,14 @@ namespace HP67
 			try 
 			{
 				stream = new FileStream (name, FileMode.Open, FileAccess.Read);
-				lock (executionThreadIsBusy) 
+				lock (executionThread.IsBusy) 
 				{
 					// We hold the lock, so looking at the program is fine.
-					if (! Card.Read (stream, upParser)) 
+					if (! Card.Read (stream, reader)) 
 					{
 						fileName = null;
 					}
-					else if (! theProgram.IsEmpty) 
+					else if (! program.IsEmpty) 
 					{
 						cardSlot.State =
 							((File.GetAttributes (name) &  FileAttributes.ReadOnly) != 0) ?
@@ -1606,6 +1268,203 @@ namespace HP67
 		{
 			Open (name);
 			printMenuItem_Click (null, null);
+		}
+
+		private bool Save (bool mustLock, bool saveAs, CardPart part, ref string name)
+		{
+			bool fileIsNullOrReadOnly;
+			bool fileIsReadOnly;
+			bool mustShowDialog = saveAs;
+			bool status = false;
+			FileStream stream = null;
+
+			// If we don't have a currently open file, or if it is read-only, or if this is a
+			// Save As, we bring up the menu.  We keep doing so until either the user cancels the
+			// operation, or selects a writeable or nonexistent file.
+			for (;;) 
+			{
+				fileIsReadOnly = File.Exists (name) &&
+					((File.GetAttributes (name) &  FileAttributes.ReadOnly) != 0);
+				fileIsNullOrReadOnly = (name == null || fileIsReadOnly);
+				if (! mustShowDialog && ! fileIsNullOrReadOnly)
+				{
+					break;
+				}
+				if (fileIsNullOrReadOnly) 
+				{
+					saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
+				}
+				else 
+				{
+					saveFileDialog.FileName = name;
+				}
+				if (saveFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					name = saveFileDialog.FileName;
+					mustShowDialog = false;
+				}
+				else 
+				{
+					return false;
+				}
+			}
+
+			// Now do the actual write to the card.  Use OpenOrCreate so as to be able to read the
+			// part of the file that we won't overwrite.
+			try 
+			{
+				stream = new FileStream (name, FileMode.OpenOrCreate);
+				if (mustLock) 
+				{
+					lock (executionThread.IsBusy) 
+					{
+						status = Card.Write (stream, part);
+					}
+				}
+				else 
+				{
+					status = Card.Write (stream, part);
+				}
+				stream.Close ();
+				return status;
+			}
+			catch (Exception ex) 
+			{
+				string text = string.Format (
+					Localization.GetString (Localization.ExceptionSavingFile),
+					name,
+					ex.Message);
+				string caption = Localization.GetString (Localization.ErrorDuringSave);
+
+				if (stream != null) 
+				{
+					stream.Close ();
+				}
+				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		#endregion
+
+		#region Cross-Thread Operations
+
+		public bool CrossThreadMerge () 
+		{
+			Stream stream;
+
+			if (openFileDialog.ShowDialog () == DialogResult.OK)
+			{
+				if ((stream = openFileDialog.OpenFile ()) != null)
+				{
+					// Do not grab the lock here, because we are called from the execution thread,
+					// so we are properly synchronized.
+					bool programWasEmpty = program.IsEmpty;
+					bool result = Card.Merge (stream, reader);
+
+					if (programWasEmpty && ! program.IsEmpty) 
+					{
+						cardSlot.State = CardSlotState.ReadWrite;
+					}
+					stream.Close ();
+
+					return result;
+				}
+				else 
+				{
+					return false;
+				}
+			}			
+			else 
+			{
+				return false;
+			}
+		}
+
+		public EngineMode CrossThreadNotifyUI (bool busy) 
+		{
+			if (busy) 
+			{
+				Busy ();
+				return EngineMode.Run;
+			}
+			else 
+			{
+				return Unbusy ();
+			}
+		}
+
+		public bool CrossThreadSaveDataAs () 
+		{
+			string name = null;
+
+			return Save (/* mustLock */ false, /* saveAs */ true, CardPart.Data, ref name);
+		}
+
+		#endregion
+
+		#region UI Utilities
+
+		private void Busy () 
+		{
+
+			// Disabling the menu items makes it clear to the user which operations are forbidden
+			// while the program runs.  It is doesn't help thread-safety, though: it could be
+			// possible for a print operation to start, followed immediately by the execution of a
+			// program, in which case both would proceed in parallel.  Thread safety is achieved by
+			// locking the operations that must access the execution data structures.
+			openMenuItem.Enabled = false;
+			printMenuItem.Enabled = false;
+			saveMenuItem.Enabled = false;
+			saveAsMenuItem.Enabled = false;
+		}
+
+		private EngineMode Unbusy () 
+		{
+			printMenuItem.Enabled = true;
+
+			// Make sure that the state of the card slot reflects the state of the program memory.
+			// We can access the program without synchronization, because we only come here through
+			// a cross-thread invocation, and therefore the two threads are synchronized.
+			if (program != null) 
+			{
+				if (program.IsEmpty) 
+				{
+					if (cardSlot.State != CardSlotState.Unloaded) 
+					{
+						cardSlot.State = CardSlotState.Unloaded;
+					}
+				}
+				else 
+				{
+					if (cardSlot.State == CardSlotState.Unloaded) 
+					{
+						cardSlot.State = CardSlotState.ReadWrite;
+					}				
+				}
+			}
+
+			switch (toggleWprgmRun.Position)
+			{
+				case TogglePosition.Left :
+
+					// W/PRGM, can only save.
+					openMenuItem.Enabled = false;
+					saveMenuItem.Enabled = true;
+					saveAsMenuItem.Enabled = true;
+					return EngineMode.WriteProgram;
+
+				case TogglePosition.Right :
+
+					// RUN, can only open.
+					openMenuItem.Enabled = true;
+					saveMenuItem.Enabled = false;
+					saveAsMenuItem.Enabled = false;
+					return EngineMode.Run;
+
+				default :
+					return EngineMode.Run; // To make the compiler happy.
+			}
 		}
 
 		#endregion
@@ -1666,24 +1525,22 @@ namespace HP67
 		{
 
 			// Queue a keystroke, and notify the execution thread that its queue is not empty.
-			keystrokesQueue.Enqueue
+			executionThread.Enqueue
 				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Down));
-			keyWasTyped.Set ();
 		}
 
 		private void LeftMouseUp (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 
 			// Queue a keystroke, and notify the execution thread that its queue is not empty.
-			keystrokesQueue.Enqueue
+			executionThread.Enqueue
 				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Up));
-			keyWasTyped.Set ();
 		}
 
 		private void printDocument_PrintPage(object sender,
 			System.Drawing.Printing.PrintPageEventArgs e)
 		{
-			theProgram.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
+			program.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
 		}
 
 		private void toggleOffOn_ToggleClick (object sender,
@@ -1696,20 +1553,21 @@ namespace HP67
 					// OFF.  We abort the execution thread and start a new one.  We leave it in the
 					// state where its display is black and it doesn't accept keystrokes.
 					cardSlot.State = CardSlotState.Unloaded;
-					DisableUI ();
+					Busy ();
 					executionThread.Abort (); 
-					executionThread = new Thread (new ThreadStart (Execution));
-					executionThread.Start ();
-					executionIsInitialized.WaitOne ();
+					executionThread =
+						new ExecutionThread
+							(this,
+							reader,
+							new ExecutionThread.CrossThreadUINotification (CrossThreadNotifyUI),
+							out program);
 					break;
 				case TogglePosition.Right :
-					// ON.  First, we cancel any key typed when the power was off.  Then we pretend
-					// that the W/PRGM-RUN switch just moved to set the display mode appropriately.
+					// ON.  First, we cancel any key typed when the power was off.  Then we enqueue
+					// a dummy keystroke to cause the execution thread to set the display mode.
 					// Finally we release the execution thread.
-					keyWasTyped.Reset ();
-					keystrokesQueue.Clear ();
-					toggleWprgmRun_ToggleClick (sender, e, toggleWprgmRun.Position);
-					executionMayRun.Set ();
+					executionThread.Enqueue (Keystroke.Noop);
+					executionThread.PowerOn.Set ();
 					break;
 			}		
 		}
@@ -1724,7 +1582,7 @@ namespace HP67
 			// proceed immediately.  If it is busy, we won't be able to grab the lock, and we will
 			// return without doing anything.  That's not a problem because the execution thread
 			// will update the menus as soon as the current computation finishes.
-			if (Monitor.TryEnter (executionThreadIsBusy)) 
+			if (Monitor.TryEnter (executionThread.IsBusy)) 
 			{
 				try
 				{
@@ -1734,12 +1592,11 @@ namespace HP67
 					// once by sending a no-op keystroke.  We know that the execution thread is 
 					// idle, so this won't have nasty effects like interrupting the current
 					// computation.
-					keystrokesQueue.Enqueue (Keystroke.Noop);
-					keyWasTyped.Set ();
+					executionThread.Enqueue (Keystroke.Noop);
 				}
 				finally 
 				{
-					Monitor.Exit (executionThreadIsBusy);
+					Monitor.Exit (executionThread.IsBusy);
 				}
 			}
 		}
@@ -1754,87 +1611,12 @@ namespace HP67
 
 		private void saveMenuItem_Click(object sender, System.EventArgs e)
 		{
-			bool fileIsReadOnly = false;
-			Stream stream = null;
-
-			fileIsReadOnly = File.Exists (fileName) &&
-				((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0);
-			if (fileName == null || fileIsReadOnly) 
-			{
-				saveAsMenuItem_Click (sender, e);
-			}
-			else 
-			{
-				try 
-				{
-					// Use OpenOrCreate to read the part of the file that we won't overwrite.
-					stream = new FileStream (fileName, FileMode.OpenOrCreate);
-					lock (executionThreadIsBusy) 
-					{
-						Card.Write (stream, CardPart.Program);
-					}
-					stream.Close ();
-				}
-				catch (Exception ex) 
-				{
-					string text = string.Format (
-						Localization.GetString (Localization.ExceptionSavingFile),
-						fileName,
-						ex.Message);
-					string caption = Localization.GetString (Localization.ErrorDuringSave);
-
-					if (stream != null) 
-					{
-						stream.Close ();
-					}
-					MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
+			Save (/* mustLock */ true, /* saveAs */ false, CardPart.Program, ref fileName);
 		}
 
 		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
 		{
-			bool fileIsReadOnly = false;
-			Stream stream = null;
-
-			fileIsReadOnly = File.Exists (fileName) &&
-				((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0);
-			if (fileName == null || fileIsReadOnly) 
-			{
-				saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
-			}
-			else 
-			{
-				saveFileDialog.FileName = fileName;
-			}
-			if (saveFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				fileName = saveFileDialog.FileName;
-				try 
-				{
-					// Use OpenOrCreate to read the part of the file that we won't overwrite.
-					stream = new FileStream (fileName, FileMode.OpenOrCreate);
-					lock (executionThreadIsBusy) 
-					{
-						Card.Write (stream, CardPart.Program);
-					}
-					stream.Close ();
-				}
-				catch (Exception ex) 
-				{
-					string text = string.Format (
-						Localization.GetString (Localization.ExceptionSavingFile),
-						fileName,
-						ex.Message);
-					string caption = Localization.GetString (Localization.ErrorDuringSave);
-
-					if (stream != null) 
-					{
-						stream.Close ();
-					}
-					MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
+			Save (/* mustLock */ true, /* saveAs */ true, CardPart.Program, ref fileName);
 		}
 
 		private void editMenuItem_Click(object sender, System.EventArgs e)
@@ -1868,7 +1650,7 @@ namespace HP67
 
 		private void printMenuItem_Click(object sender, System.EventArgs e)
 		{
-			lock (executionThreadIsBusy) 
+			lock (executionThread.IsBusy) 
 			{
 				printDocument.Print ();
 			}

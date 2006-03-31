@@ -257,7 +257,7 @@ namespace HP67_Control_Library
 			numericTextBox.Enabled = true;
 		}
 			
-		public void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.DisplayRow dr;

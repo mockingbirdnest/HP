@@ -586,7 +586,7 @@ namespace HP67_Control_Library
 			Margin = Margin;
 		}
 
-		public void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.CardSlotRow csr;

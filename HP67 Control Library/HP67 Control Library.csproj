@@ -108,6 +108,11 @@
                     Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
+                <Reference
+                    Name = "GoldParserEngine"
+                    AssemblyName = "GoldParserEngine"
+                    HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
+                />
             </References>
         </Build>
         <Files>

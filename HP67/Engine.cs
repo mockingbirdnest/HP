@@ -93,7 +93,7 @@ namespace HP67
 
 		#region Event Handlers
 
-		public void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.CardRow cr;
 			CardDataset.EngineRow er;
@@ -535,7 +535,7 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_MERGE :
 					if (! (bool) form.Invoke
-						(new HP67.MergeCrossThreadInvocation (form.Merge))) 
+						(new ExecutionThread.CrossThreadOperation (form.CrossThreadMerge))) 
 					{
 						throw new Error ();
 					}
@@ -739,7 +739,8 @@ namespace HP67
 					break;
 				case (int)SymbolConstants.SYMBOL_W_DATA :
 					if (! (bool) form.Invoke
-									(new HP67.SaveDataAsCrossThreadInvocation (form.SaveDataAs))) 
+									(new ExecutionThread.CrossThreadOperation
+										(form.CrossThreadSaveDataAs))) 
 					{
 						throw new Error ();
 					}
@@ -969,7 +970,6 @@ namespace HP67
 							finally 
 							{
 								running = false;
-								stackLift = true;
 							}
 							break;
 					}

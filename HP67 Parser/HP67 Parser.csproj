@@ -84,14 +84,14 @@
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "GoldParserEngine"
-                    AssemblyName = "GoldParserEngine"
-                    HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
-                />
-                <Reference
                     Name = "CalithaLib"
                     AssemblyName = "CalithaLib"
                     HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll"
+                />
+                <Reference
+                    Name = "GoldParserEngine"
+                    AssemblyName = "GoldParserEngine"
+                    HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
                 />
             </References>
         </Build>
@@ -127,6 +127,11 @@
                     RelPath = "Parser.resx"
                     DependentUpon = "Parser.cs"
                     BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Reader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

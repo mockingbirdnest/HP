@@ -1,12 +1,12 @@
-using HP67;
+using HP67_Class_Library;
 using HP67_Control_Library;
 using HP67_Parser;
 using System;
-using System.Collections;
+using Queue = System.Collections.Queue;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67_Class_Library
+namespace HP67
 {
 	/// <summary>
 	/// The execution thread of the HP67 calculator.
@@ -16,19 +16,15 @@ namespace HP67_Class_Library
 
 		#region Public Data
 
+		// Delegates used for cross-thread invocation.
+		public delegate EngineMode CrossThreadUINotification (bool busy);
+		public delegate bool CrossThreadOperation ();
+
 		// Lock this object to ensure that the thread is idle.
 		public object IsBusy = new object ();
 
-		// TODO: Private?
-		public Queue keystrokesQueue;
-
-		// Events used to synchronize the two threads.
-		public AutoResetEvent IsInitialized = new AutoResetEvent (false);
-		public AutoResetEvent MayRun = new AutoResetEvent (false);
-		public AutoResetEvent keyWasTyped = new AutoResetEvent (false);
-
-		// Delegate used for cross-thread invocation.
-		public delegate EngineMode CrossThreadUINotification (bool busy);
+		// Set this event to power-on the execution thread.
+		public AutoResetEvent PowerOn = new AutoResetEvent (false);
 
 		#endregion
 
@@ -39,25 +35,35 @@ namespace HP67_Class_Library
 		private Program program;
 		private Actions upActions;
 		private Parser upParser;
+		
+		private AutoResetEvent isInitialized = new AutoResetEvent (false);
+		private Queue keystrokesQueue;
+		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
 
 		private Control main;
 		private CrossThreadUINotification notifyUI;
-		private Thread executionThread;
+		private Reader reader;
+		private Thread thread;
 
 		#endregion
 
 		#region Constructors & Destructors
 
-		public ExecutionThread (Control main, CrossThreadUINotification notifyUI, out Program program)
+		public ExecutionThread
+			(Control main,
+			Reader reader,
+			CrossThreadUINotification notifyUI,
+			out Program program)
 		{
 			this.main = main;
+			this.reader = reader;
 			this.notifyUI = notifyUI;
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
-			executionThread = new Thread (new ThreadStart (Execution));
-			executionThread.Start ();
-			IsInitialized.WaitOne ();
+			thread = new Thread (new ThreadStart (Execution));
+			thread.Start ();
+			isInitialized.WaitOne ();
 
 			program = this.program;
 		}
@@ -76,7 +82,7 @@ namespace HP67_Class_Library
 
 			bool ignoreNext = false;
 			bool mustCreateDisplay = true;
-			bool mustEnableUI = true;
+			bool mustUnbusyUI = true;
 
 			// Controls must be accessed from the thread that created them.  For most controls,
 			// this is the main thread.  But the display is special, as it is mostly updated
@@ -99,7 +105,13 @@ namespace HP67_Class_Library
 				display = new Display (keyWasTyped);
 				main.Controls.Add (display);
 			}
-			display.Font = new System.Drawing.Font ("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			display.Font =
+				new System.Drawing.Font
+					("Quartz",
+					26.25F,
+					System.Drawing.FontStyle.Regular,
+					System.Drawing.GraphicsUnit.Point,
+					((System.Byte)(0)));
 			display.ForeColor = System.Drawing.Color.Red;
 			display.Location = new System.Drawing.Point (8, 8);
 			display.Name = "display";
@@ -123,9 +135,9 @@ namespace HP67_Class_Library
 			// released).  The two parsers will go through exactly the same productions, but they
 			// will pass a different motion indicator to the engine.
 			downActions = new Actions (engine, KeystrokeMotion.Down);
-			downParser = new Parser ("HP67_Parser.Parser", "CGT", downActions);
+			downParser = new Parser (reader, downActions);
 			upActions = new Actions (engine, KeystrokeMotion.Up);
-			upParser = new Parser ("HP67_Parser.Parser", "CGT", upActions);
+			upParser = new Parser (reader, upActions);
 
 			// The display is initially black, as when the calculator is powered off.
 			display.ShowText ("", 0, 0);
@@ -142,14 +154,14 @@ namespace HP67_Class_Library
 			}
 
 			// Notify the main thread that we are ready to process keystrokes.
-			IsInitialized.Set ();
+			isInitialized.Set ();
 
 			// Now wait until the main thread tells us that we may run, i.e., that the calculator
 			// has been powered on.  The display is set to numeric mode, which is appropriate when
 			// the application has just started.  In case of a power cycle the main thread will
 			// force us to refresh the display mode based on the W/PRGM-RUN toggle: we couldn't call
-			// EnableUI here, because the main window may not be built yet.
-			MayRun.WaitOne ();
+			// notifyUI here, because the main window may not be built yet.
+			PowerOn.WaitOne ();
 			display.Mode = DisplayMode.Numeric;
 
 			for (;;) 
@@ -171,7 +183,7 @@ namespace HP67_Class_Library
 					// the keystroke.
 					lock (IsBusy)
 					{
-						main.Invoke (notifyUI);
+						main.Invoke (notifyUI, new object [] {true});
 						switch (keystroke.Motion) 
 						{
 							case KeystrokeMotion.Up :
@@ -185,7 +197,7 @@ namespace HP67_Class_Library
 								{
 									upParser.Parse (keystroke.Tag);
 								}
-								mustEnableUI = true;
+								mustUnbusyUI = true;
 								break;
 
 							case KeystrokeMotion.Down :
@@ -195,7 +207,7 @@ namespace HP67_Class_Library
 								// that the next up-keystroke will be ignored, too.  A normal 
 								// down-keystroke may show the current instruction, so we don't
 								// refresh the display mode in that case.
-								mustEnableUI = ignoreNext;
+								mustUnbusyUI = ignoreNext;
 								if (! ignoreNext) 
 								{
 									downParser.Parse (keystroke.Tag);
@@ -208,7 +220,7 @@ namespace HP67_Class_Library
 				{
 					display.Value = display.Value; // Refresh the numeric display.
 					display.ShowText (Localization.GetString (Localization.Error), 500, 100);
-					mustEnableUI = false;
+					mustUnbusyUI = false;
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
 				}
@@ -221,25 +233,22 @@ namespace HP67_Class_Library
 					// that the queue and the event are consistent.
 					keyWasTyped.Set ();
 					display.Value = display.Value; // Refresh the numeric display.
-					mustEnableUI = true;
+					mustUnbusyUI = true;
 					ignoreNext = true;
 					ExecutionCompleteKeystrokes (this);
 				}
 				catch (Stop)
 				{
-					mustEnableUI = true;
-				}
-				catch (ThreadAbortException) 
-				{
+					mustUnbusyUI = true;
 				}
 				finally 
 				{
-					// No cross-thread invocation if we are being aborted.
-					if (mustEnableUI &&
-						((executionThread.ThreadState & ThreadState.AbortRequested) == 0)) 
+					// No cross-thread notification if we are being aborted.
+					if (mustUnbusyUI &&
+						((thread.ThreadState & ThreadState.AbortRequested) == 0)) 
 					{
 						engine.Mode = 
-							(EngineMode) main.Invoke (notifyUI);
+							(EngineMode) main.Invoke (notifyUI, new object [] {false});
 					}
 				}
 			}
@@ -259,6 +268,21 @@ namespace HP67_Class_Library
 			// state (in particular, drop any remaining text).
 			downActions.ParserAccept ();
 			upActions.ParserAccept ();
+		}
+
+		#endregion
+
+		#region Public Operations
+
+		public void Abort () 
+		{
+			thread.Abort ();
+		}
+
+		public void Enqueue (Keystroke keystroke) 
+		{
+			keystrokesQueue.Enqueue (keystroke);
+			keyWasTyped.Set ();
 		}
 
 		#endregion

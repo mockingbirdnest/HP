@@ -84,7 +84,7 @@ namespace HP67_Class_Library
 
 		#region Event Handlers
 
-		public void MergeFromDataset (CardDataset cds, Parser parser)
+		public void MergeFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.ArgumentRow [] ars;
 			CardDataset.CardRow cr;
@@ -105,7 +105,7 @@ namespace HP67_Class_Library
 				sourceProgramIsEmpty = true;
 				foreach (CardDataset.InstructionRow ir in irs) 
 				{
-					if (parser.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
+					if (reader.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
 					{
 						sourceProgramIsEmpty = false;
 						break;
@@ -133,7 +133,7 @@ namespace HP67_Class_Library
 						// We have to go through instruction insertion to make sure that the label
 						// table is properly updated.
 						Insert (new Instruction (ir.Text,
-												parser.ToSymbol (ir.Instruction),
+												reader.ToSymbol (ir.Instruction),
 												arguments));	
 					}
 					isEmpty = false;
@@ -141,7 +141,7 @@ namespace HP67_Class_Library
 			}
 		}
 
-		public void ReadFromDataset (CardDataset cds, Parser parser)
+		public void ReadFromDataset (CardDataset cds, Reader reader)
 		{
 			// Beware, the XML file uses 1-based step numbers, but we must go back to 0-based
 			// numbers internally.
@@ -165,7 +165,7 @@ namespace HP67_Class_Library
 				{
 					Argument [] arguments = new Argument [ir.ArgumentCount];
 
-					if (parser.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
+					if (reader.ToSymbol (ir.Instruction).Id != (int) SymbolConstants.SYMBOL_R_S) 
 					{
 						isEmpty = false;
 					}
@@ -177,7 +177,7 @@ namespace HP67_Class_Library
 						arguments [ar.Id] = argument;
 					}
 					instructions [ir.Step - 1] =
-						new Instruction (ir.Text, parser.ToSymbol (ir.Instruction), arguments);				
+						new Instruction (ir.Text, reader.ToSymbol (ir.Instruction), arguments);				
 				}
 				labels = new ArrayList [pr.LabelCount];
 				lrs = pr.GetLabelRows ();

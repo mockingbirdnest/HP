@@ -151,6 +151,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "ExecutionThread.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "HP67 Application.ico"
                     BuildAction = "Content"
                 />
