@@ -656,10 +656,8 @@ namespace HP67_Parser
 			new TraceSwitch ("HP67_Parser.Parser", "Automatically generated parser");
 
         private IActions actions;
-        private Hashtable hashtable;
         private string input;
         private LALRParser parser;
-        private CGTReader reader;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -1865,9 +1863,8 @@ namespace HP67_Parser
 			actions.ParserError (input, args.UnexpectedToken);
         }
 
-        private void Initialize (Stream stream)
+        public Parser (Reader reader, IActions a)
         {
-            reader = new CGTReader (stream);
             parser = reader.CreateNewParser ();
             parser.TrimReductions = false; 
             parser.StoreTokens = LALRParser.StoreTokensMode.NoUserObject;
@@ -1876,34 +1873,6 @@ namespace HP67_Parser
             parser.OnAccept += new LALRParser.AcceptHandler (AcceptEvent);
             parser.OnTokenError += new LALRParser.TokenErrorHandler (TokenErrorEvent);
             parser.OnParseError += new LALRParser.ParseErrorHandler (ParseErrorEvent);
-        }
-
-        public Parser (string filename, IActions a)
-        {
-            FileStream stream = new FileStream (filename,
-                                                FileMode.Open, 
-                                                FileAccess.Read, 
-                                                FileShare.Read);
-            Initialize (stream);
-            stream.Close ();
-            actions = a;
-        }
-
-        public Parser (string baseName, string resourceName, IActions a)
-        {
-            byte[] buffer = ResourceUtil.GetByteArrayResource
-               (System.Reflection.Assembly.GetExecutingAssembly (),
-                baseName,
-                resourceName);
-            MemoryStream stream = new MemoryStream (buffer);
-            Initialize (stream);
-            stream.Close ();
-            actions = a;
-        }
-
-        public Parser (Stream stream, IActions a)
-        {
-            Initialize (stream);
             actions = a;
         }
 
@@ -1931,23 +1900,5 @@ namespace HP67_Parser
             }
         }
         
-        public Symbol ToSymbol (string name)
-        {
-			// When persisting a program, we store the symbol names rather than the symbol ids
-			// because they are supposed to be more resilient in the face of changes to the
-			// grammar.  To read a program, we must be able to convert the name back to a symbol.
-			// This subprogram does that.  For performance, it builds a dictionary the first
-			// type it is called, and later does look up in this dictionary.
-			if (hashtable == null)
-			{
-				hashtable = new Hashtable ();
-				foreach (Symbol s in reader.Symbols) 
-				{
-					hashtable.Add (s.Name, s);
-				}
-			}
-			return (Symbol) hashtable [name];
-        }
-
     }
 }
