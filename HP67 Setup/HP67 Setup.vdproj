@@ -27,18 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1C0515AAEDD14EC99EAC4DB478C67ACD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,32 +45,56 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_279453D80C6C4DD0BC08D54F7F7982F6"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2B1536439287E1C90BE6F59BFA373A53"
-        "OwnerKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2B1536439287E1C90BE6F59BFA373A53"
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2B1536439287E1C90BE6F59BFA373A53"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2B1536439287E1C90BE6F59BFA373A53"
-        "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_E3040C905A245367AE6D803976E0280A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_274A620E02FD48758A4D3077E9B695D7"
+        "OwnerKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_279453D80C6C4DD0BC08D54F7F7982F6"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,80 +105,62 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
+        "MsmKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
+        "OwnerKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
+        "MsmKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "OwnerKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
+        "MsmKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
+        "MsmKey" = "8:_4E06909868B7FCDF62991CC97A832F7F"
+        "OwnerKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "MsmKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
-        "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
+        "MsmKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
+        "OwnerKey" = "8:_E3040C905A245367AE6D803976E0280A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
+        "MsmKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
-        "OwnerKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
+        "MsmKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
+        "OwnerKey" = "8:_E3040C905A245367AE6D803976E0280A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
-        "OwnerKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
+        "MsmKey" = "8:_8671053BA02A4DCD58D52B8BBE899F88"
+        "OwnerKey" = "8:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -177,50 +171,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
+        "MsmKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_0235350F5583F68F56A3AF36CA76D13C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_6E65C11D756E0B53F57253C3BFE67D02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_2B1536439287E1C90BE6F59BFA373A53"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_9407E3CB686335C2CD065D78BB5BB019"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
-        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -231,8 +183,62 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F7407765D4389CEB1221ABCA1B65FCB6"
+        "MsmKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
+        "OwnerKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D0C43F6704B14AEEAA6E30ED6DB99BB7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3040C905A245367AE6D803976E0280A"
+        "OwnerKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3040C905A245367AE6D803976E0280A"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3040C905A245367AE6D803976E0280A"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E3040C905A245367AE6D803976E0280A"
+        "OwnerKey" = "8:_CE28893D9526A120DE8900287C1C02AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+        "OwnerKey" = "8:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -320,37 +326,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_0235350F5583F68F56A3AF36CA76D13C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2281.42212, Culture=neutral"
-                "ScatterAssemblies"
-                {
-                    "_0235350F5583F68F56A3AF36CA76D13C"
-                    {
-                    "Name" = "8:HP67 Control Library.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:HP67 Control Library.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_1C0515AAEDD14EC99EAC4DB478C67ACD"
             {
             "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Factors and Primes.hp67"
@@ -431,14 +406,34 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_2B1536439287E1C90BE6F59BFA373A53"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_3E210DD2EE4345B78D3FE396B1738837"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Standard Pac\\Triangles.hp67"
+            "TargetName" = "8:Triangles.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_4E06909868B7FCDF62991CC97A832F7F"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:HP67 Transient Class Library, Version=0.0.0.0, Culture=neutral"
                 "ScatterAssemblies"
                 {
-                    "_2B1536439287E1C90BE6F59BFA373A53"
+                    "_4E06909868B7FCDF62991CC97A832F7F"
                     {
                     "Name" = "8:HP67 Transient Class Library.dll"
                     "Attributes" = "3:512"
@@ -462,133 +457,51 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_3E210DD2EE4345B78D3FE396B1738837"
-            {
-            "SourcePath" = "8:..\\HP67 Pacs\\Standard Pac\\Triangles.hp67"
-            "TargetName" = "8:Triangles.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:TRUE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_6E65C11D756E0B53F57253C3BFE67D02"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Persistence, Version=0.0.0.0, Culture=neutral"
-                "ScatterAssemblies"
-                {
-                    "_6E65C11D756E0B53F57253C3BFE67D02"
-                    {
-                    "Name" = "8:HP67 Persistence.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:HP67 Persistence.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_859F104FA2E83756682990E8C1F9C2E3"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CalithaLib, Version=1.11.2083.28932, Culture=neutral"
-                "ScatterAssemblies"
-                {
-                    "_859F104FA2E83756682990E8C1F9C2E3"
-                    {
-                    "Name" = "8:CalithaLib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:CalithaLib.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_9407E3CB686335C2CD065D78BB5BB019"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2281.42212, Culture=neutral"
-                "ScatterAssemblies"
-                {
-                    "_9407E3CB686335C2CD065D78BB5BB019"
-                    {
-                    "Name" = "8:HP67 Parser.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:HP67 Parser.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_9A860F638852F6EB5D2581413B30D5D5"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_5E6EE14A1965A376C7DEBFF0EA07F0AD"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:GoldParserEngine, Version=1.11.2083.28932, Culture=neutral"
                 "ScatterAssemblies"
                 {
-                    "_9A860F638852F6EB5D2581413B30D5D5"
+                    "_5E6EE14A1965A376C7DEBFF0EA07F0AD"
                     {
                     "Name" = "8:GoldParserEngine.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:GoldParserEngine.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_8671053BA02A4DCD58D52B8BBE899F88"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CalithaLib, Version=1.11.2083.28932, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_8671053BA02A4DCD58D52B8BBE899F88"
+                    {
+                    "Name" = "8:CalithaLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:CalithaLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
@@ -626,6 +539,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2282.20407, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_A8BDCC09B43CE3E6A869DEE18D5DAD2E"
+                    {
+                    "Name" = "8:HP67 Class Library.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HP67 Class Library.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_C3B84D7C0DAD427290829390511000DB"
             {
             "SourcePath" = "8:Setup Banner.JPG"
@@ -646,20 +590,102 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_F7407765D4389CEB1221ABCA1B65FCB6"
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_CE28893D9526A120DE8900287C1C02AB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2281.42212, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Persistence, Version=0.0.0.0, Culture=neutral"
                 "ScatterAssemblies"
                 {
-                    "_F7407765D4389CEB1221ABCA1B65FCB6"
+                    "_CE28893D9526A120DE8900287C1C02AB"
                     {
-                    "Name" = "8:HP67 Class Library.dll"
+                    "Name" = "8:HP67 Persistence.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:HP67 Class Library.dll"
+            "SourcePath" = "8:HP67 Persistence.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D0C43F6704B14AEEAA6E30ED6DB99BB7"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Optimal Scale, Plotting.hp67"
+            "TargetName" = "8:Optimal Scale, Plotting.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_E3040C905A245367AE6D803976E0280A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HP67 Parser, Version=1.0.2282.20406, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_E3040C905A245367AE6D803976E0280A"
+                    {
+                    "Name" = "8:HP67 Parser.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HP67 Parser.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_EC2CAA8EFC47CBE0823C96AAF58046F9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2282.20407, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_EC2CAA8EFC47CBE0823C96AAF58046F9"
+                    {
+                    "Name" = "8:HP67 Control Library.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HP67 Control Library.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
@@ -948,7 +974,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_62D32FC4BB6A4D14966836133430F9D6"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Terminé"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -999,7 +1025,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_9D65FA0396074D5B80113E6B00B3C102"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Terminé"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -1031,7 +1057,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_1CCDAEF8A45E421196BE8FA4B2AF155B"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Bienvenue"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -1080,7 +1106,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_39731B1383BA45C39BEBFB98377CB49D"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Confirmer l'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -1103,7 +1129,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_E068A7D58E6542228E990867CDDE1754"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Dossier d'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -1135,7 +1161,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_AA51CFFC93E946D3A0BD0055297EF4D1"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Progression"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -1180,7 +1206,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_64698C57A9E84458B9254A102FD3226A"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Dossier d'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -1203,7 +1229,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_652766A57A8A42858C75C2D8D9C26FD3"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Confirmer l'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -1226,7 +1252,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_90201F75F72B44F7BDED0A7989CD808A"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Bienvenue"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -1290,7 +1316,7 @@
                     "{18ADD6EC-89FE-4ED7-AD3E-211C40278470}:_9777A2E771A548E9B7678165A485E4BF"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Progression"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -1328,7 +1354,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_B841DAC0CD8F4BAF9950B40EDD4D2D31"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_274A620E02FD48758A4D3077E9B695D7"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
