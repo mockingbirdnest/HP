@@ -1186,6 +1186,8 @@ namespace HP67
 			this.Controls.Add(this.cardSlot);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
+			this.MaximumSize = new System.Drawing.Size(312, 624);
+			this.MinimumSize = new System.Drawing.Size(312, 624);
 			this.Name = "HP67";
 			this.Text = "HP67";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HP67_KeyDown);
