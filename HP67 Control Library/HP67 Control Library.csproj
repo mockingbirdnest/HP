@@ -153,6 +153,16 @@
                     BuildAction = "EmbeddedResource"
                 />
                 <File
+                    RelPath = "Printer.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Printer.resx"
+                    DependentUpon = "Printer.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "Toggle.bmp"
                     BuildAction = "Content"
                 />
