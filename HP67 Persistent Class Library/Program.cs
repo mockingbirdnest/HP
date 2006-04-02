@@ -397,7 +397,7 @@ namespace HP67_Class_Library
 
 				for (int j = 0; j < a.Count; j++) 
 				{
-					if ((int) a [j] > step) 
+					if ((int) a [j] >= step) 
 					{
 						a [j] = (int) a [j] + 1;
 					}
@@ -588,12 +588,13 @@ namespace HP67_Class_Library
 			isEmpty = false;
 			UpdateLabelsForDeletion (instructions.Length - 1);
 
-			// Make room for insertion.
+			// Make room for insertion and update the label tables.
 			next++;
 			for (int i = instructions.Length - 1; i > next; i--) 
 			{
 				instructions [i] = instructions [i - 1];
 			}
+			UpdateLabelsForInsertion (next);
 
 			// For labels, update the labels lookup tables.
 			switch (instruction.Symbol.Id) 
@@ -651,7 +652,6 @@ namespace HP67_Class_Library
 			}
 
 			GotoZeroBasedStep (next);
-			UpdateLabelsForInsertion (next);
 		}
 
 		public bool IsEmpty

@@ -36,9 +36,10 @@ namespace HP67
 		private Actions upActions;
 		private Parser upParser;
 		
+		private AutoResetEvent downKeystrokeWasEnqueued = new AutoResetEvent (false);
 		private AutoResetEvent isInitialized = new AutoResetEvent (false);
 		private Queue keystrokesQueue;
-		private AutoResetEvent keyWasTyped = new AutoResetEvent (false);
+		private AutoResetEvent keystrokeWasEnqueued = new AutoResetEvent (false);
 
 		private Control main;
 		private CrossThreadUINotification notifyUI;
@@ -78,12 +79,10 @@ namespace HP67
 		{
 			Display display;
 			Engine engine;
-			Keystroke keystroke;
 			Memory memory;
 			Stack stack;
 
-			bool ignoreNext = false;
-			bool mustUnbusyUI = true;
+			bool mustReinitialize = false;
 
 			// For some reason the first exception that is raised on this thread takes a long time
 			// to propagate.  It is better to raise it here, while the thread initializes, than
@@ -96,10 +95,10 @@ namespace HP67
 			{
 			}
 
-			// Controls must be accessed from the thread that created them.  For most controls,
-			// this is the main thread.  But the display is special, as it is mostly updated
-			// during execution.  So it is created by the execution thread. 
-			display = new Display (keyWasTyped);
+			// Controls must be accessed from the thread that created them.  For most controls, this
+			// is the main thread.  But the display is special, as it is mostly updated during
+			// execution.  So it is created by the execution thread. 
+			display = new Display (downKeystrokeWasEnqueued);
 			display.Font =
 				new System.Drawing.Font
 					("Quartz",
@@ -128,7 +127,7 @@ namespace HP67
 				memory = new Memory (display);
 				program = new Program (display);
 				stack = new HP67_Class_Library.Stack (display);
-				engine = new Engine (display, memory, program, stack, keyWasTyped);
+				engine = new Engine (display, memory, program, stack, downKeystrokeWasEnqueued);
 
 				// We need two parsers: one that processes the MouseDown events, and one that
 				// processes the MouseUp events, because both events have different effects for a
@@ -155,101 +154,10 @@ namespace HP67
 				display.Mode = DisplayMode.Numeric;
 				display.Value = 0;
 
-				for (;;) 
+				do
 				{
-					try 
-					{
-						// TODO: What if we get several keys in the queue and keyWasTyped is set only
-						// once?
-
-						// Wait until we get a keystroke from the UI.
-						keyWasTyped.WaitOne ();
-
-						keystroke = (Keystroke) keystrokesQueue.Dequeue ();
-
-						// We want to protect this sequence against asynchronous changes to the
-						// menus which may happen if the W/PGRM-RUN switch is moved: we wouldn't
-						// want the menus to be changed by the main thread between the invocation
-						// of notifyUI and the call to the parser, or during the execution of the
-						// keystroke.
-						lock (IsBusy)
-						{
-							main.Invoke (notifyUI, new object [] {true});
-							switch (keystroke.Motion) 
-							{
-								case KeystrokeMotion.Up :
-
-									// The first up-keystroke after an error is ignored.
-									if (ignoreNext) 
-									{
-										ignoreNext = false;
-									}
-									else 
-									{
-										upParser.Parse (keystroke.Tag);
-									}
-									mustUnbusyUI = true;
-									break;
-
-								case KeystrokeMotion.Down :
-
-									// On the first down-keystroke after an error, we reset the
-									// display.  We do not clear ignoreNext, though, because we want
-									// to ensure that the next up-keystroke will be ignored, too.  A
-									// normal down-keystroke may show the current instruction, so we
-									// don't refresh the display mode in that case.
-									mustUnbusyUI = ignoreNext;
-									if (! ignoreNext) 
-									{
-										downParser.Parse (keystroke.Tag);
-									}
-									break;
-							}
-						}
-					}
-					catch (Error)
-					{
-						display.Value = display.Value; // Refresh the numeric display.
-						display.ShowText (Localization.GetString (Localization.Error), 500, 100);
-						mustUnbusyUI = false;
-						ignoreNext = true;
-						ExecutionCompleteKeystrokes (this);
-					}
-					catch (Interrupt)
-					{
-
-						// We land here if a character was typed during a computation.  In this
-						// case, we have a keystroke in the queue, but the keyWasTyped event was
-						// cleared by the code that detected the keystroke.  We must set it again
-						// here to make sure that the queue and the event are consistent.
-						keyWasTyped.Set ();
-						display.Value = display.Value; // Refresh the numeric display.
-						mustUnbusyUI = true;
-						ignoreNext = true;
-						ExecutionCompleteKeystrokes (this);
-					}
-					catch (ThreadAbortException) 
-					{
-						mustUnbusyUI = false;
-						if (! mustAbort) 
-						{
-
-							// A fake abort for reinitialization.  Exit the inner loop and go back
-							// to the initialization code in the outer loop.
-							Thread.ResetAbort ();
-							break;
-						}
-					}
-					finally 
-					{
-						// No cross-thread notification if we are being aborted.
-						if (mustUnbusyUI) 
-						{
-							engine.Mode = 
-								(EngineMode) main.Invoke (notifyUI, new object [] {false});
-						}
-					}
-				}
+					ExecutionProcessKeystroke (display, engine, out mustReinitialize);
+				} while (! mustReinitialize);
 			}
 		}
 
@@ -269,6 +177,102 @@ namespace HP67
 			upActions.ParserAccept ();
 		}
 
+		private void ExecutionProcessKeystroke
+			(Display display, Engine engine, out bool mustReinitialize) 
+		{
+			Keystroke keystroke;
+
+			bool ignoreNext = false;
+			bool mustUnbusyUI = true;			
+
+			mustReinitialize = false;
+			try 
+			{
+				// TODO: What if we get several keys in the queue and keyWasTyped is set only once?
+
+				// Wait until we get a keystroke from the UI.
+				keystrokeWasEnqueued.WaitOne ();
+
+				keystroke = (Keystroke) keystrokesQueue.Dequeue ();
+
+				// We want to protect this sequence against asynchronous changes to the menus which
+				// may happen if the W/PGRM-RUN switch is moved: we wouldn't want the menus to be
+				// changed by the main thread between the invocation of notifyUI and the call to the
+				// parser, or during the execution of the keystroke.
+				lock (IsBusy)
+				{
+					main.Invoke (notifyUI, new object [] {true});
+					switch (keystroke.Motion) 
+					{
+						case KeystrokeMotion.Up :
+
+							// The first up-keystroke after an error is ignored.
+							if (ignoreNext) 
+							{
+								ignoreNext = false;
+							}
+							else 
+							{
+								upParser.Parse (keystroke.Tag);
+							}
+							mustUnbusyUI = true;
+							break;
+						case KeystrokeMotion.Down :
+
+							// On the first down-keystroke after an error, we reset the display.  We
+							// do not clear ignoreNext, though, because we want to ensure that the
+							// next up-keystroke will be ignored, too.  We only refresh the display
+							// if it is blurred, because a down keystroke may display the current
+							// instruction.
+
+							// TODO: What if another down key was queued in-between?
+							downKeystrokeWasEnqueued.Reset ();
+							if (! ignoreNext) 
+							{
+								downParser.Parse (keystroke.Tag);
+							}
+							mustUnbusyUI = ignoreNext || display.IsBlurred;
+							break;
+					}
+				}
+			}
+			catch (Error)
+			{
+				display.Value = display.Value; // Refresh the numeric display.
+				display.ShowText (Localization.GetString (Localization.Error), 500, 100);
+				mustUnbusyUI = false;
+				ignoreNext = true;
+				ExecutionCompleteKeystrokes (this);
+			}
+			catch (Interrupt)
+			{
+				display.Value = display.Value; // Refresh the numeric display.
+				mustUnbusyUI = true;
+				ignoreNext = true;
+				ExecutionCompleteKeystrokes (this);
+			}
+			catch (ThreadAbortException) 
+			{
+				mustUnbusyUI = false;
+				if (! mustAbort) 
+				{
+
+					// A fake abort for reinitialization.
+					Thread.ResetAbort ();
+					mustReinitialize = true;
+				}
+			}
+			finally 
+			{
+				// No cross-thread notification if we are being aborted.
+				if (mustUnbusyUI) 
+				{
+					engine.Mode = 
+						(EngineMode) main.Invoke (notifyUI, new object [] {false});
+				}
+			}
+		}		
+
 		#endregion
 
 		#region Public Operations
@@ -282,13 +286,18 @@ namespace HP67
 		public void Clear () 
 		{
 			keystrokesQueue.Clear ();
-			keyWasTyped.Reset ();
+			keystrokeWasEnqueued.Reset ();
+			downKeystrokeWasEnqueued.Reset ();
 		}
 
 		public void Enqueue (Keystroke keystroke) 
 		{
 			keystrokesQueue.Enqueue (keystroke);
-			keyWasTyped.Set ();
+			keystrokeWasEnqueued.Set ();
+			if (keystroke.Motion == KeystrokeMotion.Down) 
+			{
+				downKeystrokeWasEnqueued.Set ();
+			}
 		}
 
 		public void Reset (out Program program)

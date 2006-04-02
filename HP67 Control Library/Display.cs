@@ -63,6 +63,7 @@ namespace HP67_Control_Library
 		private bool enteringMantissa;
 		private bool enteringNumber;
 		private bool hasAPeriod;
+		private bool isBlurred;
 		private bool userControlTesting;
 
 		private double currentMantissa;
@@ -531,6 +532,14 @@ namespace HP67_Control_Library
 			}
 		}
 
+		public bool IsBlurred 
+		{
+			get 
+			{
+				return isBlurred;
+			}
+		}
+
 		public DisplayMode Mode
 		{
 			set
@@ -551,6 +560,7 @@ namespace HP67_Control_Library
 							break;
 					}
 				}
+				isBlurred = false;
 			}
 		}
 
@@ -900,6 +910,7 @@ namespace HP67_Control_Library
 			int i;
 
 			Mode = DisplayMode.Alphabetic;
+			isBlurred = true;
 			random.NextBytes (b);
 			i = 0;
 			while (i < mantissaSignLength) 

@@ -1186,6 +1186,7 @@ namespace HP67
 			this.Controls.Add(this.cardSlot);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
+			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(312, 624);
 			this.MinimumSize = new System.Drawing.Size(312, 624);
 			this.Name = "HP67";
@@ -1463,6 +1464,7 @@ namespace HP67
 
 		void UpdateCardSlot (bool alreadyLocked) 
 		{
+			bool wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
 
 			// Make sure that the state of the card slot reflects the state of the program memory.
 			if (! alreadyLocked) 
@@ -1496,6 +1498,13 @@ namespace HP67
 				if (! alreadyLocked) 
 				{
 					Monitor.Exit (executionThread.IsBusy);
+				}
+
+				// If the program was just cleared, clear the current file name.  This ensures that
+				// the next program won't be stupidly saved on the previous card.
+				if (! wasUnloaded && cardSlot.State == CardSlotState.Unloaded) 
+				{
+					fileName = null;
 				}
 			}
 		}
