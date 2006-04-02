@@ -8,19 +8,26 @@ using System.Windows.Forms;
 namespace HP67_Control_Library
 {
 	/// <summary>
-	/// Description résumée de UserControl2.
+	/// The dot-matrix printer of the HP97 calculator
 	/// </summary>
 	public class Printer : System.Windows.Forms.UserControl
 	{
-		private System.Windows.Forms.ListBox listBox1;
+
+		#region Private Data
+
+		private System.Windows.Forms.ListBox listBox;
 		/// <summary> 
-		/// Variable nécessaire au concepteur.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public Printer()
+		#endregion
+
+		#region Constructors & Destructors
+
+		public Printer ()
 		{
-			// Cet appel est requis par le Concepteur de formulaires Windows.Forms.
+			// This call is required by the Windows.Forms Form Designer.
 			InitializeComponent();
 
 			// TODO : ajoutez les initialisations après l'appel à InitializeComponent
@@ -28,65 +35,74 @@ namespace HP67_Control_Library
 		}
 
 		/// <summary> 
-		/// Nettoyage des ressources utilisées.
+		/// Clean up any resources being used.
 		/// </summary>
-		protected override void Dispose( bool disposing )
+		protected override void Dispose (bool disposing)
 		{
-			if( disposing )
+			if (disposing)
 			{
-				if(components != null)
+				if (components != null)
 				{
-					components.Dispose();
+					components.Dispose( );
 				}
 			}
-			base.Dispose( disposing );
+			base.Dispose (disposing);
 		}
 
-		#region Code généré par le Concepteur de composants
+		#endregion
+
+		#region Component Designer generated code
 		/// <summary> 
-		/// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
-		/// le contenu de cette méthode avec l'éditeur de code.
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.listBox = new System.Windows.Forms.ListBox();
 			this.SuspendLayout();
 			// 
-			// listBox1
+			// listBox
 			// 
-			this.listBox1.Font = new System.Drawing.Font("OCR A Extended", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.listBox1.Items.AddRange(new object[] {
-														  "1ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-														  "3",
-														  "4",
-														  "5",
-														  "6",
-														  "7",
-														  "8",
-														  "9",
-														  "0",
-														  "1",
-														  "2",
-														  "3",
-														  "4",
-														  "5",
-														  "6",
-														  "7",
-														  "8",
-														  "9",
-														  "0",
-														  "1"});
-			this.listBox1.Location = new System.Drawing.Point(16, 24);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.listBox1.Size = new System.Drawing.Size(152, 173);
-			this.listBox1.TabIndex = 0;
+			this.listBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+				| System.Windows.Forms.AnchorStyles.Left) 
+				| System.Windows.Forms.AnchorStyles.Right)));
+			this.listBox.BackColor = System.Drawing.Color.WhiteSmoke;
+			this.listBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.listBox.Font = new System.Drawing.Font("DotMatrix", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.listBox.ItemHeight = 18;
+			this.listBox.Items.AddRange(new object[] {
+														 "1ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+														 "3",
+														 "4",
+														 "5",
+														 "6",
+														 "7",
+														 "8",
+														 "9",
+														 "0",
+														 "1",
+														 "2",
+														 "3",
+														 "4",
+														 "5",
+														 "6",
+														 "7",
+														 "8",
+														 "9",
+														 "0",
+														 "1"});
+			this.listBox.Location = new System.Drawing.Point(0, 0);
+			this.listBox.Name = "listBox";
+			this.listBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.listBox.ScrollAlwaysVisible = true;
+			this.listBox.Size = new System.Drawing.Size(192, 216);
+			this.listBox.TabIndex = 0;
 			// 
 			// Printer
 			// 
-			this.Controls.Add(this.listBox1);
+			this.Controls.Add(this.listBox);
 			this.Name = "Printer";
-			this.Size = new System.Drawing.Size(192, 232);
+			this.Size = new System.Drawing.Size(192, 216);
 			this.ResumeLayout(false);
 
 		}
