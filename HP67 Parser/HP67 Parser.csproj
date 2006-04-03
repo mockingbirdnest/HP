@@ -103,7 +103,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Build HP67 Parser.bat"
+                    RelPath = "Build HP Parser.bat"
                     BuildAction = "None"
                 />
                 <File
@@ -116,10 +116,6 @@
                 />
                 <File
                     RelPath = "HP.grm"
-                    BuildAction = "None"
-                />
-                <File
-                    RelPath = "HP67.grm"
                     BuildAction = "None"
                 />
                 <File
