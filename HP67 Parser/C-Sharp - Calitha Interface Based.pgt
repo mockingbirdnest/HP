@@ -86,14 +86,13 @@ namespace %Name%
                 args.Token.UserObject = args.Token.Tokens [0].UserObject;
             }
             
-            switch (args.Token.Rule.Id)
+            switch ((RuleConstants) args.Token.Rule.Id)
             {
 ##RULES
-                case (int)RuleConstants.%ID% :
+                case RuleConstants.%ID% :
                     // %Description%
                     actions.Reduce%ID% (input, args.Token, args.Token.Tokens);
                     return;
-
 ##END-RULES
             }
 			Trace.Assert (false);

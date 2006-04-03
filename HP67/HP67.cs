@@ -1,6 +1,6 @@
 ﻿using HP67_Class_Library;
 using HP67_Control_Library;
-using HP67_Parser;
+using HP_Parser;
 using HP67_Persistence;
 using System;
 using System.Collections;
@@ -105,7 +105,7 @@ namespace HP67
 			UpdateCardSlot (/* alreadyLocked */ true);
 
 			// Read the parser tables.
-			reader = new Reader ("HP67_Parser.Parser", "CGT");
+			reader = new Reader ("HP_Parser.Parser", "CGT");
 
 			// Create the execution thread and wait until it is ready to process requests.
 			executionThread =
@@ -291,7 +291,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.A};
 			this.keyA.Size = new System.Drawing.Size(48, 51);
 			this.keyA.TabIndex = 1;
-			this.keyA.Tag = "11";
+			this.keyA.Tag = "6711";
 			this.keyA.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyA.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -314,7 +314,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.F};
 			this.keyf.Size = new System.Drawing.Size(48, 51);
 			this.keyf.TabIndex = 11;
-			this.keyf.Tag = "31";
+			this.keyf.Tag = "6731";
 			this.keyf.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyf.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -336,7 +336,7 @@ namespace HP67
 			this.keySST.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keySST.Size = new System.Drawing.Size(48, 51);
 			this.keySST.TabIndex = 10;
-			this.keySST.Tag = "25";
+			this.keySST.Tag = "6725";
 			this.keySST.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keySST.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -358,7 +358,7 @@ namespace HP67
 			this.keyi.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyi.Size = new System.Drawing.Size(48, 51);
 			this.keyi.TabIndex = 9;
-			this.keyi.Tag = "24";
+			this.keyi.Tag = "6724";
 			this.keyi.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyi.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -380,7 +380,7 @@ namespace HP67
 			this.keyDSP.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyDSP.Size = new System.Drawing.Size(48, 51);
 			this.keyDSP.TabIndex = 8;
-			this.keyDSP.Tag = "23";
+			this.keyDSP.Tag = "6723";
 			this.keyDSP.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyDSP.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -402,7 +402,7 @@ namespace HP67
 			this.keyGTO.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyGTO.Size = new System.Drawing.Size(48, 51);
 			this.keyGTO.TabIndex = 7;
-			this.keyGTO.Tag = "22";
+			this.keyGTO.Tag = "6722";
 			this.keyGTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyGTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -424,7 +424,7 @@ namespace HP67
 			this.keyΣ.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyΣ.Size = new System.Drawing.Size(48, 51);
 			this.keyΣ.TabIndex = 6;
-			this.keyΣ.Tag = "21";
+			this.keyΣ.Tag = "6721";
 			this.keyΣ.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyΣ.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -447,7 +447,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.E};
 			this.keyE.Size = new System.Drawing.Size(48, 51);
 			this.keyE.TabIndex = 5;
-			this.keyE.Tag = "15";
+			this.keyE.Tag = "6715";
 			this.keyE.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyE.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -470,7 +470,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.D};
 			this.keyD.Size = new System.Drawing.Size(48, 51);
 			this.keyD.TabIndex = 4;
-			this.keyD.Tag = "14";
+			this.keyD.Tag = "6714";
 			this.keyD.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyD.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -493,7 +493,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.C};
 			this.keyC.Size = new System.Drawing.Size(48, 51);
 			this.keyC.TabIndex = 3;
-			this.keyC.Tag = "13";
+			this.keyC.Tag = "6713";
 			this.keyC.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyC.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -516,7 +516,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.B};
 			this.keyB.Size = new System.Drawing.Size(48, 51);
 			this.keyB.TabIndex = 2;
-			this.keyB.Tag = "12";
+			this.keyB.Tag = "6712";
 			this.keyB.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyB.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -539,7 +539,7 @@ namespace HP67
 																		  System.Windows.Forms.Keys.Enter};
 			this.keyENTER.Size = new System.Drawing.Size(120, 51);
 			this.keyENTER.TabIndex = 16;
-			this.keyENTER.Tag = "41";
+			this.keyENTER.Tag = "6741";
 			this.keyENTER.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyENTER.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -561,7 +561,7 @@ namespace HP67
 			this.keyEEX.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyEEX.Size = new System.Drawing.Size(48, 51);
 			this.keyEEX.TabIndex = 18;
-			this.keyEEX.Tag = "43";
+			this.keyEEX.Tag = "6743";
 			this.keyEEX.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyEEX.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -583,7 +583,7 @@ namespace HP67
 			this.keyCLx.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyCLx.Size = new System.Drawing.Size(64, 51);
 			this.keyCLx.TabIndex = 19;
-			this.keyCLx.Tag = "44";
+			this.keyCLx.Tag = "6744";
 			this.keyCLx.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyCLx.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -605,7 +605,7 @@ namespace HP67
 			this.keyCHS.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyCHS.Size = new System.Drawing.Size(48, 51);
 			this.keyCHS.TabIndex = 17;
-			this.keyCHS.Tag = "42";
+			this.keyCHS.Tag = "6742";
 			this.keyCHS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyCHS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -628,7 +628,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.H};
 			this.keyh.Size = new System.Drawing.Size(48, 51);
 			this.keyh.TabIndex = 15;
-			this.keyh.Tag = "35";
+			this.keyh.Tag = "6735";
 			this.keyh.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyh.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -650,7 +650,7 @@ namespace HP67
 			this.keyRCL.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyRCL.Size = new System.Drawing.Size(48, 51);
 			this.keyRCL.TabIndex = 14;
-			this.keyRCL.Tag = "34";
+			this.keyRCL.Tag = "6734";
 			this.keyRCL.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyRCL.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -672,7 +672,7 @@ namespace HP67
 			this.keySTO.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keySTO.Size = new System.Drawing.Size(48, 51);
 			this.keySTO.TabIndex = 13;
-			this.keySTO.Tag = "33";
+			this.keySTO.Tag = "6733";
 			this.keySTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keySTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -695,7 +695,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.G};
 			this.keyg.Size = new System.Drawing.Size(48, 51);
 			this.keyg.TabIndex = 12;
-			this.keyg.Tag = "32";
+			this.keyg.Tag = "6732";
 			this.keyg.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyg.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -719,7 +719,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad8};
 			this.key8.Size = new System.Drawing.Size(56, 51);
 			this.key8.TabIndex = 22;
-			this.key8.Tag = "53";
+			this.key8.Tag = "6753";
 			this.key8.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key8.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -741,7 +741,7 @@ namespace HP67
 			this.keyRS.Shortcuts = new System.Windows.Forms.Keys[0];
 			this.keyRS.Size = new System.Drawing.Size(56, 51);
 			this.keyRS.TabIndex = 35;
-			this.keyRS.Tag = "84";
+			this.keyRS.Tag = "6784";
 			this.keyRS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyRS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -764,7 +764,7 @@ namespace HP67
 																		   System.Windows.Forms.Keys.Decimal};
 			this.keyPeriod.Size = new System.Drawing.Size(72, 51);
 			this.keyPeriod.TabIndex = 34;
-			this.keyPeriod.Tag = "83";
+			this.keyPeriod.Tag = "6783";
 			this.keyPeriod.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyPeriod.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -788,7 +788,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad0};
 			this.key0.Size = new System.Drawing.Size(56, 51);
 			this.key0.TabIndex = 33;
-			this.key0.Tag = "82";
+			this.key0.Tag = "6782";
 			this.key0.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key0.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -812,7 +812,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad9};
 			this.key9.Size = new System.Drawing.Size(56, 51);
 			this.key9.TabIndex = 23;
-			this.key9.Tag = "54";
+			this.key9.Tag = "6754";
 			this.key9.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key9.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -836,7 +836,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad3};
 			this.key3.Size = new System.Drawing.Size(56, 51);
 			this.key3.TabIndex = 31;
-			this.key3.Tag = "74";
+			this.key3.Tag = "6774";
 			this.key3.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key3.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -860,7 +860,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad2};
 			this.key2.Size = new System.Drawing.Size(56, 51);
 			this.key2.TabIndex = 30;
-			this.key2.Tag = "73";
+			this.key2.Tag = "6773";
 			this.key2.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key2.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -884,7 +884,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad1};
 			this.key1.Size = new System.Drawing.Size(56, 51);
 			this.key1.TabIndex = 29;
-			this.key1.Tag = "72";
+			this.key1.Tag = "6772";
 			this.key1.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key1.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -908,7 +908,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad6};
 			this.key6.Size = new System.Drawing.Size(56, 51);
 			this.key6.TabIndex = 27;
-			this.key6.Tag = "64";
+			this.key6.Tag = "6764";
 			this.key6.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key6.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -932,7 +932,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad5};
 			this.key5.Size = new System.Drawing.Size(56, 51);
 			this.key5.TabIndex = 26;
-			this.key5.Tag = "63";
+			this.key5.Tag = "6763";
 			this.key5.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key5.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -956,7 +956,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad4};
 			this.key4.Size = new System.Drawing.Size(56, 51);
 			this.key4.TabIndex = 25;
-			this.key4.Tag = "62";
+			this.key4.Tag = "6762";
 			this.key4.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key4.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -980,7 +980,7 @@ namespace HP67
 																	  System.Windows.Forms.Keys.NumPad7};
 			this.key7.Size = new System.Drawing.Size(56, 51);
 			this.key7.TabIndex = 21;
-			this.key7.Tag = "52";
+			this.key7.Tag = "6752";
 			this.key7.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.key7.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -1003,7 +1003,7 @@ namespace HP67
 																		  System.Windows.Forms.Keys.Subtract};
 			this.keyMinus.Size = new System.Drawing.Size(48, 51);
 			this.keyMinus.TabIndex = 20;
-			this.keyMinus.Tag = "51";
+			this.keyMinus.Tag = "6751";
 			this.keyMinus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyMinus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -1026,7 +1026,7 @@ namespace HP67
 																		System.Windows.Forms.Keys.Divide};
 			this.keyDiv.Size = new System.Drawing.Size(48, 51);
 			this.keyDiv.TabIndex = 32;
-			this.keyDiv.Tag = "81";
+			this.keyDiv.Tag = "6781";
 			this.keyDiv.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyDiv.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -1049,7 +1049,7 @@ namespace HP67
 																		 System.Windows.Forms.Keys.Multiply};
 			this.keyMult.Size = new System.Drawing.Size(48, 51);
 			this.keyMult.TabIndex = 28;
-			this.keyMult.Tag = "71";
+			this.keyMult.Tag = "6771";
 			this.keyMult.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyMult.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 
@@ -1072,7 +1072,7 @@ namespace HP67
 																		 System.Windows.Forms.Keys.Add};
 			this.keyPlus.Size = new System.Drawing.Size(48, 51);
 			this.keyPlus.TabIndex = 24;
-			this.keyPlus.Tag = "61";
+			this.keyPlus.Tag = "6761";
 			this.keyPlus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
 			this.keyPlus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
 			// 

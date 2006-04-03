@@ -2,7 +2,7 @@ using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using HP67_Control_Library;
-using HP67_Parser;
+using HP_Parser;
 using HP67_Persistence;
 
 using System;
@@ -597,10 +597,10 @@ namespace HP67_Class_Library
 			UpdateLabelsForInsertion (next);
 
 			// For labels, update the labels lookup tables.
-			switch (instruction.Symbol.Id) 
+			switch ((SymbolConstants) instruction.Symbol.Id) 
 			{
-				case (int) SymbolConstants.SYMBOL_LBL :
-				case (int) SymbolConstants.SYMBOL_LBL_F :
+				case SymbolConstants.SYMBOL_LBL :
+				case SymbolConstants.SYMBOL_LBL_F :
 					Argument arg = instruction.Arguments [0];
 
 					if (arg is Digit) 
@@ -617,29 +617,33 @@ namespace HP67_Class_Library
 
 			// For shortcuts, substitute the expanded form for the short form.  Otherwise, merely
 			// store the instruction.
-			switch (instruction.Symbol.Id) 
+			switch ((SymbolConstants) instruction.Symbol.Id) 
 			{
-				case (int) SymbolConstants.SYMBOL_GSB_SHORTCUT :
-					Symbol gsb_symbol =
-						new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB, "GSB");
-					Instruction gsb = new Instruction
-											("31 22 " + instruction.Text,
-											 gsb_symbol,
-											 instruction.Arguments);
-					instructions [next] = gsb;
-					break;
-				case (int) SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
+				case SymbolConstants.SYMBOL_GSB_SHORTCUT :
 					String [] args = instruction.Text.Split (' ');
-					Trace.Assert (args.Length == 2);
-					Symbol gsb_f_symbol =
-						new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB_F, "GSB_F");
-					Instruction gsb_f = new Instruction
-												("32 22 " + args [1],
-												 gsb_f_symbol,
-												 instruction.Arguments);
-					instructions [next] = gsb_f;
+					if (args.Length == 2) 
+					{
+						Symbol gsb_f_symbol =
+							new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB_F, "GSB_F");
+						Instruction gsb_f = new Instruction
+													("32 22 " + args [1],
+													gsb_f_symbol,
+													instruction.Arguments);
+						instructions [next] = gsb_f;
+					}
+					else 
+					{
+						Trace.Assert (args.Length == 1);
+						Symbol gsb_symbol =
+							new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB, "GSB");
+						Instruction gsb = new Instruction
+							("31 22 " + instruction.Text,
+							gsb_symbol,
+							instruction.Arguments);
+						instructions [next] = gsb;
+					}
 					break;
-				case (int) SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
+				case SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
 					Symbol rcl_symbol =
 						new SymbolTerminal ((int) SymbolConstants.SYMBOL_RCL, "RCL");
 					Argument [] rcl_args = new Argument [1] {new Indexed ()};
@@ -743,10 +747,10 @@ namespace HP67_Class_Library
 
 					// Frame for labels.
 					x += xLineWidth + xSpacing;
-					switch (instructions [step].Symbol.Id) 
+					switch ((SymbolConstants) instructions [step].Symbol.Id) 
 					{
-						case (int) SymbolConstants.SYMBOL_LBL :
-						case (int) SymbolConstants.SYMBOL_LBL_F :
+						case SymbolConstants.SYMBOL_LBL :
+						case SymbolConstants.SYMBOL_LBL_F :
 							e.Graphics.DrawRectangle
 								(thickPen,
 								x,

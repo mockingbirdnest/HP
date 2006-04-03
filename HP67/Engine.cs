@@ -3,7 +3,7 @@ using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using HP67_Class_Library;
 using HP67_Control_Library;
-using HP67_Parser;
+using HP_Parser;
 using HP67_Persistence;
 using System;
 using System.Diagnostics;
@@ -442,7 +442,6 @@ namespace HP67
 				case SymbolConstants.SYMBOL_GSB :
 				case SymbolConstants.SYMBOL_GSB_SHORTCUT :
 				case SymbolConstants.SYMBOL_GSB_F :
-				case SymbolConstants.SYMBOL_GSB_F_SHORTCUT :
 					if (running) 
 					{
 						((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
@@ -911,8 +910,9 @@ namespace HP67
 			}
 		}
 
-		public Instruction ExpandShortcut (Letter letter) 
+		public Instruction ExpandShortcut (Instruction instruction) 
 		{
+			Letter letter = (Letter) instruction.Arguments [0];
 			Argument [] no_args = new Argument [0];
 			Symbol symbol;
 			switch (letter.Value) 
@@ -932,6 +932,12 @@ namespace HP67
 				case 'E' :
 					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_X_EXCHANGE_Y, "X_Exchange_Y");
 					return new Instruction ("35 52", symbol, no_args);
+				case 'a' :
+				case 'b' :
+				case 'c' :
+				case 'd' :
+				case 'e' :
+					return instruction;
 				default :
 					Trace.Assert (false);
 					return null;
@@ -948,9 +954,9 @@ namespace HP67
 			// When the program memory is empty, the keys A to E have a different function, both
 			// in RUN mode and in W/PRGM mode.  Perform the substitution here.
 			if (theProgram.IsEmpty &&
-				instruction.Symbol.Id == (int) SymbolConstants.SYMBOL_GSB_SHORTCUT) 
+				(SymbolConstants) instruction.Symbol.Id == SymbolConstants.SYMBOL_GSB_SHORTCUT) 
 			{
-				instruction = ExpandShortcut ((Letter) instruction.Arguments [0]);
+				instruction = ExpandShortcut (instruction);
 			}
 
 			switch (mode) 

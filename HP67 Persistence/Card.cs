@@ -1,5 +1,5 @@
 using HP67_Class_Library;
-using HP67_Parser;
+using HP_Parser;
 using System;
 using System.IO;
 using System.Windows.Forms;

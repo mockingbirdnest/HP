@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.IO;
 
-namespace HP67_Parser
+namespace HP_Parser
 {
 	/// <summary>
 	/// A class to read parser tables from a resource.

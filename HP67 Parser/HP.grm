@@ -16,11 +16,11 @@ Sigma_Plus67     = '6721'
 Gto67            = '6722'
 Dsp67            = '6723'
 Sub_I67          = '6724'
-
 Sst67            = '6725'
 
 f67              = '6731'
 g67              = '6732'
+Sto67            = '6733'
 Rcl67            = '6734'
 h67              = '6735'
 
@@ -192,7 +192,7 @@ Period97         = '97-62'
 <S>              ::= g67 Sigma_Plus67     | f97 Sqrt97
 <Sci>            ::= g67 Dsp67            | Sci97
 <Seven>          ::= Seven67              | Seven97
-<SF>             ::= h67 Subtraction67   | f97 Lbl97
+<SF>             ::= h67 Subtraction67    | f97 Lbl97
 <Sigma_Minus>    ::= h67 Sigma_Plus67     | f97 Sigma_Plus97
 <Sigma_Plus>     ::= Sigma_Plus67         | Sigma_Plus97
 <Sin>            ::= f67 Four67           | Sin97
@@ -238,7 +238,7 @@ Period97         = '97-62'
                 | <Ternary_Instruction>
 
 <Shortcut> ::= <Gsb_Shortcut>
-                         | <Memory_Shortcut>
+             | <Memory_Shortcut>
 
 <Gsb_Shortcut> ::= <Letter_Label>
 
@@ -291,7 +291,7 @@ Period97         = '97-62'
                         | <R_Up>
                         | <Rad>
                         | <Rc_I>
-                        | <Rcl> <Sigma_Plus>
+                        | <Rcl_Sigma_Plus>
                         | <Reciprocal>
                         | <Reg>
                         | <Rnd>
@@ -346,7 +346,10 @@ Period97         = '97-62'
 
 <Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
 
-<Ternary_Instruction> ::= <Gto> <Period> <Digit> <Digit> <Digit>
+<Ternary_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
+
+<Rcl_Sigma_Plus> ::= <Rcl> <Sigma_Plus>
+<Gto_Period> ::= <Gto> <Period>
 
 <Operator> ::= <Subtraction>
              | <Addition>

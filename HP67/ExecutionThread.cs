@@ -1,6 +1,6 @@
 using HP67_Class_Library;
 using HP67_Control_Library;
-using HP67_Parser;
+using HP_Parser;
 using System;
 using Queue = System.Collections.Queue;
 using System.Threading;
@@ -59,8 +59,8 @@ namespace HP67
 			out Program program)
 		{
 			this.main = main;
-			this.reader = reader;
 			this.notifyUI = notifyUI;
+			this.reader = reader;
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
