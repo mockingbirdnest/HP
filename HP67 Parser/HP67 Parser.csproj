@@ -115,6 +115,10 @@
                     BuildAction = "None"
                 />
                 <File
+                    RelPath = "HP.grm"
+                    BuildAction = "None"
+                />
+                <File
                     RelPath = "HP67.grm"
                     BuildAction = "None"
                 />

@@ -1,0 +1,391 @@
+"Name"              = 'HP_Parser'
+"Version"           = '1.3'
+"Author"            = 'Pascal & Robin'
+"Case Sensitive"    = 'False'
+"Character Mapping" = Unicode
+"Start Symbol"      = <Instruction>
+
+! Definitions for HP-67 keys.
+A67              = '6711'
+B67              = '6712'
+C67              = '6713'
+D67              = '6714'
+E67              = '6715'
+
+Sigma_Plus67     = '6721'
+Gto67            = '6722'
+Dsp67            = '6723'
+Sub_I67          = '6724'
+
+Sst67            = '6725'
+
+f67              = '6731'
+g67              = '6732'
+Rcl67            = '6734'
+h67              = '6735'
+
+Enter67          = '6741'
+Chs67            = '6742'
+Eex67            = '6743'
+Clx67            = '6744'
+
+Subtraction67    = '6751'
+Seven67          = '6752'
+Eight67          = '6753'
+Nine67           = '6754'
+
+Addition67       = '6761'
+Four67           = '6762'
+Five67           = '6763'
+Six67            = '6764'
+
+Multiplication67 = '6771'
+One67            = '6772'
+Two67            = '6773'
+Three67          = '6774'
+
+Division67       = '6781'
+Zero67           = '6782'
+Period67         = '6783'
+R_S67            = '6784'
+
+! Definitions for HP-97 keys.
+A97              = '9711'
+B97              = '9712'
+C97              = '9713'
+D97              = '9714'
+E97              = '9715'
+f97              = '9716'
+
+Lbl97            = '9721'
+Gto97            = '9722'
+Gsb97            = '9723'
+Rtn97            = '9724'
+Bst97            = '9725'
+Sst97            = '9726'
+
+Y_To_The_Xth97   = '9731'
+Ln97             = '9732'
+Exp97            = '9733'
+To_Polar97       = '9734'
+Sto97            = '9735'
+Rcl97            = '9736'
+
+Sin97            = '9741'
+Cos97            = '9742'
+Tan97            = '9743'
+To_Rectangular97 = '9744'
+Sub_I97          = '9745'
+I97              = '9746'
+
+R_S97            = '9751'
+Reciprocal97     = '9752'
+Square97         = '9753'
+Sqrt97           = '9754'
+Percent97        = '9755'
+Sigma_Plus97     = '9756'
+
+
+Fix97            = '97-11'
+Sci97            = '97-12'
+Eng97            = '97-13'
+Diplay_X97       = '97-14'
+
+Enter97          = '97-21'
+Chs97            = '97-22'
+Eex97            = '97-23'
+Division97       = '97-24'
+
+R_Down97         = '97-31'
+Seven97          = '97-32'
+Eight97          = '97-33'
+Nine97           = '97-34'
+Multiplication97 = '97-35'
+
+X_Exchange_Y97   = '97-41'
+Four97           = '97-42'
+Five97           = '97-43'
+Six97            = '97-44'
+Subtraction97    = '97-45'
+
+Clx97            = '97-51'
+One97            = '97-52'
+Two97            = '97-53'
+Three97          = '97-54'
+Addition97       = '97-55'
+
+Dsp97            = '97-63'
+Zero97           = '97-61'
+Period97         = '97-62'
+
+! Calculator-independent definitions of functions.
+<A>              ::= A67                  | A97
+<Abs>            ::= h67 Six67            | f97 Y_To_The_Xth97
+<Addition>       ::= Addition67           | Addition97
+<Arccos>         ::= g67 Five67           | f97 Cos97
+<Arcsin>         ::= g67 Four67           | f97 Sin97
+<Arctan>         ::= g67 Six67            | f97 Tan97
+<B>              ::= B67                  | B97
+<Bst>            ::= h67 Sst67            | Bst97
+<C>              ::= C67                  | C97
+<CF>             ::= h67 Addition67       | f97 Gto97
+<Chs>            ::= Chs67                | Chs97
+<Cl_Prgm>        ::= f67 Clx67            | f97 Three97
+<Cl_Reg>         ::= f67 Eex67            | f97 Two97
+<Clx>            ::= Clx67                | Clx97
+<Cos>            ::= f67 Five67           | Cos97
+<D>              ::= D67                  | D97
+<Deg>            ::= h67 Enter67          | f97 Enter97
+<Del>            ::= h67 Clx67            | f97 One97
+<Display_X>      ::= f67 R_S67            | Display_X97
+<Division>       ::= Division67           | Division97
+<Dsp>            ::= Dsp67                | Dsp97
+<Dsz_Sub_I>      ::= g67 Sto67            | f97 Bst97 Sub_I97
+<Dsz>            ::= f67 Sto67            | f97 Bst97 I97
+<E>              ::= E67                  | E97
+<Eex>            ::= Eex67                | Eex97
+<Eight>          ::= Eight67              | Eight97
+<Eng>            ::= h67 Dsp67            | Eng97
+<Enter>          ::= Enter67              | Enter97
+<Exp>            ::= g67 Seven67          | Exp97
+<f>              ::= f67                  | f97
+<F_Test>         ::= h67 Multiplication67 | f97 Gsb97
+<Factorial>      ::= h67 Division67       | f97 Reciprocal97
+<Five>           ::= Five67               | Five97
+<Fix>            ::= f67 Dsp67            | Fix97
+<Four>           ::= Four67               | Four97
+<Frac>           ::= g67 Period67         | f97 To_Rectangular97
+<Grd>            ::= h67 Eex67            | f97 Eex97
+<Gsb_f>          ::= g67 Gto67
+<Gsb>            ::= f67 Gto67            | Gsb97
+<Gto>            ::= Gto67                | Gto97
+<HMS_Plus>       ::= h67 Period67         | f97 Addition97
+<Int>            ::= f67 Period67         | f97 To_Polar97
+<Isz_Sub_I>      ::= g67 Rcl67            | f97 Sst97 Sub_I97
+<Isz>            ::= f67 Rcl67            | f97 Sst97 I97
+<Lbl_f>          ::= g67 Sst67
+<Lbl>            ::= f67 Sst67            | Lbl97
+<Ln>             ::= f67 Seven67          | Ln97
+<Log>            ::= f67 Eight67          | f97 Ln97
+<Lst_X>          ::= h67 Zero67           | f97 Dsp97
+<Merge>          ::= g67 Enter67          | f97 Period97
+<Multiplication> ::= Multiplication67     | Multiplication97
+<Nine>           ::= Nine67               | Nine97
+<One>            ::= One67                | One97
+<P_Exchange_S>   ::= f67 Chs67            | f97 Clx97
+<Pause>          ::= h67 One67            | f97 R_S97
+<Percent_Change> ::= g67 Zero67           | f97 Percent97
+<Percent>        ::= f67 Zero67           | Percent97
+<Period>         ::= Period67             | Period97
+<Pi>             ::= h67 Two67            | f97 Division97
+<Print_Prgm>     ::= f97 Sci97
+<R_Down>         ::= h67 Eight67          | R_Down97
+<R_S>            ::= R_S67                | R_S97
+<R_Up>           ::= h67 Nine67           | f97 R_Down97
+<Rad>            ::= h67 Chs67            | f97 Chs97
+<Rc_I>           ::= h67 Rcl67            | Rcl97 I97
+<Rcl>            ::= Rcl67                | Rcl97
+<Reciprocal>     ::= h67 Four67           | Reciprocal97
+<Reg>            ::= h67 Three67          | f97 Eng97
+<Rnd>            ::= f67 Sub_I67          | f97 Rtn97
+<Rtn>            ::= h67 Gto67            | Rtn97
+<S>              ::= g67 Sigma_Plus67     | f97 Sqrt97
+<Sci>            ::= g67 Dsp67            | Sci97
+<Seven>          ::= Seven67              | Seven97
+<SF>             ::= h67 Subtraction67   | f97 Lbl97
+<Sigma_Minus>    ::= h67 Sigma_Plus67     | f97 Sigma_Plus97
+<Sigma_Plus>     ::= Sigma_Plus67         | Sigma_Plus97
+<Sin>            ::= f67 Four67           | Sin97
+<Six>            ::= Six67                | Six97
+<Space>          ::= h67 R_S67            | f97 Fix97
+<Sqrt>           ::= f67 Nine67           | Sqrt97
+<Square>         ::= g67 Nine67           | Square97
+<Sst>            ::= Sst67                | Sst97
+<St_I>           ::= h67 Sto67            | Sto97 I97
+<Stk>            ::= g67 R_S67            | f97 Diplay_X97
+<Sto>            ::= Sto67                | Sto97
+<Sub_I>          ::= Sub_I67              | Sub_I97
+<Subtraction>    ::= Subtraction67        | Subtraction97
+<Tan>            ::= f67 Six67            | Tan97
+<Ten_To_The_Xth> ::= g67 Eight67          | f97 Exp97
+<Three>          ::= Three67              | Three97
+<To_Degrees>     ::= f67 Two67            | f97 I97
+<To_HMS>         ::= g67 Three67          | f97 Sto97
+<To_Hours>       ::= f67 Three67          | f97 Rcl97
+<To_Polar>       ::= g67 One67            | To_Polar97
+<To_Radians>     ::= g67 Two67            | f97 Sub_I97
+<To_Rectangular> ::= f67 One67            | To_Rectangular97
+<Two>            ::= Two67                | Two97
+<W_Data>         ::= f67 Enter67          | f97 Zero97
+<X_Average>      ::= f67 Sigma_Plus67     | f97 Square97
+<X_EQ_0>         ::= f67 Subtraction67    | f97 Five97
+<X_EQ_Y>         ::= g67 Subtraction67    | f97 Eight97
+<X_Exchange_I>   ::= h67 Sub_I67          | f97 X_Exchange_Y97
+<X_Exchange_Y>   ::= h67 Seven67          | X_Exchange_97
+<X_GT_0>         ::= f67 Division67       | f97 Six97
+<X_GT_Y>         ::= g67 Division67       | f97 Nine97
+<X_LE_Y>         ::= g67 Multiplication67 | f97 Multiplication97
+<X_LT_0>         ::= f67 Multiplication67 | f97 Subtraction97
+<X_NE_0>         ::= f67 Addition67       | f97 Four97
+<X_NE_Y>         ::= g67 Addition67       | f97 Seven97
+<Y_To_The_Xth>   ::= h67 Five67           | Y_To_The_Xth
+<Zero>           ::= Zero67               | Zero97
+
+<Instruction> ::= <Shortcut>
+                | <Nullary_Instruction>
+                | <Unary_Instruction>
+                | <Binary_Instruction>
+                | <Ternary_Instruction>
+
+<Shortcut> ::= <Gsb_Shortcut>
+                         | <Memory_Shortcut>
+
+<Gsb_Shortcut> ::= <Letter_Label>
+
+<Memory_Shortcut> ::= <Sub_I>
+                                        
+<Nullary_Instruction> ::= <Abs>
+                        | <Addition>
+                        | <Arccos>
+                        | <Arcsin>
+                        | <Arctan>
+                        | <Bst>
+                        | <Chs>
+                        | <Cl_Prgm>
+                        | <Cl_Reg>
+                        | <Clx>
+                        | <Cos>
+                        | <Deg>
+                        | <Del>
+                        | <Digit>
+                        | <Display_X>
+                        | <Division>
+                        | <Dsz_Sub_I>
+                        | <Dsz>
+                        | <Eex>
+                        | <Eng>
+                        | <Enter>
+                        | <Exp>
+                        | <Factorial>
+                        | <Fix>
+                        | <Frac>
+                        | <Grd>
+                        | <HMS_Plus>
+                        | <Int>
+                        | <Isz_Sub_I>
+                        | <Isz>
+                        | <Ln>
+                        | <Log>
+                        | <Lst_X>
+                        | <Merge>
+                        | <Multiplication>
+                        | <P_Exchange_S>
+                        | <Pause>
+                        | <Percent_Change>
+                        | <Percent>
+                        | <Period>
+                        | <Pi>
+                        | <Print_Prgm>
+                        | <R_Down>
+                        | <R_S>
+                        | <R_Up>
+                        | <Rad>
+                        | <Rc_I>
+                        | <Rcl> <Sigma_Plus>
+                        | <Reciprocal>
+                        | <Reg>
+                        | <Rnd>
+                        | <Rtn>
+                        | <S>
+                        | <Sci>
+                        | <Sigma_Minus>
+                        | <Sigma_Plus>
+                        | <Sin>
+                        | <Space>
+                        | <Sqrt>
+                        | <Square>
+                        | <Sst>
+                        | <St_I>
+                        | <Stk>
+                        | <Subtraction>
+                        | <Tan>
+                        | <Ten_To_The_Xth>
+                        | <To_Degrees>
+                        | <To_HMS>
+                        | <To_Hours>
+                        | <To_Polar>
+                        | <To_Radians>
+                        | <To_Rectangular>
+                        | <W_Data>
+                        | <X_Average>
+                        | <X_EQ_0>
+                        | <X_EQ_Y>
+                        | <X_Exchange_I>
+                        | <X_Exchange_Y>
+                        | <X_GT_0>
+                        | <X_GT_Y>
+                        | <X_LE_Y>
+                        | <X_LT_0>
+                        | <X_NE_0>
+                        | <X_NE_Y>
+                        | <Y_To_The_Xth>
+                                          
+<Unary_Instruction> ::= <CF> <Flag>
+                      | <Dsp> <Digit_Count>
+                      | <F_Test> <Flag>
+                      | <Gsb> <Non_Lowercase_Label>
+                      | <Gsb_f> <Uppercase_Letter_Label>
+                      | Gsb97 <Lowercase_Letter_Label>
+                      | <Gto> <Label>
+                      | <Lbl> <Non_Lowercase_Label>
+                      | <Lbl_f> <Uppercase_Letter_Label>
+                      | Lbl97 <Lowercase_Letter_Label>
+                      | <Rcl> <Memory>
+                      | <SF> <Flag>
+                      | <Sto> <Memory>
+
+<Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
+
+<Ternary_Instruction> ::= <Gto> <Period> <Digit> <Digit> <Digit>
+
+<Operator> ::= <Subtraction>
+             | <Addition>
+             | <Multiplication>
+             | <Division>
+             
+<Digit> ::= <Zero>
+          | <One>
+          | <Two>
+          | <Three>
+          | <Four>
+          | <Five>
+          | <Six>
+          | <Seven>
+          | <Eight>
+          | <Nine>
+          
+<Digit_Count> ::= <Digit> | <Sub_I>
+
+<Flag> ::= <Zero>
+         | <One>
+         | <Two>
+         | <Three>
+         
+<Letter> ::= <A>
+           | <B>
+           | <C>
+           | <D>
+           | <E>
+<Uppercase_Letter_Label> ::= <Letter>
+<Lowercase_Letter_Label> ::= <f> <Letter>
+<Letter_Label> ::= <Lowercase_Letter_Label>
+                 | <Uppercase_Letter_Label>
+<Digit_Label> ::= <Digit>
+<Non_Lowercase_Label> ::= <Digit_Label>
+                        | <Uppercase_Letter_Label>
+                        | <Sub_I>
+<Label> ::= <Digit_Label>
+          | <Letter_Label>
+          | <Sub_I>
+<Operable_Memory> ::= <Digit> | <Sub_I>
+<Memory> ::= <Operable_Memory> | <Letter>
