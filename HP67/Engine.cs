@@ -50,10 +50,11 @@ namespace HP67
 		private AngleUnit unit;
 
 		private AutoResetEvent keyWasTyped;
-		private Display theDisplay;
-		private Memory theMemory;
-		private Program theProgram;
-		private Stack theStack;
+		private Display display;
+		private Memory memory;
+		private Program program;
+		private Reader reader;
+		private Stack stack;
 
 		#endregion
 
@@ -62,6 +63,7 @@ namespace HP67
 		public Engine (Display display,
 						Memory memory,
 						Program program,
+						Reader reader,
 						Stack stack,
 						AutoResetEvent keyWasTyped) 
 		{
@@ -79,11 +81,12 @@ namespace HP67
 
 			flags = new bool [4];
 			unit = AngleUnit.Degree;
-			theDisplay = display;
-			theDisplay.EnteringNumber += new Display.DisplayEvent (Enter);
-			theMemory = memory;
-			theProgram = program;
-			theStack = stack;
+			this.display = display;
+			this.display.EnteringNumber += new Display.DisplayEvent (Enter);
+			this.memory = memory;
+			this.program = program;
+			this.reader = reader;
+			this.stack = stack;
 			this.keyWasTyped = keyWasTyped;
 			Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
 			Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
@@ -150,7 +153,7 @@ namespace HP67
 		{
 			if (stackLift) 
 			{
-				theStack.Enter ();
+				stack.Enter ();
 			}
 		}
 
@@ -240,10 +243,10 @@ namespace HP67
 				switch (mode)
 				{
 					case EngineMode.Run :
-						theDisplay.Mode = DisplayMode.Numeric;
+						display.Mode = DisplayMode.Numeric;
 						break;
 					case EngineMode.WriteProgram :
-						theDisplay.Mode = DisplayMode.Instruction;
+						display.Mode = DisplayMode.Instruction;
 						break;
 				}
 			}
@@ -251,7 +254,7 @@ namespace HP67
 
 		public void Execute (Instruction instruction) 
 		{
-			HP67 form = (HP67) theDisplay.TopLevelControl;
+			HP67 form = (HP67) display.TopLevelControl;
 			bool neutral = stackLift;
 			double x, y;
 
@@ -271,45 +274,45 @@ namespace HP67
 				case SymbolConstants.SYMBOL_SST :
 					break;
 				default :
-					theDisplay.DoneEntering ();
+					display.DoneEntering ();
 					break;
 			}
 
 			switch ((SymbolConstants) instruction.Symbol.Id) 
 			{
 				case SymbolConstants.SYMBOL_ABS :
-					theStack.Get (out x);
-					theStack.X = Math.Abs (x);
+					stack.Get (out x);
+					stack.X = Math.Abs (x);
 					break;
 				case SymbolConstants.SYMBOL_ADDITION :
-					theStack.Get (out x, out y);
-					theStack.X = y + x;
+					stack.Get (out x, out y);
+					stack.X = y + x;
 					break;
 				case SymbolConstants.SYMBOL_ARCCOS :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (Math.Abs (x) > 1.0) 
 					{
 						throw new Error ();
 					}
 					else 
 					{
-						theStack.X = FromRadian (Math.Acos (x));
+						stack.X = FromRadian (Math.Acos (x));
 					}
 					break;
 				case SymbolConstants.SYMBOL_ARCSIN :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (Math.Abs (x) > 1.0) 
 					{
 						throw new Error ();
 					}
 					else 
 					{
-						theStack.X = FromRadian (Math.Asin (x));
+						stack.X = FromRadian (Math.Asin (x));
 					}
 					break;
 				case SymbolConstants.SYMBOL_ARCTAN :
-					theStack.Get (out x);
-					theStack.X = FromRadian (Math.Atan (x));
+					stack.Get (out x);
+					stack.X = FromRadian (Math.Atan (x));
 					break;
 				case SymbolConstants.SYMBOL_BST :
 					// Does nothing, moved backward on MouseDown.
@@ -319,24 +322,24 @@ namespace HP67
 					break;
 				case SymbolConstants.SYMBOL_CHS :
 					bool changeSignDone;
-					theDisplay.ChangeSign (out changeSignDone);
+					display.ChangeSign (out changeSignDone);
 					if (! changeSignDone) 
 					{
-						theStack.X = -theStack.X;
+						stack.X = -stack.X;
 					}
 					break;
 				case SymbolConstants.SYMBOL_CL_PRGM :
 					// Cancels the f key.
 					break;
 				case SymbolConstants.SYMBOL_CL_REG :
-					theMemory.Clear ();
+					memory.Clear ();
 					break;
 				case SymbolConstants.SYMBOL_CLX :
-					theStack.X = 0.0;
+					stack.X = 0.0;
 					break;
 				case SymbolConstants.SYMBOL_COS :
-					theStack.Get (out x);
-					theStack.X = Math.Cos (ToRadian (x));
+					stack.Get (out x);
+					stack.X = Math.Cos (ToRadian (x));
 					break;
 				case SymbolConstants.SYMBOL_DEG :
 					unit = AngleUnit.Degree;
@@ -345,7 +348,7 @@ namespace HP67
 					// Cancel the h key.
 					break;
 				case SymbolConstants.SYMBOL_DIGIT :
-					theDisplay.EnterDigit (((Digit) instruction.Arguments [0]).Value);
+					display.EnterDigit (((Digit) instruction.Arguments [0]).Value);
 					if (! running) 
 					{
 						// Flag 3 is the data entry flag.
@@ -353,52 +356,52 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_DISPLAY_X :
-					theDisplay.PauseAndBlink (5000);
+					display.PauseAndBlink (5000);
 					break;
 				case SymbolConstants.SYMBOL_DIVISION :
-					theStack.Get (out x, out y);
+					stack.Get (out x, out y);
 					if (x == 0.0)
 					{
 						throw new Error ();
 					}
 					else 
 					{
-						theStack.X = y / x;
+						stack.X = y / x;
 					}
 					break;
 				case SymbolConstants.SYMBOL_DSP :
-					((IDigits) instruction.Arguments [0]).SetDigits (theMemory, theDisplay);
+					((IDigits) instruction.Arguments [0]).SetDigits (memory, display);
 					break;
 				case SymbolConstants.SYMBOL_DSZ :
-					if (theMemory.DecrementAndSkipIfZero ())
+					if (memory.DecrementAndSkipIfZero ())
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_DSZ_SUB_I :
-					if (theMemory.DecrementAndSkipIfZeroIndexed ())
+					if (memory.DecrementAndSkipIfZeroIndexed ())
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_EEX :
-					theDisplay.EnterExponent ();
+					display.EnterExponent ();
 					break;
 				case SymbolConstants.SYMBOL_ENG :
-					theDisplay.Format = DisplayFormat.Engineering;
+					display.Format = DisplayFormat.Engineering;
 					break;
 				case SymbolConstants.SYMBOL_ENTER :
-					theStack.Enter ();
+					stack.Enter ();
 					break;
 				case SymbolConstants.SYMBOL_EXP :
-					theStack.Get (out x);
-					theStack.X = Math.Exp (x);
+					stack.Get (out x);
+					stack.X = Math.Exp (x);
 					break;
 				case SymbolConstants.SYMBOL_F_TEST :
 					byte flagId = ((Digit) instruction.Arguments [0]).Value;
 					if (! flags [flagId]) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					switch (flagId) 
 					{
@@ -412,10 +415,10 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_FACTORIAL :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x >= 0 && x == Math.Floor (x)) 
 					{
-						theStack.X = Factorial ((long) x);
+						stack.X = Factorial ((long) x);
 					}
 					else 
 					{
@@ -423,17 +426,17 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_FIX :
-					theDisplay.Format = DisplayFormat.Fixed;
+					display.Format = DisplayFormat.Fixed;
 					break;
 				case SymbolConstants.SYMBOL_FRAC :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x < 0.0) 
 					{
-						theStack.X = x + Math.Floor (-x);
+						stack.X = x + Math.Floor (-x);
 					}
 					else 
 					{
-						theStack.X = x - Math.Floor (x);
+						stack.X = x - Math.Floor (x);
 					}
 					break;
 				case SymbolConstants.SYMBOL_GRD :
@@ -444,18 +447,18 @@ namespace HP67
 				case SymbolConstants.SYMBOL_GSB_F :
 					if (running) 
 					{
-						((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+						((ILabel) instruction.Arguments [0]).Gosub (memory, program);
 					}
 					else if (stepping) 
 					{
-						theProgram.Segregate ();
-						((ILabel) instruction.Arguments [0]).Gosub (theMemory, theProgram);
+						program.Segregate ();
+						((ILabel) instruction.Arguments [0]).Gosub (memory, program);
 						running = true;
 					}
 					else 
 					{
-						((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
-						theProgram.Reset ();
+						((ILabel) instruction.Arguments [0]).Goto (memory, program);
+						program.Reset ();
 						Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 							"Running",
 							classTraceSwitch.DisplayName);
@@ -463,74 +466,74 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_GTO :
-					((ILabel) instruction.Arguments [0]).Goto (theMemory, theProgram);
+					((ILabel) instruction.Arguments [0]).Goto (memory, program);
 					break;
 				case SymbolConstants.SYMBOL_GTO_PERIOD :
 					byte b0, b1, b2;
 					b0 = ((Digit) instruction.Arguments [0]).Value;
 					b1 = ((Digit) instruction.Arguments [1]).Value;
 					b2 = ((Digit) instruction.Arguments [2]).Value;
-					theProgram.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
+					program.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
 					break;
 				case SymbolConstants.SYMBOL_HMS_PLUS :
-					theStack.Get (out x, out y);
-					theStack.X = ToHMS (ToH (y) + ToH (x));
+					stack.Get (out x, out y);
+					stack.X = ToHMS (ToH (y) + ToH (x));
 					break;
 				case SymbolConstants.SYMBOL_INT :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x < 0.0) 
 					{
-						theStack.X = -Math.Floor (-x);
+						stack.X = -Math.Floor (-x);
 					}
 					else 
 					{
-						theStack.X = Math.Floor (x);
+						stack.X = Math.Floor (x);
 					}
 					break;
 				case SymbolConstants.SYMBOL_ISZ :
-					if (theMemory.IncrementAndSkipIfZero ()) 
+					if (memory.IncrementAndSkipIfZero ()) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_ISZ_SUB_I :
-					if (theMemory.IncrementAndSkipIfZeroIndexed ())
+					if (memory.IncrementAndSkipIfZeroIndexed ())
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_LBL :
 				case SymbolConstants.SYMBOL_LBL_F :
 					break;
 				case SymbolConstants.SYMBOL_LN :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x <= 0.0) 
 					{
 						throw new Error ();
 					}
 					else
 					{
-						theStack.X = Math.Log (x);
+						stack.X = Math.Log (x);
 					}
 					break;
 				case SymbolConstants.SYMBOL_LOG :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x <= 0.0) 
 					{
 						throw new Error ();
 					}
 					else
 					{
-						theStack.X = Math.Log10 (x);
+						stack.X = Math.Log10 (x);
 					}
 					break;
 				case SymbolConstants.SYMBOL_LST_X :
-					theStack.Enter ();
-					theStack.X = theStack.LastX;
+					stack.Enter ();
+					stack.X = stack.LastX;
 					break;
 				case SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
 					Enter (this);
-					theStack.X = theMemory.RecallIndexed ();
+					stack.X = memory.RecallIndexed ();
 					break;
 				case SymbolConstants.SYMBOL_MERGE :
 					if (! (bool) form.Invoke
@@ -540,39 +543,39 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_MULTIPLICATION :
-					theStack.Get (out x, out y);
-					theStack.X = y * x;
+					stack.Get (out x, out y);
+					stack.X = y * x;
 					break;
 				case SymbolConstants.SYMBOL_P_EXCHANGE_S :
-					theMemory.PrimarySecondaryExchange ();
+					memory.PrimarySecondaryExchange ();
 					break;
 				case SymbolConstants.SYMBOL_PAUSE :
-					theDisplay.PauseAndAcceptKeystrokes (1000);
+					display.PauseAndAcceptKeystrokes (1000);
 					break;
 				case SymbolConstants.SYMBOL_PERCENT :
-					theStack.Get (out x);
-					theStack.X = theStack.Y * x / 100.0;
+					stack.Get (out x);
+					stack.X = stack.Y * x / 100.0;
 					break;
 				case SymbolConstants.SYMBOL_PERCENT_CHANGE :
-					theStack.Get (out x, out y);
+					stack.Get (out x, out y);
 					if (y == 0) 
 					{
 						throw new Error ();
 					}
 					else 
 					{
-						theStack.X = (x - y) * 100.0 / y;
+						stack.X = (x - y) * 100.0 / y;
 					}
 					break;
 				case SymbolConstants.SYMBOL_PERIOD :
-					theDisplay.EnterPeriod ();
+					display.EnterPeriod ();
 					break;
 				case SymbolConstants.SYMBOL_PI :
 					Enter (this);
-					theStack.X = Math.PI;
+					stack.X = Math.PI;
 					break;
 				case SymbolConstants.SYMBOL_R_DOWN :
-					theStack.RollDown ();
+					stack.RollDown ();
 					break;
 				case SymbolConstants.SYMBOL_R_S :
 					if (running) 
@@ -591,155 +594,155 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_R_UP :
-					theStack.RollUp ();
+					stack.RollUp ();
 					break;
 				case SymbolConstants.SYMBOL_RAD :
 					unit = AngleUnit.Radian;
 					break;
 				case SymbolConstants.SYMBOL_RC_I :
 					Enter (this);
-					theStack.X = theMemory.Recall (Memory.LetterRegister.I);
+					stack.X = memory.Recall (Memory.LetterRegister.I);
 					break;
 				case SymbolConstants.SYMBOL_RCL :
 					Enter (this);
-					theStack.X = ((IAddress) instruction.Arguments [0]).Recall (theMemory);
+					stack.X = ((IAddress) instruction.Arguments [0]).Recall (memory);
 					break;
 				case SymbolConstants.SYMBOL_RCL_SIGMA_PLUS :
-					theStack.Get (out x);
-					theMemory.RecallΣPlus (out x, out y);
-					theStack.X = x;
-					theStack.Y = y;
+					stack.Get (out x);
+					memory.RecallΣPlus (out x, out y);
+					stack.X = x;
+					stack.Y = y;
 					break;
 				case SymbolConstants.SYMBOL_RECIPROCAL :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x == 0.0) 
 					{
 						throw new Error ();
 					}
 					else 
 					{
-						theStack.X = 1.0 / x;
+						stack.X = 1.0 / x;
 					}
 					break;
 				case SymbolConstants.SYMBOL_REG :
-					theMemory.Display ();
+					memory.Display ();
 					break;
 				case SymbolConstants.SYMBOL_RND :
-					theDisplay.Round ();
+					display.Round ();
 					break;
 				case SymbolConstants.SYMBOL_RTN :
 					bool stop;
-					theProgram.Return (out stop);
+					program.Return (out stop);
 					if (stop) 
 					{
 						running = false;
 					}
 					break;
 				case SymbolConstants.SYMBOL_S :
-					theStack.Get (out x);
-					theMemory.S (out x, out y);
-					theStack.X = x;
-					theStack.Y = y;
+					stack.Get (out x);
+					memory.S (out x, out y);
+					stack.X = x;
+					stack.Y = y;
 					break;
 				case SymbolConstants.SYMBOL_SCI :
-					theDisplay.Format = DisplayFormat.Scientific;
+					display.Format = DisplayFormat.Scientific;
 					break;
 				case SymbolConstants.SYMBOL_SF :
 					flags [((Digit) instruction.Arguments [0]).Value] = true;
 					break;
 				case SymbolConstants.SYMBOL_SIGMA_MINUS :
-					theStack.Get (out x);
-					theMemory.ΣMinus (x, theStack.Y);
-					theStack.X = theMemory.N;
+					stack.Get (out x);
+					memory.ΣMinus (x, stack.Y);
+					stack.X = memory.N;
 					break;
 				case SymbolConstants.SYMBOL_SIGMA_PLUS :
-					theStack.Get (out x);
-					theMemory.ΣPlus (x, theStack.Y);
-					theStack.X = theMemory.N;
+					stack.Get (out x);
+					memory.ΣPlus (x, stack.Y);
+					stack.X = memory.N;
 					break;
 				case SymbolConstants.SYMBOL_SIN :
-					theStack.Get (out x);
-					theStack.X = Math.Sin (ToRadian (x));
+					stack.Get (out x);
+					stack.X = Math.Sin (ToRadian (x));
 					break;
 				case SymbolConstants.SYMBOL_SPACE :
 					// No-op on HP67.
 					break;
 				case SymbolConstants.SYMBOL_SQRT :
-					theStack.Get (out x);
+					stack.Get (out x);
 					if (x < 0.0) 
 					{
 						throw new Error ();
 					}
 					else
 					{
-						theStack.X = Math.Sqrt (x);
+						stack.X = Math.Sqrt (x);
 					}
 					break;
 				case SymbolConstants.SYMBOL_SQUARE :
-					theStack.Get (out x);
-					theStack.X = x * x;
+					stack.Get (out x);
+					stack.X = x * x;
 					break;
 				case SymbolConstants.SYMBOL_SST :
 					break;
 				case SymbolConstants.SYMBOL_ST_I :
-					theMemory.Store (theStack.X, Memory.LetterRegister.I);
+					memory.Store (stack.X, Memory.LetterRegister.I);
 					break;
 				case SymbolConstants.SYMBOL_STK :
-					theStack.Display ();
+					stack.Display ();
 					break;
 				case SymbolConstants.SYMBOL_STO :
 					if (instruction.Arguments.Length == 2) 
 					{
 						((IAddress) instruction.Arguments [1]).Store
-							(theMemory, theStack.X,
+							(memory, stack.X,
 							((Operator) instruction.Arguments [0]).Value);
 					}
 					else
 					{
 						Trace.Assert (instruction.Arguments.Length == 1);
-						((IAddress) instruction.Arguments [0]).Store (theMemory, theStack.X);
+						((IAddress) instruction.Arguments [0]).Store (memory, stack.X);
 					}
 					break;
 				case SymbolConstants.SYMBOL_SUBTRACTION :
-					theStack.Get (out x, out y);
-					theStack.X = y - x;
+					stack.Get (out x, out y);
+					stack.X = y - x;
 					break;
 				case SymbolConstants.SYMBOL_TAN :
-					theStack.Get (out x);
-					theStack.X = Math.Tan (ToRadian (x));
+					stack.Get (out x);
+					stack.X = Math.Tan (ToRadian (x));
 					break;
 				case SymbolConstants.SYMBOL_TEN_TO_THE_XTH :
-					theStack.Get (out x);
-					theStack.X = Math.Pow (10.0, x);
+					stack.Get (out x);
+					stack.X = Math.Pow (10.0, x);
 					break;
 				case SymbolConstants.SYMBOL_TO_DEGREES :
-					theStack.Get (out x);
-					theStack.X = x * radianToDegree;
+					stack.Get (out x);
+					stack.X = x * radianToDegree;
 					break;
 				case SymbolConstants.SYMBOL_TO_HMS :
-					theStack.Get (out x);
-					theStack.X = ToHMS (x);
+					stack.Get (out x);
+					stack.X = ToHMS (x);
 					break;
 				case SymbolConstants.SYMBOL_TO_HOURS :
-					theStack.Get (out x);
-					theStack.X = ToH (x);
+					stack.Get (out x);
+					stack.X = ToH (x);
 					break;
 				case SymbolConstants.SYMBOL_TO_POLAR :
-					theStack.Get (out x);
-					y = theStack.Y;
-					theStack.X = Math.Sqrt (x * x + y * y);
-					theStack.Y = FromRadian (Math.Atan2 (y, x));
+					stack.Get (out x);
+					y = stack.Y;
+					stack.X = Math.Sqrt (x * x + y * y);
+					stack.Y = FromRadian (Math.Atan2 (y, x));
 					break;
 				case SymbolConstants.SYMBOL_TO_RADIANS :
-					theStack.Get (out x);
-					theStack.X = x * degreeToRadian;
+					stack.Get (out x);
+					stack.X = x * degreeToRadian;
 					break;
 				case SymbolConstants.SYMBOL_TO_RECTANGULAR :
-					double θ = theStack.Y;
+					double θ = stack.Y;
 					double r;
-					theStack.Get (out r);
-					theStack.X = r * Math.Cos (ToRadian (θ));
-					theStack.Y = r * Math.Sin (ToRadian (θ));
+					stack.Get (out r);
+					stack.X = r * Math.Cos (ToRadian (θ));
+					stack.Y = r * Math.Sin (ToRadian (θ));
 					break;
 				case SymbolConstants.SYMBOL_W_DATA :
 					if (! (bool) form.Invoke
@@ -750,69 +753,69 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_AVERAGE :
-					theStack.Get (out x);
-					theMemory.X̄ (out x, out y);
-					theStack.X = x;
-					theStack.Y = y;
+					stack.Get (out x);
+					memory.X̄ (out x, out y);
+					stack.X = x;
+					stack.Y = y;
 					break;
 				case SymbolConstants.SYMBOL_X_EQ_0 :
-					if (theStack.X != 0.0) 
+					if (stack.X != 0.0) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_EQ_Y :
-					if (theStack.X != theStack.Y) 
+					if (stack.X != stack.Y) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_EXCHANGE_I :
-					double i = theMemory.Recall (Memory.LetterRegister.I);
-					theMemory.Store(theStack.X, Memory.LetterRegister.I);
-					theStack.X = i;
+					double i = memory.Recall (Memory.LetterRegister.I);
+					memory.Store(stack.X, Memory.LetterRegister.I);
+					stack.X = i;
 					break;
 				case SymbolConstants.SYMBOL_X_EXCHANGE_Y :
-					theStack.XExchangeY ();
+					stack.XExchangeY ();
 					break;
 				case SymbolConstants.SYMBOL_X_GT_0 :
-					if (theStack.X <= 0.0) 
+					if (stack.X <= 0.0) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_GT_Y :
-					if (theStack.X <= theStack.Y) 
+					if (stack.X <= stack.Y) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_LE_Y :
-					if (theStack.X > theStack.Y) 
+					if (stack.X > stack.Y) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_LT_0 :
-					if (theStack.X >= 0.0) 
+					if (stack.X >= 0.0) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_NE_0 :
-					if (theStack.X == 0.0) 
+					if (stack.X == 0.0) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_X_NE_Y :
-					if (theStack.X == theStack.Y) 
+					if (stack.X == stack.Y) 
 					{
-						theProgram.Skip ();
+						program.Skip ();
 					}
 					break;
 				case SymbolConstants.SYMBOL_Y_TO_THE_XTH :
-					theStack.Get (out x, out y);
+					stack.Get (out x, out y);
 					if (y == 0.0 && x <= 0.0) 
 					{
 						throw new Error ();
@@ -823,7 +826,7 @@ namespace HP67
 					}
 					else 
 					{
-						theStack.X = Math.Pow (y, x);
+						stack.X = Math.Pow (y, x);
 					}
 					break;
 				default :
@@ -887,13 +890,13 @@ namespace HP67
 					{
 						break;
 					}
-					instruction = theProgram.Instruction;
+					instruction = program.Instruction;
 					if (enableBlur) 
 					{
 
 						// The display mode will be reset at the end of the execution of the
 						// program, so we can freely change it here.
-						theDisplay.ShowBlur ();
+						display.ShowBlur ();
 					}
 				}
 			}
@@ -919,19 +922,19 @@ namespace HP67
 			{
 				case 'A' :
 					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_RECIPROCAL, "Reciprocal");
-					return new Instruction ("35 62", symbol, no_args);
+					return new Instruction (reader, symbol, no_args);
 				case 'B' :
 					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_SQRT, "Sqrt");
-					return new Instruction ("31 54", symbol, no_args);
+					return new Instruction (reader, symbol, no_args);
 				case 'C' :
 					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_Y_TO_THE_XTH, "Y_To_The_Xth");
-					return new Instruction ("35 63", symbol, no_args);
+					return new Instruction (reader, symbol, no_args);
 				case 'D' :
 					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_DOWN, "R_Down");
-					return new Instruction ("35 53", symbol, no_args);
+					return new Instruction (reader, symbol, no_args);
 				case 'E' :
 					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_X_EXCHANGE_Y, "X_Exchange_Y");
-					return new Instruction ("35 52", symbol, no_args);
+					return new Instruction (reader, symbol, no_args);
 				case 'a' :
 				case 'b' :
 				case 'c' :
@@ -953,7 +956,7 @@ namespace HP67
 
 			// When the program memory is empty, the keys A to E have a different function, both
 			// in RUN mode and in W/PRGM mode.  Perform the substitution here.
-			if (theProgram.IsEmpty &&
+			if (program.IsEmpty &&
 				(SymbolConstants) instruction.Symbol.Id == SymbolConstants.SYMBOL_GSB_SHORTCUT) 
 			{
 				instruction = ExpandShortcut (instruction);
@@ -968,9 +971,9 @@ namespace HP67
 							switch ((SymbolConstants) instruction.Symbol.Id) 
 							{
 								case SymbolConstants.SYMBOL_BST :
-									theProgram.GotoRelative (-1);
-									theDisplay.Mode = DisplayMode.Instruction;
-									theProgram.PreviewInstruction ();									
+									program.GotoRelative (-1);
+									display.Mode = DisplayMode.Instruction;
+									program.PreviewInstruction ();									
 									break;
 								case SymbolConstants.SYMBOL_R_S :
 								case SymbolConstants.SYMBOL_SST :
@@ -978,8 +981,8 @@ namespace HP67
 									// The display mode will be reset by EnableOpenOrSave after
 									// execution of the next instruction (i.e., when the key goes
 									// up).
-									theDisplay.Mode = DisplayMode.Instruction;
-									theProgram.PreviewInstruction ();
+									display.Mode = DisplayMode.Instruction;
+									program.PreviewInstruction ();
 									break;
 								default:
 									ExecuteSequence (instruction);
@@ -1008,22 +1011,22 @@ namespace HP67
 							switch ((SymbolConstants) instruction.Symbol.Id) 
 							{
 								case SymbolConstants.SYMBOL_BST :
-									theProgram.GotoRelative (-1);
+									program.GotoRelative (-1);
 									break;
 								case SymbolConstants.SYMBOL_CL_PRGM :
-									theProgram.Clear ();
+									program.Clear ();
 									break;
 								case SymbolConstants.SYMBOL_DEL :
-									theProgram.Delete ();
+									program.Delete ();
 									break;
 								case SymbolConstants.SYMBOL_GTO_PERIOD :
 									Execute (instruction);
 									break;
 								case SymbolConstants.SYMBOL_SST :
-									theProgram.GotoRelative (+1);
+									program.GotoRelative (+1);
 									break;
 								default :
-									theProgram.Insert (instruction);
+									program.Insert (instruction);
 									break;
 							}
 							break;

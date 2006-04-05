@@ -58,7 +58,7 @@ namespace %Name%
         }
         
 ##RULES
-        void Reduce%ID% (string input, Token token, Token [] tokens);
+        void Reduce%ID% (Reader reader, Token token, Token [] tokens);
 ##END-RULES
     }
 
@@ -72,6 +72,7 @@ namespace %Name%
         private IActions actions;
         private string input;
         private LALRParser parser;
+        private Reader reader;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -91,7 +92,7 @@ namespace %Name%
 ##RULES
                 case RuleConstants.%ID% :
                     // %Description%
-                    actions.Reduce%ID% (input, args.Token, args.Token.Tokens);
+                    actions.Reduce%ID% (reader, args.Token, args.Token.Tokens);
                     return;
 ##END-RULES
             }
@@ -115,6 +116,7 @@ namespace %Name%
 
         public Parser (Reader reader, IActions a)
         {
+			this.reader = reader;
             parser = reader.CreateNewParser ();
             parser.TrimReductions = false; 
             parser.StoreTokens = LALRParser.StoreTokensMode.NoUserObject;

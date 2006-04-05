@@ -4,7 +4,7 @@ using com.calitha.goldparser.lalr;
 using HP_Parser;
 using System;
 using System.Diagnostics;
-using System.Globalization;
+using System.Windows.Forms; // TODO: temporary
 
 namespace HP67_Class_Library
 {
@@ -14,24 +14,18 @@ namespace HP67_Class_Library
 	public class Instruction
 	{
 
-		private const string digitTemplate = "00";
-
 		private Argument [] arguments;
 		private Symbol instruction;
 		private string text;
 
-		public Instruction (string input, Symbol symbol, Argument [] args)
+		public Instruction (Reader reader, Symbol symbol, Argument [] args)
 		{
 			instruction = symbol;
 			arguments = args;
-
-			// Beware! This must occurs last, as it causes the text to be patched.  Logically we
-			// should be able to assign to text here, but some old XML files have the digits
-			// unnormalized.
-			PrivateText = input;
+			SetText (reader);
 		}
 
-		public Instruction (string input, Token [] tokens)
+		public Instruction (Reader reader, Token [] tokens)
 		{
 			if (tokens [0] is NonterminalToken) 
 			{
@@ -47,7 +41,8 @@ namespace HP67_Class_Library
 				instruction = ((TerminalToken) tokens [0]).Symbol; // To make the compiler happy.
 			}
 
-			switch ((SymbolConstants) instruction.Id) {
+			switch ((SymbolConstants) instruction.Id) 
+			{
 				case SymbolConstants.SYMBOL_DIGIT :
 				case SymbolConstants.SYMBOL_GSB_SHORTCUT :
 
@@ -65,33 +60,23 @@ namespace HP67_Class_Library
 					break;
 			}
 
-			// Beware! This must occurs last, as it causes the text to be patched.
-			PrivateText = input;
+			SetText (reader);
 		}
 
-		private string PrivateText
+		private void SetText (Reader reader)
 		{
-			// We would really want to call this property Text, and to have the set accessor
-			// private and the get accessor public.  But the silly language won't let us do that.
-			// Sigh.  Hence the ugly name PrivateText: we keep the good name Text for the clients.
-			set 
+			text = "";
+			if ((SymbolConstants) instruction.Id != SymbolConstants.SYMBOL_DIGIT) 
 			{
-				// If the last argument is a digit, it must be displayed as its numeric value,
-				// and not using its key tag.  We do the patching here.  The operations which need
-				// this must assign Text *after* they set the arguments.
-				text = value.Trim ();
-				if (arguments.Length > 0) 
+				text = reader.Unparse (instruction);
+			}
+			foreach (Argument argument in arguments) 
+			{
+				if (text.Length > 0) 
 				{
-					if (arguments [arguments.Length - 1] is Digit) 
-					{
-						byte b = ((Digit) arguments [arguments.Length - 1]).Value;
-						string bImage = b.ToString (digitTemplate, NumberFormatInfo.InvariantInfo);
-
-						text = text.Substring (0, text.Length - bImage.Length) + bImage;
-					}
+					text += " ";
 				}
-				//TODO: This is ugly and temporary and it will go away any day now.
-				text = text.Replace ("67", "");
+				text += argument.Unparse (reader);
 			}
 		}
 

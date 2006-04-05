@@ -105,7 +105,15 @@ namespace HP67
 			UpdateCardSlot (/* alreadyLocked */ true);
 
 			// Read the parser tables.
-			reader = new Reader ("HP_Parser.Parser", "CGT");
+			string [] tags = new string [Controls.Count];
+			int i = 0;
+
+			foreach (Control control in Controls) 
+			{
+				tags [i] = (string) control.Tag;
+				i++;
+			}
+			reader = new Reader ("HP_Parser.Parser", "CGT", "67", tags);
 
 			// Create the execution thread and wait until it is ready to process requests.
 			executionThread =

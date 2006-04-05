@@ -48,23 +48,25 @@ namespace HP67_Class_Library
 		private ArrayList [] labels; 
 		private int [] returns;
 
+		private Display display;
 		private bool isEmpty;
 		private int lastPrinted;
 		private int next;
+		private Reader reader;
 		private bool segregated;
 		private int segregation;
-		private Display theDisplay;
 
 		#region Constructors & Destructors
 
-		public Program (Display display)
+		public Program (Display display, Reader reader)
 		{
 			Symbol r_s_symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S");
 			Argument [] r_s_args = new Argument [0];
 
-			theDisplay = display;
+			this.display = display;
+			this.reader = reader;
 
-			r_s = new Instruction ("84", r_s_symbol, r_s_args);
+			r_s = new Instruction (reader, r_s_symbol, r_s_args);
 			instructions = new Instruction [224];
 
 			labels = new ArrayList [(int) LetterLabel.e - 0 + 1];
@@ -132,7 +134,7 @@ namespace HP67_Class_Library
 
 						// We have to go through instruction insertion to make sure that the label
 						// table is properly updated.
-						Insert (new Instruction (ir.Text,
+						Insert (new Instruction (reader,
 												reader.ToSymbol (ir.Instruction),
 												arguments));	
 					}
@@ -177,7 +179,7 @@ namespace HP67_Class_Library
 						arguments [ar.Id] = argument;
 					}
 					instructions [ir.Step - 1] =
-						new Instruction (ir.Text, reader.ToSymbol (ir.Instruction), arguments);				
+						new Instruction (reader, reader.ToSymbol (ir.Instruction), arguments);				
 				}
 				labels = new ArrayList [pr.LabelCount];
 				lrs = pr.GetLabelRows ();
@@ -331,7 +333,7 @@ namespace HP67_Class_Library
 		private void GotoBegin ()
 		{
 			next = noStep;
-			theDisplay.ShowInstruction ("", 0, false);
+			display.ShowInstruction ("", 0, false);
 		}
 
 		private void GotoZeroBasedStep (int step) 
@@ -356,7 +358,7 @@ namespace HP67_Class_Library
 			{
 				next = step;
 			}
-			theDisplay.ShowInstruction (instructions [next].Text, next + 1, false);
+			display.ShowInstruction (instructions [next].Text, next + 1, false);
 		}
 
 		private void SaveReturnAddress ()
@@ -626,7 +628,7 @@ namespace HP67_Class_Library
 						Symbol gsb_f_symbol =
 							new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB_F, "GSB_F");
 						Instruction gsb_f = new Instruction
-													("32 22 " + args [1],
+													(reader,
 													gsb_f_symbol,
 													instruction.Arguments);
 						instructions [next] = gsb_f;
@@ -637,7 +639,7 @@ namespace HP67_Class_Library
 						Symbol gsb_symbol =
 							new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB, "GSB");
 						Instruction gsb = new Instruction
-							("31 22 " + instruction.Text,
+							(reader,
 							gsb_symbol,
 							instruction.Arguments);
 						instructions [next] = gsb;
@@ -647,7 +649,7 @@ namespace HP67_Class_Library
 					Symbol rcl_symbol =
 						new SymbolTerminal ((int) SymbolConstants.SYMBOL_RCL, "RCL");
 					Argument [] rcl_args = new Argument [1] {new Indexed ()};
-					Instruction rcl = new Instruction ("34 24", rcl_symbol, rcl_args);
+					Instruction rcl = new Instruction (reader, rcl_symbol, rcl_args);
 					instructions [next] = rcl;
 					break;
 				default :

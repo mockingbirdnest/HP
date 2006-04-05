@@ -89,7 +89,7 @@ Sigma_Plus97     = '9756'
 Fix97            = '97-11'
 Sci97            = '97-12'
 Eng97            = '97-13'
-Diplay_X97       = '97-14'
+Display_X97      = '97-14'
 
 Enter97          = '97-21'
 Chs97            = '97-22'
@@ -202,7 +202,7 @@ Period97         = '97-62'
 <Square>         ::= g67 Nine67           | Square97
 <Sst>            ::= Sst67                | Sst97
 <St_I>           ::= h67 Sto67            | Sto97 I97
-<Stk>            ::= g67 R_S67            | f97 Diplay_X97
+<Stk>            ::= g67 R_S67            | f97 Display_X97
 <Sto>            ::= Sto67                | Sto97
 <Sub_I>          ::= Sub_I67              | Sub_I97
 <Subtraction>    ::= Subtraction67        | Subtraction97
@@ -221,28 +221,23 @@ Period97         = '97-62'
 <X_EQ_0>         ::= f67 Subtraction67    | f97 Five97
 <X_EQ_Y>         ::= g67 Subtraction67    | f97 Eight97
 <X_Exchange_I>   ::= h67 Sub_I67          | f97 X_Exchange_Y97
-<X_Exchange_Y>   ::= h67 Seven67          | X_Exchange_97
+<X_Exchange_Y>   ::= h67 Seven67          | X_Exchange_Y97
 <X_GT_0>         ::= f67 Division67       | f97 Six97
 <X_GT_Y>         ::= g67 Division67       | f97 Nine97
 <X_LE_Y>         ::= g67 Multiplication67 | f97 Multiplication97
 <X_LT_0>         ::= f67 Multiplication67 | f97 Subtraction97
 <X_NE_0>         ::= f67 Addition67       | f97 Four97
 <X_NE_Y>         ::= g67 Addition67       | f97 Seven97
-<Y_To_The_Xth>   ::= h67 Five67           | Y_To_The_Xth
+<Y_To_The_Xth>   ::= h67 Five67           | Y_To_The_Xth97
 <Zero>           ::= Zero67               | Zero97
 
-<Instruction> ::= <Shortcut>
-                | <Nullary_Instruction>
+<Instruction> ::= <Nullary_Instruction>
                 | <Unary_Instruction>
                 | <Binary_Instruction>
                 | <Ternary_Instruction>
 
-<Shortcut> ::= <Gsb_Shortcut>
-             | <Memory_Shortcut>
-
-<Gsb_Shortcut> ::= <Letter_Label>
-
-<Memory_Shortcut> ::= <Sub_I>
+<Gsb_Shortcut>       ::= <Letter_Label>
+<Rcl_Sub_I_Shortcut> ::= <Sub_I>
                                         
 <Nullary_Instruction> ::= <Abs>
                         | <Addition>
@@ -292,6 +287,7 @@ Period97         = '97-62'
                         | <Rad>
                         | <Rc_I>
                         | <Rcl_Sigma_Plus>
+                        | <Rcl_Sub_I_Shortcut>
                         | <Reciprocal>
                         | <Reg>
                         | <Rnd>
@@ -335,6 +331,7 @@ Period97         = '97-62'
                       | <F_Test> <Flag>
                       | <Gsb> <Non_Lowercase_Label>
                       | <Gsb_f> <Uppercase_Letter_Label>
+                      | <Gsb_Shortcut>
                       | Gsb97 <Lowercase_Letter_Label>
                       | <Gto> <Label>
                       | <Lbl> <Non_Lowercase_Label>

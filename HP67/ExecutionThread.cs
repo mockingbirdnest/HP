@@ -125,9 +125,10 @@ namespace HP67
 
 				// Create the components that depend on the display.
 				memory = new Memory (display);
-				program = new Program (display);
+				program = new Program (display, reader);
 				stack = new HP67_Class_Library.Stack (display);
-				engine = new Engine (display, memory, program, stack, downKeystrokeWasEnqueued);
+				engine =
+					new Engine (display, memory, program, reader, stack, downKeystrokeWasEnqueued);
 
 				// We need two parsers: one that processes the MouseDown events, and one that
 				// processes the MouseUp events, because both events have different effects for a

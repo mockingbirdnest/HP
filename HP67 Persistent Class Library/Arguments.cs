@@ -1,7 +1,10 @@
+using com.calitha.goldparser;
 using HP67_Control_Library;
+using HP_Parser;
 using HP67_Persistence;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection;
 
 namespace HP67_Class_Library
@@ -23,6 +26,8 @@ namespace HP67_Class_Library
 		{
 			get;
 		}
+
+		public abstract string Unparse (Reader reader);
 
 		public static object ReadFromArgumentRow (CardDataset.ArgumentRow ar)
 		{
@@ -87,6 +92,7 @@ namespace HP67_Class_Library
 
 	public class Digit : Argument, IAddress, IDigits, ILabel
 	{
+		private const string digitTemplate = "00";
 		private byte digit;
 
 		private Digit (char c)
@@ -121,6 +127,11 @@ namespace HP67_Class_Library
 			{
 				return digit;
 			}
+		}
+
+		public override string Unparse (Reader reader) 
+		{
+			return digit.ToString (digitTemplate, NumberFormatInfo.InvariantInfo);
 		}
 
 		public double Recall (Memory m) 
@@ -174,6 +185,12 @@ namespace HP67_Class_Library
 			{
 				return "(i)";
 			}
+		}
+
+		public override string Unparse (Reader reader) 
+		{
+			return reader.Unparse
+				(new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUB_I, "SUB_I"));
 		}
 
 		public double Recall (Memory m) 
@@ -280,6 +297,24 @@ namespace HP67_Class_Library
 			}
 		}
 
+		public override string Unparse (Reader reader) 
+		{
+			if (letter >= 'A' && letter <= 'E') 
+			{
+				return reader.Unparse (reader.ToSymbol (new string (letter, 1)));
+			}
+			else if (letter >= 'a' && letter <= 'e') 
+			{
+				// TODO: Here we know-too-much about the grammar, since we assume that lowercase
+				// letters correspond to f-uppercase letters.
+				return reader.Unparse (reader.ToSymbol (new string ('f', 1))) + " " +
+					reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
+			}
+			else {
+				return ""; // To make the compiler happy.
+			}
+		}
+
 		public void ToLower ()
 		{
 			letter = char.ToLower (letter);
@@ -318,6 +353,15 @@ namespace HP67_Class_Library
 
 	public class Operator : Argument
 	{
+		private SymbolNonterminal additionSymbol =
+			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_ADDITION, "ADDITION");
+		private SymbolNonterminal subtractionSymbol =
+			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUBTRACTION, "SUBTRACTION");
+		private SymbolNonterminal multiplicationSymbol =
+			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_MULTIPLICATION, "MULTIPLICATION");
+		private SymbolNonterminal divisionSymbol =
+			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_DIVISION, "DIVISION");
+	
 		private Memory.Operator op;
 
 		static public double Addition (double x, double y)
@@ -432,6 +476,31 @@ namespace HP67_Class_Library
 			get
 			{
 				return op;
+			}
+		}
+
+		public override string Unparse (Reader reader) 
+		{
+			if (op == new Memory.Operator (Addition))
+			{
+				return reader.Unparse (additionSymbol);
+			}
+			else if (op == new Memory.Operator (Subtraction))
+			{
+				return reader.Unparse (subtractionSymbol);
+			}
+			else if (op == new Memory.Operator (Multiplication))
+			{
+				return reader.Unparse (multiplicationSymbol);
+			}
+			else if (op == new Memory.Operator (Division))
+			{
+				return reader.Unparse (divisionSymbol);
+			}
+			else
+			{
+				Trace.Assert (false);
+				return ""; // To make the compiler happy.
 			}
 		}
 	}
