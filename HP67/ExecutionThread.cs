@@ -136,9 +136,9 @@ namespace HP67
 				// program when released).  The two parsers will go through exactly the same
 				// productions, but they will pass a different motion indicator to the engine.
 				downActions = new Actions (engine, KeystrokeMotion.Down);
-				downParser = new Parser (reader, downActions);
+				downParser = new Parser (reader, program, downActions);
 				upActions = new Actions (engine, KeystrokeMotion.Up);
-				upParser = new Parser (reader, upActions);
+				upParser = new Parser (reader, program, upActions);
 
 				// Notify the main thread that we are ready to process keystrokes.
 				isInitialized.Set ();

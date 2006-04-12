@@ -617,45 +617,8 @@ namespace HP67_Class_Library
 					break;
 			}
 
-			// For shortcuts, substitute the expanded form for the short form.  Otherwise, merely
-			// store the instruction.
-			switch ((SymbolConstants) instruction.Symbol.Id) 
-			{
-				case SymbolConstants.SYMBOL_GSB_SHORTCUT :
-					String [] args = instruction.Text.Split (' ');
-					if (args.Length == 2) 
-					{
-						Symbol gsb_f_symbol =
-							new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB_F, "GSB_F");
-						Instruction gsb_f = new Instruction
-													(reader,
-													gsb_f_symbol,
-													instruction.Arguments);
-						instructions [next] = gsb_f;
-					}
-					else 
-					{
-						Trace.Assert (args.Length == 1);
-						Symbol gsb_symbol =
-							new SymbolTerminal ((int) SymbolConstants.SYMBOL_GSB, "GSB");
-						Instruction gsb = new Instruction
-							(reader,
-							gsb_symbol,
-							instruction.Arguments);
-						instructions [next] = gsb;
-					}
-					break;
-				case SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
-					Symbol rcl_symbol =
-						new SymbolTerminal ((int) SymbolConstants.SYMBOL_RCL, "RCL");
-					Argument [] rcl_args = new Argument [1] {new Indexed ()};
-					Instruction rcl = new Instruction (reader, rcl_symbol, rcl_args);
-					instructions [next] = rcl;
-					break;
-				default :
-					instructions [next] = instruction;
-					break;
-			}
+			// Store the instruction.
+			instructions [next] = instruction;
 
 			GotoZeroBasedStep (next);
 		}

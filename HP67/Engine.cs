@@ -443,7 +443,6 @@ namespace HP67
 					unit = AngleUnit.Grade;
 					break;
 				case SymbolConstants.SYMBOL_GSB :
-				case SymbolConstants.SYMBOL_GSB_SHORTCUT :
 				case SymbolConstants.SYMBOL_GSB_F :
 					if (running) 
 					{
@@ -530,10 +529,6 @@ namespace HP67
 				case SymbolConstants.SYMBOL_LST_X :
 					stack.Enter ();
 					stack.X = stack.LastX;
-					break;
-				case SymbolConstants.SYMBOL_MEMORY_SHORTCUT :
-					Enter (this);
-					stack.X = memory.RecallIndexed ();
 					break;
 				case SymbolConstants.SYMBOL_MERGE :
 					if (! (bool) form.Invoke
@@ -873,7 +868,6 @@ namespace HP67
 			// resume execution with the proper state if the user types R/S again.
 			if (keyWasTyped.WaitOne (0, false))
 			{
-				//TODO: Wrong, this could be the up keystroke.
 				throw new Interrupt ();
 			}
 		}
@@ -913,54 +907,12 @@ namespace HP67
 			}
 		}
 
-		public Instruction ExpandShortcut (Instruction instruction) 
-		{
-			Letter letter = (Letter) instruction.Arguments [0];
-			Argument [] no_args = new Argument [0];
-			Symbol symbol;
-			switch (letter.Value) 
-			{
-				case 'A' :
-					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_RECIPROCAL, "Reciprocal");
-					return new Instruction (reader, symbol, no_args);
-				case 'B' :
-					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_SQRT, "Sqrt");
-					return new Instruction (reader, symbol, no_args);
-				case 'C' :
-					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_Y_TO_THE_XTH, "Y_To_The_Xth");
-					return new Instruction (reader, symbol, no_args);
-				case 'D' :
-					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_DOWN, "R_Down");
-					return new Instruction (reader, symbol, no_args);
-				case 'E' :
-					symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_X_EXCHANGE_Y, "X_Exchange_Y");
-					return new Instruction (reader, symbol, no_args);
-				case 'a' :
-				case 'b' :
-				case 'c' :
-				case 'd' :
-				case 'e' :
-					return instruction;
-				default :
-					Trace.Assert (false);
-					return null;
-			}
-		}
-
 		public void Process (Instruction instruction, KeystrokeMotion motion) 
 		{
 			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 				"Process: " + motion.ToString () + " " +
 				instruction.Symbol.Name + " " + instruction.ToString (),
 				classTraceSwitch.DisplayName);
-
-			// When the program memory is empty, the keys A to E have a different function, both
-			// in RUN mode and in W/PRGM mode.  Perform the substitution here.
-			if (program.IsEmpty &&
-				(SymbolConstants) instruction.Symbol.Id == SymbolConstants.SYMBOL_GSB_SHORTCUT) 
-			{
-				instruction = ExpandShortcut (instruction);
-			}
 
 			switch (mode) 
 			{

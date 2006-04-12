@@ -79,7 +79,7 @@ namespace %Name%
         }
         
 ##RULES
-        public void Reduce%ID% (Reader reader, Token token, Token [] tokens)
+        public void Reduce%ID% (Reader reader, Token token, Token [] tokens, object state)
         {
             // %Description%
         }

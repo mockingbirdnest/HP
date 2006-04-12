@@ -58,7 +58,7 @@ namespace %Name%
         }
         
 ##RULES
-        void Reduce%ID% (Reader reader, Token token, Token [] tokens);
+        void Reduce%ID% (Reader reader, Token token, Token [] tokens, object state);
 ##END-RULES
     }
 
@@ -73,6 +73,7 @@ namespace %Name%
         private string input;
         private LALRParser parser;
         private Reader reader;
+        private object state;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -92,7 +93,7 @@ namespace %Name%
 ##RULES
                 case RuleConstants.%ID% :
                     // %Description%
-                    actions.Reduce%ID% (reader, args.Token, args.Token.Tokens);
+                    actions.Reduce%ID% (reader, args.Token, args.Token.Tokens, state);
                     return;
 ##END-RULES
             }
@@ -114,8 +115,9 @@ namespace %Name%
 			actions.ParserError (input, args.UnexpectedToken);
         }
 
-        public Parser (Reader reader, IActions a)
+        public Parser (Reader reader, object state, IActions a)
         {
+			this.state = state;
 			this.reader = reader;
             parser = reader.CreateNewParser ();
             parser.TrimReductions = false; 

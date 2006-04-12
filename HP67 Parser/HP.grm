@@ -236,7 +236,8 @@ Period97         = '97-62'
                 | <Binary_Instruction>
                 | <Ternary_Instruction>
 
-<Gsb_Shortcut>       ::= <Letter_Label>
+<Gsb_Shortcut>       ::= <Uppercase_Letter_Label>
+<Gsb_f_Shortcut>     ::= <Lowercase_Letter_Label>
 <Rcl_Sub_I_Shortcut> ::= <Sub_I>
                                         
 <Nullary_Instruction> ::= <Abs>
@@ -331,6 +332,7 @@ Period97         = '97-62'
                       | <F_Test> <Flag>
                       | <Gsb> <Non_Lowercase_Label>
                       | <Gsb_f> <Uppercase_Letter_Label>
+                      | <Gsb_f_Shortcut>
                       | <Gsb_Shortcut>
                       | Gsb97 <Lowercase_Letter_Label>
                       | <Gto> <Label>

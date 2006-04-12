@@ -150,95 +150,96 @@ namespace HP_Parser
         SYMBOL_GRD                    = 135, // <Grd>
         SYMBOL_GSB                    = 136, // <Gsb>
         SYMBOL_GSB_F                  = 137, // <Gsb_f>
-        SYMBOL_GSB_SHORTCUT           = 138, // <Gsb_Shortcut>
-        SYMBOL_GTO                    = 139, // <Gto>
-        SYMBOL_GTO_PERIOD             = 140, // <Gto_Period>
-        SYMBOL_HMS_PLUS               = 141, // <HMS_Plus>
-        SYMBOL_INSTRUCTION            = 142, // <Instruction>
-        SYMBOL_INT                    = 143, // <Int>
-        SYMBOL_ISZ                    = 144, // <Isz>
-        SYMBOL_ISZ_SUB_I              = 145, // <Isz_Sub_I>
-        SYMBOL_LABEL                  = 146, // <Label>
-        SYMBOL_LBL                    = 147, // <Lbl>
-        SYMBOL_LBL_F                  = 148, // <Lbl_f>
-        SYMBOL_LETTER                 = 149, // <Letter>
-        SYMBOL_LETTER_LABEL           = 150, // <Letter_Label>
-        SYMBOL_LN                     = 151, // <Ln>
-        SYMBOL_LOG                    = 152, // <Log>
-        SYMBOL_LOWERCASE_LETTER_LABEL = 153, // <Lowercase_Letter_Label>
-        SYMBOL_LST_X                  = 154, // <Lst_X>
-        SYMBOL_MEMORY                 = 155, // <Memory>
-        SYMBOL_MERGE                  = 156, // <Merge>
-        SYMBOL_MULTIPLICATION         = 157, // <Multiplication>
-        SYMBOL_NINE                   = 158, // <Nine>
-        SYMBOL_NON_LOWERCASE_LABEL    = 159, // <Non_Lowercase_Label>
-        SYMBOL_NULLARY_INSTRUCTION    = 160, // <Nullary_Instruction>
-        SYMBOL_ONE                    = 161, // <One>
-        SYMBOL_OPERABLE_MEMORY        = 162, // <Operable_Memory>
-        SYMBOL_OPERATOR               = 163, // <Operator>
-        SYMBOL_P_EXCHANGE_S           = 164, // <P_Exchange_S>
-        SYMBOL_PAUSE                  = 165, // <Pause>
-        SYMBOL_PERCENT                = 166, // <Percent>
-        SYMBOL_PERCENT_CHANGE         = 167, // <Percent_Change>
-        SYMBOL_PERIOD                 = 168, // <Period>
-        SYMBOL_PI                     = 169, // <Pi>
-        SYMBOL_PRINT_PRGM             = 170, // <Print_Prgm>
-        SYMBOL_R_DOWN                 = 171, // <R_Down>
-        SYMBOL_R_S                    = 172, // <R_S>
-        SYMBOL_R_UP                   = 173, // <R_Up>
-        SYMBOL_RAD                    = 174, // <Rad>
-        SYMBOL_RC_I                   = 175, // <Rc_I>
-        SYMBOL_RCL                    = 176, // <Rcl>
-        SYMBOL_RCL_SIGMA_PLUS         = 177, // <Rcl_Sigma_Plus>
-        SYMBOL_RCL_SUB_I_SHORTCUT     = 178, // <Rcl_Sub_I_Shortcut>
-        SYMBOL_RECIPROCAL             = 179, // <Reciprocal>
-        SYMBOL_REG                    = 180, // <Reg>
-        SYMBOL_RND                    = 181, // <Rnd>
-        SYMBOL_RTN                    = 182, // <Rtn>
-        SYMBOL_S                      = 183, // <S>
-        SYMBOL_SCI                    = 184, // <Sci>
-        SYMBOL_SEVEN                  = 185, // <Seven>
-        SYMBOL_SF                     = 186, // <SF>
-        SYMBOL_SIGMA_MINUS            = 187, // <Sigma_Minus>
-        SYMBOL_SIGMA_PLUS             = 188, // <Sigma_Plus>
-        SYMBOL_SIN                    = 189, // <Sin>
-        SYMBOL_SIX                    = 190, // <Six>
-        SYMBOL_SPACE                  = 191, // <Space>
-        SYMBOL_SQRT                   = 192, // <Sqrt>
-        SYMBOL_SQUARE                 = 193, // <Square>
-        SYMBOL_SST                    = 194, // <Sst>
-        SYMBOL_ST_I                   = 195, // <St_I>
-        SYMBOL_STK                    = 196, // <Stk>
-        SYMBOL_STO                    = 197, // <Sto>
-        SYMBOL_SUB_I                  = 198, // <Sub_I>
-        SYMBOL_SUBTRACTION            = 199, // <Subtraction>
-        SYMBOL_TAN                    = 200, // <Tan>
-        SYMBOL_TEN_TO_THE_XTH         = 201, // <Ten_To_The_Xth>
-        SYMBOL_TERNARY_INSTRUCTION    = 202, // <Ternary_Instruction>
-        SYMBOL_THREE                  = 203, // <Three>
-        SYMBOL_TO_DEGREES             = 204, // <To_Degrees>
-        SYMBOL_TO_HMS                 = 205, // <To_HMS>
-        SYMBOL_TO_HOURS               = 206, // <To_Hours>
-        SYMBOL_TO_POLAR               = 207, // <To_Polar>
-        SYMBOL_TO_RADIANS             = 208, // <To_Radians>
-        SYMBOL_TO_RECTANGULAR         = 209, // <To_Rectangular>
-        SYMBOL_TWO                    = 210, // <Two>
-        SYMBOL_UNARY_INSTRUCTION      = 211, // <Unary_Instruction>
-        SYMBOL_UPPERCASE_LETTER_LABEL = 212, // <Uppercase_Letter_Label>
-        SYMBOL_W_DATA                 = 213, // <W_Data>
-        SYMBOL_X_AVERAGE              = 214, // <X_Average>
-        SYMBOL_X_EQ_0                 = 215, // <X_EQ_0>
-        SYMBOL_X_EQ_Y                 = 216, // <X_EQ_Y>
-        SYMBOL_X_EXCHANGE_I           = 217, // <X_Exchange_I>
-        SYMBOL_X_EXCHANGE_Y           = 218, // <X_Exchange_Y>
-        SYMBOL_X_GT_0                 = 219, // <X_GT_0>
-        SYMBOL_X_GT_Y                 = 220, // <X_GT_Y>
-        SYMBOL_X_LE_Y                 = 221, // <X_LE_Y>
-        SYMBOL_X_LT_0                 = 222, // <X_LT_0>
-        SYMBOL_X_NE_0                 = 223, // <X_NE_0>
-        SYMBOL_X_NE_Y                 = 224, // <X_NE_Y>
-        SYMBOL_Y_TO_THE_XTH           = 225, // <Y_To_The_Xth>
-        SYMBOL_ZERO                   = 226  // <Zero>
+        SYMBOL_GSB_F_SHORTCUT         = 138, // <Gsb_f_Shortcut>
+        SYMBOL_GSB_SHORTCUT           = 139, // <Gsb_Shortcut>
+        SYMBOL_GTO                    = 140, // <Gto>
+        SYMBOL_GTO_PERIOD             = 141, // <Gto_Period>
+        SYMBOL_HMS_PLUS               = 142, // <HMS_Plus>
+        SYMBOL_INSTRUCTION            = 143, // <Instruction>
+        SYMBOL_INT                    = 144, // <Int>
+        SYMBOL_ISZ                    = 145, // <Isz>
+        SYMBOL_ISZ_SUB_I              = 146, // <Isz_Sub_I>
+        SYMBOL_LABEL                  = 147, // <Label>
+        SYMBOL_LBL                    = 148, // <Lbl>
+        SYMBOL_LBL_F                  = 149, // <Lbl_f>
+        SYMBOL_LETTER                 = 150, // <Letter>
+        SYMBOL_LETTER_LABEL           = 151, // <Letter_Label>
+        SYMBOL_LN                     = 152, // <Ln>
+        SYMBOL_LOG                    = 153, // <Log>
+        SYMBOL_LOWERCASE_LETTER_LABEL = 154, // <Lowercase_Letter_Label>
+        SYMBOL_LST_X                  = 155, // <Lst_X>
+        SYMBOL_MEMORY                 = 156, // <Memory>
+        SYMBOL_MERGE                  = 157, // <Merge>
+        SYMBOL_MULTIPLICATION         = 158, // <Multiplication>
+        SYMBOL_NINE                   = 159, // <Nine>
+        SYMBOL_NON_LOWERCASE_LABEL    = 160, // <Non_Lowercase_Label>
+        SYMBOL_NULLARY_INSTRUCTION    = 161, // <Nullary_Instruction>
+        SYMBOL_ONE                    = 162, // <One>
+        SYMBOL_OPERABLE_MEMORY        = 163, // <Operable_Memory>
+        SYMBOL_OPERATOR               = 164, // <Operator>
+        SYMBOL_P_EXCHANGE_S           = 165, // <P_Exchange_S>
+        SYMBOL_PAUSE                  = 166, // <Pause>
+        SYMBOL_PERCENT                = 167, // <Percent>
+        SYMBOL_PERCENT_CHANGE         = 168, // <Percent_Change>
+        SYMBOL_PERIOD                 = 169, // <Period>
+        SYMBOL_PI                     = 170, // <Pi>
+        SYMBOL_PRINT_PRGM             = 171, // <Print_Prgm>
+        SYMBOL_R_DOWN                 = 172, // <R_Down>
+        SYMBOL_R_S                    = 173, // <R_S>
+        SYMBOL_R_UP                   = 174, // <R_Up>
+        SYMBOL_RAD                    = 175, // <Rad>
+        SYMBOL_RC_I                   = 176, // <Rc_I>
+        SYMBOL_RCL                    = 177, // <Rcl>
+        SYMBOL_RCL_SIGMA_PLUS         = 178, // <Rcl_Sigma_Plus>
+        SYMBOL_RCL_SUB_I_SHORTCUT     = 179, // <Rcl_Sub_I_Shortcut>
+        SYMBOL_RECIPROCAL             = 180, // <Reciprocal>
+        SYMBOL_REG                    = 181, // <Reg>
+        SYMBOL_RND                    = 182, // <Rnd>
+        SYMBOL_RTN                    = 183, // <Rtn>
+        SYMBOL_S                      = 184, // <S>
+        SYMBOL_SCI                    = 185, // <Sci>
+        SYMBOL_SEVEN                  = 186, // <Seven>
+        SYMBOL_SF                     = 187, // <SF>
+        SYMBOL_SIGMA_MINUS            = 188, // <Sigma_Minus>
+        SYMBOL_SIGMA_PLUS             = 189, // <Sigma_Plus>
+        SYMBOL_SIN                    = 190, // <Sin>
+        SYMBOL_SIX                    = 191, // <Six>
+        SYMBOL_SPACE                  = 192, // <Space>
+        SYMBOL_SQRT                   = 193, // <Sqrt>
+        SYMBOL_SQUARE                 = 194, // <Square>
+        SYMBOL_SST                    = 195, // <Sst>
+        SYMBOL_ST_I                   = 196, // <St_I>
+        SYMBOL_STK                    = 197, // <Stk>
+        SYMBOL_STO                    = 198, // <Sto>
+        SYMBOL_SUB_I                  = 199, // <Sub_I>
+        SYMBOL_SUBTRACTION            = 200, // <Subtraction>
+        SYMBOL_TAN                    = 201, // <Tan>
+        SYMBOL_TEN_TO_THE_XTH         = 202, // <Ten_To_The_Xth>
+        SYMBOL_TERNARY_INSTRUCTION    = 203, // <Ternary_Instruction>
+        SYMBOL_THREE                  = 204, // <Three>
+        SYMBOL_TO_DEGREES             = 205, // <To_Degrees>
+        SYMBOL_TO_HMS                 = 206, // <To_HMS>
+        SYMBOL_TO_HOURS               = 207, // <To_Hours>
+        SYMBOL_TO_POLAR               = 208, // <To_Polar>
+        SYMBOL_TO_RADIANS             = 209, // <To_Radians>
+        SYMBOL_TO_RECTANGULAR         = 210, // <To_Rectangular>
+        SYMBOL_TWO                    = 211, // <Two>
+        SYMBOL_UNARY_INSTRUCTION      = 212, // <Unary_Instruction>
+        SYMBOL_UPPERCASE_LETTER_LABEL = 213, // <Uppercase_Letter_Label>
+        SYMBOL_W_DATA                 = 214, // <W_Data>
+        SYMBOL_X_AVERAGE              = 215, // <X_Average>
+        SYMBOL_X_EQ_0                 = 216, // <X_EQ_0>
+        SYMBOL_X_EQ_Y                 = 217, // <X_EQ_Y>
+        SYMBOL_X_EXCHANGE_I           = 218, // <X_Exchange_I>
+        SYMBOL_X_EXCHANGE_Y           = 219, // <X_Exchange_Y>
+        SYMBOL_X_GT_0                 = 220, // <X_GT_0>
+        SYMBOL_X_GT_Y                 = 221, // <X_GT_Y>
+        SYMBOL_X_LE_Y                 = 222, // <X_LE_Y>
+        SYMBOL_X_LT_0                 = 223, // <X_LT_0>
+        SYMBOL_X_NE_0                 = 224, // <X_NE_0>
+        SYMBOL_X_NE_Y                 = 225, // <X_NE_Y>
+        SYMBOL_Y_TO_THE_XTH           = 226, // <Y_To_The_Xth>
+        SYMBOL_ZERO                   = 227  // <Zero>
     };
 
     enum RuleConstants : int
@@ -466,152 +467,154 @@ namespace HP_Parser
         RULE_INSTRUCTION2                    = 220, // <Instruction> ::= <Unary_Instruction>
         RULE_INSTRUCTION3                    = 221, // <Instruction> ::= <Binary_Instruction>
         RULE_INSTRUCTION4                    = 222, // <Instruction> ::= <Ternary_Instruction>
-        RULE_GSB_SHORTCUT                    = 223, // <Gsb_Shortcut> ::= <Letter_Label>
-        RULE_RCL_SUB_I_SHORTCUT              = 224, // <Rcl_Sub_I_Shortcut> ::= <Sub_I>
-        RULE_NULLARY_INSTRUCTION             = 225, // <Nullary_Instruction> ::= <Abs>
-        RULE_NULLARY_INSTRUCTION2            = 226, // <Nullary_Instruction> ::= <Addition>
-        RULE_NULLARY_INSTRUCTION3            = 227, // <Nullary_Instruction> ::= <Arccos>
-        RULE_NULLARY_INSTRUCTION4            = 228, // <Nullary_Instruction> ::= <Arcsin>
-        RULE_NULLARY_INSTRUCTION5            = 229, // <Nullary_Instruction> ::= <Arctan>
-        RULE_NULLARY_INSTRUCTION6            = 230, // <Nullary_Instruction> ::= <Bst>
-        RULE_NULLARY_INSTRUCTION7            = 231, // <Nullary_Instruction> ::= <Chs>
-        RULE_NULLARY_INSTRUCTION8            = 232, // <Nullary_Instruction> ::= <Cl_Prgm>
-        RULE_NULLARY_INSTRUCTION9            = 233, // <Nullary_Instruction> ::= <Cl_Reg>
-        RULE_NULLARY_INSTRUCTION10           = 234, // <Nullary_Instruction> ::= <Clx>
-        RULE_NULLARY_INSTRUCTION11           = 235, // <Nullary_Instruction> ::= <Cos>
-        RULE_NULLARY_INSTRUCTION12           = 236, // <Nullary_Instruction> ::= <Deg>
-        RULE_NULLARY_INSTRUCTION13           = 237, // <Nullary_Instruction> ::= <Del>
-        RULE_NULLARY_INSTRUCTION14           = 238, // <Nullary_Instruction> ::= <Digit>
-        RULE_NULLARY_INSTRUCTION15           = 239, // <Nullary_Instruction> ::= <Display_X>
-        RULE_NULLARY_INSTRUCTION16           = 240, // <Nullary_Instruction> ::= <Division>
-        RULE_NULLARY_INSTRUCTION17           = 241, // <Nullary_Instruction> ::= <Dsz_Sub_I>
-        RULE_NULLARY_INSTRUCTION18           = 242, // <Nullary_Instruction> ::= <Dsz>
-        RULE_NULLARY_INSTRUCTION19           = 243, // <Nullary_Instruction> ::= <Eex>
-        RULE_NULLARY_INSTRUCTION20           = 244, // <Nullary_Instruction> ::= <Eng>
-        RULE_NULLARY_INSTRUCTION21           = 245, // <Nullary_Instruction> ::= <Enter>
-        RULE_NULLARY_INSTRUCTION22           = 246, // <Nullary_Instruction> ::= <Exp>
-        RULE_NULLARY_INSTRUCTION23           = 247, // <Nullary_Instruction> ::= <Factorial>
-        RULE_NULLARY_INSTRUCTION24           = 248, // <Nullary_Instruction> ::= <Fix>
-        RULE_NULLARY_INSTRUCTION25           = 249, // <Nullary_Instruction> ::= <Frac>
-        RULE_NULLARY_INSTRUCTION26           = 250, // <Nullary_Instruction> ::= <Grd>
-        RULE_NULLARY_INSTRUCTION27           = 251, // <Nullary_Instruction> ::= <HMS_Plus>
-        RULE_NULLARY_INSTRUCTION28           = 252, // <Nullary_Instruction> ::= <Int>
-        RULE_NULLARY_INSTRUCTION29           = 253, // <Nullary_Instruction> ::= <Isz_Sub_I>
-        RULE_NULLARY_INSTRUCTION30           = 254, // <Nullary_Instruction> ::= <Isz>
-        RULE_NULLARY_INSTRUCTION31           = 255, // <Nullary_Instruction> ::= <Ln>
-        RULE_NULLARY_INSTRUCTION32           = 256, // <Nullary_Instruction> ::= <Log>
-        RULE_NULLARY_INSTRUCTION33           = 257, // <Nullary_Instruction> ::= <Lst_X>
-        RULE_NULLARY_INSTRUCTION34           = 258, // <Nullary_Instruction> ::= <Merge>
-        RULE_NULLARY_INSTRUCTION35           = 259, // <Nullary_Instruction> ::= <Multiplication>
-        RULE_NULLARY_INSTRUCTION36           = 260, // <Nullary_Instruction> ::= <P_Exchange_S>
-        RULE_NULLARY_INSTRUCTION37           = 261, // <Nullary_Instruction> ::= <Pause>
-        RULE_NULLARY_INSTRUCTION38           = 262, // <Nullary_Instruction> ::= <Percent_Change>
-        RULE_NULLARY_INSTRUCTION39           = 263, // <Nullary_Instruction> ::= <Percent>
-        RULE_NULLARY_INSTRUCTION40           = 264, // <Nullary_Instruction> ::= <Period>
-        RULE_NULLARY_INSTRUCTION41           = 265, // <Nullary_Instruction> ::= <Pi>
-        RULE_NULLARY_INSTRUCTION42           = 266, // <Nullary_Instruction> ::= <Print_Prgm>
-        RULE_NULLARY_INSTRUCTION43           = 267, // <Nullary_Instruction> ::= <R_Down>
-        RULE_NULLARY_INSTRUCTION44           = 268, // <Nullary_Instruction> ::= <R_S>
-        RULE_NULLARY_INSTRUCTION45           = 269, // <Nullary_Instruction> ::= <R_Up>
-        RULE_NULLARY_INSTRUCTION46           = 270, // <Nullary_Instruction> ::= <Rad>
-        RULE_NULLARY_INSTRUCTION47           = 271, // <Nullary_Instruction> ::= <Rc_I>
-        RULE_NULLARY_INSTRUCTION48           = 272, // <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
-        RULE_NULLARY_INSTRUCTION49           = 273, // <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
-        RULE_NULLARY_INSTRUCTION50           = 274, // <Nullary_Instruction> ::= <Reciprocal>
-        RULE_NULLARY_INSTRUCTION51           = 275, // <Nullary_Instruction> ::= <Reg>
-        RULE_NULLARY_INSTRUCTION52           = 276, // <Nullary_Instruction> ::= <Rnd>
-        RULE_NULLARY_INSTRUCTION53           = 277, // <Nullary_Instruction> ::= <Rtn>
-        RULE_NULLARY_INSTRUCTION54           = 278, // <Nullary_Instruction> ::= <S>
-        RULE_NULLARY_INSTRUCTION55           = 279, // <Nullary_Instruction> ::= <Sci>
-        RULE_NULLARY_INSTRUCTION56           = 280, // <Nullary_Instruction> ::= <Sigma_Minus>
-        RULE_NULLARY_INSTRUCTION57           = 281, // <Nullary_Instruction> ::= <Sigma_Plus>
-        RULE_NULLARY_INSTRUCTION58           = 282, // <Nullary_Instruction> ::= <Sin>
-        RULE_NULLARY_INSTRUCTION59           = 283, // <Nullary_Instruction> ::= <Space>
-        RULE_NULLARY_INSTRUCTION60           = 284, // <Nullary_Instruction> ::= <Sqrt>
-        RULE_NULLARY_INSTRUCTION61           = 285, // <Nullary_Instruction> ::= <Square>
-        RULE_NULLARY_INSTRUCTION62           = 286, // <Nullary_Instruction> ::= <Sst>
-        RULE_NULLARY_INSTRUCTION63           = 287, // <Nullary_Instruction> ::= <St_I>
-        RULE_NULLARY_INSTRUCTION64           = 288, // <Nullary_Instruction> ::= <Stk>
-        RULE_NULLARY_INSTRUCTION65           = 289, // <Nullary_Instruction> ::= <Subtraction>
-        RULE_NULLARY_INSTRUCTION66           = 290, // <Nullary_Instruction> ::= <Tan>
-        RULE_NULLARY_INSTRUCTION67           = 291, // <Nullary_Instruction> ::= <Ten_To_The_Xth>
-        RULE_NULLARY_INSTRUCTION68           = 292, // <Nullary_Instruction> ::= <To_Degrees>
-        RULE_NULLARY_INSTRUCTION69           = 293, // <Nullary_Instruction> ::= <To_HMS>
-        RULE_NULLARY_INSTRUCTION70           = 294, // <Nullary_Instruction> ::= <To_Hours>
-        RULE_NULLARY_INSTRUCTION71           = 295, // <Nullary_Instruction> ::= <To_Polar>
-        RULE_NULLARY_INSTRUCTION72           = 296, // <Nullary_Instruction> ::= <To_Radians>
-        RULE_NULLARY_INSTRUCTION73           = 297, // <Nullary_Instruction> ::= <To_Rectangular>
-        RULE_NULLARY_INSTRUCTION74           = 298, // <Nullary_Instruction> ::= <W_Data>
-        RULE_NULLARY_INSTRUCTION75           = 299, // <Nullary_Instruction> ::= <X_Average>
-        RULE_NULLARY_INSTRUCTION76           = 300, // <Nullary_Instruction> ::= <X_EQ_0>
-        RULE_NULLARY_INSTRUCTION77           = 301, // <Nullary_Instruction> ::= <X_EQ_Y>
-        RULE_NULLARY_INSTRUCTION78           = 302, // <Nullary_Instruction> ::= <X_Exchange_I>
-        RULE_NULLARY_INSTRUCTION79           = 303, // <Nullary_Instruction> ::= <X_Exchange_Y>
-        RULE_NULLARY_INSTRUCTION80           = 304, // <Nullary_Instruction> ::= <X_GT_0>
-        RULE_NULLARY_INSTRUCTION81           = 305, // <Nullary_Instruction> ::= <X_GT_Y>
-        RULE_NULLARY_INSTRUCTION82           = 306, // <Nullary_Instruction> ::= <X_LE_Y>
-        RULE_NULLARY_INSTRUCTION83           = 307, // <Nullary_Instruction> ::= <X_LT_0>
-        RULE_NULLARY_INSTRUCTION84           = 308, // <Nullary_Instruction> ::= <X_NE_0>
-        RULE_NULLARY_INSTRUCTION85           = 309, // <Nullary_Instruction> ::= <X_NE_Y>
-        RULE_NULLARY_INSTRUCTION86           = 310, // <Nullary_Instruction> ::= <Y_To_The_Xth>
-        RULE_UNARY_INSTRUCTION               = 311, // <Unary_Instruction> ::= <CF> <Flag>
-        RULE_UNARY_INSTRUCTION2              = 312, // <Unary_Instruction> ::= <Dsp> <Digit_Count>
-        RULE_UNARY_INSTRUCTION3              = 313, // <Unary_Instruction> ::= <F_Test> <Flag>
-        RULE_UNARY_INSTRUCTION4              = 314, // <Unary_Instruction> ::= <Gsb> <Non_Lowercase_Label>
-        RULE_UNARY_INSTRUCTION5              = 315, // <Unary_Instruction> ::= <Gsb_f> <Uppercase_Letter_Label>
-        RULE_UNARY_INSTRUCTION6              = 316, // <Unary_Instruction> ::= <Gsb_Shortcut>
-        RULE_UNARY_INSTRUCTION_GSB97         = 317, // <Unary_Instruction> ::= 'Gsb97' <Lowercase_Letter_Label>
-        RULE_UNARY_INSTRUCTION7              = 318, // <Unary_Instruction> ::= <Gto> <Label>
-        RULE_UNARY_INSTRUCTION8              = 319, // <Unary_Instruction> ::= <Lbl> <Non_Lowercase_Label>
-        RULE_UNARY_INSTRUCTION9              = 320, // <Unary_Instruction> ::= <Lbl_f> <Uppercase_Letter_Label>
-        RULE_UNARY_INSTRUCTION_LBL97         = 321, // <Unary_Instruction> ::= 'Lbl97' <Lowercase_Letter_Label>
-        RULE_UNARY_INSTRUCTION10             = 322, // <Unary_Instruction> ::= <Rcl> <Memory>
-        RULE_UNARY_INSTRUCTION11             = 323, // <Unary_Instruction> ::= <SF> <Flag>
-        RULE_UNARY_INSTRUCTION12             = 324, // <Unary_Instruction> ::= <Sto> <Memory>
-        RULE_BINARY_INSTRUCTION              = 325, // <Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
-        RULE_TERNARY_INSTRUCTION             = 326, // <Ternary_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
-        RULE_RCL_SIGMA_PLUS                  = 327, // <Rcl_Sigma_Plus> ::= <Rcl> <Sigma_Plus>
-        RULE_GTO_PERIOD                      = 328, // <Gto_Period> ::= <Gto> <Period>
-        RULE_OPERATOR                        = 329, // <Operator> ::= <Subtraction>
-        RULE_OPERATOR2                       = 330, // <Operator> ::= <Addition>
-        RULE_OPERATOR3                       = 331, // <Operator> ::= <Multiplication>
-        RULE_OPERATOR4                       = 332, // <Operator> ::= <Division>
-        RULE_DIGIT                           = 333, // <Digit> ::= <Zero>
-        RULE_DIGIT2                          = 334, // <Digit> ::= <One>
-        RULE_DIGIT3                          = 335, // <Digit> ::= <Two>
-        RULE_DIGIT4                          = 336, // <Digit> ::= <Three>
-        RULE_DIGIT5                          = 337, // <Digit> ::= <Four>
-        RULE_DIGIT6                          = 338, // <Digit> ::= <Five>
-        RULE_DIGIT7                          = 339, // <Digit> ::= <Six>
-        RULE_DIGIT8                          = 340, // <Digit> ::= <Seven>
-        RULE_DIGIT9                          = 341, // <Digit> ::= <Eight>
-        RULE_DIGIT10                         = 342, // <Digit> ::= <Nine>
-        RULE_DIGIT_COUNT                     = 343, // <Digit_Count> ::= <Digit>
-        RULE_DIGIT_COUNT2                    = 344, // <Digit_Count> ::= <Sub_I>
-        RULE_FLAG                            = 345, // <Flag> ::= <Zero>
-        RULE_FLAG2                           = 346, // <Flag> ::= <One>
-        RULE_FLAG3                           = 347, // <Flag> ::= <Two>
-        RULE_FLAG4                           = 348, // <Flag> ::= <Three>
-        RULE_LETTER                          = 349, // <Letter> ::= <A>
-        RULE_LETTER2                         = 350, // <Letter> ::= <B>
-        RULE_LETTER3                         = 351, // <Letter> ::= <C>
-        RULE_LETTER4                         = 352, // <Letter> ::= <D>
-        RULE_LETTER5                         = 353, // <Letter> ::= <E>
-        RULE_UPPERCASE_LETTER_LABEL          = 354, // <Uppercase_Letter_Label> ::= <Letter>
-        RULE_LOWERCASE_LETTER_LABEL          = 355, // <Lowercase_Letter_Label> ::= <f> <Letter>
-        RULE_LETTER_LABEL                    = 356, // <Letter_Label> ::= <Lowercase_Letter_Label>
-        RULE_LETTER_LABEL2                   = 357, // <Letter_Label> ::= <Uppercase_Letter_Label>
-        RULE_DIGIT_LABEL                     = 358, // <Digit_Label> ::= <Digit>
-        RULE_NON_LOWERCASE_LABEL             = 359, // <Non_Lowercase_Label> ::= <Digit_Label>
-        RULE_NON_LOWERCASE_LABEL2            = 360, // <Non_Lowercase_Label> ::= <Uppercase_Letter_Label>
-        RULE_NON_LOWERCASE_LABEL3            = 361, // <Non_Lowercase_Label> ::= <Sub_I>
-        RULE_LABEL                           = 362, // <Label> ::= <Digit_Label>
-        RULE_LABEL2                          = 363, // <Label> ::= <Letter_Label>
-        RULE_LABEL3                          = 364, // <Label> ::= <Sub_I>
-        RULE_OPERABLE_MEMORY                 = 365, // <Operable_Memory> ::= <Digit>
-        RULE_OPERABLE_MEMORY2                = 366, // <Operable_Memory> ::= <Sub_I>
-        RULE_MEMORY                          = 367, // <Memory> ::= <Operable_Memory>
-        RULE_MEMORY2                         = 368  // <Memory> ::= <Letter>
+        RULE_GSB_SHORTCUT                    = 223, // <Gsb_Shortcut> ::= <Uppercase_Letter_Label>
+        RULE_GSB_F_SHORTCUT                  = 224, // <Gsb_f_Shortcut> ::= <Lowercase_Letter_Label>
+        RULE_RCL_SUB_I_SHORTCUT              = 225, // <Rcl_Sub_I_Shortcut> ::= <Sub_I>
+        RULE_NULLARY_INSTRUCTION             = 226, // <Nullary_Instruction> ::= <Abs>
+        RULE_NULLARY_INSTRUCTION2            = 227, // <Nullary_Instruction> ::= <Addition>
+        RULE_NULLARY_INSTRUCTION3            = 228, // <Nullary_Instruction> ::= <Arccos>
+        RULE_NULLARY_INSTRUCTION4            = 229, // <Nullary_Instruction> ::= <Arcsin>
+        RULE_NULLARY_INSTRUCTION5            = 230, // <Nullary_Instruction> ::= <Arctan>
+        RULE_NULLARY_INSTRUCTION6            = 231, // <Nullary_Instruction> ::= <Bst>
+        RULE_NULLARY_INSTRUCTION7            = 232, // <Nullary_Instruction> ::= <Chs>
+        RULE_NULLARY_INSTRUCTION8            = 233, // <Nullary_Instruction> ::= <Cl_Prgm>
+        RULE_NULLARY_INSTRUCTION9            = 234, // <Nullary_Instruction> ::= <Cl_Reg>
+        RULE_NULLARY_INSTRUCTION10           = 235, // <Nullary_Instruction> ::= <Clx>
+        RULE_NULLARY_INSTRUCTION11           = 236, // <Nullary_Instruction> ::= <Cos>
+        RULE_NULLARY_INSTRUCTION12           = 237, // <Nullary_Instruction> ::= <Deg>
+        RULE_NULLARY_INSTRUCTION13           = 238, // <Nullary_Instruction> ::= <Del>
+        RULE_NULLARY_INSTRUCTION14           = 239, // <Nullary_Instruction> ::= <Digit>
+        RULE_NULLARY_INSTRUCTION15           = 240, // <Nullary_Instruction> ::= <Display_X>
+        RULE_NULLARY_INSTRUCTION16           = 241, // <Nullary_Instruction> ::= <Division>
+        RULE_NULLARY_INSTRUCTION17           = 242, // <Nullary_Instruction> ::= <Dsz_Sub_I>
+        RULE_NULLARY_INSTRUCTION18           = 243, // <Nullary_Instruction> ::= <Dsz>
+        RULE_NULLARY_INSTRUCTION19           = 244, // <Nullary_Instruction> ::= <Eex>
+        RULE_NULLARY_INSTRUCTION20           = 245, // <Nullary_Instruction> ::= <Eng>
+        RULE_NULLARY_INSTRUCTION21           = 246, // <Nullary_Instruction> ::= <Enter>
+        RULE_NULLARY_INSTRUCTION22           = 247, // <Nullary_Instruction> ::= <Exp>
+        RULE_NULLARY_INSTRUCTION23           = 248, // <Nullary_Instruction> ::= <Factorial>
+        RULE_NULLARY_INSTRUCTION24           = 249, // <Nullary_Instruction> ::= <Fix>
+        RULE_NULLARY_INSTRUCTION25           = 250, // <Nullary_Instruction> ::= <Frac>
+        RULE_NULLARY_INSTRUCTION26           = 251, // <Nullary_Instruction> ::= <Grd>
+        RULE_NULLARY_INSTRUCTION27           = 252, // <Nullary_Instruction> ::= <HMS_Plus>
+        RULE_NULLARY_INSTRUCTION28           = 253, // <Nullary_Instruction> ::= <Int>
+        RULE_NULLARY_INSTRUCTION29           = 254, // <Nullary_Instruction> ::= <Isz_Sub_I>
+        RULE_NULLARY_INSTRUCTION30           = 255, // <Nullary_Instruction> ::= <Isz>
+        RULE_NULLARY_INSTRUCTION31           = 256, // <Nullary_Instruction> ::= <Ln>
+        RULE_NULLARY_INSTRUCTION32           = 257, // <Nullary_Instruction> ::= <Log>
+        RULE_NULLARY_INSTRUCTION33           = 258, // <Nullary_Instruction> ::= <Lst_X>
+        RULE_NULLARY_INSTRUCTION34           = 259, // <Nullary_Instruction> ::= <Merge>
+        RULE_NULLARY_INSTRUCTION35           = 260, // <Nullary_Instruction> ::= <Multiplication>
+        RULE_NULLARY_INSTRUCTION36           = 261, // <Nullary_Instruction> ::= <P_Exchange_S>
+        RULE_NULLARY_INSTRUCTION37           = 262, // <Nullary_Instruction> ::= <Pause>
+        RULE_NULLARY_INSTRUCTION38           = 263, // <Nullary_Instruction> ::= <Percent_Change>
+        RULE_NULLARY_INSTRUCTION39           = 264, // <Nullary_Instruction> ::= <Percent>
+        RULE_NULLARY_INSTRUCTION40           = 265, // <Nullary_Instruction> ::= <Period>
+        RULE_NULLARY_INSTRUCTION41           = 266, // <Nullary_Instruction> ::= <Pi>
+        RULE_NULLARY_INSTRUCTION42           = 267, // <Nullary_Instruction> ::= <Print_Prgm>
+        RULE_NULLARY_INSTRUCTION43           = 268, // <Nullary_Instruction> ::= <R_Down>
+        RULE_NULLARY_INSTRUCTION44           = 269, // <Nullary_Instruction> ::= <R_S>
+        RULE_NULLARY_INSTRUCTION45           = 270, // <Nullary_Instruction> ::= <R_Up>
+        RULE_NULLARY_INSTRUCTION46           = 271, // <Nullary_Instruction> ::= <Rad>
+        RULE_NULLARY_INSTRUCTION47           = 272, // <Nullary_Instruction> ::= <Rc_I>
+        RULE_NULLARY_INSTRUCTION48           = 273, // <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
+        RULE_NULLARY_INSTRUCTION49           = 274, // <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
+        RULE_NULLARY_INSTRUCTION50           = 275, // <Nullary_Instruction> ::= <Reciprocal>
+        RULE_NULLARY_INSTRUCTION51           = 276, // <Nullary_Instruction> ::= <Reg>
+        RULE_NULLARY_INSTRUCTION52           = 277, // <Nullary_Instruction> ::= <Rnd>
+        RULE_NULLARY_INSTRUCTION53           = 278, // <Nullary_Instruction> ::= <Rtn>
+        RULE_NULLARY_INSTRUCTION54           = 279, // <Nullary_Instruction> ::= <S>
+        RULE_NULLARY_INSTRUCTION55           = 280, // <Nullary_Instruction> ::= <Sci>
+        RULE_NULLARY_INSTRUCTION56           = 281, // <Nullary_Instruction> ::= <Sigma_Minus>
+        RULE_NULLARY_INSTRUCTION57           = 282, // <Nullary_Instruction> ::= <Sigma_Plus>
+        RULE_NULLARY_INSTRUCTION58           = 283, // <Nullary_Instruction> ::= <Sin>
+        RULE_NULLARY_INSTRUCTION59           = 284, // <Nullary_Instruction> ::= <Space>
+        RULE_NULLARY_INSTRUCTION60           = 285, // <Nullary_Instruction> ::= <Sqrt>
+        RULE_NULLARY_INSTRUCTION61           = 286, // <Nullary_Instruction> ::= <Square>
+        RULE_NULLARY_INSTRUCTION62           = 287, // <Nullary_Instruction> ::= <Sst>
+        RULE_NULLARY_INSTRUCTION63           = 288, // <Nullary_Instruction> ::= <St_I>
+        RULE_NULLARY_INSTRUCTION64           = 289, // <Nullary_Instruction> ::= <Stk>
+        RULE_NULLARY_INSTRUCTION65           = 290, // <Nullary_Instruction> ::= <Subtraction>
+        RULE_NULLARY_INSTRUCTION66           = 291, // <Nullary_Instruction> ::= <Tan>
+        RULE_NULLARY_INSTRUCTION67           = 292, // <Nullary_Instruction> ::= <Ten_To_The_Xth>
+        RULE_NULLARY_INSTRUCTION68           = 293, // <Nullary_Instruction> ::= <To_Degrees>
+        RULE_NULLARY_INSTRUCTION69           = 294, // <Nullary_Instruction> ::= <To_HMS>
+        RULE_NULLARY_INSTRUCTION70           = 295, // <Nullary_Instruction> ::= <To_Hours>
+        RULE_NULLARY_INSTRUCTION71           = 296, // <Nullary_Instruction> ::= <To_Polar>
+        RULE_NULLARY_INSTRUCTION72           = 297, // <Nullary_Instruction> ::= <To_Radians>
+        RULE_NULLARY_INSTRUCTION73           = 298, // <Nullary_Instruction> ::= <To_Rectangular>
+        RULE_NULLARY_INSTRUCTION74           = 299, // <Nullary_Instruction> ::= <W_Data>
+        RULE_NULLARY_INSTRUCTION75           = 300, // <Nullary_Instruction> ::= <X_Average>
+        RULE_NULLARY_INSTRUCTION76           = 301, // <Nullary_Instruction> ::= <X_EQ_0>
+        RULE_NULLARY_INSTRUCTION77           = 302, // <Nullary_Instruction> ::= <X_EQ_Y>
+        RULE_NULLARY_INSTRUCTION78           = 303, // <Nullary_Instruction> ::= <X_Exchange_I>
+        RULE_NULLARY_INSTRUCTION79           = 304, // <Nullary_Instruction> ::= <X_Exchange_Y>
+        RULE_NULLARY_INSTRUCTION80           = 305, // <Nullary_Instruction> ::= <X_GT_0>
+        RULE_NULLARY_INSTRUCTION81           = 306, // <Nullary_Instruction> ::= <X_GT_Y>
+        RULE_NULLARY_INSTRUCTION82           = 307, // <Nullary_Instruction> ::= <X_LE_Y>
+        RULE_NULLARY_INSTRUCTION83           = 308, // <Nullary_Instruction> ::= <X_LT_0>
+        RULE_NULLARY_INSTRUCTION84           = 309, // <Nullary_Instruction> ::= <X_NE_0>
+        RULE_NULLARY_INSTRUCTION85           = 310, // <Nullary_Instruction> ::= <X_NE_Y>
+        RULE_NULLARY_INSTRUCTION86           = 311, // <Nullary_Instruction> ::= <Y_To_The_Xth>
+        RULE_UNARY_INSTRUCTION               = 312, // <Unary_Instruction> ::= <CF> <Flag>
+        RULE_UNARY_INSTRUCTION2              = 313, // <Unary_Instruction> ::= <Dsp> <Digit_Count>
+        RULE_UNARY_INSTRUCTION3              = 314, // <Unary_Instruction> ::= <F_Test> <Flag>
+        RULE_UNARY_INSTRUCTION4              = 315, // <Unary_Instruction> ::= <Gsb> <Non_Lowercase_Label>
+        RULE_UNARY_INSTRUCTION5              = 316, // <Unary_Instruction> ::= <Gsb_f> <Uppercase_Letter_Label>
+        RULE_UNARY_INSTRUCTION6              = 317, // <Unary_Instruction> ::= <Gsb_f_Shortcut>
+        RULE_UNARY_INSTRUCTION7              = 318, // <Unary_Instruction> ::= <Gsb_Shortcut>
+        RULE_UNARY_INSTRUCTION_GSB97         = 319, // <Unary_Instruction> ::= 'Gsb97' <Lowercase_Letter_Label>
+        RULE_UNARY_INSTRUCTION8              = 320, // <Unary_Instruction> ::= <Gto> <Label>
+        RULE_UNARY_INSTRUCTION9              = 321, // <Unary_Instruction> ::= <Lbl> <Non_Lowercase_Label>
+        RULE_UNARY_INSTRUCTION10             = 322, // <Unary_Instruction> ::= <Lbl_f> <Uppercase_Letter_Label>
+        RULE_UNARY_INSTRUCTION_LBL97         = 323, // <Unary_Instruction> ::= 'Lbl97' <Lowercase_Letter_Label>
+        RULE_UNARY_INSTRUCTION11             = 324, // <Unary_Instruction> ::= <Rcl> <Memory>
+        RULE_UNARY_INSTRUCTION12             = 325, // <Unary_Instruction> ::= <SF> <Flag>
+        RULE_UNARY_INSTRUCTION13             = 326, // <Unary_Instruction> ::= <Sto> <Memory>
+        RULE_BINARY_INSTRUCTION              = 327, // <Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
+        RULE_TERNARY_INSTRUCTION             = 328, // <Ternary_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
+        RULE_RCL_SIGMA_PLUS                  = 329, // <Rcl_Sigma_Plus> ::= <Rcl> <Sigma_Plus>
+        RULE_GTO_PERIOD                      = 330, // <Gto_Period> ::= <Gto> <Period>
+        RULE_OPERATOR                        = 331, // <Operator> ::= <Subtraction>
+        RULE_OPERATOR2                       = 332, // <Operator> ::= <Addition>
+        RULE_OPERATOR3                       = 333, // <Operator> ::= <Multiplication>
+        RULE_OPERATOR4                       = 334, // <Operator> ::= <Division>
+        RULE_DIGIT                           = 335, // <Digit> ::= <Zero>
+        RULE_DIGIT2                          = 336, // <Digit> ::= <One>
+        RULE_DIGIT3                          = 337, // <Digit> ::= <Two>
+        RULE_DIGIT4                          = 338, // <Digit> ::= <Three>
+        RULE_DIGIT5                          = 339, // <Digit> ::= <Four>
+        RULE_DIGIT6                          = 340, // <Digit> ::= <Five>
+        RULE_DIGIT7                          = 341, // <Digit> ::= <Six>
+        RULE_DIGIT8                          = 342, // <Digit> ::= <Seven>
+        RULE_DIGIT9                          = 343, // <Digit> ::= <Eight>
+        RULE_DIGIT10                         = 344, // <Digit> ::= <Nine>
+        RULE_DIGIT_COUNT                     = 345, // <Digit_Count> ::= <Digit>
+        RULE_DIGIT_COUNT2                    = 346, // <Digit_Count> ::= <Sub_I>
+        RULE_FLAG                            = 347, // <Flag> ::= <Zero>
+        RULE_FLAG2                           = 348, // <Flag> ::= <One>
+        RULE_FLAG3                           = 349, // <Flag> ::= <Two>
+        RULE_FLAG4                           = 350, // <Flag> ::= <Three>
+        RULE_LETTER                          = 351, // <Letter> ::= <A>
+        RULE_LETTER2                         = 352, // <Letter> ::= <B>
+        RULE_LETTER3                         = 353, // <Letter> ::= <C>
+        RULE_LETTER4                         = 354, // <Letter> ::= <D>
+        RULE_LETTER5                         = 355, // <Letter> ::= <E>
+        RULE_UPPERCASE_LETTER_LABEL          = 356, // <Uppercase_Letter_Label> ::= <Letter>
+        RULE_LOWERCASE_LETTER_LABEL          = 357, // <Lowercase_Letter_Label> ::= <f> <Letter>
+        RULE_LETTER_LABEL                    = 358, // <Letter_Label> ::= <Lowercase_Letter_Label>
+        RULE_LETTER_LABEL2                   = 359, // <Letter_Label> ::= <Uppercase_Letter_Label>
+        RULE_DIGIT_LABEL                     = 360, // <Digit_Label> ::= <Digit>
+        RULE_NON_LOWERCASE_LABEL             = 361, // <Non_Lowercase_Label> ::= <Digit_Label>
+        RULE_NON_LOWERCASE_LABEL2            = 362, // <Non_Lowercase_Label> ::= <Uppercase_Letter_Label>
+        RULE_NON_LOWERCASE_LABEL3            = 363, // <Non_Lowercase_Label> ::= <Sub_I>
+        RULE_LABEL                           = 364, // <Label> ::= <Digit_Label>
+        RULE_LABEL2                          = 365, // <Label> ::= <Letter_Label>
+        RULE_LABEL3                          = 366, // <Label> ::= <Sub_I>
+        RULE_OPERABLE_MEMORY                 = 367, // <Operable_Memory> ::= <Digit>
+        RULE_OPERABLE_MEMORY2                = 368, // <Operable_Memory> ::= <Sub_I>
+        RULE_MEMORY                          = 369, // <Memory> ::= <Operable_Memory>
+        RULE_MEMORY2                         = 370  // <Memory> ::= <Letter>
     };
 
     public interface IActions
@@ -627,375 +630,377 @@ namespace HP_Parser
 			get;
         }
         
-        void ReduceRULE_A_A67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_A_A97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ABS_H67_SIX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ABS_F97_Y_TO_THE_XTH97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ADDITION_ADDITION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ADDITION_ADDITION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ARCCOS_G67_FIVE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ARCCOS_F97_COS97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ARCSIN_G67_FOUR67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ARCSIN_F97_SIN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ARCTAN_G67_SIX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ARCTAN_F97_TAN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_B_B67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_B_B97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_BST_H67_SST67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_BST_BST97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_C_C67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_C_C97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CF_H67_ADDITION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CF_F97_GTO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CHS_CHS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CHS_CHS97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CL_PRGM_F67_CLX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CL_PRGM_F97_THREE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CL_REG_F67_EEX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CL_REG_F97_TWO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CLX_CLX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_CLX_CLX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_COS_F67_FIVE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_COS_COS97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_D_D67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_D_D97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DEG_H67_ENTER67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DEG_F97_ENTER97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DEL_H67_CLX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DEL_F97_ONE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DISPLAY_X_F67_R_S67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DISPLAY_X_DISPLAY_X97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIVISION_DIVISION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIVISION_DIVISION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DSP_DSP67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DSP_DSP97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DSZ_SUB_I_G67_STO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DSZ_SUB_I_F97_BST97_SUB_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DSZ_F67_STO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DSZ_F97_BST97_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_E_E67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_E_E97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_EEX_EEX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_EEX_EEX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_EIGHT_EIGHT67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_EIGHT_EIGHT97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ENG_H67_DSP67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ENG_ENG97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ENTER_ENTER67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ENTER_ENTER97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_EXP_G67_SEVEN67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_EXP_EXP97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_F_F67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_F_F97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_F_TEST_H67_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_F_TEST_F97_GSB97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FACTORIAL_H67_DIVISION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FACTORIAL_F97_RECIPROCAL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FIVE_FIVE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FIVE_FIVE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FIX_F67_DSP67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FIX_FIX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FOUR_FOUR67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FOUR_FOUR97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FRAC_G67_PERIOD67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FRAC_F97_TO_RECTANGULAR97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GRD_H67_EEX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GRD_F97_EEX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GSB_F_G67_GTO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GSB_F67_GTO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GSB_GSB97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GTO_GTO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GTO_GTO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_HMS_PLUS_H67_PERIOD67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_HMS_PLUS_F97_ADDITION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_INT_F67_PERIOD67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_INT_F97_TO_POLAR97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ISZ_SUB_I_G67_RCL67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ISZ_SUB_I_F97_SST97_SUB_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ISZ_F67_RCL67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ISZ_F97_SST97_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LBL_F_G67_SST67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LBL_F67_SST67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LBL_LBL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LN_F67_SEVEN67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LN_LN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LOG_F67_EIGHT67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LOG_F97_LN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LST_X_H67_ZERO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LST_X_F97_DSP97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_MERGE_G67_ENTER67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_MERGE_F97_PERIOD97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_MULTIPLICATION_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_MULTIPLICATION_MULTIPLICATION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NINE_NINE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NINE_NINE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ONE_ONE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ONE_ONE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_P_EXCHANGE_S_F67_CHS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_P_EXCHANGE_S_F97_CLX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PAUSE_H67_ONE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PAUSE_F97_R_S97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PERCENT_CHANGE_G67_ZERO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PERCENT_CHANGE_F97_PERCENT97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PERCENT_F67_ZERO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PERCENT_PERCENT97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PERIOD_PERIOD67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PERIOD_PERIOD97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PI_H67_TWO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PI_F97_DIVISION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_PRINT_PRGM_F97_SCI97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_R_DOWN_H67_EIGHT67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_R_DOWN_R_DOWN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_R_S_R_S67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_R_S_R_S97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_R_UP_H67_NINE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_R_UP_F97_R_DOWN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RAD_H67_CHS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RAD_F97_CHS97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RC_I_H67_RCL67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RC_I_RCL97_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RCL_RCL67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RCL_RCL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RECIPROCAL_H67_FOUR67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RECIPROCAL_RECIPROCAL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_REG_H67_THREE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_REG_F97_ENG97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RND_F67_SUB_I67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RND_F97_RTN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RTN_H67_GTO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RTN_RTN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_S_G67_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_S_F97_SQRT97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SCI_G67_DSP67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SCI_SCI97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SEVEN_SEVEN67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SEVEN_SEVEN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SF_H67_SUBTRACTION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SF_F97_LBL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIGMA_MINUS_H67_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIGMA_MINUS_F97_SIGMA_PLUS97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIGMA_PLUS_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIGMA_PLUS_SIGMA_PLUS97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIN_F67_FOUR67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIN_SIN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIX_SIX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SIX_SIX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SPACE_H67_R_S67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SPACE_F97_FIX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SQRT_F67_NINE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SQRT_SQRT97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SQUARE_G67_NINE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SQUARE_SQUARE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SST_SST67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SST_SST97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ST_I_H67_STO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ST_I_STO97_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_STK_G67_R_S67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_STK_F97_DISPLAY_X97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_STO_STO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_STO_STO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SUB_I_SUB_I67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SUB_I_SUB_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SUBTRACTION_SUBTRACTION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_SUBTRACTION_SUBTRACTION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TAN_F67_SIX67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TAN_TAN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TEN_TO_THE_XTH_G67_EIGHT67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TEN_TO_THE_XTH_F97_EXP97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_THREE_THREE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_THREE_THREE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_DEGREES_F67_TWO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_DEGREES_F97_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_HMS_G67_THREE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_HMS_F97_STO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_HOURS_F67_THREE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_HOURS_F97_RCL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_POLAR_G67_ONE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_POLAR_TO_POLAR97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_RADIANS_G67_TWO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_RADIANS_F97_SUB_I97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_RECTANGULAR_F67_ONE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TO_RECTANGULAR_TO_RECTANGULAR97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TWO_TWO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TWO_TWO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_W_DATA_F67_ENTER67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_W_DATA_F97_ZERO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_AVERAGE_F67_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_AVERAGE_F97_SQUARE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EQ_0_F67_SUBTRACTION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EQ_0_F97_FIVE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EQ_Y_G67_SUBTRACTION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EQ_Y_F97_EIGHT97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EXCHANGE_I_H67_SUB_I67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EXCHANGE_I_F97_X_EXCHANGE_Y97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EXCHANGE_Y_H67_SEVEN67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_EXCHANGE_Y_X_EXCHANGE_Y97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_GT_0_F67_DIVISION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_GT_0_F97_SIX97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_GT_Y_G67_DIVISION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_GT_Y_F97_NINE97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_LE_Y_G67_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_LE_Y_F97_MULTIPLICATION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_LT_0_F67_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_LT_0_F97_SUBTRACTION97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_NE_0_F67_ADDITION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_NE_0_F97_FOUR97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_NE_Y_G67_ADDITION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_X_NE_Y_F97_SEVEN97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_Y_TO_THE_XTH_H67_FIVE67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_Y_TO_THE_XTH_Y_TO_THE_XTH97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ZERO_ZERO67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_ZERO_ZERO97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_INSTRUCTION (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_INSTRUCTION2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_INSTRUCTION3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_INSTRUCTION4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GSB_SHORTCUT (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RCL_SUB_I_SHORTCUT (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION5 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION6 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION7 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION8 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION9 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION12 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION13 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION14 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION15 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION16 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION17 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION18 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION19 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION20 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION21 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION22 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION23 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION24 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION25 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION26 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION27 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION28 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION29 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION30 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION31 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION32 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION33 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION34 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION35 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION36 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION37 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION38 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION39 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION40 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION41 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION42 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION43 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION44 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION45 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION46 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION47 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION48 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION49 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION50 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION51 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION52 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION53 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION54 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION55 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION56 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION57 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION58 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION59 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION60 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION61 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION62 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION63 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION64 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION65 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION66 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION67 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION68 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION69 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION70 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION71 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION72 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION73 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION74 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION75 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION76 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION77 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION78 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION79 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION80 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION81 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION82 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION83 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION84 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION85 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NULLARY_INSTRUCTION86 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION5 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION6 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION_GSB97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION7 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION8 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION9 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION_LBL97 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UNARY_INSTRUCTION12 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_BINARY_INSTRUCTION (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_TERNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_RCL_SIGMA_PLUS (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_GTO_PERIOD (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_OPERATOR (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_OPERATOR2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_OPERATOR3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_OPERATOR4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT5 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT6 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT7 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT8 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT9 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT10 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT_COUNT (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT_COUNT2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FLAG (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FLAG2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FLAG3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_FLAG4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER4 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER5 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_UPPERCASE_LETTER_LABEL (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LOWERCASE_LETTER_LABEL (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER_LABEL (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LETTER_LABEL2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_DIGIT_LABEL (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NON_LOWERCASE_LABEL (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NON_LOWERCASE_LABEL2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_NON_LOWERCASE_LABEL3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LABEL (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LABEL2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_LABEL3 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_OPERABLE_MEMORY (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_OPERABLE_MEMORY2 (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_MEMORY (Reader reader, Token token, Token [] tokens);
-        void ReduceRULE_MEMORY2 (Reader reader, Token token, Token [] tokens);
+        void ReduceRULE_A_A67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_A_A97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ABS_H67_SIX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ABS_F97_Y_TO_THE_XTH97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ADDITION_ADDITION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ADDITION_ADDITION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ARCCOS_G67_FIVE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ARCCOS_F97_COS97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ARCSIN_G67_FOUR67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ARCSIN_F97_SIN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ARCTAN_G67_SIX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ARCTAN_F97_TAN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_B_B67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_B_B97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_BST_H67_SST67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_BST_BST97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_C_C67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_C_C97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CF_H67_ADDITION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CF_F97_GTO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CHS_CHS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CHS_CHS97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CL_PRGM_F67_CLX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CL_PRGM_F97_THREE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CL_REG_F67_EEX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CL_REG_F97_TWO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CLX_CLX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_CLX_CLX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_COS_F67_FIVE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_COS_COS97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_D_D67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_D_D97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DEG_H67_ENTER67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DEG_F97_ENTER97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DEL_H67_CLX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DEL_F97_ONE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DISPLAY_X_F67_R_S67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DISPLAY_X_DISPLAY_X97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIVISION_DIVISION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIVISION_DIVISION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DSP_DSP67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DSP_DSP97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DSZ_SUB_I_G67_STO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DSZ_SUB_I_F97_BST97_SUB_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DSZ_F67_STO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DSZ_F97_BST97_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_E_E67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_E_E97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_EEX_EEX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_EEX_EEX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_EIGHT_EIGHT67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_EIGHT_EIGHT97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ENG_H67_DSP67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ENG_ENG97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ENTER_ENTER67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ENTER_ENTER97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_EXP_G67_SEVEN67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_EXP_EXP97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_F_F67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_F_F97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_F_TEST_H67_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_F_TEST_F97_GSB97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FACTORIAL_H67_DIVISION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FACTORIAL_F97_RECIPROCAL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FIVE_FIVE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FIVE_FIVE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FIX_F67_DSP67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FIX_FIX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FOUR_FOUR67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FOUR_FOUR97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FRAC_G67_PERIOD67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FRAC_F97_TO_RECTANGULAR97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GRD_H67_EEX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GRD_F97_EEX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GSB_F_G67_GTO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GSB_F67_GTO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GSB_GSB97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GTO_GTO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GTO_GTO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_HMS_PLUS_H67_PERIOD67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_HMS_PLUS_F97_ADDITION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_INT_F67_PERIOD67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_INT_F97_TO_POLAR97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ISZ_SUB_I_G67_RCL67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ISZ_SUB_I_F97_SST97_SUB_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ISZ_F67_RCL67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ISZ_F97_SST97_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LBL_F_G67_SST67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LBL_F67_SST67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LBL_LBL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LN_F67_SEVEN67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LN_LN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LOG_F67_EIGHT67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LOG_F97_LN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LST_X_H67_ZERO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LST_X_F97_DSP97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_MERGE_G67_ENTER67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_MERGE_F97_PERIOD97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_MULTIPLICATION_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_MULTIPLICATION_MULTIPLICATION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NINE_NINE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NINE_NINE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ONE_ONE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ONE_ONE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_P_EXCHANGE_S_F67_CHS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_P_EXCHANGE_S_F97_CLX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PAUSE_H67_ONE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PAUSE_F97_R_S97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PERCENT_CHANGE_G67_ZERO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PERCENT_CHANGE_F97_PERCENT97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PERCENT_F67_ZERO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PERCENT_PERCENT97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PERIOD_PERIOD67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PERIOD_PERIOD97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PI_H67_TWO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PI_F97_DIVISION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_PRINT_PRGM_F97_SCI97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_R_DOWN_H67_EIGHT67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_R_DOWN_R_DOWN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_R_S_R_S67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_R_S_R_S97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_R_UP_H67_NINE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_R_UP_F97_R_DOWN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RAD_H67_CHS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RAD_F97_CHS97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RC_I_H67_RCL67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RC_I_RCL97_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RCL_RCL67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RCL_RCL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RECIPROCAL_H67_FOUR67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RECIPROCAL_RECIPROCAL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_REG_H67_THREE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_REG_F97_ENG97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RND_F67_SUB_I67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RND_F97_RTN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RTN_H67_GTO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RTN_RTN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_S_G67_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_S_F97_SQRT97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SCI_G67_DSP67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SCI_SCI97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SEVEN_SEVEN67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SEVEN_SEVEN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SF_H67_SUBTRACTION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SF_F97_LBL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIGMA_MINUS_H67_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIGMA_MINUS_F97_SIGMA_PLUS97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIGMA_PLUS_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIGMA_PLUS_SIGMA_PLUS97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIN_F67_FOUR67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIN_SIN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIX_SIX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SIX_SIX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SPACE_H67_R_S67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SPACE_F97_FIX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SQRT_F67_NINE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SQRT_SQRT97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SQUARE_G67_NINE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SQUARE_SQUARE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SST_SST67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SST_SST97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ST_I_H67_STO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ST_I_STO97_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_STK_G67_R_S67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_STK_F97_DISPLAY_X97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_STO_STO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_STO_STO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SUB_I_SUB_I67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SUB_I_SUB_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SUBTRACTION_SUBTRACTION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_SUBTRACTION_SUBTRACTION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TAN_F67_SIX67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TAN_TAN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TEN_TO_THE_XTH_G67_EIGHT67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TEN_TO_THE_XTH_F97_EXP97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_THREE_THREE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_THREE_THREE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_DEGREES_F67_TWO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_DEGREES_F97_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_HMS_G67_THREE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_HMS_F97_STO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_HOURS_F67_THREE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_HOURS_F97_RCL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_POLAR_G67_ONE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_POLAR_TO_POLAR97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_RADIANS_G67_TWO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_RADIANS_F97_SUB_I97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_RECTANGULAR_F67_ONE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TO_RECTANGULAR_TO_RECTANGULAR97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TWO_TWO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TWO_TWO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_W_DATA_F67_ENTER67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_W_DATA_F97_ZERO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_AVERAGE_F67_SIGMA_PLUS67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_AVERAGE_F97_SQUARE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EQ_0_F67_SUBTRACTION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EQ_0_F97_FIVE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EQ_Y_G67_SUBTRACTION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EQ_Y_F97_EIGHT97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EXCHANGE_I_H67_SUB_I67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EXCHANGE_I_F97_X_EXCHANGE_Y97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EXCHANGE_Y_H67_SEVEN67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_EXCHANGE_Y_X_EXCHANGE_Y97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_GT_0_F67_DIVISION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_GT_0_F97_SIX97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_GT_Y_G67_DIVISION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_GT_Y_F97_NINE97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_LE_Y_G67_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_LE_Y_F97_MULTIPLICATION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_LT_0_F67_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_LT_0_F97_SUBTRACTION97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_NE_0_F67_ADDITION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_NE_0_F97_FOUR97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_NE_Y_G67_ADDITION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_X_NE_Y_F97_SEVEN97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_Y_TO_THE_XTH_H67_FIVE67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_Y_TO_THE_XTH_Y_TO_THE_XTH97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ZERO_ZERO67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_ZERO_ZERO97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_INSTRUCTION2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_INSTRUCTION3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_INSTRUCTION4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GSB_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GSB_F_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RCL_SUB_I_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION5 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION6 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION7 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION8 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION9 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION12 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION13 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION14 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION15 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION16 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION17 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION18 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION19 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION20 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION21 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION22 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION23 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION24 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION25 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION26 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION27 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION28 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION29 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION30 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION31 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION32 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION33 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION34 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION35 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION36 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION37 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION38 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION39 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION40 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION41 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION42 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION43 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION44 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION45 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION46 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION47 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION48 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION49 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION50 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION51 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION52 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION53 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION54 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION55 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION56 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION57 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION58 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION59 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION60 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION61 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION62 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION63 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION64 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION65 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION66 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION67 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION68 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION69 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION70 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION71 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION72 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION73 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION74 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION75 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION76 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION77 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION78 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION79 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION80 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION81 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION82 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION83 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION84 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION85 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION86 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION5 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION6 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION7 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION_GSB97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION8 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION9 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION_LBL97 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION12 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UNARY_INSTRUCTION13 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_BINARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_TERNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RCL_SIGMA_PLUS (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_GTO_PERIOD (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_OPERATOR (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_OPERATOR2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_OPERATOR3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_OPERATOR4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT5 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT6 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT7 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT8 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT9 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT10 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT_COUNT (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT_COUNT2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FLAG (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FLAG2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FLAG3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_FLAG4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER4 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER5 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_UPPERCASE_LETTER_LABEL (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LOWERCASE_LETTER_LABEL (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER_LABEL (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LETTER_LABEL2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_DIGIT_LABEL (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NON_LOWERCASE_LABEL (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NON_LOWERCASE_LABEL2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NON_LOWERCASE_LABEL3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LABEL (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LABEL2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_LABEL3 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_OPERABLE_MEMORY (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_OPERABLE_MEMORY2 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_MEMORY (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_MEMORY2 (Reader reader, Token token, Token [] tokens, object state);
     }
 
     public class Parser
@@ -1007,6 +1012,7 @@ namespace HP_Parser
         private string input;
         private LALRParser parser;
         private Reader reader;
+        private object state;
 
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
@@ -1025,1479 +1031,1487 @@ namespace HP_Parser
             {
                 case RuleConstants.RULE_A_A67 :
                     // <A> ::= 'A67'
-                    actions.ReduceRULE_A_A67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_A_A67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_A_A97 :
                     // <A> ::= 'A97'
-                    actions.ReduceRULE_A_A97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_A_A97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ABS_H67_SIX67 :
                     // <Abs> ::= 'h67' 'Six67'
-                    actions.ReduceRULE_ABS_H67_SIX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ABS_H67_SIX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ABS_F97_Y_TO_THE_XTH97 :
                     // <Abs> ::= 'f97' 'Y_To_The_Xth97'
-                    actions.ReduceRULE_ABS_F97_Y_TO_THE_XTH97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ABS_F97_Y_TO_THE_XTH97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ADDITION_ADDITION67 :
                     // <Addition> ::= 'Addition67'
-                    actions.ReduceRULE_ADDITION_ADDITION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ADDITION_ADDITION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ADDITION_ADDITION97 :
                     // <Addition> ::= 'Addition97'
-                    actions.ReduceRULE_ADDITION_ADDITION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ADDITION_ADDITION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ARCCOS_G67_FIVE67 :
                     // <Arccos> ::= 'g67' 'Five67'
-                    actions.ReduceRULE_ARCCOS_G67_FIVE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCCOS_G67_FIVE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ARCCOS_F97_COS97 :
                     // <Arccos> ::= 'f97' 'Cos97'
-                    actions.ReduceRULE_ARCCOS_F97_COS97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCCOS_F97_COS97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ARCSIN_G67_FOUR67 :
                     // <Arcsin> ::= 'g67' 'Four67'
-                    actions.ReduceRULE_ARCSIN_G67_FOUR67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCSIN_G67_FOUR67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ARCSIN_F97_SIN97 :
                     // <Arcsin> ::= 'f97' 'Sin97'
-                    actions.ReduceRULE_ARCSIN_F97_SIN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCSIN_F97_SIN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ARCTAN_G67_SIX67 :
                     // <Arctan> ::= 'g67' 'Six67'
-                    actions.ReduceRULE_ARCTAN_G67_SIX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCTAN_G67_SIX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ARCTAN_F97_TAN97 :
                     // <Arctan> ::= 'f97' 'Tan97'
-                    actions.ReduceRULE_ARCTAN_F97_TAN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ARCTAN_F97_TAN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_B_B67 :
                     // <B> ::= 'B67'
-                    actions.ReduceRULE_B_B67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_B_B67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_B_B97 :
                     // <B> ::= 'B97'
-                    actions.ReduceRULE_B_B97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_B_B97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_BST_H67_SST67 :
                     // <Bst> ::= 'h67' 'Sst67'
-                    actions.ReduceRULE_BST_H67_SST67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_BST_H67_SST67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_BST_BST97 :
                     // <Bst> ::= 'Bst97'
-                    actions.ReduceRULE_BST_BST97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_BST_BST97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_C_C67 :
                     // <C> ::= 'C67'
-                    actions.ReduceRULE_C_C67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_C_C67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_C_C97 :
                     // <C> ::= 'C97'
-                    actions.ReduceRULE_C_C97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_C_C97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CF_H67_ADDITION67 :
                     // <CF> ::= 'h67' 'Addition67'
-                    actions.ReduceRULE_CF_H67_ADDITION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CF_H67_ADDITION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CF_F97_GTO97 :
                     // <CF> ::= 'f97' 'Gto97'
-                    actions.ReduceRULE_CF_F97_GTO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CF_F97_GTO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CHS_CHS67 :
                     // <Chs> ::= 'Chs67'
-                    actions.ReduceRULE_CHS_CHS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CHS_CHS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CHS_CHS97 :
                     // <Chs> ::= 'Chs97'
-                    actions.ReduceRULE_CHS_CHS97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CHS_CHS97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CL_PRGM_F67_CLX67 :
                     // <Cl_Prgm> ::= 'f67' 'Clx67'
-                    actions.ReduceRULE_CL_PRGM_F67_CLX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CL_PRGM_F67_CLX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CL_PRGM_F97_THREE97 :
                     // <Cl_Prgm> ::= 'f97' 'Three97'
-                    actions.ReduceRULE_CL_PRGM_F97_THREE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CL_PRGM_F97_THREE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CL_REG_F67_EEX67 :
                     // <Cl_Reg> ::= 'f67' 'Eex67'
-                    actions.ReduceRULE_CL_REG_F67_EEX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CL_REG_F67_EEX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CL_REG_F97_TWO97 :
                     // <Cl_Reg> ::= 'f97' 'Two97'
-                    actions.ReduceRULE_CL_REG_F97_TWO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CL_REG_F97_TWO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CLX_CLX67 :
                     // <Clx> ::= 'Clx67'
-                    actions.ReduceRULE_CLX_CLX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CLX_CLX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_CLX_CLX97 :
                     // <Clx> ::= 'Clx97'
-                    actions.ReduceRULE_CLX_CLX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_CLX_CLX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_COS_F67_FIVE67 :
                     // <Cos> ::= 'f67' 'Five67'
-                    actions.ReduceRULE_COS_F67_FIVE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COS_F67_FIVE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_COS_COS97 :
                     // <Cos> ::= 'Cos97'
-                    actions.ReduceRULE_COS_COS97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_COS_COS97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_D_D67 :
                     // <D> ::= 'D67'
-                    actions.ReduceRULE_D_D67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_D_D67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_D_D97 :
                     // <D> ::= 'D97'
-                    actions.ReduceRULE_D_D97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_D_D97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DEG_H67_ENTER67 :
                     // <Deg> ::= 'h67' 'Enter67'
-                    actions.ReduceRULE_DEG_H67_ENTER67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DEG_H67_ENTER67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DEG_F97_ENTER97 :
                     // <Deg> ::= 'f97' 'Enter97'
-                    actions.ReduceRULE_DEG_F97_ENTER97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DEG_F97_ENTER97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DEL_H67_CLX67 :
                     // <Del> ::= 'h67' 'Clx67'
-                    actions.ReduceRULE_DEL_H67_CLX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DEL_H67_CLX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DEL_F97_ONE97 :
                     // <Del> ::= 'f97' 'One97'
-                    actions.ReduceRULE_DEL_F97_ONE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DEL_F97_ONE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DISPLAY_X_F67_R_S67 :
                     // <Display_X> ::= 'f67' 'R_S67'
-                    actions.ReduceRULE_DISPLAY_X_F67_R_S67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DISPLAY_X_F67_R_S67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DISPLAY_X_DISPLAY_X97 :
                     // <Display_X> ::= 'Display_X97'
-                    actions.ReduceRULE_DISPLAY_X_DISPLAY_X97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DISPLAY_X_DISPLAY_X97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIVISION_DIVISION67 :
                     // <Division> ::= 'Division67'
-                    actions.ReduceRULE_DIVISION_DIVISION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIVISION_DIVISION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIVISION_DIVISION97 :
                     // <Division> ::= 'Division97'
-                    actions.ReduceRULE_DIVISION_DIVISION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIVISION_DIVISION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DSP_DSP67 :
                     // <Dsp> ::= 'Dsp67'
-                    actions.ReduceRULE_DSP_DSP67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSP_DSP67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DSP_DSP97 :
                     // <Dsp> ::= 'Dsp97'
-                    actions.ReduceRULE_DSP_DSP97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSP_DSP97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DSZ_SUB_I_G67_STO67 :
                     // <Dsz_Sub_I> ::= 'g67' 'Sto67'
-                    actions.ReduceRULE_DSZ_SUB_I_G67_STO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSZ_SUB_I_G67_STO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DSZ_SUB_I_F97_BST97_SUB_I97 :
                     // <Dsz_Sub_I> ::= 'f97' 'Bst97' 'Sub_I97'
-                    actions.ReduceRULE_DSZ_SUB_I_F97_BST97_SUB_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSZ_SUB_I_F97_BST97_SUB_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DSZ_F67_STO67 :
                     // <Dsz> ::= 'f67' 'Sto67'
-                    actions.ReduceRULE_DSZ_F67_STO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSZ_F67_STO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DSZ_F97_BST97_I97 :
                     // <Dsz> ::= 'f97' 'Bst97' 'I97'
-                    actions.ReduceRULE_DSZ_F97_BST97_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DSZ_F97_BST97_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_E_E67 :
                     // <E> ::= 'E67'
-                    actions.ReduceRULE_E_E67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_E_E67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_E_E97 :
                     // <E> ::= 'E97'
-                    actions.ReduceRULE_E_E97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_E_E97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_EEX_EEX67 :
                     // <Eex> ::= 'Eex67'
-                    actions.ReduceRULE_EEX_EEX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EEX_EEX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_EEX_EEX97 :
                     // <Eex> ::= 'Eex97'
-                    actions.ReduceRULE_EEX_EEX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EEX_EEX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_EIGHT_EIGHT67 :
                     // <Eight> ::= 'Eight67'
-                    actions.ReduceRULE_EIGHT_EIGHT67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EIGHT_EIGHT67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_EIGHT_EIGHT97 :
                     // <Eight> ::= 'Eight97'
-                    actions.ReduceRULE_EIGHT_EIGHT97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EIGHT_EIGHT97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ENG_H67_DSP67 :
                     // <Eng> ::= 'h67' 'Dsp67'
-                    actions.ReduceRULE_ENG_H67_DSP67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ENG_H67_DSP67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ENG_ENG97 :
                     // <Eng> ::= 'Eng97'
-                    actions.ReduceRULE_ENG_ENG97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ENG_ENG97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ENTER_ENTER67 :
                     // <Enter> ::= 'Enter67'
-                    actions.ReduceRULE_ENTER_ENTER67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ENTER_ENTER67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ENTER_ENTER97 :
                     // <Enter> ::= 'Enter97'
-                    actions.ReduceRULE_ENTER_ENTER97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ENTER_ENTER97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_EXP_G67_SEVEN67 :
                     // <Exp> ::= 'g67' 'Seven67'
-                    actions.ReduceRULE_EXP_G67_SEVEN67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EXP_G67_SEVEN67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_EXP_EXP97 :
                     // <Exp> ::= 'Exp97'
-                    actions.ReduceRULE_EXP_EXP97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_EXP_EXP97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_F_F67 :
                     // <f> ::= 'f67'
-                    actions.ReduceRULE_F_F67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_F67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_F_F97 :
                     // <f> ::= 'f97'
-                    actions.ReduceRULE_F_F97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_F97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_F_TEST_H67_MULTIPLICATION67 :
                     // <F_Test> ::= 'h67' 'Multiplication67'
-                    actions.ReduceRULE_F_TEST_H67_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_TEST_H67_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_F_TEST_F97_GSB97 :
                     // <F_Test> ::= 'f97' 'Gsb97'
-                    actions.ReduceRULE_F_TEST_F97_GSB97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_F_TEST_F97_GSB97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FACTORIAL_H67_DIVISION67 :
                     // <Factorial> ::= 'h67' 'Division67'
-                    actions.ReduceRULE_FACTORIAL_H67_DIVISION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FACTORIAL_H67_DIVISION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FACTORIAL_F97_RECIPROCAL97 :
                     // <Factorial> ::= 'f97' 'Reciprocal97'
-                    actions.ReduceRULE_FACTORIAL_F97_RECIPROCAL97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FACTORIAL_F97_RECIPROCAL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FIVE_FIVE67 :
                     // <Five> ::= 'Five67'
-                    actions.ReduceRULE_FIVE_FIVE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FIVE_FIVE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FIVE_FIVE97 :
                     // <Five> ::= 'Five97'
-                    actions.ReduceRULE_FIVE_FIVE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FIVE_FIVE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FIX_F67_DSP67 :
                     // <Fix> ::= 'f67' 'Dsp67'
-                    actions.ReduceRULE_FIX_F67_DSP67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FIX_F67_DSP67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FIX_FIX97 :
                     // <Fix> ::= 'Fix97'
-                    actions.ReduceRULE_FIX_FIX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FIX_FIX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FOUR_FOUR67 :
                     // <Four> ::= 'Four67'
-                    actions.ReduceRULE_FOUR_FOUR67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FOUR_FOUR67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FOUR_FOUR97 :
                     // <Four> ::= 'Four97'
-                    actions.ReduceRULE_FOUR_FOUR97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FOUR_FOUR97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FRAC_G67_PERIOD67 :
                     // <Frac> ::= 'g67' 'Period67'
-                    actions.ReduceRULE_FRAC_G67_PERIOD67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FRAC_G67_PERIOD67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FRAC_F97_TO_RECTANGULAR97 :
                     // <Frac> ::= 'f97' 'To_Rectangular97'
-                    actions.ReduceRULE_FRAC_F97_TO_RECTANGULAR97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FRAC_F97_TO_RECTANGULAR97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GRD_H67_EEX67 :
                     // <Grd> ::= 'h67' 'Eex67'
-                    actions.ReduceRULE_GRD_H67_EEX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GRD_H67_EEX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GRD_F97_EEX97 :
                     // <Grd> ::= 'f97' 'Eex97'
-                    actions.ReduceRULE_GRD_F97_EEX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GRD_F97_EEX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GSB_F_G67_GTO67 :
                     // <Gsb_f> ::= 'g67' 'Gto67'
-                    actions.ReduceRULE_GSB_F_G67_GTO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GSB_F_G67_GTO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GSB_F67_GTO67 :
                     // <Gsb> ::= 'f67' 'Gto67'
-                    actions.ReduceRULE_GSB_F67_GTO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GSB_F67_GTO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GSB_GSB97 :
                     // <Gsb> ::= 'Gsb97'
-                    actions.ReduceRULE_GSB_GSB97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GSB_GSB97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GTO_GTO67 :
                     // <Gto> ::= 'Gto67'
-                    actions.ReduceRULE_GTO_GTO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GTO_GTO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GTO_GTO97 :
                     // <Gto> ::= 'Gto97'
-                    actions.ReduceRULE_GTO_GTO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GTO_GTO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_HMS_PLUS_H67_PERIOD67 :
                     // <HMS_Plus> ::= 'h67' 'Period67'
-                    actions.ReduceRULE_HMS_PLUS_H67_PERIOD67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_HMS_PLUS_H67_PERIOD67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_HMS_PLUS_F97_ADDITION97 :
                     // <HMS_Plus> ::= 'f97' 'Addition97'
-                    actions.ReduceRULE_HMS_PLUS_F97_ADDITION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_HMS_PLUS_F97_ADDITION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_INT_F67_PERIOD67 :
                     // <Int> ::= 'f67' 'Period67'
-                    actions.ReduceRULE_INT_F67_PERIOD67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INT_F67_PERIOD67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_INT_F97_TO_POLAR97 :
                     // <Int> ::= 'f97' 'To_Polar97'
-                    actions.ReduceRULE_INT_F97_TO_POLAR97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INT_F97_TO_POLAR97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ISZ_SUB_I_G67_RCL67 :
                     // <Isz_Sub_I> ::= 'g67' 'Rcl67'
-                    actions.ReduceRULE_ISZ_SUB_I_G67_RCL67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ISZ_SUB_I_G67_RCL67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ISZ_SUB_I_F97_SST97_SUB_I97 :
                     // <Isz_Sub_I> ::= 'f97' 'Sst97' 'Sub_I97'
-                    actions.ReduceRULE_ISZ_SUB_I_F97_SST97_SUB_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ISZ_SUB_I_F97_SST97_SUB_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ISZ_F67_RCL67 :
                     // <Isz> ::= 'f67' 'Rcl67'
-                    actions.ReduceRULE_ISZ_F67_RCL67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ISZ_F67_RCL67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ISZ_F97_SST97_I97 :
                     // <Isz> ::= 'f97' 'Sst97' 'I97'
-                    actions.ReduceRULE_ISZ_F97_SST97_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ISZ_F97_SST97_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LBL_F_G67_SST67 :
                     // <Lbl_f> ::= 'g67' 'Sst67'
-                    actions.ReduceRULE_LBL_F_G67_SST67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LBL_F_G67_SST67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LBL_F67_SST67 :
                     // <Lbl> ::= 'f67' 'Sst67'
-                    actions.ReduceRULE_LBL_F67_SST67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LBL_F67_SST67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LBL_LBL97 :
                     // <Lbl> ::= 'Lbl97'
-                    actions.ReduceRULE_LBL_LBL97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LBL_LBL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LN_F67_SEVEN67 :
                     // <Ln> ::= 'f67' 'Seven67'
-                    actions.ReduceRULE_LN_F67_SEVEN67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LN_F67_SEVEN67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LN_LN97 :
                     // <Ln> ::= 'Ln97'
-                    actions.ReduceRULE_LN_LN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LN_LN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LOG_F67_EIGHT67 :
                     // <Log> ::= 'f67' 'Eight67'
-                    actions.ReduceRULE_LOG_F67_EIGHT67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LOG_F67_EIGHT67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LOG_F97_LN97 :
                     // <Log> ::= 'f97' 'Ln97'
-                    actions.ReduceRULE_LOG_F97_LN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LOG_F97_LN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LST_X_H67_ZERO67 :
                     // <Lst_X> ::= 'h67' 'Zero67'
-                    actions.ReduceRULE_LST_X_H67_ZERO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LST_X_H67_ZERO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LST_X_F97_DSP97 :
                     // <Lst_X> ::= 'f97' 'Dsp97'
-                    actions.ReduceRULE_LST_X_F97_DSP97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LST_X_F97_DSP97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_MERGE_G67_ENTER67 :
                     // <Merge> ::= 'g67' 'Enter67'
-                    actions.ReduceRULE_MERGE_G67_ENTER67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MERGE_G67_ENTER67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_MERGE_F97_PERIOD97 :
                     // <Merge> ::= 'f97' 'Period97'
-                    actions.ReduceRULE_MERGE_F97_PERIOD97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MERGE_F97_PERIOD97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_MULTIPLICATION_MULTIPLICATION67 :
                     // <Multiplication> ::= 'Multiplication67'
-                    actions.ReduceRULE_MULTIPLICATION_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MULTIPLICATION_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_MULTIPLICATION_MULTIPLICATION97 :
                     // <Multiplication> ::= 'Multiplication97'
-                    actions.ReduceRULE_MULTIPLICATION_MULTIPLICATION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MULTIPLICATION_MULTIPLICATION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NINE_NINE67 :
                     // <Nine> ::= 'Nine67'
-                    actions.ReduceRULE_NINE_NINE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NINE_NINE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NINE_NINE97 :
                     // <Nine> ::= 'Nine97'
-                    actions.ReduceRULE_NINE_NINE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NINE_NINE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ONE_ONE67 :
                     // <One> ::= 'One67'
-                    actions.ReduceRULE_ONE_ONE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ONE_ONE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ONE_ONE97 :
                     // <One> ::= 'One97'
-                    actions.ReduceRULE_ONE_ONE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ONE_ONE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_P_EXCHANGE_S_F67_CHS67 :
                     // <P_Exchange_S> ::= 'f67' 'Chs67'
-                    actions.ReduceRULE_P_EXCHANGE_S_F67_CHS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_P_EXCHANGE_S_F67_CHS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_P_EXCHANGE_S_F97_CLX97 :
                     // <P_Exchange_S> ::= 'f97' 'Clx97'
-                    actions.ReduceRULE_P_EXCHANGE_S_F97_CLX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_P_EXCHANGE_S_F97_CLX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PAUSE_H67_ONE67 :
                     // <Pause> ::= 'h67' 'One67'
-                    actions.ReduceRULE_PAUSE_H67_ONE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PAUSE_H67_ONE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PAUSE_F97_R_S97 :
                     // <Pause> ::= 'f97' 'R_S97'
-                    actions.ReduceRULE_PAUSE_F97_R_S97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PAUSE_F97_R_S97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PERCENT_CHANGE_G67_ZERO67 :
                     // <Percent_Change> ::= 'g67' 'Zero67'
-                    actions.ReduceRULE_PERCENT_CHANGE_G67_ZERO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERCENT_CHANGE_G67_ZERO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PERCENT_CHANGE_F97_PERCENT97 :
                     // <Percent_Change> ::= 'f97' 'Percent97'
-                    actions.ReduceRULE_PERCENT_CHANGE_F97_PERCENT97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERCENT_CHANGE_F97_PERCENT97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PERCENT_F67_ZERO67 :
                     // <Percent> ::= 'f67' 'Zero67'
-                    actions.ReduceRULE_PERCENT_F67_ZERO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERCENT_F67_ZERO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PERCENT_PERCENT97 :
                     // <Percent> ::= 'Percent97'
-                    actions.ReduceRULE_PERCENT_PERCENT97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERCENT_PERCENT97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PERIOD_PERIOD67 :
                     // <Period> ::= 'Period67'
-                    actions.ReduceRULE_PERIOD_PERIOD67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERIOD_PERIOD67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PERIOD_PERIOD97 :
                     // <Period> ::= 'Period97'
-                    actions.ReduceRULE_PERIOD_PERIOD97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PERIOD_PERIOD97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PI_H67_TWO67 :
                     // <Pi> ::= 'h67' 'Two67'
-                    actions.ReduceRULE_PI_H67_TWO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PI_H67_TWO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PI_F97_DIVISION97 :
                     // <Pi> ::= 'f97' 'Division97'
-                    actions.ReduceRULE_PI_F97_DIVISION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PI_F97_DIVISION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_PRINT_PRGM_F97_SCI97 :
                     // <Print_Prgm> ::= 'f97' 'Sci97'
-                    actions.ReduceRULE_PRINT_PRGM_F97_SCI97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_PRINT_PRGM_F97_SCI97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_R_DOWN_H67_EIGHT67 :
                     // <R_Down> ::= 'h67' 'Eight67'
-                    actions.ReduceRULE_R_DOWN_H67_EIGHT67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_DOWN_H67_EIGHT67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_R_DOWN_R_DOWN97 :
                     // <R_Down> ::= 'R_Down97'
-                    actions.ReduceRULE_R_DOWN_R_DOWN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_DOWN_R_DOWN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_R_S_R_S67 :
                     // <R_S> ::= 'R_S67'
-                    actions.ReduceRULE_R_S_R_S67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_S_R_S67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_R_S_R_S97 :
                     // <R_S> ::= 'R_S97'
-                    actions.ReduceRULE_R_S_R_S97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_S_R_S97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_R_UP_H67_NINE67 :
                     // <R_Up> ::= 'h67' 'Nine67'
-                    actions.ReduceRULE_R_UP_H67_NINE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_UP_H67_NINE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_R_UP_F97_R_DOWN97 :
                     // <R_Up> ::= 'f97' 'R_Down97'
-                    actions.ReduceRULE_R_UP_F97_R_DOWN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_R_UP_F97_R_DOWN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RAD_H67_CHS67 :
                     // <Rad> ::= 'h67' 'Chs67'
-                    actions.ReduceRULE_RAD_H67_CHS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RAD_H67_CHS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RAD_F97_CHS97 :
                     // <Rad> ::= 'f97' 'Chs97'
-                    actions.ReduceRULE_RAD_F97_CHS97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RAD_F97_CHS97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RC_I_H67_RCL67 :
                     // <Rc_I> ::= 'h67' 'Rcl67'
-                    actions.ReduceRULE_RC_I_H67_RCL67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RC_I_H67_RCL67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RC_I_RCL97_I97 :
                     // <Rc_I> ::= 'Rcl97' 'I97'
-                    actions.ReduceRULE_RC_I_RCL97_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RC_I_RCL97_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RCL_RCL67 :
                     // <Rcl> ::= 'Rcl67'
-                    actions.ReduceRULE_RCL_RCL67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RCL_RCL67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RCL_RCL97 :
                     // <Rcl> ::= 'Rcl97'
-                    actions.ReduceRULE_RCL_RCL97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RCL_RCL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RECIPROCAL_H67_FOUR67 :
                     // <Reciprocal> ::= 'h67' 'Four67'
-                    actions.ReduceRULE_RECIPROCAL_H67_FOUR67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RECIPROCAL_H67_FOUR67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RECIPROCAL_RECIPROCAL97 :
                     // <Reciprocal> ::= 'Reciprocal97'
-                    actions.ReduceRULE_RECIPROCAL_RECIPROCAL97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RECIPROCAL_RECIPROCAL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_REG_H67_THREE67 :
                     // <Reg> ::= 'h67' 'Three67'
-                    actions.ReduceRULE_REG_H67_THREE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_REG_H67_THREE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_REG_F97_ENG97 :
                     // <Reg> ::= 'f97' 'Eng97'
-                    actions.ReduceRULE_REG_F97_ENG97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_REG_F97_ENG97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RND_F67_SUB_I67 :
                     // <Rnd> ::= 'f67' 'Sub_I67'
-                    actions.ReduceRULE_RND_F67_SUB_I67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RND_F67_SUB_I67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RND_F97_RTN97 :
                     // <Rnd> ::= 'f97' 'Rtn97'
-                    actions.ReduceRULE_RND_F97_RTN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RND_F97_RTN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RTN_H67_GTO67 :
                     // <Rtn> ::= 'h67' 'Gto67'
-                    actions.ReduceRULE_RTN_H67_GTO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RTN_H67_GTO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RTN_RTN97 :
                     // <Rtn> ::= 'Rtn97'
-                    actions.ReduceRULE_RTN_RTN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RTN_RTN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_S_G67_SIGMA_PLUS67 :
                     // <S> ::= 'g67' 'Sigma_Plus67'
-                    actions.ReduceRULE_S_G67_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_S_G67_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_S_F97_SQRT97 :
                     // <S> ::= 'f97' 'Sqrt97'
-                    actions.ReduceRULE_S_F97_SQRT97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_S_F97_SQRT97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SCI_G67_DSP67 :
                     // <Sci> ::= 'g67' 'Dsp67'
-                    actions.ReduceRULE_SCI_G67_DSP67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SCI_G67_DSP67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SCI_SCI97 :
                     // <Sci> ::= 'Sci97'
-                    actions.ReduceRULE_SCI_SCI97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SCI_SCI97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SEVEN_SEVEN67 :
                     // <Seven> ::= 'Seven67'
-                    actions.ReduceRULE_SEVEN_SEVEN67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SEVEN_SEVEN67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SEVEN_SEVEN97 :
                     // <Seven> ::= 'Seven97'
-                    actions.ReduceRULE_SEVEN_SEVEN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SEVEN_SEVEN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SF_H67_SUBTRACTION67 :
                     // <SF> ::= 'h67' 'Subtraction67'
-                    actions.ReduceRULE_SF_H67_SUBTRACTION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SF_H67_SUBTRACTION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SF_F97_LBL97 :
                     // <SF> ::= 'f97' 'Lbl97'
-                    actions.ReduceRULE_SF_F97_LBL97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SF_F97_LBL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIGMA_MINUS_H67_SIGMA_PLUS67 :
                     // <Sigma_Minus> ::= 'h67' 'Sigma_Plus67'
-                    actions.ReduceRULE_SIGMA_MINUS_H67_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIGMA_MINUS_H67_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIGMA_MINUS_F97_SIGMA_PLUS97 :
                     // <Sigma_Minus> ::= 'f97' 'Sigma_Plus97'
-                    actions.ReduceRULE_SIGMA_MINUS_F97_SIGMA_PLUS97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIGMA_MINUS_F97_SIGMA_PLUS97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIGMA_PLUS_SIGMA_PLUS67 :
                     // <Sigma_Plus> ::= 'Sigma_Plus67'
-                    actions.ReduceRULE_SIGMA_PLUS_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIGMA_PLUS_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIGMA_PLUS_SIGMA_PLUS97 :
                     // <Sigma_Plus> ::= 'Sigma_Plus97'
-                    actions.ReduceRULE_SIGMA_PLUS_SIGMA_PLUS97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIGMA_PLUS_SIGMA_PLUS97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIN_F67_FOUR67 :
                     // <Sin> ::= 'f67' 'Four67'
-                    actions.ReduceRULE_SIN_F67_FOUR67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIN_F67_FOUR67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIN_SIN97 :
                     // <Sin> ::= 'Sin97'
-                    actions.ReduceRULE_SIN_SIN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIN_SIN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIX_SIX67 :
                     // <Six> ::= 'Six67'
-                    actions.ReduceRULE_SIX_SIX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIX_SIX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SIX_SIX97 :
                     // <Six> ::= 'Six97'
-                    actions.ReduceRULE_SIX_SIX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SIX_SIX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SPACE_H67_R_S67 :
                     // <Space> ::= 'h67' 'R_S67'
-                    actions.ReduceRULE_SPACE_H67_R_S67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SPACE_H67_R_S67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SPACE_F97_FIX97 :
                     // <Space> ::= 'f97' 'Fix97'
-                    actions.ReduceRULE_SPACE_F97_FIX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SPACE_F97_FIX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SQRT_F67_NINE67 :
                     // <Sqrt> ::= 'f67' 'Nine67'
-                    actions.ReduceRULE_SQRT_F67_NINE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SQRT_F67_NINE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SQRT_SQRT97 :
                     // <Sqrt> ::= 'Sqrt97'
-                    actions.ReduceRULE_SQRT_SQRT97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SQRT_SQRT97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SQUARE_G67_NINE67 :
                     // <Square> ::= 'g67' 'Nine67'
-                    actions.ReduceRULE_SQUARE_G67_NINE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SQUARE_G67_NINE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SQUARE_SQUARE97 :
                     // <Square> ::= 'Square97'
-                    actions.ReduceRULE_SQUARE_SQUARE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SQUARE_SQUARE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SST_SST67 :
                     // <Sst> ::= 'Sst67'
-                    actions.ReduceRULE_SST_SST67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SST_SST67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SST_SST97 :
                     // <Sst> ::= 'Sst97'
-                    actions.ReduceRULE_SST_SST97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SST_SST97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ST_I_H67_STO67 :
                     // <St_I> ::= 'h67' 'Sto67'
-                    actions.ReduceRULE_ST_I_H67_STO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ST_I_H67_STO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ST_I_STO97_I97 :
                     // <St_I> ::= 'Sto97' 'I97'
-                    actions.ReduceRULE_ST_I_STO97_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ST_I_STO97_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_STK_G67_R_S67 :
                     // <Stk> ::= 'g67' 'R_S67'
-                    actions.ReduceRULE_STK_G67_R_S67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_STK_G67_R_S67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_STK_F97_DISPLAY_X97 :
                     // <Stk> ::= 'f97' 'Display_X97'
-                    actions.ReduceRULE_STK_F97_DISPLAY_X97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_STK_F97_DISPLAY_X97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_STO_STO67 :
                     // <Sto> ::= 'Sto67'
-                    actions.ReduceRULE_STO_STO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_STO_STO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_STO_STO97 :
                     // <Sto> ::= 'Sto97'
-                    actions.ReduceRULE_STO_STO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_STO_STO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SUB_I_SUB_I67 :
                     // <Sub_I> ::= 'Sub_I67'
-                    actions.ReduceRULE_SUB_I_SUB_I67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SUB_I_SUB_I67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SUB_I_SUB_I97 :
                     // <Sub_I> ::= 'Sub_I97'
-                    actions.ReduceRULE_SUB_I_SUB_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SUB_I_SUB_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SUBTRACTION_SUBTRACTION67 :
                     // <Subtraction> ::= 'Subtraction67'
-                    actions.ReduceRULE_SUBTRACTION_SUBTRACTION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SUBTRACTION_SUBTRACTION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_SUBTRACTION_SUBTRACTION97 :
                     // <Subtraction> ::= 'Subtraction97'
-                    actions.ReduceRULE_SUBTRACTION_SUBTRACTION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_SUBTRACTION_SUBTRACTION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TAN_F67_SIX67 :
                     // <Tan> ::= 'f67' 'Six67'
-                    actions.ReduceRULE_TAN_F67_SIX67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TAN_F67_SIX67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TAN_TAN97 :
                     // <Tan> ::= 'Tan97'
-                    actions.ReduceRULE_TAN_TAN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TAN_TAN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TEN_TO_THE_XTH_G67_EIGHT67 :
                     // <Ten_To_The_Xth> ::= 'g67' 'Eight67'
-                    actions.ReduceRULE_TEN_TO_THE_XTH_G67_EIGHT67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TEN_TO_THE_XTH_G67_EIGHT67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TEN_TO_THE_XTH_F97_EXP97 :
                     // <Ten_To_The_Xth> ::= 'f97' 'Exp97'
-                    actions.ReduceRULE_TEN_TO_THE_XTH_F97_EXP97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TEN_TO_THE_XTH_F97_EXP97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_THREE_THREE67 :
                     // <Three> ::= 'Three67'
-                    actions.ReduceRULE_THREE_THREE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_THREE_THREE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_THREE_THREE97 :
                     // <Three> ::= 'Three97'
-                    actions.ReduceRULE_THREE_THREE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_THREE_THREE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_DEGREES_F67_TWO67 :
                     // <To_Degrees> ::= 'f67' 'Two67'
-                    actions.ReduceRULE_TO_DEGREES_F67_TWO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_DEGREES_F67_TWO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_DEGREES_F97_I97 :
                     // <To_Degrees> ::= 'f97' 'I97'
-                    actions.ReduceRULE_TO_DEGREES_F97_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_DEGREES_F97_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_HMS_G67_THREE67 :
                     // <To_HMS> ::= 'g67' 'Three67'
-                    actions.ReduceRULE_TO_HMS_G67_THREE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_HMS_G67_THREE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_HMS_F97_STO97 :
                     // <To_HMS> ::= 'f97' 'Sto97'
-                    actions.ReduceRULE_TO_HMS_F97_STO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_HMS_F97_STO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_HOURS_F67_THREE67 :
                     // <To_Hours> ::= 'f67' 'Three67'
-                    actions.ReduceRULE_TO_HOURS_F67_THREE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_HOURS_F67_THREE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_HOURS_F97_RCL97 :
                     // <To_Hours> ::= 'f97' 'Rcl97'
-                    actions.ReduceRULE_TO_HOURS_F97_RCL97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_HOURS_F97_RCL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_POLAR_G67_ONE67 :
                     // <To_Polar> ::= 'g67' 'One67'
-                    actions.ReduceRULE_TO_POLAR_G67_ONE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_POLAR_G67_ONE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_POLAR_TO_POLAR97 :
                     // <To_Polar> ::= 'To_Polar97'
-                    actions.ReduceRULE_TO_POLAR_TO_POLAR97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_POLAR_TO_POLAR97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_RADIANS_G67_TWO67 :
                     // <To_Radians> ::= 'g67' 'Two67'
-                    actions.ReduceRULE_TO_RADIANS_G67_TWO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_RADIANS_G67_TWO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_RADIANS_F97_SUB_I97 :
                     // <To_Radians> ::= 'f97' 'Sub_I97'
-                    actions.ReduceRULE_TO_RADIANS_F97_SUB_I97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_RADIANS_F97_SUB_I97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_RECTANGULAR_F67_ONE67 :
                     // <To_Rectangular> ::= 'f67' 'One67'
-                    actions.ReduceRULE_TO_RECTANGULAR_F67_ONE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_RECTANGULAR_F67_ONE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TO_RECTANGULAR_TO_RECTANGULAR97 :
                     // <To_Rectangular> ::= 'To_Rectangular97'
-                    actions.ReduceRULE_TO_RECTANGULAR_TO_RECTANGULAR97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TO_RECTANGULAR_TO_RECTANGULAR97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TWO_TWO67 :
                     // <Two> ::= 'Two67'
-                    actions.ReduceRULE_TWO_TWO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TWO_TWO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TWO_TWO97 :
                     // <Two> ::= 'Two97'
-                    actions.ReduceRULE_TWO_TWO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TWO_TWO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_W_DATA_F67_ENTER67 :
                     // <W_Data> ::= 'f67' 'Enter67'
-                    actions.ReduceRULE_W_DATA_F67_ENTER67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_W_DATA_F67_ENTER67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_W_DATA_F97_ZERO97 :
                     // <W_Data> ::= 'f97' 'Zero97'
-                    actions.ReduceRULE_W_DATA_F97_ZERO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_W_DATA_F97_ZERO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_AVERAGE_F67_SIGMA_PLUS67 :
                     // <X_Average> ::= 'f67' 'Sigma_Plus67'
-                    actions.ReduceRULE_X_AVERAGE_F67_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_AVERAGE_F67_SIGMA_PLUS67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_AVERAGE_F97_SQUARE97 :
                     // <X_Average> ::= 'f97' 'Square97'
-                    actions.ReduceRULE_X_AVERAGE_F97_SQUARE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_AVERAGE_F97_SQUARE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EQ_0_F67_SUBTRACTION67 :
                     // <X_EQ_0> ::= 'f67' 'Subtraction67'
-                    actions.ReduceRULE_X_EQ_0_F67_SUBTRACTION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EQ_0_F67_SUBTRACTION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EQ_0_F97_FIVE97 :
                     // <X_EQ_0> ::= 'f97' 'Five97'
-                    actions.ReduceRULE_X_EQ_0_F97_FIVE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EQ_0_F97_FIVE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EQ_Y_G67_SUBTRACTION67 :
                     // <X_EQ_Y> ::= 'g67' 'Subtraction67'
-                    actions.ReduceRULE_X_EQ_Y_G67_SUBTRACTION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EQ_Y_G67_SUBTRACTION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EQ_Y_F97_EIGHT97 :
                     // <X_EQ_Y> ::= 'f97' 'Eight97'
-                    actions.ReduceRULE_X_EQ_Y_F97_EIGHT97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EQ_Y_F97_EIGHT97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EXCHANGE_I_H67_SUB_I67 :
                     // <X_Exchange_I> ::= 'h67' 'Sub_I67'
-                    actions.ReduceRULE_X_EXCHANGE_I_H67_SUB_I67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EXCHANGE_I_H67_SUB_I67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EXCHANGE_I_F97_X_EXCHANGE_Y97 :
                     // <X_Exchange_I> ::= 'f97' 'X_Exchange_Y97'
-                    actions.ReduceRULE_X_EXCHANGE_I_F97_X_EXCHANGE_Y97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EXCHANGE_I_F97_X_EXCHANGE_Y97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EXCHANGE_Y_H67_SEVEN67 :
                     // <X_Exchange_Y> ::= 'h67' 'Seven67'
-                    actions.ReduceRULE_X_EXCHANGE_Y_H67_SEVEN67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EXCHANGE_Y_H67_SEVEN67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_EXCHANGE_Y_X_EXCHANGE_Y97 :
                     // <X_Exchange_Y> ::= 'X_Exchange_Y97'
-                    actions.ReduceRULE_X_EXCHANGE_Y_X_EXCHANGE_Y97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_EXCHANGE_Y_X_EXCHANGE_Y97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_GT_0_F67_DIVISION67 :
                     // <X_GT_0> ::= 'f67' 'Division67'
-                    actions.ReduceRULE_X_GT_0_F67_DIVISION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_GT_0_F67_DIVISION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_GT_0_F97_SIX97 :
                     // <X_GT_0> ::= 'f97' 'Six97'
-                    actions.ReduceRULE_X_GT_0_F97_SIX97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_GT_0_F97_SIX97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_GT_Y_G67_DIVISION67 :
                     // <X_GT_Y> ::= 'g67' 'Division67'
-                    actions.ReduceRULE_X_GT_Y_G67_DIVISION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_GT_Y_G67_DIVISION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_GT_Y_F97_NINE97 :
                     // <X_GT_Y> ::= 'f97' 'Nine97'
-                    actions.ReduceRULE_X_GT_Y_F97_NINE97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_GT_Y_F97_NINE97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_LE_Y_G67_MULTIPLICATION67 :
                     // <X_LE_Y> ::= 'g67' 'Multiplication67'
-                    actions.ReduceRULE_X_LE_Y_G67_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_LE_Y_G67_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_LE_Y_F97_MULTIPLICATION97 :
                     // <X_LE_Y> ::= 'f97' 'Multiplication97'
-                    actions.ReduceRULE_X_LE_Y_F97_MULTIPLICATION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_LE_Y_F97_MULTIPLICATION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_LT_0_F67_MULTIPLICATION67 :
                     // <X_LT_0> ::= 'f67' 'Multiplication67'
-                    actions.ReduceRULE_X_LT_0_F67_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_LT_0_F67_MULTIPLICATION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_LT_0_F97_SUBTRACTION97 :
                     // <X_LT_0> ::= 'f97' 'Subtraction97'
-                    actions.ReduceRULE_X_LT_0_F97_SUBTRACTION97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_LT_0_F97_SUBTRACTION97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_NE_0_F67_ADDITION67 :
                     // <X_NE_0> ::= 'f67' 'Addition67'
-                    actions.ReduceRULE_X_NE_0_F67_ADDITION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_NE_0_F67_ADDITION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_NE_0_F97_FOUR97 :
                     // <X_NE_0> ::= 'f97' 'Four97'
-                    actions.ReduceRULE_X_NE_0_F97_FOUR97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_NE_0_F97_FOUR97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_NE_Y_G67_ADDITION67 :
                     // <X_NE_Y> ::= 'g67' 'Addition67'
-                    actions.ReduceRULE_X_NE_Y_G67_ADDITION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_NE_Y_G67_ADDITION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_X_NE_Y_F97_SEVEN97 :
                     // <X_NE_Y> ::= 'f97' 'Seven97'
-                    actions.ReduceRULE_X_NE_Y_F97_SEVEN97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_X_NE_Y_F97_SEVEN97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_Y_TO_THE_XTH_H67_FIVE67 :
                     // <Y_To_The_Xth> ::= 'h67' 'Five67'
-                    actions.ReduceRULE_Y_TO_THE_XTH_H67_FIVE67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_Y_TO_THE_XTH_H67_FIVE67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_Y_TO_THE_XTH_Y_TO_THE_XTH97 :
                     // <Y_To_The_Xth> ::= 'Y_To_The_Xth97'
-                    actions.ReduceRULE_Y_TO_THE_XTH_Y_TO_THE_XTH97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_Y_TO_THE_XTH_Y_TO_THE_XTH97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ZERO_ZERO67 :
                     // <Zero> ::= 'Zero67'
-                    actions.ReduceRULE_ZERO_ZERO67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ZERO_ZERO67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_ZERO_ZERO97 :
                     // <Zero> ::= 'Zero97'
-                    actions.ReduceRULE_ZERO_ZERO97 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_ZERO_ZERO97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_INSTRUCTION :
                     // <Instruction> ::= <Nullary_Instruction>
-                    actions.ReduceRULE_INSTRUCTION (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_INSTRUCTION2 :
                     // <Instruction> ::= <Unary_Instruction>
-                    actions.ReduceRULE_INSTRUCTION2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_INSTRUCTION3 :
                     // <Instruction> ::= <Binary_Instruction>
-                    actions.ReduceRULE_INSTRUCTION3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_INSTRUCTION4 :
                     // <Instruction> ::= <Ternary_Instruction>
-                    actions.ReduceRULE_INSTRUCTION4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_INSTRUCTION4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GSB_SHORTCUT :
-                    // <Gsb_Shortcut> ::= <Letter_Label>
-                    actions.ReduceRULE_GSB_SHORTCUT (reader, args.Token, args.Token.Tokens);
+                    // <Gsb_Shortcut> ::= <Uppercase_Letter_Label>
+                    actions.ReduceRULE_GSB_SHORTCUT (reader, args.Token, args.Token.Tokens, state);
+                    return;
+                case RuleConstants.RULE_GSB_F_SHORTCUT :
+                    // <Gsb_f_Shortcut> ::= <Lowercase_Letter_Label>
+                    actions.ReduceRULE_GSB_F_SHORTCUT (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RCL_SUB_I_SHORTCUT :
                     // <Rcl_Sub_I_Shortcut> ::= <Sub_I>
-                    actions.ReduceRULE_RCL_SUB_I_SHORTCUT (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RCL_SUB_I_SHORTCUT (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION :
                     // <Nullary_Instruction> ::= <Abs>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION2 :
                     // <Nullary_Instruction> ::= <Addition>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION3 :
                     // <Nullary_Instruction> ::= <Arccos>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION4 :
                     // <Nullary_Instruction> ::= <Arcsin>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION5 :
                     // <Nullary_Instruction> ::= <Arctan>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION5 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION5 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION6 :
                     // <Nullary_Instruction> ::= <Bst>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION6 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION6 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION7 :
                     // <Nullary_Instruction> ::= <Chs>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION7 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION7 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION8 :
                     // <Nullary_Instruction> ::= <Cl_Prgm>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION8 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION8 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION9 :
                     // <Nullary_Instruction> ::= <Cl_Reg>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION9 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION9 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION10 :
                     // <Nullary_Instruction> ::= <Clx>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION10 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION10 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION11 :
                     // <Nullary_Instruction> ::= <Cos>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION11 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION11 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION12 :
                     // <Nullary_Instruction> ::= <Deg>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION12 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION12 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION13 :
                     // <Nullary_Instruction> ::= <Del>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION13 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION13 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION14 :
                     // <Nullary_Instruction> ::= <Digit>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION14 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION14 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION15 :
                     // <Nullary_Instruction> ::= <Display_X>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION15 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION15 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION16 :
                     // <Nullary_Instruction> ::= <Division>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION16 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION16 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION17 :
                     // <Nullary_Instruction> ::= <Dsz_Sub_I>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION17 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION17 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION18 :
                     // <Nullary_Instruction> ::= <Dsz>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION18 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION18 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION19 :
                     // <Nullary_Instruction> ::= <Eex>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION19 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION19 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION20 :
                     // <Nullary_Instruction> ::= <Eng>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION20 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION20 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION21 :
                     // <Nullary_Instruction> ::= <Enter>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION21 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION21 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION22 :
                     // <Nullary_Instruction> ::= <Exp>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION22 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION22 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION23 :
                     // <Nullary_Instruction> ::= <Factorial>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION23 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION23 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION24 :
                     // <Nullary_Instruction> ::= <Fix>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION24 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION24 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION25 :
                     // <Nullary_Instruction> ::= <Frac>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION25 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION25 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION26 :
                     // <Nullary_Instruction> ::= <Grd>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION26 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION26 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION27 :
                     // <Nullary_Instruction> ::= <HMS_Plus>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION27 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION27 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION28 :
                     // <Nullary_Instruction> ::= <Int>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION28 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION28 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION29 :
                     // <Nullary_Instruction> ::= <Isz_Sub_I>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION29 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION29 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION30 :
                     // <Nullary_Instruction> ::= <Isz>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION30 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION30 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION31 :
                     // <Nullary_Instruction> ::= <Ln>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION31 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION31 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION32 :
                     // <Nullary_Instruction> ::= <Log>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION32 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION32 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION33 :
                     // <Nullary_Instruction> ::= <Lst_X>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION33 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION33 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION34 :
                     // <Nullary_Instruction> ::= <Merge>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION34 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION34 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION35 :
                     // <Nullary_Instruction> ::= <Multiplication>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION35 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION35 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION36 :
                     // <Nullary_Instruction> ::= <P_Exchange_S>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION36 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION36 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION37 :
                     // <Nullary_Instruction> ::= <Pause>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION37 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION37 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION38 :
                     // <Nullary_Instruction> ::= <Percent_Change>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION38 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION38 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION39 :
                     // <Nullary_Instruction> ::= <Percent>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION39 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION39 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION40 :
                     // <Nullary_Instruction> ::= <Period>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION40 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION40 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION41 :
                     // <Nullary_Instruction> ::= <Pi>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION41 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION41 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION42 :
                     // <Nullary_Instruction> ::= <Print_Prgm>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION42 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION42 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION43 :
                     // <Nullary_Instruction> ::= <R_Down>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION43 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION43 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION44 :
                     // <Nullary_Instruction> ::= <R_S>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION44 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION44 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION45 :
                     // <Nullary_Instruction> ::= <R_Up>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION45 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION45 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION46 :
                     // <Nullary_Instruction> ::= <Rad>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION46 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION46 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION47 :
                     // <Nullary_Instruction> ::= <Rc_I>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION47 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION47 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION48 :
                     // <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION48 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION48 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION49 :
                     // <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION49 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION49 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION50 :
                     // <Nullary_Instruction> ::= <Reciprocal>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION50 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION50 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION51 :
                     // <Nullary_Instruction> ::= <Reg>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION51 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION51 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION52 :
                     // <Nullary_Instruction> ::= <Rnd>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION52 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION52 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION53 :
                     // <Nullary_Instruction> ::= <Rtn>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION53 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION53 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION54 :
                     // <Nullary_Instruction> ::= <S>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION54 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION54 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION55 :
                     // <Nullary_Instruction> ::= <Sci>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION55 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION55 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION56 :
                     // <Nullary_Instruction> ::= <Sigma_Minus>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION56 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION56 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION57 :
                     // <Nullary_Instruction> ::= <Sigma_Plus>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION57 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION57 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION58 :
                     // <Nullary_Instruction> ::= <Sin>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION58 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION58 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION59 :
                     // <Nullary_Instruction> ::= <Space>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION59 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION59 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION60 :
                     // <Nullary_Instruction> ::= <Sqrt>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION60 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION60 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION61 :
                     // <Nullary_Instruction> ::= <Square>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION61 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION61 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION62 :
                     // <Nullary_Instruction> ::= <Sst>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION62 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION62 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION63 :
                     // <Nullary_Instruction> ::= <St_I>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION63 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION63 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION64 :
                     // <Nullary_Instruction> ::= <Stk>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION64 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION64 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION65 :
                     // <Nullary_Instruction> ::= <Subtraction>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION65 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION65 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION66 :
                     // <Nullary_Instruction> ::= <Tan>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION66 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION66 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION67 :
                     // <Nullary_Instruction> ::= <Ten_To_The_Xth>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION67 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION67 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION68 :
                     // <Nullary_Instruction> ::= <To_Degrees>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION68 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION68 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION69 :
                     // <Nullary_Instruction> ::= <To_HMS>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION69 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION69 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION70 :
                     // <Nullary_Instruction> ::= <To_Hours>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION70 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION70 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION71 :
                     // <Nullary_Instruction> ::= <To_Polar>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION71 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION71 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION72 :
                     // <Nullary_Instruction> ::= <To_Radians>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION72 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION72 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION73 :
                     // <Nullary_Instruction> ::= <To_Rectangular>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION73 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION73 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION74 :
                     // <Nullary_Instruction> ::= <W_Data>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION74 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION74 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION75 :
                     // <Nullary_Instruction> ::= <X_Average>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION75 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION75 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION76 :
                     // <Nullary_Instruction> ::= <X_EQ_0>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION76 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION76 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION77 :
                     // <Nullary_Instruction> ::= <X_EQ_Y>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION77 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION77 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION78 :
                     // <Nullary_Instruction> ::= <X_Exchange_I>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION78 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION78 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION79 :
                     // <Nullary_Instruction> ::= <X_Exchange_Y>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION79 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION79 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION80 :
                     // <Nullary_Instruction> ::= <X_GT_0>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION80 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION80 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION81 :
                     // <Nullary_Instruction> ::= <X_GT_Y>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION81 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION81 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION82 :
                     // <Nullary_Instruction> ::= <X_LE_Y>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION82 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION82 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION83 :
                     // <Nullary_Instruction> ::= <X_LT_0>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION83 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION83 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION84 :
                     // <Nullary_Instruction> ::= <X_NE_0>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION84 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION84 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION85 :
                     // <Nullary_Instruction> ::= <X_NE_Y>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION85 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION85 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NULLARY_INSTRUCTION86 :
                     // <Nullary_Instruction> ::= <Y_To_The_Xth>
-                    actions.ReduceRULE_NULLARY_INSTRUCTION86 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NULLARY_INSTRUCTION86 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION :
                     // <Unary_Instruction> ::= <CF> <Flag>
-                    actions.ReduceRULE_UNARY_INSTRUCTION (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION2 :
                     // <Unary_Instruction> ::= <Dsp> <Digit_Count>
-                    actions.ReduceRULE_UNARY_INSTRUCTION2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION3 :
                     // <Unary_Instruction> ::= <F_Test> <Flag>
-                    actions.ReduceRULE_UNARY_INSTRUCTION3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION4 :
                     // <Unary_Instruction> ::= <Gsb> <Non_Lowercase_Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION5 :
                     // <Unary_Instruction> ::= <Gsb_f> <Uppercase_Letter_Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION5 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION5 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION6 :
+                    // <Unary_Instruction> ::= <Gsb_f_Shortcut>
+                    actions.ReduceRULE_UNARY_INSTRUCTION6 (reader, args.Token, args.Token.Tokens, state);
+                    return;
+                case RuleConstants.RULE_UNARY_INSTRUCTION7 :
                     // <Unary_Instruction> ::= <Gsb_Shortcut>
-                    actions.ReduceRULE_UNARY_INSTRUCTION6 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION7 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION_GSB97 :
                     // <Unary_Instruction> ::= 'Gsb97' <Lowercase_Letter_Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION_GSB97 (reader, args.Token, args.Token.Tokens);
-                    return;
-                case RuleConstants.RULE_UNARY_INSTRUCTION7 :
-                    // <Unary_Instruction> ::= <Gto> <Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION7 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION_GSB97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION8 :
-                    // <Unary_Instruction> ::= <Lbl> <Non_Lowercase_Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION8 (reader, args.Token, args.Token.Tokens);
+                    // <Unary_Instruction> ::= <Gto> <Label>
+                    actions.ReduceRULE_UNARY_INSTRUCTION8 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION9 :
+                    // <Unary_Instruction> ::= <Lbl> <Non_Lowercase_Label>
+                    actions.ReduceRULE_UNARY_INSTRUCTION9 (reader, args.Token, args.Token.Tokens, state);
+                    return;
+                case RuleConstants.RULE_UNARY_INSTRUCTION10 :
                     // <Unary_Instruction> ::= <Lbl_f> <Uppercase_Letter_Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION9 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION10 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION_LBL97 :
                     // <Unary_Instruction> ::= 'Lbl97' <Lowercase_Letter_Label>
-                    actions.ReduceRULE_UNARY_INSTRUCTION_LBL97 (reader, args.Token, args.Token.Tokens);
-                    return;
-                case RuleConstants.RULE_UNARY_INSTRUCTION10 :
-                    // <Unary_Instruction> ::= <Rcl> <Memory>
-                    actions.ReduceRULE_UNARY_INSTRUCTION10 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION_LBL97 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION11 :
-                    // <Unary_Instruction> ::= <SF> <Flag>
-                    actions.ReduceRULE_UNARY_INSTRUCTION11 (reader, args.Token, args.Token.Tokens);
+                    // <Unary_Instruction> ::= <Rcl> <Memory>
+                    actions.ReduceRULE_UNARY_INSTRUCTION11 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UNARY_INSTRUCTION12 :
+                    // <Unary_Instruction> ::= <SF> <Flag>
+                    actions.ReduceRULE_UNARY_INSTRUCTION12 (reader, args.Token, args.Token.Tokens, state);
+                    return;
+                case RuleConstants.RULE_UNARY_INSTRUCTION13 :
                     // <Unary_Instruction> ::= <Sto> <Memory>
-                    actions.ReduceRULE_UNARY_INSTRUCTION12 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UNARY_INSTRUCTION13 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_BINARY_INSTRUCTION :
                     // <Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
-                    actions.ReduceRULE_BINARY_INSTRUCTION (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_BINARY_INSTRUCTION (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_TERNARY_INSTRUCTION :
                     // <Ternary_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
-                    actions.ReduceRULE_TERNARY_INSTRUCTION (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_TERNARY_INSTRUCTION (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_RCL_SIGMA_PLUS :
                     // <Rcl_Sigma_Plus> ::= <Rcl> <Sigma_Plus>
-                    actions.ReduceRULE_RCL_SIGMA_PLUS (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_RCL_SIGMA_PLUS (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_GTO_PERIOD :
                     // <Gto_Period> ::= <Gto> <Period>
-                    actions.ReduceRULE_GTO_PERIOD (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_GTO_PERIOD (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_OPERATOR :
                     // <Operator> ::= <Subtraction>
-                    actions.ReduceRULE_OPERATOR (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_OPERATOR2 :
                     // <Operator> ::= <Addition>
-                    actions.ReduceRULE_OPERATOR2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_OPERATOR3 :
                     // <Operator> ::= <Multiplication>
-                    actions.ReduceRULE_OPERATOR3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_OPERATOR4 :
                     // <Operator> ::= <Division>
-                    actions.ReduceRULE_OPERATOR4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERATOR4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT :
                     // <Digit> ::= <Zero>
-                    actions.ReduceRULE_DIGIT (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT2 :
                     // <Digit> ::= <One>
-                    actions.ReduceRULE_DIGIT2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT3 :
                     // <Digit> ::= <Two>
-                    actions.ReduceRULE_DIGIT3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT4 :
                     // <Digit> ::= <Three>
-                    actions.ReduceRULE_DIGIT4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT5 :
                     // <Digit> ::= <Four>
-                    actions.ReduceRULE_DIGIT5 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT5 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT6 :
                     // <Digit> ::= <Five>
-                    actions.ReduceRULE_DIGIT6 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT6 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT7 :
                     // <Digit> ::= <Six>
-                    actions.ReduceRULE_DIGIT7 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT7 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT8 :
                     // <Digit> ::= <Seven>
-                    actions.ReduceRULE_DIGIT8 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT8 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT9 :
                     // <Digit> ::= <Eight>
-                    actions.ReduceRULE_DIGIT9 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT9 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT10 :
                     // <Digit> ::= <Nine>
-                    actions.ReduceRULE_DIGIT10 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT10 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT_COUNT :
                     // <Digit_Count> ::= <Digit>
-                    actions.ReduceRULE_DIGIT_COUNT (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_COUNT (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT_COUNT2 :
                     // <Digit_Count> ::= <Sub_I>
-                    actions.ReduceRULE_DIGIT_COUNT2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_COUNT2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FLAG :
                     // <Flag> ::= <Zero>
-                    actions.ReduceRULE_FLAG (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FLAG (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FLAG2 :
                     // <Flag> ::= <One>
-                    actions.ReduceRULE_FLAG2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FLAG2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FLAG3 :
                     // <Flag> ::= <Two>
-                    actions.ReduceRULE_FLAG3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FLAG3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_FLAG4 :
                     // <Flag> ::= <Three>
-                    actions.ReduceRULE_FLAG4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_FLAG4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER :
                     // <Letter> ::= <A>
-                    actions.ReduceRULE_LETTER (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER2 :
                     // <Letter> ::= <B>
-                    actions.ReduceRULE_LETTER2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER3 :
                     // <Letter> ::= <C>
-                    actions.ReduceRULE_LETTER3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER4 :
                     // <Letter> ::= <D>
-                    actions.ReduceRULE_LETTER4 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER4 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER5 :
                     // <Letter> ::= <E>
-                    actions.ReduceRULE_LETTER5 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER5 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_UPPERCASE_LETTER_LABEL :
                     // <Uppercase_Letter_Label> ::= <Letter>
-                    actions.ReduceRULE_UPPERCASE_LETTER_LABEL (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_UPPERCASE_LETTER_LABEL (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LOWERCASE_LETTER_LABEL :
                     // <Lowercase_Letter_Label> ::= <f> <Letter>
-                    actions.ReduceRULE_LOWERCASE_LETTER_LABEL (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LOWERCASE_LETTER_LABEL (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER_LABEL :
                     // <Letter_Label> ::= <Lowercase_Letter_Label>
-                    actions.ReduceRULE_LETTER_LABEL (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_LABEL (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LETTER_LABEL2 :
                     // <Letter_Label> ::= <Uppercase_Letter_Label>
-                    actions.ReduceRULE_LETTER_LABEL2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LETTER_LABEL2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_DIGIT_LABEL :
                     // <Digit_Label> ::= <Digit>
-                    actions.ReduceRULE_DIGIT_LABEL (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_DIGIT_LABEL (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NON_LOWERCASE_LABEL :
                     // <Non_Lowercase_Label> ::= <Digit_Label>
-                    actions.ReduceRULE_NON_LOWERCASE_LABEL (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NON_LOWERCASE_LABEL (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NON_LOWERCASE_LABEL2 :
                     // <Non_Lowercase_Label> ::= <Uppercase_Letter_Label>
-                    actions.ReduceRULE_NON_LOWERCASE_LABEL2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NON_LOWERCASE_LABEL2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_NON_LOWERCASE_LABEL3 :
                     // <Non_Lowercase_Label> ::= <Sub_I>
-                    actions.ReduceRULE_NON_LOWERCASE_LABEL3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_NON_LOWERCASE_LABEL3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LABEL :
                     // <Label> ::= <Digit_Label>
-                    actions.ReduceRULE_LABEL (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LABEL (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LABEL2 :
                     // <Label> ::= <Letter_Label>
-                    actions.ReduceRULE_LABEL2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LABEL2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_LABEL3 :
                     // <Label> ::= <Sub_I>
-                    actions.ReduceRULE_LABEL3 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_LABEL3 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_OPERABLE_MEMORY :
                     // <Operable_Memory> ::= <Digit>
-                    actions.ReduceRULE_OPERABLE_MEMORY (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERABLE_MEMORY (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_OPERABLE_MEMORY2 :
                     // <Operable_Memory> ::= <Sub_I>
-                    actions.ReduceRULE_OPERABLE_MEMORY2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_OPERABLE_MEMORY2 (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_MEMORY :
                     // <Memory> ::= <Operable_Memory>
-                    actions.ReduceRULE_MEMORY (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MEMORY (reader, args.Token, args.Token.Tokens, state);
                     return;
                 case RuleConstants.RULE_MEMORY2 :
                     // <Memory> ::= <Letter>
-                    actions.ReduceRULE_MEMORY2 (reader, args.Token, args.Token.Tokens);
+                    actions.ReduceRULE_MEMORY2 (reader, args.Token, args.Token.Tokens, state);
                     return;
             }
 			Trace.Assert (false);
@@ -2518,8 +2532,9 @@ namespace HP_Parser
 			actions.ParserError (input, args.UnexpectedToken);
         }
 
-        public Parser (Reader reader, IActions a)
+        public Parser (Reader reader, object state, IActions a)
         {
+			this.state = state;
 			this.reader = reader;
             parser = reader.CreateNewParser ();
             parser.TrimReductions = false; 

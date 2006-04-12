@@ -4,7 +4,6 @@ using com.calitha.goldparser.lalr;
 using HP_Parser;
 using System;
 using System.Diagnostics;
-using System.Windows.Forms; // TODO: temporary
 
 namespace HP67_Class_Library
 {
@@ -44,10 +43,9 @@ namespace HP67_Class_Library
 			switch ((SymbolConstants) instruction.Id) 
 			{
 				case SymbolConstants.SYMBOL_DIGIT :
-				case SymbolConstants.SYMBOL_GSB_SHORTCUT :
 
-					// Somewhat ugly.  There are a few instructions where the argument is borne by
-					// the instruction symbol itself.  Pretend that it is a separate argument for
+					// Somewhat ugly.  For this instruction the argument is borne by the
+					// instruction symbol itself.  Pretend that it is a separate argument for
 					// uniformity.
 					arguments = new Argument [1] {(Argument) tokens [0].UserObject};
 					break;
@@ -130,7 +128,6 @@ namespace HP67_Class_Library
 						result = "N!";
 						break;
 					case SymbolConstants.SYMBOL_GSB_F :
-					case SymbolConstants.SYMBOL_GSB_SHORTCUT :
 						result = "GSB";
 						break;
 					case SymbolConstants.SYMBOL_HMS_PLUS :
