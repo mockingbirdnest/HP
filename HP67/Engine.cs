@@ -623,6 +623,7 @@ namespace HP67
 					memory.Display ();
 					break;
 				case SymbolConstants.SYMBOL_RND :
+					stack.Get (out x); // To set Last X.
 					display.Round ();
 					break;
 				case SymbolConstants.SYMBOL_RTN :

@@ -1,6 +1,6 @@
 "Name"              = 'HP_Parser'
-"Version"           = '1.3'
-"Author"            = 'Pascal & Robin'
+"Version"           = '1.5.0'
+"Author"            = 'Mockingbird'
 "Case Sensitive"    = 'False'
 "Character Mapping" = Unicode
 "Start Symbol"      = <Instruction>
