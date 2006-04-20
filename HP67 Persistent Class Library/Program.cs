@@ -224,7 +224,6 @@ namespace HP67_Class_Library
 				{
 					ir = cds.Instruction.NewInstructionRow ();
 					ir.Step = i + 1;
-					ir.Text = instructions [i].Text;
 					ir.Instruction = instructions [i].Symbol.Name;
 					ir.ArgumentCount = instructions [i].Arguments.Length;
 					ir.ProgramRow = pr;

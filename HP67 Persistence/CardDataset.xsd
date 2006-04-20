@@ -86,7 +86,6 @@
 											<xs:complexType>
 												<xs:all>
 													<xs:element name="Step" type="xs:int" />
-													<xs:element name="Text" type="xs:string" />
 													<xs:element name="Instruction" type="xs:string" />
 													<xs:element name="Argument">
 														<xs:complexType>

@@ -1530,12 +1530,15 @@ namespace HP67
 		{
 			// If a key event is received when the user is not editing the card slot, we look for
 			// a key that has the corresponding code as one of its shortcuts, and we send it a
-			// mouse event.
-			if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus) 
+			// mouse event.  A control or alt key is merely passed up the chain.
+			if (e.Control || e.Alt) 
+			{
+			}
+			else if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus) 
 			{
 				foreach (Control c in this.Controls) 
 				{
-					if (c.GetType () == typeof (Key)) 
+					if (c is Key) 
 					{
 						foreach (Keys k in ((Key) c).Shortcuts) 
 						{
@@ -1552,11 +1555,14 @@ namespace HP67
 
 		private void HP67_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
-			if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus) 
+			if (e.Control || e.Alt) 
+			{
+			}
+			else if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus)
 			{
 				foreach (Control c in this.Controls) 
 				{
-					if (c.GetType () == typeof (Key)) 
+					if (c is Key) 
 					{
 						foreach (Keys k in ((Key) c).Shortcuts) 
 						{

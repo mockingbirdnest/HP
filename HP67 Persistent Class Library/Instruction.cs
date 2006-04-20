@@ -74,6 +74,25 @@ namespace HP67_Class_Library
 				{
 					text += " ";
 				}
+				switch ((SymbolConstants) instruction.Id) 
+				{
+					case SymbolConstants.SYMBOL_GTO :
+					case SymbolConstants.SYMBOL_GSB97 :
+					case SymbolConstants.SYMBOL_LBL97 :
+
+						// Here we know-too-much about the grammar.  Unparsing a letter will
+						// produce the uppercase version of that letter.  That's fine for most
+						// usages, but the above instructions have an argument that may include the
+						// f modifier to make the letter lowercase.  Not sure how to do this more
+						// cleanly, short of doing a fancy analysis of the grammar at execution.
+						if (argument is Letter && ((Letter) argument).IsLower) 
+						{
+							text += reader.Unparse (reader.ToSymbol (new string ('f', 1))) + " ";
+						}
+						break;
+					default :
+						break;
+				}
 				text += argument.Unparse (reader);
 			}
 		}

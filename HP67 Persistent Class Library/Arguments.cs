@@ -273,6 +273,14 @@ namespace HP67_Class_Library
 			letter = l;
 		}
 
+		public bool IsLower 
+		{
+			get 
+			{
+				return (letter >= 'a' && letter <= 'e');
+			}
+		}
+
 		protected override string PersistableText
 		{
 			get 
@@ -299,20 +307,7 @@ namespace HP67_Class_Library
 
 		public override string Unparse (Reader reader) 
 		{
-			if (letter >= 'A' && letter <= 'E') 
-			{
-				return reader.Unparse (reader.ToSymbol (new string (letter, 1)));
-			}
-			else if (letter >= 'a' && letter <= 'e') 
-			{
-				// TODO: Here we know-too-much about the grammar, since we assume that lowercase
-				// letters correspond to f-uppercase letters.
-				return reader.Unparse (reader.ToSymbol (new string ('f', 1))) + " " +
-					reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
-			}
-			else {
-				return ""; // To make the compiler happy.
-			}
+			return reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
 		}
 
 		public void ToLower ()

@@ -18,7 +18,7 @@ namespace HP67_Persistence
 	/// </summary>
 	public class Card
 	{
-		private const float Version = 1.4F;
+		private const float Version = 1.5F;
 
 		#region Event Definitions
 
@@ -45,7 +45,13 @@ namespace HP67_Persistence
 			if (cds.Card [0].Version == Version) 
 			{
 				return true;
-				}
+			}
+			else if (cds.Card [0].Version == 1.4F) 
+			{
+				// Version 1.4 used to have Text in instructions.
+				cds.Card [0].Version = Version;
+				return true;
+			}
 			else
 			{
 				// For some reason (read: compiler bug) we must compute text and caption separately,

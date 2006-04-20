@@ -73,7 +73,7 @@
       </Flag>
       <Flag>
         <Id>3</Id>
-        <Value>false</Value>
+        <Value>true</Value>
       </Flag>
     </Engine>
     <Program>
@@ -1356,27 +1356,32 @@
       </Instruction>
       <Instruction>
         <Step>152</Step>
-        <Instruction>R_S</Instruction>
-        <ArgumentCount>0</ArgumentCount>
+        <Instruction>Lbl_f</Instruction>
+        <ArgumentCount>1</ArgumentCount>
+        <Argument>
+          <Id>0</Id>
+          <Type>HP67_Class_Library.Letter</Type>
+          <Value>b</Value>
+        </Argument>
       </Instruction>
       <Instruction>
         <Step>153</Step>
-        <Instruction>R_S</Instruction>
+        <Instruction>Factorial</Instruction>
         <ArgumentCount>0</ArgumentCount>
       </Instruction>
       <Instruction>
         <Step>154</Step>
-        <Instruction>R_S</Instruction>
+        <Instruction>Display_X</Instruction>
         <ArgumentCount>0</ArgumentCount>
       </Instruction>
       <Instruction>
         <Step>155</Step>
-        <Instruction>R_S</Instruction>
+        <Instruction>P_Exchange_S</Instruction>
         <ArgumentCount>0</ArgumentCount>
       </Instruction>
       <Instruction>
         <Step>156</Step>
-        <Instruction>R_S</Instruction>
+        <Instruction>Rtn</Instruction>
         <ArgumentCount>0</ArgumentCount>
       </Instruction>
       <Instruction>
@@ -1797,7 +1802,10 @@
       </Label>
       <Label>
         <Id>16</Id>
-        <StepCount>0</StepCount>
+        <StepCount>1</StepCount>
+        <Step>
+          <Step>152</Step>
+        </Step>
       </Label>
       <Label>
         <Id>17</Id>

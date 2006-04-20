@@ -3277,8 +3277,6 @@ namespace HP67_Persistence {
             
             private DataColumn columnStep;
             
-            private DataColumn columnText;
-            
             private DataColumn columnInstruction;
             
             private DataColumn columnArgumentCount;
@@ -3318,12 +3316,6 @@ namespace HP67_Persistence {
             internal DataColumn StepColumn {
                 get {
                     return this.columnStep;
-                }
-            }
-            
-            internal DataColumn TextColumn {
-                get {
-                    return this.columnText;
                 }
             }
             
@@ -3369,11 +3361,10 @@ namespace HP67_Persistence {
                 this.Rows.Add(row);
             }
             
-            public InstructionRow AddInstructionRow(int Step, string Text, string Instruction, int ArgumentCount, ProgramRow parentProgramRowByProgram_Instruction) {
+            public InstructionRow AddInstructionRow(int Step, string Instruction, int ArgumentCount, ProgramRow parentProgramRowByProgram_Instruction) {
                 InstructionRow rowInstructionRow = ((InstructionRow)(this.NewRow()));
                 rowInstructionRow.ItemArray = new object[] {
                         Step,
-                        Text,
                         Instruction,
                         ArgumentCount,
                         null,
@@ -3398,7 +3389,6 @@ namespace HP67_Persistence {
             
             internal void InitVars() {
                 this.columnStep = this.Columns["Step"];
-                this.columnText = this.Columns["Text"];
                 this.columnInstruction = this.Columns["Instruction"];
                 this.columnArgumentCount = this.Columns["ArgumentCount"];
                 this.columnInstruction_Id = this.Columns["Instruction_Id"];
@@ -3408,8 +3398,6 @@ namespace HP67_Persistence {
             private void InitClass() {
                 this.columnStep = new DataColumn("Step", typeof(int), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnStep);
-                this.columnText = new DataColumn("Text", typeof(string), null, System.Data.MappingType.Element);
-                this.Columns.Add(this.columnText);
                 this.columnInstruction = new DataColumn("Instruction", typeof(string), null, System.Data.MappingType.Element);
                 this.Columns.Add(this.columnInstruction);
                 this.columnArgumentCount = new DataColumn("ArgumentCount", typeof(int), null, System.Data.MappingType.Element);
@@ -3421,7 +3409,6 @@ namespace HP67_Persistence {
                 this.Constraints.Add(new UniqueConstraint("Constraint1", new DataColumn[] {
                                 this.columnInstruction_Id}, true));
                 this.columnStep.AllowDBNull = false;
-                this.columnText.AllowDBNull = false;
                 this.columnInstruction.AllowDBNull = false;
                 this.columnInstruction_Id.AutoIncrement = true;
                 this.columnInstruction_Id.AllowDBNull = false;
@@ -3489,15 +3476,6 @@ namespace HP67_Persistence {
                 }
                 set {
                     this[this.tableInstruction.StepColumn] = value;
-                }
-            }
-            
-            public string Text {
-                get {
-                    return ((string)(this[this.tableInstruction.TextColumn]));
-                }
-                set {
-                    this[this.tableInstruction.TextColumn] = value;
                 }
             }
             
@@ -3658,7 +3636,7 @@ namespace HP67_Persistence {
                         Id,
                         Type,
                         Value,
-                        parentInstructionRowByInstruction_Argument[4]};
+                        parentInstructionRowByInstruction_Argument[3]};
                 this.Rows.Add(rowArgumentRow);
                 return rowArgumentRow;
             }
