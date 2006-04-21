@@ -3,6 +3,7 @@ using HP67_Control_Library;
 using HP_Parser;
 using System;
 using Queue = System.Collections.Queue;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -82,6 +83,8 @@ namespace HP67
 			Memory memory;
 			Stack stack;
 
+			bool ignoreNextDown = false;
+			bool ignoreNextUp = false;
 			bool mustReinitialize = false;
 
 			// For some reason the first exception that is raised on this thread takes a long time
@@ -157,7 +160,12 @@ namespace HP67
 
 				do
 				{
-					ExecutionProcessKeystroke (display, engine, out mustReinitialize);
+					ExecutionProcessKeystroke
+						(display,
+						engine,
+						ref ignoreNextDown,
+						ref ignoreNextUp,
+						out mustReinitialize);
 				} while (! mustReinitialize);
 			}
 		}
@@ -179,11 +187,13 @@ namespace HP67
 		}
 
 		private void ExecutionProcessKeystroke
-			(Display display, Engine engine, out bool mustReinitialize) 
+			(Display display,
+			Engine engine,
+			ref bool ignoreNextDown,
+			ref bool ignoreNextUp,
+			out bool mustReinitialize) 
 		{
 			Keystroke keystroke;
-
-			bool ignoreNext = false;
 			bool mustUnbusyUI = true;			
 
 			mustReinitialize = false;
@@ -203,36 +213,42 @@ namespace HP67
 				lock (IsBusy)
 				{
 					main.Invoke (notifyUI, new object [] {true});
+
 					switch (keystroke.Motion) 
 					{
 						case KeystrokeMotion.Up :
 
-							// The first up-keystroke after an error is ignored.
-							if (ignoreNext) 
+							// We may have to ignore two up keystrokes after an error: the one for
+							// the key that caused the error, and the one for the key that clears
+							// the error.
+							if (ignoreNextUp) 
 							{
-								ignoreNext = false;
+								ignoreNextUp = ignoreNextDown;
 							}
 							else 
 							{
 								upParser.Parse (keystroke.Tag);
 							}
-							mustUnbusyUI = true;
+							mustUnbusyUI = ! ignoreNextDown;
 							break;
 						case KeystrokeMotion.Down :
 
-							// On the first down-keystroke after an error, we reset the display.  We
-							// do not clear ignoreNext, though, because we want to ensure that the
-							// next up-keystroke will be ignored, too.  We only refresh the display
-							// if it is blurred, because a down keystroke may display the current
-							// instruction.
+							// We only refresh the display if it is blurred, or if this is the key
+							// that clears an error.  That's because a down keystroke may display
+							// the current instruction.
 
 							// TODO: What if another down key was queued in-between?
 							downKeystrokeWasEnqueued.Reset ();
-							if (! ignoreNext) 
+							if (ignoreNextDown)
+							{
+								Trace.Assert (ignoreNextUp);
+								ignoreNextDown = false;
+							}
+							else
 							{
 								downParser.Parse (keystroke.Tag);
 							}
-							mustUnbusyUI = ignoreNext || display.IsBlurred;
+							mustUnbusyUI = ignoreNextUp || display.IsBlurred;
 							break;
 					}
 				}
@@ -241,20 +257,22 @@ namespace HP67
 			{
 				display.Value = display.Value; // Refresh the numeric display.
 				display.ShowText (Localization.GetString (Localization.Error), 500, 100);
+				ignoreNextDown = true;
+				ignoreNextUp = true;
 				mustUnbusyUI = false;
-				ignoreNext = true;
 				ExecutionCompleteKeystrokes (this);
 			}
 			catch (Interrupt)
 			{
 				display.Value = display.Value; // Refresh the numeric display.
+				ignoreNextDown = true;
+				ignoreNextUp = true;
 				mustUnbusyUI = true;
-				ignoreNext = true;
 				ExecutionCompleteKeystrokes (this);
 			}
 			catch (ThreadAbortException) 
 			{
-				mustUnbusyUI = false;
+				mustUnbusyUI = false; // No cross-thread notification if we are being aborted.
 				if (! mustAbort) 
 				{
 
@@ -265,11 +283,9 @@ namespace HP67
 			}
 			finally 
 			{
-				// No cross-thread notification if we are being aborted.
 				if (mustUnbusyUI) 
 				{
-					engine.Mode = 
-						(EngineMode) main.Invoke (notifyUI, new object [] {false});
+					engine.Mode = (EngineMode) main.Invoke (notifyUI, new object [] {false});
 				}
 			}
 		}		

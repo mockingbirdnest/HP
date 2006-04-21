@@ -1772,7 +1772,7 @@ namespace HP67
 		public void ReduceRULE_UNARY_INSTRUCTION5 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Unary_Instruction> ::= <Gsb_f> <Uppercase_Letter_Label>
-			((Letter) tokens [0].UserObject).ToLower ();
+			((Letter) tokens [1].UserObject).ToLower ();
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
