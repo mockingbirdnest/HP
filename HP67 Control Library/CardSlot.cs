@@ -5,6 +5,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Data;
 using System.Windows.Forms;
 
@@ -28,19 +29,24 @@ namespace HP67_Control_Library
 
 		private const float sizeIncrease = 1.25F;
 
+		private Pen cornerPen;
+		private Point [] cornerSquare;
+		private Point [] cornerUpperTriangle;
 		private System.Drawing.Font font;
 		private int textBoxWidth;
 		private System.Drawing.Font largeFont;
+		private Color loadedColor;
+		private SolidBrush loadedColorBrush;
 		private int margin;
 		private bool richText;
 		private CardSlotState state;
+		private Color unloadedColor;
+		private SolidBrush unloadedColorBrush;
 
 		private System.Windows.Forms.Label [] labels;
 		private System.Windows.Forms.TextBoxBase [] textBoxes;
 		private System.Windows.Forms.TextBoxBase [] fTextBoxes;
 		private System.Windows.Forms.TextBoxBase title;
-
-		internal System.Windows.Forms.Panel cornerPanel;
 		internal System.Windows.Forms.Panel panel;
 		internal System.Windows.Forms.RichTextBox titleRTFBox;
 		internal System.Windows.Forms.TextBox titleTextBox;
@@ -69,6 +75,7 @@ namespace HP67_Control_Library
 		internal System.Windows.Forms.RichTextBox rtfBoxfC;
 		internal System.Windows.Forms.RichTextBox rtfBoxfD;
 		internal System.Windows.Forms.RichTextBox rtfBoxfE;
+		private System.Windows.Forms.PictureBox cornerPictureBox;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -92,6 +99,26 @@ namespace HP67_Control_Library
 			fTextBoxes = new System.Windows.Forms.TextBox [5]
 				{textBoxfA, textBoxfB, textBoxfC, textBoxfD, textBoxfE};
 			Clear ();
+
+			cornerPen = new Pen (System.Drawing.Color.FromArgb (191, 191, 95));
+			loadedColor = System.Drawing.Color.FromArgb (64, 64, 0);
+			loadedColorBrush = new SolidBrush (loadedColor);
+			unloadedColor = System.Drawing.Color.FromArgb (64, 64, 64);
+			unloadedColorBrush = new SolidBrush (unloadedColor);
+
+			cornerSquare =
+				new Point [] {
+								 new Point (cornerPictureBox.Left, cornerPictureBox.Top),
+								 new Point (cornerPictureBox.Left, cornerPictureBox.Bottom),
+								 new Point (cornerPictureBox.Right, cornerPictureBox.Bottom),
+								 new Point (cornerPictureBox.Right, cornerPictureBox.Top)
+							 };
+			cornerUpperTriangle =
+				new Point [] {
+								 new Point (cornerPictureBox.Left, cornerPictureBox.Top),
+								 new Point (cornerPictureBox.Left, cornerPictureBox.Bottom),
+								 new Point (cornerPictureBox.Right, cornerPictureBox.Top)
+							 };
 
 			Font = new System.Drawing.Font
 				("Arial Unicode MS", 7.0F, System.Drawing.FontStyle.Regular);
@@ -128,8 +155,8 @@ namespace HP67_Control_Library
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(CardSlot));
 			this.panel = new System.Windows.Forms.Panel();
+			this.cornerPictureBox = new System.Windows.Forms.PictureBox();
 			this.titleRTFBox = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxfB = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxfE = new System.Windows.Forms.RichTextBox();
@@ -142,7 +169,6 @@ namespace HP67_Control_Library
 			this.rtfBoxB = new System.Windows.Forms.RichTextBox();
 			this.rtfBoxA = new System.Windows.Forms.RichTextBox();
 			this.titleTextBox = new System.Windows.Forms.TextBox();
-			this.cornerPanel = new System.Windows.Forms.Panel();
 			this.textBoxA = new System.Windows.Forms.TextBox();
 			this.textBoxB = new System.Windows.Forms.TextBox();
 			this.textBoxC = new System.Windows.Forms.TextBox();
@@ -168,6 +194,7 @@ namespace HP67_Control_Library
 				| System.Windows.Forms.AnchorStyles.Right)));
 			this.panel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(0)));
 			this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panel.Controls.Add(this.cornerPictureBox);
 			this.panel.Controls.Add(this.titleRTFBox);
 			this.panel.Controls.Add(this.rtfBoxfB);
 			this.panel.Controls.Add(this.rtfBoxfE);
@@ -180,7 +207,6 @@ namespace HP67_Control_Library
 			this.panel.Controls.Add(this.rtfBoxB);
 			this.panel.Controls.Add(this.rtfBoxA);
 			this.panel.Controls.Add(this.titleTextBox);
-			this.panel.Controls.Add(this.cornerPanel);
 			this.panel.Controls.Add(this.textBoxA);
 			this.panel.Controls.Add(this.textBoxB);
 			this.panel.Controls.Add(this.textBoxC);
@@ -201,6 +227,15 @@ namespace HP67_Control_Library
 			this.panel.Name = "panel";
 			this.panel.Size = new System.Drawing.Size(300, 50);
 			this.panel.TabIndex = 0;
+			// 
+			// cornerPictureBox
+			// 
+			this.cornerPictureBox.Location = new System.Drawing.Point(0, 0);
+			this.cornerPictureBox.Name = "cornerPictureBox";
+			this.cornerPictureBox.Size = new System.Drawing.Size(15, 15);
+			this.cornerPictureBox.TabIndex = 23;
+			this.cornerPictureBox.TabStop = false;
+			this.cornerPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.cornerPictureBox_Paint);
 			// 
 			// titleRTFBox
 			// 
@@ -367,14 +402,6 @@ namespace HP67_Control_Library
 			this.titleTextBox.TabIndex = 1;
 			this.titleTextBox.Text = "<TITLE>";
 			this.titleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// cornerPanel
-			// 
-			this.cornerPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cornerPanel.BackgroundImage")));
-			this.cornerPanel.Location = new System.Drawing.Point(0, 0);
-			this.cornerPanel.Name = "cornerPanel";
-			this.cornerPanel.Size = new System.Drawing.Size(15, 15);
-			this.cornerPanel.TabIndex = 0;
 			// 
 			// textBoxA
 			// 
@@ -586,6 +613,26 @@ namespace HP67_Control_Library
 			Margin = Margin;
 		}
 
+		private void cornerPictureBox_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+		{
+			Graphics g = e.Graphics;
+
+			if (state == CardSlotState.ReadOnly) 
+			{
+				g.FillPolygon (unloadedColorBrush, cornerUpperTriangle);
+				g.DrawLine (
+					cornerPen,
+					cornerPictureBox.Left,
+					cornerPictureBox.Bottom,
+					cornerPictureBox.Right,
+					cornerPictureBox.Top);
+			}
+			else 
+			{
+				g.FillPolygon (loadedColorBrush, cornerSquare);
+			}
+		}
+
 		public void ReadFromDataset (CardDataset cds, Reader reader)
 		{
 			CardDataset.CardRow cr;
@@ -755,7 +802,7 @@ namespace HP67_Control_Library
 		{
 			if (loaded) 
 			{
-				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 0);
+				panel.BackColor = loadedColor;
 				title.Visible = true;
 				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
@@ -772,8 +819,8 @@ namespace HP67_Control_Library
 			}
 			else
 			{
-				cornerPanel.Visible = false;
-				panel.BackColor = System.Drawing.Color.FromArgb (64, 64, 64);
+				cornerPictureBox.Visible = false;
+				panel.BackColor = unloadedColor;
 				title.Visible = false;
 				foreach (System.Windows.Forms.TextBoxBase t in textBoxes)  
 				{
@@ -793,6 +840,20 @@ namespace HP67_Control_Library
 		#endregion
 
 		#region Public Properties
+
+		public override Color BackColor 
+		{
+			get 
+			{
+				return unloadedColor;
+			}
+			set 
+			{
+				unloadedColor = value;
+				unloadedColorBrush = new SolidBrush (unloadedColor);
+				panel.BackColor = unloadedColor;
+			}
+		}
 
 		public override System.Drawing.Font Font
 		{
@@ -952,26 +1013,28 @@ namespace HP67_Control_Library
 						}
 						SetEditable (false);
 						SetLoaded (false);
+						cornerPictureBox.Visible = false;
 						break;
 					}
 					case CardSlotState.ReadOnly:
 					{
 						SetEditable (false);
 						SetLoaded (true);
-						cornerPanel.Visible = true;
+						cornerPictureBox.Visible = true;
 						break;
 					}
 					case CardSlotState.ReadWrite:
 					{
 						SetEditable (false);
 						SetLoaded (true);
-						cornerPanel.Visible = false;
+						cornerPictureBox.Visible = false;
 						break;
 					}
 					case CardSlotState.Editable:
 					{
 						SetEditable (true);
 						SetLoaded (true);
+						cornerPictureBox.Visible = false;
 						break;
 					}
 				}
