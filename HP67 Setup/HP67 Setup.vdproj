@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1C67FD20C8D347DAA8AA069163753B08"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1D04F1E28D574AF4B96CC3BBBA5ABD86"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -101,54 +107,6 @@
         {
         "MsmKey" = "8:_3E210DD2EE4345B78D3FE396B1738837"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_F44A241EF3DA31C90206BE0C409D61D4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_32431AA40BBC872D72089DE9AA21EC3D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_4875CE38A649BB322A32E112112EE7E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_2D5A088EDA26E34885DBBEAC0A9D31A1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_7637A8FDAD7E3E5CB3B1F4433673C6E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_40ACF46B06BD4197A37CB4B5B675630A"
-        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -215,6 +173,54 @@
         {
         "MsmKey" = "8:_8C3909FF5600468B800E897C8DAEE131"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_F44A241EF3DA31C90206BE0C409D61D4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_32431AA40BBC872D72089DE9AA21EC3D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_4875CE38A649BB322A32E112112EE7E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_2D5A088EDA26E34885DBBEAC0A9D31A1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_7637A8FDAD7E3E5CB3B1F4433673C6E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9701D25713BA40A681BABE782D81D358"
+        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -422,6 +428,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_1C67FD20C8D347DAA8AA069163753B08"
+            {
+            "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Spherical Triangles.hp67"
+            "TargetName" = "8:Spherical Triangles.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_1D04F1E28D574AF4B96CC3BBBA5ABD86"
             {
             "SourcePath" = "8:..\\HP67 Pacs\\Math Pac I\\Hyperbolics.hp67"
@@ -517,7 +543,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2301.32495, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Control Library, Version=1.0.2305.33935, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_32431AA40BBC872D72089DE9AA21EC3D"
@@ -599,7 +625,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP Parser, Version=1.0.2301.31368, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP Parser, Version=1.0.2305.33935, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_7637A8FDAD7E3E5CB3B1F4433673C6E3"
@@ -832,7 +858,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2301.32495, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:HP67 Class Library, Version=1.0.2305.33935, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_F44A241EF3DA31C90206BE0C409D61D4"
@@ -999,13 +1025,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP67"
-        "ProductCode" = "8:{1961408D-22F9-4B87-8980-F10C432D85B9}"
-        "PackageCode" = "8:{579992CA-FD38-4AA7-8CDD-B1523BE2D157}"
+        "ProductCode" = "8:{9613AE48-70A0-43BA-A257-E45189E914DC}"
+        "PackageCode" = "8:{3AA191B9-2728-4ADC-BF7A-E5A2E2743840}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.5.0"
+        "ProductVersion" = "8:1.6.0"
         "Manufacturer" = "8:Mockingbird"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1521,7 +1547,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_40ACF46B06BD4197A37CB4B5B675630A"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_9701D25713BA40A681BABE782D81D358"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"

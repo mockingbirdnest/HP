@@ -6,27 +6,44 @@ using System.IO;
 
 namespace HP_Parser
 {
+
+	public enum CalculatorModel 
+	{
+		HP67 = 67,
+		HP97 = 97
+	}
+
 	/// <summary>
 	/// A class to read parser tables from a resource.
 	/// </summary>
 	public class Reader : CGTReader
 	{
-		private string model;
-		private int modelLength;
+
+		#region Private Data
+
+		private CalculatorModel model;
+		private string modelString;
+		private int modelStringLength;
 
 		// For performance, the public operations of this package build hashtables the first time
 		// they are called, and read from the hashtable afterwards.
 		private Hashtable symbolNameToSymbol = null;
 		private Hashtable symbolIdToTag = null;
 		private Hashtable symbolIdToString = null;
+		private Hashtable symbolIdToSymbol = null;
 
-		public Reader (Stream stream, string model, string [] tags) : base (stream)
+		#endregion
+
+		#region Constructors & Destructors
+
+		public Reader (Stream stream, CalculatorModel model, string [] tags) : base (stream)
 		{
 			TerminalToken token;
 			StringTokenizer tokenizer = CreateNewTokenizer ();
 
 			this.model = model;
-			modelLength = model.Length;
+			modelString = ((int) model).ToString ();
+			modelStringLength = modelString.Length;
 			symbolIdToTag = new Hashtable ();
 			foreach (string tag in tags) 
 			{
@@ -40,12 +57,13 @@ namespace HP_Parser
 			stream.Close ();
 		}
 
-		public Reader (string filename, string model, string [] tags) :
+		public Reader (string filename, CalculatorModel model, string [] tags) :
 			this (new FileStream (filename, FileMode.Open, FileAccess.Read), model, tags)
 		{
 		}
 
-		public Reader (string baseName, string resourceName, string model, string [] tags) :
+		public Reader
+			(string baseName, string resourceName, CalculatorModel model, string [] tags) :
 			this (
 				new MemoryStream
 					(ResourceUtil.GetByteArrayResource
@@ -56,6 +74,10 @@ namespace HP_Parser
 				tags)
 		{
 		}
+
+		#endregion
+
+		#region Private Operations
 
 		private ArrayList UnparseToWords (Symbol symbol) 
 		{
@@ -82,7 +104,7 @@ namespace HP_Parser
 							found = sWords.Count > 0;
 							foreach (object w in sWords) 
 							{
-								if (((string) w).Substring (0, modelLength) == model) 
+								if (((string) w).Substring (0, modelStringLength) == modelString) 
 								{
 									words.Add ((string) w);
 								}
@@ -104,6 +126,31 @@ namespace HP_Parser
 				}
 			}
 			return words;
+		}
+
+		#endregion
+
+		#region Public Operations
+
+		public CalculatorModel Model 
+		{
+			get 
+			{
+				return model;
+			}
+		}
+
+		public Symbol ToSymbol (SymbolConstants id) 
+		{
+			if (symbolIdToSymbol == null)
+			{
+				symbolIdToSymbol = new Hashtable ();
+				foreach (Symbol s in Symbols) 
+				{
+					symbolIdToSymbol.Add (s.Id, s);
+				}
+			}
+			return (Symbol) symbolIdToSymbol [(int) id];
 		}
 
 		public Symbol ToSymbol (string name)
@@ -146,7 +193,7 @@ namespace HP_Parser
 					{
 						result += " ";
 					}
-					result += ((string) w).Substring (modelLength);
+					result += ((string) w).Substring (modelStringLength);
 				}
 				symbolIdToString [symbol.Id] = result;
 				return result;
@@ -156,5 +203,8 @@ namespace HP_Parser
 				return result;
 			}
 		}
+
+		#endregion
+
 	}
 }

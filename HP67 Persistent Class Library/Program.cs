@@ -601,7 +601,6 @@ namespace HP67_Class_Library
 			switch ((SymbolConstants) instruction.Symbol.Id) 
 			{
 				case SymbolConstants.SYMBOL_LBL :
-				case SymbolConstants.SYMBOL_LBL_F :
 					Argument arg = instruction.Arguments [0];
 
 					if (arg is Digit) 
@@ -714,7 +713,6 @@ namespace HP67_Class_Library
 					switch ((SymbolConstants) instructions [step].Symbol.Id) 
 					{
 						case SymbolConstants.SYMBOL_LBL :
-						case SymbolConstants.SYMBOL_LBL_F :
 							e.Graphics.DrawRectangle
 								(thickPen,
 								x,

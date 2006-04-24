@@ -307,7 +307,15 @@ namespace HP67_Class_Library
 
 		public override string Unparse (Reader reader) 
 		{
-			return reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
+			if (IsLower) 
+			{
+				// Use the special nonterminals of the grammar that represent lowercase letters. 
+				return reader.Unparse (reader.ToSymbol ("LC_" + letter));
+			}
+			else 
+			{
+				return reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
+			}
 		}
 
 		public void ToLower ()

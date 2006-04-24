@@ -63,10 +63,29 @@ namespace HP67_Class_Library
 
 		private void SetText (Reader reader)
 		{
+			bool isNonstandard = false;
+
 			text = "";
-			if ((SymbolConstants) instruction.Id != SymbolConstants.SYMBOL_DIGIT) 
-			{
-				text = reader.Unparse (instruction);
+			switch ((SymbolConstants) instruction.Id) {
+				case SymbolConstants.SYMBOL_DIGIT :
+					// The argument is the instruction.
+					break;
+				case SymbolConstants.SYMBOL_GSB :
+				case SymbolConstants.SYMBOL_LBL :
+					// On the HP-67, use a nonstandard syntax if the argument is lowercase.
+					if (arguments [0] is Letter && ((Letter) arguments [0]).IsLower) 
+					{
+						isNonstandard = true;
+						text = reader.Unparse (reader.ToSymbol (instruction.Name + "_LC_67"));
+					}
+					else 
+					{
+						text = reader.Unparse (instruction);
+					}
+					break;
+				default :
+					text = reader.Unparse (instruction);
+					break;
 			}
 			foreach (Argument argument in arguments) 
 			{
@@ -74,26 +93,17 @@ namespace HP67_Class_Library
 				{
 					text += " ";
 				}
-				switch ((SymbolConstants) instruction.Id) 
+				if (isNonstandard) 
 				{
-					case SymbolConstants.SYMBOL_GTO :
-					case SymbolConstants.SYMBOL_GSB97 :
-					case SymbolConstants.SYMBOL_LBL97 :
-
-						// Here we know-too-much about the grammar.  Unparsing a letter will
-						// produce the uppercase version of that letter.  That's fine for most
-						// usages, but the above instructions have an argument that may include the
-						// f modifier to make the letter lowercase.  Not sure how to do this more
-						// cleanly, short of doing a fancy analysis of the grammar at execution.
-						if (argument is Letter && ((Letter) argument).IsLower) 
-						{
-							text += reader.Unparse (reader.ToSymbol (new string ('f', 1))) + " ";
-						}
-						break;
-					default :
-						break;
+					// In the nonstandard syntax, the argument is uppercase.
+					Letter uppercaseArgument =
+						new Letter (char.ToUpper (((Letter) argument).Value));
+					text += uppercaseArgument.Unparse (reader);
 				}
-				text += argument.Unparse (reader);
+				else 
+				{
+					text += argument.Unparse (reader);
+				}
 			}
 		}
 
@@ -146,14 +156,8 @@ namespace HP67_Class_Library
 					case SymbolConstants.SYMBOL_FACTORIAL :
 						result = "N!";
 						break;
-					case SymbolConstants.SYMBOL_GSB_F :
-						result = "GSB";
-						break;
 					case SymbolConstants.SYMBOL_HMS_PLUS :
 						result = "H.MS+";
-						break;
-					case SymbolConstants.SYMBOL_LBL_F :
-						result = "LBL";
 						break;
 					case SymbolConstants.SYMBOL_LST_X :
 						result = "LST x";

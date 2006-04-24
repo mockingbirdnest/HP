@@ -18,7 +18,7 @@ namespace HP67_Persistence
 	/// </summary>
 	public class Card
 	{
-		private const float Version = 1.5F;
+		private const float Version = 1.6F;
 
 		#region Event Definitions
 
@@ -42,17 +42,18 @@ namespace HP67_Persistence
 
 		static private bool CheckVersion (CardDataset cds) 
 		{
-			if (cds.Card [0].Version == Version) 
+			CardDataset.CardRow cr = cds.Card [0];
+			CardDataset.InstructionRow [] irs;
+			CardDataset.ProgramRow pr;
+			CardDataset.ProgramRow [] prs;
+
+			if (cr.Version == Version) 
 			{
 				return true;
 			}
-			else if (cds.Card [0].Version == 1.4F) 
-			{
-				// Version 1.4 used to have Text in instructions.
-				cds.Card [0].Version = Version;
-				return true;
-			}
-			else
+
+			// We didn't support compatibility before version 1.4.
+			if (cr.Version < 1.4F || cr.Version > Version) 
 			{
 				// For some reason (read: compiler bug) we must compute text and caption separately,
 				// we cannot just write one humongous statement.
@@ -65,6 +66,35 @@ namespace HP67_Persistence
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
+
+			// Compatibility code to read older cards.
+			if (cr.Version <= 1.4F) 
+			{
+				// Version 1.4 used to have Text in instructions.
+			}
+			if (cr.Version <= 1.5F)
+			{
+				// Version 1.5 used to have GSB_F and LBL_F.
+				prs = cr.GetProgramRows ();
+				if (prs.Length > 0) 
+				{
+					pr = prs [0];
+					irs = pr.GetInstructionRows ();
+					foreach (CardDataset.InstructionRow ir in irs) 
+					{
+						if (ir.Instruction == "Gsb_f") 
+						{
+							ir.Instruction = "Gsb";
+						}
+						else if (ir.Instruction == "Lbl_f")
+						{
+							ir.Instruction = "Lbl";
+						}
+					}
+				}
+			}
+				cds.Card [0].Version = Version;
+			return true;
 		}
 
 		#endregion

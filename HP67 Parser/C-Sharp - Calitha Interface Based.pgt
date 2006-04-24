@@ -18,6 +18,7 @@ events must be provided by the class that implements IActions.
 using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
+using HP67_Class_Library;
 using System;
 using System.Collections;
 using System.Diagnostics;
@@ -28,7 +29,7 @@ namespace %Name%
 ##END-PARAMETERS
 {
 
-    public enum SymbolConstants : int
+   public enum SymbolConstants : int
     {
 ##SYMBOLS
 ##DELIMITER ','
@@ -88,16 +89,21 @@ namespace %Name%
                 args.Token.UserObject = args.Token.Tokens [0].UserObject;
             }
             
-            switch ((RuleConstants) args.Token.Rule.Id)
-            {
+            try {
+				switch ((RuleConstants) args.Token.Rule.Id)
+				{
 ##RULES
-                case RuleConstants.%ID% :
-                    // %Description%
-                    actions.Reduce%ID% (reader, args.Token, args.Token.Tokens, state);
-                    return;
+					case RuleConstants.%ID% :
+						// %Description%
+						actions.Reduce%ID% (reader, args.Token, args.Token.Tokens, state);
+						return;
 ##END-RULES
+				}
             }
-			Trace.Assert (false);
+            catch (SyntaxError ex) {
+				args.Continue = false;
+				actions.ParserError (input, ex.UnexpectedToken);
+            }
         }
 
         private void AcceptEvent(LALRParser parser, AcceptEventArgs args)
@@ -121,8 +127,11 @@ namespace %Name%
 			this.reader = reader;
             parser = reader.CreateNewParser ();
             parser.TrimReductions = false; 
-            parser.StoreTokens = LALRParser.StoreTokensMode.NoUserObject;
 
+			// We need to store the tokens so as to be able to locate the faulty terminal in the
+			// case where the error is detected by the actions.
+            parser.StoreTokens = LALRParser.StoreTokensMode.Always;
+            
             parser.OnReduce += new LALRParser.ReduceHandler (ReduceEvent);
             parser.OnAccept += new LALRParser.AcceptHandler (AcceptEvent);
             parser.OnTokenError += new LALRParser.TokenErrorHandler (TokenErrorEvent);

@@ -1,3 +1,4 @@
+using com.calitha.goldparser;
 using System;
 
 namespace HP67_Class_Library
@@ -45,6 +46,26 @@ namespace HP67_Class_Library
 			return this.GetType ().FullName +
 				": " + Localization.GetString (Localization.ShutdownDescription);
 		}
+	}
+
+	/// <summary>
+	/// Interrupts parsing.
+	/// </summary>
+	public class SyntaxError : ApplicationException
+	{
+		private TerminalToken token;
+
+		public SyntaxError (TerminalToken token) 
+		{
+			this.token = token;
+		}
+		public TerminalToken UnexpectedToken
+		{
+			get
+			{
+				return token;
+			}
+		}	
 	}
 
 }

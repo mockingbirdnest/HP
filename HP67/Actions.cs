@@ -4,7 +4,6 @@ using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
 using HP67;
 using HP67_Class_Library;
-using HP67_Control_Library;
 using HP_Parser;
 using System;
 using System.Diagnostics;
@@ -464,9 +463,9 @@ namespace HP67
 			// <Grd> ::= 'f97' 'Eex97'
 		}
 
-		public void ReduceRULE_GSB_F_G67_GTO67 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_GSB_LC_67_G67_GTO67 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Gsb_f> ::= 'g67' 'Gto67'
+			// <Gsb_LC_67> ::= 'g67' 'Gto67'
 		}
 
 		public void ReduceRULE_GSB_F67_GTO67 (Reader reader, Token token, Token [] tokens, object state)
@@ -529,9 +528,9 @@ namespace HP67
 			// <Isz> ::= 'f97' 'Sst97' 'I97'
 		}
 
-		public void ReduceRULE_LBL_F_G67_SST67 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_LBL_LC_67_G67_SST67 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Lbl_f> ::= 'g67' 'Sst67'
+			// <Lbl_LC_67> ::= 'g67' 'Sst67'
 		}
 
 		public void ReduceRULE_LBL_F67_SST67 (Reader reader, Token token, Token [] tokens, object state)
@@ -1209,14 +1208,14 @@ namespace HP67
 			// <Instruction> ::= <Ternary_Instruction>
 		}
 
-		public void ReduceRULE_GSB_SHORTCUT (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_GSB_LC_SHORTCUT (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Gsb_Shortcut> ::= <Uppercase_Letter_Label>
+			// <Gsb_LC_Shortcut> ::= <Lowercase_Letter_Label>
 		}
 
-		public void ReduceRULE_GSB_F_SHORTCUT (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_GSB_UC_SHORTCUT (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Gsb_f_Shortcut> ::= <Lowercase_Letter_Label>
+			// <Gsb_UC_Shortcut> ::= <Uppercase_Letter_Label>
 		}
 
 		public void ReduceRULE_RCL_SUB_I_SHORTCUT (Reader reader, Token token, Token [] tokens, object state)
@@ -1518,7 +1517,7 @@ namespace HP67
 			engine.Process
 				(new Instruction
 				(reader,
-				new SymbolNonterminal ((int) SymbolConstants.SYMBOL_RCL, "RCL"),
+				reader.ToSymbol (SymbolConstants.SYMBOL_RCL),
 				new Argument [] {(Argument) tokens [0].UserObject}),
 				motion);
 		}
@@ -1765,32 +1764,53 @@ namespace HP67
 
 		public void ReduceRULE_UNARY_INSTRUCTION4 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Unary_Instruction> ::= <Gsb> <Non_Lowercase_Label>
-			engine.Process (new Instruction (reader, tokens), motion);
+			// <Unary_Instruction> ::= <Gsb> <Label>
+			if (reader.Model == CalculatorModel.HP67 &&
+				tokens [1].UserObject is Letter &&
+				((Letter) tokens [1].UserObject).IsLower) 
+			{
+				// The grammar allows sequences like GSB f A which are illegal on the HP-67.  Detect
+				// this case and stop parsing.
+				Token errorToken = tokens [1];
+				while (errorToken is NonterminalToken) 
+				{
+					errorToken = ((NonterminalToken) errorToken).Tokens [0];
+				}
+				throw new SyntaxError ((TerminalToken) errorToken);
+			}
+			else 
+			{
+				engine.Process (new Instruction (reader, tokens), motion);
+			}
 		}
 
 		public void ReduceRULE_UNARY_INSTRUCTION5 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Unary_Instruction> ::= <Gsb_f> <Uppercase_Letter_Label>
+			// <Unary_Instruction> ::= <Gsb_LC_67> <Uppercase_Letter_Label>
 			((Letter) tokens [1].UserObject).ToLower ();
-			engine.Process (new Instruction (reader, tokens), motion);
+			engine.Process (
+				new Instruction (
+					reader,
+					reader.ToSymbol (SymbolConstants.SYMBOL_GSB),
+					new Argument [] {(Argument) tokens [1].UserObject}),
+					motion);
 		}
 
 		public void ReduceRULE_UNARY_INSTRUCTION6 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Unary_Instruction> ::= <Gsb_f_Shortcut>
+			// <Unary_Instruction> ::= <Gsb_LC_Shortcut>
 			((Letter) tokens [0].UserObject).ToLower ();
 			engine.Process
 				(new Instruction
-				(reader,
-				new SymbolNonterminal ((int) SymbolConstants.SYMBOL_GSB_F, "GSB_F"),
-				new Argument [] {(Argument) tokens [0].UserObject}),
-				motion);
+					(reader,
+					reader.ToSymbol (SymbolConstants.SYMBOL_GSB),
+					new Argument [] {(Argument) tokens [0].UserObject}),
+					motion);
 		}
 
 		public void ReduceRULE_UNARY_INSTRUCTION7 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Unary_Instruction> ::= <Gsb_Shortcut>
+			// <Unary_Instruction> ::= <Gsb_UC_Shortcut>
 			bool programIsEmpty = ((Program) state).IsEmpty;
 
 			// When the program memory is empty, the keys A to E have a different function, both
@@ -1803,24 +1823,19 @@ namespace HP67
 				switch (letter.Value) 
 				{
 					case 'A' :
-						symbol = new SymbolNonterminal
-								((int) SymbolConstants.SYMBOL_RECIPROCAL, "Reciprocal");
+						symbol = reader.ToSymbol (SymbolConstants.SYMBOL_RECIPROCAL);
 						break;
 					case 'B' :
-						symbol = new SymbolNonterminal
-								((int) SymbolConstants.SYMBOL_SQRT, "Sqrt");
+						symbol = reader.ToSymbol (SymbolConstants.SYMBOL_SQRT);
 						break;
 					case 'C' :
-						symbol = new SymbolNonterminal
-								((int) SymbolConstants.SYMBOL_Y_TO_THE_XTH, "Y_To_The_Xth");
+						symbol = reader.ToSymbol (SymbolConstants.SYMBOL_Y_TO_THE_XTH);
 						break;
 					case 'D' :
-						symbol = new SymbolNonterminal
-								((int) SymbolConstants.SYMBOL_R_DOWN, "R_Down");
+						symbol = reader.ToSymbol (SymbolConstants.SYMBOL_R_DOWN);
 						break;
 					case 'E' :
-						symbol = new SymbolNonterminal
-								((int) SymbolConstants.SYMBOL_X_EXCHANGE_Y, "X_Exchange_Y");
+						symbol = reader.ToSymbol (SymbolConstants.SYMBOL_X_EXCHANGE_Y);
 						break;
 					default :
 						Trace.Assert (false);
@@ -1833,16 +1848,10 @@ namespace HP67
 				engine.Process
 					(new Instruction
 					(reader,
-					new SymbolNonterminal ((int) SymbolConstants.SYMBOL_GSB, "GSB"),
+					reader.ToSymbol (SymbolConstants.SYMBOL_GSB),
 					new Argument [] {(Argument) tokens [0].UserObject}),
 					motion);
 			}
-		}
-
-		public void ReduceRULE_UNARY_INSTRUCTION_GSB97 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Unary_Instruction> ::= 'Gsb97' <Lowercase_Letter_Label>
-			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
 		public void ReduceRULE_UNARY_INSTRUCTION8 (Reader reader, Token token, Token [] tokens, object state)
@@ -1853,21 +1862,36 @@ namespace HP67
 
 		public void ReduceRULE_UNARY_INSTRUCTION9 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Unary_Instruction> ::= <Lbl> <Non_Lowercase_Label>
-			engine.Process (new Instruction (reader, tokens), motion);
+			// <Unary_Instruction> ::= <Lbl> <Label>
+			if (reader.Model == CalculatorModel.HP67 &&
+				tokens [1].UserObject is Letter &&
+				((Letter) tokens [1].UserObject).IsLower) 
+			{
+				// The grammar allows sequences like LBL f A which are illegal on the HP-67.  Detect
+				// this case and stop parsing.
+				Token errorToken = tokens [1];
+				while (errorToken is NonterminalToken) 
+				{
+					errorToken = ((NonterminalToken) errorToken).Tokens [0];
+				}
+				throw new SyntaxError ((TerminalToken) errorToken);
+			}
+			else 
+			{
+				engine.Process (new Instruction (reader, tokens), motion);
+			}
 		}
 
 		public void ReduceRULE_UNARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Unary_Instruction> ::= <Lbl_f> <Uppercase_Letter_Label>
+			// <Unary_Instruction> ::= <Lbl_LC_67> <Uppercase_Letter_Label>
 			((Letter) tokens [1].UserObject).ToLower ();
-			engine.Process (new Instruction (reader, tokens), motion);
-		}
-
-		public void ReduceRULE_UNARY_INSTRUCTION_LBL97 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Unary_Instruction> ::= 'Lbl97' <Lowercase_Letter_Label>
-			engine.Process (new Instruction (reader, tokens), motion);
+			engine.Process (
+				new Instruction (
+				reader,
+				reader.ToSymbol (SymbolConstants.SYMBOL_LBL),
+				new Argument [] {(Argument) tokens [1].UserObject}),
+				motion);
 		}
 
 		public void ReduceRULE_UNARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens, object state)
@@ -2029,46 +2053,94 @@ namespace HP67
 			token.UserObject = new Digit (3);
 		}
 
-		public void ReduceRULE_LETTER (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_UPPERCASE_LETTER (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Letter> ::= <A>
+			// <Uppercase_Letter> ::= <A>
 			token.UserObject = new Letter ('A');
 		}
 
-		public void ReduceRULE_LETTER2 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_UPPERCASE_LETTER2 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Letter> ::= <B>
+			// <Uppercase_Letter> ::= <B>
 			token.UserObject = new Letter ('B');
 		}
 
-		public void ReduceRULE_LETTER3 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_UPPERCASE_LETTER3 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Letter> ::= <C>
+			// <Uppercase_Letter> ::= <C>
 			token.UserObject = new Letter ('C');
 		}
 
-		public void ReduceRULE_LETTER4 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_UPPERCASE_LETTER4 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Letter> ::= <D>
+			// <Uppercase_Letter> ::= <D>
 			token.UserObject = new Letter ('D');
 		}
 
-		public void ReduceRULE_LETTER5 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_UPPERCASE_LETTER5 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Letter> ::= <E>
+			// <Uppercase_Letter> ::= <E>
 			token.UserObject = new Letter ('E');
+		}
+
+		public void ReduceRULE_LC_A (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <LC_a> ::= <f> <A>
+			token.UserObject = new Letter ('a');
+		}
+
+		public void ReduceRULE_LC_B (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <LC_b> ::= <f> <B>
+			token.UserObject = new Letter ('b');
+		}
+
+		public void ReduceRULE_LC_C (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <LC_c> ::= <f> <C>
+			token.UserObject = new Letter ('c');
+		}
+
+		public void ReduceRULE_LC_D (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <LC_d> ::= <f> <D>
+			token.UserObject = new Letter ('d');
+		}
+
+		public void ReduceRULE_LC_E (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <LC_e> ::= <f> <E>			
+			token.UserObject = new Letter ('e');
 		}
 
 		public void ReduceRULE_UPPERCASE_LETTER_LABEL (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Uppercase_Letter_Label> ::= <Letter>
+			// <Uppercase_Letter_Label> ::= <Uppercase_Letter>
 		}
 
 		public void ReduceRULE_LOWERCASE_LETTER_LABEL (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Lowercase_Letter_Label> ::= <f> <Letter>
-			token.UserObject = tokens [1].UserObject;
-			((Letter) token.UserObject).ToLower ();
+			// <Lowercase_Letter_Label> ::= <LC_a>
+		}
+
+		public void ReduceRULE_LOWERCASE_LETTER_LABEL2 (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <Lowercase_Letter_Label> ::= <LC_b>
+		}
+
+		public void ReduceRULE_LOWERCASE_LETTER_LABEL3 (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <Lowercase_Letter_Label> ::= <LC_c>
+		}
+
+		public void ReduceRULE_LOWERCASE_LETTER_LABEL4 (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <Lowercase_Letter_Label> ::= <LC_d>
+		}
+
+		public void ReduceRULE_LOWERCASE_LETTER_LABEL5 (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <Lowercase_Letter_Label> ::= <LC_e>
 		}
 
 		public void ReduceRULE_LETTER_LABEL (Reader reader, Token token, Token [] tokens, object state)
@@ -2084,21 +2156,6 @@ namespace HP67
 		public void ReduceRULE_DIGIT_LABEL (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Digit_Label> ::= <Digit>
-		}
-
-		public void ReduceRULE_NON_LOWERCASE_LABEL (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Non_Lowercase_Label> ::= <Digit_Label>
-		}
-
-		public void ReduceRULE_NON_LOWERCASE_LABEL2 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Non_Lowercase_Label> ::= <Uppercase_Letter_Label>
-		}
-
-		public void ReduceRULE_NON_LOWERCASE_LABEL3 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Non_Lowercase_Label> ::= <Sub_I>
 		}
 
 		public void ReduceRULE_LABEL (Reader reader, Token token, Token [] tokens, object state)
@@ -2135,7 +2192,7 @@ namespace HP67
 
 		public void ReduceRULE_MEMORY2 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Memory> ::= <Letter>
+			// <Memory> ::= <Uppercase_Letter>
 		}
 
 		#endregion

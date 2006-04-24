@@ -443,7 +443,6 @@ namespace HP67
 					unit = AngleUnit.Grade;
 					break;
 				case SymbolConstants.SYMBOL_GSB :
-				case SymbolConstants.SYMBOL_GSB_F :
 					if (running) 
 					{
 						((ILabel) instruction.Arguments [0]).Gosub (memory, program);
@@ -502,7 +501,6 @@ namespace HP67
 					}
 					break;
 				case SymbolConstants.SYMBOL_LBL :
-				case SymbolConstants.SYMBOL_LBL_F :
 					break;
 				case SymbolConstants.SYMBOL_LN :
 					stack.Get (out x);

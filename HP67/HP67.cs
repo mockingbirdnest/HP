@@ -113,7 +113,7 @@ namespace HP67
 				tags [i] = (string) control.Tag;
 				i++;
 			}
-			reader = new Reader ("HP_Parser.Parser", "CGT", "67", tags);
+			reader = new Reader ("HP_Parser.Parser", "CGT", CalculatorModel.HP67, tags);
 
 			// Create the execution thread and wait until it is ready to process requests.
 			executionThread =

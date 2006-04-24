@@ -1,5 +1,5 @@
 "Name"              = 'HP_Parser'
-"Version"           = '1.5.0'
+"Version"           = '1.5.1'
 "Author"            = 'Mockingbird'
 "Case Sensitive"    = 'False'
 "Character Mapping" = Unicode
@@ -156,14 +156,14 @@ Period97         = '97-62'
 <Four>           ::= Four67               | Four97
 <Frac>           ::= g67 Period67         | f97 To_Rectangular97
 <Grd>            ::= h67 Eex67            | f97 Eex97
-<Gsb_f>          ::= g67 Gto67
+<Gsb_LC_67>      ::= g67 Gto67
 <Gsb>            ::= f67 Gto67            | Gsb97
 <Gto>            ::= Gto67                | Gto97
 <HMS_Plus>       ::= h67 Period67         | f97 Addition97
 <Int>            ::= f67 Period67         | f97 To_Polar97
 <Isz_Sub_I>      ::= g67 Rcl67            | f97 Sst97 Sub_I97
 <Isz>            ::= f67 Rcl67            | f97 Sst97 I97
-<Lbl_f>          ::= g67 Sst67
+<Lbl_LC_67>      ::= g67 Sst67
 <Lbl>            ::= f67 Sst67            | Lbl97
 <Ln>             ::= f67 Seven67          | Ln97
 <Log>            ::= f67 Eight67          | f97 Ln97
@@ -236,8 +236,11 @@ Period97         = '97-62'
                 | <Binary_Instruction>
                 | <Ternary_Instruction>
 
-<Gsb_Shortcut>       ::= <Uppercase_Letter_Label>
-<Gsb_f_Shortcut>     ::= <Lowercase_Letter_Label>
+! We need the distinction between the two forms of GSB shorcut because on the
+! HP-67 the uppercase shorcuts have a different meaning when the program memory
+! is empty.
+<Gsb_LC_Shortcut>    ::= <Lowercase_Letter_Label>
+<Gsb_UC_Shortcut>    ::= <Uppercase_Letter_Label>
 <Rcl_Sub_I_Shortcut> ::= <Sub_I>
                                         
 <Nullary_Instruction> ::= <Abs>
@@ -326,19 +329,19 @@ Period97         = '97-62'
                         | <X_NE_0>
                         | <X_NE_Y>
                         | <Y_To_The_Xth>
-                                          
+
+! The grammar allows f67 GSB67 f67 <Letter>, but that's actually illegal, so
+! the action will have to filter this out.  Similarly for <Lbl>.
 <Unary_Instruction> ::= <CF> <Flag>
                       | <Dsp> <Digit_Count>
                       | <F_Test> <Flag>
-                      | <Gsb> <Non_Lowercase_Label>
-                      | <Gsb_f> <Uppercase_Letter_Label>
-                      | <Gsb_f_Shortcut>
-                      | <Gsb_Shortcut>
-                      | Gsb97 <Lowercase_Letter_Label>
+                      | <Gsb> <Label>
+                      | <Gsb_LC_67> <Uppercase_Letter_Label>
+                      | <Gsb_LC_Shortcut>
+                      | <Gsb_UC_Shortcut>
                       | <Gto> <Label>
-                      | <Lbl> <Non_Lowercase_Label>
-                      | <Lbl_f> <Uppercase_Letter_Label>
-                      | Lbl97 <Lowercase_Letter_Label>
+                      | <Lbl> <Label>
+                      | <Lbl_LC_67> <Uppercase_Letter_Label>
                       | <Rcl> <Memory>
                       | <SF> <Flag>
                       | <Sto> <Memory>
@@ -373,21 +376,30 @@ Period97         = '97-62'
          | <Two>
          | <Three>
          
-<Letter> ::= <A>
-           | <B>
-           | <C>
-           | <D>
-           | <E>
-<Uppercase_Letter_Label> ::= <Letter>
-<Lowercase_Letter_Label> ::= <f> <Letter>
+<Uppercase_Letter> ::= <A>
+                     | <B>
+                     | <C>
+                     | <D>
+                     | <E>
+           
+! The following definitions are for the benefit of the unparser.
+<LC_a> ::= <f> <A>
+<LC_b> ::= <f> <B>
+<LC_c> ::= <f> <C>
+<LC_d> ::= <f> <D>
+<LC_e> ::= <f> <E>
+
+<Uppercase_Letter_Label> ::= <Uppercase_Letter>
+<Lowercase_Letter_Label> ::= <LC_a>
+                           | <LC_b>
+                           | <LC_c>
+                           | <LC_d>
+                           | <LC_e>
 <Letter_Label> ::= <Lowercase_Letter_Label>
                  | <Uppercase_Letter_Label>
 <Digit_Label> ::= <Digit>
-<Non_Lowercase_Label> ::= <Digit_Label>
-                        | <Uppercase_Letter_Label>
-                        | <Sub_I>
 <Label> ::= <Digit_Label>
           | <Letter_Label>
           | <Sub_I>
 <Operable_Memory> ::= <Digit> | <Sub_I>
-<Memory> ::= <Operable_Memory> | <Letter>
+<Memory> ::= <Operable_Memory> | <Uppercase_Letter>
