@@ -17,20 +17,22 @@ namespace HP67_Control_Library
 	/// <summary>
 	/// A Key on the keyboard of the HP67 calculator.
 	/// </summary>
-	public class Key : System.Windows.Forms.UserControl
+	public class Key : UserControl
 	{
 
 		#region Private Data
 
 		private const double brightnessReduction = 0.78;
+		private const int labelsHeight = 27; // This cannot be easily calculated because of overlap.
 		private const float sizeReduction = 0.85F;
 
-		private System.Drawing.Color fgBackColor;
+		private Color fgBackColor;
 		private TextAlign fgTextAlign;
 		private int fgWidth;
-		private System.Drawing.Font font;
+		private Font font;
 		private Keys [] shortcuts;
-		private System.Drawing.Color mainBackColor;
+		private Color mainBackColor;
+		private int mainHeight;
 		private int mainWidth;
 
 		internal System.Windows.Forms.Label gLabel;
@@ -63,6 +65,7 @@ namespace HP67_Control_Library
 			fgTextAlign = TextAlign.Justified;
 			fgWidth = button.Size.Width;
 			shortcuts = new Keys [0];
+			mainHeight = button.Height;
 			mainWidth = button.Width;
 
 			FText = "f";
@@ -71,17 +74,17 @@ namespace HP67_Control_Library
 			MainText = "key";
 
 			FGTextAlign = TextAlign.Centered;
-			HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			HTextAlign = ContentAlignment.MiddleCenter;
 
-			FGBackColor = System.Drawing.Color.FromArgb (64, 64, 64);
-			MainBackColor = System.Drawing.Color.FromKnownColor
-				(System.Drawing.KnownColor.Olive);
-			fLabel.ForeColor = System.Drawing.Color.FromKnownColor
-				(System.Drawing.KnownColor.Gold);
-			gLabel.ForeColor = System.Drawing.Color.FromKnownColor
-				(System.Drawing.KnownColor.SkyBlue);
+			FGBackColor = Color.FromArgb (64, 64, 64);
+			MainBackColor = Color.FromKnownColor
+				(KnownColor.Olive);
+			fLabel.ForeColor = Color.FromKnownColor
+				(KnownColor.Gold);
+			gLabel.ForeColor = Color.FromKnownColor
+				(KnownColor.SkyBlue);
 
-			Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
+			Font = new Font ("Arial Unicode MS", 8.5F, FontStyle.Bold);
 
 			AutoSize ();
 		}
@@ -118,38 +121,38 @@ namespace HP67_Control_Library
 			// 
 			// gLabel
 			// 
-			this.gLabel.BackColor = System.Drawing.Color.Transparent;
-			this.gLabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.gLabel.ForeColor = System.Drawing.Color.SkyBlue;
+			this.gLabel.BackColor = Color.Transparent;
+			this.gLabel.Font = new Font("Arial Unicode MS", 8.5F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
+			this.gLabel.ForeColor = Color.SkyBlue;
 			this.gLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.gLabel.Location = new System.Drawing.Point(75, 86);
+			this.gLabel.Location = new Point(75, 86);
 			this.gLabel.Name = "gLabel";
-			this.gLabel.Size = new System.Drawing.Size(24, 15);
+			this.gLabel.Size = new Size(24, 15);
 			this.gLabel.TabIndex = 4;
 			this.gLabel.Text = "g";
 			// 
 			// fLabel
 			// 
-			this.fLabel.BackColor = System.Drawing.Color.Transparent;
-			this.fLabel.Font = new System.Drawing.Font("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.fLabel.ForeColor = System.Drawing.Color.Gold;
+			this.fLabel.BackColor = Color.Transparent;
+			this.fLabel.Font = new Font("Arial Unicode MS", 8.5F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
+			this.fLabel.ForeColor = Color.Gold;
 			this.fLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.fLabel.Location = new System.Drawing.Point(51, 86);
+			this.fLabel.Location = new Point(51, 86);
 			this.fLabel.Name = "fLabel";
-			this.fLabel.Size = new System.Drawing.Size(24, 15);
+			this.fLabel.Size = new Size(24, 15);
 			this.fLabel.TabIndex = 3;
 			this.fLabel.Text = "f";
-			this.fLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			this.fLabel.TextAlign = ContentAlignment.TopRight;
 			// 
 			// button
 			// 
-			this.button.BackColor = System.Drawing.Color.Olive;
-			this.button.Font = new System.Drawing.Font("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.button.ForeColor = System.Drawing.Color.White;
+			this.button.BackColor = Color.Olive;
+			this.button.Font = new Font("Arial Unicode MS", 8.5F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
+			this.button.ForeColor = Color.White;
 			this.button.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.button.Location = new System.Drawing.Point(51, 50);
+			this.button.Location = new Point(51, 50);
 			this.button.Name = "button";
-			this.button.Size = new System.Drawing.Size(48, 24);
+			this.button.Size = new Size(48, 24);
 			this.button.TabIndex = 1;
 			this.button.Tag = "34";
 			this.button.Text = "key";
@@ -158,11 +161,11 @@ namespace HP67_Control_Library
 			// 
 			// hButton
 			// 
-			this.hButton.BackColor = System.Drawing.Color.Olive;
-			this.hButton.Font = new System.Drawing.Font("Arial Unicode MS", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.hButton.Location = new System.Drawing.Point(51, 71);
+			this.hButton.BackColor = Color.Olive;
+			this.hButton.Font = new Font("Arial Unicode MS", 7F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
+			this.hButton.Location = new Point(51, 71);
 			this.hButton.Name = "hButton";
-			this.hButton.Size = new System.Drawing.Size(48, 18);
+			this.hButton.Size = new Size(48, 18);
 			this.hButton.TabIndex = 2;
 			this.hButton.Text = "h";
 			this.hButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.hButton_MouseUp);
@@ -174,7 +177,7 @@ namespace HP67_Control_Library
 			this.Controls.Add(this.fLabel);
 			this.Controls.Add(this.button);
 			this.Controls.Add(this.hButton);
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte)(0)));
 			this.Name = "Key";
 			this.Resize += new System.EventHandler(this.Key_Resize);
 			this.ResumeLayout(false);
@@ -184,15 +187,16 @@ namespace HP67_Control_Library
 
 		#region Event Handlers
 
-		private void Key_Resize(object sender, System.EventArgs e)
+		private void Key_Resize (object sender, System.EventArgs e)
 		{
-			Control control = (Control)sender;
+			Control control = (Control) sender;
         
 			FGWidth = control.Size.Width;
 			MainWidth = control.Size.Width;
+			MainHeight = control.Size.Height - labelsHeight;
 		}
 
-		private void hButton_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void hButton_MouseDown (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left) 
 			{
@@ -201,7 +205,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		private void hButton_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void hButton_MouseUp (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left) 
 			{
@@ -210,7 +214,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		private void button_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void button_MouseDown (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left) 
 			{
@@ -222,7 +226,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		private void button_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void button_MouseUp (object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left) 
 			{
@@ -255,16 +259,16 @@ namespace HP67_Control_Library
 			int x = Math.Min (button.Location.X, fLabel.Location.X);
 			int y = button.Location.Y;
 
-			button.Location = new System.Drawing.Point
+			button.Location = new Point
 				(button.Location.X - x, button.Location.Y - y);
-			hButton.Location = new System.Drawing.Point
+			hButton.Location = new Point
 				(hButton.Location.X - x, hButton.Location.Y - y);
-			fLabel.Location = new System.Drawing.Point
+			fLabel.Location = new Point
 				(fLabel.Location.X - x, fLabel.Location.Y - y);
-			gLabel.Location = new System.Drawing.Point
+			gLabel.Location = new Point
 				(gLabel.Location.X - x, gLabel.Location.Y - y);
 
-			this.Size = new System.Drawing.Size (Math.Max (mainWidth, fgWidth),
+			this.Size = new Size (Math.Max (mainWidth, fgWidth),
 											   fLabel.Location.Y + fLabel.Size.Height);
 		}
 
@@ -281,23 +285,23 @@ namespace HP67_Control_Library
 			{
 
 				// Adjust the widths so as to center the text.
-				fLabel.Size = new System.Drawing.Size
+				fLabel.Size = new Size
 					((int)(((float)fgWidth - ΔWidth - (float)spacing) / 2.0),
 					 fLabel.Size.Height);
-				gLabel.Size = new System.Drawing.Size
+				gLabel.Size = new Size
 					(fgWidth - fLabel.Size.Width - spacing,
 					 gLabel.Size.Height);
-				gLabel.Location = new System.Drawing.Point
+				gLabel.Location = new Point
 					(fLabel.Location.X + fgWidth - gLabel.Size.Width,
 					 gLabel.Location.Y);
 
 				// Now set the alignments.
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-				gLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+				fLabel.TextAlign = ContentAlignment.TopRight;
+				gLabel.TextAlign = ContentAlignment.TopLeft;
 			}
 			else
 			{
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+				fLabel.TextAlign = ContentAlignment.TopCenter;
 			}
 		}
 
@@ -310,23 +314,23 @@ namespace HP67_Control_Library
 			{
 
 				// Make sure the two labels have the same width.
-				fLabel.Size = new System.Drawing.Size
+				fLabel.Size = new Size
 					((fgWidth - spacing) / 2,
 					 fLabel.Size.Height);
-				gLabel.Size = new System.Drawing.Size
+				gLabel.Size = new Size
 					(fgWidth - fLabel.Size.Width - spacing,
 					 gLabel.Size.Height);
-				gLabel.Location = new System.Drawing.Point
+				gLabel.Location = new Point
 					(fLabel.Location.X + fgWidth - gLabel.Size.Width,
 					 gLabel.Location.Y);
 
 				// Now set the alignments.
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-				gLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+				fLabel.TextAlign = ContentAlignment.TopLeft;
+				gLabel.TextAlign = ContentAlignment.TopRight;
 			}
 			else
 			{
-				fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+				fLabel.TextAlign = ContentAlignment.TopCenter;
 			}
 		}
 
@@ -334,7 +338,7 @@ namespace HP67_Control_Library
 
 		#region Public Properties
 
-		public System.Drawing.Color FGBackColor
+		public Color FGBackColor
 		{
 			get
 			{
@@ -390,26 +394,26 @@ namespace HP67_Control_Library
 				int ΔWidth = value - fgWidth;
 
 				fgWidth = value;
-				fLabel.Location = new System.Drawing.Point (fLabel.Location.X - ΔWidth / 2,
+				fLabel.Location = new Point (fLabel.Location.X - ΔWidth / 2,
 															fLabel.Location.Y);
 				if (HasG) 
 				{
-					fLabel.Size = new System.Drawing.Size (fLabel.Size.Width + ΔWidth / 2,
+					fLabel.Size = new Size (fLabel.Size.Width + ΔWidth / 2,
 														   fLabel.Size.Height);
 				}
 				else 
 				{
-					fLabel.Size = new System.Drawing.Size (fLabel.Size.Width + ΔWidth,
+					fLabel.Size = new Size (fLabel.Size.Width + ΔWidth,
 														   fLabel.Size.Height);
 				}
-				gLabel.Size = new System.Drawing.Size (gLabel.Size.Width + ΔWidth / 2,
+				gLabel.Size = new Size (gLabel.Size.Width + ΔWidth / 2,
 													   gLabel.Size.Height);
 
 				AutoSize ();
 			}
 		}
 
-		public override System.Drawing.Font Font
+		public override Font Font
 		{
 			get
 			{
@@ -417,10 +421,11 @@ namespace HP67_Control_Library
 			}
 			set
 			{
-				System.Drawing.Font smallFont = new System.Drawing.Font
-														(value.Name,
-														 value.SizeInPoints * sizeReduction,
-														 value.Style);
+				Font smallFont =
+					new Font
+						(value.Name,
+						value.SizeInPoints * sizeReduction,
+						value.Style);
 
 				font = value;
 				button.Font = font;
@@ -464,12 +469,12 @@ namespace HP67_Control_Library
 				{
 					// Widen the F label and hide the G label.
 					gLabel.Text = value;
-					fLabel.Size = new System.Drawing.Size (fgWidth,
+					fLabel.Size = new Size (fgWidth,
 														   gLabel.Size.Height);
-					gLabel.Location = new System.Drawing.Point (fLabel.Location.X + fgWidth,
+					gLabel.Location = new Point (fLabel.Location.X + fgWidth,
 																gLabel.Location.Y);
-					gLabel.Size = new System.Drawing.Size (0, gLabel.Size.Height);
-					fLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+					gLabel.Size = new Size (0, gLabel.Size.Height);
+					fLabel.TextAlign = ContentAlignment.TopCenter;
 					gLabel.Visible = false;
 				}
 				else if (!HasG && (value != "")) 
@@ -487,7 +492,7 @@ namespace HP67_Control_Library
 							break;
 						}
 					}
-					fLabel.TextAlign = System.Drawing.ContentAlignment.TopRight; // Is that correct?
+					fLabel.TextAlign = ContentAlignment.TopRight; // Is that correct?
 					gLabel.Visible = true;
 				}
 				gLabel.Text = value;
@@ -510,7 +515,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public System.Drawing.ContentAlignment HTextAlign
+		public ContentAlignment HTextAlign
 		{
 			get
 			{
@@ -522,7 +527,7 @@ namespace HP67_Control_Library
 			}
 		}
 
-		public System.Drawing.Color MainBackColor
+		public Color MainBackColor
 		{
 			get
 			{
@@ -532,14 +537,14 @@ namespace HP67_Control_Library
 			{
 				mainBackColor = value;
 				button.BackColor = mainBackColor;
-				hButton.BackColor = System.Drawing.Color.FromArgb
+				hButton.BackColor = Color.FromArgb
 					((int)((double)mainBackColor.R * brightnessReduction),
 					(int)((double)mainBackColor.G * brightnessReduction),
 					(int)((double)mainBackColor.B * brightnessReduction));
 			}
 		}
 
-		public System.Drawing.Color MainForeColor
+		public Color MainForeColor
 		{
 			get
 			{
@@ -548,6 +553,24 @@ namespace HP67_Control_Library
 			set
 			{
 				button.ForeColor = value;
+			}
+		}
+
+		public int MainHeight
+		{
+			get 
+			{
+				return mainHeight;
+			}
+			set 
+			{
+				int ΔHeight = value - mainHeight;
+
+				mainHeight = value;
+				button.Size = new Size (button.Size.Width, mainHeight);
+				button.Location =
+					new Point (button.Location.X, button.Location.Y - ΔHeight);
+				this.Size = new Size (this.Size.Width, mainHeight + labelsHeight);
 			}
 		}
 
@@ -574,11 +597,11 @@ namespace HP67_Control_Library
 				int ΔWidth = value - mainWidth;
 
 				mainWidth = value;
-				button.Size = new System.Drawing.Size (mainWidth, button.Size.Height);
-				button.Location = new System.Drawing.Point (button.Location.X - ΔWidth / 2,
+				button.Size = new Size (mainWidth, button.Size.Height);
+				button.Location = new Point (button.Location.X - ΔWidth / 2,
 					button.Location.Y);
-				hButton.Size = new System.Drawing.Size (mainWidth, hButton.Size.Height);
-				hButton.Location = new System.Drawing.Point (hButton.Location.X - ΔWidth / 2,
+				hButton.Size = new Size (mainWidth, hButton.Size.Height);
+				hButton.Location = new Point (hButton.Location.X - ΔWidth / 2,
 					hButton.Location.Y);
 
 				if (fgWidth < mainWidth) 
