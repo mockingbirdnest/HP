@@ -1086,6 +1086,66 @@ namespace HP67_Control_Library
 			}
 		}
 
+		public string UnloadedTextA 
+		{
+			get 
+			{
+				return labelA.Text;
+			}
+			set 
+			{
+				labelA.Text = value;
+			}
+		}
+
+		public string UnloadedTextB 
+		{
+			get 
+			{
+				return labelB.Text;
+			}
+			set 
+			{
+				labelB.Text = value;
+			}
+		}
+
+		public string UnloadedTextC 
+		{
+			get 
+			{
+				return labelC.Text;
+			}
+			set 
+			{
+				labelC.Text = value;
+			}
+		}
+
+		public string UnloadedTextD 
+		{
+			get 
+			{
+				return labelD.Text;
+			}
+			set 
+			{
+				labelD.Text = value;
+			}
+		}
+
+		public string UnloadedTextE 
+		{
+			get 
+			{
+				return labelE.Text;
+			}
+			set 
+			{
+				labelE.Text = value;
+			}
+		}
+
 		#endregion
 
 	}
