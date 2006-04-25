@@ -33,6 +33,7 @@ namespace HP67_Class_Library
 		public const string SaveMenuItem = "SAVE MENU ITEM";
 		public const string ShutdownDescription = "SHUTDOWN DESCRIPTION";
 		public const string StopDescription = "STOP DESCRIPTION";
+		public const string SyntaxErrorDescription = "SYNTAX ERROR DESCRIPTION";
 		public const string UntitledFileName = "UNTITLED FILE NAME";
 
 		private const string cultureAppSetting = "Culture";

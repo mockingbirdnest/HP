@@ -66,6 +66,13 @@ namespace HP67_Class_Library
 				return token;
 			}
 		}	
+		public override string ToString () 
+		{
+			return this.GetType ().FullName + ": " +
+				string.Format (
+					Localization.GetString (Localization.SyntaxErrorDescription),
+					token.ToString ());
+		}
 	}
 
 }

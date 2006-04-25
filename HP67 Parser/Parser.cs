@@ -1030,7 +1030,7 @@ namespace HP_Parser
         private void ReduceEvent(LALRParser parser, ReduceEventArgs args)
         {
 			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-				"ReduceEvent: reducing '" + args.Rule.ToString () + "'", 
+				"ReduceEvent: Reducing " + args.Rule.ToString (), 
 				classTraceSwitch.DisplayName);
 				
 		    // By default, copy the user object from the first token on the rhs.  This will take
@@ -2548,6 +2548,9 @@ namespace HP_Parser
             catch (SyntaxError ex) {
 				args.Continue = false;
 				actions.ParserError (input, ex.UnexpectedToken);
+				Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+					"ReduceEvent: Exception " + ex.ToString (), 
+					classTraceSwitch.DisplayName);
             }
         }
 
