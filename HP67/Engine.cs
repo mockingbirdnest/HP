@@ -254,7 +254,7 @@ namespace HP67
 
 		public void Execute (Instruction instruction) 
 		{
-			HP67 form = (HP67) display.TopLevelControl;
+			HP form = (HP) display.TopLevelControl;
 			bool neutral = stackLift;
 			double x, y;
 

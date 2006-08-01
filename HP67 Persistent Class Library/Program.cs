@@ -60,7 +60,7 @@ namespace HP67_Class_Library
 
 		public Program (Display display, Reader reader)
 		{
-			Symbol r_s_symbol = new SymbolTerminal ((int) SymbolConstants.SYMBOL_R_S, "R_S");
+			Symbol r_s_symbol = new SymbolNonterminal ((int) SymbolConstants.SYMBOL_R_S, "R_S");
 			Argument [] r_s_args = new Argument [0];
 
 			this.display = display;
