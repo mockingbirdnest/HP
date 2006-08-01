@@ -24,7 +24,7 @@
                 PostBuildEvent = ""
                 RootNamespace = "HP67"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
+                StartupObject = "HP67.HP67"
             >
                 <Config
                     Name = "Debug"
@@ -146,6 +146,21 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "BaseCalculator.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BaseCalculator.resx"
+                    DependentUpon = "BaseCalculator.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CardCalculator.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "Engine.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
@@ -168,6 +183,11 @@
                     RelPath = "HP67.resx"
                     DependentUpon = "HP67.cs"
                     BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ProgrammableCalculator.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

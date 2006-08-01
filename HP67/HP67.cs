@@ -1,35 +1,17 @@
 ﻿using HP67_Class_Library;
-using HP67_Control_Library;
 using HP_Parser;
-using HP67_Persistence;
 using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace HP67
 {
 	/// <summary>
-	/// User interface for the HP67 calculator.
+	/// The user interface for the HP-67 calculator.
 	/// </summary>
-	public class HP67 : System.Windows.Forms.Form
+	public class HP67 : CardCalculator
 	{
-		private const string commandOpen = "/open";
-		private const string commandPrint = "/print";
 
-		private string fileName = null;
-		private Reader reader = null;
-
-		// As much as possible, we hide the execution state in the Execution function.  But
-		// some things need the program.  It must only be accessed with proper synchronization,
-		// e.g., while holding the IsBusy lock or when in a cross-thread invocation.
-		private Program program = null;
-
-		private ExecutionThread executionThread;
+		#region Private Data
 
 		private HP67_Control_Library.Key keyA;
 		private HP67_Control_Library.Key keyB;
@@ -66,109 +48,19 @@ namespace HP67
 		private HP67_Control_Library.Key keyRS;
 		private HP67_Control_Library.Key key0;
 		private HP67_Control_Library.Key keyPeriod;
-		private HP67_Control_Library.CardSlot cardSlot;
-		private HP67_Control_Library.Toggle toggleOffOn;
-		private HP67_Control_Library.Toggle toggleWprgmRun;
-		private System.Windows.Forms.ContextMenu contextMenu;
-		private System.Windows.Forms.OpenFileDialog openFileDialog;
-		private System.Windows.Forms.SaveFileDialog saveFileDialog;
-		private System.Drawing.Printing.PrintDocument printDocument;
-		private System.Windows.Forms.MenuItem editMenuItem;
-		private System.Windows.Forms.MenuItem openMenuItem;
-		private System.Windows.Forms.MenuItem printMenuItem;
-		private System.Windows.Forms.MenuItem rtfMenuItem;
-		private System.Windows.Forms.MenuItem saveMenuItem;
-		private System.Windows.Forms.MenuItem saveAsMenuItem;
-		private System.Windows.Forms.MenuItem menuSeparator;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public HP67 (string [] arguments)
+		#endregion
+
+		#region Constructors & Destructors
+		
+		public HP67 (string [] arguments) : base (arguments, CalculatorModel.HP67)
 		{
-			string caption = Localization.GetString (Localization.IncorrectCommandLineArguments);
-
-			// Required for Windows Form Designer support
-			InitializeComponent();
-
-			// Localize the UI.
-			editMenuItem.Text = Localization.GetString (Localization.EditMenuItem);
-			openMenuItem.Text = Localization.GetString (Localization.OpenMenuItem);
-			printMenuItem.Text = Localization.GetString (Localization.PrintMenuItem);
-			rtfMenuItem.Text = Localization.GetString (Localization.RtfMenuItem);
-			saveMenuItem.Text = Localization.GetString (Localization.SaveMenuItem);
-			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
-
-			// Initialize the UI.
-			Unbusy ();
-			UpdateCardSlot (/* alreadyLocked */ true);
-
-			// Read the parser tables.
-			string [] tags = new string [Controls.Count];
-			int i = 0;
-
-			foreach (Control control in Controls) 
-			{
-				tags [i] = (string) control.Tag;
-				i++;
-			}
-			reader = new Reader ("HP_Parser.Parser", "CGT", CalculatorModel.HP67, tags);
-
-			// Create the execution thread and wait until it is ready to process requests.
-			executionThread =
-				new ExecutionThread
-					(this,
-					reader,
-					new ExecutionThread.CrossThreadUINotification (CrossThreadNotifyUI),
-					out program);
-
-			// Now see if we were called from the command line with arguments.
-			switch (arguments.Length) 
-			{
-				case 0 :
-					break;
-				case 2 :
-					if (arguments [0] == commandOpen) 
-					{
-						fileName = arguments [1];
-						Open (/* alreadyLocked */ true, /* merge */ false, ref fileName);
-					}
-					else if (arguments [0] == commandPrint) 
-					{
-						Print (arguments [1]);
-
-						// For some reason Close and Application.Exit won't have an effect here
-						// (maybe because we are in the constructor?).  So I am calling the cleanup
-						// code by hand, and raising an exception to get out of the constructor.
-						HP67_Closing (null, null);
-						throw new Shutdown ();
-					}
-					else
-					{
-						MessageBox.Show (string.Format (
-							Localization.GetString (Localization.IncorrectCommand),
-							arguments [0],
-							commandOpen,
-							commandPrint),
-							caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-					break;
-				default :
-					MessageBox.Show (string.Format (
-						Localization.GetString (Localization.IncorrectArgumentCount),
-						arguments.Length.ToString (), 0, 2),
-						caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-					break;
-			}
-
-			// Power on.
-			executionThread.PowerOn.Set ();
 		}
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
 			if (disposing)
@@ -186,12 +78,10 @@ namespace HP67
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		private void InitializeComponent()
+		protected override void InitializeComponent ()
 		{
+			base.InitializeComponent ();
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP67));
-			this.cardSlot = new HP67_Control_Library.CardSlot();
-			this.toggleOffOn = new HP67_Control_Library.Toggle();
-			this.toggleWprgmRun = new HP67_Control_Library.Toggle();
 			this.keyA = new HP67_Control_Library.Key();
 			this.keyf = new HP67_Control_Library.Key();
 			this.keySST = new HP67_Control_Library.Key();
@@ -227,58 +117,7 @@ namespace HP67
 			this.keyDiv = new HP67_Control_Library.Key();
 			this.keyMult = new HP67_Control_Library.Key();
 			this.keyPlus = new HP67_Control_Library.Key();
-			this.contextMenu = new System.Windows.Forms.ContextMenu();
-			this.openMenuItem = new System.Windows.Forms.MenuItem();
-			this.saveMenuItem = new System.Windows.Forms.MenuItem();
-			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
-			this.printMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuSeparator = new System.Windows.Forms.MenuItem();
-			this.editMenuItem = new System.Windows.Forms.MenuItem();
-			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
-			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-			this.printDocument = new System.Drawing.Printing.PrintDocument();
 			this.SuspendLayout();
-			// 
-			// cardSlot
-			// 
-			this.cardSlot.Location = new System.Drawing.Point(8, 80);
-			this.cardSlot.Margin = 8;
-			this.cardSlot.Name = "cardSlot";
-			this.cardSlot.RichText = false;
-			this.cardSlot.Size = new System.Drawing.Size(288, 50);
-			this.cardSlot.State = HP67_Control_Library.CardSlotState.Unloaded;
-			this.cardSlot.TabIndex = 1;
-			this.cardSlot.TextBoxWidth = 48;
-			this.cardSlot.Title = "<TITLE>";
-			// 
-			// toggleOffOn
-			// 
-			this.toggleOffOn.LeftText = "OFF";
-			this.toggleOffOn.LeftWidth = 30;
-			this.toggleOffOn.Location = new System.Drawing.Point(8, 56);
-			this.toggleOffOn.MainWidth = 50;
-			this.toggleOffOn.Name = "toggleOffOn";
-			this.toggleOffOn.Position = HP67_Control_Library.TogglePosition.Right;
-			this.toggleOffOn.RightText = "ON";
-			this.toggleOffOn.RightWidth = 30;
-			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
-			this.toggleOffOn.TabIndex = 2;
-			this.toggleOffOn.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
-			// 
-			// toggleWprgmRun
-			// 
-			this.toggleWprgmRun.LeftText = "W/PRGM";
-			this.toggleWprgmRun.LeftWidth = 60;
-			this.toggleWprgmRun.Location = new System.Drawing.Point(160, 56);
-			this.toggleWprgmRun.MainWidth = 50;
-			this.toggleWprgmRun.Name = "toggleWprgmRun";
-			this.toggleWprgmRun.Position = HP67_Control_Library.TogglePosition.Right;
-			this.toggleWprgmRun.RightText = "RUN";
-			this.toggleWprgmRun.RightWidth = 30;
-			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
-			this.toggleWprgmRun.TabIndex = 3;
-			this.toggleWprgmRun.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
 			// 
 			// keyA
 			// 
@@ -300,8 +139,8 @@ namespace HP67
 			this.keyA.Size = new System.Drawing.Size(48, 51);
 			this.keyA.TabIndex = 1;
 			this.keyA.Tag = "6711";
-			this.keyA.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyA.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyA.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyA.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyf
 			// 
@@ -323,8 +162,8 @@ namespace HP67
 			this.keyf.Size = new System.Drawing.Size(48, 51);
 			this.keyf.TabIndex = 11;
 			this.keyf.Tag = "6731";
-			this.keyf.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyf.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyf.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyf.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keySST
 			// 
@@ -345,8 +184,8 @@ namespace HP67
 			this.keySST.Size = new System.Drawing.Size(48, 51);
 			this.keySST.TabIndex = 10;
 			this.keySST.Tag = "6725";
-			this.keySST.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keySST.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keySST.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keySST.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyi
 			// 
@@ -367,8 +206,8 @@ namespace HP67
 			this.keyi.Size = new System.Drawing.Size(48, 51);
 			this.keyi.TabIndex = 9;
 			this.keyi.Tag = "6724";
-			this.keyi.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyi.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyi.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyi.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyDSP
 			// 
@@ -389,8 +228,8 @@ namespace HP67
 			this.keyDSP.Size = new System.Drawing.Size(48, 51);
 			this.keyDSP.TabIndex = 8;
 			this.keyDSP.Tag = "6723";
-			this.keyDSP.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyDSP.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyDSP.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyDSP.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyGTO
 			// 
@@ -411,8 +250,8 @@ namespace HP67
 			this.keyGTO.Size = new System.Drawing.Size(48, 51);
 			this.keyGTO.TabIndex = 7;
 			this.keyGTO.Tag = "6722";
-			this.keyGTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyGTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyGTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyGTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyΣ
 			// 
@@ -433,8 +272,8 @@ namespace HP67
 			this.keyΣ.Size = new System.Drawing.Size(48, 51);
 			this.keyΣ.TabIndex = 6;
 			this.keyΣ.Tag = "6721";
-			this.keyΣ.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyΣ.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyΣ.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyΣ.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyE
 			// 
@@ -456,8 +295,8 @@ namespace HP67
 			this.keyE.Size = new System.Drawing.Size(48, 51);
 			this.keyE.TabIndex = 5;
 			this.keyE.Tag = "6715";
-			this.keyE.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyE.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyE.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyE.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyD
 			// 
@@ -479,8 +318,8 @@ namespace HP67
 			this.keyD.Size = new System.Drawing.Size(48, 51);
 			this.keyD.TabIndex = 4;
 			this.keyD.Tag = "6714";
-			this.keyD.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyD.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyD.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyD.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyC
 			// 
@@ -502,8 +341,8 @@ namespace HP67
 			this.keyC.Size = new System.Drawing.Size(48, 51);
 			this.keyC.TabIndex = 3;
 			this.keyC.Tag = "6713";
-			this.keyC.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyC.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyC.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyC.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyB
 			// 
@@ -525,8 +364,8 @@ namespace HP67
 			this.keyB.Size = new System.Drawing.Size(48, 51);
 			this.keyB.TabIndex = 2;
 			this.keyB.Tag = "6712";
-			this.keyB.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyB.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyB.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyB.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyENTER
 			// 
@@ -548,8 +387,8 @@ namespace HP67
 			this.keyENTER.Size = new System.Drawing.Size(120, 51);
 			this.keyENTER.TabIndex = 16;
 			this.keyENTER.Tag = "6741";
-			this.keyENTER.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyENTER.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyENTER.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyENTER.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyEEX
 			// 
@@ -570,8 +409,8 @@ namespace HP67
 			this.keyEEX.Size = new System.Drawing.Size(48, 51);
 			this.keyEEX.TabIndex = 18;
 			this.keyEEX.Tag = "6743";
-			this.keyEEX.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyEEX.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyEEX.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyEEX.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyCLx
 			// 
@@ -592,8 +431,8 @@ namespace HP67
 			this.keyCLx.Size = new System.Drawing.Size(64, 51);
 			this.keyCLx.TabIndex = 19;
 			this.keyCLx.Tag = "6744";
-			this.keyCLx.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyCLx.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyCLx.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyCLx.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyCHS
 			// 
@@ -614,8 +453,8 @@ namespace HP67
 			this.keyCHS.Size = new System.Drawing.Size(48, 51);
 			this.keyCHS.TabIndex = 17;
 			this.keyCHS.Tag = "6742";
-			this.keyCHS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyCHS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyCHS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyCHS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyh
 			// 
@@ -637,8 +476,8 @@ namespace HP67
 			this.keyh.Size = new System.Drawing.Size(48, 51);
 			this.keyh.TabIndex = 15;
 			this.keyh.Tag = "6735";
-			this.keyh.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyh.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyh.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyh.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyRCL
 			// 
@@ -659,8 +498,8 @@ namespace HP67
 			this.keyRCL.Size = new System.Drawing.Size(48, 51);
 			this.keyRCL.TabIndex = 14;
 			this.keyRCL.Tag = "6734";
-			this.keyRCL.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyRCL.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyRCL.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyRCL.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keySTO
 			// 
@@ -681,8 +520,8 @@ namespace HP67
 			this.keySTO.Size = new System.Drawing.Size(48, 51);
 			this.keySTO.TabIndex = 13;
 			this.keySTO.Tag = "6733";
-			this.keySTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keySTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keySTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keySTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyg
 			// 
@@ -704,8 +543,8 @@ namespace HP67
 			this.keyg.Size = new System.Drawing.Size(48, 51);
 			this.keyg.TabIndex = 12;
 			this.keyg.Tag = "6732";
-			this.keyg.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyg.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyg.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyg.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key8
 			// 
@@ -728,8 +567,8 @@ namespace HP67
 			this.key8.Size = new System.Drawing.Size(56, 51);
 			this.key8.TabIndex = 22;
 			this.key8.Tag = "6753";
-			this.key8.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key8.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key8.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key8.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyRS
 			// 
@@ -750,8 +589,8 @@ namespace HP67
 			this.keyRS.Size = new System.Drawing.Size(56, 51);
 			this.keyRS.TabIndex = 35;
 			this.keyRS.Tag = "6784";
-			this.keyRS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyRS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyRS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyRS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyPeriod
 			// 
@@ -773,8 +612,8 @@ namespace HP67
 			this.keyPeriod.Size = new System.Drawing.Size(72, 51);
 			this.keyPeriod.TabIndex = 34;
 			this.keyPeriod.Tag = "6783";
-			this.keyPeriod.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyPeriod.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyPeriod.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyPeriod.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key0
 			// 
@@ -797,8 +636,8 @@ namespace HP67
 			this.key0.Size = new System.Drawing.Size(56, 51);
 			this.key0.TabIndex = 33;
 			this.key0.Tag = "6782";
-			this.key0.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key0.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key0.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key0.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key9
 			// 
@@ -821,8 +660,8 @@ namespace HP67
 			this.key9.Size = new System.Drawing.Size(56, 51);
 			this.key9.TabIndex = 23;
 			this.key9.Tag = "6754";
-			this.key9.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key9.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key9.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key9.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key3
 			// 
@@ -845,8 +684,8 @@ namespace HP67
 			this.key3.Size = new System.Drawing.Size(56, 51);
 			this.key3.TabIndex = 31;
 			this.key3.Tag = "6774";
-			this.key3.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key3.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key3.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key3.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key2
 			// 
@@ -869,8 +708,8 @@ namespace HP67
 			this.key2.Size = new System.Drawing.Size(56, 51);
 			this.key2.TabIndex = 30;
 			this.key2.Tag = "6773";
-			this.key2.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key2.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key2.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key2.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key1
 			// 
@@ -893,8 +732,8 @@ namespace HP67
 			this.key1.Size = new System.Drawing.Size(56, 51);
 			this.key1.TabIndex = 29;
 			this.key1.Tag = "6772";
-			this.key1.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key1.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key1.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key1.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key6
 			// 
@@ -917,8 +756,8 @@ namespace HP67
 			this.key6.Size = new System.Drawing.Size(56, 51);
 			this.key6.TabIndex = 27;
 			this.key6.Tag = "6764";
-			this.key6.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key6.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key6.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key6.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key5
 			// 
@@ -941,8 +780,8 @@ namespace HP67
 			this.key5.Size = new System.Drawing.Size(56, 51);
 			this.key5.TabIndex = 26;
 			this.key5.Tag = "6763";
-			this.key5.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key5.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key5.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key5.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key4
 			// 
@@ -965,8 +804,8 @@ namespace HP67
 			this.key4.Size = new System.Drawing.Size(56, 51);
 			this.key4.TabIndex = 25;
 			this.key4.Tag = "6762";
-			this.key4.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key4.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key4.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key4.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key7
 			// 
@@ -989,8 +828,8 @@ namespace HP67
 			this.key7.Size = new System.Drawing.Size(56, 51);
 			this.key7.TabIndex = 21;
 			this.key7.Tag = "6752";
-			this.key7.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.key7.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.key7.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key7.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyMinus
 			// 
@@ -1012,8 +851,8 @@ namespace HP67
 			this.keyMinus.Size = new System.Drawing.Size(48, 51);
 			this.keyMinus.TabIndex = 20;
 			this.keyMinus.Tag = "6751";
-			this.keyMinus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyMinus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyMinus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyMinus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyDiv
 			// 
@@ -1035,8 +874,8 @@ namespace HP67
 			this.keyDiv.Size = new System.Drawing.Size(48, 51);
 			this.keyDiv.TabIndex = 32;
 			this.keyDiv.Tag = "6781";
-			this.keyDiv.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyDiv.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyDiv.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyDiv.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyMult
 			// 
@@ -1058,8 +897,8 @@ namespace HP67
 			this.keyMult.Size = new System.Drawing.Size(48, 51);
 			this.keyMult.TabIndex = 28;
 			this.keyMult.Tag = "6771";
-			this.keyMult.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyMult.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
+			this.keyMult.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyMult.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyPlus
 			// 
@@ -1081,79 +920,14 @@ namespace HP67
 			this.keyPlus.Size = new System.Drawing.Size(48, 51);
 			this.keyPlus.TabIndex = 24;
 			this.keyPlus.Tag = "6761";
-			this.keyPlus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUp);
-			this.keyPlus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseDown);
-			// 
-			// contextMenu
-			// 
-			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						this.openMenuItem,
-																						this.saveMenuItem,
-																						this.saveAsMenuItem,
-																						this.printMenuItem,
-																						this.menuSeparator,
-																						this.editMenuItem,
-																						this.rtfMenuItem});
-			// 
-			// openMenuItem
-			// 
-			this.openMenuItem.Index = 0;
-			this.openMenuItem.Text = "&Open...";
-			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
-			// 
-			// saveMenuItem
-			// 
-			this.saveMenuItem.Index = 1;
-			this.saveMenuItem.Text = "&Save";
-			this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
-			// 
-			// saveAsMenuItem
-			// 
-			this.saveAsMenuItem.Index = 2;
-			this.saveAsMenuItem.Text = "Save &As...";
-			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
-			// 
-			// printMenuItem
-			// 
-			this.printMenuItem.Index = 3;
-			this.printMenuItem.Text = "Print";
-			this.printMenuItem.Click += new System.EventHandler(this.printMenuItem_Click);
-			// 
-			// menuSeparator
-			// 
-			this.menuSeparator.Index = 4;
-			this.menuSeparator.Text = "-";
-			// 
-			// editMenuItem
-			// 
-			this.editMenuItem.Index = 5;
-			this.editMenuItem.Text = "&Edit Labels";
-			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
-			// 
-			// rtfMenuItem
-			// 
-			this.rtfMenuItem.Index = 6;
-			this.rtfMenuItem.Text = "&Rich Text";
-			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
-			// 
-			// openFileDialog
-			// 
-			this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
-			// 
-			// saveFileDialog
-			// 
-			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
-			// 
-			// printDocument
-			// 
-			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+			this.keyPlus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyPlus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// HP67
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.ClientSize = new System.Drawing.Size(304, 590);
-			this.ContextMenu = this.contextMenu;
 			this.Controls.Add(this.keyPlus);
 			this.Controls.Add(this.keyMult);
 			this.Controls.Add(this.keyDiv);
@@ -1189,22 +963,15 @@ namespace HP67
 			this.Controls.Add(this.keySST);
 			this.Controls.Add(this.keyf);
 			this.Controls.Add(this.keyA);
-			this.Controls.Add(this.toggleWprgmRun);
-			this.Controls.Add(this.toggleOffOn);
-			this.Controls.Add(this.cardSlot);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.KeyPreview = true;
-			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(312, 624);
 			this.MinimumSize = new System.Drawing.Size(312, 624);
 			this.Name = "HP67";
 			this.Text = "HP67";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HP67_KeyDown);
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.HP67_Closing);
-			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.HP67_KeyUp);
 			this.ResumeLayout(false);
-
 		}
+
+		#endregion
+
 		#endregion
 
 		/// <summary>
@@ -1221,494 +988,6 @@ namespace HP67
 			{
 			}
 		}
-
-		#region Command Execution
-
-		public bool Open (bool alreadyLocked, bool merge, ref string name) 
-		{
-			bool status = false;
-			FileStream stream = null;
-
-			try 
-			{
-				stream = new FileStream (name, FileMode.Open, FileAccess.Read);
-
-				if (! alreadyLocked) 
-				{
-					Monitor.Enter (executionThread.IsBusy);
-				}
-				try 
-				{
-					if (merge) 
-					{
-						status = Card.Merge (stream, reader);
-					}
-					else 
-					{
-						status = Card.Read (stream, reader);
-					}
-					UpdateCardSlot (/* alreadyLocked */ true);
-				}
-				finally 
-				{
-					if (! alreadyLocked) 
-					{
-						Monitor.Exit (executionThread.IsBusy);
-					}
-				}
-
-				if (! status) 
-				{
-					name = null;
-				}
-				stream.Close ();
-				return status;
-			}
-			catch (FileNotFoundException)
-			{
-				string text = string.Format (
-					Localization.GetString (Localization.CannotOpenFile),
-					name);
-				string caption = Localization.GetString (Localization.FileNotFound);
-
-				if (stream != null) {
-					stream.Close ();
-				}
-				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
-			}
-			catch (Exception ex) 
-			{
-				string text = string.Format (
-					Localization.GetString (Localization.ExceptionOpeningFile),
-					name,
-					ex.Message);
-				string caption = Localization.GetString (Localization.ErrorDuringOpen);
-
-				if (stream != null) 
-				{
-					stream.Close ();
-				}
-				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
-			}
-		}
-
-		public void Print (string name) 
-		{
-			Open (/* alreadyLocked */ false, /* merge */ false, ref name);
-			printMenuItem_Click (null, null);
-		}
-
-		private bool Save (bool alreadyLocked, bool saveAs, CardPart part, ref string name)
-		{
-			bool fileIsNullOrReadOnly;
-			bool fileIsReadOnly;
-			bool mustShowDialog = saveAs;
-			bool status = false;
-			FileStream stream = null;
-
-			// If we don't have a currently open file, or if it is read-only, or if this is a
-			// Save As, we bring up the menu.  We keep doing so until either the user cancels the
-			// operation, or selects a writeable or nonexistent file.
-			for (;;) 
-			{
-				fileIsReadOnly = File.Exists (name) &&
-					((File.GetAttributes (name) &  FileAttributes.ReadOnly) != 0);
-				fileIsNullOrReadOnly = (name == null || fileIsReadOnly);
-				if (! mustShowDialog && ! fileIsNullOrReadOnly)
-				{
-					break;
-				}
-				if (fileIsNullOrReadOnly) 
-				{
-					saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
-				}
-				else 
-				{
-					saveFileDialog.FileName = name;
-				}
-				if (saveFileDialog.ShowDialog() == DialogResult.OK)
-				{
-					name = saveFileDialog.FileName;
-					mustShowDialog = false;
-				}
-				else 
-				{
-					return false;
-				}
-			}
-
-			// Now do the actual write to the card.  Use OpenOrCreate so as to be able to read the
-			// part of the file that we won't overwrite.
-			try 
-			{
-				stream = new FileStream (name, FileMode.OpenOrCreate);
-				
-				if (! alreadyLocked) 
-				{
-					Monitor.Enter (executionThread.IsBusy);
-				}
-				try 
-				{
-					status = Card.Write (stream, part);
-				}
-				finally 
-				{
-					if (! alreadyLocked) 
-					{
-						Monitor.Exit (executionThread.IsBusy);
-					}
-				}
-
-				stream.Close ();
-				return status;
-			}
-			catch (Exception ex) 
-			{
-				string text = string.Format (
-					Localization.GetString (Localization.ExceptionSavingFile),
-					name,
-					ex.Message);
-				string caption = Localization.GetString (Localization.ErrorDuringSave);
-
-				if (stream != null) 
-				{
-					stream.Close ();
-				}
-				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
-			}
-		}
-
-		#endregion
-
-		#region Cross-Thread Operations
-
-		public bool CrossThreadMerge () 
-		{
-			string name;
-
-			if (openFileDialog.ShowDialog () == DialogResult.OK)
-			{
-				name = openFileDialog.FileName;
-				return Open (/* alreadyLocked */ true, /* merge */ true, ref name);
-			}
-			else 
-			{
-				return false;
-			}
-		}
-
-		public EngineMode CrossThreadNotifyUI (bool busy) 
-		{
-			if (busy) 
-			{
-				Busy ();
-				return EngineMode.Run;
-			}
-			else 
-			{
-				return Unbusy ();
-			}
-		}
-
-		public bool CrossThreadSaveDataAs () 
-		{
-			string name = null;
-
-			return Save (/* alreadyLocked */ true, /* saveAs */ true, CardPart.Data, ref name);
-		}
-
-		#endregion
-
-		#region UI Utilities
-
-		private void Busy () 
-		{
-
-			// Disabling the menu items makes it clear to the user which operations are forbidden
-			// while the program runs.  It is doesn't help thread-safety, though: it could be
-			// possible for a print operation to start, followed immediately by the execution of a
-			// program, in which case both would proceed in parallel.  Thread safety is achieved by
-			// locking the operations that must access the execution data structures.
-			openMenuItem.Enabled = false;
-			printMenuItem.Enabled = false;
-			saveMenuItem.Enabled = false;
-			saveAsMenuItem.Enabled = false;
-		}
-
-		private EngineMode Unbusy () 
-		{
-			printMenuItem.Enabled = true;
-
-			// Make sure that the state of the card slot reflects the state of the program memory.
-			// We can access the program without synchronization, because we only come here through
-			// a cross-thread invocation or at startup, and therefore the two threads are
-			// synchronized.
-			UpdateCardSlot (/* alreadyLocked */ true);
-			switch (toggleWprgmRun.Position)
-			{
-				case TogglePosition.Left :
-
-					// W/PRGM, can only save.
-					openMenuItem.Enabled = false;
-					saveMenuItem.Enabled = true;
-					saveAsMenuItem.Enabled = true;
-					return EngineMode.WriteProgram;
-
-				case TogglePosition.Right :
-
-					// RUN, can only open.
-					openMenuItem.Enabled = true;
-					saveMenuItem.Enabled = false;
-					saveAsMenuItem.Enabled = false;
-					return EngineMode.Run;
-
-				default :
-					return EngineMode.Run; // To make the compiler happy.
-			}
-		}
-
-		void UpdateCardSlot (bool alreadyLocked) 
-		{
-			bool wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
-
-			// Make sure that the state of the card slot reflects the state of the program memory.
-			if (! alreadyLocked) 
-			{
-				Monitor.Enter (executionThread.IsBusy);
-			}
-			try 
-			{
-				if ((program == null) || (program.IsEmpty))
-				{
-					cardSlot.State = CardSlotState.Unloaded;
-					editMenuItem.Enabled = false;
-					rtfMenuItem.Enabled = false;
-				}
-				else if (fileName != null &&
-					((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0))
-				{
-					cardSlot.State = CardSlotState.ReadOnly;
-					editMenuItem.Enabled = false;
-					rtfMenuItem.Enabled = false;
-				}
-				else 
-				{
-					cardSlot.State = CardSlotState.ReadWrite;
-					editMenuItem.Enabled = true;
-					rtfMenuItem.Enabled = true;
-				}
-			}
-			finally 
-			{
-				if (! alreadyLocked) 
-				{
-					Monitor.Exit (executionThread.IsBusy);
-				}
-
-				// If the program was just cleared, clear the current file name.  This ensures that
-				// the next program won't be stupidly saved on the previous card.
-				if (! wasUnloaded && cardSlot.State == CardSlotState.Unloaded) 
-				{
-					fileName = null;
-				}
-			}
-		}
-
-		#endregion
-
-		#region UI Event Handlers
-
-		private void HP67_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			executionThread.Abort ();
-		}
-
-		private void HP67_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-		{
-			// If a key event is received when the user is not editing the card slot, we look for
-			// a key that has the corresponding code as one of its shortcuts, and we send it a
-			// mouse event.  A control or alt key is merely passed up the chain.
-			if (e.Control || e.Alt) 
-			{
-			}
-			else if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus) 
-			{
-				foreach (Control c in this.Controls) 
-				{
-					if (c is Key) 
-					{
-						foreach (Keys k in ((Key) c).Shortcuts) 
-						{
-							if (k == e.KeyCode) 
-							{
-								LeftMouseDown
-									((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
-							}
-						}
-					}
-				}
-			}
-		}
-
-		private void HP67_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
-		{
-			if (e.Control || e.Alt) 
-			{
-			}
-			else if (cardSlot.State < CardSlotState.Editable || ! cardSlot.ContainsFocus)
-			{
-				foreach (Control c in this.Controls) 
-				{
-					if (c is Key) 
-					{
-						foreach (Keys k in ((Key) c).Shortcuts) 
-						{
-							if (k == e.KeyCode) 
-							{
-								LeftMouseUp
-									((Key) c, new MouseEventArgs (MouseButtons.Left, 0, 0, 0, 0));
-							}
-						}
-					}
-				}
-			}
-		}
-
-		private void LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-
-			// Queue a keystroke, and notify the execution thread that its queue is not empty.
-			executionThread.Enqueue
-				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Down));
-		}
-
-		private void LeftMouseUp (object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-
-			// Queue a keystroke, and notify the execution thread that its queue is not empty.
-			executionThread.Enqueue
-				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Up));
-		}
-
-		private void printDocument_PrintPage(object sender,
-			System.Drawing.Printing.PrintPageEventArgs e)
-		{
-			program.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
-		}
-
-		private void toggleOffOn_ToggleClick (object sender,
-			System.EventArgs e,
-			HP67_Control_Library.TogglePosition position)
-		{
-			switch (toggleOffOn.Position)
-			{
-				case TogglePosition.Left :
-					// OFF.  We abort the execution thread and start a new one.  We leave it in the
-					// state where its display is black and it doesn't accept keystrokes.
-					Busy ();
-					executionThread.Reset (out program); 
-					UpdateCardSlot (/* alreadyLocked */ false);
-					break;
-				case TogglePosition.Right :
-					// ON.  First, we cancel any key typed when the power was off.  Then we enqueue
-					// a dummy keystroke to cause the execution thread to set the display mode.
-					// Finally we release the execution thread.
-					executionThread.Clear ();
-					executionThread.Enqueue (Keystroke.Noop);
-					executionThread.PowerOn.Set ();
-					break;
-			}		
-		}
-
-		private void toggleWprgmRun_ToggleClick (object sender,
-			System.EventArgs e,
-			HP67_Control_Library.TogglePosition position)
-		{
-
-			// Changes to this toggle are actually delayed until the end of the current execution.
-			// If the execution thread is idle, we are going to be able to grab the lock and
-			// proceed immediately.  If it is busy, we won't be able to grab the lock, and we will
-			// return without doing anything.  That's not a problem because the execution thread
-			// will update the menus as soon as the current computation finishes.
-			if (Monitor.TryEnter (executionThread.IsBusy)) 
-			{
-				try
-				{
-
-					// One of the things we want to do is change the display mode, and that can
-					// only be done by the execution thread.  So force it to go through its loop
-					// once by sending a no-op keystroke.  We know that the execution thread is 
-					// idle, so this won't have nasty effects like interrupting the current
-					// computation.
-					executionThread.Enqueue (Keystroke.Noop);
-				}
-				finally 
-				{
-					Monitor.Exit (executionThread.IsBusy);
-				}
-			}
-		}
-
-		private void openMenuItem_Click (object sender, System.EventArgs e)
-		{
-			if (openFileDialog.ShowDialog () == DialogResult.OK)
-			{
-				fileName = openFileDialog.FileName;
-				Open (/* alreadyLocked */ false, /* merge */ false, ref fileName);
-			}			
-		}
-
-		private void saveMenuItem_Click(object sender, System.EventArgs e)
-		{
-			Save (/* alreadyLocked */ false, /* saveAs */ false, CardPart.Program, ref fileName);
-		}
-
-		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
-		{
-			Save (/* alreadyLocked */ false, /* saveAs */ true, CardPart.Program, ref fileName);
-		}
-
-		private void editMenuItem_Click(object sender, System.EventArgs e)
-		{
-			if (cardSlot.State != CardSlotState.Unloaded) 
-			{
-				bool isChecked = ((MenuItem) sender).Checked;
-				isChecked = ! isChecked;
-				((MenuItem) sender).Checked = isChecked;
-				if (isChecked) 
-				{
-					cardSlot.State = CardSlotState.Editable;
-				}
-				else
-				{
-					UpdateCardSlot (/* alreadyLocked */ false);
-				}
-			}
-		}
-
-		private void rtfMenuItem_Click(object sender, System.EventArgs e)
-		{
-			if (cardSlot.State != CardSlotState.Unloaded) 
-			{
-				bool isChecked = ((MenuItem) sender).Checked;
-				isChecked = ! isChecked;
-				((MenuItem) sender).Checked = isChecked;
-				cardSlot.RichText = isChecked;
-			}
-		}
-
-		private void printMenuItem_Click(object sender, System.EventArgs e)
-		{
-			lock (executionThread.IsBusy) 
-			{
-				printDocument.Print ();
-			}
-		}
-
-		#endregion
 
 	}
 }
