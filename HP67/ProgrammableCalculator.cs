@@ -1,14 +1,14 @@
-using HP67_Class_Library;
-using HP67_Control_Library;
-using HP_Parser;
-using HP67_Persistence;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 {
 	/// <summary>
 	/// Abstract base class for programmable calculators.
@@ -28,7 +28,7 @@ namespace HP67
 		// e.g., while holding the IsBusy lock or when in a cross-thread invocation.
 		protected Program program = null;
 
-		private HP67_Control_Library.Toggle toggleWprgmRun;
+		private Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
 		protected System.Windows.Forms.ContextMenu contextMenu;
 		protected System.Windows.Forms.OpenFileDialog openFileDialog;
 		protected System.Windows.Forms.SaveFileDialog saveFileDialog;
@@ -77,7 +77,7 @@ namespace HP67
 			base.InitializeComponent ();
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager (typeof (ProgrammableCalculator));
-			this.toggleWprgmRun = new HP67_Control_Library.Toggle();
+			this.toggleWprgmRun = new Mockingbird.HP.Control_Library.Toggle();
 			this.contextMenu = new System.Windows.Forms.ContextMenu();
 			this.openMenuItem = new System.Windows.Forms.MenuItem();
 			this.saveMenuItem = new System.Windows.Forms.MenuItem();
@@ -95,12 +95,12 @@ namespace HP67
 			this.toggleWprgmRun.Location = new System.Drawing.Point(160, 56);
 			this.toggleWprgmRun.MainWidth = 50;
 			this.toggleWprgmRun.Name = "toggleWprgmRun";
-			this.toggleWprgmRun.Position = HP67_Control_Library.TogglePosition.Right;
+			this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggleWprgmRun.RightText = "RUN";
 			this.toggleWprgmRun.RightWidth = 30;
 			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
 			this.toggleWprgmRun.TabIndex = 3;
-			this.toggleWprgmRun.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
+			this.toggleWprgmRun.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
 			// 
 			// contextMenu
 			// 
@@ -464,7 +464,7 @@ namespace HP67
 
 		private void toggleWprgmRun_ToggleClick (object sender,
 			System.EventArgs e,
-			HP67_Control_Library.TogglePosition position)
+			Mockingbird.HP.Control_Library.TogglePosition position)
 		{
 
 			// Changes to this toggle are actually delayed until the end of the current execution.

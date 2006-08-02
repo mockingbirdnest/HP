@@ -1,12 +1,12 @@
-using HP67_Control_Library;
-using HP_Parser;
-using HP67_Persistence;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 {
 	/// <summary>
 	/// Abstract base class for magnetic card calculators.
@@ -16,7 +16,7 @@ namespace HP67
 
 		#region Private Data
 
-		private HP67_Control_Library.CardSlot cardSlot;
+		private Mockingbird.HP.Control_Library.CardSlot cardSlot;
 		private System.Windows.Forms.MenuItem menuSeparator;
 		private System.Windows.Forms.MenuItem rtfMenuItem;
 		private System.Windows.Forms.MenuItem editMenuItem;
@@ -59,7 +59,7 @@ namespace HP67
 			base.InitializeComponent ();
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager (typeof (CardCalculator));
-			this.cardSlot = new HP67_Control_Library.CardSlot();
+			this.cardSlot = new Mockingbird.HP.Control_Library.CardSlot();
 			this.menuSeparator = new System.Windows.Forms.MenuItem();
 			this.editMenuItem = new System.Windows.Forms.MenuItem();
 			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
@@ -72,7 +72,7 @@ namespace HP67
 			this.cardSlot.Name = "cardSlot";
 			this.cardSlot.RichText = false;
 			this.cardSlot.Size = new System.Drawing.Size(288, 50);
-			this.cardSlot.State = HP67_Control_Library.CardSlotState.Unloaded;
+			this.cardSlot.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
 			this.cardSlot.TabIndex = 1;
 			this.cardSlot.TextBoxWidth = 48;
 			this.cardSlot.Title = "<TITLE>";

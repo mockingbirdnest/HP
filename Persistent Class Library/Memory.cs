@@ -1,11 +1,11 @@
-﻿using HP67_Control_Library;
-using HP_Parser;
-using HP67_Persistence;
+﻿using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.Diagnostics;
 using System.Xml;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
 	/// The data registers of the HP67 calculator.

@@ -1,10 +1,9 @@
 using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using HP67_Control_Library;
-using HP_Parser;
-using HP67_Persistence;
-
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.Collections;
 using System.Data;
@@ -14,7 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Printing;
 using System.Globalization;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
 	/// The program memory of the HP67 calculator.

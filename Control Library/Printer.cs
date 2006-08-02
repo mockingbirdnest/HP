@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 
-namespace HP67_Control_Library
+namespace Mockingbird.HP.Control_Library
 {
 	/// <summary>
 	/// The dot-matrix printer of the HP97 calculator

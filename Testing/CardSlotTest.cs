@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace HP67_Testing
+namespace Mockingbird.HP.Testing
 {
 	/// <summary>
 	/// Summary description for CardTest.
@@ -12,7 +12,7 @@ namespace HP67_Testing
 	public class CardTest : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.PropertyGrid PropertyGrid;
-		private HP67_Control_Library.CardSlot CardSlotUnderTest;
+		private Mockingbird.HP.Control_Library.CardSlot CardSlotUnderTest;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -53,7 +53,7 @@ namespace HP67_Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-			this.CardSlotUnderTest = new HP67_Control_Library.CardSlot();
+			this.CardSlotUnderTest = new Mockingbird.HP.Control_Library.CardSlot();
 			this.SuspendLayout();
 			// 
 			// PropertyGrid

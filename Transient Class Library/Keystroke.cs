@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 
 	public enum KeystrokeMotion

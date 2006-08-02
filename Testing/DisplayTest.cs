@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67_Testing
+namespace Mockingbird.HP.Testing
 {
 	/// <summary>
 	/// Summary description for DisplayTest.
@@ -13,7 +13,7 @@ namespace HP67_Testing
 	public class DisplayTest : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.PropertyGrid PropertyGrid;
-		private HP67_Control_Library.Display DisplayUnderTest;
+		private Mockingbird.HP.Control_Library.Display DisplayUnderTest;
 		private System.Windows.Forms.NumericUpDown numericUpDown;
 		private System.Windows.Forms.Label labelDigits;
 		private System.Windows.Forms.RadioButton radioButtonScientific;
@@ -70,7 +70,7 @@ namespace HP67_Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-			this.DisplayUnderTest = new HP67_Control_Library.Display(new AutoResetEvent (false));
+			this.DisplayUnderTest = new Mockingbird.HP.Control_Library.Display(new AutoResetEvent (false));
 			this.numericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.labelDigits = new System.Windows.Forms.Label();
 			this.radioButtonScientific = new System.Windows.Forms.RadioButton();
@@ -374,7 +374,7 @@ namespace HP67_Testing
 		{
 			if (radioButtonEngineering.Checked) 
 			{
-				DisplayUnderTest.Format = HP67_Control_Library.DisplayFormat.Engineering;
+				DisplayUnderTest.Format = Mockingbird.HP.Control_Library.DisplayFormat.Engineering;
 			}
 		}
 
@@ -382,7 +382,7 @@ namespace HP67_Testing
 		{
 			if (radioButtonFixed.Checked) 
 			{
-				DisplayUnderTest.Format = HP67_Control_Library.DisplayFormat.Fixed;
+				DisplayUnderTest.Format = Mockingbird.HP.Control_Library.DisplayFormat.Fixed;
 			}
 		}
 
@@ -390,7 +390,7 @@ namespace HP67_Testing
 		{
 			if (radioButtonScientific.Checked) 
 			{
-				DisplayUnderTest.Format = HP67_Control_Library.DisplayFormat.Scientific;
+				DisplayUnderTest.Format = Mockingbird.HP.Control_Library.DisplayFormat.Scientific;
 			}
 		}
 

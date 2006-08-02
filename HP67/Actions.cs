@@ -2,14 +2,13 @@
 using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using HP67;
-using HP67_Class_Library;
-using HP_Parser;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Parser;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 {
 
 	public class Actions : IActions

@@ -1,17 +1,17 @@
 ﻿using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using HP67_Class_Library;
-using HP67_Control_Library;
-using HP_Parser;
-using HP67_Persistence;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 { 
 
 	public enum AngleUnit 

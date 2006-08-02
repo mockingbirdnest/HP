@@ -1,6 +1,6 @@
-using HP67_Class_Library;
-using HP_Parser;
-using HP67_Persistence;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67_Control_Library
+namespace Mockingbird.HP.Control_Library
 {
 	public enum DisplayFormat
 	{

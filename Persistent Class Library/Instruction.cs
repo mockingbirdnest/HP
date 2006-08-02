@@ -1,11 +1,11 @@
 ﻿using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using HP_Parser;
+using Mockingbird.HP.Parser;
 using System;
 using System.Diagnostics;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
 	/// An instruction in the program memory of the HP67 calculator.

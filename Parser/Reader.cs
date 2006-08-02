@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.IO;
 
-namespace HP_Parser
+namespace Mockingbird.HP.Parser
 {
 
 	public enum CalculatorModel 

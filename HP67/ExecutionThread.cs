@@ -1,13 +1,13 @@
-using HP67_Class_Library;
-using HP67_Control_Library;
-using HP_Parser;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
 using System;
 using Queue = System.Collections.Queue;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 {
 	/// <summary>
 	/// The execution thread of the HP67 calculator.
@@ -32,10 +32,10 @@ namespace HP67
 		#region Private Data
 
 		private Actions downActions;
-		private Parser downParser;
+		private Parser.Parser downParser;
 		private Program program;
 		private Actions upActions;
-		private Parser upParser;
+		private Parser.Parser upParser;
 		
 		private AutoResetEvent downKeystrokeWasEnqueued = new AutoResetEvent (false);
 		private AutoResetEvent isInitialized = new AutoResetEvent (false);
@@ -115,9 +115,9 @@ namespace HP67
 			display.Size = new System.Drawing.Size (288, 40);
 			display.TabIndex = 0;
 			display.AcceptKeystrokes +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
+				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
 			display.CompleteKeystrokes +=
-				new HP67_Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
+				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
 			main.Controls.Add (display);
 
 			for (;;) 
@@ -129,7 +129,7 @@ namespace HP67
 				// Create the components that depend on the display.
 				memory = new Memory (display);
 				program = new Program (display, reader);
-				stack = new HP67_Class_Library.Stack (display);
+				stack = new Class_Library.Stack (display);
 				engine =
 					new Engine (display, memory, program, reader, stack, downKeystrokeWasEnqueued);
 
@@ -139,9 +139,9 @@ namespace HP67
 				// program when released).  The two parsers will go through exactly the same
 				// productions, but they will pass a different motion indicator to the engine.
 				downActions = new Actions (engine, KeystrokeMotion.Down);
-				downParser = new Parser (reader, program, downActions);
+				downParser = new Parser.Parser (reader, program, downActions);
 				upActions = new Actions (engine, KeystrokeMotion.Up);
-				upParser = new Parser (reader, program, upActions);
+				upParser = new Parser.Parser (reader, program, upActions);
 
 				// Notify the main thread that we are ready to process keystrokes.
 				isInitialized.Set ();

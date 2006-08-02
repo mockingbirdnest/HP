@@ -1,7 +1,7 @@
 using com.calitha.goldparser;
 using System;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
 	/// An error during the execution of an instruction.

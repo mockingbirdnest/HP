@@ -1,4 +1,4 @@
-using HP67_Control_Library;
+using Mockingbird.HP.Control_Library;
 using System;
 using System.Drawing;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 
-namespace HP67_Testing
+namespace Mockingbird.HP.Testing
 {
 	/// <summary>
 	/// A test rig for the Key user control.
@@ -14,7 +14,7 @@ namespace HP67_Testing
 	public class KeyTest : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.PropertyGrid PropertyGrid;
-		private HP67_Control_Library.Key KeyUnderTest;
+		private Mockingbird.HP.Control_Library.Key KeyUnderTest;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -51,7 +51,7 @@ namespace HP67_Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-			this.KeyUnderTest = new HP67_Control_Library.Key();
+			this.KeyUnderTest = new Mockingbird.HP.Control_Library.Key();
 			this.SuspendLayout();
 			// 
 			// PropertyGrid
@@ -84,7 +84,7 @@ namespace HP67_Testing
 			this.KeyUnderTest.Name = "KeyUnderTest";
 			this.KeyUnderTest.Size = new System.Drawing.Size(48, 51);
 			this.KeyUnderTest.TabIndex = 2;
-			this.KeyUnderTest.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.LeftMouseUpHandler);
+			this.KeyUnderTest.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.LeftMouseUpHandler);
 			// 
 			// KeyTest
 			// 

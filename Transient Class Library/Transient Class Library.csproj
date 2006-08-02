@@ -13,7 +13,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "HP67 Transient Class Library"
+                AssemblyName = "Mockingbird.HP.Transient Class Library"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -22,7 +22,7 @@
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "HP67_Class_Library"
+                RootNamespace = "Mockingbird.HP.Class_Library"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >

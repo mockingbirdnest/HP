@@ -13,7 +13,7 @@
             <Settings
                 ApplicationIcon = "App.ico"
                 AssemblyKeyContainerName = ""
-                AssemblyName = "HP67 Testing"
+                AssemblyName = "Mockingbird.HP.Testing"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -22,9 +22,9 @@
                 OutputType = "WinExe"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "HP67_Testing"
+                RootNamespace = "Mockingbird.HP.Testing"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = "HP67_Testing.KeyTest"
+                StartupObject = "Mockingbird.HP.Testing.KeyTest"
             >
                 <Config
                     Name = "Debug"
@@ -94,7 +94,7 @@
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "HP67 Control Library"
+                    Name = "Control Library"
                     Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />

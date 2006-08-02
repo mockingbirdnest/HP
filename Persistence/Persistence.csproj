@@ -13,7 +13,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "HP67 Persistence"
+                AssemblyName = "Mockingbird.HP.Persistence"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -22,7 +22,7 @@
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "HP67_Persistence"
+                RootNamespace = "Mockingbird.HP.Persistence"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >
@@ -84,24 +84,24 @@
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "HP67 Parser"
-                    Project = "{D97548CE-C80A-4DAE-BA32-1E3FA7273153}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "System.Windows.Forms"
                     AssemblyName = "System.Windows.Forms"
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
                 />
                 <Reference
-                    Name = "HP67 Transient Class Library"
-                    Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "GoldParserEngine"
                     AssemblyName = "GoldParserEngine"
                     HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
+                />
+                <Reference
+                    Name = "Parser"
+                    Project = "{D97548CE-C80A-4DAE-BA32-1E3FA7273153}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "Transient Class Library"
+                    Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>
         </Build>
@@ -116,7 +116,6 @@
                     RelPath = "CardDataset.xsd"
                     BuildAction = "Content"
                     Generator = "MSDataSetGenerator"
-                    LastGenOutput = "CardDataset.cs"
                 />
                 <File
                     RelPath = "CardDataset.cs"

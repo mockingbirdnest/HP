@@ -13,7 +13,7 @@
             <Settings
                 ApplicationIcon = "HP97 Application.ico"
                 AssemblyKeyContainerName = ""
-                AssemblyName = "HP97"
+                AssemblyName = "Mockingbird.HP.HP97"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -22,9 +22,9 @@
                 OutputType = "WinExe"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "HP97"
+                RootNamespace = "Mockingbird.HP.HP97"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
+                StartupObject = "Mockingbird.HP.HP97.HP97"
             >
                 <Config
                     Name = "Debug"
@@ -94,29 +94,14 @@
                     HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "HP67 Control Library"
-                    Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "HP67 Persistence"
-                    Project = "{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "HP67 Parser"
-                    Project = "{D97548CE-C80A-4DAE-BA32-1E3FA7273153}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "HP67 Transient Class Library"
-                    Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "GoldParserEngine"
                     AssemblyName = "GoldParserEngine"
                     HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
+                />
+                <Reference
+                    Name = "Control Library"
+                    Project = "{71A0054A-FD2B-4DDB-91FB-1470909F91E4}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>
         </Build>
@@ -124,6 +109,7 @@
             <Include>
                 <File
                     RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File

@@ -1,10 +1,10 @@
-using HP67_Class_Library;
-using HP67_Control_Library;
-using HP_Parser;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
 using System;
 using System.Windows.Forms;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 {
 	/// <summary>
 	/// Abstract base class for all calculators.
@@ -17,7 +17,7 @@ namespace HP67
 		protected ExecutionThread executionThread;
 		protected Reader reader = null;
 
-		protected HP67_Control_Library.Toggle toggleOffOn;
+		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -44,7 +44,7 @@ namespace HP67
 				tags [i] = (string) control.Tag;
 				i++;
 			}
-			reader = new Reader ("HP_Parser.Parser", "CGT", model, tags);
+			reader = new Reader ("Mockingbird.HP.Parser.Parser", "CGT", model, tags);
 
 			// Initialize the execution thread and wait until it is ready to process requests.
 			executionThread = CreateExecutionThread ();
@@ -86,7 +86,7 @@ namespace HP67
 		{
 			System.Resources.ResourceManager resources =
 				new System.Resources.ResourceManager (typeof (BaseCalculator));
-			this.toggleOffOn = new HP67_Control_Library.Toggle();
+			this.toggleOffOn = new Mockingbird.HP.Control_Library.Toggle();
 			this.SuspendLayout();
 			// 
 			// toggleOffOn
@@ -96,12 +96,12 @@ namespace HP67
 			this.toggleOffOn.Location = new System.Drawing.Point(8, 56);
 			this.toggleOffOn.MainWidth = 50;
 			this.toggleOffOn.Name = "toggleOffOn";
-			this.toggleOffOn.Position = HP67_Control_Library.TogglePosition.Right;
+			this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggleOffOn.RightText = "ON";
 			this.toggleOffOn.RightWidth = 30;
 			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
 			this.toggleOffOn.TabIndex = 2;
-			this.toggleOffOn.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
+			this.toggleOffOn.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
 			// 
 			// BaseCalculator
 			// 
@@ -223,7 +223,7 @@ namespace HP67
 
 		private void toggleOffOn_ToggleClick (object sender,
 			System.EventArgs e,
-			HP67_Control_Library.TogglePosition position)
+			Mockingbird.HP.Control_Library.TogglePosition position)
 		{
 			switch (toggleOffOn.Position)
 			{

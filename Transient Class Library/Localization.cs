@@ -4,10 +4,10 @@ using System.Globalization;
 using System.Resources;
 using System.Threading;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
-	/// Localization services for the HP67 calculator
+	/// Localization services for the HP calculators.
 	/// </summary>
 	public class Localization
 	{
@@ -37,7 +37,7 @@ namespace HP67_Class_Library
 		public const string UntitledFileName = "UNTITLED FILE NAME";
 
 		private const string cultureAppSetting = "Culture";
-		private const string resourceBase = "HP67_Class_Library.Localization";
+		private const string resourceBase = "Mockingbird.HP.Class_Library.Localization";
 
 		private static CultureInfo theCulture;
 		private static ResourceManager theResources;

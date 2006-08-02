@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace HP67_Control_Library
+namespace Mockingbird.HP.Control_Library
 {
 	public enum TextAlign
 	{

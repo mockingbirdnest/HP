@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace HP67_Testing
+namespace Mockingbird.HP.Testing
 {
 	/// <summary>
 	/// Summary description for ToggleTest.
@@ -12,7 +12,7 @@ namespace HP67_Testing
 	public class ToggleTest : System.Windows.Forms.Form
 	{
 		private System.Windows.Forms.PropertyGrid PropertyGrid;
-		private HP67_Control_Library.Toggle ToggleUnderTest;
+		private Mockingbird.HP.Control_Library.Toggle ToggleUnderTest;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -53,7 +53,7 @@ namespace HP67_Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-			this.ToggleUnderTest = new HP67_Control_Library.Toggle();
+			this.ToggleUnderTest = new Mockingbird.HP.Control_Library.Toggle();
 			this.SuspendLayout();
 			// 
 			// PropertyGrid
@@ -81,7 +81,7 @@ namespace HP67_Testing
 			this.ToggleUnderTest.RightWidth = 60;
 			this.ToggleUnderTest.Size = new System.Drawing.Size(192, 40);
 			this.ToggleUnderTest.TabIndex = 3;
-			this.ToggleUnderTest.ToggleClick += new HP67_Control_Library.Toggle.ToggleClickEvent(this.ToggleClick);
+			this.ToggleUnderTest.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.ToggleClick);
 			// 
 			// ToggleTest
 			// 
@@ -106,16 +106,16 @@ namespace HP67_Testing
 		}
 
 		private void ToggleClick
-			(object sender, System.EventArgs e, HP67_Control_Library.TogglePosition position)
+			(object sender, System.EventArgs e, Mockingbird.HP.Control_Library.TogglePosition position)
 		{
 			switch (position) 
 			{
-				case HP67_Control_Library.TogglePosition.Left:
+				case Mockingbird.HP.Control_Library.TogglePosition.Left:
 				{
 					MessageBox.Show ("Now on the left!");
 					break;
 				}
-				case HP67_Control_Library.TogglePosition.Right:
+				case Mockingbird.HP.Control_Library.TogglePosition.Right:
 				{
 					MessageBox.Show ("Now on the right!");
 					break;

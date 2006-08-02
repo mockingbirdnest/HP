@@ -13,7 +13,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "HP Parser"
+                AssemblyName = "Mockingbird.HP.Parser"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -22,7 +22,7 @@
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "HP_Parser"
+                RootNamespace = "Mockingbird.HP.Parser"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >
@@ -94,7 +94,7 @@
                     HintPath = "..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll"
                 />
                 <Reference
-                    Name = "HP67 Transient Class Library"
+                    Name = "Transient Class Library"
                     Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />

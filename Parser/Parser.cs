@@ -1,14 +1,13 @@
-
 using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using HP67_Class_Library;
+using Mockingbird.HP.Class_Library;
 using System;
 using System.Collections;
 using System.Diagnostics;
 using System.IO;
 
-namespace HP_Parser
+namespace Mockingbird.HP.Parser
 {
 
    public enum SymbolConstants : int

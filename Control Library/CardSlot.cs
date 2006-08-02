@@ -1,5 +1,5 @@
-﻿using HP_Parser;
-using HP67_Persistence;
+﻿using Mockingbird.HP.Parser;
+using Mockingbird.HP.Persistence;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Data;
 using System.Windows.Forms;
 
-namespace HP67_Control_Library
+namespace Mockingbird.HP.Control_Library
 {
 	public enum CardSlotState
 	{

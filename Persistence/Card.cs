@@ -1,10 +1,10 @@
-using HP67_Class_Library;
-using HP_Parser;
+using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Parser;
 using System;
 using System.IO;
 using System.Windows.Forms;
 
-namespace HP67_Persistence
+namespace Mockingbird.HP.Persistence
 {
 
 	public enum CardPart

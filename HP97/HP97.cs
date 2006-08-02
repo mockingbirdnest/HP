@@ -1,55 +1,56 @@
-﻿using System;
+﻿using Mockingbird.HP.Control_Library;
+using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 
-namespace HP97
+namespace Mockingbird.HP.HP97
 {
 	/// <summary>
 	/// Description résumée de Form1.
 	/// </summary>
 	public class HP97 : System.Windows.Forms.Form
 	{
-		private HP67_Control_Library.Printer printer1;
+		private Mockingbird.HP.Control_Library.Printer printer1;
 		private System.Windows.Forms.Panel panel1;
-		private HP67_Control_Library.Toggle toggle1;
-		private HP67_Control_Library.Toggle toggle2;
-		private HP67_Control_Library.Toggle toggle3;
+		private Mockingbird.HP.Control_Library.Toggle toggle1;
+		private Mockingbird.HP.Control_Library.Toggle toggle2;
+		private Mockingbird.HP.Control_Library.Toggle toggle3;
 		private System.Windows.Forms.Label label1;
-		private HP67_Control_Library.Key key1;
-		private HP67_Control_Library.Key key2;
-		private HP67_Control_Library.Key key3;
-		private HP67_Control_Library.Key key4;
-		private HP67_Control_Library.Key key5;
-		private HP67_Control_Library.Key key7;
+		private Mockingbird.HP.Control_Library.Key key1;
+		private Mockingbird.HP.Control_Library.Key key2;
+		private Mockingbird.HP.Control_Library.Key key3;
+		private Mockingbird.HP.Control_Library.Key key4;
+		private Mockingbird.HP.Control_Library.Key key5;
+		private Mockingbird.HP.Control_Library.Key key7;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private HP67_Control_Library.CardSlot cardSlot1;
-		private HP67_Control_Library.Key key6;
-		private HP67_Control_Library.Key key8;
-		private HP67_Control_Library.Key key9;
-		private HP67_Control_Library.Key key10;
-		private HP67_Control_Library.Key key11;
-		private HP67_Control_Library.Key key12;
-		private HP67_Control_Library.Key key13;
-		private HP67_Control_Library.Key key14;
-		private HP67_Control_Library.Key key15;
-		private HP67_Control_Library.Key key16;
-		private HP67_Control_Library.Key key17;
-		private HP67_Control_Library.Key key18;
-		private HP67_Control_Library.Key key19;
-		private HP67_Control_Library.Key key20;
-		private HP67_Control_Library.Key key21;
-		private HP67_Control_Library.Key key22;
-		private HP67_Control_Library.Key key23;
-		private HP67_Control_Library.Key key24;
-		private HP67_Control_Library.Key key25;
-		private HP67_Control_Library.Key key26;
-		private HP67_Control_Library.Key key27;
-		private HP67_Control_Library.Key key28;
-		private HP67_Control_Library.Key key29;
-		private HP67_Control_Library.Key key30;
+		private Mockingbird.HP.Control_Library.CardSlot cardSlot1;
+		private Mockingbird.HP.Control_Library.Key key6;
+		private Mockingbird.HP.Control_Library.Key key8;
+		private Mockingbird.HP.Control_Library.Key key9;
+		private Mockingbird.HP.Control_Library.Key key10;
+		private Mockingbird.HP.Control_Library.Key key11;
+		private Mockingbird.HP.Control_Library.Key key12;
+		private Mockingbird.HP.Control_Library.Key key13;
+		private Mockingbird.HP.Control_Library.Key key14;
+		private Mockingbird.HP.Control_Library.Key key15;
+		private Mockingbird.HP.Control_Library.Key key16;
+		private Mockingbird.HP.Control_Library.Key key17;
+		private Mockingbird.HP.Control_Library.Key key18;
+		private Mockingbird.HP.Control_Library.Key key19;
+		private Mockingbird.HP.Control_Library.Key key20;
+		private Mockingbird.HP.Control_Library.Key key21;
+		private Mockingbird.HP.Control_Library.Key key22;
+		private Mockingbird.HP.Control_Library.Key key23;
+		private Mockingbird.HP.Control_Library.Key key24;
+		private Mockingbird.HP.Control_Library.Key key25;
+		private Mockingbird.HP.Control_Library.Key key26;
+		private Mockingbird.HP.Control_Library.Key key27;
+		private Mockingbird.HP.Control_Library.Key key28;
+		private Mockingbird.HP.Control_Library.Key key29;
+		private Mockingbird.HP.Control_Library.Key key30;
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
@@ -89,44 +90,44 @@ namespace HP97
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.printer1 = new HP67_Control_Library.Printer();
+			this.printer1 = new Mockingbird.HP.Control_Library.Printer();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.key25 = new HP67_Control_Library.Key();
-			this.key26 = new HP67_Control_Library.Key();
-			this.key27 = new HP67_Control_Library.Key();
-			this.key28 = new HP67_Control_Library.Key();
-			this.key29 = new HP67_Control_Library.Key();
-			this.key30 = new HP67_Control_Library.Key();
-			this.key19 = new HP67_Control_Library.Key();
-			this.key20 = new HP67_Control_Library.Key();
-			this.key21 = new HP67_Control_Library.Key();
-			this.key22 = new HP67_Control_Library.Key();
-			this.key23 = new HP67_Control_Library.Key();
-			this.key24 = new HP67_Control_Library.Key();
-			this.key13 = new HP67_Control_Library.Key();
-			this.key14 = new HP67_Control_Library.Key();
-			this.key15 = new HP67_Control_Library.Key();
-			this.key16 = new HP67_Control_Library.Key();
-			this.key17 = new HP67_Control_Library.Key();
-			this.key18 = new HP67_Control_Library.Key();
+			this.key25 = new Mockingbird.HP.Control_Library.Key();
+			this.key26 = new Mockingbird.HP.Control_Library.Key();
+			this.key27 = new Mockingbird.HP.Control_Library.Key();
+			this.key28 = new Mockingbird.HP.Control_Library.Key();
+			this.key29 = new Mockingbird.HP.Control_Library.Key();
+			this.key30 = new Mockingbird.HP.Control_Library.Key();
+			this.key19 = new Mockingbird.HP.Control_Library.Key();
+			this.key20 = new Mockingbird.HP.Control_Library.Key();
+			this.key21 = new Mockingbird.HP.Control_Library.Key();
+			this.key22 = new Mockingbird.HP.Control_Library.Key();
+			this.key23 = new Mockingbird.HP.Control_Library.Key();
+			this.key24 = new Mockingbird.HP.Control_Library.Key();
+			this.key13 = new Mockingbird.HP.Control_Library.Key();
+			this.key14 = new Mockingbird.HP.Control_Library.Key();
+			this.key15 = new Mockingbird.HP.Control_Library.Key();
+			this.key16 = new Mockingbird.HP.Control_Library.Key();
+			this.key17 = new Mockingbird.HP.Control_Library.Key();
+			this.key18 = new Mockingbird.HP.Control_Library.Key();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.cardSlot1 = new HP67_Control_Library.CardSlot();
-			this.toggle1 = new HP67_Control_Library.Toggle();
-			this.key7 = new HP67_Control_Library.Key();
-			this.toggle2 = new HP67_Control_Library.Toggle();
-			this.toggle3 = new HP67_Control_Library.Toggle();
-			this.key2 = new HP67_Control_Library.Key();
-			this.key1 = new HP67_Control_Library.Key();
+			this.cardSlot1 = new Mockingbird.HP.Control_Library.CardSlot();
+			this.toggle1 = new Mockingbird.HP.Control_Library.Toggle();
+			this.key7 = new Mockingbird.HP.Control_Library.Key();
+			this.toggle2 = new Mockingbird.HP.Control_Library.Toggle();
+			this.toggle3 = new Mockingbird.HP.Control_Library.Toggle();
+			this.key2 = new Mockingbird.HP.Control_Library.Key();
+			this.key1 = new Mockingbird.HP.Control_Library.Key();
 			this.label1 = new System.Windows.Forms.Label();
-			this.key4 = new HP67_Control_Library.Key();
-			this.key5 = new HP67_Control_Library.Key();
-			this.key3 = new HP67_Control_Library.Key();
-			this.key10 = new HP67_Control_Library.Key();
-			this.key8 = new HP67_Control_Library.Key();
-			this.key11 = new HP67_Control_Library.Key();
-			this.key12 = new HP67_Control_Library.Key();
-			this.key6 = new HP67_Control_Library.Key();
-			this.key9 = new HP67_Control_Library.Key();
+			this.key4 = new Mockingbird.HP.Control_Library.Key();
+			this.key5 = new Mockingbird.HP.Control_Library.Key();
+			this.key3 = new Mockingbird.HP.Control_Library.Key();
+			this.key10 = new Mockingbird.HP.Control_Library.Key();
+			this.key8 = new Mockingbird.HP.Control_Library.Key();
+			this.key11 = new Mockingbird.HP.Control_Library.Key();
+			this.key12 = new Mockingbird.HP.Control_Library.Key();
+			this.key6 = new Mockingbird.HP.Control_Library.Key();
+			this.key9 = new Mockingbird.HP.Control_Library.Key();
 			this.panel1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -174,7 +175,7 @@ namespace HP97
 			// key25
 			// 
 			this.key25.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key25.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key25.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key25.FGWidth = 48;
 			this.key25.FText = "d";
 			this.key25.GText = "";
@@ -193,7 +194,7 @@ namespace HP97
 			// key26
 			// 
 			this.key26.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key26.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key26.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key26.FGWidth = 48;
 			this.key26.FText = "b";
 			this.key26.GText = "";
@@ -212,7 +213,7 @@ namespace HP97
 			// key27
 			// 
 			this.key27.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key27.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key27.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key27.FGWidth = 48;
 			this.key27.FText = "";
 			this.key27.GText = "";
@@ -231,7 +232,7 @@ namespace HP97
 			// key28
 			// 
 			this.key28.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key28.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key28.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key28.FGWidth = 48;
 			this.key28.FText = "c";
 			this.key28.GText = "";
@@ -250,7 +251,7 @@ namespace HP97
 			// key29
 			// 
 			this.key29.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key29.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key29.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key29.FGWidth = 48;
 			this.key29.FText = "e";
 			this.key29.GText = "";
@@ -269,7 +270,7 @@ namespace HP97
 			// key30
 			// 
 			this.key30.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key30.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key30.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key30.FGWidth = 48;
 			this.key30.FText = "a";
 			this.key30.GText = "";
@@ -288,7 +289,7 @@ namespace HP97
 			// key19
 			// 
 			this.key19.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key19.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key19.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key19.FGWidth = 48;
 			this.key19.FText = "d";
 			this.key19.GText = "";
@@ -307,7 +308,7 @@ namespace HP97
 			// key20
 			// 
 			this.key20.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key20.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key20.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key20.FGWidth = 48;
 			this.key20.FText = "b";
 			this.key20.GText = "";
@@ -326,7 +327,7 @@ namespace HP97
 			// key21
 			// 
 			this.key21.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key21.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key21.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key21.FGWidth = 48;
 			this.key21.FText = "";
 			this.key21.GText = "";
@@ -345,7 +346,7 @@ namespace HP97
 			// key22
 			// 
 			this.key22.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key22.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key22.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key22.FGWidth = 48;
 			this.key22.FText = "c";
 			this.key22.GText = "";
@@ -364,7 +365,7 @@ namespace HP97
 			// key23
 			// 
 			this.key23.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key23.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key23.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key23.FGWidth = 48;
 			this.key23.FText = "e";
 			this.key23.GText = "";
@@ -383,7 +384,7 @@ namespace HP97
 			// key24
 			// 
 			this.key24.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key24.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key24.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key24.FGWidth = 48;
 			this.key24.FText = "a";
 			this.key24.GText = "";
@@ -402,7 +403,7 @@ namespace HP97
 			// key13
 			// 
 			this.key13.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key13.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key13.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key13.FGWidth = 48;
 			this.key13.FText = "d";
 			this.key13.GText = "";
@@ -421,7 +422,7 @@ namespace HP97
 			// key14
 			// 
 			this.key14.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key14.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key14.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key14.FGWidth = 48;
 			this.key14.FText = "b";
 			this.key14.GText = "";
@@ -440,7 +441,7 @@ namespace HP97
 			// key15
 			// 
 			this.key15.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key15.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key15.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key15.FGWidth = 48;
 			this.key15.FText = "";
 			this.key15.GText = "";
@@ -459,7 +460,7 @@ namespace HP97
 			// key16
 			// 
 			this.key16.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key16.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key16.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key16.FGWidth = 48;
 			this.key16.FText = "c";
 			this.key16.GText = "";
@@ -478,7 +479,7 @@ namespace HP97
 			// key17
 			// 
 			this.key17.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key17.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key17.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key17.FGWidth = 48;
 			this.key17.FText = "e";
 			this.key17.GText = "";
@@ -497,7 +498,7 @@ namespace HP97
 			// key18
 			// 
 			this.key18.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key18.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key18.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key18.FGWidth = 48;
 			this.key18.FText = "a";
 			this.key18.GText = "";
@@ -540,7 +541,7 @@ namespace HP97
 			this.cardSlot1.Name = "cardSlot1";
 			this.cardSlot1.RichText = false;
 			this.cardSlot1.Size = new System.Drawing.Size(288, 50);
-			this.cardSlot1.State = HP67_Control_Library.CardSlotState.Unloaded;
+			this.cardSlot1.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
 			this.cardSlot1.TabIndex = 12;
 			this.cardSlot1.TextBoxWidth = 48;
 			this.cardSlot1.Title = "<TITLE>";
@@ -552,7 +553,7 @@ namespace HP97
 			this.toggle1.Location = new System.Drawing.Point(184, 24);
 			this.toggle1.MainWidth = 60;
 			this.toggle1.Name = "toggle1";
-			this.toggle1.Position = HP67_Control_Library.TogglePosition.Left;
+			this.toggle1.Position = Mockingbird.HP.Control_Library.TogglePosition.Left;
 			this.toggle1.RightText = "NORM";
 			this.toggle1.RightWidth = 60;
 			this.toggle1.Size = new System.Drawing.Size(160, 16);
@@ -562,7 +563,7 @@ namespace HP97
 			// key7
 			// 
 			this.key7.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key7.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key7.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key7.FGWidth = 48;
 			this.key7.FText = "e";
 			this.key7.GText = "";
@@ -585,7 +586,7 @@ namespace HP97
 			this.toggle2.Location = new System.Drawing.Point(8, 24);
 			this.toggle2.MainWidth = 60;
 			this.toggle2.Name = "toggle2";
-			this.toggle2.Position = HP67_Control_Library.TogglePosition.Right;
+			this.toggle2.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggle2.RightText = "ON";
 			this.toggle2.RightWidth = 60;
 			this.toggle2.Size = new System.Drawing.Size(144, 16);
@@ -598,7 +599,7 @@ namespace HP97
 			this.toggle3.Location = new System.Drawing.Point(184, 48);
 			this.toggle3.MainWidth = 60;
 			this.toggle3.Name = "toggle3";
-			this.toggle3.Position = HP67_Control_Library.TogglePosition.Right;
+			this.toggle3.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggle3.RightText = "RUN";
 			this.toggle3.RightWidth = 60;
 			this.toggle3.Size = new System.Drawing.Size(152, 16);
@@ -607,7 +608,7 @@ namespace HP97
 			// key2
 			// 
 			this.key2.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key2.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key2.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key2.FGWidth = 48;
 			this.key2.FText = "b";
 			this.key2.GText = "";
@@ -626,7 +627,7 @@ namespace HP97
 			// key1
 			// 
 			this.key1.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key1.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key1.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key1.FGWidth = 48;
 			this.key1.FText = "a";
 			this.key1.GText = "";
@@ -656,7 +657,7 @@ namespace HP97
 			// key4
 			// 
 			this.key4.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key4.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key4.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key4.FGWidth = 48;
 			this.key4.FText = "d";
 			this.key4.GText = "";
@@ -675,7 +676,7 @@ namespace HP97
 			// key5
 			// 
 			this.key5.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key5.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key5.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key5.FGWidth = 48;
 			this.key5.FText = "";
 			this.key5.GText = "";
@@ -694,7 +695,7 @@ namespace HP97
 			// key3
 			// 
 			this.key3.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key3.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key3.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key3.FGWidth = 48;
 			this.key3.FText = "c";
 			this.key3.GText = "";
@@ -713,7 +714,7 @@ namespace HP97
 			// key10
 			// 
 			this.key10.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key10.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key10.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key10.FGWidth = 48;
 			this.key10.FText = "d";
 			this.key10.GText = "";
@@ -732,7 +733,7 @@ namespace HP97
 			// key8
 			// 
 			this.key8.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key8.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key8.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key8.FGWidth = 48;
 			this.key8.FText = "b";
 			this.key8.GText = "";
@@ -751,7 +752,7 @@ namespace HP97
 			// key11
 			// 
 			this.key11.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key11.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key11.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key11.FGWidth = 48;
 			this.key11.FText = "";
 			this.key11.GText = "";
@@ -770,7 +771,7 @@ namespace HP97
 			// key12
 			// 
 			this.key12.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key12.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key12.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key12.FGWidth = 48;
 			this.key12.FText = "c";
 			this.key12.GText = "";
@@ -789,7 +790,7 @@ namespace HP97
 			// key6
 			// 
 			this.key6.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key6.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key6.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key6.FGWidth = 48;
 			this.key6.FText = "e";
 			this.key6.GText = "";
@@ -808,7 +809,7 @@ namespace HP97
 			// key9
 			// 
 			this.key9.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(85)), ((System.Byte)(56)), ((System.Byte)(26)));
-			this.key9.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key9.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key9.FGWidth = 48;
 			this.key9.FText = "a";
 			this.key9.GText = "";
@@ -848,7 +849,7 @@ namespace HP97
 		[STAThread]
 		static void Main() 
 		{
-			Application.Run(new Form1());
+			Application.Run(new HP97 ());
 		}
 
 		private void Form1_Load(object sender, System.EventArgs e)

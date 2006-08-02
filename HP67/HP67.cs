@@ -1,9 +1,10 @@
-﻿using HP67_Class_Library;
-using HP_Parser;
+﻿using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Parser;
 using System;
 using System.Windows.Forms;
 
-namespace HP67
+namespace Mockingbird.HP.HP67
 {
 	/// <summary>
 	/// The user interface for the HP-67 calculator.
@@ -13,41 +14,41 @@ namespace HP67
 
 		#region Private Data
 
-		private HP67_Control_Library.Key keyA;
-		private HP67_Control_Library.Key keyB;
-		private HP67_Control_Library.Key keyC;
-		private HP67_Control_Library.Key keyD;
-		private HP67_Control_Library.Key keyE;
-		private HP67_Control_Library.Key keyΣ;
-		private HP67_Control_Library.Key keyGTO;
-		private HP67_Control_Library.Key keyDSP;
-		private HP67_Control_Library.Key keyi;
-		private HP67_Control_Library.Key keySST;
-		private HP67_Control_Library.Key keyf;
-		private HP67_Control_Library.Key keyg;
-		private HP67_Control_Library.Key keySTO;
-		private HP67_Control_Library.Key keyRCL;
-		private HP67_Control_Library.Key keyh;
-		private HP67_Control_Library.Key keyENTER;
-		private HP67_Control_Library.Key keyCHS;
-		private HP67_Control_Library.Key keyEEX;
-		private HP67_Control_Library.Key keyCLx;
-		private HP67_Control_Library.Key keyMinus;
-		private HP67_Control_Library.Key key7;
-		private HP67_Control_Library.Key key8;
-		private HP67_Control_Library.Key key9;
-		private HP67_Control_Library.Key key4;
-		private HP67_Control_Library.Key keyPlus;
-		private HP67_Control_Library.Key key5;
-		private HP67_Control_Library.Key key6;
-		private HP67_Control_Library.Key keyMult;
-		private HP67_Control_Library.Key key2;
-		private HP67_Control_Library.Key key1;
-		private HP67_Control_Library.Key key3;
-		private HP67_Control_Library.Key keyDiv;
-		private HP67_Control_Library.Key keyRS;
-		private HP67_Control_Library.Key key0;
-		private HP67_Control_Library.Key keyPeriod;
+		private Mockingbird.HP.Control_Library.Key keyA;
+		private Mockingbird.HP.Control_Library.Key keyB;
+		private Mockingbird.HP.Control_Library.Key keyC;
+		private Mockingbird.HP.Control_Library.Key keyD;
+		private Mockingbird.HP.Control_Library.Key keyE;
+		private Mockingbird.HP.Control_Library.Key keyΣ;
+		private Mockingbird.HP.Control_Library.Key keyGTO;
+		private Mockingbird.HP.Control_Library.Key keyDSP;
+		private Mockingbird.HP.Control_Library.Key keyi;
+		private Mockingbird.HP.Control_Library.Key keySST;
+		private Mockingbird.HP.Control_Library.Key keyf;
+		private Mockingbird.HP.Control_Library.Key keyg;
+		private Mockingbird.HP.Control_Library.Key keySTO;
+		private Mockingbird.HP.Control_Library.Key keyRCL;
+		private Mockingbird.HP.Control_Library.Key keyh;
+		private Mockingbird.HP.Control_Library.Key keyENTER;
+		private Mockingbird.HP.Control_Library.Key keyCHS;
+		private Mockingbird.HP.Control_Library.Key keyEEX;
+		private Mockingbird.HP.Control_Library.Key keyCLx;
+		private Mockingbird.HP.Control_Library.Key keyMinus;
+		private Mockingbird.HP.Control_Library.Key key7;
+		private Mockingbird.HP.Control_Library.Key key8;
+		private Mockingbird.HP.Control_Library.Key key9;
+		private Mockingbird.HP.Control_Library.Key key4;
+		private Mockingbird.HP.Control_Library.Key keyPlus;
+		private Mockingbird.HP.Control_Library.Key key5;
+		private Mockingbird.HP.Control_Library.Key key6;
+		private Mockingbird.HP.Control_Library.Key keyMult;
+		private Mockingbird.HP.Control_Library.Key key2;
+		private Mockingbird.HP.Control_Library.Key key1;
+		private Mockingbird.HP.Control_Library.Key key3;
+		private Mockingbird.HP.Control_Library.Key keyDiv;
+		private Mockingbird.HP.Control_Library.Key keyRS;
+		private Mockingbird.HP.Control_Library.Key key0;
+		private Mockingbird.HP.Control_Library.Key keyPeriod;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -82,47 +83,47 @@ namespace HP67
 		{
 			base.InitializeComponent ();
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP67));
-			this.keyA = new HP67_Control_Library.Key();
-			this.keyf = new HP67_Control_Library.Key();
-			this.keySST = new HP67_Control_Library.Key();
-			this.keyi = new HP67_Control_Library.Key();
-			this.keyDSP = new HP67_Control_Library.Key();
-			this.keyGTO = new HP67_Control_Library.Key();
-			this.keyΣ = new HP67_Control_Library.Key();
-			this.keyE = new HP67_Control_Library.Key();
-			this.keyD = new HP67_Control_Library.Key();
-			this.keyC = new HP67_Control_Library.Key();
-			this.keyB = new HP67_Control_Library.Key();
-			this.keyENTER = new HP67_Control_Library.Key();
-			this.keyEEX = new HP67_Control_Library.Key();
-			this.keyCLx = new HP67_Control_Library.Key();
-			this.keyCHS = new HP67_Control_Library.Key();
-			this.keyh = new HP67_Control_Library.Key();
-			this.keyRCL = new HP67_Control_Library.Key();
-			this.keySTO = new HP67_Control_Library.Key();
-			this.keyg = new HP67_Control_Library.Key();
-			this.key8 = new HP67_Control_Library.Key();
-			this.keyRS = new HP67_Control_Library.Key();
-			this.keyPeriod = new HP67_Control_Library.Key();
-			this.key0 = new HP67_Control_Library.Key();
-			this.key9 = new HP67_Control_Library.Key();
-			this.key3 = new HP67_Control_Library.Key();
-			this.key2 = new HP67_Control_Library.Key();
-			this.key1 = new HP67_Control_Library.Key();
-			this.key6 = new HP67_Control_Library.Key();
-			this.key5 = new HP67_Control_Library.Key();
-			this.key4 = new HP67_Control_Library.Key();
-			this.key7 = new HP67_Control_Library.Key();
-			this.keyMinus = new HP67_Control_Library.Key();
-			this.keyDiv = new HP67_Control_Library.Key();
-			this.keyMult = new HP67_Control_Library.Key();
-			this.keyPlus = new HP67_Control_Library.Key();
+			this.keyA = new Mockingbird.HP.Control_Library.Key();
+			this.keyf = new Mockingbird.HP.Control_Library.Key();
+			this.keySST = new Mockingbird.HP.Control_Library.Key();
+			this.keyi = new Mockingbird.HP.Control_Library.Key();
+			this.keyDSP = new Mockingbird.HP.Control_Library.Key();
+			this.keyGTO = new Mockingbird.HP.Control_Library.Key();
+			this.keyΣ = new Mockingbird.HP.Control_Library.Key();
+			this.keyE = new Mockingbird.HP.Control_Library.Key();
+			this.keyD = new Mockingbird.HP.Control_Library.Key();
+			this.keyC = new Mockingbird.HP.Control_Library.Key();
+			this.keyB = new Mockingbird.HP.Control_Library.Key();
+			this.keyENTER = new Mockingbird.HP.Control_Library.Key();
+			this.keyEEX = new Mockingbird.HP.Control_Library.Key();
+			this.keyCLx = new Mockingbird.HP.Control_Library.Key();
+			this.keyCHS = new Mockingbird.HP.Control_Library.Key();
+			this.keyh = new Mockingbird.HP.Control_Library.Key();
+			this.keyRCL = new Mockingbird.HP.Control_Library.Key();
+			this.keySTO = new Mockingbird.HP.Control_Library.Key();
+			this.keyg = new Mockingbird.HP.Control_Library.Key();
+			this.key8 = new Mockingbird.HP.Control_Library.Key();
+			this.keyRS = new Mockingbird.HP.Control_Library.Key();
+			this.keyPeriod = new Mockingbird.HP.Control_Library.Key();
+			this.key0 = new Mockingbird.HP.Control_Library.Key();
+			this.key9 = new Mockingbird.HP.Control_Library.Key();
+			this.key3 = new Mockingbird.HP.Control_Library.Key();
+			this.key2 = new Mockingbird.HP.Control_Library.Key();
+			this.key1 = new Mockingbird.HP.Control_Library.Key();
+			this.key6 = new Mockingbird.HP.Control_Library.Key();
+			this.key5 = new Mockingbird.HP.Control_Library.Key();
+			this.key4 = new Mockingbird.HP.Control_Library.Key();
+			this.key7 = new Mockingbird.HP.Control_Library.Key();
+			this.keyMinus = new Mockingbird.HP.Control_Library.Key();
+			this.keyDiv = new Mockingbird.HP.Control_Library.Key();
+			this.keyMult = new Mockingbird.HP.Control_Library.Key();
+			this.keyPlus = new Mockingbird.HP.Control_Library.Key();
 			this.SuspendLayout();
 			// 
 			// keyA
 			// 
 			this.keyA.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyA.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyA.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyA.FGWidth = 48;
 			this.keyA.FText = "a";
 			this.keyA.GText = "";
@@ -139,13 +140,13 @@ namespace HP67
 			this.keyA.Size = new System.Drawing.Size(48, 51);
 			this.keyA.TabIndex = 1;
 			this.keyA.Tag = "6711";
-			this.keyA.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyA.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyA.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyA.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyf
 			// 
 			this.keyf.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyf.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyf.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyf.FGWidth = 48;
 			this.keyf.FText = "";
 			this.keyf.GText = "";
@@ -162,13 +163,13 @@ namespace HP67
 			this.keyf.Size = new System.Drawing.Size(48, 51);
 			this.keyf.TabIndex = 11;
 			this.keyf.Tag = "6731";
-			this.keyf.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyf.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyf.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyf.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keySST
 			// 
 			this.keySST.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keySST.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keySST.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keySST.FGWidth = 48;
 			this.keySST.FText = "LBL";
 			this.keySST.GText = "f";
@@ -184,13 +185,13 @@ namespace HP67
 			this.keySST.Size = new System.Drawing.Size(48, 51);
 			this.keySST.TabIndex = 10;
 			this.keySST.Tag = "6725";
-			this.keySST.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keySST.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keySST.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keySST.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyi
 			// 
 			this.keyi.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyi.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyi.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyi.FGWidth = 48;
 			this.keyi.FText = "RND";
 			this.keyi.GText = "";
@@ -206,13 +207,13 @@ namespace HP67
 			this.keyi.Size = new System.Drawing.Size(48, 51);
 			this.keyi.TabIndex = 9;
 			this.keyi.Tag = "6724";
-			this.keyi.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyi.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyi.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyi.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyDSP
 			// 
 			this.keyDSP.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyDSP.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyDSP.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyDSP.FGWidth = 48;
 			this.keyDSP.FText = "FIX";
 			this.keyDSP.GText = "SCI";
@@ -228,13 +229,13 @@ namespace HP67
 			this.keyDSP.Size = new System.Drawing.Size(48, 51);
 			this.keyDSP.TabIndex = 8;
 			this.keyDSP.Tag = "6723";
-			this.keyDSP.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyDSP.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyDSP.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyDSP.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyGTO
 			// 
 			this.keyGTO.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyGTO.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyGTO.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyGTO.FGWidth = 48;
 			this.keyGTO.FText = "GSB";
 			this.keyGTO.GText = "f";
@@ -250,13 +251,13 @@ namespace HP67
 			this.keyGTO.Size = new System.Drawing.Size(48, 51);
 			this.keyGTO.TabIndex = 7;
 			this.keyGTO.Tag = "6722";
-			this.keyGTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyGTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyGTO.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyGTO.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyΣ
 			// 
 			this.keyΣ.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyΣ.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyΣ.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyΣ.FGWidth = 48;
 			this.keyΣ.FText = "x̄";
 			this.keyΣ.GText = "s";
@@ -272,13 +273,13 @@ namespace HP67
 			this.keyΣ.Size = new System.Drawing.Size(48, 51);
 			this.keyΣ.TabIndex = 6;
 			this.keyΣ.Tag = "6721";
-			this.keyΣ.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyΣ.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyΣ.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyΣ.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyE
 			// 
 			this.keyE.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyE.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyE.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyE.FGWidth = 48;
 			this.keyE.FText = "e";
 			this.keyE.GText = "";
@@ -295,13 +296,13 @@ namespace HP67
 			this.keyE.Size = new System.Drawing.Size(48, 51);
 			this.keyE.TabIndex = 5;
 			this.keyE.Tag = "6715";
-			this.keyE.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyE.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyE.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyE.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyD
 			// 
 			this.keyD.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyD.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyD.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyD.FGWidth = 48;
 			this.keyD.FText = "d";
 			this.keyD.GText = "";
@@ -318,13 +319,13 @@ namespace HP67
 			this.keyD.Size = new System.Drawing.Size(48, 51);
 			this.keyD.TabIndex = 4;
 			this.keyD.Tag = "6714";
-			this.keyD.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyD.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyD.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyD.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyC
 			// 
 			this.keyC.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyC.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyC.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyC.FGWidth = 48;
 			this.keyC.FText = "c";
 			this.keyC.GText = "";
@@ -341,13 +342,13 @@ namespace HP67
 			this.keyC.Size = new System.Drawing.Size(48, 51);
 			this.keyC.TabIndex = 3;
 			this.keyC.Tag = "6713";
-			this.keyC.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyC.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyC.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyC.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyB
 			// 
 			this.keyB.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyB.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyB.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyB.FGWidth = 48;
 			this.keyB.FText = "b";
 			this.keyB.GText = "";
@@ -364,13 +365,13 @@ namespace HP67
 			this.keyB.Size = new System.Drawing.Size(48, 51);
 			this.keyB.TabIndex = 2;
 			this.keyB.Tag = "6712";
-			this.keyB.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyB.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyB.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyB.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyENTER
 			// 
 			this.keyENTER.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyENTER.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyENTER.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyENTER.FGWidth = 120;
 			this.keyENTER.FText = "W/DATA";
 			this.keyENTER.GText = "MERGE";
@@ -387,13 +388,13 @@ namespace HP67
 			this.keyENTER.Size = new System.Drawing.Size(120, 51);
 			this.keyENTER.TabIndex = 16;
 			this.keyENTER.Tag = "6741";
-			this.keyENTER.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyENTER.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyENTER.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyENTER.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyEEX
 			// 
 			this.keyEEX.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyEEX.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyEEX.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyEEX.FGWidth = 48;
 			this.keyEEX.FText = "CL REG";
 			this.keyEEX.GText = "";
@@ -409,13 +410,13 @@ namespace HP67
 			this.keyEEX.Size = new System.Drawing.Size(48, 51);
 			this.keyEEX.TabIndex = 18;
 			this.keyEEX.Tag = "6743";
-			this.keyEEX.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyEEX.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyEEX.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyEEX.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyCLx
 			// 
 			this.keyCLx.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyCLx.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyCLx.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyCLx.FGWidth = 64;
 			this.keyCLx.FText = "CL PRGM";
 			this.keyCLx.GText = "";
@@ -431,13 +432,13 @@ namespace HP67
 			this.keyCLx.Size = new System.Drawing.Size(64, 51);
 			this.keyCLx.TabIndex = 19;
 			this.keyCLx.Tag = "6744";
-			this.keyCLx.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyCLx.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyCLx.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyCLx.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyCHS
 			// 
 			this.keyCHS.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyCHS.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyCHS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyCHS.FGWidth = 48;
 			this.keyCHS.FText = "P⇆S";
 			this.keyCHS.GText = "";
@@ -453,13 +454,13 @@ namespace HP67
 			this.keyCHS.Size = new System.Drawing.Size(48, 51);
 			this.keyCHS.TabIndex = 17;
 			this.keyCHS.Tag = "6742";
-			this.keyCHS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyCHS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyCHS.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyCHS.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyh
 			// 
 			this.keyh.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyh.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyh.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyh.FGWidth = 48;
 			this.keyh.FText = "";
 			this.keyh.GText = "";
@@ -476,13 +477,13 @@ namespace HP67
 			this.keyh.Size = new System.Drawing.Size(48, 51);
 			this.keyh.TabIndex = 15;
 			this.keyh.Tag = "6735";
-			this.keyh.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyh.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyh.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyh.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyRCL
 			// 
 			this.keyRCL.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyRCL.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyRCL.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyRCL.FGWidth = 48;
 			this.keyRCL.FText = "ISZ";
 			this.keyRCL.GText = "(i)";
@@ -498,13 +499,13 @@ namespace HP67
 			this.keyRCL.Size = new System.Drawing.Size(48, 51);
 			this.keyRCL.TabIndex = 14;
 			this.keyRCL.Tag = "6734";
-			this.keyRCL.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyRCL.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyRCL.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyRCL.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keySTO
 			// 
 			this.keySTO.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keySTO.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keySTO.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keySTO.FGWidth = 48;
 			this.keySTO.FText = "DSZ";
 			this.keySTO.GText = "(i)";
@@ -520,13 +521,13 @@ namespace HP67
 			this.keySTO.Size = new System.Drawing.Size(48, 51);
 			this.keySTO.TabIndex = 13;
 			this.keySTO.Tag = "6733";
-			this.keySTO.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keySTO.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keySTO.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keySTO.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyg
 			// 
 			this.keyg.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyg.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.keyg.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.keyg.FGWidth = 48;
 			this.keyg.FText = "";
 			this.keyg.GText = "";
@@ -543,13 +544,13 @@ namespace HP67
 			this.keyg.Size = new System.Drawing.Size(48, 51);
 			this.keyg.TabIndex = 12;
 			this.keyg.Tag = "6732";
-			this.keyg.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyg.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyg.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyg.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key8
 			// 
 			this.key8.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key8.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.key8.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.key8.FGWidth = 56;
 			this.key8.FText = "LOG";
 			this.key8.GText = "10 ̽";
@@ -567,13 +568,13 @@ namespace HP67
 			this.key8.Size = new System.Drawing.Size(56, 51);
 			this.key8.TabIndex = 22;
 			this.key8.Tag = "6753";
-			this.key8.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key8.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key8.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key8.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyRS
 			// 
 			this.keyRS.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyRS.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyRS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyRS.FGWidth = 56;
 			this.keyRS.FText = "–x–";
 			this.keyRS.GText = "STK";
@@ -589,13 +590,13 @@ namespace HP67
 			this.keyRS.Size = new System.Drawing.Size(56, 51);
 			this.keyRS.TabIndex = 35;
 			this.keyRS.Tag = "6784";
-			this.keyRS.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyRS.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyRS.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyRS.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyPeriod
 			// 
 			this.keyPeriod.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyPeriod.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyPeriod.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyPeriod.FGWidth = 72;
 			this.keyPeriod.FText = "INT";
 			this.keyPeriod.GText = "FRAC";
@@ -612,13 +613,13 @@ namespace HP67
 			this.keyPeriod.Size = new System.Drawing.Size(72, 51);
 			this.keyPeriod.TabIndex = 34;
 			this.keyPeriod.Tag = "6783";
-			this.keyPeriod.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyPeriod.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyPeriod.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyPeriod.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key0
 			// 
 			this.key0.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key0.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.key0.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.key0.FGWidth = 56;
 			this.key0.FText = "%";
 			this.key0.GText = "%CH";
@@ -636,13 +637,13 @@ namespace HP67
 			this.key0.Size = new System.Drawing.Size(56, 51);
 			this.key0.TabIndex = 33;
 			this.key0.Tag = "6782";
-			this.key0.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key0.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key0.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key0.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key9
 			// 
 			this.key9.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key9.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.key9.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.key9.FGWidth = 56;
 			this.key9.FText = "√x̅";
 			this.key9.GText = "x²";
@@ -660,13 +661,13 @@ namespace HP67
 			this.key9.Size = new System.Drawing.Size(56, 51);
 			this.key9.TabIndex = 23;
 			this.key9.Tag = "6754";
-			this.key9.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key9.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key9.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key9.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key3
 			// 
 			this.key3.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key3.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key3.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key3.FGWidth = 56;
 			this.key3.FText = "H⇄";
 			this.key3.GText = "H.MS";
@@ -684,13 +685,13 @@ namespace HP67
 			this.key3.Size = new System.Drawing.Size(56, 51);
 			this.key3.TabIndex = 31;
 			this.key3.Tag = "6774";
-			this.key3.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key3.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key3.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key3.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key2
 			// 
 			this.key2.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key2.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key2.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key2.FGWidth = 56;
 			this.key2.FText = "D⇄";
 			this.key2.GText = "R";
@@ -708,13 +709,13 @@ namespace HP67
 			this.key2.Size = new System.Drawing.Size(56, 51);
 			this.key2.TabIndex = 30;
 			this.key2.Tag = "6773";
-			this.key2.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key2.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key2.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key2.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key1
 			// 
 			this.key1.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key1.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key1.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key1.FGWidth = 56;
 			this.key1.FText = "R⇄";
 			this.key1.GText = "P";
@@ -732,13 +733,13 @@ namespace HP67
 			this.key1.Size = new System.Drawing.Size(56, 51);
 			this.key1.TabIndex = 29;
 			this.key1.Tag = "6772";
-			this.key1.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key1.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key1.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key1.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key6
 			// 
 			this.key6.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key6.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key6.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key6.FGWidth = 56;
 			this.key6.FText = "TAN";
 			this.key6.GText = "⁻¹";
@@ -756,13 +757,13 @@ namespace HP67
 			this.key6.Size = new System.Drawing.Size(56, 51);
 			this.key6.TabIndex = 27;
 			this.key6.Tag = "6764";
-			this.key6.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key6.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key6.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key6.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key5
 			// 
 			this.key5.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key5.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key5.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key5.FGWidth = 56;
 			this.key5.FText = "COS";
 			this.key5.GText = "⁻¹";
@@ -780,13 +781,13 @@ namespace HP67
 			this.key5.Size = new System.Drawing.Size(56, 51);
 			this.key5.TabIndex = 26;
 			this.key5.Tag = "6763";
-			this.key5.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key5.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key5.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key5.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key4
 			// 
 			this.key4.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key4.FGTextAlign = HP67_Control_Library.TextAlign.Centered;
+			this.key4.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
 			this.key4.FGWidth = 56;
 			this.key4.FText = "SIN";
 			this.key4.GText = "⁻¹";
@@ -804,13 +805,13 @@ namespace HP67
 			this.key4.Size = new System.Drawing.Size(56, 51);
 			this.key4.TabIndex = 25;
 			this.key4.Tag = "6762";
-			this.key4.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key4.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key4.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key4.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// key7
 			// 
 			this.key7.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key7.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.key7.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.key7.FGWidth = 56;
 			this.key7.FText = "LN";
 			this.key7.GText = "e ̽";
@@ -828,13 +829,13 @@ namespace HP67
 			this.key7.Size = new System.Drawing.Size(56, 51);
 			this.key7.TabIndex = 21;
 			this.key7.Tag = "6752";
-			this.key7.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.key7.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.key7.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key7.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyMinus
 			// 
 			this.keyMinus.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyMinus.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyMinus.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyMinus.FGWidth = 48;
 			this.keyMinus.FText = "x=0";
 			this.keyMinus.GText = "x=y";
@@ -851,13 +852,13 @@ namespace HP67
 			this.keyMinus.Size = new System.Drawing.Size(48, 51);
 			this.keyMinus.TabIndex = 20;
 			this.keyMinus.Tag = "6751";
-			this.keyMinus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyMinus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyMinus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyMinus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyDiv
 			// 
 			this.keyDiv.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyDiv.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyDiv.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyDiv.FGWidth = 48;
 			this.keyDiv.FText = "x>0";
 			this.keyDiv.GText = "x>y";
@@ -874,13 +875,13 @@ namespace HP67
 			this.keyDiv.Size = new System.Drawing.Size(48, 51);
 			this.keyDiv.TabIndex = 32;
 			this.keyDiv.Tag = "6781";
-			this.keyDiv.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyDiv.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyDiv.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyDiv.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyMult
 			// 
 			this.keyMult.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyMult.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyMult.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyMult.FGWidth = 48;
 			this.keyMult.FText = "x<0";
 			this.keyMult.GText = "x≤y";
@@ -897,13 +898,13 @@ namespace HP67
 			this.keyMult.Size = new System.Drawing.Size(48, 51);
 			this.keyMult.TabIndex = 28;
 			this.keyMult.Tag = "6771";
-			this.keyMult.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyMult.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyMult.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyMult.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyPlus
 			// 
 			this.keyPlus.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyPlus.FGTextAlign = HP67_Control_Library.TextAlign.Justified;
+			this.keyPlus.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
 			this.keyPlus.FGWidth = 48;
 			this.keyPlus.FText = "x≠0";
 			this.keyPlus.GText = "x≠y";
@@ -920,8 +921,8 @@ namespace HP67
 			this.keyPlus.Size = new System.Drawing.Size(48, 51);
 			this.keyPlus.TabIndex = 24;
 			this.keyPlus.Tag = "6761";
-			this.keyPlus.LeftMouseUp += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyPlus.LeftMouseDown += new HP67_Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			this.keyPlus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyPlus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// HP67
 			// 

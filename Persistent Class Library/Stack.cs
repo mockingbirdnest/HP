@@ -1,7 +1,7 @@
-using HP67_Control_Library;
+using Mockingbird.HP.Control_Library;
 using System;
 
-namespace HP67_Class_Library
+namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
 	/// Evaluation stack of the HP67 calculator.
