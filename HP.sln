@@ -131,9 +131,6 @@ Global
 		{4E3D8364-638A-4B6F-B556-40EA50003482}.Release.ActiveCfg = Release
 		{4E3D8364-638A-4B6F-B556-40EA50003482}.Release.Build.0 = Release
 	EndGlobalSection
-	GlobalSection(SolutionItems) = postSolution
-		HP67.vsd = HP67.vsd
-	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
