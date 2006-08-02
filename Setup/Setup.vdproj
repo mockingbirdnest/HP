@@ -21,12 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0115A175EB704C55BB32E49115DA310A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_03E742E4BA9C4A46A36CF511F6415ACA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -63,6 +57,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1532EB6DA1304D35AA239368C3845462"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1A59451DACDC4208B05FC1DE4489DFAC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_279453D80C6C4DD0BC08D54F7F7982F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -75,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_320F25E45E8D440096E6630F42E0E345"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
         "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
@@ -88,12 +88,6 @@
         "Entry"
         {
         "MsmKey" = "8:_4C1FCC698D34481C828B203A85CC50DF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4EBF5D47DA084077B89E89470E4653D5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -177,12 +171,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7F1417F530EA47D1A1E5BD6E6FD74355"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
         "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
         "MsmSig" = "8:_UNDEFINED"
@@ -203,24 +191,6 @@
         {
         "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
         "OwnerKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_88B2CC68CD6B4F46B04DCC45ED30F2F9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_920EBA3E134E4D6CB61CECDB58896EAB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_971EE1FA8390458B8F7D443B4EFE1A6C"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -255,13 +225,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9B7FE664CF7C4F85BBD742B357FE4E3C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A32A96ED83C64D669FF12F55D4A5B3E4"
+        "MsmKey" = "8:_A904DE80E5A5459390C80BD900C1502C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -321,7 +285,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C28CDB96CB29444488F0C89C1B2CF185"
+        "MsmKey" = "8:_BCF7A56A97184CE4A803ABE4B29FD787"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -339,7 +303,37 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D2B5F0A890544ECE8FCF47346E1C2C01"
+        "MsmKey" = "8:_CC706B459D414B23AD877CA1537DBBA6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CFD276E0D99E46EEA892DFCBCEF8B2A6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DFC89A7454F64C16824A4C4D8D1978E4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F96EDF484A604B0CA83E633070BFB3B9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD5E95A9F47E438598599F52498E8A2A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE8BB9E90570449C88ED3B5805802DFE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -414,26 +408,6 @@
         }
         "File"
         {
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_0115A175EB704C55BB32E49115DA310A"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Gaussian Quadrature.hp67"
-            "TargetName" = "8:Gaussian Quadrature.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_03E742E4BA9C4A46A36CF511F6415ACA"
             {
             "SourcePath" = "8:..\\Control Library\\DotMatrix.ttf"
@@ -485,6 +459,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_1532EB6DA1304D35AA239368C3845462"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Optimal Scale, Plotting.hp67"
+            "TargetName" = "8:Optimal Scale, Plotting.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_1A59451DACDC4208B05FC1DE4489DFAC"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Hyperbolics.hp67"
+            "TargetName" = "8:Hyperbolics.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_279453D80C6C4DD0BC08D54F7F7982F6"
             {
             "SourcePath" = "8:HP67 Document.ico"
@@ -511,26 +525,6 @@
             "TargetName" = "8:Triangles.hp67"
             "Tag" = "8:"
             "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_320F25E45E8D440096E6630F42E0E345"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Bessel Functions, Error Function.hp67"
-            "TargetName" = "8:Bessel Functions, Error Function.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -592,26 +586,6 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:5"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_4EBF5D47DA084077B89E89470E4653D5"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Optimal Scale, Plotting.hp67"
-            "TargetName" = "8:Optimal Scale, Plotting.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
@@ -709,26 +683,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_7F1417F530EA47D1A1E5BD6E6FD74355"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Gamma Function.hp67"
-            "TargetName" = "8:Gamma Function.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_859F104FA2E83756682990E8C1F9C2E3"
             {
             "AssemblyRegister" = "3:1"
@@ -758,66 +712,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_88B2CC68CD6B4F46B04DCC45ED30F2F9"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Spherical Triangles.hp67"
-            "TargetName" = "8:Spherical Triangles.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_920EBA3E134E4D6CB61CECDB58896EAB"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Base Conversions.hp67"
-            "TargetName" = "8:Base Conversions.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_971EE1FA8390458B8F7D443B4EFE1A6C"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Complex Operations.hp67"
-            "TargetName" = "8:Complex Operations.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_9A860F638852F6EB5D2581413B30D5D5"
@@ -851,10 +745,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_9B7FE664CF7C4F85BBD742B357FE4E3C"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_A904DE80E5A5459390C80BD900C1502C"
             {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Hyperbolics.hp67"
-            "TargetName" = "8:Hyperbolics.hp67"
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Base Conversions.hp67"
+            "TargetName" = "8:Base Conversions.hp67"
             "Tag" = "8:"
             "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Condition" = "8:"
@@ -871,30 +765,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_A32A96ED83C64D669FF12F55D4A5B3E4"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_BCF7A56A97184CE4A803ABE4B29FD787"
             {
             "SourcePath" = "8:..\\Pacs\\Math Pac I\\Spherical Triangles.hp67"
             "TargetName" = "8:Spherical Triangles.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_C28CDB96CB29444488F0C89C1B2CF185"
-            {
-            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Factors and Primes.hp67"
-            "TargetName" = "8:Factors and Primes.hp67"
             "Tag" = "8:"
             "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Condition" = "8:"
@@ -951,10 +825,110 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{A582A373-4685-4296-BEFE-614B80A702C3}:_D2B5F0A890544ECE8FCF47346E1C2C01"
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_CC706B459D414B23AD877CA1537DBBA6"
             {
             "SourcePath" = "8:..\\Pacs\\Math Pac I\\GCD, LCM, Dec-Frac.hp67"
             "TargetName" = "8:GCD, LCM, Dec-Frac.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_CFD276E0D99E46EEA892DFCBCEF8B2A6"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Gaussian Quadrature.hp67"
+            "TargetName" = "8:Gaussian Quadrature.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_DFC89A7454F64C16824A4C4D8D1978E4"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Factors and Primes.hp67"
+            "TargetName" = "8:Factors and Primes.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_F96EDF484A604B0CA83E633070BFB3B9"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Gamma Function.hp67"
+            "TargetName" = "8:Gamma Function.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_FD5E95A9F47E438598599F52498E8A2A"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Bessel Functions, Error Function.hp67"
+            "TargetName" = "8:Bessel Functions, Error Function.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{A582A373-4685-4296-BEFE-614B80A702C3}:_FE8BB9E90570449C88ED3B5805802DFE"
+            {
+            "SourcePath" = "8:..\\Pacs\\Math Pac I\\Complex Operations.hp67"
+            "TargetName" = "8:Complex Operations.hp67"
             "Tag" = "8:"
             "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Condition" = "8:"
