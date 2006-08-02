@@ -37,9 +37,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67 Transient Class Librar
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP97", "HP97\HP97.csproj", "{F5FA9E27-20AF-43D7-B8A7-E48ED95117A7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 11
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SolutionUniqueID = {878E852C-8F25-4FB7-95ED-DC7CB08F89F4}
@@ -79,6 +83,10 @@ Global
 		SccProjectName9 = \u0022$/HP67/HP67\u0020Base\u0020Library\u0022,\u0020VRAAAAAA
 		SccLocalPath9 = HP67\u0020Transient\u0020Class\u0020Library
 		CanCheckoutShared = false
+		SccProjectUniqueName10 = HP97\\HP97.csproj
+		SccLocalPath10 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection10 = HP97\\
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -118,6 +126,10 @@ Global
 		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Debug.Build.0 = Debug|.NET
 		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Release.ActiveCfg = Release|.NET
 		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Release.Build.0 = Release|.NET
+		{F5FA9E27-20AF-43D7-B8A7-E48ED95117A7}.Debug.ActiveCfg = Debug|.NET
+		{F5FA9E27-20AF-43D7-B8A7-E48ED95117A7}.Debug.Build.0 = Debug|.NET
+		{F5FA9E27-20AF-43D7-B8A7-E48ED95117A7}.Release.ActiveCfg = Release|.NET
+		{F5FA9E27-20AF-43D7-B8A7-E48ED95117A7}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(SolutionItems) = postSolution
 		HP67.vsd = HP67.vsd
