@@ -14,11 +14,11 @@ namespace Mockingbird.HP.Persistence
 	}
 
 	/// <summary>
-	/// A card used to store the program, memory and other state of the HP67 calculator.
+	/// A card used to store the program, memory and other state of an HP calculator.
 	/// </summary>
 	public class Card
 	{
-		private const float Version = 1.6F;
+		private const float Version = 1.7F;
 
 		#region Event Definitions
 
@@ -43,6 +43,7 @@ namespace Mockingbird.HP.Persistence
 		static private bool CheckVersion (CardDataset cds) 
 		{
 			CardDataset.CardRow cr = cds.Card [0];
+			CardDataset.ArgumentRow [] ars;
 			CardDataset.InstructionRow [] irs;
 			CardDataset.ProgramRow pr;
 			CardDataset.ProgramRow [] prs;
@@ -93,7 +94,30 @@ namespace Mockingbird.HP.Persistence
 					}
 				}
 			}
-				cds.Card [0].Version = Version;
+			if (cr.Version <= 1.6F) 
+			{
+				// Version 1.6 used to have argument types starting with HP67_Class_Library.
+				prs = cr.GetProgramRows ();
+				if (prs.Length > 0) 
+				{
+					pr = prs [0];
+					irs = pr.GetInstructionRows ();
+					foreach (CardDataset.InstructionRow ir in irs) 
+					{
+						ars = ir.GetArgumentRows ();
+						foreach (CardDataset.ArgumentRow ar in ars) 
+						{
+							if (ar.Type.StartsWith ("HP67_Class_Library.")) 
+							{
+								ar.Type =
+									ar.Type.Replace
+										("HP67_Class_Library.", "Mockingbird.HP.Class_Library.");
+							}
+						}
+					}
+				}
+			}
+			cds.Card [0].Version = Version;
 			return true;
 		}
 

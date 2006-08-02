@@ -11,7 +11,7 @@ namespace Mockingbird.HP.Class_Library
 	}
 
 	/// <summary>
-	/// A key-related event for the HP67 calculator.
+	/// A key-related event for an HP calculator.
 	/// </summary>
 	public class Keystroke
 	{

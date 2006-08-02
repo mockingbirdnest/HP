@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
-	/// An instruction in the program memory of the HP67 calculator.
+	/// An instruction in the program memory of an HP calculator.
 	/// </summary>
 	public class Instruction
 	{

@@ -20,7 +20,7 @@ namespace Mockingbird.HP.Control_Library
 	}
 
 	/// <summary>
-	/// The card slot of the HP67 calculator.
+	/// The card slot of an HP calculator.
 	/// </summary>
 	public class CardSlot : System.Windows.Forms.UserControl
 	{

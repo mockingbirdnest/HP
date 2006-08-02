@@ -8,7 +8,7 @@ using System.Xml;
 namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
-	/// The data registers of the HP67 calculator.
+	/// The data registers of an HP calculator.
 	/// </summary>
 	public class Memory
 	{

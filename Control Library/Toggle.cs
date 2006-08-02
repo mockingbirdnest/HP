@@ -14,7 +14,7 @@ namespace Mockingbird.HP.Control_Library
 	}
 
 	/// <summary>
-	/// Sliding switch to toggle between modes of the HP67 calculator.
+	/// Sliding switch to toggle between modes of an HP calculator.
 	/// </summary>
 	public class Toggle : System.Windows.Forms.UserControl
 	{

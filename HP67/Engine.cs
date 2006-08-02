@@ -33,7 +33,7 @@ namespace Mockingbird.HP.HP67
 		#region Private Data
 
 		private static TraceSwitch classTraceSwitch = 
-			new TraceSwitch ("HP67.Engine", "Execution engine");
+			new TraceSwitch ("Mockingbird.HP.HP67.Engine", "Execution engine");
 
 		private const double degreeToRadian = Math.PI / 180.0;
 		private const double gradeToRadian = Math.PI / 200.0;

@@ -4,7 +4,7 @@ using System;
 namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
-	/// Evaluation stack of the HP67 calculator.
+	/// Evaluation stack of an HP calculator.
 	/// </summary>
 	public class Stack
 	{

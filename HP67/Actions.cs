@@ -17,7 +17,7 @@ namespace Mockingbird.HP.HP67
 		#region Private Data
 
 		private static TraceSwitch classTraceSwitch = 
-			new TraceSwitch ("HP67_Parser.Actions", "Parser actions");
+			new TraceSwitch ("Mockingbird.HP.Parser.Actions", "Parser actions");
 
 		private Engine engine;
 		private KeystrokeMotion motion;

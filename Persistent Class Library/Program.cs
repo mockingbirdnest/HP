@@ -16,7 +16,7 @@ using System.Globalization;
 namespace Mockingbird.HP.Class_Library
 {
 	/// <summary>
-	/// The program memory of the HP67 calculator.
+	/// The program memory of an HP calculator.
 	/// </summary>
 	public class Program
 	{

@@ -116,19 +116,20 @@
                     RelPath = "CardDataset.xsd"
                     BuildAction = "Content"
                     Generator = "MSDataSetGenerator"
-                />
-                <File
-                    RelPath = "CardDataset.cs"
-                    DependentUpon = "CardDataset.xsd"
-                    SubType = "code"
-                    BuildAction = "Compile"
-                    DesignTime = "True"
-                    AutoGen = "True"
+                    LastGenOutput = "CardDataset1.cs"
                 />
                 <File
                     RelPath = "CardDataset.xsx"
                     DependentUpon = "CardDataset.xsd"
                     BuildAction = "None"
+                />
+                <File
+                    RelPath = "CardDataset1.cs"
+                    DependentUpon = "CardDataset.xsd"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
                 />
             </Include>
         </Files>

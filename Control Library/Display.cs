@@ -28,7 +28,7 @@ namespace Mockingbird.HP.Control_Library
 	}
 
 	/// <summary>
-	/// The LED display for the HP67 calculator.
+	/// The LED display for an HP calculator.
 	/// </summary>
 	public class Display : System.Windows.Forms.UserControl
 	{

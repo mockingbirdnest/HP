@@ -13,7 +13,7 @@ namespace Mockingbird.HP.Class_Library
 	#region Root & Interfaces for Arguments
 
 	/// <summary>
-	/// An argument for HP67 instructions.
+	/// An argument for an instructions of an HP calculator.
 	/// </summary>
 	public abstract class Argument : Object
 	{

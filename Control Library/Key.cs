@@ -15,7 +15,7 @@ namespace Mockingbird.HP.Control_Library
 	}
 
 	/// <summary>
-	/// A Key on the keyboard of the HP67 calculator.
+	/// A Key on the keyboard of an HP calculator.
 	/// </summary>
 	public class Key : UserControl
 	{

@@ -33,6 +33,36 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "OwnerKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "OwnerKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "OwnerKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_22E00F42595D4CCDA6203AA71E82194F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -45,32 +75,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2F097CBC846B446CA08ECF2D86468E6F"
-        "OwnerKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2F097CBC846B446CA08ECF2D86468E6F"
-        "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2F097CBC846B446CA08ECF2D86468E6F"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2F097CBC846B446CA08ECF2D86468E6F"
-        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_320F25E45E8D440096E6630F42E0E345"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -87,6 +99,138 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "OwnerKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "OwnerKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "OwnerKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "OwnerKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "OwnerKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7946F47DCBC7444AB4434476F2B36F9A"
+        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "OwnerKey" = "8:_71BB021A50E885B3570398A476EB0305"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "OwnerKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7F0806B8979D5BFC2260054B079097C3"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7F1417F530EA47D1A1E5BD6E6FD74355"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,7 +238,7 @@
         "Entry"
         {
         "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,7 +250,13 @@
         "Entry"
         {
         "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
-        "OwnerKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_859F104FA2E83756682990E8C1F9C2E3"
+        "OwnerKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,13 +280,31 @@
         "Entry"
         {
         "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "OwnerKey" = "8:_600C79C1BBC54EFA62374A4614CBC465"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
         "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "OwnerKey" = "8:_414DB006D4B820EB6B8A6B03EB089C13"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A860F638852F6EB5D2581413B30D5D5"
+        "OwnerKey" = "8:_0831D6109B9FCADD4D7411508BC68B5E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -286,6 +454,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_0831D6109B9FCADD4D7411508BC68B5E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Parser, Version=1.0.2405.41163, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_0831D6109B9FCADD4D7411508BC68B5E"
+                    {
+                    "Name" = "8:Mockingbird.HP.Parser.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Mockingbird.HP.Parser.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_22E00F42595D4CCDA6203AA71E82194F"
             {
             "SourcePath" = "8:..\\Pacs\\Standard Pac\\Triangles.hp67"
@@ -346,6 +545,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_414DB006D4B820EB6B8A6B03EB089C13"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Persistent Class Library, Version=1.0.2405.41250, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_414DB006D4B820EB6B8A6B03EB089C13"
+                    {
+                    "Name" = "8:Mockingbird.HP.Persistent Class Library.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Mockingbird.HP.Persistent Class Library.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_4C1FCC698D34481C828B203A85CC50DF"
             {
             "SourcePath" = "8:..\\Control Library\\Arial Unicode MS.ttf"
@@ -384,6 +614,99 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_600C79C1BBC54EFA62374A4614CBC465"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Transient Class Library, Version=0.0.0.0, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_600C79C1BBC54EFA62374A4614CBC465"
+                    {
+                    "Name" = "8:Mockingbird.HP.Transient Class Library.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Mockingbird.HP.Transient Class Library.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_71BB021A50E885B3570398A476EB0305"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Control Library, Version=1.0.2405.41250, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_71BB021A50E885B3570398A476EB0305"
+                    {
+                    "Name" = "8:Mockingbird.HP.Control Library.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Mockingbird.HP.Control Library.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{FB480208-1853-44D0-9ABD-A3B734C3FAAA}:_7F0806B8979D5BFC2260054B079097C3"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Persistence, Version=0.0.0.0, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_7F0806B8979D5BFC2260054B079097C3"
+                    {
+                    "Name" = "8:Mockingbird.HP.Persistence.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Mockingbird.HP.Persistence.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{A582A373-4685-4296-BEFE-614B80A702C3}:_7F1417F530EA47D1A1E5BD6E6FD74355"
@@ -788,13 +1111,13 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP"
-        "ProductCode" = "8:{9613AE48-70A0-43BA-A257-E45189E914DC}"
-        "PackageCode" = "8:{7E13626D-C7F0-4DEA-B3F5-13ABBEE3B177}"
+        "ProductCode" = "8:{06A2AE81-8A1D-4783-9439-F777D91B5490}"
+        "PackageCode" = "8:{BABF3B58-E2FC-4EC6-B463-19C6B8FC5B6E}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "ProductVersion" = "8:1.6.0"
+        "ProductVersion" = "8:1.7.0"
         "Manufacturer" = "8:Mockingbird"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1324,7 +1647,7 @@
         }
         "MergeModule"
         {
-            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_2F097CBC846B446CA08ECF2D86468E6F"
+            "{35A69C6E-5BA4-440D-803D-762B59A45393}:_7946F47DCBC7444AB4434476F2B36F9A"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:TRUE"
