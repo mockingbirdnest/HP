@@ -168,17 +168,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "BaseCalculator.resx"
+                    DependentUpon = "BaseCalculator.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
                     RelPath = "CardCalculator.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
                 />
                 <File
                     RelPath = "Engine.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ExecutionThread.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -191,6 +191,11 @@
                     RelPath = "ProgrammableCalculator.resx"
                     DependentUpon = "ProgrammableCalculator.cs"
                     BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Thread.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

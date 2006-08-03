@@ -530,7 +530,7 @@ namespace Mockingbird.HP.Execution
 					break;
 				case SymbolConstants.SYMBOL_MERGE :
 					if (! (bool) form.Invoke
-						(new ExecutionThread.CrossThreadOperation (form.CrossThreadMerge))) 
+						(new Execution.Thread.CrossThreadOperation (form.CrossThreadMerge))) 
 					{
 						throw new Error ();
 					}
@@ -740,7 +740,7 @@ namespace Mockingbird.HP.Execution
 					break;
 				case SymbolConstants.SYMBOL_W_DATA :
 					if (! (bool) form.Invoke
-									(new ExecutionThread.CrossThreadOperation
+									(new Execution.Thread.CrossThreadOperation
 										(form.CrossThreadSaveDataAs))) 
 					{
 						throw new Error ();

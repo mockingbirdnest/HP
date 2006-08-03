@@ -15,7 +15,7 @@ namespace Mockingbird.HP.Execution
 
 		#region Protected & Private Data
 
-		protected ExecutionThread executionThread;
+		protected Execution.Thread executionThread;
 		protected Reader reader = null;
 
 		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
@@ -135,7 +135,7 @@ namespace Mockingbird.HP.Execution
 		protected abstract void BusyUI ();
 
 		// Creates the execution thread that parses and processes output.
-		protected abstract ExecutionThread CreateExecutionThread ();
+		protected abstract Execution.Thread CreateExecutionThread ();
 
 		// Call by the execution thread to notify the UI thread that the busy state has changed.
 		public abstract EngineMode CrossThreadNotifyUI (bool busy);
