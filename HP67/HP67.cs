@@ -21,6 +21,32 @@ namespace Mockingbird.HP.HP67
 
 		#region Private Data
 
+#if DESIGN
+		// Unfortunate, but for the design mode to work we need to replicate the declarations of the
+		// controls that occur in parent classes.  Danger!  Double-check what happens here if the
+		// UI is edited.
+
+		// BaseCalculator.
+		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
+
+		// ProgrammableCalculator.
+		protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
+		protected System.Windows.Forms.ContextMenu contextMenu;
+		protected System.Windows.Forms.OpenFileDialog openFileDialog;
+		protected System.Windows.Forms.SaveFileDialog saveFileDialog;
+		protected System.Drawing.Printing.PrintDocument printDocument;
+		protected System.Windows.Forms.MenuItem openMenuItem;
+		protected System.Windows.Forms.MenuItem printMenuItem;
+		protected System.Windows.Forms.MenuItem saveMenuItem;
+		protected System.Windows.Forms.MenuItem saveAsMenuItem;
+
+		// CardCalculator.
+		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
+		protected System.Windows.Forms.MenuItem menuSeparator;
+		protected System.Windows.Forms.MenuItem rtfMenuItem;
+		protected System.Windows.Forms.MenuItem editMenuItem;
+#endif
+
 		private Mockingbird.HP.Control_Library.Key keyA;
 		private Mockingbird.HP.Control_Library.Key keyB;
 		private Mockingbird.HP.Control_Library.Key keyC;
