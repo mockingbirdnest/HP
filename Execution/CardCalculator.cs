@@ -11,20 +11,15 @@ namespace Mockingbird.HP.Execution
 	/// <summary>
 	/// Abstract base class for magnetic card calculators.
 	/// </summary>
-	public abstract class CardCalculator : 
-#if DESIGN
-		Form
-#else
-		ProgrammableCalculator
-#endif
+	public abstract class CardCalculator : ProgrammableCalculator
 	{
 
-		#region Private Data
+		#region Protected & Private Data
 
-		private Mockingbird.HP.Control_Library.CardSlot cardSlot;
-		private System.Windows.Forms.MenuItem menuSeparator;
-		private System.Windows.Forms.MenuItem rtfMenuItem;
-		private System.Windows.Forms.MenuItem editMenuItem;
+		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
+		protected System.Windows.Forms.MenuItem menuSeparator;
+		protected System.Windows.Forms.MenuItem rtfMenuItem;
+		protected System.Windows.Forms.MenuItem editMenuItem;
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -59,58 +54,7 @@ namespace Mockingbird.HP.Execution
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		protected override void InitializeComponent()
-		{
-			base.InitializeComponent ();
-			System.Resources.ResourceManager resources =
-				new System.Resources.ResourceManager (typeof (CardCalculator));
-			this.cardSlot = new Mockingbird.HP.Control_Library.CardSlot();
-			this.menuSeparator = new System.Windows.Forms.MenuItem();
-			this.editMenuItem = new System.Windows.Forms.MenuItem();
-			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
-			this.SuspendLayout();
-			// 
-			// cardSlot
-			// 
-			this.cardSlot.Location = new System.Drawing.Point(8, 80);
-			this.cardSlot.Margin = 8;
-			this.cardSlot.Name = "cardSlot";
-			this.cardSlot.RichText = false;
-			this.cardSlot.Size = new System.Drawing.Size(288, 50);
-			this.cardSlot.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
-			this.cardSlot.TabIndex = 1;
-			this.cardSlot.TextBoxWidth = 48;
-			this.cardSlot.Title = "<TITLE>";
-			// 
-			// contextMenu
-			// 
-			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						this.menuSeparator,
-																						this.editMenuItem,
-																						this.rtfMenuItem});
-			// 
-			// menuSeparator
-			// 
-			this.menuSeparator.Index = 4;
-			this.menuSeparator.Text = "-";
-			// 
-			// editMenuItem
-			// 
-			this.editMenuItem.Index = 5;
-			this.editMenuItem.Text = "&Edit Labels";
-			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
-			// 
-			// rtfMenuItem
-			// 
-			this.rtfMenuItem.Index = 6;
-			this.rtfMenuItem.Text = "&Rich Text";
-			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
-			// 
-			// CardCalculator
-			// 
-			this.Controls.Add(this.cardSlot);
-			this.ResumeLayout(false);
-		}
+		protected abstract override void InitializeComponent();
 		#endregion
 		
 		#endregion
@@ -220,7 +164,7 @@ namespace Mockingbird.HP.Execution
 		
 		#region UI Event Handlers
 
-		private void editMenuItem_Click(object sender, System.EventArgs e)
+		protected void editMenuItem_Click(object sender, System.EventArgs e)
 		{
 			if (cardSlot.State != CardSlotState.Unloaded) 
 			{
@@ -238,7 +182,7 @@ namespace Mockingbird.HP.Execution
 			}
 		}
 
-		private void rtfMenuItem_Click(object sender, System.EventArgs e)
+		protected void rtfMenuItem_Click(object sender, System.EventArgs e)
 		{
 			if (cardSlot.State != CardSlotState.Unloaded) 
 			{

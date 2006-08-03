@@ -86,12 +86,12 @@ namespace Mockingbird.HP.HP67
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		protected override void InitializeComponent ()
+		protected override void InitializeComponent()
 		{
-#if ! DESIGN
-			base.InitializeComponent ();
-#endif
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP67));
+			this.cardSlot = new Mockingbird.HP.Control_Library.CardSlot();
+			this.toggleOffOn = new Mockingbird.HP.Control_Library.Toggle();
+			this.toggleWprgmRun = new Mockingbird.HP.Control_Library.Toggle();
 			this.keyA = new Mockingbird.HP.Control_Library.Key();
 			this.keyf = new Mockingbird.HP.Control_Library.Key();
 			this.keySST = new Mockingbird.HP.Control_Library.Key();
@@ -127,7 +127,58 @@ namespace Mockingbird.HP.HP67
 			this.keyDiv = new Mockingbird.HP.Control_Library.Key();
 			this.keyMult = new Mockingbird.HP.Control_Library.Key();
 			this.keyPlus = new Mockingbird.HP.Control_Library.Key();
+			this.contextMenu = new System.Windows.Forms.ContextMenu();
+			this.openMenuItem = new System.Windows.Forms.MenuItem();
+			this.saveMenuItem = new System.Windows.Forms.MenuItem();
+			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
+			this.printMenuItem = new System.Windows.Forms.MenuItem();
+			this.menuSeparator = new System.Windows.Forms.MenuItem();
+			this.editMenuItem = new System.Windows.Forms.MenuItem();
+			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.printDocument = new System.Drawing.Printing.PrintDocument();
 			this.SuspendLayout();
+			// 
+			// cardSlot
+			// 
+			this.cardSlot.Location = new System.Drawing.Point(8, 80);
+			this.cardSlot.Margin = 8;
+			this.cardSlot.Name = "cardSlot";
+			this.cardSlot.RichText = false;
+			this.cardSlot.Size = new System.Drawing.Size(288, 50);
+			this.cardSlot.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
+			this.cardSlot.TabIndex = 1;
+			this.cardSlot.TextBoxWidth = 48;
+			this.cardSlot.Title = "<TITLE>";
+			// 
+			// toggleOffOn
+			// 
+			this.toggleOffOn.LeftText = "OFF";
+			this.toggleOffOn.LeftWidth = 30;
+			this.toggleOffOn.Location = new System.Drawing.Point(8, 56);
+			this.toggleOffOn.MainWidth = 50;
+			this.toggleOffOn.Name = "toggleOffOn";
+			this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
+			this.toggleOffOn.RightText = "ON";
+			this.toggleOffOn.RightWidth = 30;
+			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
+			this.toggleOffOn.TabIndex = 2;
+			this.toggleOffOn.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
+			// 
+			// toggleWprgmRun
+			// 
+			this.toggleWprgmRun.LeftText = "W/PRGM";
+			this.toggleWprgmRun.LeftWidth = 60;
+			this.toggleWprgmRun.Location = new System.Drawing.Point(160, 56);
+			this.toggleWprgmRun.MainWidth = 50;
+			this.toggleWprgmRun.Name = "toggleWprgmRun";
+			this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
+			this.toggleWprgmRun.RightText = "RUN";
+			this.toggleWprgmRun.RightWidth = 30;
+			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
+			this.toggleWprgmRun.TabIndex = 3;
+			this.toggleWprgmRun.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
 			// 
 			// keyA
 			// 
@@ -933,11 +984,76 @@ namespace Mockingbird.HP.HP67
 			this.keyPlus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
 			this.keyPlus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
+			// contextMenu
+			// 
+			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+																						this.openMenuItem,
+																						this.saveMenuItem,
+																						this.saveAsMenuItem,
+																						this.printMenuItem,
+																						this.menuSeparator,
+																						this.editMenuItem,
+																						this.rtfMenuItem});
+			// 
+			// openMenuItem
+			// 
+			this.openMenuItem.Index = 0;
+			this.openMenuItem.Text = "&Open...";
+			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
+			// 
+			// saveMenuItem
+			// 
+			this.saveMenuItem.Index = 1;
+			this.saveMenuItem.Text = "&Save";
+			this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
+			// 
+			// saveAsMenuItem
+			// 
+			this.saveAsMenuItem.Index = 2;
+			this.saveAsMenuItem.Text = "Save &As...";
+			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
+			// 
+			// printMenuItem
+			// 
+			this.printMenuItem.Index = 3;
+			this.printMenuItem.Text = "Print";
+			this.printMenuItem.Click += new System.EventHandler(this.printMenuItem_Click);
+			// 
+			// menuSeparator
+			// 
+			this.menuSeparator.Index = 4;
+			this.menuSeparator.Text = "-";
+			// 
+			// editMenuItem
+			// 
+			this.editMenuItem.Index = 5;
+			this.editMenuItem.Text = "&Edit Labels";
+			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
+			// 
+			// rtfMenuItem
+			// 
+			this.rtfMenuItem.Index = 6;
+			this.rtfMenuItem.Text = "&Rich Text";
+			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
+			// saveFileDialog
+			// 
+			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
+			// printDocument
+			// 
+			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+			// 
 			// HP67
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.ClientSize = new System.Drawing.Size(304, 590);
+			this.ContextMenu = this.contextMenu;
 			this.Controls.Add(this.keyPlus);
 			this.Controls.Add(this.keyMult);
 			this.Controls.Add(this.keyDiv);
@@ -973,10 +1089,19 @@ namespace Mockingbird.HP.HP67
 			this.Controls.Add(this.keySST);
 			this.Controls.Add(this.keyf);
 			this.Controls.Add(this.keyA);
+			this.Controls.Add(this.toggleWprgmRun);
+			this.Controls.Add(this.toggleOffOn);
+			this.Controls.Add(this.cardSlot);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.KeyPreview = true;
+			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(312, 624);
 			this.MinimumSize = new System.Drawing.Size(312, 624);
 			this.Name = "HP67";
 			this.Text = "HP67";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.Calculator_Closing);
+			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyUp);
 			this.ResumeLayout(false);
 		}
 

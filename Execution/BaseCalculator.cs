@@ -18,7 +18,23 @@ namespace Mockingbird.HP.Execution
 		protected Execution.Thread executionThread;
 		protected Reader reader = null;
 
+		// Note on the separation of concerns regarding UI elements.
+		//
+		// The purpose of the various calculator classes is to factor out code that is concerned
+		// with a set of behaviors specific to each class.  For instance, all calculators have an
+		// OFF/ON toggle, so this control should be declared here, together with the related
+		// handlers.  The purpose of the various calculator classes, however, is not to factor
+		// out common layout, font, color, or localization characteristics.  Therefore the 
+		// initialization of the controls is entirely performed in the InitializeComponent routine
+		// of the concrete classes.  There is a small set of processing that should logically be
+		// factored in abstract classes, instead of being distributed in concrete classes.  This
+		// includes in particular (1) the creation of controls and (2) the registration of handlers.
+		// However, scattering the code in this fashion would prevent us from using the UI designer,
+		// which would unfortunate.  So concrete classes are expected to be well-behaved and to
+		// do all the required initialization (if they don't, it will soon be apparent).
+
 		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
+
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -31,10 +47,10 @@ namespace Mockingbird.HP.Execution
 		public BaseCalculator (string [] arguments, CalculatorModel model)
 		{
 			// Required for Windows Form Designer support.  Beware, only the base class can call
-			// this operation: it will dispatch to the most derived class and go up the derivation
-			// chain so as to initialize the components at each level.  Explicitly calling
-			// InitializeComponent in the constructor of derived classes would result in multiple
-			// initializations (which are bad for handlers).
+			// this operation: it will dispatch to the most derived (concrete) so as to initialize
+			// all the controls.  Explicitly calling InitializeComponent in the constructor of
+			// derived classes would result in multiple initializations (which are bad for
+			// handlers).
 			InitializeComponent();
 
 			// Read the parser tables.
@@ -83,41 +99,7 @@ namespace Mockingbird.HP.Execution
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		protected virtual void InitializeComponent ()
-		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(BaseCalculator));
-			this.toggleOffOn = new Mockingbird.HP.Control_Library.Toggle();
-			this.SuspendLayout();
-			// 
-			// toggleOffOn
-			// 
-			this.toggleOffOn.LeftText = "OFF";
-			this.toggleOffOn.LeftWidth = 30;
-			this.toggleOffOn.Location = new System.Drawing.Point(8, 56);
-			this.toggleOffOn.MainWidth = 50;
-			this.toggleOffOn.Name = "toggleOffOn";
-			this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
-			this.toggleOffOn.RightText = "ON";
-			this.toggleOffOn.RightWidth = 30;
-			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
-			this.toggleOffOn.TabIndex = 2;
-			this.toggleOffOn.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
-			// 
-			// BaseCalculator
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(292, 266);
-			this.Controls.Add(this.toggleOffOn);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.KeyPreview = true;
-			this.MaximizeBox = false;
-			this.Name = "BaseCalculator";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
-			this.Closing += new System.ComponentModel.CancelEventHandler(this.Calculator_Closing);
-			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyUp);
-			this.ResumeLayout(false);
-
-		}
+		protected abstract void InitializeComponent ();
 		#endregion
 
 		#endregion
@@ -158,7 +140,7 @@ namespace Mockingbird.HP.Execution
 			executionThread.Abort ();
 		}
 
-		private void Calculator_KeyDown (object sender, System.Windows.Forms.KeyEventArgs e)
+		protected void Calculator_KeyDown (object sender, System.Windows.Forms.KeyEventArgs e)
 		{
 			// If a key event is received when the user is not editing the card slot, we look for
 			// a key that has the corresponding code as one of its shortcuts, and we send it a
@@ -185,7 +167,7 @@ namespace Mockingbird.HP.Execution
 			}
 		}
 
-		private void Calculator_KeyUp (object sender, System.Windows.Forms.KeyEventArgs e)
+		protected void Calculator_KeyUp (object sender, System.Windows.Forms.KeyEventArgs e)
 		{
 			if (e.Control || e.Alt) 
 			{
@@ -225,7 +207,7 @@ namespace Mockingbird.HP.Execution
 				(new Keystroke ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Up));
 		}
 
-		private void toggleOffOn_ToggleClick (object sender,
+		protected void toggleOffOn_ToggleClick (object sender,
 			System.EventArgs e,
 			Mockingbird.HP.Control_Library.TogglePosition position)
 		{

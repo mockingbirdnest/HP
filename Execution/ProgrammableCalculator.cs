@@ -14,12 +14,7 @@ namespace Mockingbird.HP.Execution
 	/// <summary>
 	/// Abstract base class for programmable calculators.
 	/// </summary>
-	public abstract class ProgrammableCalculator : 
-#if DESIGN
-		Form
-#else
-		BaseCalculator
-#endif
+	public abstract class ProgrammableCalculator : BaseCalculator
 	{
 
 		#region Protected & Private Data
@@ -34,11 +29,11 @@ namespace Mockingbird.HP.Execution
 		// e.g., while holding the IsBusy lock or when in a cross-thread invocation.
 		protected Program program = null;
 
-		private Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
+		protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
 		protected System.Windows.Forms.ContextMenu contextMenu;
 		protected System.Windows.Forms.OpenFileDialog openFileDialog;
 		protected System.Windows.Forms.SaveFileDialog saveFileDialog;
-		private System.Drawing.Printing.PrintDocument printDocument;
+		protected System.Drawing.Printing.PrintDocument printDocument;
 		protected System.Windows.Forms.MenuItem openMenuItem;
 		protected System.Windows.Forms.MenuItem printMenuItem;
 		protected System.Windows.Forms.MenuItem saveMenuItem;
@@ -78,92 +73,12 @@ namespace Mockingbird.HP.Execution
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		protected override void InitializeComponent ()
-		{
-			base.InitializeComponent ();
-			System.Resources.ResourceManager resources =
-				new System.Resources.ResourceManager (typeof (ProgrammableCalculator));
-			this.toggleWprgmRun = new Mockingbird.HP.Control_Library.Toggle();
-			this.contextMenu = new System.Windows.Forms.ContextMenu();
-			this.openMenuItem = new System.Windows.Forms.MenuItem();
-			this.saveMenuItem = new System.Windows.Forms.MenuItem();
-			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
-			this.printMenuItem = new System.Windows.Forms.MenuItem();
-			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-			this.printDocument = new System.Drawing.Printing.PrintDocument();
-			this.SuspendLayout();
-			// 
-			// toggleWprgmRun
-			// 
-			this.toggleWprgmRun.LeftText = "W/PRGM";
-			this.toggleWprgmRun.LeftWidth = 60;
-			this.toggleWprgmRun.Location = new System.Drawing.Point(160, 56);
-			this.toggleWprgmRun.MainWidth = 50;
-			this.toggleWprgmRun.Name = "toggleWprgmRun";
-			this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
-			this.toggleWprgmRun.RightText = "RUN";
-			this.toggleWprgmRun.RightWidth = 30;
-			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
-			this.toggleWprgmRun.TabIndex = 3;
-			this.toggleWprgmRun.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
-			// 
-			// contextMenu
-			// 
-			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-																						this.openMenuItem,
-																						this.saveMenuItem,
-																						this.saveAsMenuItem,
-																						this.printMenuItem});
-			// 
-			// openMenuItem
-			// 
-			this.openMenuItem.Index = 0;
-			this.openMenuItem.Text = "&Open...";
-			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
-			// 
-			// saveMenuItem
-			// 
-			this.saveMenuItem.Index = 1;
-			this.saveMenuItem.Text = "&Save";
-			this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
-			// 
-			// saveAsMenuItem
-			// 
-			this.saveAsMenuItem.Index = 2;
-			this.saveAsMenuItem.Text = "Save &As...";
-			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
-			// 
-			// printMenuItem
-			// 
-			this.printMenuItem.Index = 3;
-			this.printMenuItem.Text = "Print";
-			this.printMenuItem.Click += new System.EventHandler(this.printMenuItem_Click);
-			// 
-			// openFileDialog
-			// 
-			this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
-			// 
-			// saveFileDialog
-			// 
-			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
-			// 
-			// printDocument
-			// 
-			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
-			// 
-			// ProgrammableCalculator
-			// 
-			this.ContextMenu = this.contextMenu;
-			this.Controls.Add(this.toggleWprgmRun);
-			this.ResumeLayout(false);
-
-			// Localize the UI.
-			openMenuItem.Text = Localization.GetString (Localization.OpenMenuItem);
-			printMenuItem.Text = Localization.GetString (Localization.PrintMenuItem);
-			saveMenuItem.Text = Localization.GetString (Localization.SaveMenuItem);
-			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
-		}
+		protected abstract override void InitializeComponent ();
+//TODO: Localize the UI.
+//			openMenuItem.Text = Localization.GetString (Localization.OpenMenuItem);
+//			printMenuItem.Text = Localization.GetString (Localization.PrintMenuItem);
+//			saveMenuItem.Text = Localization.GetString (Localization.SaveMenuItem);
+//			saveAsMenuItem.Text = Localization.GetString (Localization.SaveAsMenuItem);
 		#endregion
 
 		#endregion
@@ -462,13 +377,13 @@ namespace Mockingbird.HP.Execution
 
 		#region UI Event Handlers
 
-		private void printDocument_PrintPage(object sender,
+		protected void printDocument_PrintPage(object sender,
 			System.Drawing.Printing.PrintPageEventArgs e)
 		{
 			program.PrintOnePage (e, new Font ("Arial Unicode MS", 10));
 		}
 
-		private void toggleWprgmRun_ToggleClick (object sender,
+		protected void toggleWprgmRun_ToggleClick (object sender,
 			System.EventArgs e,
 			Mockingbird.HP.Control_Library.TogglePosition position)
 		{
@@ -497,7 +412,7 @@ namespace Mockingbird.HP.Execution
 			}
 		}
 
-		private void openMenuItem_Click (object sender, System.EventArgs e)
+		protected void openMenuItem_Click (object sender, System.EventArgs e)
 		{
 			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
@@ -506,17 +421,17 @@ namespace Mockingbird.HP.Execution
 			}			
 		}
 
-		private void saveMenuItem_Click(object sender, System.EventArgs e)
+		protected void saveMenuItem_Click(object sender, System.EventArgs e)
 		{
 			Save (/* alreadyLocked */ false, /* saveAs */ false, CardPart.Program, ref fileName);
 		}
 
-		private void saveAsMenuItem_Click (object sender, System.EventArgs e)
+		protected void saveAsMenuItem_Click (object sender, System.EventArgs e)
 		{
 			Save (/* alreadyLocked */ false, /* saveAs */ true, CardPart.Program, ref fileName);
 		}
 
-		private void printMenuItem_Click(object sender, System.EventArgs e)
+		protected void printMenuItem_Click(object sender, System.EventArgs e)
 		{
 			lock (executionThread.IsBusy) 
 			{
