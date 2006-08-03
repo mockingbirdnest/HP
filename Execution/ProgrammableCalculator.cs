@@ -14,7 +14,12 @@ namespace Mockingbird.HP.Execution
 	/// <summary>
 	/// Abstract base class for programmable calculators.
 	/// </summary>
-	public abstract class ProgrammableCalculator : BaseCalculator
+	public abstract class ProgrammableCalculator : 
+#if DESIGN
+		Form
+#else
+		BaseCalculator
+#endif
 	{
 
 		#region Protected & Private Data

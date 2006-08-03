@@ -168,11 +168,6 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "BaseCalculator.resx"
-                    DependentUpon = "BaseCalculator.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
                     RelPath = "CardCalculator.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
@@ -191,6 +186,11 @@
                     RelPath = "ProgrammableCalculator.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ProgrammableCalculator.resx"
+                    DependentUpon = "ProgrammableCalculator.cs"
+                    BuildAction = "EmbeddedResource"
                 />
             </Include>
         </Files>

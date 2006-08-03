@@ -1,4 +1,4 @@
-using Mockingbird.HP.Control_Library;
+﻿using Mockingbird.HP.Control_Library;
 using Mockingbird.HP.Parser;
 using Mockingbird.HP.Persistence;
 using System;
@@ -11,7 +11,12 @@ namespace Mockingbird.HP.Execution
 	/// <summary>
 	/// Abstract base class for magnetic card calculators.
 	/// </summary>
-	public abstract class CardCalculator : ProgrammableCalculator
+	public abstract class CardCalculator : 
+#if DESIGN
+		Form
+#else
+		ProgrammableCalculator
+#endif
 	{
 
 		#region Private Data

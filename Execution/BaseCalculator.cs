@@ -85,8 +85,7 @@ namespace Mockingbird.HP.Execution
 		/// </summary>
 		protected virtual void InitializeComponent ()
 		{
-			System.Resources.ResourceManager resources =
-				new System.Resources.ResourceManager (typeof (BaseCalculator));
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(BaseCalculator));
 			this.toggleOffOn = new Mockingbird.HP.Control_Library.Toggle();
 			this.SuspendLayout();
 			// 
@@ -106,14 +105,18 @@ namespace Mockingbird.HP.Execution
 			// 
 			// BaseCalculator
 			// 
+			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			this.ClientSize = new System.Drawing.Size(292, 266);
 			this.Controls.Add(this.toggleOffOn);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
-			this.Closing += new System.ComponentModel.CancelEventHandler (Calculator_Closing);
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler (Calculator_KeyDown);
-			this.KeyUp += new System.Windows.Forms.KeyEventHandler (Calculator_KeyUp);
+			this.Name = "BaseCalculator";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.Calculator_Closing);
+			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyUp);
 			this.ResumeLayout(false);
+
 		}
 		#endregion
 
