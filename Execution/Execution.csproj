@@ -66,6 +66,26 @@
                     TreatWarningsAsErrors = "false"
                     WarningLevel = "4"
                 />
+                <Config
+                    Name = "Design"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DESIGN;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Design\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
             </Settings>
             <References>
                 <Reference
@@ -80,7 +100,7 @@
                 />
                 <Reference
                     Name = "System.XML"
-                    AssemblyName = "System.XML"
+                    AssemblyName = "System.Xml"
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
@@ -143,6 +163,21 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "BaseCalculator.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BaseCalculator.resx"
+                    DependentUpon = "BaseCalculator.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CardCalculator.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "Engine.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
@@ -150,6 +185,11 @@
                 <File
                     RelPath = "ExecutionThread.cs"
                     SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ProgrammableCalculator.cs"
+                    SubType = "Form"
                     BuildAction = "Compile"
                 />
             </Include>

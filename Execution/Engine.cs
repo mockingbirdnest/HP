@@ -11,7 +11,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Mockingbird.HP.HP67
+namespace Mockingbird.HP.Execution
 { 
 
 	public enum AngleUnit 
@@ -254,7 +254,7 @@ namespace Mockingbird.HP.HP67
 
 		public void Execute (Instruction instruction) 
 		{
-			HP67 form = (HP67) display.TopLevelControl;
+			CardCalculator form = (CardCalculator) display.TopLevelControl;
 			bool neutral = stackLift;
 			double x, y;
 

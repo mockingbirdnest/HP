@@ -66,6 +66,26 @@
                     TreatWarningsAsErrors = "false"
                     WarningLevel = "4"
                 />
+                <Config
+                    Name = "Design"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DESIGN;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Design\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
             </Settings>
             <References>
                 <Reference
@@ -94,13 +114,13 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "Calculator Library"
-                    Project = "{89799778-65AB-434F-8692-D575954498A8}"
+                    Name = "Transient Class Library"
+                    Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "Transient Class Library"
-                    Project = "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
+                    Name = "Execution"
+                    Project = "{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>

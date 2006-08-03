@@ -1,6 +1,6 @@
-﻿using Mockingbird.HP.Calculator_Library;
-using Mockingbird.HP.Class_Library;
+﻿using Mockingbird.HP.Class_Library;
 using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Execution;
 using Mockingbird.HP.Parser;
 using System;
 using System.Drawing;
@@ -11,7 +11,12 @@ namespace Mockingbird.HP.HP67
 	/// <summary>
 	/// The user interface for the HP-67 calculator.
 	/// </summary>
-	public class HP67 : CardCalculator
+	public class HP67 :
+#if DESIGN
+		Form
+#else
+		CardCalculator
+#endif
 	{
 
 		#region Private Data
@@ -83,7 +88,9 @@ namespace Mockingbird.HP.HP67
 		/// </summary>
 		protected override void InitializeComponent ()
 		{
+#if ! DESIGN
 			base.InitializeComponent ();
+#endif
 			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP67));
 			this.keyA = new Mockingbird.HP.Control_Library.Key();
 			this.keyf = new Mockingbird.HP.Control_Library.Key();
