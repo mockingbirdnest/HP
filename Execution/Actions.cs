@@ -8,7 +8,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace Mockingbird.HP.HP67
+namespace Mockingbird.HP.Execution
 {
 
 	public class Actions : IActions

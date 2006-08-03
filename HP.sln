@@ -41,9 +41,17 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Execution", "Execution\Execution.csproj", "{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator Library", "Calculator Library\Calculator Library.csproj", "{89799778-65AB-434F-8692-D575954498A8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 13
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SolutionUniqueID = {878E852C-8F25-4FB7-95ED-DC7CB08F89F4}
@@ -87,6 +95,14 @@ Global
 		SccProjectName10 = \u0022$/HP/Setup\u0022,\u0020KNAAAAAA
 		SccLocalPath10 = Setup
 		CanCheckoutShared = false
+		SccProjectUniqueName11 = Execution\\Execution.csproj
+		SccLocalPath11 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection11 = Execution\\
+		SccProjectUniqueName12 = Calculator\u0020Library\\Calculator\u0020Library.csproj
+		SccLocalPath12 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection12 = Calculator\u0020Library\\
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -130,6 +146,14 @@ Global
 		{4E3D8364-638A-4B6F-B556-40EA50003482}.Debug.ActiveCfg = Debug
 		{4E3D8364-638A-4B6F-B556-40EA50003482}.Release.ActiveCfg = Release
 		{4E3D8364-638A-4B6F-B556-40EA50003482}.Release.Build.0 = Release
+		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Debug.ActiveCfg = Debug|.NET
+		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Debug.Build.0 = Debug|.NET
+		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Release.ActiveCfg = Release|.NET
+		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Release.Build.0 = Release|.NET
+		{89799778-65AB-434F-8692-D575954498A8}.Debug.ActiveCfg = Debug|.NET
+		{89799778-65AB-434F-8692-D575954498A8}.Debug.Build.0 = Debug|.NET
+		{89799778-65AB-434F-8692-D575954498A8}.Release.ActiveCfg = Release|.NET
+		{89799778-65AB-434F-8692-D575954498A8}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

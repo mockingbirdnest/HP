@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Mockingbird.HP.HP67
+namespace Mockingbird.HP.Execution
 {
 	/// <summary>
 	/// The execution thread of the HP67 calculator.

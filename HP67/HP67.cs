@@ -1,7 +1,9 @@
-﻿using Mockingbird.HP.Class_Library;
+﻿using Mockingbird.HP.Calculator_Library;
+using Mockingbird.HP.Class_Library;
 using Mockingbird.HP.Control_Library;
 using Mockingbird.HP.Parser;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.HP67
