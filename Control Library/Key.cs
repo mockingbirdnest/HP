@@ -400,14 +400,16 @@ namespace Mockingbird.HP.Control_Library
 				{
 					fLabel.Size = new Size (fLabel.Size.Width + ΔWidth / 2,
 														   fLabel.Size.Height);
+					gLabel.Size = new Size (gLabel.Size.Width + ΔWidth / 2,
+														gLabel.Size.Height);
 				}
 				else 
 				{
+					gLabel.Location = new Point (gLabel.Location.X + ΔWidth / 2,
+												gLabel.Location.Y);
 					fLabel.Size = new Size (fLabel.Size.Width + ΔWidth,
 														   fLabel.Size.Height);
 				}
-				gLabel.Size = new Size (gLabel.Size.Width + ΔWidth / 2,
-													   gLabel.Size.Height);
 
 				AutoSize ();
 			}
