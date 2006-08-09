@@ -24,7 +24,7 @@
                 PostBuildEvent = ""
                 RootNamespace = "Mockingbird.HP.Testing"
                 RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = "Mockingbird.HP.Testing.KeyTest"
+                StartupObject = "Mockingbird.HP.Testing.DisplayTest"
             >
                 <Config
                     Name = "Debug"

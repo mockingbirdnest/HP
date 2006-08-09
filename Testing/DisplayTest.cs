@@ -70,7 +70,11 @@ namespace Mockingbird.HP.Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
+#if DESIGN
+			this.DisplayUnderTest = new Mockingbird.HP.Control_Library.Display();
+#else
 			this.DisplayUnderTest = new Mockingbird.HP.Control_Library.Display(new AutoResetEvent (false));
+#endif
 			this.numericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.labelDigits = new System.Windows.Forms.Label();
 			this.radioButtonScientific = new System.Windows.Forms.RadioButton();
@@ -112,7 +116,7 @@ namespace Mockingbird.HP.Testing
 			// 
 			// DisplayUnderTest
 			// 
-			this.DisplayUnderTest.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.DisplayUnderTest.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.DisplayUnderTest.ForeColor = System.Drawing.Color.Red;
 			this.DisplayUnderTest.Location = new System.Drawing.Point(104, 384);
 			this.DisplayUnderTest.Name = "DisplayUnderTest";

@@ -45,6 +45,7 @@ namespace Mockingbird.HP.Control_Library
 		private const int exponentLength = 2;
 		private const string exponentTemplate = " 00;-00";
 		private const string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
+		private const double heightFactor = 1.85;
 		private const int instructionFirst = 3;
 		private const int instructionLength = 11;
 		private const string negativeOverflow = "-9.999999999 99";
@@ -73,15 +74,17 @@ namespace Mockingbird.HP.Control_Library
 		private string engMantissaTemplate100;
 		private string fixMantissaTemplate;
 		private DisplayFormat format;
+		private int height;
 		private DisplayMode mode;
 		private bool overflows;
 		private double overflowValue;
 		private string sciMantissaTemplate;
 
-		private System.Windows.Forms.TextBox numericTextBox;
-		private System.Windows.Forms.TextBox instructionTextBox;
 		private System.Windows.Forms.TextBox alphabeticTextBox;
+		private System.Windows.Forms.TextBox instructionTextBox;
+		private System.Windows.Forms.TextBox numericTextBox;
 
+		private Font font;
 		private AutoResetEvent keyWasTyped;
 		private Random random;
 
@@ -97,6 +100,15 @@ namespace Mockingbird.HP.Control_Library
 		#endregion
 
 		#region Constructors & Destructors
+
+#if DESIGN
+
+		public Display () {
+			// This call is required by the Windows.Forms Form Designer.
+			InitializeComponent();
+		}
+
+#endif
 
 		public Display (AutoResetEvent keyWasTyped)
 		{
@@ -130,6 +142,11 @@ namespace Mockingbird.HP.Control_Library
 			hasAPeriod = false;
 
 			Digits = 2;
+			Font = new System.Drawing.Font ("Quartz",
+											21.75F,
+											System.Drawing.FontStyle.Regular,
+											System.Drawing.GraphicsUnit.Point,
+											0);
 			Format = DisplayFormat.Fixed;
 			Mode = DisplayMode.Numeric;
 			Value = 0.0;
@@ -216,7 +233,7 @@ namespace Mockingbird.HP.Control_Library
 			this.Controls.Add(this.alphabeticTextBox);
 			this.Controls.Add(this.numericTextBox);
 			this.Controls.Add(this.instructionTextBox);
-			this.Font = new System.Drawing.Font("Quartz", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.Font = new System.Drawing.Font("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.ForeColor = System.Drawing.Color.Red;
 			this.Name = "Display";
 			this.Size = new System.Drawing.Size(300, 40);
@@ -230,11 +247,12 @@ namespace Mockingbird.HP.Control_Library
 
 		private void Display_Resize(object sender, System.EventArgs e)
 		{
-			Control control = (Control)sender;
-        
-			if(control.Size.Height != 40)
+			if(Size.Height != height)
 			{
-				control.Size = new Size(control.Size.Width, 40);
+				Size = new Size(Size.Width, height);
+				alphabeticTextBox.Size = Size;
+				instructionTextBox.Size = Size;
+				numericTextBox.Size = Size;
 			}
 		}
 
@@ -520,6 +538,23 @@ namespace Mockingbird.HP.Control_Library
 				engMantissaTemplate1 = fixMantissaTemplate;
 				sciMantissaTemplate = fixMantissaTemplate;
 				Value = Value;
+			}
+		}
+
+		public override Font Font
+		{
+			get
+			{
+				return font;
+			}
+			set
+			{
+				font = value;
+				height = (int) (font.SizeInPoints * heightFactor);
+				alphabeticTextBox.Font = font;
+				instructionTextBox.Font = font;
+				numericTextBox.Font = font;
+				Size = new Size (Size.Width, height);
 			}
 		}
 
