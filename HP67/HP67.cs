@@ -1135,6 +1135,31 @@ namespace Mockingbird.HP.HP67
 
 		#endregion
 
+		#region Overriding Operations
+
+		protected override void InitializeThreadComponent (Control control) 
+		{
+			if (control is Control_Library.Display) 
+			{
+				Control display = control;
+
+				display.Font =
+					new System.Drawing.Font
+					("Quartz",
+					26.25F,
+					System.Drawing.FontStyle.Regular,
+					System.Drawing.GraphicsUnit.Point,
+					((System.Byte)(0)));
+				display.ForeColor = System.Drawing.Color.Red;
+				display.Location = new System.Drawing.Point (8, 8);
+				display.Name = "display";
+				display.Size = new System.Drawing.Size (288, 40);
+				display.TabIndex = 0;
+			}
+		}
+
+		#endregion
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>

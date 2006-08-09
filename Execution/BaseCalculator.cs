@@ -119,8 +119,11 @@ namespace Mockingbird.HP.Execution
 		// Creates the execution thread that parses and processes output.
 		protected abstract Execution.Thread CreateExecutionThread ();
 
-		// Call by the execution thread to notify the UI thread that the busy state has changed.
+		// Called by the execution thread to notify the UI thread that the busy state has changed.
 		public abstract EngineMode CrossThreadNotifyUI (bool busy);
+
+		// Called by the execution thread to create the controls that it owns.
+		protected abstract void InitializeThreadComponent (Control control);
 
 		// Power-off the calculator.
 		protected abstract void PowerOff ();

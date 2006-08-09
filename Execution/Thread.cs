@@ -21,6 +21,9 @@ namespace Mockingbird.HP.Execution
 		public delegate EngineMode CrossThreadUINotification (bool busy);
 		public delegate bool CrossThreadOperation ();
 
+		// Delegate used for construction of controls owned by this thread.
+		public delegate void ComponentInitializer (Control control);
+
 		// Lock this object to ensure that the thread is idle.
 		public object IsBusy = new object ();
 
@@ -42,6 +45,7 @@ namespace Mockingbird.HP.Execution
 		private Queue keystrokesQueue;
 		private AutoResetEvent keystrokeWasEnqueued = new AutoResetEvent (false);
 
+		private ComponentInitializer initializer;
 		private Control main;
 		private CrossThreadUINotification notifyUI;
 		private Reader reader;
@@ -56,12 +60,14 @@ namespace Mockingbird.HP.Execution
 		public Thread
 			(Control main,
 			Reader reader,
+			ComponentInitializer initializer,
 			CrossThreadUINotification notifyUI,
 			out Program program)
 		{
 			this.main = main;
-			this.notifyUI = notifyUI;
 			this.reader = reader;
+			this.initializer = initializer;
+			this.notifyUI = notifyUI;
 
 			// Create the execution thread and wait until it is ready to process requests.
 			keystrokesQueue = Queue.Synchronized (new Queue ());
@@ -102,18 +108,7 @@ namespace Mockingbird.HP.Execution
 			// is the main thread.  But the display is special, as it is mostly updated during
 			// execution.  So it is created by the execution thread. 
 			display = new Display (downKeystrokeWasEnqueued);
-			display.Font =
-				new System.Drawing.Font
-					("Quartz",
-					26.25F,
-					System.Drawing.FontStyle.Regular,
-					System.Drawing.GraphicsUnit.Point,
-					((System.Byte)(0)));
-			display.ForeColor = System.Drawing.Color.Red;
-			display.Location = new System.Drawing.Point (8, 8);
-			display.Name = "display";
-			display.Size = new System.Drawing.Size (288, 40);
-			display.TabIndex = 0;
+			initializer (display);
 			display.AcceptKeystrokes +=
 				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
 			display.CompleteKeystrokes +=

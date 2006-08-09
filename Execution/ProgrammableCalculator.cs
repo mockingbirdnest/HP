@@ -105,11 +105,12 @@ namespace Mockingbird.HP.Execution
 			saveAsMenuItem.Enabled = false;
 		}
 
-		protected override Execution.Thread CreateExecutionThread () 
+		protected override Execution.Thread CreateExecutionThread ()
 		{
 			return new Execution.Thread
 				(this,
 				reader,
+				new Thread.ComponentInitializer (InitializeThreadComponent),
 				new Execution.Thread.CrossThreadUINotification (CrossThreadNotifyUI),
 				out program);
 		}
