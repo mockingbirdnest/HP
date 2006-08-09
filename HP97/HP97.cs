@@ -1,4 +1,7 @@
-﻿using Mockingbird.HP.Control_Library;
+﻿using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Control_Library;
+using Mockingbird.HP.Execution;
+using Mockingbird.HP.Parser;
 using System;
 using System.Drawing;
 using System.Collections;
@@ -8,21 +11,51 @@ using System.Windows.Forms;
 namespace Mockingbird.HP.HP97
 {
 	/// <summary>
-	/// Description résumée de Form1.
+	/// The user interface for the HP-97 calculator.
 	/// </summary>
-	public class HP97 : System.Windows.Forms.Form
+	public class HP97 :
+#if DESIGN
+		Form
+#else
+		CardCalculator
+#endif
 	{
-		private Mockingbird.HP.Control_Library.CardSlot cardSlot;
+
+		#region Private Data
+
+#if DESIGN
+		// Unfortunate, but for the design mode to work we need to replicate the declarations of the
+		// controls that occur in parent classes.  Danger!  Double-check what happens here if the
+		// UI is edited.
+
+		// BaseCalculator.
+		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
+
+		// ProgrammableCalculator.
+		protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
+		protected System.Windows.Forms.ContextMenu contextMenu;
+		protected System.Windows.Forms.OpenFileDialog openFileDialog;
+		protected System.Windows.Forms.SaveFileDialog saveFileDialog;
+		protected System.Drawing.Printing.PrintDocument printDocument;
+		protected System.Windows.Forms.MenuItem openMenuItem;
+		protected System.Windows.Forms.MenuItem printMenuItem;
+		protected System.Windows.Forms.MenuItem saveMenuItem;
+		protected System.Windows.Forms.MenuItem saveAsMenuItem;
+
+		// CardCalculator.
+		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
+		protected System.Windows.Forms.MenuItem menuSeparator;
+		protected System.Windows.Forms.MenuItem rtfMenuItem;
+		protected System.Windows.Forms.MenuItem editMenuItem;
+#endif
+
 		private Mockingbird.HP.Control_Library.Toggle toggleManNorm;
 		private Mockingbird.HP.Control_Library.Key keyE;
-		private Mockingbird.HP.Control_Library.Toggle toggleOffOn;
-		private Mockingbird.HP.Control_Library.Toggle togglePrgmRun;
 		private Mockingbird.HP.Control_Library.Key keyB;
 		private Mockingbird.HP.Control_Library.Key keyA;
 		private Mockingbird.HP.Control_Library.Key keyD;
 		private Mockingbird.HP.Control_Library.Key keyF;
 		private Mockingbird.HP.Control_Library.Key keyC;
-		private Mockingbird.HP.Control_Library.Display display;
 		private Mockingbird.HP.Control_Library.Key keyToPolar;
 		private Mockingbird.HP.Control_Library.Key keyLN;
 		private Mockingbird.HP.Control_Library.Key keyEToTheXth;
@@ -83,25 +116,18 @@ namespace Mockingbird.HP.HP97
 		private System.Windows.Forms.PictureBox pictureBoxLineCenter;
 		private System.Windows.Forms.PictureBox pictureBoxLineLeft;
 		/// <summary>
-		/// Variable nécessaire au concepteur.
+		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
-		public HP97()
-		{
-			//
-			// Requis pour la prise en charge du Concepteur Windows Forms
-			//
-			InitializeComponent();
+		#endregion
 
-			//
-			// TODO : ajoutez le code du constructeur après l'appel à InitializeComponent
-			//
+		#region Constructors & Desctructors
+
+		public HP97 (string [] arguments) : base (arguments, CalculatorModel.HP97)
+		{
 		}
 
-		/// <summary>
-		/// Nettoyage des ressources utilisées.
-		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
 			if( disposing )
@@ -114,13 +140,14 @@ namespace Mockingbird.HP.HP97
 			base.Dispose( disposing );
 		}
 
-		#region Code généré par le Concepteur Windows Form
+		#region Windows Form Designer generated code
 		/// <summary>
-		/// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-		/// le contenu de cette méthode avec l'éditeur de code.
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
 		/// </summary>
-		private void InitializeComponent()
+		protected override void InitializeComponent()
 		{
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP97));
 			this.printer = new Mockingbird.HP.Control_Library.Printer();
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.labelPrint = new System.Windows.Forms.Label();
@@ -176,7 +203,7 @@ namespace Mockingbird.HP.HP97
 			this.toggleManNorm = new Mockingbird.HP.Control_Library.Toggle();
 			this.keyE = new Mockingbird.HP.Control_Library.Key();
 			this.toggleOffOn = new Mockingbird.HP.Control_Library.Toggle();
-			this.togglePrgmRun = new Mockingbird.HP.Control_Library.Toggle();
+			this.toggleWprgmRun = new Mockingbird.HP.Control_Library.Toggle();
 			this.keyB = new Mockingbird.HP.Control_Library.Key();
 			this.keyA = new Mockingbird.HP.Control_Library.Key();
 			this.labelTrace = new System.Windows.Forms.Label();
@@ -189,8 +216,18 @@ namespace Mockingbird.HP.HP97
 			this.keyGSB = new Mockingbird.HP.Control_Library.Key();
 			this.keyBST = new Mockingbird.HP.Control_Library.Key();
 			this.keyLBL = new Mockingbird.HP.Control_Library.Key();
+			this.contextMenu = new System.Windows.Forms.ContextMenu();
+			this.openMenuItem = new System.Windows.Forms.MenuItem();
+			this.saveMenuItem = new System.Windows.Forms.MenuItem();
+			this.saveAsMenuItem = new System.Windows.Forms.MenuItem();
+			this.printMenuItem = new System.Windows.Forms.MenuItem();
+			this.menuSeparator = new System.Windows.Forms.MenuItem();
+			this.editMenuItem = new System.Windows.Forms.MenuItem();
+			this.rtfMenuItem = new System.Windows.Forms.MenuItem();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.printDocument = new System.Drawing.Printing.PrintDocument();
 			this.panelDisplay = new System.Windows.Forms.Panel();
-			this.display = new Mockingbird.HP.Control_Library.Display();
 			this.panelMain.SuspendLayout();
 			this.groupBoxCard.SuspendLayout();
 			this.panelDisplay.SuspendLayout();
@@ -788,6 +825,8 @@ namespace Mockingbird.HP.HP97
 			this.key7.Size = new System.Drawing.Size(72, 63);
 			this.key7.TabIndex = 41;
 			this.key7.Tag = "97-32";
+			this.key7.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.key7.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyXExchangeY
 			// 
@@ -1262,7 +1301,7 @@ namespace Mockingbird.HP.HP97
 			this.groupBoxCard.Controls.Add(this.toggleManNorm);
 			this.groupBoxCard.Controls.Add(this.keyE);
 			this.groupBoxCard.Controls.Add(this.toggleOffOn);
-			this.groupBoxCard.Controls.Add(this.togglePrgmRun);
+			this.groupBoxCard.Controls.Add(this.toggleWprgmRun);
 			this.groupBoxCard.Controls.Add(this.keyB);
 			this.groupBoxCard.Controls.Add(this.keyA);
 			this.groupBoxCard.Controls.Add(this.labelTrace);
@@ -1305,7 +1344,6 @@ namespace Mockingbird.HP.HP97
 			this.toggleManNorm.RightWidth = 60;
 			this.toggleManNorm.Size = new System.Drawing.Size(160, 16);
 			this.toggleManNorm.TabIndex = 1;
-			this.toggleManNorm.Load += new System.EventHandler(this.toggle1_Load);
 			// 
 			// keyE
 			// 
@@ -1343,16 +1381,16 @@ namespace Mockingbird.HP.HP97
 			// 
 			// togglePrgmRun
 			// 
-			this.togglePrgmRun.LeftText = "PRGM";
-			this.togglePrgmRun.LeftWidth = 60;
-			this.togglePrgmRun.Location = new System.Drawing.Point(184, 48);
-			this.togglePrgmRun.MainWidth = 60;
-			this.togglePrgmRun.Name = "togglePrgmRun";
-			this.togglePrgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
-			this.togglePrgmRun.RightText = "RUN";
-			this.togglePrgmRun.RightWidth = 60;
-			this.togglePrgmRun.Size = new System.Drawing.Size(152, 16);
-			this.togglePrgmRun.TabIndex = 3;
+			this.toggleWprgmRun.LeftText = "PRGM";
+			this.toggleWprgmRun.LeftWidth = 60;
+			this.toggleWprgmRun.Location = new System.Drawing.Point(184, 48);
+			this.toggleWprgmRun.MainWidth = 60;
+			this.toggleWprgmRun.Name = "togglePrgmRun";
+			this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
+			this.toggleWprgmRun.RightText = "RUN";
+			this.toggleWprgmRun.RightWidth = 60;
+			this.toggleWprgmRun.Size = new System.Drawing.Size(152, 16);
+			this.toggleWprgmRun.TabIndex = 3;
 			// 
 			// keyB
 			// 
@@ -1601,20 +1639,10 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.panelDisplay.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(32)), ((System.Byte)(32)), ((System.Byte)(32)));
 			this.panelDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panelDisplay.Controls.Add(this.display);
 			this.panelDisplay.Location = new System.Drawing.Point(8, 216);
 			this.panelDisplay.Name = "panelDisplay";
 			this.panelDisplay.Size = new System.Drawing.Size(536, 64);
 			this.panelDisplay.TabIndex = 4;
-			// 
-			// display
-			// 
-			this.display.ForeColor = System.Drawing.Color.Red;
-			this.display.Location = new System.Drawing.Point(120, 8);
-			this.display.Name = "display";
-			this.display.Size = new System.Drawing.Size(408, 40);
-			this.display.TabIndex = 4;
-			this.display.Value = 0;
 			// 
 			// HP97
 			// 
@@ -1627,32 +1655,56 @@ namespace Mockingbird.HP.HP97
 			this.MaximizeBox = false;
 			this.Name = "HP97";
 			this.Text = "HP97";
-			this.Load += new System.EventHandler(this.Form1_Load);
 			this.panelMain.ResumeLayout(false);
 			this.groupBoxCard.ResumeLayout(false);
 			this.panelDisplay.ResumeLayout(false);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
+			this.Closing += new System.ComponentModel.CancelEventHandler(this.Calculator_Closing);
+			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyUp);
 			this.ResumeLayout(false);
-
 		}
 		#endregion
 
+		#endregion
+
+		#region Overriding Operations
+
+		protected override void InitializeThreadComponent (Control control) 
+		{
+			if (control is Control_Library.Display) 
+			{
+				Control display = control;
+
+				display.Font =
+					new System.Drawing.Font
+					("Quartz",
+					26.25F,
+					System.Drawing.FontStyle.Regular,
+					System.Drawing.GraphicsUnit.Point,
+					((System.Byte)(0)));
+				display.ForeColor = System.Drawing.Color.Red;
+				display.Location = new System.Drawing.Point (128, 224-50);
+				display.Name = "display";
+				display.Size = new System.Drawing.Size (408, 40);
+				display.TabIndex = 0;
+			}
+		}
+
+		#endregion
+		
 		/// <summary>
-		/// Point d'entrée principal de l'application.
+		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main() 
+		static void Main (string [] arguments) 
 		{
-			Application.Run(new HP97 ());
-		}
-
-		private void Form1_Load(object sender, System.EventArgs e)
-		{
-		
-		}
-
-		private void toggle1_Load(object sender, System.EventArgs e)
-		{
-		
+			try 
+			{
+			Application.Run(new HP97 (arguments));
+			}
+			catch (Shutdown)
+			{
+			}
 		}
 
 	}
