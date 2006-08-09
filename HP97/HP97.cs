@@ -12,74 +12,76 @@ namespace Mockingbird.HP.HP97
 	/// </summary>
 	public class HP97 : System.Windows.Forms.Form
 	{
-		private Mockingbird.HP.Control_Library.Printer printer1;
-		private System.Windows.Forms.Panel panel1;
-		private Mockingbird.HP.Control_Library.Toggle toggle1;
-		private Mockingbird.HP.Control_Library.Toggle toggle2;
-		private Mockingbird.HP.Control_Library.Toggle toggle3;
-		private System.Windows.Forms.Label label1;
-		private Mockingbird.HP.Control_Library.Key key1;
-		private Mockingbird.HP.Control_Library.Key key2;
-		private Mockingbird.HP.Control_Library.Key key3;
-		private Mockingbird.HP.Control_Library.Key key4;
-		private Mockingbird.HP.Control_Library.Key key5;
-		private Mockingbird.HP.Control_Library.Key key7;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private Mockingbird.HP.Control_Library.CardSlot cardSlot1;
+		private Mockingbird.HP.Control_Library.CardSlot cardSlot;
+		private Mockingbird.HP.Control_Library.Toggle toggleManNorm;
+		private Mockingbird.HP.Control_Library.Key keyE;
+		private Mockingbird.HP.Control_Library.Toggle toggleOffOn;
+		private Mockingbird.HP.Control_Library.Toggle togglePrgmRun;
+		private Mockingbird.HP.Control_Library.Key keyB;
+		private Mockingbird.HP.Control_Library.Key keyA;
+		private Mockingbird.HP.Control_Library.Key keyD;
+		private Mockingbird.HP.Control_Library.Key keyF;
+		private Mockingbird.HP.Control_Library.Key keyC;
+		private Mockingbird.HP.Control_Library.Display display;
+		private Mockingbird.HP.Control_Library.Key keyToPolar;
+		private Mockingbird.HP.Control_Library.Key keyLN;
+		private Mockingbird.HP.Control_Library.Key keyEToTheXth;
+		private Mockingbird.HP.Control_Library.Key keyRTN;
+		private Mockingbird.HP.Control_Library.Key keyGTO;
+		private Mockingbird.HP.Control_Library.Key keySST;
+		private Mockingbird.HP.Control_Library.Key keyGSB;
+		private Mockingbird.HP.Control_Library.Key keyBST;
+		private Mockingbird.HP.Control_Library.Key keyLBL;
+		private Mockingbird.HP.Control_Library.Key keySqrt;
+		private Mockingbird.HP.Control_Library.Key keyReciprocal;
+		private Mockingbird.HP.Control_Library.Key keyΣ;
+		private Mockingbird.HP.Control_Library.Key keySquare;
+		private Mockingbird.HP.Control_Library.Key keyPercent;
+		private Mockingbird.HP.Control_Library.Key keyRS;
+		private Mockingbird.HP.Control_Library.Key keyToRectangular;
+		private Mockingbird.HP.Control_Library.Key keyCOS;
+		private Mockingbird.HP.Control_Library.Key keyI;
+		private Mockingbird.HP.Control_Library.Key keyTAN;
+		private Mockingbird.HP.Control_Library.Key keySubI;
+		private Mockingbird.HP.Control_Library.Key keySIN;
+		private Mockingbird.HP.Control_Library.Key keyRCL;
+		private Mockingbird.HP.Control_Library.Key keySTO;
+		private Mockingbird.HP.Control_Library.Key keyYToTheXth;
+		private Mockingbird.HP.Control_Library.Key keyPRINTx;
+		private Mockingbird.HP.Control_Library.Key keyENG;
+		private Mockingbird.HP.Control_Library.Key keySCI;
+		private Mockingbird.HP.Control_Library.Key keyCHS;
+		private Mockingbird.HP.Control_Library.Key keyFIX;
+		private Mockingbird.HP.Control_Library.Key keyENTER;
+		private Mockingbird.HP.Control_Library.Key keyEEX;
+		private Mockingbird.HP.Control_Library.Key keyPlus;
+		private Mockingbird.HP.Control_Library.Key keyDSP;
+		private Mockingbird.HP.Control_Library.Key keyPeriod;
+		private Mockingbird.HP.Control_Library.Key keyMult;
+		private Mockingbird.HP.Control_Library.Key keySub;
+		private Mockingbird.HP.Control_Library.Key keyDiv;
 		private Mockingbird.HP.Control_Library.Key key6;
-		private Mockingbird.HP.Control_Library.Key key8;
+		private Mockingbird.HP.Control_Library.Key key3;
 		private Mockingbird.HP.Control_Library.Key key9;
-		private Mockingbird.HP.Control_Library.Key key10;
-		private Mockingbird.HP.Control_Library.Key key11;
-		private Mockingbird.HP.Control_Library.Key key12;
-		private Mockingbird.HP.Control_Library.Key key13;
-		private Mockingbird.HP.Control_Library.Key key14;
-		private Mockingbird.HP.Control_Library.Key key15;
-		private Mockingbird.HP.Control_Library.Key key16;
-		private Mockingbird.HP.Control_Library.Key key17;
-		private Mockingbird.HP.Control_Library.Key key18;
-		private Mockingbird.HP.Control_Library.Key key19;
-		private Mockingbird.HP.Control_Library.Key key20;
-		private Mockingbird.HP.Control_Library.Key key21;
-		private Mockingbird.HP.Control_Library.Key key22;
-		private Mockingbird.HP.Control_Library.Key key23;
-		private Mockingbird.HP.Control_Library.Key key24;
-		private Mockingbird.HP.Control_Library.Key key25;
-		private Mockingbird.HP.Control_Library.Key key26;
-		private Mockingbird.HP.Control_Library.Key key27;
-		private Mockingbird.HP.Control_Library.Key key28;
-		private Mockingbird.HP.Control_Library.Key key29;
-		private Mockingbird.HP.Control_Library.Key key30;
-		private Mockingbird.HP.Control_Library.Key key31;
-		private Mockingbird.HP.Control_Library.Key key32;
-		private Mockingbird.HP.Control_Library.Key key33;
-		private Mockingbird.HP.Control_Library.Key key34;
-		private Mockingbird.HP.Control_Library.Key key35;
-		private Mockingbird.HP.Control_Library.Key key36;
-		private Mockingbird.HP.Control_Library.Key key37;
-		private Mockingbird.HP.Control_Library.Key key38;
-		private Mockingbird.HP.Control_Library.Key key39;
-		private Mockingbird.HP.Control_Library.Key key40;
-		private Mockingbird.HP.Control_Library.Key key41;
-		private Mockingbird.HP.Control_Library.Key key42;
-		private Mockingbird.HP.Control_Library.Key key43;
-		private Mockingbird.HP.Control_Library.Key key44;
-		private Mockingbird.HP.Control_Library.Key key45;
-		private Mockingbird.HP.Control_Library.Key key46;
-		private Mockingbird.HP.Control_Library.Key key47;
-		private Mockingbird.HP.Control_Library.Key key48;
-		private Mockingbird.HP.Control_Library.Key key49;
-		private Mockingbird.HP.Control_Library.Key key50;
-		private Mockingbird.HP.Control_Library.Key key51;
-		private Mockingbird.HP.Control_Library.Key key52;
-		private Mockingbird.HP.Control_Library.Key key53;
-		private Mockingbird.HP.Control_Library.Key key54;
-		private Mockingbird.HP.Control_Library.Key key55;
-		private Mockingbird.HP.Control_Library.Key key56;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.Label label2;
+		private Mockingbird.HP.Control_Library.Key key5;
+		private Mockingbird.HP.Control_Library.Key key2;
+		private Mockingbird.HP.Control_Library.Key key8;
+		private Mockingbird.HP.Control_Library.Key key4;
+		private Mockingbird.HP.Control_Library.Key key1;
+		private Mockingbird.HP.Control_Library.Key key7;
+		private Mockingbird.HP.Control_Library.Key keyXExchangeY;
+		private Mockingbird.HP.Control_Library.Key keyCLx;
+		private Mockingbird.HP.Control_Library.Key keyRDown;
+		private Mockingbird.HP.Control_Library.Key key0;
+		private Mockingbird.HP.Control_Library.Printer printer;
+		private System.Windows.Forms.Panel panelMain;
+		private System.Windows.Forms.Label labelPrint;
+		private System.Windows.Forms.GroupBox groupBoxCard;
+		private System.Windows.Forms.Label labelTrace;
+		private System.Windows.Forms.Panel panelDisplay;
+		private System.Windows.Forms.PictureBox pictureBoxLineRight;
+		private System.Windows.Forms.PictureBox pictureBoxLineCenter;
+		private System.Windows.Forms.PictureBox pictureBoxLineLeft;
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
@@ -119,1436 +121,1516 @@ namespace Mockingbird.HP.HP97
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.printer1 = new Mockingbird.HP.Control_Library.Printer();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.label2 = new System.Windows.Forms.Label();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.key56 = new Mockingbird.HP.Control_Library.Key();
-			this.key55 = new Mockingbird.HP.Control_Library.Key();
-			this.key54 = new Mockingbird.HP.Control_Library.Key();
-			this.key51 = new Mockingbird.HP.Control_Library.Key();
-			this.key52 = new Mockingbird.HP.Control_Library.Key();
-			this.key53 = new Mockingbird.HP.Control_Library.Key();
-			this.key50 = new Mockingbird.HP.Control_Library.Key();
-			this.key49 = new Mockingbird.HP.Control_Library.Key();
-			this.key48 = new Mockingbird.HP.Control_Library.Key();
-			this.key47 = new Mockingbird.HP.Control_Library.Key();
-			this.key44 = new Mockingbird.HP.Control_Library.Key();
-			this.key45 = new Mockingbird.HP.Control_Library.Key();
-			this.key46 = new Mockingbird.HP.Control_Library.Key();
-			this.key41 = new Mockingbird.HP.Control_Library.Key();
-			this.key42 = new Mockingbird.HP.Control_Library.Key();
-			this.key43 = new Mockingbird.HP.Control_Library.Key();
-			this.key38 = new Mockingbird.HP.Control_Library.Key();
-			this.key39 = new Mockingbird.HP.Control_Library.Key();
-			this.key40 = new Mockingbird.HP.Control_Library.Key();
-			this.key35 = new Mockingbird.HP.Control_Library.Key();
-			this.key36 = new Mockingbird.HP.Control_Library.Key();
-			this.key37 = new Mockingbird.HP.Control_Library.Key();
-			this.key34 = new Mockingbird.HP.Control_Library.Key();
-			this.key33 = new Mockingbird.HP.Control_Library.Key();
-			this.key32 = new Mockingbird.HP.Control_Library.Key();
-			this.key31 = new Mockingbird.HP.Control_Library.Key();
-			this.key25 = new Mockingbird.HP.Control_Library.Key();
-			this.key26 = new Mockingbird.HP.Control_Library.Key();
-			this.key27 = new Mockingbird.HP.Control_Library.Key();
-			this.key28 = new Mockingbird.HP.Control_Library.Key();
-			this.key29 = new Mockingbird.HP.Control_Library.Key();
-			this.key30 = new Mockingbird.HP.Control_Library.Key();
-			this.key19 = new Mockingbird.HP.Control_Library.Key();
-			this.key20 = new Mockingbird.HP.Control_Library.Key();
-			this.key21 = new Mockingbird.HP.Control_Library.Key();
-			this.key22 = new Mockingbird.HP.Control_Library.Key();
-			this.key23 = new Mockingbird.HP.Control_Library.Key();
-			this.key24 = new Mockingbird.HP.Control_Library.Key();
-			this.key13 = new Mockingbird.HP.Control_Library.Key();
-			this.key14 = new Mockingbird.HP.Control_Library.Key();
-			this.key15 = new Mockingbird.HP.Control_Library.Key();
-			this.key16 = new Mockingbird.HP.Control_Library.Key();
-			this.key17 = new Mockingbird.HP.Control_Library.Key();
-			this.key18 = new Mockingbird.HP.Control_Library.Key();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.cardSlot1 = new Mockingbird.HP.Control_Library.CardSlot();
-			this.toggle1 = new Mockingbird.HP.Control_Library.Toggle();
-			this.key7 = new Mockingbird.HP.Control_Library.Key();
-			this.toggle2 = new Mockingbird.HP.Control_Library.Toggle();
-			this.toggle3 = new Mockingbird.HP.Control_Library.Toggle();
-			this.key2 = new Mockingbird.HP.Control_Library.Key();
-			this.key1 = new Mockingbird.HP.Control_Library.Key();
-			this.label1 = new System.Windows.Forms.Label();
-			this.key4 = new Mockingbird.HP.Control_Library.Key();
-			this.key5 = new Mockingbird.HP.Control_Library.Key();
-			this.key3 = new Mockingbird.HP.Control_Library.Key();
-			this.key10 = new Mockingbird.HP.Control_Library.Key();
-			this.key8 = new Mockingbird.HP.Control_Library.Key();
-			this.key11 = new Mockingbird.HP.Control_Library.Key();
-			this.key12 = new Mockingbird.HP.Control_Library.Key();
+			this.printer = new Mockingbird.HP.Control_Library.Printer();
+			this.panelMain = new System.Windows.Forms.Panel();
+			this.labelPrint = new System.Windows.Forms.Label();
+			this.pictureBoxLineRight = new System.Windows.Forms.PictureBox();
+			this.pictureBoxLineCenter = new System.Windows.Forms.PictureBox();
+			this.pictureBoxLineLeft = new System.Windows.Forms.PictureBox();
+			this.keyPRINTx = new Mockingbird.HP.Control_Library.Key();
+			this.keyENG = new Mockingbird.HP.Control_Library.Key();
+			this.keySCI = new Mockingbird.HP.Control_Library.Key();
+			this.keyCHS = new Mockingbird.HP.Control_Library.Key();
+			this.keyFIX = new Mockingbird.HP.Control_Library.Key();
+			this.keyENTER = new Mockingbird.HP.Control_Library.Key();
+			this.keyEEX = new Mockingbird.HP.Control_Library.Key();
+			this.keyPlus = new Mockingbird.HP.Control_Library.Key();
+			this.keyDSP = new Mockingbird.HP.Control_Library.Key();
+			this.keyPeriod = new Mockingbird.HP.Control_Library.Key();
+			this.keyMult = new Mockingbird.HP.Control_Library.Key();
+			this.keySub = new Mockingbird.HP.Control_Library.Key();
+			this.keyDiv = new Mockingbird.HP.Control_Library.Key();
 			this.key6 = new Mockingbird.HP.Control_Library.Key();
+			this.key3 = new Mockingbird.HP.Control_Library.Key();
 			this.key9 = new Mockingbird.HP.Control_Library.Key();
-			this.panel1.SuspendLayout();
-			this.groupBox1.SuspendLayout();
+			this.key5 = new Mockingbird.HP.Control_Library.Key();
+			this.key2 = new Mockingbird.HP.Control_Library.Key();
+			this.key8 = new Mockingbird.HP.Control_Library.Key();
+			this.key4 = new Mockingbird.HP.Control_Library.Key();
+			this.key1 = new Mockingbird.HP.Control_Library.Key();
+			this.key7 = new Mockingbird.HP.Control_Library.Key();
+			this.keyXExchangeY = new Mockingbird.HP.Control_Library.Key();
+			this.keyCLx = new Mockingbird.HP.Control_Library.Key();
+			this.keyRDown = new Mockingbird.HP.Control_Library.Key();
+			this.key0 = new Mockingbird.HP.Control_Library.Key();
+			this.keySqrt = new Mockingbird.HP.Control_Library.Key();
+			this.keyReciprocal = new Mockingbird.HP.Control_Library.Key();
+			this.keyΣ = new Mockingbird.HP.Control_Library.Key();
+			this.keySquare = new Mockingbird.HP.Control_Library.Key();
+			this.keyPercent = new Mockingbird.HP.Control_Library.Key();
+			this.keyRS = new Mockingbird.HP.Control_Library.Key();
+			this.keyToRectangular = new Mockingbird.HP.Control_Library.Key();
+			this.keyCOS = new Mockingbird.HP.Control_Library.Key();
+			this.keyI = new Mockingbird.HP.Control_Library.Key();
+			this.keyTAN = new Mockingbird.HP.Control_Library.Key();
+			this.keySubI = new Mockingbird.HP.Control_Library.Key();
+			this.keySIN = new Mockingbird.HP.Control_Library.Key();
+			this.keyToPolar = new Mockingbird.HP.Control_Library.Key();
+			this.keyLN = new Mockingbird.HP.Control_Library.Key();
+			this.keyRCL = new Mockingbird.HP.Control_Library.Key();
+			this.keyEToTheXth = new Mockingbird.HP.Control_Library.Key();
+			this.keySTO = new Mockingbird.HP.Control_Library.Key();
+			this.keyYToTheXth = new Mockingbird.HP.Control_Library.Key();
+			this.groupBoxCard = new System.Windows.Forms.GroupBox();
+			this.cardSlot = new Mockingbird.HP.Control_Library.CardSlot();
+			this.toggleManNorm = new Mockingbird.HP.Control_Library.Toggle();
+			this.keyE = new Mockingbird.HP.Control_Library.Key();
+			this.toggleOffOn = new Mockingbird.HP.Control_Library.Toggle();
+			this.togglePrgmRun = new Mockingbird.HP.Control_Library.Toggle();
+			this.keyB = new Mockingbird.HP.Control_Library.Key();
+			this.keyA = new Mockingbird.HP.Control_Library.Key();
+			this.labelTrace = new System.Windows.Forms.Label();
+			this.keyD = new Mockingbird.HP.Control_Library.Key();
+			this.keyF = new Mockingbird.HP.Control_Library.Key();
+			this.keyC = new Mockingbird.HP.Control_Library.Key();
+			this.keyRTN = new Mockingbird.HP.Control_Library.Key();
+			this.keyGTO = new Mockingbird.HP.Control_Library.Key();
+			this.keySST = new Mockingbird.HP.Control_Library.Key();
+			this.keyGSB = new Mockingbird.HP.Control_Library.Key();
+			this.keyBST = new Mockingbird.HP.Control_Library.Key();
+			this.keyLBL = new Mockingbird.HP.Control_Library.Key();
+			this.panelDisplay = new System.Windows.Forms.Panel();
+			this.display = new Mockingbird.HP.Control_Library.Display();
+			this.panelMain.SuspendLayout();
+			this.groupBoxCard.SuspendLayout();
+			this.panelDisplay.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// printer1
-			// 
-			this.printer1.Location = new System.Drawing.Point(560, 0);
-			this.printer1.Name = "printer1";
-			this.printer1.Size = new System.Drawing.Size(320, 232);
-			this.printer1.TabIndex = 1;
-			// 
-			// panel1
-			// 
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.pictureBox3);
-			this.panel1.Controls.Add(this.pictureBox2);
-			this.panel1.Controls.Add(this.pictureBox1);
-			this.panel1.Controls.Add(this.key56);
-			this.panel1.Controls.Add(this.key55);
-			this.panel1.Controls.Add(this.key54);
-			this.panel1.Controls.Add(this.key51);
-			this.panel1.Controls.Add(this.key52);
-			this.panel1.Controls.Add(this.key53);
-			this.panel1.Controls.Add(this.key50);
-			this.panel1.Controls.Add(this.key49);
-			this.panel1.Controls.Add(this.key48);
-			this.panel1.Controls.Add(this.key47);
-			this.panel1.Controls.Add(this.key44);
-			this.panel1.Controls.Add(this.key45);
-			this.panel1.Controls.Add(this.key46);
-			this.panel1.Controls.Add(this.key41);
-			this.panel1.Controls.Add(this.key42);
-			this.panel1.Controls.Add(this.key43);
-			this.panel1.Controls.Add(this.key38);
-			this.panel1.Controls.Add(this.key39);
-			this.panel1.Controls.Add(this.key40);
-			this.panel1.Controls.Add(this.key35);
-			this.panel1.Controls.Add(this.key36);
-			this.panel1.Controls.Add(this.key37);
-			this.panel1.Controls.Add(this.key34);
-			this.panel1.Controls.Add(this.key33);
-			this.panel1.Controls.Add(this.key32);
-			this.panel1.Controls.Add(this.key31);
-			this.panel1.Controls.Add(this.key25);
-			this.panel1.Controls.Add(this.key26);
-			this.panel1.Controls.Add(this.key27);
-			this.panel1.Controls.Add(this.key28);
-			this.panel1.Controls.Add(this.key29);
-			this.panel1.Controls.Add(this.key30);
-			this.panel1.Controls.Add(this.key19);
-			this.panel1.Controls.Add(this.key20);
-			this.panel1.Controls.Add(this.key21);
-			this.panel1.Controls.Add(this.key22);
-			this.panel1.Controls.Add(this.key23);
-			this.panel1.Controls.Add(this.key24);
-			this.panel1.Controls.Add(this.key13);
-			this.panel1.Controls.Add(this.key14);
-			this.panel1.Controls.Add(this.key15);
-			this.panel1.Controls.Add(this.key16);
-			this.panel1.Controls.Add(this.key17);
-			this.panel1.Controls.Add(this.key18);
-			this.panel1.Controls.Add(this.groupBox1);
-			this.panel1.Controls.Add(this.key10);
-			this.panel1.Controls.Add(this.key8);
-			this.panel1.Controls.Add(this.key11);
-			this.panel1.Controls.Add(this.key12);
-			this.panel1.Controls.Add(this.key6);
-			this.panel1.Controls.Add(this.key9);
-			this.panel1.Location = new System.Drawing.Point(8, 280);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(888, 440);
-			this.panel1.TabIndex = 2;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label2.ForeColor = System.Drawing.Color.Gold;
-			this.label2.Location = new System.Drawing.Point(392, 66);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(43, 18);
-			this.label2.TabIndex = 66;
-			this.label2.Text = "PRINT:";
-			// 
-			// pictureBox3
-			// 
-			this.pictureBox3.BackColor = System.Drawing.Color.Gold;
-			this.pictureBox3.Location = new System.Drawing.Point(662, 74);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(90, 2);
-			this.pictureBox3.TabIndex = 65;
-			this.pictureBox3.TabStop = false;
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.BackColor = System.Drawing.Color.Gold;
-			this.pictureBox2.Location = new System.Drawing.Point(580, 74);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(47, 2);
-			this.pictureBox2.TabIndex = 64;
-			this.pictureBox2.TabStop = false;
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.Gold;
-			this.pictureBox1.Location = new System.Drawing.Point(493, 74);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(41, 2);
-			this.pictureBox1.TabIndex = 63;
-			this.pictureBox1.TabStop = false;
-			// 
-			// key56
-			// 
-			this.key56.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key56.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key56.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key56.FGWidth = 160;
-			this.key56.FText = "STACK";
-			this.key56.GText = "";
-			this.key56.HText = "";
-			this.key56.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key56.Location = new System.Drawing.Point(696, 18);
-			this.key56.MainBackColor = System.Drawing.Color.Olive;
-			this.key56.MainForeColor = System.Drawing.Color.White;
-			this.key56.MainHeight = 36;
-			this.key56.MainText = "PRINT x";
-			this.key56.MainWidth = 160;
-			this.key56.Name = "key56";
-			this.key56.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key56.Size = new System.Drawing.Size(160, 63);
-			this.key56.TabIndex = 62;
-			// 
-			// key55
-			// 
-			this.key55.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key55.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key55.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key55.FGWidth = 72;
-			this.key55.FText = "REG";
-			this.key55.GText = "";
-			this.key55.HText = "";
-			this.key55.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key55.Location = new System.Drawing.Point(608, 18);
-			this.key55.MainBackColor = System.Drawing.Color.Olive;
-			this.key55.MainForeColor = System.Drawing.Color.White;
-			this.key55.MainHeight = 36;
-			this.key55.MainText = "ENG";
-			this.key55.MainWidth = 72;
-			this.key55.Name = "key55";
-			this.key55.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key55.Size = new System.Drawing.Size(72, 63);
-			this.key55.TabIndex = 61;
-			// 
-			// key54
-			// 
-			this.key54.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key54.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key54.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key54.FGWidth = 72;
-			this.key54.FText = "PRGM";
-			this.key54.GText = "";
-			this.key54.HText = "";
-			this.key54.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key54.Location = new System.Drawing.Point(520, 18);
-			this.key54.MainBackColor = System.Drawing.Color.Olive;
-			this.key54.MainForeColor = System.Drawing.Color.White;
-			this.key54.MainHeight = 36;
-			this.key54.MainText = "SCI";
-			this.key54.MainWidth = 72;
-			this.key54.Name = "key54";
-			this.key54.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key54.Size = new System.Drawing.Size(72, 63);
-			this.key54.TabIndex = 60;
-			// 
-			// key51
-			// 
-			this.key51.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key51.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key51.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key51.FGWidth = 72;
-			this.key51.FText = "RAD";
-			this.key51.GText = "";
-			this.key51.HText = "";
-			this.key51.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key51.Location = new System.Drawing.Point(608, 89);
-			this.key51.MainBackColor = System.Drawing.Color.Olive;
-			this.key51.MainForeColor = System.Drawing.Color.White;
-			this.key51.MainHeight = 36;
-			this.key51.MainText = "CHS";
-			this.key51.MainWidth = 72;
-			this.key51.Name = "key51";
-			this.key51.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key51.Size = new System.Drawing.Size(72, 63);
-			this.key51.TabIndex = 59;
-			// 
-			// key52
-			// 
-			this.key52.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key52.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key52.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key52.FGWidth = 72;
-			this.key52.FText = "SPACE";
-			this.key52.GText = "";
-			this.key52.HText = "";
-			this.key52.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key52.Location = new System.Drawing.Point(432, 18);
-			this.key52.MainBackColor = System.Drawing.Color.Olive;
-			this.key52.MainForeColor = System.Drawing.Color.White;
-			this.key52.MainHeight = 36;
-			this.key52.MainText = "FIX";
-			this.key52.MainWidth = 72;
-			this.key52.Name = "key52";
-			this.key52.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key52.Size = new System.Drawing.Size(72, 63);
-			this.key52.TabIndex = 58;
-			// 
-			// key53
-			// 
-			this.key53.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key53.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key53.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key53.FGWidth = 160;
-			this.key53.FText = "DEG";
-			this.key53.GText = "";
-			this.key53.HText = "";
-			this.key53.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key53.Location = new System.Drawing.Point(432, 89);
-			this.key53.MainBackColor = System.Drawing.Color.Olive;
-			this.key53.MainForeColor = System.Drawing.Color.White;
-			this.key53.MainHeight = 36;
-			this.key53.MainText = "ENTER ↑";
-			this.key53.MainWidth = 160;
-			this.key53.Name = "key53";
-			this.key53.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key53.Size = new System.Drawing.Size(160, 63);
-			this.key53.TabIndex = 57;
-			// 
-			// key50
-			// 
-			this.key50.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key50.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key50.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key50.FGWidth = 72;
-			this.key50.FText = "GRD";
-			this.key50.GText = "";
-			this.key50.HText = "";
-			this.key50.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key50.Location = new System.Drawing.Point(696, 89);
-			this.key50.MainBackColor = System.Drawing.Color.Olive;
-			this.key50.MainForeColor = System.Drawing.Color.White;
-			this.key50.MainHeight = 36;
-			this.key50.MainText = "EEX";
-			this.key50.MainWidth = 72;
-			this.key50.Name = "key50";
-			this.key50.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key50.Size = new System.Drawing.Size(72, 63);
-			this.key50.TabIndex = 56;
-			// 
-			// key49
-			// 
-			this.key49.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key49.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key49.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key49.FGWidth = 72;
-			this.key49.FText = "H.MS+";
-			this.key49.GText = "";
-			this.key49.HText = "";
-			this.key49.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key49.Location = new System.Drawing.Point(784, 302);
-			this.key49.MainBackColor = System.Drawing.Color.Olive;
-			this.key49.MainForeColor = System.Drawing.Color.White;
-			this.key49.MainHeight = 106;
-			this.key49.MainText = "+";
-			this.key49.MainWidth = 72;
-			this.key49.Name = "key49";
-			this.key49.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key49.Size = new System.Drawing.Size(72, 133);
-			this.key49.TabIndex = 55;
-			// 
-			// key48
-			// 
-			this.key48.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key48.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key48.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key48.FGWidth = 72;
-			this.key48.FText = "LAST x";
-			this.key48.GText = "";
-			this.key48.HText = "";
-			this.key48.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key48.Location = new System.Drawing.Point(696, 372);
-			this.key48.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key48.MainForeColor = System.Drawing.Color.Black;
-			this.key48.MainHeight = 36;
-			this.key48.MainText = "DSP";
-			this.key48.MainWidth = 72;
-			this.key48.Name = "key48";
-			this.key48.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key48.Size = new System.Drawing.Size(72, 63);
-			this.key48.TabIndex = 54;
-			// 
-			// key47
-			// 
-			this.key47.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key47.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key47.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key47.FGWidth = 72;
-			this.key47.FText = "MERGE";
-			this.key47.GText = "";
-			this.key47.HText = "";
-			this.key47.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key47.Location = new System.Drawing.Point(608, 372);
-			this.key47.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key47.MainForeColor = System.Drawing.Color.Black;
-			this.key47.MainHeight = 36;
-			this.key47.MainText = " ・";
-			this.key47.MainWidth = 72;
-			this.key47.Name = "key47";
-			this.key47.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key47.Size = new System.Drawing.Size(72, 63);
-			this.key47.TabIndex = 53;
-			// 
-			// key44
-			// 
-			this.key44.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key44.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key44.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key44.FGWidth = 72;
-			this.key44.FText = "x≤y?";
-			this.key44.GText = "";
-			this.key44.HText = "";
-			this.key44.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key44.Location = new System.Drawing.Point(784, 160);
-			this.key44.MainBackColor = System.Drawing.Color.Olive;
-			this.key44.MainForeColor = System.Drawing.Color.White;
-			this.key44.MainHeight = 36;
-			this.key44.MainText = "×";
-			this.key44.MainWidth = 72;
-			this.key44.Name = "key44";
-			this.key44.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key44.Size = new System.Drawing.Size(72, 63);
-			this.key44.TabIndex = 52;
-			// 
-			// key45
-			// 
-			this.key45.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key45.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key45.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key45.FGWidth = 72;
-			this.key45.FText = "x<0?";
-			this.key45.GText = "";
-			this.key45.HText = "";
-			this.key45.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key45.Location = new System.Drawing.Point(784, 231);
-			this.key45.MainBackColor = System.Drawing.Color.Olive;
-			this.key45.MainForeColor = System.Drawing.Color.White;
-			this.key45.MainHeight = 36;
-			this.key45.MainText = "-";
-			this.key45.MainWidth = 72;
-			this.key45.Name = "key45";
-			this.key45.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key45.Size = new System.Drawing.Size(72, 63);
-			this.key45.TabIndex = 51;
-			// 
-			// key46
-			// 
-			this.key46.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key46.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key46.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key46.FGWidth = 72;
-			this.key46.FText = "π";
-			this.key46.GText = "";
-			this.key46.HText = "";
-			this.key46.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key46.Location = new System.Drawing.Point(784, 89);
-			this.key46.MainBackColor = System.Drawing.Color.Olive;
-			this.key46.MainForeColor = System.Drawing.Color.White;
-			this.key46.MainHeight = 36;
-			this.key46.MainText = "÷";
-			this.key46.MainWidth = 72;
-			this.key46.Name = "key46";
-			this.key46.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key46.Size = new System.Drawing.Size(72, 63);
-			this.key46.TabIndex = 50;
-			// 
-			// key41
-			// 
-			this.key41.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key41.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key41.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key41.FGWidth = 72;
-			this.key41.FText = "x>0?";
-			this.key41.GText = "";
-			this.key41.HText = "";
-			this.key41.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key41.Location = new System.Drawing.Point(696, 231);
-			this.key41.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key41.MainForeColor = System.Drawing.Color.Black;
-			this.key41.MainHeight = 36;
-			this.key41.MainText = "6";
-			this.key41.MainWidth = 72;
-			this.key41.Name = "key41";
-			this.key41.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key41.Size = new System.Drawing.Size(72, 63);
-			this.key41.TabIndex = 49;
-			// 
-			// key42
-			// 
-			this.key42.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key42.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key42.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key42.FGWidth = 72;
-			this.key42.FText = "CL PGRM";
-			this.key42.GText = "";
-			this.key42.HText = "";
-			this.key42.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key42.Location = new System.Drawing.Point(696, 302);
-			this.key42.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key42.MainForeColor = System.Drawing.Color.Black;
-			this.key42.MainHeight = 36;
-			this.key42.MainText = "3";
-			this.key42.MainWidth = 72;
-			this.key42.Name = "key42";
-			this.key42.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key42.Size = new System.Drawing.Size(72, 63);
-			this.key42.TabIndex = 48;
-			// 
-			// key43
-			// 
-			this.key43.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key43.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key43.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key43.FGWidth = 72;
-			this.key43.FText = "x>y?";
-			this.key43.GText = "";
-			this.key43.HText = "";
-			this.key43.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key43.Location = new System.Drawing.Point(696, 160);
-			this.key43.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key43.MainForeColor = System.Drawing.Color.Black;
-			this.key43.MainHeight = 36;
-			this.key43.MainText = "9";
-			this.key43.MainWidth = 72;
-			this.key43.Name = "key43";
-			this.key43.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key43.Size = new System.Drawing.Size(72, 63);
-			this.key43.TabIndex = 47;
-			// 
-			// key38
-			// 
-			this.key38.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key38.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key38.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key38.FGWidth = 72;
-			this.key38.FText = "x=0?";
-			this.key38.GText = "";
-			this.key38.HText = "";
-			this.key38.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key38.Location = new System.Drawing.Point(608, 231);
-			this.key38.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key38.MainForeColor = System.Drawing.Color.Black;
-			this.key38.MainHeight = 36;
-			this.key38.MainText = "5";
-			this.key38.MainWidth = 72;
-			this.key38.Name = "key38";
-			this.key38.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key38.Size = new System.Drawing.Size(72, 63);
-			this.key38.TabIndex = 46;
-			// 
-			// key39
-			// 
-			this.key39.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key39.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key39.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key39.FGWidth = 72;
-			this.key39.FText = "CL REG";
-			this.key39.GText = "";
-			this.key39.HText = "";
-			this.key39.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key39.Location = new System.Drawing.Point(608, 302);
-			this.key39.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key39.MainForeColor = System.Drawing.Color.Black;
-			this.key39.MainHeight = 36;
-			this.key39.MainText = "2";
-			this.key39.MainWidth = 72;
-			this.key39.Name = "key39";
-			this.key39.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key39.Size = new System.Drawing.Size(72, 63);
-			this.key39.TabIndex = 45;
-			// 
-			// key40
-			// 
-			this.key40.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key40.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key40.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key40.FGWidth = 72;
-			this.key40.FText = "x=y?";
-			this.key40.GText = "";
-			this.key40.HText = "";
-			this.key40.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key40.Location = new System.Drawing.Point(608, 160);
-			this.key40.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key40.MainForeColor = System.Drawing.Color.Black;
-			this.key40.MainHeight = 36;
-			this.key40.MainText = "8";
-			this.key40.MainWidth = 72;
-			this.key40.Name = "key40";
-			this.key40.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key40.Size = new System.Drawing.Size(72, 63);
-			this.key40.TabIndex = 44;
-			// 
-			// key35
-			// 
-			this.key35.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key35.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key35.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key35.FGWidth = 72;
-			this.key35.FText = "x≠0?";
-			this.key35.GText = "";
-			this.key35.HText = "";
-			this.key35.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key35.Location = new System.Drawing.Point(520, 231);
-			this.key35.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key35.MainForeColor = System.Drawing.Color.Black;
-			this.key35.MainHeight = 36;
-			this.key35.MainText = "4";
-			this.key35.MainWidth = 72;
-			this.key35.Name = "key35";
-			this.key35.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key35.Size = new System.Drawing.Size(72, 63);
-			this.key35.TabIndex = 43;
-			// 
-			// key36
-			// 
-			this.key36.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key36.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key36.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key36.FGWidth = 72;
-			this.key36.FText = "DEL";
-			this.key36.GText = "";
-			this.key36.HText = "";
-			this.key36.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key36.Location = new System.Drawing.Point(520, 302);
-			this.key36.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key36.MainForeColor = System.Drawing.Color.Black;
-			this.key36.MainHeight = 36;
-			this.key36.MainText = "1";
-			this.key36.MainWidth = 72;
-			this.key36.Name = "key36";
-			this.key36.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key36.Size = new System.Drawing.Size(72, 63);
-			this.key36.TabIndex = 42;
-			// 
-			// key37
-			// 
-			this.key37.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key37.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key37.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key37.FGWidth = 72;
-			this.key37.FText = "x≠y?";
-			this.key37.GText = "";
-			this.key37.HText = "";
-			this.key37.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key37.Location = new System.Drawing.Point(520, 160);
-			this.key37.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key37.MainForeColor = System.Drawing.Color.Black;
-			this.key37.MainHeight = 36;
-			this.key37.MainText = "7";
-			this.key37.MainWidth = 72;
-			this.key37.Name = "key37";
-			this.key37.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key37.Size = new System.Drawing.Size(72, 63);
-			this.key37.TabIndex = 41;
-			// 
-			// key34
-			// 
-			this.key34.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key34.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key34.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key34.FGWidth = 72;
-			this.key34.FText = "x⇄I";
-			this.key34.GText = "";
-			this.key34.HText = "";
-			this.key34.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key34.Location = new System.Drawing.Point(432, 231);
-			this.key34.MainBackColor = System.Drawing.Color.Olive;
-			this.key34.MainForeColor = System.Drawing.Color.White;
-			this.key34.MainHeight = 36;
-			this.key34.MainText = "x⇄y";
-			this.key34.MainWidth = 72;
-			this.key34.Name = "key34";
-			this.key34.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key34.Size = new System.Drawing.Size(72, 63);
-			this.key34.TabIndex = 40;
-			// 
-			// key33
-			// 
-			this.key33.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key33.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key33.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key33.FGWidth = 72;
-			this.key33.FText = "P⇄S";
-			this.key33.GText = "";
-			this.key33.HText = "";
-			this.key33.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key33.Location = new System.Drawing.Point(432, 302);
-			this.key33.MainBackColor = System.Drawing.Color.Olive;
-			this.key33.MainForeColor = System.Drawing.Color.White;
-			this.key33.MainHeight = 36;
-			this.key33.MainText = "CL x";
-			this.key33.MainWidth = 72;
-			this.key33.Name = "key33";
-			this.key33.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key33.Size = new System.Drawing.Size(72, 63);
-			this.key33.TabIndex = 39;
-			// 
-			// key32
-			// 
-			this.key32.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key32.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key32.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key32.FGWidth = 72;
-			this.key32.FText = "R↑";
-			this.key32.GText = "";
-			this.key32.HText = "";
-			this.key32.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key32.Location = new System.Drawing.Point(432, 160);
-			this.key32.MainBackColor = System.Drawing.Color.Olive;
-			this.key32.MainForeColor = System.Drawing.Color.White;
-			this.key32.MainHeight = 36;
-			this.key32.MainText = "R↓";
-			this.key32.MainWidth = 72;
-			this.key32.Name = "key32";
-			this.key32.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key32.Size = new System.Drawing.Size(72, 63);
-			this.key32.TabIndex = 38;
-			// 
-			// key31
-			// 
-			this.key31.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
-			this.key31.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key31.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key31.FGWidth = 160;
-			this.key31.FText = "WRITE DATA";
-			this.key31.GText = "";
-			this.key31.HText = "";
-			this.key31.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key31.Location = new System.Drawing.Point(432, 372);
-			this.key31.MainBackColor = System.Drawing.Color.LightYellow;
-			this.key31.MainForeColor = System.Drawing.Color.Black;
-			this.key31.MainHeight = 36;
-			this.key31.MainText = "0";
-			this.key31.MainWidth = 160;
-			this.key31.Name = "key31";
-			this.key31.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key31.Size = new System.Drawing.Size(160, 63);
-			this.key31.TabIndex = 37;
-			// 
-			// key25
-			// 
-			this.key25.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key25.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key25.FGWidth = 48;
-			this.key25.FText = "S";
-			this.key25.GText = "";
-			this.key25.HText = "";
-			this.key25.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key25.Location = new System.Drawing.Point(200, 384);
-			this.key25.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key25.MainForeColor = System.Drawing.Color.White;
-			this.key25.MainHeight = 24;
-			this.key25.MainText = "√x̅";
-			this.key25.MainWidth = 48;
-			this.key25.Name = "key25";
-			this.key25.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key25.Size = new System.Drawing.Size(48, 51);
-			this.key25.TabIndex = 34;
-			// 
-			// key26
-			// 
-			this.key26.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key26.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key26.FGWidth = 48;
-			this.key26.FText = "N!";
-			this.key26.GText = "";
-			this.key26.HText = "";
-			this.key26.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key26.Location = new System.Drawing.Point(88, 384);
-			this.key26.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key26.MainForeColor = System.Drawing.Color.White;
-			this.key26.MainHeight = 24;
-			this.key26.MainText = "1/x";
-			this.key26.MainWidth = 48;
-			this.key26.Name = "key26";
-			this.key26.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key26.Size = new System.Drawing.Size(48, 51);
-			this.key26.TabIndex = 32;
-			// 
-			// key27
-			// 
-			this.key27.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key27.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key27.FGWidth = 48;
-			this.key27.FText = "Σ-";
-			this.key27.GText = "";
-			this.key27.HText = "";
-			this.key27.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key27.Location = new System.Drawing.Point(312, 384);
-			this.key27.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key27.MainForeColor = System.Drawing.Color.White;
-			this.key27.MainHeight = 24;
-			this.key27.MainText = "Σ+";
-			this.key27.MainWidth = 48;
-			this.key27.Name = "key27";
-			this.key27.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.key27.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key27.Size = new System.Drawing.Size(48, 51);
-			this.key27.TabIndex = 35;
-			// 
-			// key28
-			// 
-			this.key28.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key28.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key28.FGWidth = 48;
-			this.key28.FText = "x̅";
-			this.key28.GText = "";
-			this.key28.HText = "";
-			this.key28.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key28.Location = new System.Drawing.Point(144, 384);
-			this.key28.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key28.MainForeColor = System.Drawing.Color.White;
-			this.key28.MainHeight = 24;
-			this.key28.MainText = "x²";
-			this.key28.MainWidth = 48;
-			this.key28.Name = "key28";
-			this.key28.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key28.Size = new System.Drawing.Size(48, 51);
-			this.key28.TabIndex = 33;
-			// 
-			// key29
-			// 
-			this.key29.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key29.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key29.FGWidth = 48;
-			this.key29.FText = "%CH";
-			this.key29.GText = "";
-			this.key29.HText = "";
-			this.key29.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key29.Location = new System.Drawing.Point(256, 384);
-			this.key29.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key29.MainForeColor = System.Drawing.Color.White;
-			this.key29.MainHeight = 24;
-			this.key29.MainText = "%";
-			this.key29.MainWidth = 48;
-			this.key29.Name = "key29";
-			this.key29.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key29.Size = new System.Drawing.Size(48, 51);
-			this.key29.TabIndex = 36;
-			// 
-			// key30
-			// 
-			this.key30.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key30.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key30.FGWidth = 48;
-			this.key30.FText = "PAUSE";
-			this.key30.GText = "";
-			this.key30.HText = "";
-			this.key30.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key30.Location = new System.Drawing.Point(32, 384);
-			this.key30.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key30.MainForeColor = System.Drawing.Color.White;
-			this.key30.MainHeight = 24;
-			this.key30.MainText = "R/S";
-			this.key30.MainWidth = 48;
-			this.key30.Name = "key30";
-			this.key30.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key30.Size = new System.Drawing.Size(48, 51);
-			this.key30.TabIndex = 31;
-			// 
-			// key19
-			// 
-			this.key19.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key19.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key19.FGWidth = 48;
-			this.key19.FText = "FRAC";
-			this.key19.GText = "";
-			this.key19.HText = "";
-			this.key19.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key19.Location = new System.Drawing.Point(200, 328);
-			this.key19.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key19.MainForeColor = System.Drawing.Color.White;
-			this.key19.MainHeight = 24;
-			this.key19.MainText = "→R";
-			this.key19.MainWidth = 48;
-			this.key19.Name = "key19";
-			this.key19.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key19.Size = new System.Drawing.Size(48, 51);
-			this.key19.TabIndex = 28;
-			// 
-			// key20
-			// 
-			this.key20.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key20.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key20.FGWidth = 48;
-			this.key20.FText = "COS⁻¹";
-			this.key20.GText = "";
-			this.key20.HText = "";
-			this.key20.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key20.Location = new System.Drawing.Point(88, 328);
-			this.key20.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key20.MainForeColor = System.Drawing.Color.White;
-			this.key20.MainHeight = 24;
-			this.key20.MainText = "COS";
-			this.key20.MainWidth = 48;
-			this.key20.Name = "key20";
-			this.key20.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key20.Size = new System.Drawing.Size(48, 51);
-			this.key20.TabIndex = 26;
-			// 
-			// key21
-			// 
-			this.key21.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key21.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key21.FGWidth = 48;
-			this.key21.FText = "R→D";
-			this.key21.GText = "";
-			this.key21.HText = "";
-			this.key21.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key21.Location = new System.Drawing.Point(312, 328);
-			this.key21.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key21.MainForeColor = System.Drawing.Color.White;
-			this.key21.MainHeight = 24;
-			this.key21.MainText = "I";
-			this.key21.MainWidth = 48;
-			this.key21.Name = "key21";
-			this.key21.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key21.Size = new System.Drawing.Size(48, 51);
-			this.key21.TabIndex = 29;
-			// 
-			// key22
-			// 
-			this.key22.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key22.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key22.FGWidth = 48;
-			this.key22.FText = "TAN⁻¹";
-			this.key22.GText = "";
-			this.key22.HText = "";
-			this.key22.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key22.Location = new System.Drawing.Point(144, 328);
-			this.key22.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key22.MainForeColor = System.Drawing.Color.White;
-			this.key22.MainHeight = 24;
-			this.key22.MainText = "TAN";
-			this.key22.MainWidth = 48;
-			this.key22.Name = "key22";
-			this.key22.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key22.Size = new System.Drawing.Size(48, 51);
-			this.key22.TabIndex = 27;
-			// 
-			// key23
-			// 
-			this.key23.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key23.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key23.FGWidth = 48;
-			this.key23.FText = "D→R";
-			this.key23.GText = "";
-			this.key23.HText = "";
-			this.key23.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key23.Location = new System.Drawing.Point(256, 328);
-			this.key23.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key23.MainForeColor = System.Drawing.Color.White;
-			this.key23.MainHeight = 24;
-			this.key23.MainText = "(i)";
-			this.key23.MainWidth = 48;
-			this.key23.Name = "key23";
-			this.key23.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key23.Size = new System.Drawing.Size(48, 51);
-			this.key23.TabIndex = 30;
-			// 
-			// key24
-			// 
-			this.key24.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key24.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key24.FGWidth = 48;
-			this.key24.FText = "SIN⁻¹";
-			this.key24.GText = "";
-			this.key24.HText = "";
-			this.key24.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key24.Location = new System.Drawing.Point(32, 328);
-			this.key24.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key24.MainForeColor = System.Drawing.Color.White;
-			this.key24.MainHeight = 24;
-			this.key24.MainText = "SIN";
-			this.key24.MainWidth = 48;
-			this.key24.Name = "key24";
-			this.key24.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key24.Size = new System.Drawing.Size(48, 51);
-			this.key24.TabIndex = 25;
-			// 
-			// key13
-			// 
-			this.key13.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key13.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key13.FGWidth = 48;
-			this.key13.FText = "INT";
-			this.key13.GText = "";
-			this.key13.HText = "";
-			this.key13.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key13.Location = new System.Drawing.Point(200, 272);
-			this.key13.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key13.MainForeColor = System.Drawing.Color.White;
-			this.key13.MainHeight = 24;
-			this.key13.MainText = "→P";
-			this.key13.MainWidth = 48;
-			this.key13.Name = "key13";
-			this.key13.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key13.Size = new System.Drawing.Size(48, 51);
-			this.key13.TabIndex = 22;
-			// 
-			// key14
-			// 
-			this.key14.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key14.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key14.FGWidth = 48;
-			this.key14.FText = "LOG";
-			this.key14.GText = "";
-			this.key14.HText = "";
-			this.key14.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key14.Location = new System.Drawing.Point(88, 272);
-			this.key14.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key14.MainForeColor = System.Drawing.Color.White;
-			this.key14.MainHeight = 24;
-			this.key14.MainText = "LN";
-			this.key14.MainWidth = 48;
-			this.key14.Name = "key14";
-			this.key14.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key14.Size = new System.Drawing.Size(48, 51);
-			this.key14.TabIndex = 20;
-			// 
-			// key15
-			// 
-			this.key15.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key15.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key15.FGWidth = 48;
-			this.key15.FText = "H.MS→";
-			this.key15.GText = "";
-			this.key15.HText = "";
-			this.key15.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key15.Location = new System.Drawing.Point(312, 272);
-			this.key15.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key15.MainForeColor = System.Drawing.Color.White;
-			this.key15.MainHeight = 24;
-			this.key15.MainText = "RCL";
-			this.key15.MainWidth = 48;
-			this.key15.Name = "key15";
-			this.key15.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key15.Size = new System.Drawing.Size(48, 51);
-			this.key15.TabIndex = 23;
-			// 
-			// key16
-			// 
-			this.key16.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key16.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key16.FGWidth = 48;
-			this.key16.FText = "10 ̽";
-			this.key16.GText = "";
-			this.key16.HText = "";
-			this.key16.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key16.Location = new System.Drawing.Point(144, 272);
-			this.key16.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key16.MainForeColor = System.Drawing.Color.White;
-			this.key16.MainHeight = 24;
-			this.key16.MainText = "e ̽";
-			this.key16.MainWidth = 48;
-			this.key16.Name = "key16";
-			this.key16.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key16.Size = new System.Drawing.Size(48, 51);
-			this.key16.TabIndex = 21;
-			// 
-			// key17
-			// 
-			this.key17.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key17.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key17.FGWidth = 48;
-			this.key17.FText = "→H.MS";
-			this.key17.GText = "";
-			this.key17.HText = "";
-			this.key17.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key17.Location = new System.Drawing.Point(256, 272);
-			this.key17.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key17.MainForeColor = System.Drawing.Color.White;
-			this.key17.MainHeight = 24;
-			this.key17.MainText = "STO";
-			this.key17.MainWidth = 48;
-			this.key17.Name = "key17";
-			this.key17.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key17.Size = new System.Drawing.Size(48, 51);
-			this.key17.TabIndex = 24;
-			// 
-			// key18
-			// 
-			this.key18.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key18.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key18.FGWidth = 48;
-			this.key18.FText = "ABS";
-			this.key18.GText = "";
-			this.key18.HText = "";
-			this.key18.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key18.Location = new System.Drawing.Point(32, 272);
-			this.key18.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key18.MainForeColor = System.Drawing.Color.White;
-			this.key18.MainHeight = 24;
-			this.key18.MainText = "y ̽";
-			this.key18.MainWidth = 48;
-			this.key18.Name = "key18";
-			this.key18.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key18.Size = new System.Drawing.Size(48, 51);
-			this.key18.TabIndex = 19;
-			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.cardSlot1);
-			this.groupBox1.Controls.Add(this.toggle1);
-			this.groupBox1.Controls.Add(this.key7);
-			this.groupBox1.Controls.Add(this.toggle2);
-			this.groupBox1.Controls.Add(this.toggle3);
-			this.groupBox1.Controls.Add(this.key2);
-			this.groupBox1.Controls.Add(this.key1);
-			this.groupBox1.Controls.Add(this.label1);
-			this.groupBox1.Controls.Add(this.key4);
-			this.groupBox1.Controls.Add(this.key5);
-			this.groupBox1.Controls.Add(this.key3);
-			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.groupBox1.Location = new System.Drawing.Point(16, 18);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(352, 194);
-			this.groupBox1.TabIndex = 12;
-			this.groupBox1.TabStop = false;
-			// 
-			// cardSlot1
-			// 
-			this.cardSlot1.Location = new System.Drawing.Point(8, 80);
-			this.cardSlot1.Margin = 16;
-			this.cardSlot1.Name = "cardSlot1";
-			this.cardSlot1.RichText = false;
-			this.cardSlot1.Size = new System.Drawing.Size(288, 50);
-			this.cardSlot1.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
-			this.cardSlot1.TabIndex = 12;
-			this.cardSlot1.TextBoxWidth = 48;
-			this.cardSlot1.Title = "<TITLE>";
-			this.cardSlot1.UnloadedTextA = "1/x";
-			this.cardSlot1.UnloadedTextB = "√x̅";
-			this.cardSlot1.UnloadedTextC = "yˣ";
-			this.cardSlot1.UnloadedTextD = "R↓";
-			this.cardSlot1.UnloadedTextE = "x⇄y";
-			// 
-			// toggle1
-			// 
-			this.toggle1.LeftText = "MAN";
-			this.toggle1.LeftWidth = 60;
-			this.toggle1.Location = new System.Drawing.Point(184, 24);
-			this.toggle1.MainWidth = 60;
-			this.toggle1.Name = "toggle1";
-			this.toggle1.Position = Mockingbird.HP.Control_Library.TogglePosition.Left;
-			this.toggle1.RightText = "NORM";
-			this.toggle1.RightWidth = 60;
-			this.toggle1.Size = new System.Drawing.Size(160, 16);
-			this.toggle1.TabIndex = 1;
-			this.toggle1.Load += new System.EventHandler(this.toggle1_Load);
-			// 
-			// key7
-			// 
-			this.key7.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key7.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key7.FGWidth = 48;
-			this.key7.FText = "e";
-			this.key7.GText = "";
-			this.key7.HText = "";
-			this.key7.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key7.Location = new System.Drawing.Point(240, 142);
-			this.key7.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key7.MainForeColor = System.Drawing.Color.White;
-			this.key7.MainHeight = 24;
-			this.key7.MainText = "E";
-			this.key7.MainWidth = 48;
-			this.key7.Name = "key7";
-			this.key7.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key7.Size = new System.Drawing.Size(48, 51);
-			this.key7.TabIndex = 11;
-			// 
-			// toggle2
-			// 
-			this.toggle2.LeftText = "OFF";
-			this.toggle2.LeftWidth = 60;
-			this.toggle2.Location = new System.Drawing.Point(8, 24);
-			this.toggle2.MainWidth = 60;
-			this.toggle2.Name = "toggle2";
-			this.toggle2.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
-			this.toggle2.RightText = "ON";
-			this.toggle2.RightWidth = 60;
-			this.toggle2.Size = new System.Drawing.Size(144, 16);
-			this.toggle2.TabIndex = 2;
-			// 
-			// toggle3
-			// 
-			this.toggle3.LeftText = "PRGM";
-			this.toggle3.LeftWidth = 60;
-			this.toggle3.Location = new System.Drawing.Point(184, 48);
-			this.toggle3.MainWidth = 60;
-			this.toggle3.Name = "toggle3";
-			this.toggle3.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
-			this.toggle3.RightText = "RUN";
-			this.toggle3.RightWidth = 60;
-			this.toggle3.Size = new System.Drawing.Size(152, 16);
-			this.toggle3.TabIndex = 3;
-			// 
-			// key2
-			// 
-			this.key2.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key2.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key2.FGWidth = 48;
-			this.key2.FText = "b";
-			this.key2.GText = "";
-			this.key2.HText = "";
-			this.key2.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key2.Location = new System.Drawing.Point(72, 142);
-			this.key2.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key2.MainForeColor = System.Drawing.Color.White;
-			this.key2.MainHeight = 24;
-			this.key2.MainText = "B";
-			this.key2.MainWidth = 48;
-			this.key2.Name = "key2";
-			this.key2.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key2.Size = new System.Drawing.Size(48, 51);
-			this.key2.TabIndex = 6;
-			// 
-			// key1
-			// 
-			this.key1.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key1.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key1.FGWidth = 48;
-			this.key1.FText = "a";
-			this.key1.GText = "";
-			this.key1.HText = "";
-			this.key1.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key1.Location = new System.Drawing.Point(16, 142);
-			this.key1.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key1.MainForeColor = System.Drawing.Color.White;
-			this.key1.MainHeight = 24;
-			this.key1.MainText = "A";
-			this.key1.MainWidth = 48;
-			this.key1.Name = "key1";
-			this.key1.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key1.Size = new System.Drawing.Size(48, 51);
-			this.key1.TabIndex = 5;
-			// 
-			// label1
-			// 
-			this.label1.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.label1.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.Location = new System.Drawing.Point(248, 8);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(56, 16);
-			this.label1.TabIndex = 4;
-			this.label1.Text = "TRACE";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-			// 
-			// key4
-			// 
-			this.key4.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key4.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key4.FGWidth = 48;
-			this.key4.FText = "d";
-			this.key4.GText = "";
-			this.key4.HText = "";
-			this.key4.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key4.Location = new System.Drawing.Point(184, 142);
-			this.key4.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key4.MainForeColor = System.Drawing.Color.White;
-			this.key4.MainHeight = 24;
-			this.key4.MainText = "D";
-			this.key4.MainWidth = 48;
-			this.key4.Name = "key4";
-			this.key4.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key4.Size = new System.Drawing.Size(48, 51);
-			this.key4.TabIndex = 8;
-			// 
-			// key5
-			// 
-			this.key5.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key5.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key5.FGWidth = 48;
-			this.key5.FText = "";
-			this.key5.GText = "";
-			this.key5.HText = "";
-			this.key5.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key5.Location = new System.Drawing.Point(296, 142);
-			this.key5.MainBackColor = System.Drawing.Color.Gold;
-			this.key5.MainForeColor = System.Drawing.Color.Black;
-			this.key5.MainHeight = 24;
-			this.key5.MainText = "f";
-			this.key5.MainWidth = 48;
-			this.key5.Name = "key5";
-			this.key5.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key5.Size = new System.Drawing.Size(48, 51);
-			this.key5.TabIndex = 9;
-			// 
-			// key3
-			// 
-			this.key3.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key3.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key3.FGWidth = 48;
-			this.key3.FText = "c";
-			this.key3.GText = "";
-			this.key3.HText = "";
-			this.key3.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key3.Location = new System.Drawing.Point(128, 142);
-			this.key3.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key3.MainForeColor = System.Drawing.Color.White;
-			this.key3.MainHeight = 24;
-			this.key3.MainText = "C";
-			this.key3.MainWidth = 48;
-			this.key3.Name = "key3";
-			this.key3.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key3.Size = new System.Drawing.Size(48, 51);
-			this.key3.TabIndex = 7;
-			// 
-			// key10
-			// 
-			this.key10.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key10.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key10.FGWidth = 48;
-			this.key10.FText = "RND";
-			this.key10.GText = "";
-			this.key10.HText = "";
-			this.key10.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key10.Location = new System.Drawing.Point(200, 216);
-			this.key10.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key10.MainForeColor = System.Drawing.Color.White;
-			this.key10.MainHeight = 24;
-			this.key10.MainText = "RTN";
-			this.key10.MainWidth = 48;
-			this.key10.Name = "key10";
-			this.key10.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key10.Size = new System.Drawing.Size(48, 51);
-			this.key10.TabIndex = 16;
-			// 
-			// key8
-			// 
-			this.key8.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key8.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key8.FGWidth = 48;
-			this.key8.FText = "CLF";
-			this.key8.GText = "";
-			this.key8.HText = "";
-			this.key8.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key8.Location = new System.Drawing.Point(88, 216);
-			this.key8.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key8.MainForeColor = System.Drawing.Color.White;
-			this.key8.MainHeight = 24;
-			this.key8.MainText = "GTO";
-			this.key8.MainWidth = 48;
-			this.key8.Name = "key8";
-			this.key8.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key8.Size = new System.Drawing.Size(48, 51);
-			this.key8.TabIndex = 14;
-			// 
-			// key11
-			// 
-			this.key11.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key11.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key11.FGWidth = 48;
-			this.key11.FText = "ISZ";
-			this.key11.GText = "";
-			this.key11.HText = "";
-			this.key11.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key11.Location = new System.Drawing.Point(312, 216);
-			this.key11.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key11.MainForeColor = System.Drawing.Color.White;
-			this.key11.MainHeight = 24;
-			this.key11.MainText = "SST";
-			this.key11.MainWidth = 48;
-			this.key11.Name = "key11";
-			this.key11.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key11.Size = new System.Drawing.Size(48, 51);
-			this.key11.TabIndex = 17;
-			// 
-			// key12
-			// 
-			this.key12.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key12.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key12.FGWidth = 48;
-			this.key12.FText = "F?";
-			this.key12.GText = "";
-			this.key12.HText = "";
-			this.key12.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key12.Location = new System.Drawing.Point(144, 216);
-			this.key12.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key12.MainForeColor = System.Drawing.Color.White;
-			this.key12.MainHeight = 24;
-			this.key12.MainText = "GSB";
-			this.key12.MainWidth = 48;
-			this.key12.Name = "key12";
-			this.key12.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key12.Size = new System.Drawing.Size(48, 51);
-			this.key12.TabIndex = 15;
+			// printer
+			// 
+			this.printer.Location = new System.Drawing.Point(560, 0);
+			this.printer.Name = "printer";
+			this.printer.Size = new System.Drawing.Size(288, 256);
+			this.printer.TabIndex = 1;
+			// 
+			// panelMain
+			// 
+			this.panelMain.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.panelMain.Controls.Add(this.labelPrint);
+			this.panelMain.Controls.Add(this.pictureBoxLineRight);
+			this.panelMain.Controls.Add(this.pictureBoxLineCenter);
+			this.panelMain.Controls.Add(this.pictureBoxLineLeft);
+			this.panelMain.Controls.Add(this.keyPRINTx);
+			this.panelMain.Controls.Add(this.keyENG);
+			this.panelMain.Controls.Add(this.keySCI);
+			this.panelMain.Controls.Add(this.keyCHS);
+			this.panelMain.Controls.Add(this.keyFIX);
+			this.panelMain.Controls.Add(this.keyENTER);
+			this.panelMain.Controls.Add(this.keyEEX);
+			this.panelMain.Controls.Add(this.keyPlus);
+			this.panelMain.Controls.Add(this.keyDSP);
+			this.panelMain.Controls.Add(this.keyPeriod);
+			this.panelMain.Controls.Add(this.keyMult);
+			this.panelMain.Controls.Add(this.keySub);
+			this.panelMain.Controls.Add(this.keyDiv);
+			this.panelMain.Controls.Add(this.key6);
+			this.panelMain.Controls.Add(this.key3);
+			this.panelMain.Controls.Add(this.key9);
+			this.panelMain.Controls.Add(this.key5);
+			this.panelMain.Controls.Add(this.key2);
+			this.panelMain.Controls.Add(this.key8);
+			this.panelMain.Controls.Add(this.key4);
+			this.panelMain.Controls.Add(this.key1);
+			this.panelMain.Controls.Add(this.key7);
+			this.panelMain.Controls.Add(this.keyXExchangeY);
+			this.panelMain.Controls.Add(this.keyCLx);
+			this.panelMain.Controls.Add(this.keyRDown);
+			this.panelMain.Controls.Add(this.key0);
+			this.panelMain.Controls.Add(this.keySqrt);
+			this.panelMain.Controls.Add(this.keyReciprocal);
+			this.panelMain.Controls.Add(this.keyΣ);
+			this.panelMain.Controls.Add(this.keySquare);
+			this.panelMain.Controls.Add(this.keyPercent);
+			this.panelMain.Controls.Add(this.keyRS);
+			this.panelMain.Controls.Add(this.keyToRectangular);
+			this.panelMain.Controls.Add(this.keyCOS);
+			this.panelMain.Controls.Add(this.keyI);
+			this.panelMain.Controls.Add(this.keyTAN);
+			this.panelMain.Controls.Add(this.keySubI);
+			this.panelMain.Controls.Add(this.keySIN);
+			this.panelMain.Controls.Add(this.keyToPolar);
+			this.panelMain.Controls.Add(this.keyLN);
+			this.panelMain.Controls.Add(this.keyRCL);
+			this.panelMain.Controls.Add(this.keyEToTheXth);
+			this.panelMain.Controls.Add(this.keySTO);
+			this.panelMain.Controls.Add(this.keyYToTheXth);
+			this.panelMain.Controls.Add(this.groupBoxCard);
+			this.panelMain.Controls.Add(this.keyRTN);
+			this.panelMain.Controls.Add(this.keyGTO);
+			this.panelMain.Controls.Add(this.keySST);
+			this.panelMain.Controls.Add(this.keyGSB);
+			this.panelMain.Controls.Add(this.keyBST);
+			this.panelMain.Controls.Add(this.keyLBL);
+			this.panelMain.Location = new System.Drawing.Point(8, 280);
+			this.panelMain.Name = "panelMain";
+			this.panelMain.Size = new System.Drawing.Size(888, 440);
+			this.panelMain.TabIndex = 2;
+			// 
+			// labelPrint
+			// 
+			this.labelPrint.AutoSize = true;
+			this.labelPrint.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelPrint.ForeColor = System.Drawing.Color.Gold;
+			this.labelPrint.Location = new System.Drawing.Point(392, 66);
+			this.labelPrint.Name = "labelPrint";
+			this.labelPrint.Size = new System.Drawing.Size(43, 18);
+			this.labelPrint.TabIndex = 66;
+			this.labelPrint.Text = "PRINT:";
+			// 
+			// pictureBoxLineRight
+			// 
+			this.pictureBoxLineRight.BackColor = System.Drawing.Color.Gold;
+			this.pictureBoxLineRight.Location = new System.Drawing.Point(662, 74);
+			this.pictureBoxLineRight.Name = "pictureBoxLineRight";
+			this.pictureBoxLineRight.Size = new System.Drawing.Size(90, 2);
+			this.pictureBoxLineRight.TabIndex = 65;
+			this.pictureBoxLineRight.TabStop = false;
+			// 
+			// pictureBoxLineCenter
+			// 
+			this.pictureBoxLineCenter.BackColor = System.Drawing.Color.Gold;
+			this.pictureBoxLineCenter.Location = new System.Drawing.Point(580, 74);
+			this.pictureBoxLineCenter.Name = "pictureBoxLineCenter";
+			this.pictureBoxLineCenter.Size = new System.Drawing.Size(47, 2);
+			this.pictureBoxLineCenter.TabIndex = 64;
+			this.pictureBoxLineCenter.TabStop = false;
+			// 
+			// pictureBoxLineLeft
+			// 
+			this.pictureBoxLineLeft.BackColor = System.Drawing.Color.Gold;
+			this.pictureBoxLineLeft.Location = new System.Drawing.Point(493, 74);
+			this.pictureBoxLineLeft.Name = "pictureBoxLineLeft";
+			this.pictureBoxLineLeft.Size = new System.Drawing.Size(41, 2);
+			this.pictureBoxLineLeft.TabIndex = 63;
+			this.pictureBoxLineLeft.TabStop = false;
+			// 
+			// keyPRINTx
+			// 
+			this.keyPRINTx.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyPRINTx.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyPRINTx.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyPRINTx.FGWidth = 160;
+			this.keyPRINTx.FText = "STACK";
+			this.keyPRINTx.GText = "";
+			this.keyPRINTx.HText = "";
+			this.keyPRINTx.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyPRINTx.Location = new System.Drawing.Point(696, 18);
+			this.keyPRINTx.MainBackColor = System.Drawing.Color.Olive;
+			this.keyPRINTx.MainForeColor = System.Drawing.Color.White;
+			this.keyPRINTx.MainHeight = 36;
+			this.keyPRINTx.MainText = "PRINT x";
+			this.keyPRINTx.MainWidth = 160;
+			this.keyPRINTx.Name = "keyPRINTx";
+			this.keyPRINTx.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyPRINTx.Size = new System.Drawing.Size(160, 63);
+			this.keyPRINTx.TabIndex = 62;
+			this.keyPRINTx.Tag = "97-14";
+			// 
+			// keyENG
+			// 
+			this.keyENG.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyENG.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyENG.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyENG.FGWidth = 72;
+			this.keyENG.FText = "REG";
+			this.keyENG.GText = "";
+			this.keyENG.HText = "";
+			this.keyENG.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyENG.Location = new System.Drawing.Point(608, 18);
+			this.keyENG.MainBackColor = System.Drawing.Color.Olive;
+			this.keyENG.MainForeColor = System.Drawing.Color.White;
+			this.keyENG.MainHeight = 36;
+			this.keyENG.MainText = "ENG";
+			this.keyENG.MainWidth = 72;
+			this.keyENG.Name = "keyENG";
+			this.keyENG.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyENG.Size = new System.Drawing.Size(72, 63);
+			this.keyENG.TabIndex = 61;
+			this.keyENG.Tag = "97-13";
+			// 
+			// keySCI
+			// 
+			this.keySCI.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keySCI.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySCI.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySCI.FGWidth = 72;
+			this.keySCI.FText = "PRGM";
+			this.keySCI.GText = "";
+			this.keySCI.HText = "";
+			this.keySCI.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySCI.Location = new System.Drawing.Point(520, 18);
+			this.keySCI.MainBackColor = System.Drawing.Color.Olive;
+			this.keySCI.MainForeColor = System.Drawing.Color.White;
+			this.keySCI.MainHeight = 36;
+			this.keySCI.MainText = "SCI";
+			this.keySCI.MainWidth = 72;
+			this.keySCI.Name = "keySCI";
+			this.keySCI.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySCI.Size = new System.Drawing.Size(72, 63);
+			this.keySCI.TabIndex = 60;
+			this.keySCI.Tag = "97-12";
+			// 
+			// keyCHS
+			// 
+			this.keyCHS.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyCHS.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyCHS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyCHS.FGWidth = 72;
+			this.keyCHS.FText = "RAD";
+			this.keyCHS.GText = "";
+			this.keyCHS.HText = "";
+			this.keyCHS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyCHS.Location = new System.Drawing.Point(608, 89);
+			this.keyCHS.MainBackColor = System.Drawing.Color.Olive;
+			this.keyCHS.MainForeColor = System.Drawing.Color.White;
+			this.keyCHS.MainHeight = 36;
+			this.keyCHS.MainText = "CHS";
+			this.keyCHS.MainWidth = 72;
+			this.keyCHS.Name = "keyCHS";
+			this.keyCHS.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyCHS.Size = new System.Drawing.Size(72, 63);
+			this.keyCHS.TabIndex = 59;
+			this.keyCHS.Tag = "97-22";
+			// 
+			// keyFIX
+			// 
+			this.keyFIX.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyFIX.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyFIX.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyFIX.FGWidth = 72;
+			this.keyFIX.FText = "SPACE";
+			this.keyFIX.GText = "";
+			this.keyFIX.HText = "";
+			this.keyFIX.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyFIX.Location = new System.Drawing.Point(432, 18);
+			this.keyFIX.MainBackColor = System.Drawing.Color.Olive;
+			this.keyFIX.MainForeColor = System.Drawing.Color.White;
+			this.keyFIX.MainHeight = 36;
+			this.keyFIX.MainText = "FIX";
+			this.keyFIX.MainWidth = 72;
+			this.keyFIX.Name = "keyFIX";
+			this.keyFIX.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyFIX.Size = new System.Drawing.Size(72, 63);
+			this.keyFIX.TabIndex = 58;
+			this.keyFIX.Tag = "97-11";
+			// 
+			// keyENTER
+			// 
+			this.keyENTER.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyENTER.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyENTER.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyENTER.FGWidth = 160;
+			this.keyENTER.FText = "DEG";
+			this.keyENTER.GText = "";
+			this.keyENTER.HText = "";
+			this.keyENTER.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyENTER.Location = new System.Drawing.Point(432, 89);
+			this.keyENTER.MainBackColor = System.Drawing.Color.Olive;
+			this.keyENTER.MainForeColor = System.Drawing.Color.White;
+			this.keyENTER.MainHeight = 36;
+			this.keyENTER.MainText = "ENTER ↑";
+			this.keyENTER.MainWidth = 160;
+			this.keyENTER.Name = "keyENTER";
+			this.keyENTER.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyENTER.Size = new System.Drawing.Size(160, 63);
+			this.keyENTER.TabIndex = 57;
+			this.keyENTER.Tag = "97-21";
+			// 
+			// keyEEX
+			// 
+			this.keyEEX.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyEEX.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyEEX.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyEEX.FGWidth = 72;
+			this.keyEEX.FText = "GRD";
+			this.keyEEX.GText = "";
+			this.keyEEX.HText = "";
+			this.keyEEX.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyEEX.Location = new System.Drawing.Point(696, 89);
+			this.keyEEX.MainBackColor = System.Drawing.Color.Olive;
+			this.keyEEX.MainForeColor = System.Drawing.Color.White;
+			this.keyEEX.MainHeight = 36;
+			this.keyEEX.MainText = "EEX";
+			this.keyEEX.MainWidth = 72;
+			this.keyEEX.Name = "keyEEX";
+			this.keyEEX.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyEEX.Size = new System.Drawing.Size(72, 63);
+			this.keyEEX.TabIndex = 56;
+			this.keyEEX.Tag = "97-23";
+			// 
+			// keyPlus
+			// 
+			this.keyPlus.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyPlus.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyPlus.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyPlus.FGWidth = 72;
+			this.keyPlus.FText = "H.MS+";
+			this.keyPlus.GText = "";
+			this.keyPlus.HText = "";
+			this.keyPlus.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyPlus.Location = new System.Drawing.Point(784, 302);
+			this.keyPlus.MainBackColor = System.Drawing.Color.Olive;
+			this.keyPlus.MainForeColor = System.Drawing.Color.White;
+			this.keyPlus.MainHeight = 106;
+			this.keyPlus.MainText = "+";
+			this.keyPlus.MainWidth = 72;
+			this.keyPlus.Name = "keyPlus";
+			this.keyPlus.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyPlus.Size = new System.Drawing.Size(72, 133);
+			this.keyPlus.TabIndex = 55;
+			this.keyPlus.Tag = "97-55";
+			// 
+			// keyDSP
+			// 
+			this.keyDSP.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyDSP.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyDSP.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyDSP.FGWidth = 72;
+			this.keyDSP.FText = "LAST x";
+			this.keyDSP.GText = "";
+			this.keyDSP.HText = "";
+			this.keyDSP.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyDSP.Location = new System.Drawing.Point(696, 372);
+			this.keyDSP.MainBackColor = System.Drawing.Color.LightYellow;
+			this.keyDSP.MainForeColor = System.Drawing.Color.Black;
+			this.keyDSP.MainHeight = 36;
+			this.keyDSP.MainText = "DSP";
+			this.keyDSP.MainWidth = 72;
+			this.keyDSP.Name = "keyDSP";
+			this.keyDSP.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyDSP.Size = new System.Drawing.Size(72, 63);
+			this.keyDSP.TabIndex = 54;
+			this.keyDSP.Tag = "97-63";
+			// 
+			// keyPeriod
+			// 
+			this.keyPeriod.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyPeriod.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyPeriod.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyPeriod.FGWidth = 72;
+			this.keyPeriod.FText = "MERGE";
+			this.keyPeriod.GText = "";
+			this.keyPeriod.HText = "";
+			this.keyPeriod.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyPeriod.Location = new System.Drawing.Point(608, 372);
+			this.keyPeriod.MainBackColor = System.Drawing.Color.LightYellow;
+			this.keyPeriod.MainForeColor = System.Drawing.Color.Black;
+			this.keyPeriod.MainHeight = 36;
+			this.keyPeriod.MainText = " ・";
+			this.keyPeriod.MainWidth = 72;
+			this.keyPeriod.Name = "keyPeriod";
+			this.keyPeriod.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyPeriod.Size = new System.Drawing.Size(72, 63);
+			this.keyPeriod.TabIndex = 53;
+			this.keyPeriod.Tag = "97-62";
+			// 
+			// keyMult
+			// 
+			this.keyMult.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyMult.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyMult.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyMult.FGWidth = 72;
+			this.keyMult.FText = "x≤y?";
+			this.keyMult.GText = "";
+			this.keyMult.HText = "";
+			this.keyMult.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyMult.Location = new System.Drawing.Point(784, 160);
+			this.keyMult.MainBackColor = System.Drawing.Color.Olive;
+			this.keyMult.MainForeColor = System.Drawing.Color.White;
+			this.keyMult.MainHeight = 36;
+			this.keyMult.MainText = "×";
+			this.keyMult.MainWidth = 72;
+			this.keyMult.Name = "keyMult";
+			this.keyMult.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyMult.Size = new System.Drawing.Size(72, 63);
+			this.keyMult.TabIndex = 52;
+			this.keyMult.Tag = "97-35";
+			// 
+			// keySub
+			// 
+			this.keySub.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keySub.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySub.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySub.FGWidth = 72;
+			this.keySub.FText = "x<0?";
+			this.keySub.GText = "";
+			this.keySub.HText = "";
+			this.keySub.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySub.Location = new System.Drawing.Point(784, 231);
+			this.keySub.MainBackColor = System.Drawing.Color.Olive;
+			this.keySub.MainForeColor = System.Drawing.Color.White;
+			this.keySub.MainHeight = 36;
+			this.keySub.MainText = "-";
+			this.keySub.MainWidth = 72;
+			this.keySub.Name = "keySub";
+			this.keySub.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySub.Size = new System.Drawing.Size(72, 63);
+			this.keySub.TabIndex = 51;
+			this.keySub.Tag = "97-45";
+			// 
+			// keyDiv
+			// 
+			this.keyDiv.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyDiv.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyDiv.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyDiv.FGWidth = 72;
+			this.keyDiv.FText = "π";
+			this.keyDiv.GText = "";
+			this.keyDiv.HText = "";
+			this.keyDiv.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyDiv.Location = new System.Drawing.Point(784, 89);
+			this.keyDiv.MainBackColor = System.Drawing.Color.Olive;
+			this.keyDiv.MainForeColor = System.Drawing.Color.White;
+			this.keyDiv.MainHeight = 36;
+			this.keyDiv.MainText = "÷";
+			this.keyDiv.MainWidth = 72;
+			this.keyDiv.Name = "keyDiv";
+			this.keyDiv.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyDiv.Size = new System.Drawing.Size(72, 63);
+			this.keyDiv.TabIndex = 50;
+			this.keyDiv.Tag = "97-24";
 			// 
 			// key6
 			// 
+			this.key6.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
 			this.key6.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.key6.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key6.FGWidth = 48;
-			this.key6.FText = "DSZ";
+			this.key6.FGWidth = 72;
+			this.key6.FText = "x>0?";
 			this.key6.GText = "";
 			this.key6.HText = "";
 			this.key6.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key6.Location = new System.Drawing.Point(256, 216);
-			this.key6.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key6.MainForeColor = System.Drawing.Color.White;
-			this.key6.MainHeight = 24;
-			this.key6.MainText = "BST";
-			this.key6.MainWidth = 48;
+			this.key6.Location = new System.Drawing.Point(696, 231);
+			this.key6.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key6.MainForeColor = System.Drawing.Color.Black;
+			this.key6.MainHeight = 36;
+			this.key6.MainText = "6";
+			this.key6.MainWidth = 72;
 			this.key6.Name = "key6";
 			this.key6.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key6.Size = new System.Drawing.Size(48, 51);
-			this.key6.TabIndex = 18;
+			this.key6.Size = new System.Drawing.Size(72, 63);
+			this.key6.TabIndex = 49;
+			this.key6.Tag = "97-44";
+			// 
+			// key3
+			// 
+			this.key3.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key3.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key3.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key3.FGWidth = 72;
+			this.key3.FText = "CL PGRM";
+			this.key3.GText = "";
+			this.key3.HText = "";
+			this.key3.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key3.Location = new System.Drawing.Point(696, 302);
+			this.key3.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key3.MainForeColor = System.Drawing.Color.Black;
+			this.key3.MainHeight = 36;
+			this.key3.MainText = "3";
+			this.key3.MainWidth = 72;
+			this.key3.Name = "key3";
+			this.key3.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key3.Size = new System.Drawing.Size(72, 63);
+			this.key3.TabIndex = 48;
+			this.key3.Tag = "97-54";
 			// 
 			// key9
 			// 
+			this.key9.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
 			this.key9.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.key9.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.key9.FGWidth = 48;
-			this.key9.FText = "STF";
+			this.key9.FGWidth = 72;
+			this.key9.FText = "x>y?";
 			this.key9.GText = "";
 			this.key9.HText = "";
 			this.key9.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key9.Location = new System.Drawing.Point(32, 216);
-			this.key9.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.key9.MainForeColor = System.Drawing.Color.White;
-			this.key9.MainHeight = 24;
-			this.key9.MainText = "LBL";
-			this.key9.MainWidth = 48;
+			this.key9.Location = new System.Drawing.Point(696, 160);
+			this.key9.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key9.MainForeColor = System.Drawing.Color.Black;
+			this.key9.MainHeight = 36;
+			this.key9.MainText = "9";
+			this.key9.MainWidth = 72;
 			this.key9.Name = "key9";
 			this.key9.Shortcuts = new System.Windows.Forms.Keys[0];
-			this.key9.Size = new System.Drawing.Size(48, 51);
-			this.key9.TabIndex = 13;
+			this.key9.Size = new System.Drawing.Size(72, 63);
+			this.key9.TabIndex = 47;
+			this.key9.Tag = "97-34";
+			// 
+			// key5
+			// 
+			this.key5.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key5.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key5.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key5.FGWidth = 72;
+			this.key5.FText = "x=0?";
+			this.key5.GText = "";
+			this.key5.HText = "";
+			this.key5.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key5.Location = new System.Drawing.Point(608, 231);
+			this.key5.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key5.MainForeColor = System.Drawing.Color.Black;
+			this.key5.MainHeight = 36;
+			this.key5.MainText = "5";
+			this.key5.MainWidth = 72;
+			this.key5.Name = "key5";
+			this.key5.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key5.Size = new System.Drawing.Size(72, 63);
+			this.key5.TabIndex = 46;
+			this.key5.Tag = "97-43";
+			// 
+			// key2
+			// 
+			this.key2.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key2.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key2.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key2.FGWidth = 72;
+			this.key2.FText = "CL REG";
+			this.key2.GText = "";
+			this.key2.HText = "";
+			this.key2.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key2.Location = new System.Drawing.Point(608, 302);
+			this.key2.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key2.MainForeColor = System.Drawing.Color.Black;
+			this.key2.MainHeight = 36;
+			this.key2.MainText = "2";
+			this.key2.MainWidth = 72;
+			this.key2.Name = "key2";
+			this.key2.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key2.Size = new System.Drawing.Size(72, 63);
+			this.key2.TabIndex = 45;
+			this.key2.Tag = "97-53";
+			// 
+			// key8
+			// 
+			this.key8.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key8.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key8.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key8.FGWidth = 72;
+			this.key8.FText = "x=y?";
+			this.key8.GText = "";
+			this.key8.HText = "";
+			this.key8.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key8.Location = new System.Drawing.Point(608, 160);
+			this.key8.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key8.MainForeColor = System.Drawing.Color.Black;
+			this.key8.MainHeight = 36;
+			this.key8.MainText = "8";
+			this.key8.MainWidth = 72;
+			this.key8.Name = "key8";
+			this.key8.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key8.Size = new System.Drawing.Size(72, 63);
+			this.key8.TabIndex = 44;
+			this.key8.Tag = "97-33";
+			// 
+			// key4
+			// 
+			this.key4.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key4.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key4.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key4.FGWidth = 72;
+			this.key4.FText = "x≠0?";
+			this.key4.GText = "";
+			this.key4.HText = "";
+			this.key4.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key4.Location = new System.Drawing.Point(520, 231);
+			this.key4.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key4.MainForeColor = System.Drawing.Color.Black;
+			this.key4.MainHeight = 36;
+			this.key4.MainText = "4";
+			this.key4.MainWidth = 72;
+			this.key4.Name = "key4";
+			this.key4.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key4.Size = new System.Drawing.Size(72, 63);
+			this.key4.TabIndex = 43;
+			this.key4.Tag = "97-42";
+			// 
+			// key1
+			// 
+			this.key1.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key1.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key1.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key1.FGWidth = 72;
+			this.key1.FText = "DEL";
+			this.key1.GText = "";
+			this.key1.HText = "";
+			this.key1.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key1.Location = new System.Drawing.Point(520, 302);
+			this.key1.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key1.MainForeColor = System.Drawing.Color.Black;
+			this.key1.MainHeight = 36;
+			this.key1.MainText = "1";
+			this.key1.MainWidth = 72;
+			this.key1.Name = "key1";
+			this.key1.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key1.Size = new System.Drawing.Size(72, 63);
+			this.key1.TabIndex = 42;
+			this.key1.Tag = "97-52";
+			// 
+			// key7
+			// 
+			this.key7.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key7.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key7.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key7.FGWidth = 72;
+			this.key7.FText = "x≠y?";
+			this.key7.GText = "";
+			this.key7.HText = "";
+			this.key7.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key7.Location = new System.Drawing.Point(520, 160);
+			this.key7.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key7.MainForeColor = System.Drawing.Color.Black;
+			this.key7.MainHeight = 36;
+			this.key7.MainText = "7";
+			this.key7.MainWidth = 72;
+			this.key7.Name = "key7";
+			this.key7.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key7.Size = new System.Drawing.Size(72, 63);
+			this.key7.TabIndex = 41;
+			this.key7.Tag = "97-32";
+			// 
+			// keyXExchangeY
+			// 
+			this.keyXExchangeY.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyXExchangeY.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyXExchangeY.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyXExchangeY.FGWidth = 72;
+			this.keyXExchangeY.FText = "x⇄I";
+			this.keyXExchangeY.GText = "";
+			this.keyXExchangeY.HText = "";
+			this.keyXExchangeY.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyXExchangeY.Location = new System.Drawing.Point(432, 231);
+			this.keyXExchangeY.MainBackColor = System.Drawing.Color.Olive;
+			this.keyXExchangeY.MainForeColor = System.Drawing.Color.White;
+			this.keyXExchangeY.MainHeight = 36;
+			this.keyXExchangeY.MainText = "x⇄y";
+			this.keyXExchangeY.MainWidth = 72;
+			this.keyXExchangeY.Name = "keyXExchangeY";
+			this.keyXExchangeY.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyXExchangeY.Size = new System.Drawing.Size(72, 63);
+			this.keyXExchangeY.TabIndex = 40;
+			this.keyXExchangeY.Tag = "97-41";
+			// 
+			// keyCLx
+			// 
+			this.keyCLx.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyCLx.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyCLx.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyCLx.FGWidth = 72;
+			this.keyCLx.FText = "P⇄S";
+			this.keyCLx.GText = "";
+			this.keyCLx.HText = "";
+			this.keyCLx.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyCLx.Location = new System.Drawing.Point(432, 302);
+			this.keyCLx.MainBackColor = System.Drawing.Color.Olive;
+			this.keyCLx.MainForeColor = System.Drawing.Color.White;
+			this.keyCLx.MainHeight = 36;
+			this.keyCLx.MainText = "CL x";
+			this.keyCLx.MainWidth = 72;
+			this.keyCLx.Name = "keyCLx";
+			this.keyCLx.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyCLx.Size = new System.Drawing.Size(72, 63);
+			this.keyCLx.TabIndex = 39;
+			this.keyCLx.Tag = "97-51";
+			// 
+			// keyRDown
+			// 
+			this.keyRDown.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.keyRDown.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRDown.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyRDown.FGWidth = 72;
+			this.keyRDown.FText = "R↑";
+			this.keyRDown.GText = "";
+			this.keyRDown.HText = "";
+			this.keyRDown.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyRDown.Location = new System.Drawing.Point(432, 160);
+			this.keyRDown.MainBackColor = System.Drawing.Color.Olive;
+			this.keyRDown.MainForeColor = System.Drawing.Color.White;
+			this.keyRDown.MainHeight = 36;
+			this.keyRDown.MainText = "R↓";
+			this.keyRDown.MainWidth = 72;
+			this.keyRDown.Name = "keyRDown";
+			this.keyRDown.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyRDown.Size = new System.Drawing.Size(72, 63);
+			this.keyRDown.TabIndex = 38;
+			this.keyRDown.Tag = "97-31";
+			// 
+			// key0
+			// 
+			this.key0.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(80)), ((System.Byte)(55)), ((System.Byte)(30)));
+			this.key0.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.key0.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.key0.FGWidth = 160;
+			this.key0.FText = "WRITE DATA";
+			this.key0.GText = "";
+			this.key0.HText = "";
+			this.key0.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.key0.Location = new System.Drawing.Point(432, 372);
+			this.key0.MainBackColor = System.Drawing.Color.LightYellow;
+			this.key0.MainForeColor = System.Drawing.Color.Black;
+			this.key0.MainHeight = 36;
+			this.key0.MainText = "0";
+			this.key0.MainWidth = 160;
+			this.key0.Name = "key0";
+			this.key0.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key0.Size = new System.Drawing.Size(160, 63);
+			this.key0.TabIndex = 37;
+			this.key0.Tag = "97-61";
+			// 
+			// keySqrt
+			// 
+			this.keySqrt.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySqrt.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySqrt.FGWidth = 48;
+			this.keySqrt.FText = "S";
+			this.keySqrt.GText = "";
+			this.keySqrt.HText = "";
+			this.keySqrt.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySqrt.Location = new System.Drawing.Point(200, 384);
+			this.keySqrt.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySqrt.MainForeColor = System.Drawing.Color.White;
+			this.keySqrt.MainHeight = 24;
+			this.keySqrt.MainText = "√x̅";
+			this.keySqrt.MainWidth = 48;
+			this.keySqrt.Name = "keySqrt";
+			this.keySqrt.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySqrt.Size = new System.Drawing.Size(48, 51);
+			this.keySqrt.TabIndex = 34;
+			this.keySqrt.Tag = "9754";
+			// 
+			// keyReciprocal
+			// 
+			this.keyReciprocal.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyReciprocal.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyReciprocal.FGWidth = 48;
+			this.keyReciprocal.FText = "N!";
+			this.keyReciprocal.GText = "";
+			this.keyReciprocal.HText = "";
+			this.keyReciprocal.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyReciprocal.Location = new System.Drawing.Point(88, 384);
+			this.keyReciprocal.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyReciprocal.MainForeColor = System.Drawing.Color.White;
+			this.keyReciprocal.MainHeight = 24;
+			this.keyReciprocal.MainText = "1/x";
+			this.keyReciprocal.MainWidth = 48;
+			this.keyReciprocal.Name = "keyReciprocal";
+			this.keyReciprocal.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyReciprocal.Size = new System.Drawing.Size(48, 51);
+			this.keyReciprocal.TabIndex = 32;
+			this.keyReciprocal.Tag = "9752";
+			// 
+			// keyΣ
+			// 
+			this.keyΣ.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyΣ.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyΣ.FGWidth = 48;
+			this.keyΣ.FText = "Σ-";
+			this.keyΣ.GText = "";
+			this.keyΣ.HText = "";
+			this.keyΣ.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyΣ.Location = new System.Drawing.Point(312, 384);
+			this.keyΣ.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyΣ.MainForeColor = System.Drawing.Color.White;
+			this.keyΣ.MainHeight = 24;
+			this.keyΣ.MainText = "Σ+";
+			this.keyΣ.MainWidth = 48;
+			this.keyΣ.Name = "keyΣ";
+			this.keyΣ.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.keyΣ.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyΣ.Size = new System.Drawing.Size(48, 51);
+			this.keyΣ.TabIndex = 35;
+			this.keyΣ.Tag = "9756";
+			// 
+			// keySquare
+			// 
+			this.keySquare.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySquare.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySquare.FGWidth = 48;
+			this.keySquare.FText = "x̅";
+			this.keySquare.GText = "";
+			this.keySquare.HText = "";
+			this.keySquare.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySquare.Location = new System.Drawing.Point(144, 384);
+			this.keySquare.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySquare.MainForeColor = System.Drawing.Color.White;
+			this.keySquare.MainHeight = 24;
+			this.keySquare.MainText = "x²";
+			this.keySquare.MainWidth = 48;
+			this.keySquare.Name = "keySquare";
+			this.keySquare.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySquare.Size = new System.Drawing.Size(48, 51);
+			this.keySquare.TabIndex = 33;
+			this.keySquare.Tag = "9753";
+			// 
+			// keyPercent
+			// 
+			this.keyPercent.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyPercent.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyPercent.FGWidth = 48;
+			this.keyPercent.FText = "%CH";
+			this.keyPercent.GText = "";
+			this.keyPercent.HText = "";
+			this.keyPercent.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyPercent.Location = new System.Drawing.Point(256, 384);
+			this.keyPercent.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyPercent.MainForeColor = System.Drawing.Color.White;
+			this.keyPercent.MainHeight = 24;
+			this.keyPercent.MainText = "%";
+			this.keyPercent.MainWidth = 48;
+			this.keyPercent.Name = "keyPercent";
+			this.keyPercent.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyPercent.Size = new System.Drawing.Size(48, 51);
+			this.keyPercent.TabIndex = 36;
+			this.keyPercent.Tag = "9755";
+			// 
+			// keyRS
+			// 
+			this.keyRS.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyRS.FGWidth = 48;
+			this.keyRS.FText = "PAUSE";
+			this.keyRS.GText = "";
+			this.keyRS.HText = "";
+			this.keyRS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyRS.Location = new System.Drawing.Point(32, 384);
+			this.keyRS.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRS.MainForeColor = System.Drawing.Color.White;
+			this.keyRS.MainHeight = 24;
+			this.keyRS.MainText = "R/S";
+			this.keyRS.MainWidth = 48;
+			this.keyRS.Name = "keyRS";
+			this.keyRS.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyRS.Size = new System.Drawing.Size(48, 51);
+			this.keyRS.TabIndex = 31;
+			this.keyRS.Tag = "9751";
+			// 
+			// keyToRectangular
+			// 
+			this.keyToRectangular.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyToRectangular.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyToRectangular.FGWidth = 48;
+			this.keyToRectangular.FText = "FRAC";
+			this.keyToRectangular.GText = "";
+			this.keyToRectangular.HText = "";
+			this.keyToRectangular.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyToRectangular.Location = new System.Drawing.Point(200, 328);
+			this.keyToRectangular.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyToRectangular.MainForeColor = System.Drawing.Color.White;
+			this.keyToRectangular.MainHeight = 24;
+			this.keyToRectangular.MainText = "→R";
+			this.keyToRectangular.MainWidth = 48;
+			this.keyToRectangular.Name = "keyToRectangular";
+			this.keyToRectangular.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyToRectangular.Size = new System.Drawing.Size(48, 51);
+			this.keyToRectangular.TabIndex = 28;
+			this.keyToRectangular.Tag = "9744";
+			// 
+			// keyCOS
+			// 
+			this.keyCOS.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyCOS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyCOS.FGWidth = 48;
+			this.keyCOS.FText = "COS⁻¹";
+			this.keyCOS.GText = "";
+			this.keyCOS.HText = "";
+			this.keyCOS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyCOS.Location = new System.Drawing.Point(88, 328);
+			this.keyCOS.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyCOS.MainForeColor = System.Drawing.Color.White;
+			this.keyCOS.MainHeight = 24;
+			this.keyCOS.MainText = "COS";
+			this.keyCOS.MainWidth = 48;
+			this.keyCOS.Name = "keyCOS";
+			this.keyCOS.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyCOS.Size = new System.Drawing.Size(48, 51);
+			this.keyCOS.TabIndex = 26;
+			this.keyCOS.Tag = "9742";
+			// 
+			// keyI
+			// 
+			this.keyI.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyI.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyI.FGWidth = 48;
+			this.keyI.FText = "R→D";
+			this.keyI.GText = "";
+			this.keyI.HText = "";
+			this.keyI.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyI.Location = new System.Drawing.Point(312, 328);
+			this.keyI.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyI.MainForeColor = System.Drawing.Color.White;
+			this.keyI.MainHeight = 24;
+			this.keyI.MainText = "I";
+			this.keyI.MainWidth = 48;
+			this.keyI.Name = "keyI";
+			this.keyI.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyI.Size = new System.Drawing.Size(48, 51);
+			this.keyI.TabIndex = 29;
+			this.keyI.Tag = "9746";
+			// 
+			// keyTAN
+			// 
+			this.keyTAN.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyTAN.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyTAN.FGWidth = 48;
+			this.keyTAN.FText = "TAN⁻¹";
+			this.keyTAN.GText = "";
+			this.keyTAN.HText = "";
+			this.keyTAN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyTAN.Location = new System.Drawing.Point(144, 328);
+			this.keyTAN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyTAN.MainForeColor = System.Drawing.Color.White;
+			this.keyTAN.MainHeight = 24;
+			this.keyTAN.MainText = "TAN";
+			this.keyTAN.MainWidth = 48;
+			this.keyTAN.Name = "keyTAN";
+			this.keyTAN.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyTAN.Size = new System.Drawing.Size(48, 51);
+			this.keyTAN.TabIndex = 27;
+			this.keyTAN.Tag = "9743";
+			// 
+			// keySubI
+			// 
+			this.keySubI.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySubI.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySubI.FGWidth = 48;
+			this.keySubI.FText = "D→R";
+			this.keySubI.GText = "";
+			this.keySubI.HText = "";
+			this.keySubI.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySubI.Location = new System.Drawing.Point(256, 328);
+			this.keySubI.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySubI.MainForeColor = System.Drawing.Color.White;
+			this.keySubI.MainHeight = 24;
+			this.keySubI.MainText = "(i)";
+			this.keySubI.MainWidth = 48;
+			this.keySubI.Name = "keySubI";
+			this.keySubI.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySubI.Size = new System.Drawing.Size(48, 51);
+			this.keySubI.TabIndex = 30;
+			this.keySubI.Tag = "9745";
+			// 
+			// keySIN
+			// 
+			this.keySIN.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySIN.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySIN.FGWidth = 48;
+			this.keySIN.FText = "SIN⁻¹";
+			this.keySIN.GText = "";
+			this.keySIN.HText = "";
+			this.keySIN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySIN.Location = new System.Drawing.Point(32, 328);
+			this.keySIN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySIN.MainForeColor = System.Drawing.Color.White;
+			this.keySIN.MainHeight = 24;
+			this.keySIN.MainText = "SIN";
+			this.keySIN.MainWidth = 48;
+			this.keySIN.Name = "keySIN";
+			this.keySIN.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySIN.Size = new System.Drawing.Size(48, 51);
+			this.keySIN.TabIndex = 25;
+			this.keySIN.Tag = "9741";
+			// 
+			// keyToPolar
+			// 
+			this.keyToPolar.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyToPolar.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyToPolar.FGWidth = 48;
+			this.keyToPolar.FText = "INT";
+			this.keyToPolar.GText = "";
+			this.keyToPolar.HText = "";
+			this.keyToPolar.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyToPolar.Location = new System.Drawing.Point(200, 272);
+			this.keyToPolar.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyToPolar.MainForeColor = System.Drawing.Color.White;
+			this.keyToPolar.MainHeight = 24;
+			this.keyToPolar.MainText = "→P";
+			this.keyToPolar.MainWidth = 48;
+			this.keyToPolar.Name = "keyToPolar";
+			this.keyToPolar.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyToPolar.Size = new System.Drawing.Size(48, 51);
+			this.keyToPolar.TabIndex = 22;
+			this.keyToPolar.Tag = "9734";
+			// 
+			// keyLN
+			// 
+			this.keyLN.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyLN.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyLN.FGWidth = 48;
+			this.keyLN.FText = "LOG";
+			this.keyLN.GText = "";
+			this.keyLN.HText = "";
+			this.keyLN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyLN.Location = new System.Drawing.Point(88, 272);
+			this.keyLN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyLN.MainForeColor = System.Drawing.Color.White;
+			this.keyLN.MainHeight = 24;
+			this.keyLN.MainText = "LN";
+			this.keyLN.MainWidth = 48;
+			this.keyLN.Name = "keyLN";
+			this.keyLN.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyLN.Size = new System.Drawing.Size(48, 51);
+			this.keyLN.TabIndex = 20;
+			this.keyLN.Tag = "9732";
+			// 
+			// keyRCL
+			// 
+			this.keyRCL.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRCL.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyRCL.FGWidth = 48;
+			this.keyRCL.FText = "H.MS→";
+			this.keyRCL.GText = "";
+			this.keyRCL.HText = "";
+			this.keyRCL.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyRCL.Location = new System.Drawing.Point(312, 272);
+			this.keyRCL.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRCL.MainForeColor = System.Drawing.Color.White;
+			this.keyRCL.MainHeight = 24;
+			this.keyRCL.MainText = "RCL";
+			this.keyRCL.MainWidth = 48;
+			this.keyRCL.Name = "keyRCL";
+			this.keyRCL.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyRCL.Size = new System.Drawing.Size(48, 51);
+			this.keyRCL.TabIndex = 23;
+			this.keyRCL.Tag = "9736";
+			// 
+			// keyEToTheXth
+			// 
+			this.keyEToTheXth.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyEToTheXth.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyEToTheXth.FGWidth = 48;
+			this.keyEToTheXth.FText = "10 ̽";
+			this.keyEToTheXth.GText = "";
+			this.keyEToTheXth.HText = "";
+			this.keyEToTheXth.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyEToTheXth.Location = new System.Drawing.Point(144, 272);
+			this.keyEToTheXth.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyEToTheXth.MainForeColor = System.Drawing.Color.White;
+			this.keyEToTheXth.MainHeight = 24;
+			this.keyEToTheXth.MainText = "e ̽";
+			this.keyEToTheXth.MainWidth = 48;
+			this.keyEToTheXth.Name = "keyEToTheXth";
+			this.keyEToTheXth.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyEToTheXth.Size = new System.Drawing.Size(48, 51);
+			this.keyEToTheXth.TabIndex = 21;
+			this.keyEToTheXth.Tag = "9733";
+			// 
+			// keySTO
+			// 
+			this.keySTO.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySTO.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySTO.FGWidth = 48;
+			this.keySTO.FText = "→H.MS";
+			this.keySTO.GText = "";
+			this.keySTO.HText = "";
+			this.keySTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySTO.Location = new System.Drawing.Point(256, 272);
+			this.keySTO.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySTO.MainForeColor = System.Drawing.Color.White;
+			this.keySTO.MainHeight = 24;
+			this.keySTO.MainText = "STO";
+			this.keySTO.MainWidth = 48;
+			this.keySTO.Name = "keySTO";
+			this.keySTO.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySTO.Size = new System.Drawing.Size(48, 51);
+			this.keySTO.TabIndex = 24;
+			this.keySTO.Tag = "9735";
+			// 
+			// keyYToTheXth
+			// 
+			this.keyYToTheXth.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyYToTheXth.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyYToTheXth.FGWidth = 48;
+			this.keyYToTheXth.FText = "ABS";
+			this.keyYToTheXth.GText = "";
+			this.keyYToTheXth.HText = "";
+			this.keyYToTheXth.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyYToTheXth.Location = new System.Drawing.Point(32, 272);
+			this.keyYToTheXth.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyYToTheXth.MainForeColor = System.Drawing.Color.White;
+			this.keyYToTheXth.MainHeight = 24;
+			this.keyYToTheXth.MainText = "y ̽";
+			this.keyYToTheXth.MainWidth = 48;
+			this.keyYToTheXth.Name = "keyYToTheXth";
+			this.keyYToTheXth.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyYToTheXth.Size = new System.Drawing.Size(48, 51);
+			this.keyYToTheXth.TabIndex = 19;
+			this.keyYToTheXth.Tag = "9731";
+			// 
+			// groupBoxCard
+			// 
+			this.groupBoxCard.Controls.Add(this.cardSlot);
+			this.groupBoxCard.Controls.Add(this.toggleManNorm);
+			this.groupBoxCard.Controls.Add(this.keyE);
+			this.groupBoxCard.Controls.Add(this.toggleOffOn);
+			this.groupBoxCard.Controls.Add(this.togglePrgmRun);
+			this.groupBoxCard.Controls.Add(this.keyB);
+			this.groupBoxCard.Controls.Add(this.keyA);
+			this.groupBoxCard.Controls.Add(this.labelTrace);
+			this.groupBoxCard.Controls.Add(this.keyD);
+			this.groupBoxCard.Controls.Add(this.keyF);
+			this.groupBoxCard.Controls.Add(this.keyC);
+			this.groupBoxCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.groupBoxCard.Location = new System.Drawing.Point(16, 18);
+			this.groupBoxCard.Name = "groupBoxCard";
+			this.groupBoxCard.Size = new System.Drawing.Size(352, 194);
+			this.groupBoxCard.TabIndex = 12;
+			this.groupBoxCard.TabStop = false;
+			// 
+			// cardSlot
+			// 
+			this.cardSlot.Location = new System.Drawing.Point(8, 80);
+			this.cardSlot.Margin = 16;
+			this.cardSlot.Name = "cardSlot";
+			this.cardSlot.RichText = false;
+			this.cardSlot.Size = new System.Drawing.Size(288, 50);
+			this.cardSlot.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
+			this.cardSlot.TabIndex = 12;
+			this.cardSlot.TextBoxWidth = 48;
+			this.cardSlot.Title = "<TITLE>";
+			this.cardSlot.UnloadedTextA = "1/x";
+			this.cardSlot.UnloadedTextB = "√x̅";
+			this.cardSlot.UnloadedTextC = "yˣ";
+			this.cardSlot.UnloadedTextD = "R↓";
+			this.cardSlot.UnloadedTextE = "x⇄y";
+			// 
+			// toggleManNorm
+			// 
+			this.toggleManNorm.LeftText = "MAN";
+			this.toggleManNorm.LeftWidth = 60;
+			this.toggleManNorm.Location = new System.Drawing.Point(184, 24);
+			this.toggleManNorm.MainWidth = 60;
+			this.toggleManNorm.Name = "toggleManNorm";
+			this.toggleManNorm.Position = Mockingbird.HP.Control_Library.TogglePosition.Left;
+			this.toggleManNorm.RightText = "NORM";
+			this.toggleManNorm.RightWidth = 60;
+			this.toggleManNorm.Size = new System.Drawing.Size(160, 16);
+			this.toggleManNorm.TabIndex = 1;
+			this.toggleManNorm.Load += new System.EventHandler(this.toggle1_Load);
+			// 
+			// keyE
+			// 
+			this.keyE.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyE.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyE.FGWidth = 48;
+			this.keyE.FText = "e";
+			this.keyE.GText = "";
+			this.keyE.HText = "";
+			this.keyE.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyE.Location = new System.Drawing.Point(240, 142);
+			this.keyE.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyE.MainForeColor = System.Drawing.Color.White;
+			this.keyE.MainHeight = 24;
+			this.keyE.MainText = "E";
+			this.keyE.MainWidth = 48;
+			this.keyE.Name = "keyE";
+			this.keyE.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyE.Size = new System.Drawing.Size(48, 51);
+			this.keyE.TabIndex = 11;
+			this.keyE.Tag = "9715";
+			// 
+			// toggleOffOn
+			// 
+			this.toggleOffOn.LeftText = "OFF";
+			this.toggleOffOn.LeftWidth = 60;
+			this.toggleOffOn.Location = new System.Drawing.Point(8, 24);
+			this.toggleOffOn.MainWidth = 60;
+			this.toggleOffOn.Name = "toggleOffOn";
+			this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
+			this.toggleOffOn.RightText = "ON";
+			this.toggleOffOn.RightWidth = 60;
+			this.toggleOffOn.Size = new System.Drawing.Size(144, 16);
+			this.toggleOffOn.TabIndex = 2;
+			// 
+			// togglePrgmRun
+			// 
+			this.togglePrgmRun.LeftText = "PRGM";
+			this.togglePrgmRun.LeftWidth = 60;
+			this.togglePrgmRun.Location = new System.Drawing.Point(184, 48);
+			this.togglePrgmRun.MainWidth = 60;
+			this.togglePrgmRun.Name = "togglePrgmRun";
+			this.togglePrgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
+			this.togglePrgmRun.RightText = "RUN";
+			this.togglePrgmRun.RightWidth = 60;
+			this.togglePrgmRun.Size = new System.Drawing.Size(152, 16);
+			this.togglePrgmRun.TabIndex = 3;
+			// 
+			// keyB
+			// 
+			this.keyB.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyB.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyB.FGWidth = 48;
+			this.keyB.FText = "b";
+			this.keyB.GText = "";
+			this.keyB.HText = "";
+			this.keyB.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyB.Location = new System.Drawing.Point(72, 142);
+			this.keyB.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyB.MainForeColor = System.Drawing.Color.White;
+			this.keyB.MainHeight = 24;
+			this.keyB.MainText = "B";
+			this.keyB.MainWidth = 48;
+			this.keyB.Name = "keyB";
+			this.keyB.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyB.Size = new System.Drawing.Size(48, 51);
+			this.keyB.TabIndex = 6;
+			this.keyB.Tag = "9712";
+			// 
+			// keyA
+			// 
+			this.keyA.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyA.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyA.FGWidth = 48;
+			this.keyA.FText = "a";
+			this.keyA.GText = "";
+			this.keyA.HText = "";
+			this.keyA.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyA.Location = new System.Drawing.Point(16, 142);
+			this.keyA.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyA.MainForeColor = System.Drawing.Color.White;
+			this.keyA.MainHeight = 24;
+			this.keyA.MainText = "A";
+			this.keyA.MainWidth = 48;
+			this.keyA.Name = "keyA";
+			this.keyA.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyA.Size = new System.Drawing.Size(48, 51);
+			this.keyA.TabIndex = 5;
+			this.keyA.Tag = "9711";
+			// 
+			// labelTrace
+			// 
+			this.labelTrace.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.labelTrace.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.labelTrace.ForeColor = System.Drawing.Color.White;
+			this.labelTrace.Location = new System.Drawing.Point(248, 8);
+			this.labelTrace.Name = "labelTrace";
+			this.labelTrace.Size = new System.Drawing.Size(56, 16);
+			this.labelTrace.TabIndex = 4;
+			this.labelTrace.Text = "TRACE";
+			this.labelTrace.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			// 
+			// keyD
+			// 
+			this.keyD.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyD.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyD.FGWidth = 48;
+			this.keyD.FText = "d";
+			this.keyD.GText = "";
+			this.keyD.HText = "";
+			this.keyD.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyD.Location = new System.Drawing.Point(184, 142);
+			this.keyD.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyD.MainForeColor = System.Drawing.Color.White;
+			this.keyD.MainHeight = 24;
+			this.keyD.MainText = "D";
+			this.keyD.MainWidth = 48;
+			this.keyD.Name = "keyD";
+			this.keyD.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyD.Size = new System.Drawing.Size(48, 51);
+			this.keyD.TabIndex = 8;
+			this.keyD.Tag = "9714";
+			// 
+			// keyF
+			// 
+			this.keyF.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyF.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyF.FGWidth = 48;
+			this.keyF.FText = "";
+			this.keyF.GText = "";
+			this.keyF.HText = "";
+			this.keyF.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyF.Location = new System.Drawing.Point(296, 142);
+			this.keyF.MainBackColor = System.Drawing.Color.Gold;
+			this.keyF.MainForeColor = System.Drawing.Color.Black;
+			this.keyF.MainHeight = 24;
+			this.keyF.MainText = "f";
+			this.keyF.MainWidth = 48;
+			this.keyF.Name = "keyF";
+			this.keyF.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyF.Size = new System.Drawing.Size(48, 51);
+			this.keyF.TabIndex = 9;
+			this.keyF.Tag = "9716";
+			// 
+			// keyC
+			// 
+			this.keyC.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyC.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyC.FGWidth = 48;
+			this.keyC.FText = "c";
+			this.keyC.GText = "";
+			this.keyC.HText = "";
+			this.keyC.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyC.Location = new System.Drawing.Point(128, 142);
+			this.keyC.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyC.MainForeColor = System.Drawing.Color.White;
+			this.keyC.MainHeight = 24;
+			this.keyC.MainText = "C";
+			this.keyC.MainWidth = 48;
+			this.keyC.Name = "keyC";
+			this.keyC.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyC.Size = new System.Drawing.Size(48, 51);
+			this.keyC.TabIndex = 7;
+			this.keyC.Tag = "9713";
+			// 
+			// keyRTN
+			// 
+			this.keyRTN.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRTN.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyRTN.FGWidth = 48;
+			this.keyRTN.FText = "RND";
+			this.keyRTN.GText = "";
+			this.keyRTN.HText = "";
+			this.keyRTN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyRTN.Location = new System.Drawing.Point(200, 216);
+			this.keyRTN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyRTN.MainForeColor = System.Drawing.Color.White;
+			this.keyRTN.MainHeight = 24;
+			this.keyRTN.MainText = "RTN";
+			this.keyRTN.MainWidth = 48;
+			this.keyRTN.Name = "keyRTN";
+			this.keyRTN.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyRTN.Size = new System.Drawing.Size(48, 51);
+			this.keyRTN.TabIndex = 16;
+			this.keyRTN.Tag = "9724";
+			// 
+			// keyGTO
+			// 
+			this.keyGTO.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyGTO.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyGTO.FGWidth = 48;
+			this.keyGTO.FText = "CLF";
+			this.keyGTO.GText = "";
+			this.keyGTO.HText = "";
+			this.keyGTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyGTO.Location = new System.Drawing.Point(88, 216);
+			this.keyGTO.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyGTO.MainForeColor = System.Drawing.Color.White;
+			this.keyGTO.MainHeight = 24;
+			this.keyGTO.MainText = "GTO";
+			this.keyGTO.MainWidth = 48;
+			this.keyGTO.Name = "keyGTO";
+			this.keyGTO.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyGTO.Size = new System.Drawing.Size(48, 51);
+			this.keyGTO.TabIndex = 14;
+			this.keyGTO.Tag = "9722";
+			// 
+			// keySST
+			// 
+			this.keySST.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySST.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keySST.FGWidth = 48;
+			this.keySST.FText = "ISZ";
+			this.keySST.GText = "";
+			this.keySST.HText = "";
+			this.keySST.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keySST.Location = new System.Drawing.Point(312, 216);
+			this.keySST.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keySST.MainForeColor = System.Drawing.Color.White;
+			this.keySST.MainHeight = 24;
+			this.keySST.MainText = "SST";
+			this.keySST.MainWidth = 48;
+			this.keySST.Name = "keySST";
+			this.keySST.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySST.Size = new System.Drawing.Size(48, 51);
+			this.keySST.TabIndex = 17;
+			this.keySST.Tag = "9726";
+			// 
+			// keyGSB
+			// 
+			this.keyGSB.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyGSB.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyGSB.FGWidth = 48;
+			this.keyGSB.FText = "F?";
+			this.keyGSB.GText = "";
+			this.keyGSB.HText = "";
+			this.keyGSB.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyGSB.Location = new System.Drawing.Point(144, 216);
+			this.keyGSB.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyGSB.MainForeColor = System.Drawing.Color.White;
+			this.keyGSB.MainHeight = 24;
+			this.keyGSB.MainText = "GSB";
+			this.keyGSB.MainWidth = 48;
+			this.keyGSB.Name = "keyGSB";
+			this.keyGSB.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyGSB.Size = new System.Drawing.Size(48, 51);
+			this.keyGSB.TabIndex = 15;
+			this.keyGSB.Tag = "9723";
+			// 
+			// keyBST
+			// 
+			this.keyBST.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyBST.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyBST.FGWidth = 48;
+			this.keyBST.FText = "DSZ";
+			this.keyBST.GText = "";
+			this.keyBST.HText = "";
+			this.keyBST.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyBST.Location = new System.Drawing.Point(256, 216);
+			this.keyBST.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyBST.MainForeColor = System.Drawing.Color.White;
+			this.keyBST.MainHeight = 24;
+			this.keyBST.MainText = "BST";
+			this.keyBST.MainWidth = 48;
+			this.keyBST.Name = "keyBST";
+			this.keyBST.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyBST.Size = new System.Drawing.Size(48, 51);
+			this.keyBST.TabIndex = 18;
+			this.keyBST.Tag = "9725";
+			// 
+			// keyLBL
+			// 
+			this.keyLBL.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyLBL.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyLBL.FGWidth = 48;
+			this.keyLBL.FText = "STF";
+			this.keyLBL.GText = "";
+			this.keyLBL.HText = "";
+			this.keyLBL.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyLBL.Location = new System.Drawing.Point(32, 216);
+			this.keyLBL.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyLBL.MainForeColor = System.Drawing.Color.White;
+			this.keyLBL.MainHeight = 24;
+			this.keyLBL.MainText = "LBL";
+			this.keyLBL.MainWidth = 48;
+			this.keyLBL.Name = "keyLBL";
+			this.keyLBL.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyLBL.Size = new System.Drawing.Size(48, 51);
+			this.keyLBL.TabIndex = 13;
+			this.keyLBL.Tag = "9721";
+			// 
+			// panelDisplay
+			// 
+			this.panelDisplay.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(32)), ((System.Byte)(32)), ((System.Byte)(32)));
+			this.panelDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panelDisplay.Controls.Add(this.display);
+			this.panelDisplay.Location = new System.Drawing.Point(8, 216);
+			this.panelDisplay.Name = "panelDisplay";
+			this.panelDisplay.Size = new System.Drawing.Size(536, 64);
+			this.panelDisplay.TabIndex = 4;
+			// 
+			// display
+			// 
+			this.display.ForeColor = System.Drawing.Color.Red;
+			this.display.Location = new System.Drawing.Point(120, 8);
+			this.display.Name = "display";
+			this.display.Size = new System.Drawing.Size(408, 40);
+			this.display.TabIndex = 4;
+			this.display.Value = 0;
 			// 
 			// HP97
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.DarkKhaki;
 			this.ClientSize = new System.Drawing.Size(904, 726);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.printer1);
+			this.Controls.Add(this.panelDisplay);
+			this.Controls.Add(this.panelMain);
+			this.Controls.Add(this.printer);
 			this.MaximizeBox = false;
 			this.Name = "HP97";
 			this.Text = "HP97";
 			this.Load += new System.EventHandler(this.Form1_Load);
-			this.panel1.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
+			this.panelMain.ResumeLayout(false);
+			this.groupBoxCard.ResumeLayout(false);
+			this.panelDisplay.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
