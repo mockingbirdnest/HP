@@ -80,7 +80,6 @@ namespace Mockingbird.HP.HP97
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.Label label2;
-		private Mockingbird.HP.Control_Library.Display display1;
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
@@ -188,7 +187,6 @@ namespace Mockingbird.HP.HP97
 			this.key12 = new Mockingbird.HP.Control_Library.Key();
 			this.key6 = new Mockingbird.HP.Control_Library.Key();
 			this.key9 = new Mockingbird.HP.Control_Library.Key();
-			this.display1 = new Mockingbird.HP.Control_Library.Display();
 			this.panel1.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -1538,22 +1536,11 @@ namespace Mockingbird.HP.HP97
 			this.key9.Size = new System.Drawing.Size(48, 51);
 			this.key9.TabIndex = 13;
 			// 
-			// display1
-			// 
-			this.display1.Font = new System.Drawing.Font("Quartz", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.display1.ForeColor = System.Drawing.Color.Red;
-			this.display1.Location = new System.Drawing.Point(144, 232);
-			this.display1.Name = "display1";
-			this.display1.Size = new System.Drawing.Size(408, 40);
-			this.display1.TabIndex = 3;
-			this.display1.Value = 0;
-			// 
 			// HP97
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.DarkKhaki;
 			this.ClientSize = new System.Drawing.Size(904, 726);
-			this.Controls.Add(this.display1);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.printer1);
 			this.MaximizeBox = false;
