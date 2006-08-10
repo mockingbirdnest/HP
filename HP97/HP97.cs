@@ -1925,7 +1925,7 @@ namespace Mockingbird.HP.HP97
 					System.Drawing.GraphicsUnit.Point,
 					((System.Byte)(0)));
 				display.ForeColor = System.Drawing.Color.Red;
-				display.Location = new System.Drawing.Point (120, 8);//(128, 224-50);
+				display.Location = new System.Drawing.Point (120, 8);
 				display.Name = "display";
 				display.Size = new System.Drawing.Size (408, 40);
 				display.TabIndex = 0;
