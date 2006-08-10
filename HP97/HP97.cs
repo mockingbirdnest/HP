@@ -46,7 +46,6 @@ namespace Mockingbird.HP.HP97
 		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
 		protected System.Windows.Forms.MenuItem menuSeparator;
 		protected System.Windows.Forms.MenuItem rtfMenuItem;
-		private System.Windows.Forms.Button buttonPrinter;
 		protected System.Windows.Forms.MenuItem editMenuItem;
 
 		// The designer wants the following event handlers to exist otherwise it loses the
@@ -166,6 +165,7 @@ namespace Mockingbird.HP.HP97
 		private Mockingbird.HP.Control_Library.Key keyRDown;
 		private Mockingbird.HP.Control_Library.Key key0;
 		private Mockingbird.HP.Control_Library.Printer printer;
+		private System.Windows.Forms.Button buttonPrinter;
 		private System.Windows.Forms.Panel panelMain;
 		private System.Windows.Forms.Label labelPrint;
 		private System.Windows.Forms.GroupBox groupBoxCard;
