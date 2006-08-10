@@ -1922,7 +1922,7 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.DarkKhaki;
-			this.ClientSize = new System.Drawing.Size(868, 712);
+			this.ClientSize = new System.Drawing.Size(868, 638);
 			this.ContextMenu = this.contextMenu;
 			this.Controls.Add(this.buttonPrinter);
 			this.Controls.Add(this.panelDisplay);
@@ -1930,8 +1930,8 @@ namespace Mockingbird.HP.HP97
 			this.Controls.Add(this.printer);
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(876, 746);
-			this.MinimumSize = new System.Drawing.Size(876, 746);
+			this.MaximumSize = new System.Drawing.Size(876, 672);
+			this.MinimumSize = new System.Drawing.Size(876, 672);
 			this.Name = "HP97";
 			this.Text = "HP97";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
