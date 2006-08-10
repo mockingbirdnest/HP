@@ -1146,7 +1146,7 @@ namespace Mockingbird.HP.HP67
 				display.Font =
 					new System.Drawing.Font
 					("Quartz",
-					26.25F,
+					21.75F,
 					System.Drawing.FontStyle.Regular,
 					System.Drawing.GraphicsUnit.Point,
 					((System.Byte)(0)));
@@ -1155,6 +1155,7 @@ namespace Mockingbird.HP.HP67
 				display.Name = "display";
 				display.Size = new System.Drawing.Size (288, 40);
 				display.TabIndex = 0;
+				this.Controls.Add (display);
 			}
 		}
 
