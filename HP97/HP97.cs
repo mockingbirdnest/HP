@@ -46,10 +46,39 @@ namespace Mockingbird.HP.HP97
 		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
 		protected System.Windows.Forms.MenuItem menuSeparator;
 		protected System.Windows.Forms.MenuItem rtfMenuItem;
+		private System.Windows.Forms.Button buttonPrinter;
 		protected System.Windows.Forms.MenuItem editMenuItem;
 
 		// The designer wants the following event handlers to exist otherwise it loses the
 		// associations with the controls.
+		private void editMenuItem_Click(object sender, System.EventArgs e) 
+		{
+		}
+
+		private void openMenuItem_Click(object sender, System.EventArgs e) 
+		{
+		}
+
+		private void printMenuItem_Click(object sender, System.EventArgs e) 
+		{
+		}
+
+		private void saveMenuItem_Click(object sender, System.EventArgs e) 
+		{
+		}
+
+		private void saveAsMenuItem_Click(object sender, System.EventArgs e) 
+		{
+		}
+
+		private void rtfMenuItem_Click(object sender, System.EventArgs e) 
+		{
+		}
+
+		private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		{	
+		}
+
 		private void Key_LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 		}
@@ -177,7 +206,6 @@ namespace Mockingbird.HP.HP97
 		/// </summary>
 		protected override void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(HP97));
 			this.printer = new Mockingbird.HP.Control_Library.Printer();
 			this.panelMain = new System.Windows.Forms.Panel();
 			this.labelPrint = new System.Windows.Forms.Label();
@@ -258,15 +286,16 @@ namespace Mockingbird.HP.HP97
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.printDocument = new System.Drawing.Printing.PrintDocument();
 			this.panelDisplay = new System.Windows.Forms.Panel();
+			this.buttonPrinter = new System.Windows.Forms.Button();
 			this.panelMain.SuspendLayout();
 			this.groupBoxCard.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// printer
 			// 
-			this.printer.Location = new System.Drawing.Point(560, 0);
+			this.printer.Location = new System.Drawing.Point(552, 8);
 			this.printer.Name = "printer";
-			this.printer.Size = new System.Drawing.Size(288, 256);
+			this.printer.Size = new System.Drawing.Size(264, 80);
 			this.printer.TabIndex = 1;
 			// 
 			// panelMain
@@ -328,9 +357,9 @@ namespace Mockingbird.HP.HP97
 			this.panelMain.Controls.Add(this.keyGSB);
 			this.panelMain.Controls.Add(this.keyBST);
 			this.panelMain.Controls.Add(this.keyLBL);
-			this.panelMain.Location = new System.Drawing.Point(8, 280);
+			this.panelMain.Location = new System.Drawing.Point(8, 72);
 			this.panelMain.Name = "panelMain";
-			this.panelMain.Size = new System.Drawing.Size(888, 440);
+			this.panelMain.Size = new System.Drawing.Size(852, 432);
 			this.panelMain.TabIndex = 2;
 			// 
 			// labelPrint
@@ -338,7 +367,7 @@ namespace Mockingbird.HP.HP97
 			this.labelPrint.AutoSize = true;
 			this.labelPrint.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.labelPrint.ForeColor = System.Drawing.Color.Gold;
-			this.labelPrint.Location = new System.Drawing.Point(392, 66);
+			this.labelPrint.Location = new System.Drawing.Point(376, 58);
 			this.labelPrint.Name = "labelPrint";
 			this.labelPrint.Size = new System.Drawing.Size(43, 18);
 			this.labelPrint.TabIndex = 66;
@@ -347,7 +376,7 @@ namespace Mockingbird.HP.HP97
 			// pictureBoxLineRight
 			// 
 			this.pictureBoxLineRight.BackColor = System.Drawing.Color.Gold;
-			this.pictureBoxLineRight.Location = new System.Drawing.Point(662, 74);
+			this.pictureBoxLineRight.Location = new System.Drawing.Point(648, 66);
 			this.pictureBoxLineRight.Name = "pictureBoxLineRight";
 			this.pictureBoxLineRight.Size = new System.Drawing.Size(90, 2);
 			this.pictureBoxLineRight.TabIndex = 65;
@@ -356,7 +385,7 @@ namespace Mockingbird.HP.HP97
 			// pictureBoxLineCenter
 			// 
 			this.pictureBoxLineCenter.BackColor = System.Drawing.Color.Gold;
-			this.pictureBoxLineCenter.Location = new System.Drawing.Point(580, 74);
+			this.pictureBoxLineCenter.Location = new System.Drawing.Point(560, 66);
 			this.pictureBoxLineCenter.Name = "pictureBoxLineCenter";
 			this.pictureBoxLineCenter.Size = new System.Drawing.Size(47, 2);
 			this.pictureBoxLineCenter.TabIndex = 64;
@@ -365,7 +394,7 @@ namespace Mockingbird.HP.HP97
 			// pictureBoxLineLeft
 			// 
 			this.pictureBoxLineLeft.BackColor = System.Drawing.Color.Gold;
-			this.pictureBoxLineLeft.Location = new System.Drawing.Point(493, 74);
+			this.pictureBoxLineLeft.Location = new System.Drawing.Point(480, 66);
 			this.pictureBoxLineLeft.Name = "pictureBoxLineLeft";
 			this.pictureBoxLineLeft.Size = new System.Drawing.Size(41, 2);
 			this.pictureBoxLineLeft.TabIndex = 63;
@@ -381,7 +410,7 @@ namespace Mockingbird.HP.HP97
 			this.keyPRINTx.GText = "";
 			this.keyPRINTx.HText = "";
 			this.keyPRINTx.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyPRINTx.Location = new System.Drawing.Point(696, 18);
+			this.keyPRINTx.Location = new System.Drawing.Point(680, 10);
 			this.keyPRINTx.MainBackColor = System.Drawing.Color.Olive;
 			this.keyPRINTx.MainForeColor = System.Drawing.Color.White;
 			this.keyPRINTx.MainHeight = 36;
@@ -405,7 +434,7 @@ namespace Mockingbird.HP.HP97
 			this.keyENG.GText = "";
 			this.keyENG.HText = "";
 			this.keyENG.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyENG.Location = new System.Drawing.Point(608, 18);
+			this.keyENG.Location = new System.Drawing.Point(592, 10);
 			this.keyENG.MainBackColor = System.Drawing.Color.Olive;
 			this.keyENG.MainForeColor = System.Drawing.Color.White;
 			this.keyENG.MainHeight = 36;
@@ -429,7 +458,7 @@ namespace Mockingbird.HP.HP97
 			this.keySCI.GText = "";
 			this.keySCI.HText = "";
 			this.keySCI.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySCI.Location = new System.Drawing.Point(520, 18);
+			this.keySCI.Location = new System.Drawing.Point(504, 10);
 			this.keySCI.MainBackColor = System.Drawing.Color.Olive;
 			this.keySCI.MainForeColor = System.Drawing.Color.White;
 			this.keySCI.MainHeight = 36;
@@ -453,7 +482,7 @@ namespace Mockingbird.HP.HP97
 			this.keyCHS.GText = "";
 			this.keyCHS.HText = "";
 			this.keyCHS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyCHS.Location = new System.Drawing.Point(608, 89);
+			this.keyCHS.Location = new System.Drawing.Point(592, 81);
 			this.keyCHS.MainBackColor = System.Drawing.Color.Olive;
 			this.keyCHS.MainForeColor = System.Drawing.Color.White;
 			this.keyCHS.MainHeight = 36;
@@ -477,7 +506,7 @@ namespace Mockingbird.HP.HP97
 			this.keyFIX.GText = "";
 			this.keyFIX.HText = "";
 			this.keyFIX.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyFIX.Location = new System.Drawing.Point(432, 18);
+			this.keyFIX.Location = new System.Drawing.Point(416, 10);
 			this.keyFIX.MainBackColor = System.Drawing.Color.Olive;
 			this.keyFIX.MainForeColor = System.Drawing.Color.White;
 			this.keyFIX.MainHeight = 36;
@@ -501,7 +530,7 @@ namespace Mockingbird.HP.HP97
 			this.keyENTER.GText = "";
 			this.keyENTER.HText = "";
 			this.keyENTER.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyENTER.Location = new System.Drawing.Point(432, 89);
+			this.keyENTER.Location = new System.Drawing.Point(416, 81);
 			this.keyENTER.MainBackColor = System.Drawing.Color.Olive;
 			this.keyENTER.MainForeColor = System.Drawing.Color.White;
 			this.keyENTER.MainHeight = 36;
@@ -526,7 +555,7 @@ namespace Mockingbird.HP.HP97
 			this.keyEEX.GText = "";
 			this.keyEEX.HText = "";
 			this.keyEEX.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyEEX.Location = new System.Drawing.Point(696, 89);
+			this.keyEEX.Location = new System.Drawing.Point(680, 81);
 			this.keyEEX.MainBackColor = System.Drawing.Color.Olive;
 			this.keyEEX.MainForeColor = System.Drawing.Color.White;
 			this.keyEEX.MainHeight = 36;
@@ -550,7 +579,7 @@ namespace Mockingbird.HP.HP97
 			this.keyPlus.GText = "";
 			this.keyPlus.HText = "";
 			this.keyPlus.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyPlus.Location = new System.Drawing.Point(784, 302);
+			this.keyPlus.Location = new System.Drawing.Point(768, 294);
 			this.keyPlus.MainBackColor = System.Drawing.Color.Olive;
 			this.keyPlus.MainForeColor = System.Drawing.Color.White;
 			this.keyPlus.MainHeight = 106;
@@ -575,7 +604,7 @@ namespace Mockingbird.HP.HP97
 			this.keyDSP.GText = "";
 			this.keyDSP.HText = "";
 			this.keyDSP.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyDSP.Location = new System.Drawing.Point(696, 372);
+			this.keyDSP.Location = new System.Drawing.Point(680, 364);
 			this.keyDSP.MainBackColor = System.Drawing.Color.LightYellow;
 			this.keyDSP.MainForeColor = System.Drawing.Color.Black;
 			this.keyDSP.MainHeight = 36;
@@ -599,7 +628,7 @@ namespace Mockingbird.HP.HP97
 			this.keyPeriod.GText = "";
 			this.keyPeriod.HText = "";
 			this.keyPeriod.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyPeriod.Location = new System.Drawing.Point(608, 372);
+			this.keyPeriod.Location = new System.Drawing.Point(592, 364);
 			this.keyPeriod.MainBackColor = System.Drawing.Color.LightYellow;
 			this.keyPeriod.MainForeColor = System.Drawing.Color.Black;
 			this.keyPeriod.MainHeight = 36;
@@ -624,7 +653,7 @@ namespace Mockingbird.HP.HP97
 			this.keyMult.GText = "";
 			this.keyMult.HText = "";
 			this.keyMult.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyMult.Location = new System.Drawing.Point(784, 160);
+			this.keyMult.Location = new System.Drawing.Point(768, 152);
 			this.keyMult.MainBackColor = System.Drawing.Color.Olive;
 			this.keyMult.MainForeColor = System.Drawing.Color.White;
 			this.keyMult.MainHeight = 36;
@@ -649,7 +678,7 @@ namespace Mockingbird.HP.HP97
 			this.keySub.GText = "";
 			this.keySub.HText = "";
 			this.keySub.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySub.Location = new System.Drawing.Point(784, 231);
+			this.keySub.Location = new System.Drawing.Point(768, 223);
 			this.keySub.MainBackColor = System.Drawing.Color.Olive;
 			this.keySub.MainForeColor = System.Drawing.Color.White;
 			this.keySub.MainHeight = 36;
@@ -674,7 +703,7 @@ namespace Mockingbird.HP.HP97
 			this.keyDiv.GText = "";
 			this.keyDiv.HText = "";
 			this.keyDiv.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyDiv.Location = new System.Drawing.Point(784, 89);
+			this.keyDiv.Location = new System.Drawing.Point(768, 81);
 			this.keyDiv.MainBackColor = System.Drawing.Color.Olive;
 			this.keyDiv.MainForeColor = System.Drawing.Color.White;
 			this.keyDiv.MainHeight = 36;
@@ -699,7 +728,7 @@ namespace Mockingbird.HP.HP97
 			this.key6.GText = "";
 			this.key6.HText = "";
 			this.key6.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key6.Location = new System.Drawing.Point(696, 231);
+			this.key6.Location = new System.Drawing.Point(680, 223);
 			this.key6.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key6.MainForeColor = System.Drawing.Color.Black;
 			this.key6.MainHeight = 36;
@@ -725,7 +754,7 @@ namespace Mockingbird.HP.HP97
 			this.key3.GText = "";
 			this.key3.HText = "";
 			this.key3.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key3.Location = new System.Drawing.Point(696, 302);
+			this.key3.Location = new System.Drawing.Point(680, 294);
 			this.key3.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key3.MainForeColor = System.Drawing.Color.Black;
 			this.key3.MainHeight = 36;
@@ -751,7 +780,7 @@ namespace Mockingbird.HP.HP97
 			this.key9.GText = "";
 			this.key9.HText = "";
 			this.key9.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key9.Location = new System.Drawing.Point(696, 160);
+			this.key9.Location = new System.Drawing.Point(680, 152);
 			this.key9.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key9.MainForeColor = System.Drawing.Color.Black;
 			this.key9.MainHeight = 36;
@@ -777,7 +806,7 @@ namespace Mockingbird.HP.HP97
 			this.key5.GText = "";
 			this.key5.HText = "";
 			this.key5.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key5.Location = new System.Drawing.Point(608, 231);
+			this.key5.Location = new System.Drawing.Point(592, 223);
 			this.key5.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key5.MainForeColor = System.Drawing.Color.Black;
 			this.key5.MainHeight = 36;
@@ -803,7 +832,7 @@ namespace Mockingbird.HP.HP97
 			this.key2.GText = "";
 			this.key2.HText = "";
 			this.key2.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key2.Location = new System.Drawing.Point(608, 302);
+			this.key2.Location = new System.Drawing.Point(592, 294);
 			this.key2.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key2.MainForeColor = System.Drawing.Color.Black;
 			this.key2.MainHeight = 36;
@@ -829,7 +858,7 @@ namespace Mockingbird.HP.HP97
 			this.key8.GText = "";
 			this.key8.HText = "";
 			this.key8.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key8.Location = new System.Drawing.Point(608, 160);
+			this.key8.Location = new System.Drawing.Point(592, 152);
 			this.key8.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key8.MainForeColor = System.Drawing.Color.Black;
 			this.key8.MainHeight = 36;
@@ -855,7 +884,7 @@ namespace Mockingbird.HP.HP97
 			this.key4.GText = "";
 			this.key4.HText = "";
 			this.key4.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key4.Location = new System.Drawing.Point(520, 231);
+			this.key4.Location = new System.Drawing.Point(504, 223);
 			this.key4.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key4.MainForeColor = System.Drawing.Color.Black;
 			this.key4.MainHeight = 36;
@@ -881,7 +910,7 @@ namespace Mockingbird.HP.HP97
 			this.key1.GText = "";
 			this.key1.HText = "";
 			this.key1.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key1.Location = new System.Drawing.Point(520, 302);
+			this.key1.Location = new System.Drawing.Point(504, 294);
 			this.key1.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key1.MainForeColor = System.Drawing.Color.Black;
 			this.key1.MainHeight = 36;
@@ -907,7 +936,7 @@ namespace Mockingbird.HP.HP97
 			this.key7.GText = "";
 			this.key7.HText = "";
 			this.key7.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key7.Location = new System.Drawing.Point(520, 160);
+			this.key7.Location = new System.Drawing.Point(504, 152);
 			this.key7.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key7.MainForeColor = System.Drawing.Color.Black;
 			this.key7.MainHeight = 36;
@@ -933,7 +962,7 @@ namespace Mockingbird.HP.HP97
 			this.keyXExchangeY.GText = "";
 			this.keyXExchangeY.HText = "";
 			this.keyXExchangeY.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyXExchangeY.Location = new System.Drawing.Point(432, 231);
+			this.keyXExchangeY.Location = new System.Drawing.Point(416, 223);
 			this.keyXExchangeY.MainBackColor = System.Drawing.Color.Olive;
 			this.keyXExchangeY.MainForeColor = System.Drawing.Color.White;
 			this.keyXExchangeY.MainHeight = 36;
@@ -957,7 +986,7 @@ namespace Mockingbird.HP.HP97
 			this.keyCLx.GText = "";
 			this.keyCLx.HText = "";
 			this.keyCLx.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyCLx.Location = new System.Drawing.Point(432, 302);
+			this.keyCLx.Location = new System.Drawing.Point(416, 294);
 			this.keyCLx.MainBackColor = System.Drawing.Color.Olive;
 			this.keyCLx.MainForeColor = System.Drawing.Color.White;
 			this.keyCLx.MainHeight = 36;
@@ -981,7 +1010,7 @@ namespace Mockingbird.HP.HP97
 			this.keyRDown.GText = "";
 			this.keyRDown.HText = "";
 			this.keyRDown.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyRDown.Location = new System.Drawing.Point(432, 160);
+			this.keyRDown.Location = new System.Drawing.Point(416, 152);
 			this.keyRDown.MainBackColor = System.Drawing.Color.Olive;
 			this.keyRDown.MainForeColor = System.Drawing.Color.White;
 			this.keyRDown.MainHeight = 36;
@@ -1005,7 +1034,7 @@ namespace Mockingbird.HP.HP97
 			this.key0.GText = "";
 			this.key0.HText = "";
 			this.key0.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.key0.Location = new System.Drawing.Point(432, 372);
+			this.key0.Location = new System.Drawing.Point(416, 364);
 			this.key0.MainBackColor = System.Drawing.Color.LightYellow;
 			this.key0.MainForeColor = System.Drawing.Color.Black;
 			this.key0.MainHeight = 36;
@@ -1030,7 +1059,7 @@ namespace Mockingbird.HP.HP97
 			this.keySqrt.GText = "";
 			this.keySqrt.HText = "";
 			this.keySqrt.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySqrt.Location = new System.Drawing.Point(200, 384);
+			this.keySqrt.Location = new System.Drawing.Point(192, 376);
 			this.keySqrt.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keySqrt.MainForeColor = System.Drawing.Color.White;
 			this.keySqrt.MainHeight = 24;
@@ -1053,7 +1082,7 @@ namespace Mockingbird.HP.HP97
 			this.keyReciprocal.GText = "";
 			this.keyReciprocal.HText = "";
 			this.keyReciprocal.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyReciprocal.Location = new System.Drawing.Point(88, 384);
+			this.keyReciprocal.Location = new System.Drawing.Point(80, 376);
 			this.keyReciprocal.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyReciprocal.MainForeColor = System.Drawing.Color.White;
 			this.keyReciprocal.MainHeight = 24;
@@ -1076,7 +1105,7 @@ namespace Mockingbird.HP.HP97
 			this.keyΣ.GText = "";
 			this.keyΣ.HText = "";
 			this.keyΣ.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyΣ.Location = new System.Drawing.Point(312, 384);
+			this.keyΣ.Location = new System.Drawing.Point(304, 376);
 			this.keyΣ.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyΣ.MainForeColor = System.Drawing.Color.White;
 			this.keyΣ.MainHeight = 24;
@@ -1100,7 +1129,7 @@ namespace Mockingbird.HP.HP97
 			this.keySquare.GText = "";
 			this.keySquare.HText = "";
 			this.keySquare.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySquare.Location = new System.Drawing.Point(144, 384);
+			this.keySquare.Location = new System.Drawing.Point(136, 376);
 			this.keySquare.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keySquare.MainForeColor = System.Drawing.Color.White;
 			this.keySquare.MainHeight = 24;
@@ -1123,7 +1152,7 @@ namespace Mockingbird.HP.HP97
 			this.keyPercent.GText = "";
 			this.keyPercent.HText = "";
 			this.keyPercent.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyPercent.Location = new System.Drawing.Point(256, 384);
+			this.keyPercent.Location = new System.Drawing.Point(248, 376);
 			this.keyPercent.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyPercent.MainForeColor = System.Drawing.Color.White;
 			this.keyPercent.MainHeight = 24;
@@ -1146,7 +1175,7 @@ namespace Mockingbird.HP.HP97
 			this.keyRS.GText = "";
 			this.keyRS.HText = "";
 			this.keyRS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyRS.Location = new System.Drawing.Point(32, 384);
+			this.keyRS.Location = new System.Drawing.Point(24, 376);
 			this.keyRS.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyRS.MainForeColor = System.Drawing.Color.White;
 			this.keyRS.MainHeight = 24;
@@ -1169,7 +1198,7 @@ namespace Mockingbird.HP.HP97
 			this.keyToRectangular.GText = "";
 			this.keyToRectangular.HText = "";
 			this.keyToRectangular.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyToRectangular.Location = new System.Drawing.Point(200, 328);
+			this.keyToRectangular.Location = new System.Drawing.Point(192, 320);
 			this.keyToRectangular.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyToRectangular.MainForeColor = System.Drawing.Color.White;
 			this.keyToRectangular.MainHeight = 24;
@@ -1192,7 +1221,7 @@ namespace Mockingbird.HP.HP97
 			this.keyCOS.GText = "";
 			this.keyCOS.HText = "";
 			this.keyCOS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyCOS.Location = new System.Drawing.Point(88, 328);
+			this.keyCOS.Location = new System.Drawing.Point(80, 320);
 			this.keyCOS.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyCOS.MainForeColor = System.Drawing.Color.White;
 			this.keyCOS.MainHeight = 24;
@@ -1215,7 +1244,7 @@ namespace Mockingbird.HP.HP97
 			this.keyI.GText = "";
 			this.keyI.HText = "";
 			this.keyI.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyI.Location = new System.Drawing.Point(312, 328);
+			this.keyI.Location = new System.Drawing.Point(304, 320);
 			this.keyI.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyI.MainForeColor = System.Drawing.Color.White;
 			this.keyI.MainHeight = 24;
@@ -1238,7 +1267,7 @@ namespace Mockingbird.HP.HP97
 			this.keyTAN.GText = "";
 			this.keyTAN.HText = "";
 			this.keyTAN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyTAN.Location = new System.Drawing.Point(144, 328);
+			this.keyTAN.Location = new System.Drawing.Point(136, 320);
 			this.keyTAN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyTAN.MainForeColor = System.Drawing.Color.White;
 			this.keyTAN.MainHeight = 24;
@@ -1261,7 +1290,7 @@ namespace Mockingbird.HP.HP97
 			this.keySubI.GText = "";
 			this.keySubI.HText = "";
 			this.keySubI.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySubI.Location = new System.Drawing.Point(256, 328);
+			this.keySubI.Location = new System.Drawing.Point(248, 320);
 			this.keySubI.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keySubI.MainForeColor = System.Drawing.Color.White;
 			this.keySubI.MainHeight = 24;
@@ -1284,7 +1313,7 @@ namespace Mockingbird.HP.HP97
 			this.keySIN.GText = "";
 			this.keySIN.HText = "";
 			this.keySIN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySIN.Location = new System.Drawing.Point(32, 328);
+			this.keySIN.Location = new System.Drawing.Point(24, 320);
 			this.keySIN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keySIN.MainForeColor = System.Drawing.Color.White;
 			this.keySIN.MainHeight = 24;
@@ -1307,7 +1336,7 @@ namespace Mockingbird.HP.HP97
 			this.keyToPolar.GText = "";
 			this.keyToPolar.HText = "";
 			this.keyToPolar.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyToPolar.Location = new System.Drawing.Point(200, 272);
+			this.keyToPolar.Location = new System.Drawing.Point(192, 264);
 			this.keyToPolar.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyToPolar.MainForeColor = System.Drawing.Color.White;
 			this.keyToPolar.MainHeight = 24;
@@ -1330,7 +1359,7 @@ namespace Mockingbird.HP.HP97
 			this.keyLN.GText = "";
 			this.keyLN.HText = "";
 			this.keyLN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyLN.Location = new System.Drawing.Point(88, 272);
+			this.keyLN.Location = new System.Drawing.Point(80, 264);
 			this.keyLN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyLN.MainForeColor = System.Drawing.Color.White;
 			this.keyLN.MainHeight = 24;
@@ -1353,7 +1382,7 @@ namespace Mockingbird.HP.HP97
 			this.keyRCL.GText = "";
 			this.keyRCL.HText = "";
 			this.keyRCL.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyRCL.Location = new System.Drawing.Point(312, 272);
+			this.keyRCL.Location = new System.Drawing.Point(304, 264);
 			this.keyRCL.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyRCL.MainForeColor = System.Drawing.Color.White;
 			this.keyRCL.MainHeight = 24;
@@ -1376,7 +1405,7 @@ namespace Mockingbird.HP.HP97
 			this.keyEToTheXth.GText = "";
 			this.keyEToTheXth.HText = "";
 			this.keyEToTheXth.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyEToTheXth.Location = new System.Drawing.Point(144, 272);
+			this.keyEToTheXth.Location = new System.Drawing.Point(136, 264);
 			this.keyEToTheXth.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyEToTheXth.MainForeColor = System.Drawing.Color.White;
 			this.keyEToTheXth.MainHeight = 24;
@@ -1399,7 +1428,7 @@ namespace Mockingbird.HP.HP97
 			this.keySTO.GText = "";
 			this.keySTO.HText = "";
 			this.keySTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySTO.Location = new System.Drawing.Point(256, 272);
+			this.keySTO.Location = new System.Drawing.Point(248, 264);
 			this.keySTO.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keySTO.MainForeColor = System.Drawing.Color.White;
 			this.keySTO.MainHeight = 24;
@@ -1422,7 +1451,7 @@ namespace Mockingbird.HP.HP97
 			this.keyYToTheXth.GText = "";
 			this.keyYToTheXth.HText = "";
 			this.keyYToTheXth.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyYToTheXth.Location = new System.Drawing.Point(32, 272);
+			this.keyYToTheXth.Location = new System.Drawing.Point(24, 264);
 			this.keyYToTheXth.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyYToTheXth.MainForeColor = System.Drawing.Color.White;
 			this.keyYToTheXth.MainHeight = 24;
@@ -1447,18 +1476,18 @@ namespace Mockingbird.HP.HP97
 			this.groupBoxCard.Controls.Add(this.keyA);
 			this.groupBoxCard.Controls.Add(this.labelTrace);
 			this.groupBoxCard.Controls.Add(this.keyD);
-			this.groupBoxCard.Controls.Add(this.keyF);
 			this.groupBoxCard.Controls.Add(this.keyC);
+			this.groupBoxCard.Controls.Add(this.keyF);
 			this.groupBoxCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.groupBoxCard.Location = new System.Drawing.Point(16, 18);
+			this.groupBoxCard.Location = new System.Drawing.Point(8, 4);
 			this.groupBoxCard.Name = "groupBoxCard";
-			this.groupBoxCard.Size = new System.Drawing.Size(352, 194);
+			this.groupBoxCard.Size = new System.Drawing.Size(352, 200);
 			this.groupBoxCard.TabIndex = 12;
 			this.groupBoxCard.TabStop = false;
 			// 
 			// cardSlot
 			// 
-			this.cardSlot.Location = new System.Drawing.Point(8, 80);
+			this.cardSlot.Location = new System.Drawing.Point(8, 92);
 			this.cardSlot.Margin = 16;
 			this.cardSlot.Name = "cardSlot";
 			this.cardSlot.RichText = false;
@@ -1477,12 +1506,12 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.toggleManNorm.LeftText = "MAN";
 			this.toggleManNorm.LeftWidth = 60;
-			this.toggleManNorm.Location = new System.Drawing.Point(184, 24);
-			this.toggleManNorm.MainWidth = 60;
+			this.toggleManNorm.Location = new System.Drawing.Point(186, 34);
+			this.toggleManNorm.MainWidth = 50;
 			this.toggleManNorm.Name = "toggleManNorm";
 			this.toggleManNorm.Position = Mockingbird.HP.Control_Library.TogglePosition.Left;
 			this.toggleManNorm.RightText = "NORM";
-			this.toggleManNorm.RightWidth = 60;
+			this.toggleManNorm.RightWidth = 50;
 			this.toggleManNorm.Size = new System.Drawing.Size(160, 16);
 			this.toggleManNorm.TabIndex = 1;
 			// 
@@ -1495,7 +1524,7 @@ namespace Mockingbird.HP.HP97
 			this.keyE.GText = "";
 			this.keyE.HText = "";
 			this.keyE.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyE.Location = new System.Drawing.Point(240, 142);
+			this.keyE.Location = new System.Drawing.Point(240, 148);
 			this.keyE.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyE.MainForeColor = System.Drawing.Color.White;
 			this.keyE.MainHeight = 24;
@@ -1513,14 +1542,14 @@ namespace Mockingbird.HP.HP97
 			// toggleOffOn
 			// 
 			this.toggleOffOn.LeftText = "OFF";
-			this.toggleOffOn.LeftWidth = 60;
-			this.toggleOffOn.Location = new System.Drawing.Point(8, 24);
-			this.toggleOffOn.MainWidth = 60;
+			this.toggleOffOn.LeftWidth = 30;
+			this.toggleOffOn.Location = new System.Drawing.Point(8, 34);
+			this.toggleOffOn.MainWidth = 50;
 			this.toggleOffOn.Name = "toggleOffOn";
 			this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggleOffOn.RightText = "ON";
-			this.toggleOffOn.RightWidth = 60;
-			this.toggleOffOn.Size = new System.Drawing.Size(144, 16);
+			this.toggleOffOn.RightWidth = 30;
+			this.toggleOffOn.Size = new System.Drawing.Size(110, 16);
 			this.toggleOffOn.TabIndex = 2;
 			this.toggleOffOn.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleOffOn_ToggleClick);
 			// 
@@ -1528,13 +1557,13 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.toggleWprgmRun.LeftText = "W/PRGM";
 			this.toggleWprgmRun.LeftWidth = 60;
-			this.toggleWprgmRun.Location = new System.Drawing.Point(184, 48);
-			this.toggleWprgmRun.MainWidth = 60;
+			this.toggleWprgmRun.Location = new System.Drawing.Point(186, 58);
+			this.toggleWprgmRun.MainWidth = 50;
 			this.toggleWprgmRun.Name = "toggleWprgmRun";
 			this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggleWprgmRun.RightText = "RUN";
 			this.toggleWprgmRun.RightWidth = 30;
-			this.toggleWprgmRun.Size = new System.Drawing.Size(150, 16);
+			this.toggleWprgmRun.Size = new System.Drawing.Size(140, 16);
 			this.toggleWprgmRun.TabIndex = 13;
 			this.toggleWprgmRun.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
 			// 
@@ -1547,7 +1576,7 @@ namespace Mockingbird.HP.HP97
 			this.keyB.GText = "";
 			this.keyB.HText = "";
 			this.keyB.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyB.Location = new System.Drawing.Point(72, 142);
+			this.keyB.Location = new System.Drawing.Point(72, 148);
 			this.keyB.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyB.MainForeColor = System.Drawing.Color.White;
 			this.keyB.MainHeight = 24;
@@ -1571,7 +1600,7 @@ namespace Mockingbird.HP.HP97
 			this.keyA.GText = "";
 			this.keyA.HText = "";
 			this.keyA.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyA.Location = new System.Drawing.Point(16, 142);
+			this.keyA.Location = new System.Drawing.Point(16, 148);
 			this.keyA.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyA.MainForeColor = System.Drawing.Color.White;
 			this.keyA.MainHeight = 24;
@@ -1591,7 +1620,7 @@ namespace Mockingbird.HP.HP97
 			this.labelTrace.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.labelTrace.Font = new System.Drawing.Font("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
 			this.labelTrace.ForeColor = System.Drawing.Color.White;
-			this.labelTrace.Location = new System.Drawing.Point(248, 8);
+			this.labelTrace.Location = new System.Drawing.Point(243, 18);
 			this.labelTrace.Name = "labelTrace";
 			this.labelTrace.Size = new System.Drawing.Size(56, 16);
 			this.labelTrace.TabIndex = 4;
@@ -1607,7 +1636,7 @@ namespace Mockingbird.HP.HP97
 			this.keyD.GText = "";
 			this.keyD.HText = "";
 			this.keyD.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyD.Location = new System.Drawing.Point(184, 142);
+			this.keyD.Location = new System.Drawing.Point(184, 148);
 			this.keyD.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyD.MainForeColor = System.Drawing.Color.White;
 			this.keyD.MainHeight = 24;
@@ -1631,7 +1660,7 @@ namespace Mockingbird.HP.HP97
 			this.keyF.GText = "";
 			this.keyF.HText = "";
 			this.keyF.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyF.Location = new System.Drawing.Point(296, 142);
+			this.keyF.Location = new System.Drawing.Point(296, 148);
 			this.keyF.MainBackColor = System.Drawing.Color.Gold;
 			this.keyF.MainForeColor = System.Drawing.Color.Black;
 			this.keyF.MainHeight = 24;
@@ -1655,7 +1684,7 @@ namespace Mockingbird.HP.HP97
 			this.keyC.GText = "";
 			this.keyC.HText = "";
 			this.keyC.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyC.Location = new System.Drawing.Point(128, 142);
+			this.keyC.Location = new System.Drawing.Point(128, 148);
 			this.keyC.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyC.MainForeColor = System.Drawing.Color.White;
 			this.keyC.MainHeight = 24;
@@ -1679,7 +1708,7 @@ namespace Mockingbird.HP.HP97
 			this.keyRTN.GText = "";
 			this.keyRTN.HText = "";
 			this.keyRTN.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyRTN.Location = new System.Drawing.Point(200, 216);
+			this.keyRTN.Location = new System.Drawing.Point(192, 208);
 			this.keyRTN.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyRTN.MainForeColor = System.Drawing.Color.White;
 			this.keyRTN.MainHeight = 24;
@@ -1702,7 +1731,7 @@ namespace Mockingbird.HP.HP97
 			this.keyGTO.GText = "";
 			this.keyGTO.HText = "";
 			this.keyGTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyGTO.Location = new System.Drawing.Point(88, 216);
+			this.keyGTO.Location = new System.Drawing.Point(80, 208);
 			this.keyGTO.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyGTO.MainForeColor = System.Drawing.Color.White;
 			this.keyGTO.MainHeight = 24;
@@ -1725,7 +1754,7 @@ namespace Mockingbird.HP.HP97
 			this.keySST.GText = "";
 			this.keySST.HText = "";
 			this.keySST.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keySST.Location = new System.Drawing.Point(312, 216);
+			this.keySST.Location = new System.Drawing.Point(304, 208);
 			this.keySST.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keySST.MainForeColor = System.Drawing.Color.White;
 			this.keySST.MainHeight = 24;
@@ -1748,7 +1777,7 @@ namespace Mockingbird.HP.HP97
 			this.keyGSB.GText = "";
 			this.keyGSB.HText = "";
 			this.keyGSB.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyGSB.Location = new System.Drawing.Point(144, 216);
+			this.keyGSB.Location = new System.Drawing.Point(136, 208);
 			this.keyGSB.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyGSB.MainForeColor = System.Drawing.Color.White;
 			this.keyGSB.MainHeight = 24;
@@ -1771,7 +1800,7 @@ namespace Mockingbird.HP.HP97
 			this.keyBST.GText = "";
 			this.keyBST.HText = "";
 			this.keyBST.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyBST.Location = new System.Drawing.Point(256, 216);
+			this.keyBST.Location = new System.Drawing.Point(248, 208);
 			this.keyBST.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyBST.MainForeColor = System.Drawing.Color.White;
 			this.keyBST.MainHeight = 24;
@@ -1794,7 +1823,7 @@ namespace Mockingbird.HP.HP97
 			this.keyLBL.GText = "";
 			this.keyLBL.HText = "";
 			this.keyLBL.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyLBL.Location = new System.Drawing.Point(32, 216);
+			this.keyLBL.Location = new System.Drawing.Point(24, 208);
 			this.keyLBL.MainBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
 			this.keyLBL.MainForeColor = System.Drawing.Color.White;
 			this.keyLBL.MainHeight = 24;
@@ -1876,25 +1905,33 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.panelDisplay.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(32)), ((System.Byte)(32)), ((System.Byte)(32)));
 			this.panelDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panelDisplay.Location = new System.Drawing.Point(8, 216);
+			this.panelDisplay.Location = new System.Drawing.Point(8, 8);
 			this.panelDisplay.Name = "panelDisplay";
 			this.panelDisplay.Size = new System.Drawing.Size(536, 64);
 			this.panelDisplay.TabIndex = 4;
+			// 
+			// buttonPrinter
+			// 
+			this.buttonPrinter.Location = new System.Drawing.Point(824, 8);
+			this.buttonPrinter.Name = "buttonPrinter";
+			this.buttonPrinter.Size = new System.Drawing.Size(36, 60);
+			this.buttonPrinter.TabIndex = 5;
+			this.buttonPrinter.Text = "V";
 			// 
 			// HP97
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.DarkKhaki;
-			this.ClientSize = new System.Drawing.Size(904, 726);
+			this.ClientSize = new System.Drawing.Size(868, 512);
 			this.ContextMenu = this.contextMenu;
+			this.Controls.Add(this.buttonPrinter);
 			this.Controls.Add(this.panelDisplay);
 			this.Controls.Add(this.panelMain);
 			this.Controls.Add(this.printer);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(912, 760);
-			this.MinimumSize = new System.Drawing.Size(912, 760);
+			this.MaximumSize = new System.Drawing.Size(876, 546);
+			this.MinimumSize = new System.Drawing.Size(876, 546);
 			this.Name = "HP97";
 			this.Text = "HP97";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
