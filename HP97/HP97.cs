@@ -266,8 +266,8 @@ namespace Mockingbird.HP.HP97
 			this.keyA = new Mockingbird.HP.Control_Library.Key();
 			this.labelTrace = new System.Windows.Forms.Label();
 			this.keyD = new Mockingbird.HP.Control_Library.Key();
-			this.keyF = new Mockingbird.HP.Control_Library.Key();
 			this.keyC = new Mockingbird.HP.Control_Library.Key();
+			this.keyF = new Mockingbird.HP.Control_Library.Key();
 			this.keyRTN = new Mockingbird.HP.Control_Library.Key();
 			this.keyGTO = new Mockingbird.HP.Control_Library.Key();
 			this.keySST = new Mockingbird.HP.Control_Library.Key();
@@ -293,9 +293,9 @@ namespace Mockingbird.HP.HP97
 			// 
 			// printer
 			// 
-			this.printer.Location = new System.Drawing.Point(552, 8);
+			this.printer.Location = new System.Drawing.Point(552, 0);
 			this.printer.Name = "printer";
-			this.printer.Size = new System.Drawing.Size(264, 80);
+			this.printer.Size = new System.Drawing.Size(264, 208);
 			this.printer.TabIndex = 1;
 			// 
 			// panelMain
@@ -357,7 +357,7 @@ namespace Mockingbird.HP.HP97
 			this.panelMain.Controls.Add(this.keyGSB);
 			this.panelMain.Controls.Add(this.keyBST);
 			this.panelMain.Controls.Add(this.keyLBL);
-			this.panelMain.Location = new System.Drawing.Point(8, 72);
+			this.panelMain.Location = new System.Drawing.Point(8, 200);
 			this.panelMain.Name = "panelMain";
 			this.panelMain.Size = new System.Drawing.Size(852, 432);
 			this.panelMain.TabIndex = 2;
@@ -1651,30 +1651,6 @@ namespace Mockingbird.HP.HP97
 			this.keyD.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
 			this.keyD.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
-			// keyF
-			// 
-			this.keyF.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.keyF.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
-			this.keyF.FGWidth = 48;
-			this.keyF.FText = "";
-			this.keyF.GText = "";
-			this.keyF.HText = "";
-			this.keyF.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			this.keyF.Location = new System.Drawing.Point(296, 148);
-			this.keyF.MainBackColor = System.Drawing.Color.Gold;
-			this.keyF.MainForeColor = System.Drawing.Color.Black;
-			this.keyF.MainHeight = 24;
-			this.keyF.MainText = "f";
-			this.keyF.MainWidth = 48;
-			this.keyF.Name = "keyF";
-			this.keyF.Shortcuts = new System.Windows.Forms.Keys[] {
-																	  System.Windows.Forms.Keys.F};
-			this.keyF.Size = new System.Drawing.Size(48, 51);
-			this.keyF.TabIndex = 9;
-			this.keyF.Tag = "9716";
-			this.keyF.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
-			this.keyF.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
-			// 
 			// keyC
 			// 
 			this.keyC.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
@@ -1698,6 +1674,30 @@ namespace Mockingbird.HP.HP97
 			this.keyC.Tag = "9713";
 			this.keyC.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
 			this.keyC.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
+			// 
+			// keyF
+			// 
+			this.keyF.FGBackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
+			this.keyF.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
+			this.keyF.FGWidth = 48;
+			this.keyF.FText = "";
+			this.keyF.GText = "";
+			this.keyF.HText = "";
+			this.keyF.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.keyF.Location = new System.Drawing.Point(296, 148);
+			this.keyF.MainBackColor = System.Drawing.Color.Gold;
+			this.keyF.MainForeColor = System.Drawing.Color.Black;
+			this.keyF.MainHeight = 24;
+			this.keyF.MainText = "f";
+			this.keyF.MainWidth = 48;
+			this.keyF.Name = "keyF";
+			this.keyF.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.F};
+			this.keyF.Size = new System.Drawing.Size(48, 51);
+			this.keyF.TabIndex = 9;
+			this.keyF.Tag = "9716";
+			this.keyF.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
+			this.keyF.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
 			// keyRTN
 			// 
@@ -1905,14 +1905,14 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.panelDisplay.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(32)), ((System.Byte)(32)), ((System.Byte)(32)));
 			this.panelDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panelDisplay.Location = new System.Drawing.Point(8, 8);
+			this.panelDisplay.Location = new System.Drawing.Point(8, 136);
 			this.panelDisplay.Name = "panelDisplay";
 			this.panelDisplay.Size = new System.Drawing.Size(536, 64);
 			this.panelDisplay.TabIndex = 4;
 			// 
 			// buttonPrinter
 			// 
-			this.buttonPrinter.Location = new System.Drawing.Point(824, 8);
+			this.buttonPrinter.Location = new System.Drawing.Point(824, 136);
 			this.buttonPrinter.Name = "buttonPrinter";
 			this.buttonPrinter.Size = new System.Drawing.Size(36, 60);
 			this.buttonPrinter.TabIndex = 5;
@@ -1922,7 +1922,7 @@ namespace Mockingbird.HP.HP97
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.DarkKhaki;
-			this.ClientSize = new System.Drawing.Size(868, 512);
+			this.ClientSize = new System.Drawing.Size(868, 712);
 			this.ContextMenu = this.contextMenu;
 			this.Controls.Add(this.buttonPrinter);
 			this.Controls.Add(this.panelDisplay);
@@ -1930,8 +1930,8 @@ namespace Mockingbird.HP.HP97
 			this.Controls.Add(this.printer);
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
-			this.MaximumSize = new System.Drawing.Size(876, 546);
-			this.MinimumSize = new System.Drawing.Size(876, 546);
+			this.MaximumSize = new System.Drawing.Size(876, 746);
+			this.MinimumSize = new System.Drawing.Size(876, 746);
 			this.Name = "HP97";
 			this.Text = "HP97";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
