@@ -73,7 +73,9 @@ namespace Mockingbird.HP.Class_Library
 				case SymbolConstants.SYMBOL_GSB :
 				case SymbolConstants.SYMBOL_LBL :
 					// On the HP-67, use a nonstandard syntax if the argument is lowercase.
-					if (arguments [0] is Letter && ((Letter) arguments [0]).IsLower) 
+					if (reader.Model == CalculatorModel.HP67 &&
+						arguments [0] is Letter &&
+						((Letter) arguments [0]).IsLower) 
 					{
 						isNonstandard = true;
 						text = reader.Unparse (reader.ToSymbol (instruction.Name + "_LC_67"));

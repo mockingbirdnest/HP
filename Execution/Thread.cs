@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Mockingbird.HP.Execution
 {
 	/// <summary>
-	/// The execution thread of the HP67 calculator.
+	/// The execution thread of an HP calculator.
 	/// </summary>
 	public class Thread
 	{
@@ -113,7 +113,6 @@ namespace Mockingbird.HP.Execution
 				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
 			display.CompleteKeystrokes +=
 				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
-			main.Controls.Add (display);
 
 			for (;;) 
 			{

@@ -47,6 +47,36 @@ namespace Mockingbird.HP.HP97
 		protected System.Windows.Forms.MenuItem menuSeparator;
 		protected System.Windows.Forms.MenuItem rtfMenuItem;
 		protected System.Windows.Forms.MenuItem editMenuItem;
+
+		// The designer wants the following event handlers to exist otherwise it loses the
+		// associations with the controls.
+		private void Key_LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+		}
+
+		private void Key_LeftMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+		}
+
+		private void toggleWprgmRun_ToggleClick(object sender, System.EventArgs e, Mockingbird.HP.Control_Library.TogglePosition position)
+		{
+		}
+
+		private void toggleOffOn_ToggleClick(object sender, System.EventArgs e, Mockingbird.HP.Control_Library.TogglePosition position)
+		{
+		}
+
+		private void Calculator_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+		}
+
+		private void Calculator_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+		}
+
+		private void Calculator_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+		}
 #endif
 
 		private Mockingbird.HP.Control_Library.Toggle toggleManNorm;
@@ -478,7 +508,8 @@ namespace Mockingbird.HP.HP97
 			this.keyENTER.MainText = "ENTER ↑";
 			this.keyENTER.MainWidth = 160;
 			this.keyENTER.Name = "keyENTER";
-			this.keyENTER.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyENTER.Shortcuts = new System.Windows.Forms.Keys[] {
+																		  System.Windows.Forms.Keys.Enter};
 			this.keyENTER.Size = new System.Drawing.Size(160, 63);
 			this.keyENTER.TabIndex = 57;
 			this.keyENTER.Tag = "97-21";
@@ -526,7 +557,8 @@ namespace Mockingbird.HP.HP97
 			this.keyPlus.MainText = "+";
 			this.keyPlus.MainWidth = 72;
 			this.keyPlus.Name = "keyPlus";
-			this.keyPlus.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyPlus.Shortcuts = new System.Windows.Forms.Keys[] {
+																		 System.Windows.Forms.Keys.Add};
 			this.keyPlus.Size = new System.Drawing.Size(72, 133);
 			this.keyPlus.TabIndex = 55;
 			this.keyPlus.Tag = "97-55";
@@ -574,7 +606,8 @@ namespace Mockingbird.HP.HP97
 			this.keyPeriod.MainText = " ・";
 			this.keyPeriod.MainWidth = 72;
 			this.keyPeriod.Name = "keyPeriod";
-			this.keyPeriod.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyPeriod.Shortcuts = new System.Windows.Forms.Keys[] {
+																		   System.Windows.Forms.Keys.Decimal};
 			this.keyPeriod.Size = new System.Drawing.Size(72, 63);
 			this.keyPeriod.TabIndex = 53;
 			this.keyPeriod.Tag = "97-62";
@@ -598,7 +631,8 @@ namespace Mockingbird.HP.HP97
 			this.keyMult.MainText = "×";
 			this.keyMult.MainWidth = 72;
 			this.keyMult.Name = "keyMult";
-			this.keyMult.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyMult.Shortcuts = new System.Windows.Forms.Keys[] {
+																		 System.Windows.Forms.Keys.Multiply};
 			this.keyMult.Size = new System.Drawing.Size(72, 63);
 			this.keyMult.TabIndex = 52;
 			this.keyMult.Tag = "97-35";
@@ -622,7 +656,8 @@ namespace Mockingbird.HP.HP97
 			this.keySub.MainText = "-";
 			this.keySub.MainWidth = 72;
 			this.keySub.Name = "keySub";
-			this.keySub.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keySub.Shortcuts = new System.Windows.Forms.Keys[] {
+																		System.Windows.Forms.Keys.Subtract};
 			this.keySub.Size = new System.Drawing.Size(72, 63);
 			this.keySub.TabIndex = 51;
 			this.keySub.Tag = "97-45";
@@ -646,7 +681,8 @@ namespace Mockingbird.HP.HP97
 			this.keyDiv.MainText = "÷";
 			this.keyDiv.MainWidth = 72;
 			this.keyDiv.Name = "keyDiv";
-			this.keyDiv.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyDiv.Shortcuts = new System.Windows.Forms.Keys[] {
+																		System.Windows.Forms.Keys.Divide};
 			this.keyDiv.Size = new System.Drawing.Size(72, 63);
 			this.keyDiv.TabIndex = 50;
 			this.keyDiv.Tag = "97-24";
@@ -670,7 +706,9 @@ namespace Mockingbird.HP.HP97
 			this.key6.MainText = "6";
 			this.key6.MainWidth = 72;
 			this.key6.Name = "key6";
-			this.key6.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key6.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D6,
+																	  System.Windows.Forms.Keys.NumPad6};
 			this.key6.Size = new System.Drawing.Size(72, 63);
 			this.key6.TabIndex = 49;
 			this.key6.Tag = "97-44";
@@ -694,7 +732,9 @@ namespace Mockingbird.HP.HP97
 			this.key3.MainText = "3";
 			this.key3.MainWidth = 72;
 			this.key3.Name = "key3";
-			this.key3.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key3.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D3,
+																	  System.Windows.Forms.Keys.NumPad3};
 			this.key3.Size = new System.Drawing.Size(72, 63);
 			this.key3.TabIndex = 48;
 			this.key3.Tag = "97-54";
@@ -718,7 +758,9 @@ namespace Mockingbird.HP.HP97
 			this.key9.MainText = "9";
 			this.key9.MainWidth = 72;
 			this.key9.Name = "key9";
-			this.key9.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key9.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D9,
+																	  System.Windows.Forms.Keys.NumPad9};
 			this.key9.Size = new System.Drawing.Size(72, 63);
 			this.key9.TabIndex = 47;
 			this.key9.Tag = "97-34";
@@ -742,7 +784,9 @@ namespace Mockingbird.HP.HP97
 			this.key5.MainText = "5";
 			this.key5.MainWidth = 72;
 			this.key5.Name = "key5";
-			this.key5.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key5.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D5,
+																	  System.Windows.Forms.Keys.NumPad5};
 			this.key5.Size = new System.Drawing.Size(72, 63);
 			this.key5.TabIndex = 46;
 			this.key5.Tag = "97-43";
@@ -766,7 +810,9 @@ namespace Mockingbird.HP.HP97
 			this.key2.MainText = "2";
 			this.key2.MainWidth = 72;
 			this.key2.Name = "key2";
-			this.key2.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key2.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D2,
+																	  System.Windows.Forms.Keys.NumPad2};
 			this.key2.Size = new System.Drawing.Size(72, 63);
 			this.key2.TabIndex = 45;
 			this.key2.Tag = "97-53";
@@ -790,7 +836,9 @@ namespace Mockingbird.HP.HP97
 			this.key8.MainText = "8";
 			this.key8.MainWidth = 72;
 			this.key8.Name = "key8";
-			this.key8.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key8.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D8,
+																	  System.Windows.Forms.Keys.NumPad8};
 			this.key8.Size = new System.Drawing.Size(72, 63);
 			this.key8.TabIndex = 44;
 			this.key8.Tag = "97-33";
@@ -814,7 +862,9 @@ namespace Mockingbird.HP.HP97
 			this.key4.MainText = "4";
 			this.key4.MainWidth = 72;
 			this.key4.Name = "key4";
-			this.key4.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key4.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D4,
+																	  System.Windows.Forms.Keys.NumPad4};
 			this.key4.Size = new System.Drawing.Size(72, 63);
 			this.key4.TabIndex = 43;
 			this.key4.Tag = "97-42";
@@ -838,7 +888,9 @@ namespace Mockingbird.HP.HP97
 			this.key1.MainText = "1";
 			this.key1.MainWidth = 72;
 			this.key1.Name = "key1";
-			this.key1.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key1.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D1,
+																	  System.Windows.Forms.Keys.NumPad1};
 			this.key1.Size = new System.Drawing.Size(72, 63);
 			this.key1.TabIndex = 42;
 			this.key1.Tag = "97-52";
@@ -862,7 +914,9 @@ namespace Mockingbird.HP.HP97
 			this.key7.MainText = "7";
 			this.key7.MainWidth = 72;
 			this.key7.Name = "key7";
-			this.key7.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key7.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D7,
+																	  System.Windows.Forms.Keys.NumPad7};
 			this.key7.Size = new System.Drawing.Size(72, 63);
 			this.key7.TabIndex = 41;
 			this.key7.Tag = "97-32";
@@ -958,7 +1012,9 @@ namespace Mockingbird.HP.HP97
 			this.key0.MainText = "0";
 			this.key0.MainWidth = 160;
 			this.key0.Name = "key0";
-			this.key0.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.key0.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D0,
+																	  System.Windows.Forms.Keys.NumPad0};
 			this.key0.Size = new System.Drawing.Size(160, 63);
 			this.key0.TabIndex = 37;
 			this.key0.Tag = "97-61";
@@ -1446,7 +1502,8 @@ namespace Mockingbird.HP.HP97
 			this.keyE.MainText = "E";
 			this.keyE.MainWidth = 48;
 			this.keyE.Name = "keyE";
-			this.keyE.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyE.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.E};
 			this.keyE.Size = new System.Drawing.Size(48, 51);
 			this.keyE.TabIndex = 11;
 			this.keyE.Tag = "9715";
@@ -1476,8 +1533,8 @@ namespace Mockingbird.HP.HP97
 			this.toggleWprgmRun.Name = "toggleWprgmRun";
 			this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
 			this.toggleWprgmRun.RightText = "RUN";
-			this.toggleWprgmRun.RightWidth = 60;
-			this.toggleWprgmRun.Size = new System.Drawing.Size(180, 16);
+			this.toggleWprgmRun.RightWidth = 30;
+			this.toggleWprgmRun.Size = new System.Drawing.Size(150, 16);
 			this.toggleWprgmRun.TabIndex = 13;
 			this.toggleWprgmRun.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent(this.toggleWprgmRun_ToggleClick);
 			// 
@@ -1497,7 +1554,8 @@ namespace Mockingbird.HP.HP97
 			this.keyB.MainText = "B";
 			this.keyB.MainWidth = 48;
 			this.keyB.Name = "keyB";
-			this.keyB.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyB.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.B};
 			this.keyB.Size = new System.Drawing.Size(48, 51);
 			this.keyB.TabIndex = 6;
 			this.keyB.Tag = "9712";
@@ -1520,7 +1578,8 @@ namespace Mockingbird.HP.HP97
 			this.keyA.MainText = "A";
 			this.keyA.MainWidth = 48;
 			this.keyA.Name = "keyA";
-			this.keyA.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyA.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.A};
 			this.keyA.Size = new System.Drawing.Size(48, 51);
 			this.keyA.TabIndex = 5;
 			this.keyA.Tag = "9711";
@@ -1555,7 +1614,8 @@ namespace Mockingbird.HP.HP97
 			this.keyD.MainText = "D";
 			this.keyD.MainWidth = 48;
 			this.keyD.Name = "keyD";
-			this.keyD.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyD.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.D};
 			this.keyD.Size = new System.Drawing.Size(48, 51);
 			this.keyD.TabIndex = 8;
 			this.keyD.Tag = "9714";
@@ -1578,7 +1638,8 @@ namespace Mockingbird.HP.HP97
 			this.keyF.MainText = "f";
 			this.keyF.MainWidth = 48;
 			this.keyF.Name = "keyF";
-			this.keyF.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyF.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.F};
 			this.keyF.Size = new System.Drawing.Size(48, 51);
 			this.keyF.TabIndex = 9;
 			this.keyF.Tag = "9716";
@@ -1601,7 +1662,8 @@ namespace Mockingbird.HP.HP97
 			this.keyC.MainText = "C";
 			this.keyC.MainWidth = 48;
 			this.keyC.Name = "keyC";
-			this.keyC.Shortcuts = new System.Windows.Forms.Keys[0];
+			this.keyC.Shortcuts = new System.Windows.Forms.Keys[] {
+																	  System.Windows.Forms.Keys.C};
 			this.keyC.Size = new System.Drawing.Size(48, 51);
 			this.keyC.TabIndex = 7;
 			this.keyC.Tag = "9713";
@@ -1746,40 +1808,69 @@ namespace Mockingbird.HP.HP97
 			this.keyLBL.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseUp);
 			this.keyLBL.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent(this.Key_LeftMouseDown);
 			// 
+			// contextMenu
+			// 
+			this.contextMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+																						this.openMenuItem,
+																						this.saveMenuItem,
+																						this.saveAsMenuItem,
+																						this.printMenuItem,
+																						this.menuSeparator,
+																						this.editMenuItem,
+																						this.rtfMenuItem});
+			// 
 			// openMenuItem
 			// 
-			this.openMenuItem.Index = -1;
-			this.openMenuItem.Text = "";
+			this.openMenuItem.Index = 0;
+			this.openMenuItem.Text = "&Open...";
+			this.openMenuItem.Click += new System.EventHandler(this.openMenuItem_Click);
 			// 
 			// saveMenuItem
 			// 
-			this.saveMenuItem.Index = -1;
-			this.saveMenuItem.Text = "";
+			this.saveMenuItem.Index = 1;
+			this.saveMenuItem.Text = "&Save";
+			this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
 			// 
 			// saveAsMenuItem
 			// 
-			this.saveAsMenuItem.Index = -1;
-			this.saveAsMenuItem.Text = "";
+			this.saveAsMenuItem.Index = 2;
+			this.saveAsMenuItem.Text = "Save &As...";
+			this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
 			// 
 			// printMenuItem
 			// 
-			this.printMenuItem.Index = -1;
-			this.printMenuItem.Text = "";
+			this.printMenuItem.Index = 3;
+			this.printMenuItem.Text = "Print";
+			this.printMenuItem.Click += new System.EventHandler(this.printMenuItem_Click);
 			// 
 			// menuSeparator
 			// 
-			this.menuSeparator.Index = -1;
-			this.menuSeparator.Text = "";
+			this.menuSeparator.Index = 4;
+			this.menuSeparator.Text = "-";
 			// 
 			// editMenuItem
 			// 
-			this.editMenuItem.Index = -1;
-			this.editMenuItem.Text = "";
+			this.editMenuItem.Index = 5;
+			this.editMenuItem.Text = "&Edit Labels";
+			this.editMenuItem.Click += new System.EventHandler(this.editMenuItem_Click);
 			// 
 			// rtfMenuItem
 			// 
-			this.rtfMenuItem.Index = -1;
-			this.rtfMenuItem.Text = "";
+			this.rtfMenuItem.Index = 6;
+			this.rtfMenuItem.Text = "&Rich Text";
+			this.rtfMenuItem.Click += new System.EventHandler(this.rtfMenuItem_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
+			// saveFileDialog
+			// 
+			this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+			// 
+			// printDocument
+			// 
+			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
 			// 
 			// panelDisplay
 			// 
@@ -1795,14 +1886,15 @@ namespace Mockingbird.HP.HP97
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.BackColor = System.Drawing.Color.DarkKhaki;
 			this.ClientSize = new System.Drawing.Size(904, 726);
+			this.ContextMenu = this.contextMenu;
 			this.Controls.Add(this.panelDisplay);
 			this.Controls.Add(this.panelMain);
 			this.Controls.Add(this.printer);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
-//			this.MaximumSize = new System.Drawing.Size(312, 624);
-//			this.MinimumSize = new System.Drawing.Size(312, 624);
+			this.MaximumSize = new System.Drawing.Size(912, 760);
+			this.MinimumSize = new System.Drawing.Size(912, 760);
 			this.Name = "HP97";
 			this.Text = "HP97";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
@@ -1833,10 +1925,11 @@ namespace Mockingbird.HP.HP97
 					System.Drawing.GraphicsUnit.Point,
 					((System.Byte)(0)));
 				display.ForeColor = System.Drawing.Color.Red;
-				display.Location = new System.Drawing.Point (128, 224-50);
+				display.Location = new System.Drawing.Point (120, 8);//(128, 224-50);
 				display.Name = "display";
 				display.Size = new System.Drawing.Size (408, 40);
 				display.TabIndex = 0;
+				panelDisplay.Controls.Add (display);
 			}
 		}
 

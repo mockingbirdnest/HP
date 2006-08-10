@@ -3,6 +3,7 @@ using Mockingbird.HP.Control_Library;
 using Mockingbird.HP.Execution;
 using Mockingbird.HP.Parser;
 using System;
+using System.Collections;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.Execution
@@ -17,6 +18,7 @@ namespace Mockingbird.HP.Execution
 
 		protected Execution.Thread executionThread;
 		protected Reader reader = null;
+		private Control [] allControls;
 
 		// Note on the separation of concerns regarding UI elements.
 		//
@@ -44,6 +46,18 @@ namespace Mockingbird.HP.Execution
 
 		#region Constructors & Destructors
 
+		private Control [] GetAllControls (Control control) 
+		{
+			ArrayList allControls = new ArrayList ();
+
+			foreach (Control c in control.Controls) 
+			{
+				allControls.AddRange (GetAllControls (c));
+				allControls.Add (c);
+			}
+			return (Control []) allControls.ToArray (typeof (Control));
+		}
+
 		public BaseCalculator (string [] arguments, CalculatorModel model)
 		{
 			// Required for Windows Form Designer support.  Beware, only the base class can call
@@ -54,9 +68,10 @@ namespace Mockingbird.HP.Execution
 			InitializeComponent();
 
 			// Read the parser tables.
-			string [] tags = new string [Controls.Count];
+			allControls = GetAllControls (this);
+			string [] tags = new string [allControls.Length];
 			int i = 0;
-			foreach (Control control in Controls) 
+			foreach (Control control in allControls) 
 			{
 				tags [i] = (string) control.Tag;
 				i++;
@@ -153,7 +168,7 @@ namespace Mockingbird.HP.Execution
 			}
 			else if (! KeyEventsPreempted) 
 			{
-				foreach (Control c in this.Controls) 
+				foreach (Control c in AllControls) 
 				{
 					if (c is Key) 
 					{
@@ -177,7 +192,7 @@ namespace Mockingbird.HP.Execution
 			}
 			else if (! KeyEventsPreempted)
 			{
-				foreach (Control c in this.Controls) 
+				foreach (Control c in AllControls) 
 				{
 					if (c is Key) 
 					{
@@ -228,6 +243,18 @@ namespace Mockingbird.HP.Execution
 					executionThread.PowerOn.Set ();
 					break;
 			}		
+		}
+
+		#endregion
+
+		#region Properties
+
+		protected Control [] AllControls
+		{
+			get 
+			{
+				return allControls;
+			}
 		}
 
 		#endregion
