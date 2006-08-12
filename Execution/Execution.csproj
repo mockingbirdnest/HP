@@ -167,6 +167,7 @@
     <Compile Include="Engine.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Messages.cs" />
     <Compile Include="ProgrammableCalculator.cs">
       <SubType>Form</SubType>
     </Compile>

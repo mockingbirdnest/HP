@@ -7,18 +7,21 @@ namespace Mockingbird.HP.Class_Library
     public class ThreadSafe
     {
         private delegate void CrossThreadBringToFront (Control control);
-        private delegate string CrossThreadGetText (Control control);
-        private delegate void CrossThreadSetEnabled (Control control, bool enabled);
-        private delegate void CrossThreadSetFont (Control control, Font font);
-        private delegate void CrossThreadSetSize (Control control, Size size);
-        private delegate void CrossThreadSetText (Control control, string text);
+        private delegate string CrossThreadGetString (Control control);
+        private delegate void CrossThreadSetBool (Control control, bool b);
+        private delegate void CrossThreadSetColor (Control control, Color c);
+        private delegate void CrossThreadSetFont (Control control, Font f);
+        private delegate void CrossThreadSetPoint (Control control, Point p);
+        private delegate void CrossThreadSetSize (Control control, Size s);
+        private delegate void CrossThreadSetString (Control control, string s);
         private delegate void CrossThreadUpdate (Control control);
 
         public static void BringToFront (Control control)
         {
             if (control.InvokeRequired)
             {
-                control.Invoke (new CrossThreadBringToFront (BringToFront), new object [] { control });
+                control.Invoke
+                    (new CrossThreadBringToFront (BringToFront), new object [] { control });
             }
             else
             {
@@ -26,11 +29,25 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        public static string GetRtf (Control control)
+        {
+            if (control.InvokeRequired)
+            {
+                return (string) control.Invoke
+                    (new CrossThreadGetString (GetRtf), new object [] { control });
+            }
+            else
+            {
+                return ((RichTextBox) control).Rtf;
+            }
+        }
+
         public static string GetText (Control control)
         {
             if (control.InvokeRequired)
             {
-                return (string) control.Invoke (new CrossThreadGetText (GetText), new object [] { control });
+                return (string) control.Invoke
+                    (new CrossThreadGetString (GetText), new object [] { control });
             }
             else
             {
@@ -38,11 +55,25 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        public static void SetBackColor (Control control, Color backColor)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetColor (SetBackColor), new object [] { control, backColor });
+            }
+            else
+            {
+                control.BackColor = backColor;
+            }
+        }
+
         public static void SetEnabled (Control control, bool enabled)
         {
             if (control.InvokeRequired)
             {
-                control.Invoke (new CrossThreadSetEnabled (SetEnabled), new object [] { control, enabled });
+                control.Invoke
+                    (new CrossThreadSetBool (SetEnabled), new object [] { control, enabled });
             }
             else
             {
@@ -54,7 +85,8 @@ namespace Mockingbird.HP.Class_Library
         {
             if (control.InvokeRequired)
             {
-                control.Invoke (new CrossThreadSetFont (SetFont), new object [] { control, font });
+                control.Invoke
+                    (new CrossThreadSetFont (SetFont), new object [] { control, font });
             }
             else
             {
@@ -62,11 +94,51 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        public static void SetLocation (Control control, Point point)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetPoint (SetLocation), new object [] { control, point });
+            }
+            else
+            {
+                control.Location = point;
+            }
+        }
+
+        public static void SetReadOnly (Control control, bool readOnly)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetBool (SetReadOnly), new object [] { control, readOnly });
+            }
+            else
+            {
+                ((TextBoxBase) control).ReadOnly = readOnly;
+            }
+        }
+
+        public static void SetRtf (Control control, string rtf)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetString (SetRtf), new object [] { control, rtf });
+            }
+            else
+            {
+                ((RichTextBox) control).Rtf = rtf;
+            }
+        }
+
         public static void SetSize (Control control, Size size)
         {
             if (control.InvokeRequired)
             {
-                control.Invoke (new CrossThreadSetSize (SetSize), new object [] { control, size });
+                control.Invoke
+                    (new CrossThreadSetSize (SetSize), new object [] { control, size });
             }
             else
             {
@@ -79,7 +151,8 @@ namespace Mockingbird.HP.Class_Library
         {
             if (control.InvokeRequired)
             {
-                control.Invoke (new CrossThreadSetText (SetText), new object [] { control, text });
+                control.Invoke
+                    (new CrossThreadSetString (SetText), new object [] { control, text });
             }
             else
             {
@@ -87,16 +160,31 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        public static void SetVisible (Control control, bool visible)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetBool (SetVisible), new object [] { control, visible });
+            }
+            else
+            {
+                control.Visible = visible;
+            }
+        }
+
         public static void Update (Control control)
         {
             if (control.InvokeRequired)
             {
-                control.Invoke (new CrossThreadUpdate (Update), new object [] { control });
+                control.Invoke
+                    (new CrossThreadUpdate (Update), new object [] { control });
             }
             else
             {
                 control.BringToFront ();
             }
         }
+
     }
 }

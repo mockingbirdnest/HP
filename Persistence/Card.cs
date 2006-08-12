@@ -40,7 +40,7 @@ namespace Mockingbird.HP.Persistence
 
 		#region Private Operations
 
-		static private bool CheckVersion (CardDataset cds) 
+		static private void CheckVersion (CardDataset cds) 
 		{
 			CardDataset.CardRow cr = cds.Card [0];
 			CardDataset.ArgumentRow [] ars;
@@ -50,7 +50,7 @@ namespace Mockingbird.HP.Persistence
 
 			if (cr.Version == Version) 
 			{
-				return true;
+				return;
 			}
 
 			// We didn't support compatibility before version 1.4.
@@ -65,7 +65,7 @@ namespace Mockingbird.HP.Persistence
 				string caption = Localization.GetString (Localization.IncompatibleVersion);
 
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return false;
+				throw new Error ();
 			}
 
 			// Compatibility code to read older cards.
@@ -118,54 +118,36 @@ namespace Mockingbird.HP.Persistence
 				}
 			}
 			cds.Card [0].Version = Version;
-			return true;
 		}
 
 		#endregion
 
 		#region Public Operations
 
-		static public bool Merge (Stream stream, Reader reader)
+		static public void Merge (Stream stream, Reader reader)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
-			if (CheckVersion (cds)) 
-			{
-				MergeFromDataset (cds, reader);
-				return true;
-			}
-			else 
-			{
-				return false;
-			}
+			CheckVersion (cds); 
+			MergeFromDataset (cds, reader);
 		}
 
-		static public bool Read (Stream stream, Reader reader)
+		static public void Read (Stream stream, Reader reader)
 		{
 			CardDataset cds = new CardDataset ();
 			cds.ReadXml (stream);
-			if (CheckVersion (cds)) 
-			{
-				ReadFromDataset (cds, reader);
-				return true;
-			}
-			else 
-			{
-				return false;
-			}
+			CheckVersion (cds);
+			ReadFromDataset (cds, reader);
 		}
 
-		static public bool Write (Stream stream, CardPart part)
+		static public void Write (Stream stream, CardPart part)
 		{
 			CardDataset cds = new CardDataset ();
 
 			if (stream.Length > 0) 
 			{
 				cds.ReadXml (stream);
-				if (! CheckVersion (cds)) 
-				{
-					return false;
-				}
+                CheckVersion (cds);
 			}
 			else 
 			{
@@ -178,7 +160,6 @@ namespace Mockingbird.HP.Persistence
 			WriteToDataset (cds, part);
 			stream.SetLength (0);
 			cds.WriteXml (stream);
-			return true;
 		}
 
 		#endregion

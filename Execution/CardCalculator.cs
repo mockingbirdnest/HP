@@ -74,57 +74,53 @@ namespace Mockingbird.HP.Execution
 			// OFF.  We abort the execution thread and start a new one.  We leave it in the
 			// state where its display is black and it doesn't accept keystrokes.
 			BusyUI ();
-			executionThread.Reset (out program); 
-			UpdateCardSlot (/* alreadyLocked */ false);
+			executionThread.Reset (); 
+			UpdateCardSlot (/* programIsEmpty */ true);
 		}
 
-		protected override void UpdateUI (bool alreadyLocked) 
+		protected override void UpdateUI (bool programIsEmpty) 
 		{
-			UpdateCardSlot (alreadyLocked);
+			UpdateCardSlot (programIsEmpty);
 		}
 
 		#endregion
 
 		#region Cross-Thread Operations
 
-		public bool CrossThreadMerge () 
+		public FileStream CrossThreadOpen () 
 		{
 			string name;
 
 			if (openFileDialog.ShowDialog () == DialogResult.OK)
 			{
 				name = openFileDialog.FileName;
-				return Open (/* alreadyLocked */ true, /* merge */ true, ref name);
+				return Open (ref name);
 			}
 			else 
 			{
-				return false;
+				return null;
 			}
 		}
 
-		public bool CrossThreadSaveDataAs () 
+		public FileStream CrossThreadSaveDataAs () 
 		{
 			string name = null;
 
-			return Save (/* alreadyLocked */ true, /* saveAs */ true, CardPart.Data, ref name);
+			return Save (/* saveAs */ true, ref name);
 		}	
 		
 		#endregion
 
 		#region UI Utilities
 
-		void UpdateCardSlot (bool alreadyLocked) 
+		private void UpdateCardSlot (bool programIsEmpty) 
 		{
 			bool wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
 
 			// Make sure that the state of the card slot reflects the state of the program memory.
-			if (! alreadyLocked) 
-			{
-				Monitor.Enter (executionThread.IsBusy);
-			}
 			try 
 			{
-				if ((program == null) || (program.IsEmpty))
+				if (programIsEmpty)
 				{
 					cardSlot.State = CardSlotState.Unloaded;
 					editMenuItem.Enabled = false;
@@ -146,10 +142,6 @@ namespace Mockingbird.HP.Execution
 			}
 			finally 
 			{
-				if (! alreadyLocked) 
-				{
-					Monitor.Exit (executionThread.IsBusy);
-				}
 
 				// If the program was just cleared, clear the current file name.  This ensures that
 				// the next program won't be stupidly saved on the previous card.
@@ -177,7 +169,7 @@ namespace Mockingbird.HP.Execution
 				}
 				else
 				{
-					UpdateCardSlot (/* alreadyLocked */ false);
+					UpdateCardSlot (/* programIsEmpty */ false);
 				}
 			}
 		}

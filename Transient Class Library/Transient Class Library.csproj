@@ -108,9 +108,11 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
     </Reference>
@@ -119,10 +121,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ThreadSafe.cs" />
     <Compile Include="Exceptions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Keystroke.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Localization.cs">

@@ -48,7 +48,7 @@ namespace Mockingbird.HP.Class_Library
 
 			theResources = new ResourceManager (resourceBase, typeof (Localization).Assembly);
 			theCulture = Thread.CurrentThread.CurrentCulture;
-			cultureName = ConfigurationSettings.AppSettings.GetValues(cultureAppSetting) [0];
+			cultureName = ConfigurationManager.AppSettings.GetValues(cultureAppSetting) [0];
 			if (cultureName != "") 
 			{
 				try 

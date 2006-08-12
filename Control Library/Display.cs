@@ -243,9 +243,9 @@ namespace Mockingbird.HP.Control_Library
             if (Size.Height != height)
             {
                 Size = new Size (Size.Width, height);
-                SetSize (alphabeticTextBox, Size);
-                SetSize (instructionTextBox, Size);
-                SetSize (numericTextBox, Size);
+                ThreadSafe.SetSize (alphabeticTextBox, Size);
+                ThreadSafe.SetSize (instructionTextBox, Size);
+                ThreadSafe.SetSize (numericTextBox, Size);
             }
         }
 
@@ -255,16 +255,16 @@ namespace Mockingbird.HP.Control_Library
 
         private void textBox_MouseDown (object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            SetEnabled (alphabeticTextBox, false);
-            SetEnabled (instructionTextBox, false);
-            SetEnabled (numericTextBox, false);
+            ThreadSafe.SetEnabled (alphabeticTextBox, false);
+            ThreadSafe.SetEnabled (instructionTextBox, false);
+            ThreadSafe.SetEnabled (numericTextBox, false);
         }
 
         private void textBox_MouseLeave (object sender, System.EventArgs e)
         {
-            SetEnabled (alphabeticTextBox, true);
-            SetEnabled (instructionTextBox, true);
-            SetEnabled (numericTextBox, true);
+            ThreadSafe.SetEnabled (alphabeticTextBox, true);
+            ThreadSafe.SetEnabled (instructionTextBox, true);
+            ThreadSafe.SetEnabled (numericTextBox, true);
         }
 
         public void ReadFromDataset (CardDataset cds, Reader reader)
@@ -298,103 +298,6 @@ namespace Mockingbird.HP.Control_Library
                 dr.Format = format.ToString ();
                 dr.CardRow = cds.Card [0];
                 cds.Display.AddDisplayRow (dr);
-            }
-        }
-
-        #endregion
-
-        #region Cross-Thread Invocation
-
-        delegate void CrossThreadBringToFront (Control control);
-        delegate string CrossThreadGetText (Control control);
-        delegate void CrossThreadSetEnabled (Control control, bool enabled);
-        delegate void CrossThreadSetFont (Control control, Font font);
-        delegate void CrossThreadSetSize (Control control, Size size);
-        delegate void CrossThreadSetText (Control control, string text);
-        delegate void CrossThreadUpdate (Control control);
-
-        private void BringToFront (Control control)
-        {
-            if (control.InvokeRequired)
-            {
-                control.Invoke (new CrossThreadBringToFront (BringToFront), new object [] { control });
-            }
-            else
-            {
-                control.BringToFront ();
-            }
-        }
-
-        private string GetText (Control control)
-        {
-            if (control.InvokeRequired)
-            {
-                return (string) control.Invoke (new CrossThreadGetText (GetText), new object [] { control });
-            }
-            else
-            {
-                return control.Text;
-            }
-        }
-
-        private void SetEnabled (Control control, bool enabled)
-        {
-            if (control.InvokeRequired)
-            {
-                control.Invoke (new CrossThreadSetEnabled (SetEnabled), new object [] { control, enabled });
-            }
-            else
-            {
-                control.Enabled = enabled;
-            }
-        }
-
-        private void SetFont (Control control, Font font)
-        {
-            if (control.InvokeRequired)
-            {
-                control.Invoke (new CrossThreadSetFont (SetFont), new object [] { control, font });
-            }
-            else
-            {
-                control.Font = font;
-            }
-        }
-
-        private void SetSize (Control control, Size size)
-        {
-            if (control.InvokeRequired)
-            {
-                control.Invoke (new CrossThreadSetSize (SetSize), new object [] { control, size });
-            }
-            else
-            {
-                control.Size = size;
-            }
-        }
-
-
-        private void SetText (Control control, string text)
-        {
-            if (control.InvokeRequired)
-            {
-                control.Invoke (new CrossThreadSetText (SetText), new object [] { control, text });
-            }
-            else
-            {
-                control.Text = text;
-            }
-        }
-
-        private void Update (Control control)
-        {
-            if (control.InvokeRequired)
-            {
-                control.Invoke (new CrossThreadUpdate (Update), new object [] { control });
-            }
-            else
-            {
-                control.BringToFront ();
             }
         }
 
@@ -441,12 +344,12 @@ namespace Mockingbird.HP.Control_Library
         {
             get
             {
-                string s = GetText (numericTextBox);
+                string s = ThreadSafe.GetText (numericTextBox);
                 return s.PadRight (exponentFirst + exponentLength);
             }
             set
             {
-                SetText (numericTextBox, value.PadRight (exponentFirst + exponentLength));
+                ThreadSafe.SetText (numericTextBox, value.PadRight (exponentFirst + exponentLength));
             }
         }
 
@@ -641,9 +544,9 @@ namespace Mockingbird.HP.Control_Library
             {
                 font = value;
                 height = (int) (font.SizeInPoints * heightFactor);
-                SetFont (alphabeticTextBox, font);
-                SetFont (instructionTextBox, font);
-                SetFont (numericTextBox, font);
+                ThreadSafe.SetFont (alphabeticTextBox, font);
+                ThreadSafe.SetFont (instructionTextBox, font);
+                ThreadSafe.SetFont (numericTextBox, font);
                 Size = new Size (Size.Width, height);
             }
         }
@@ -675,13 +578,13 @@ namespace Mockingbird.HP.Control_Library
                     switch (mode)
                     {
                         case DisplayMode.Alphabetic:
-                            BringToFront (alphabeticTextBox);
+                            ThreadSafe.BringToFront (alphabeticTextBox);
                             break;
                         case DisplayMode.Instruction:
-                            BringToFront (instructionTextBox);
+                            ThreadSafe.BringToFront (instructionTextBox);
                             break;
                         case DisplayMode.Numeric:
-                            BringToFront (numericTextBox);
+                            ThreadSafe.BringToFront (numericTextBox);
                             break;
                     }
                 }
@@ -722,7 +625,7 @@ namespace Mockingbird.HP.Control_Library
                 DoneEntering ();
 
                 // Not needed, unless the event handling mucked things up...
-                SetEnabled (numericTextBox, true);
+                ThreadSafe.SetEnabled (numericTextBox, true);
 
                 // Deal with possible underflow or overflow.
                 overflows = false;
@@ -957,21 +860,21 @@ namespace Mockingbird.HP.Control_Library
 
         public void Pause (int ms)
         {
-            Update (this);
+            ThreadSafe.Update (this);
             Thread.Sleep (ms);
         }
 
         public void PauseAndAcceptKeystrokes (int ms)
         {
             Mode = DisplayMode.Numeric;
-            Update (this);
+            ThreadSafe.Update (this);
             while (WaitForKeystroke != null & WaitForKeystroke (ms))
             {
                 if (AcceptKeystroke != null)
                 {
                     AcceptKeystroke ();
                 }
-                Update (this);
+                ThreadSafe.Update (this);
             }
             if (CompleteKeystrokes != null)
             {
@@ -996,7 +899,7 @@ namespace Mockingbird.HP.Control_Library
                     for (int j = 0; j < 2; j++)
                     {
                         NumericText = texts [j];
-                        Update (this);
+                        ThreadSafe.Update (this);
 
                         // Most of the time the following call will just be equivalent to
                         // Thread.Sleep.  However, typing a key during PauseAndBlink causes the
@@ -1057,7 +960,7 @@ namespace Mockingbird.HP.Control_Library
                 c [i] = randomChars [b [i] % 16];
                 i++;
             }
-            SetText (alphabeticTextBox, new string (c));
+            ThreadSafe.SetText (alphabeticTextBox, new string (c));
         }
 
         public void ShowInstruction (string instruction, int step, bool setMode)
@@ -1069,7 +972,7 @@ namespace Mockingbird.HP.Control_Library
             {
                 Mode = DisplayMode.Instruction;
             }
-            SetText (instructionTextBox,
+            ThreadSafe.SetText (instructionTextBox,
                 new string (' ', mantissaSignLength) +
                 stepImage + instruction.PadLeft (instructionLength));
         }
@@ -1082,13 +985,13 @@ namespace Mockingbird.HP.Control_Library
             Mode = DisplayMode.Numeric;
             try
             {
-                SetText (numericTextBox,
+                ThreadSafe.SetText (numericTextBox,
                     addressImage.PadLeft
                     (mantissaSignLength + mantissaLength + exponentSignLength + exponentLength));
-                Update (this);
+                ThreadSafe.Update (this);
                 Thread.Sleep (ms);
                 Value = register;
-                Update (this);
+                ThreadSafe.Update (this);
                 Thread.Sleep (ms);
             }
             finally
@@ -1106,17 +1009,17 @@ namespace Mockingbird.HP.Control_Library
             Mode = DisplayMode.Alphabetic;
             if (msOn > 0)
             {
-                SetText (alphabeticTextBox, s);
-                Update (this);
+                ThreadSafe.SetText (alphabeticTextBox, s);
+                ThreadSafe.Update (this);
                 Thread.Sleep (msOn);
             }
             if (msOff > 0)
             {
-                SetText (alphabeticTextBox, "");
-                Update (this);
+                ThreadSafe.SetText (alphabeticTextBox, "");
+                ThreadSafe.Update (this);
                 Thread.Sleep (msOff);
             }
-            SetText (alphabeticTextBox, s);
+            ThreadSafe.SetText (alphabeticTextBox, s);
         }
 
         #endregion
