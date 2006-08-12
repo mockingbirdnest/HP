@@ -35,14 +35,22 @@ namespace Mockingbird.HP.Execution
 
         #region Private Data
 
+        private const int capacity = 1000;
+
         private Actions downActions;
         private Parser.Parser downParser;
         private Actions upActions;
         private Parser.Parser upParser;
 
         private AutoResetEvent downKeystrokeWasEnqueued = new AutoResetEvent (false);
+
+        // This will look strange.  We want to keep track of the number of entries in the message
+        // queue, and to block when that number is 0.  We use a semaphore which is initially fully
+        // reserved, and has therefore a free count of 0.  When a message is queued, we call Release
+        // to increment the free count.  The execution thread suspends by calling WaitOne until
+        // the free count is positive, i.e., until there is one or several messages in the queue.
+        private Semaphore messagesEnqueued = new Semaphore (0, capacity);
         private Queue messageQueue;
-        private AutoResetEvent messageWasEnqueued = new AutoResetEvent (false);
 
         private Display display;
         private CalculatorModel model;
@@ -100,7 +108,7 @@ namespace Mockingbird.HP.Execution
             return downKeystrokeWasEnqueued.WaitOne (ms, false);
         }
 
-#endregion
+        #endregion
 
         #region Message Handling
 
@@ -175,10 +183,14 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        private void ExecutionProcessOpenMessage (OpenMessage open, Reader reader)
+        private void ExecutionProcessOpenMessage
+            (OpenMessage open,
+            Reader reader,
+            out bool mustUnbusyUI)
         {
             FileStream stream = open.Stream;
 
+            mustUnbusyUI = true;
             try
             {
                 // The calls to Card below can throw Error.
@@ -235,10 +247,9 @@ namespace Mockingbird.HP.Execution
             mustReinitialize = false;
             try
             {
-                // TODO: What if we get several keys in the queue and keyWasTyped is set only once?
 
                 // Wait until we get a message from the UI.
-                messageWasEnqueued.WaitOne ();
+                messagesEnqueued.WaitOne ();
                 message = (Message) messageQueue.Dequeue ();
 
                 switch (message.Kind)
@@ -252,7 +263,9 @@ namespace Mockingbird.HP.Execution
                                                             out mustUnbusyUI);
                         break;
                     case MessageKind.Open:
-                        ExecutionProcessOpenMessage ((OpenMessage) message, reader);
+                        ExecutionProcessOpenMessage ((OpenMessage) message,
+                                                        reader,
+                                                        out mustUnbusyUI);
                         break;
                     case MessageKind.Print:
                         ExecutionProcessPrintMessage ((PrintMessage) message, program);
@@ -311,17 +324,6 @@ namespace Mockingbird.HP.Execution
             bool ignoreNextUp = false;
             bool mustReinitialize = false;
 
-            //// For some reason the first exception that is raised on this thread takes a long time
-            //// to propagate.  It is better to raise it here, while the thread initializes, than
-            //// later, when it could cause a delay visible to the user.
-            //try
-            //{
-            //    throw new Error ();
-            //}
-            //catch
-            //{
-            //}
-
             // Set the delegates that the display calls to detect and process keys that are typed
             // asynchronously. 
             display.AcceptKeystroke +=
@@ -378,7 +380,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-#endregion
+        #endregion
 
         #region Public Operations
 
@@ -390,15 +392,19 @@ namespace Mockingbird.HP.Execution
 
         public void Clear ()
         {
-            messageQueue.Clear ();
-            messageWasEnqueued.Reset ();
+
+            // Decrement the free count.  We do not expect it to ever get big, so we won't go
+            // through this loop many times.
+            while (messagesEnqueued.WaitOne (0, false)) { 
+            }
             downKeystrokeWasEnqueued.Reset ();
+            messageQueue.Clear ();
         }
 
         public void Enqueue (Message message)
         {
             messageQueue.Enqueue (message);
-            messageWasEnqueued.Set ();
+            messagesEnqueued.Release ();
             if (message.Kind == MessageKind.Keystroke &&
                 ((KeystrokeMessage) message).Motion == KeystrokeMotion.Down)
             {
