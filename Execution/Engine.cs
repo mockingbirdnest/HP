@@ -65,10 +65,10 @@ namespace Mockingbird.HP.Execution
 						Program program,
 						Reader reader,
 						Stack stack,
-						AutoResetEvent keyWasTyped) 
+						AutoResetEvent keyWasTyped) //TODO: use an event here, just like display.
 		{
 			string [] appSettingsEnableBlur =
-				System.Configuration.ConfigurationSettings.AppSettings.GetValues
+				System.Configuration.ConfigurationManager.AppSettings.GetValues
 				("EnableBlur");
 			if (appSettingsEnableBlur == null) 
 			{
@@ -82,7 +82,7 @@ namespace Mockingbird.HP.Execution
 			flags = new bool [4];
 			unit = AngleUnit.Degree;
 			this.display = display;
-			this.display.EnteringNumber += new Display.DisplayEvent (Enter);
+			this.display.EnteringNumber += new Display.DisplayStateChangeEvent (Enter);
 			this.memory = memory;
 			this.program = program;
 			this.reader = reader;

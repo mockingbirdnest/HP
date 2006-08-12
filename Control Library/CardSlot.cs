@@ -884,7 +884,7 @@ namespace Mockingbird.HP.Control_Library
 			}
 		}
 
-		public int Margin
+		public new int Margin
 		{
 			get
 			{

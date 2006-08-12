@@ -254,7 +254,7 @@ namespace Mockingbird.HP.Control_Library
 
 		#region Private Methods
 
-		private void AutoSize ()
+		private new void AutoSize ()
 		{
 			int x = Math.Min (button.Location.X, fLabel.Location.X);
 			int y = button.Location.Y;

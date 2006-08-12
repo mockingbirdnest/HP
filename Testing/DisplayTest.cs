@@ -70,11 +70,7 @@ namespace Mockingbird.HP.Testing
 		private void InitializeComponent()
 		{
 			this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
-#if DESIGN
 			this.DisplayUnderTest = new Mockingbird.HP.Control_Library.Display();
-#else
-			this.DisplayUnderTest = new Mockingbird.HP.Control_Library.Display(new AutoResetEvent (false));
-#endif
 			this.numericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.labelDigits = new System.Windows.Forms.Label();
 			this.radioButtonScientific = new System.Windows.Forms.RadioButton();

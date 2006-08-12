@@ -285,8 +285,10 @@ namespace Mockingbird.HP.HP97
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.display = new Mockingbird.HP.Control_Library.Display ();
 			this.panelDisplay = new System.Windows.Forms.Panel();
 			this.buttonPrinter = new System.Windows.Forms.Button();
+            this.panelDisplay.SuspendLayout ();
 			this.panelMain.SuspendLayout();
 			this.groupBoxCard.SuspendLayout();
 			this.SuspendLayout();
@@ -1900,7 +1902,22 @@ namespace Mockingbird.HP.HP97
 			// printDocument
 			// 
 			this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
-			// 
+            //
+            // display
+            //
+            this.display.Font =
+                new System.Drawing.Font
+                ("Quartz",
+                26.25F,
+                System.Drawing.FontStyle.Regular,
+                System.Drawing.GraphicsUnit.Point,
+                ((System.Byte) (0)));
+            this.display.ForeColor = System.Drawing.Color.Red;
+            this.display.Location = new System.Drawing.Point (120, 8);
+            this.display.Name = "display";
+            this.display.Size = new System.Drawing.Size (376, 40);
+            this.display.TabIndex = 0;
+            // 
 			// panelDisplay
 			// 
 			this.panelDisplay.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(32)), ((System.Byte)(32)), ((System.Byte)(32)));
@@ -1909,7 +1926,8 @@ namespace Mockingbird.HP.HP97
 			this.panelDisplay.Name = "panelDisplay";
 			this.panelDisplay.Size = new System.Drawing.Size(504, 64);
 			this.panelDisplay.TabIndex = 4;
-			// 
+            this.panelDisplay.Controls.Add (this.display);
+            // 
 			// buttonPrinter
 			// 
 			this.buttonPrinter.Location = new System.Drawing.Point(776, 136);
@@ -1937,6 +1955,7 @@ namespace Mockingbird.HP.HP97
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyDown);
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.Calculator_Closing);
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Calculator_KeyUp);
+            this.panelDisplay.ResumeLayout (false);
 			this.panelMain.ResumeLayout(false);
 			this.groupBoxCard.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -1946,32 +1965,6 @@ namespace Mockingbird.HP.HP97
 
 		#endregion
 
-		#region Overriding Operations
-
-		protected override void InitializeThreadComponent (Control control) 
-		{
-			if (control is Control_Library.Display) 
-			{
-				Control display = control;
-
-				display.Font =
-					new System.Drawing.Font
-					("Quartz",
-					26.25F,
-					System.Drawing.FontStyle.Regular,
-					System.Drawing.GraphicsUnit.Point,
-					((System.Byte)(0)));
-				display.ForeColor = System.Drawing.Color.Red;
-				display.Location = new System.Drawing.Point (120, 8);
-				display.Name = "display";
-				display.Size = new System.Drawing.Size (376, 40);
-				display.TabIndex = 0;
-				panelDisplay.Controls.Add (display);
-			}
-		}
-
-		#endregion
-		
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>

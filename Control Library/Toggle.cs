@@ -342,7 +342,7 @@ namespace Mockingbird.HP.Control_Library
 
 		#region Private Methods
 
-		private void AutoSize ()
+		private new void AutoSize ()
 		{
 			int x = leftLabel.Location.X;
 			int y = leftLabel.Location.Y;

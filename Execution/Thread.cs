@@ -21,9 +21,6 @@ namespace Mockingbird.HP.Execution
 		public delegate EngineMode CrossThreadUINotification (bool busy);
 		public delegate bool CrossThreadOperation ();
 
-		// Delegate used for construction of controls owned by this thread.
-		public delegate void ComponentInitializer (Control control);
-
 		// Lock this object to ensure that the thread is idle.
 		public object IsBusy = new object ();
 
@@ -45,8 +42,7 @@ namespace Mockingbird.HP.Execution
 		private Queue keystrokesQueue;
 		private AutoResetEvent keystrokeWasEnqueued = new AutoResetEvent (false);
 
-		private ComponentInitializer initializer;
-		private Control main;
+        private Display display;
 		private CrossThreadUINotification notifyUI;
 		private Reader reader;
 		private System.Threading.Thread thread;
@@ -58,15 +54,13 @@ namespace Mockingbird.HP.Execution
 		#region Constructors & Destructors
 
 		public Thread
-			(Control main,
+			(Display display,
 			Reader reader,
-			ComponentInitializer initializer,
 			CrossThreadUINotification notifyUI,
 			out Program program)
 		{
-			this.main = main;
+			this.display = display;
 			this.reader = reader;
-			this.initializer = initializer;
 			this.notifyUI = notifyUI;
 
 			// Create the execution thread and wait until it is ready to process requests.
@@ -84,7 +78,6 @@ namespace Mockingbird.HP.Execution
 
 		private void Execution ()
 		{
-			Display display;
 			Engine engine;
 			Memory memory;
 			Stack stack;
@@ -104,15 +97,14 @@ namespace Mockingbird.HP.Execution
 			{
 			}
 
-			// Controls must be accessed from the thread that created them.  For most controls, this
-			// is the main thread.  But the display is special, as it is mostly updated during
-			// execution.  So it is created by the execution thread. 
-			display = new Display (downKeystrokeWasEnqueued);
-			initializer (display);
-			display.AcceptKeystrokes +=
-				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionAcceptKeystrokes);
+			// Set the delegates that the display calls to detect and process keys that are typed
+            // asynchronously. 
+			display.AcceptKeystroke +=
+				new Display.ImmediateKeystrokeEvent (ExecutionAcceptKeystroke);
 			display.CompleteKeystrokes +=
-				new Mockingbird.HP.Control_Library.Display.DisplayEvent (ExecutionCompleteKeystrokes);
+                new Display.ImmediateKeystrokeEvent (ExecutionCompleteKeystrokes);
+            display.WaitForKeystroke +=
+                new Display.TimedKeystrokeEvent (ExecutionWaitForKeystroke);
 
 			for (;;) 
 			{
@@ -164,21 +156,27 @@ namespace Mockingbird.HP.Execution
 			}
 		}
 
-		private void ExecutionAcceptKeystrokes (object sender)
+		private void ExecutionAcceptKeystroke ()
 		{
 
 			// Send the key that was just typed (in pause mode) to the parser for execution.
+            // TODO: But then the two parsers get desynchronized???
 			upParser.Parse (((Keystroke) keystrokesQueue.Dequeue ()).Tag);
 		}
 
-		private void ExecutionCompleteKeystrokes (object sender)
+		private void ExecutionCompleteKeystrokes ()
 		{
 
-			// Pretend that we accepted the input in order to put the parser back into a pristine
+			// Pretend that we accepted the input in order to put the parsers back into a pristine
 			// state (in particular, drop any remaining text).
 			downActions.ParserAccept ();
 			upActions.ParserAccept ();
 		}
+
+        private bool ExecutionWaitForKeystroke (int ms)
+        {
+            return downKeystrokeWasEnqueued.WaitOne (ms, false);
+        }
 
 		private void ExecutionProcessKeystroke
 			(Display display,
@@ -206,7 +204,7 @@ namespace Mockingbird.HP.Execution
 				// parser, or during the execution of the keystroke.
 				lock (IsBusy)
 				{
-					main.Invoke (notifyUI, new object [] {true});
+					display.Invoke (notifyUI, new object [] {true});
 
 					switch (keystroke.Motion) 
 					{
@@ -254,7 +252,7 @@ namespace Mockingbird.HP.Execution
 				ignoreNextDown = true;
 				ignoreNextUp = true;
 				mustUnbusyUI = false;
-				ExecutionCompleteKeystrokes (this);
+				ExecutionCompleteKeystrokes ();
 			}
 			catch (Interrupt)
 			{
@@ -262,7 +260,7 @@ namespace Mockingbird.HP.Execution
 				ignoreNextDown = true;
 				ignoreNextUp = true;
 				mustUnbusyUI = true;
-				ExecutionCompleteKeystrokes (this);
+				ExecutionCompleteKeystrokes ();
 			}
 			catch (ThreadAbortException) 
 			{
@@ -279,7 +277,7 @@ namespace Mockingbird.HP.Execution
 			{
 				if (mustUnbusyUI) 
 				{
-					engine.Mode = (EngineMode) main.Invoke (notifyUI, new object [] {false});
+					engine.Mode = (EngineMode) display.Invoke (notifyUI, new object [] {false});
 				}
 			}
 		}		

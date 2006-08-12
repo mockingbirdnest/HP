@@ -108,9 +108,8 @@ namespace Mockingbird.HP.Execution
 		protected override Execution.Thread CreateExecutionThread ()
 		{
 			return new Execution.Thread
-				(this,
+				(display,
 				reader,
-				new Thread.ComponentInitializer (InitializeThreadComponent),
 				new Execution.Thread.CrossThreadUINotification (CrossThreadNotifyUI),
 				out program);
 		}

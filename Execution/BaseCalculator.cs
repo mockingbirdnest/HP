@@ -16,6 +16,7 @@ namespace Mockingbird.HP.Execution
 
 		#region Protected & Private Data
 
+        protected Display display;
 		protected Execution.Thread executionThread;
 		protected Reader reader = null;
 		private Control [] allControls;
@@ -32,7 +33,7 @@ namespace Mockingbird.HP.Execution
 		// factored in abstract classes, instead of being distributed in concrete classes.  This
 		// includes in particular (1) the creation of controls and (2) the registration of handlers.
 		// However, scattering the code in this fashion would prevent us from using the UI designer,
-		// which would unfortunate.  So concrete classes are expected to be well-behaved and to
+		// which would be unfortunate.  So concrete classes are expected to be well-behaved and to
 		// do all the required initialization (if they don't, it will soon be apparent).
 
 		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
@@ -136,9 +137,6 @@ namespace Mockingbird.HP.Execution
 
 		// Called by the execution thread to notify the UI thread that the busy state has changed.
 		public abstract EngineMode CrossThreadNotifyUI (bool busy);
-
-		// Called by the execution thread to create the controls that it owns.
-		protected abstract void InitializeThreadComponent (Control control);
 
 		// Power-off the calculator.
 		protected abstract void PowerOff ();
