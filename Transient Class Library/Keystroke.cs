@@ -13,7 +13,7 @@ namespace Mockingbird.HP.Class_Library
 	/// <summary>
 	/// A key-related event for an HP calculator.
 	/// </summary>
-	public class Keystroke
+	public class Keystroke : BaseMessage
 	{
 
 		private System.Windows.Forms.Control control;
@@ -31,14 +31,6 @@ namespace Mockingbird.HP.Class_Library
 			this.control = control;
 			this.e = e;
 			this.motion = motion;
-		}
-
-		public System.Windows.Forms.Control Control
-		{
-			get
-			{
-				return control;
-			}
 		}
 
 		public KeystrokeMotion Motion 
