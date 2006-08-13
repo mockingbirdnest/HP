@@ -110,6 +110,8 @@ namespace Mockingbird.HP.Testing
 		[STAThread]
 		static void Main() 
 		{
+            // Do this to enable the fancy new XP styles.
+            //Application.EnableVisualStyles ();
 			Application.Run(new KeyTest());
 		}
 	}
