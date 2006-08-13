@@ -135,6 +135,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7A227A4A426D407FB399CF09A59C039E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_834ADBA3F2546BB1B9982E7BA3A1A9CB"
         "OwnerKey" = "8:_72BAF2C98CA7C5B5C7B2E2951C3F0896"
         "MsmSig" = "8:_UNDEFINED"
@@ -178,19 +184,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
-        "OwnerKey" = "8:_72BAF2C98CA7C5B5C7B2E2951C3F0896"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
         "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,7 +202,19 @@
         "Entry"
         {
         "MsmKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
+        "OwnerKey" = "8:_72BAF2C98CA7C5B5C7B2E2951C3F0896"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
         "OwnerKey" = "8:_0EA1B5B09896D9CF93389A3F9F996121"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -346,19 +352,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_834ADBA3F2546BB1B9982E7BA3A1A9CB"
+        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0044B043B0FA47EB89455E19AA48A799"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -401,6 +401,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A115F1F966BB80DB08B8A96E827CB5CB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_834ADBA3F2546BB1B9982E7BA3A1A9CB"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -540,7 +546,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Transient Class Library, Version=0.0.0.0, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Transient Class Library, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_0EA1B5B09896D9CF93389A3F9F996121"
@@ -671,7 +677,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Parser, Version=1.0.2413.39465, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Parser, Version=1.0.2416.17982, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_72BAF2C98CA7C5B5C7B2E2951C3F0896"
@@ -696,6 +702,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A227A4A426D407FB399CF09A59C039E"
+            {
+            "SourcePath" = "8:HP97 Document.ico"
+            "TargetName" = "8:HP97 Document.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_834ADBA3F2546BB1B9982E7BA3A1A9CB"
@@ -733,7 +759,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Persistent Class Library, Version=1.0.2413.39466, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Persistent Class Library, Version=1.0.2416.17982, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_8B6E4F9906745558E16E953648092992"
@@ -795,7 +821,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Persistence, Version=0.0.0.0, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Persistence, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_A896421D4F308172205556DF400D9548"
@@ -946,7 +972,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Execution, Version=1.0.2413.39466, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Execution, Version=1.0.2416.17982, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_D05FBA417EBFEF3B9D89191A248E0758"
@@ -997,7 +1023,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Control Library, Version=1.0.2413.39466, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:Mockingbird.HP.Control Library, Version=1.0.2416.17982, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_E866428D695E6446E384BD83D1067072"
