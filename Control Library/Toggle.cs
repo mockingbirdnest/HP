@@ -198,12 +198,9 @@ namespace Mockingbird.HP.Control_Library
 
 		public override System.Drawing.Font Font
 		{
-			get
-			{
-				return font;
-			}
 			set
 			{
+                base.Font = value;
 				font = value;
 				leftLabel.Font = font;
 				rightLabel.Font = font;
@@ -212,12 +209,9 @@ namespace Mockingbird.HP.Control_Library
 
 		public override System.Drawing.Color ForeColor
 		{
-			get
-			{
-				return foreColor;
-			}
 			set 
 			{
+                base.ForeColor = value;
 				foreColor = value;
 				leftLabel.ForeColor = foreColor;
 				rightLabel.ForeColor = foreColor;

@@ -135,11 +135,6 @@ namespace Mockingbird.HP.Control_Library
             hasAPeriod = false;
 
             Digits = 2;
-            Font = new System.Drawing.Font ("Quartz",
-                                            21.75F,
-                                            System.Drawing.FontStyle.Regular,
-                                            System.Drawing.GraphicsUnit.Point,
-                                            0);
             Format = DisplayFormat.Fixed;
             Mode = DisplayMode.Numeric;
             Value = 0.0;
@@ -536,17 +531,15 @@ namespace Mockingbird.HP.Control_Library
 
         public override Font Font
         {
-            get
-            {
-                return font;
-            }
             set
             {
+                //ThreadSafe.SetFont (base, value);
+                base.Font = value;
                 font = value;
-                height = (int) (font.SizeInPoints * heightFactor);
                 ThreadSafe.SetFont (alphabeticTextBox, font);
                 ThreadSafe.SetFont (instructionTextBox, font);
                 ThreadSafe.SetFont (numericTextBox, font);
+                height = (int) (font.SizeInPoints * heightFactor);
                 Size = new Size (Size.Width, height);
             }
         }

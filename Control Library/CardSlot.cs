@@ -841,12 +841,10 @@ namespace Mockingbird.HP.Control_Library
 
         public override Color BackColor
         {
-            get
-            {
-                return unloadedColor;
-            }
             set
             {
+                //ThreadSafe.SetBackColor (base, value);
+                base.BackColor = value;
                 unloadedColor = value;
                 unloadedColorBrush = new SolidBrush (unloadedColor);
                 ThreadSafe.SetBackColor (panel, unloadedColor);
@@ -855,12 +853,10 @@ namespace Mockingbird.HP.Control_Library
 
         public override System.Drawing.Font Font
         {
-            get
-            {
-                return font;
-            }
             set
             {
+                //ThreadSafe.SetFont (base, value);
+                base.Font = value;
                 font = value;
                 largeFont = new System.Drawing.Font
                     (font.Name,
