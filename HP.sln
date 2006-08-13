@@ -26,6 +26,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Execution", "Execution\Execution.csproj", "{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP35", "HP35\HP35.csproj", "{487BEF8E-E641-463B-9AF5-411E2248D9AA}"
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 12
@@ -142,6 +144,12 @@ Global
 		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Design|Any CPU.Build.0 = Design|Any CPU
 		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
