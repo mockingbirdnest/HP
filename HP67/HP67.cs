@@ -27,6 +27,7 @@ namespace Mockingbird.HP.HP67
 		// UI is edited.
 
 		// BaseCalculator.
+        protected Mockingbird.HP.Control_Library.Display display;
 		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
 
 		// ProgrammableCalculator.
