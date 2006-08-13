@@ -361,7 +361,14 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_DISPLAY_X:
-                    display.PauseAndBlink (5000);
+                    switch (reader.Model) {
+                        case CalculatorModel.HP67:
+                            display.PauseAndBlink (5000);
+                            break;
+                        case CalculatorModel.HP97:
+                            display.Print ();
+                            break;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_DIVISION:
                     stack.Get (out x, out y);
@@ -676,7 +683,14 @@ namespace Mockingbird.HP.Execution
                     stack.X = Math.Sin (ToRadian (x));
                     break;
                 case SymbolConstants.SYMBOL_SPACE:
-                    // No-op on HP67.
+                    switch (reader.Model)
+                    {
+                        case CalculatorModel.HP67:
+                            break;
+                        case CalculatorModel.HP97:
+                            //TODO: Printer.Advance ();
+                            break;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_SQRT:
                     stack.Get (out x);

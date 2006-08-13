@@ -287,7 +287,7 @@ namespace Mockingbird.HP.HP97
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog ();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog ();
             this.printDocument = new System.Drawing.Printing.PrintDocument ();
-            this.display = new Mockingbird.HP.Control_Library.Display ();
+            this.display = new Mockingbird.HP.Control_Library.Display (printer);
             this.panelDisplay = new System.Windows.Forms.Panel ();
             this.buttonPrinter = new System.Windows.Forms.Button ();
             this.panelMain.SuspendLayout ();
@@ -302,7 +302,7 @@ namespace Mockingbird.HP.HP97
             // 
             this.printer.Location = new System.Drawing.Point (520, 0);
             this.printer.Name = "printer";
-            this.printer.Size = new System.Drawing.Size (248, 208);
+            this.printer.Size = new System.Drawing.Size (248, 200);
             this.printer.TabIndex = 1;
             // 
             // panelMain
@@ -1996,6 +1996,7 @@ namespace Mockingbird.HP.HP97
             this.buttonPrinter.Name = "buttonPrinter";
             this.buttonPrinter.Size = new System.Drawing.Size (36, 56);
             this.buttonPrinter.TabIndex = 5;
+            this.buttonPrinter.Click += new System.EventHandler (this.buttonPrinter_Click);
             // 
             // HP97
             // 
@@ -2045,6 +2046,11 @@ namespace Mockingbird.HP.HP97
 			{
 			}
 		}
+
+        private void buttonPrinter_Click (object sender, EventArgs e)
+        {
+            printer.Advance ();
+        }
 
 	}
 }

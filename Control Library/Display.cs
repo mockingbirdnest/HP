@@ -85,6 +85,7 @@ namespace Mockingbird.HP.Control_Library
         private System.Windows.Forms.TextBox numericTextBox;
 
         private Font font;
+        private Printer printer;
         private Random random;
 
         #endregion
@@ -105,6 +106,11 @@ namespace Mockingbird.HP.Control_Library
         #region Constructors & Destructors
 
         public Display ()
+            : this (null)
+        {
+        }
+
+        public Display (Printer printer)
         {
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent ();
@@ -122,6 +128,7 @@ namespace Mockingbird.HP.Control_Library
                 userControlTesting = bool.Parse (appSettingsUserControlTesting [0]);
             }
 
+            this.printer = printer;
             random = new Random ();
 
             // Make the control non-selectable, otherwise the application will select its
@@ -909,6 +916,11 @@ namespace Mockingbird.HP.Control_Library
                 // Restore the original text here to protect against exceptions.
                 NumericText = textWithPeriod;
             }
+        }
+
+        public void Print ()
+        {
+            printer.Append (ThreadSafe.GetText (numericTextBox), HorizontalAlignment.Right);
         }
 
         public void Round ()

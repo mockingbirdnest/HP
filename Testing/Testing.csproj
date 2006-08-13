@@ -23,7 +23,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Mockingbird.HP.Testing</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Mockingbird.HP.Testing.KeyTest</StartupObject>
+    <StartupObject>Mockingbird.HP.Testing.PrinterTest</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -135,6 +135,12 @@
     <Compile Include="KeyTest.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="PrinterTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrinterTest.Designer.cs">
+      <DependentUpon>PrinterTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToggleTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KeyTest.resx">
       <DependentUpon>KeyTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrinterTest.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PrinterTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToggleTest.resx">
       <DependentUpon>ToggleTest.cs</DependentUpon>

@@ -4,28 +4,43 @@ using System.Windows.Forms;
 
 namespace Mockingbird.HP.Class_Library
 {
-    public class ThreadSafe
+    public static class ThreadSafe
     {
-        private delegate void CrossThreadBringToFront (Control control);
+        private delegate int CrossThreadGetInt (Control control);
         private delegate string CrossThreadGetString (Control control);
+        private delegate void CrossThread (Control control);
         private delegate void CrossThreadSetBool (Control control, bool b);
         private delegate void CrossThreadSetColor (Control control, Color c);
         private delegate void CrossThreadSetFont (Control control, Font f);
+        private delegate void CrossThreadSetInt (Control control, int i);
+        private delegate void CrossThreadSetIntObject (Control control, int i, Object o);
+        private delegate void CrossThreadSetObject (Control control, Object o);
         private delegate void CrossThreadSetPoint (Control control, Point p);
         private delegate void CrossThreadSetSize (Control control, Size s);
         private delegate void CrossThreadSetString (Control control, string s);
-        private delegate void CrossThreadUpdate (Control control);
 
         public static void BringToFront (Control control)
         {
             if (control.InvokeRequired)
             {
-                control.Invoke
-                    (new CrossThreadBringToFront (BringToFront), new object [] { control });
+                control.Invoke (new CrossThread (BringToFront), new object [] { control });
             }
             else
             {
                 control.BringToFront ();
+            }
+        }
+
+        public static int GetItemsCount (Control control)
+        {
+            if (control.InvokeRequired)
+            {
+                return (int) control.Invoke
+                    (new CrossThreadGetInt (GetItemsCount), new object [] { control });
+            }
+            else
+            {
+                return ((ListBox) control).Items.Count;
             }
         }
 
@@ -52,6 +67,58 @@ namespace Mockingbird.HP.Class_Library
             else
             {
                 return control.Text;
+            }
+        }
+
+        public static void SetTopIndex (Control control, int i)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetInt (SetTopIndex), new object [] { control, i });
+            }
+            else
+            {
+                ((ListBox) control).TopIndex = i;
+            }
+        }
+
+        public static void ItemsAdd (Control control, object o)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetObject (ItemsAdd), new object [] { control, o });
+            }
+            else
+            {
+                ((ListBox) control).Items.Add (o);
+            }
+        }
+
+        public static void ItemsInsert (Control control, int i, object o)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetIntObject (ItemsInsert), new object [] { control, i, o });
+            }
+            else
+            {
+                ((ListBox) control).Items.Insert (i, o);
+            }
+        }
+
+        public static void ItemsRemoveAt (Control control, int i)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetInt (ItemsRemoveAt), new object [] { control, i });
+            }
+            else
+            {
+                ((ListBox) control).Items.RemoveAt (i);
             }
         }
 
@@ -177,8 +244,7 @@ namespace Mockingbird.HP.Class_Library
         {
             if (control.InvokeRequired)
             {
-                control.Invoke
-                    (new CrossThreadUpdate (Update), new object [] { control });
+                control.Invoke (new CrossThread (Update), new object [] { control });
             }
             else
             {
