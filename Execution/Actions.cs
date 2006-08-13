@@ -1812,9 +1812,9 @@ namespace Mockingbird.HP.Execution
 			// <Unary_Instruction> ::= <Gsb_UC_Shortcut>
 			bool programIsEmpty = ((Program) state).IsEmpty;
 
-			// When the program memory is empty, the keys A to E have a different function, both
-			// in RUN mode and in W/PRGM mode.  Perform the substitution here.
-			if (programIsEmpty) 
+			// One the HP-67, when the program memory is empty, the keys A to E have a different
+            // function, both in RUN mode and in W/PRGM mode.  Perform the substitution here.
+			if (programIsEmpty && reader.Model == CalculatorModel.HP67) 
 			{
 				Letter letter = (Letter) tokens [0].UserObject;
 				Symbol symbol = null;

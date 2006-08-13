@@ -1538,6 +1538,7 @@ namespace Mockingbird.HP.HP97
             // 
             // cardSlot
             // 
+            this.cardSlot.Font = new System.Drawing.Font ("Arial Unicode MS", 7F);
             this.cardSlot.Location = new System.Drawing.Point (8, 92);
             this.cardSlot.Name = "cardSlot";
             this.cardSlot.RichText = false;
@@ -1546,14 +1547,16 @@ namespace Mockingbird.HP.HP97
             this.cardSlot.TabIndex = 12;
             this.cardSlot.TextBoxWidth = 48;
             this.cardSlot.Title = "<TITLE>";
-            this.cardSlot.UnloadedTextA = "1/x";
-            this.cardSlot.UnloadedTextB = "√x̅";
-            this.cardSlot.UnloadedTextC = "yˣ";
-            this.cardSlot.UnloadedTextD = "R↓";
-            this.cardSlot.UnloadedTextE = "x⇄y";
+            this.cardSlot.UnloadedTextA = "";
+            this.cardSlot.UnloadedTextB = "";
+            this.cardSlot.UnloadedTextC = "";
+            this.cardSlot.UnloadedTextD = "";
+            this.cardSlot.UnloadedTextE = "";
             // 
             // toggleManNorm
             // 
+            this.toggleManNorm.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
+            this.toggleManNorm.ForeColor = System.Drawing.Color.White;
             this.toggleManNorm.LeftText = "MAN";
             this.toggleManNorm.LeftWidth = 60;
             this.toggleManNorm.Location = new System.Drawing.Point (186, 34);
@@ -1592,6 +1595,8 @@ namespace Mockingbird.HP.HP97
             // 
             // toggleOffOn
             // 
+            this.toggleOffOn.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
+            this.toggleOffOn.ForeColor = System.Drawing.Color.White;
             this.toggleOffOn.LeftText = "OFF";
             this.toggleOffOn.LeftWidth = 30;
             this.toggleOffOn.Location = new System.Drawing.Point (8, 34);
@@ -1606,6 +1611,8 @@ namespace Mockingbird.HP.HP97
             // 
             // toggleWprgmRun
             // 
+            this.toggleWprgmRun.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
+            this.toggleWprgmRun.ForeColor = System.Drawing.Color.White;
             this.toggleWprgmRun.LeftText = "PRGM";
             this.toggleWprgmRun.LeftWidth = 60;
             this.toggleWprgmRun.Location = new System.Drawing.Point (186, 58);
