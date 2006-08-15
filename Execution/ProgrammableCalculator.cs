@@ -82,10 +82,15 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
-        #region Abstract Operations
+        #region Overridable Operations
 
-        // Update the UI after a change to the program state.
-        protected abstract void UpdateUI (bool programIsEmpty);
+        protected virtual void UpdateUI (bool programIsEmpty)
+        {
+            // Update the UI after a change to the program state.
+            saveToolStripMenuItem.Enabled = !programIsEmpty;
+            saveAsToolStripMenuItem.Enabled = !programIsEmpty;
+            printToolStripMenuItem.Enabled = !programIsEmpty;
+        }
 
         #endregion
 

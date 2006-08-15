@@ -76,50 +76,17 @@ namespace Mockingbird.HP.Execution
             // state where its display is black and it doesn't accept keystrokes.
             BusyUI ();
             executionThread.Reset ();
-            UpdateCardSlot (/* programIsEmpty */ true);
+            UpdateUI (/* programIsEmpty */ true);
         }
 
         protected override void UpdateUI (bool programIsEmpty)
         {
-            UpdateCardSlot (programIsEmpty);
-        }
+            bool wasUnloaded;
 
-        #endregion
-
-        #region Cross-Thread Operations
-
-        public FileStream CrossThreadOpen ()
-        {
-            string name;
-
-            if (openFileDialog.ShowDialog () == DialogResult.OK)
-            {
-                name = openFileDialog.FileName;
-                return Open (ref name);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public FileStream CrossThreadSaveDataAs ()
-        {
-            string name = null;
-
-            return Save (/* saveAs */ true, ref name);
-        }
-
-        #endregion
-
-        #region UI Utilities
-
-        private void UpdateCardSlot (bool programIsEmpty)
-        {
-            bool wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
-
-            //TODO: Separate UpdateCardSlot from UpdateMenus.  Also disable Save/Print when program is empty. 
-            // Make sure that the state of the card slot reflects the state of the program memory.
+            // Make sure that the state of the card slot and of the related menus reflect the state
+            // of the program memory.
+            base.UpdateUI (programIsEmpty);
+            wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
             try
             {
                 if (programIsEmpty)
@@ -156,6 +123,32 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
+        #region Cross-Thread Operations
+
+        public FileStream CrossThreadOpen ()
+        {
+            string name;
+
+            if (openFileDialog.ShowDialog () == DialogResult.OK)
+            {
+                name = openFileDialog.FileName;
+                return Open (ref name);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public FileStream CrossThreadSaveDataAs ()
+        {
+            string name = null;
+
+            return Save (/* saveAs */ true, ref name);
+        }
+
+        #endregion
+
         #region UI Event Handlers
 
         protected void editLabelsToolStripMenuItem_Click (object sender, System.EventArgs e)
@@ -173,7 +166,7 @@ namespace Mockingbird.HP.Execution
                 }
                 else
                 {
-                    UpdateCardSlot (/* programIsEmpty */ false);
+                    UpdateUI (/* programIsEmpty */ false);
                 }
             }
         }
