@@ -99,62 +99,64 @@ namespace Mockingbird.HP.Control_Library
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(Toggle));
-			this.button = new System.Windows.Forms.Button();
-			this.rightLabel = new System.Windows.Forms.Label();
-			this.leftLabel = new System.Windows.Forms.Label();
-			this.panel = new System.Windows.Forms.Panel();
-			this.SuspendLayout();
-			// 
-			// button
-			// 
-			this.button.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(50)), ((System.Byte)(50)), ((System.Byte)(50)));
-			this.button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button.BackgroundImage")));
-			this.button.Location = new System.Drawing.Point(58, 4);
-			this.button.Name = "button";
-			this.button.Size = new System.Drawing.Size(24, 8);
-			this.button.TabIndex = 5;
-			this.button.Click += new System.EventHandler(this.button_Click);
-			// 
-			// rightLabel
-			// 
-			this.rightLabel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.rightLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.rightLabel.ForeColor = System.Drawing.Color.White;
-			this.rightLabel.Location = new System.Drawing.Point(120, 0);
-			this.rightLabel.Name = "rightLabel";
-			this.rightLabel.Size = new System.Drawing.Size(56, 16);
-			this.rightLabel.TabIndex = 4;
-			// 
-			// leftLabel
-			// 
-			this.leftLabel.BackColor = System.Drawing.Color.FromArgb(((System.Byte)(64)), ((System.Byte)(64)), ((System.Byte)(64)));
-			this.leftLabel.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
-			this.leftLabel.ForeColor = System.Drawing.Color.White;
-			this.leftLabel.Location = new System.Drawing.Point(0, 0);
-			this.leftLabel.Name = "leftLabel";
-			this.leftLabel.Size = new System.Drawing.Size(56, 16);
-			this.leftLabel.TabIndex = 1;
-			this.leftLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// panel
-			// 
-			this.panel.BackColor = System.Drawing.Color.Black;
-			this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.panel.Location = new System.Drawing.Point(56, 2);
-			this.panel.Name = "panel";
-			this.panel.Size = new System.Drawing.Size(64, 12);
-			this.panel.TabIndex = 6;
-			// 
-			// Toggle
-			// 
-			this.Controls.Add(this.button);
-			this.Controls.Add(this.rightLabel);
-			this.Controls.Add(this.leftLabel);
-			this.Controls.Add(this.panel);
-			this.Name = "Toggle";
-			this.Size = new System.Drawing.Size(192, 24);
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager (typeof (Toggle));
+            this.button = new System.Windows.Forms.Button ();
+            this.rightLabel = new System.Windows.Forms.Label ();
+            this.leftLabel = new System.Windows.Forms.Label ();
+            this.panel = new System.Windows.Forms.Panel ();
+            this.SuspendLayout ();
+            // 
+            // button
+            // 
+            this.button.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (50)))), ((int) (((byte) (50)))), ((int) (((byte) (50)))));
+            this.button.BackgroundImage = ((System.Drawing.Image) (resources.GetObject ("button.BackgroundImage")));
+            this.button.Location = new System.Drawing.Point (58, 4);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size (24, 8);
+            this.button.TabIndex = 5;
+            this.button.UseVisualStyleBackColor = false;
+            this.button.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler (this.button_PreviewKeyDown);
+            this.button.Click += new System.EventHandler (this.button_Click);
+            // 
+            // rightLabel
+            // 
+            this.rightLabel.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.rightLabel.Font = new System.Drawing.Font ("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.rightLabel.ForeColor = System.Drawing.Color.White;
+            this.rightLabel.Location = new System.Drawing.Point (120, 0);
+            this.rightLabel.Name = "rightLabel";
+            this.rightLabel.Size = new System.Drawing.Size (56, 16);
+            this.rightLabel.TabIndex = 4;
+            // 
+            // leftLabel
+            // 
+            this.leftLabel.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
+            this.leftLabel.Font = new System.Drawing.Font ("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.leftLabel.ForeColor = System.Drawing.Color.White;
+            this.leftLabel.Location = new System.Drawing.Point (0, 0);
+            this.leftLabel.Name = "leftLabel";
+            this.leftLabel.Size = new System.Drawing.Size (56, 16);
+            this.leftLabel.TabIndex = 1;
+            this.leftLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel
+            // 
+            this.panel.BackColor = System.Drawing.Color.Black;
+            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel.Location = new System.Drawing.Point (56, 2);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size (64, 12);
+            this.panel.TabIndex = 6;
+            // 
+            // Toggle
+            // 
+            this.Controls.Add (this.button);
+            this.Controls.Add (this.rightLabel);
+            this.Controls.Add (this.leftLabel);
+            this.Controls.Add (this.panel);
+            this.Name = "Toggle";
+            this.Size = new System.Drawing.Size (192, 24);
+            this.ResumeLayout (false);
 
 		}
 		#endregion
@@ -177,6 +179,14 @@ namespace Mockingbird.HP.Control_Library
 				ToggleClick (sender, e, position);
 			}
 		}
+
+        private void button_PreviewKeyDown (object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.IsInputKey = true;
+            }
+        }
 
 		#endregion
 
