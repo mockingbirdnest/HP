@@ -32,44 +32,50 @@ namespace Mockingbird.HP.HP67
 
 		// ProgrammableCalculator.
 		protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
-		protected System.Windows.Forms.ContextMenu contextMenu;
 		protected System.Windows.Forms.OpenFileDialog openFileDialog;
 		protected System.Windows.Forms.SaveFileDialog saveFileDialog;
 		protected System.Drawing.Printing.PrintDocument printDocument;
-		protected System.Windows.Forms.MenuItem openMenuItem;
-		protected System.Windows.Forms.MenuItem printMenuItem;
-		protected System.Windows.Forms.MenuItem saveMenuItem;
-		protected System.Windows.Forms.MenuItem saveAsMenuItem;
+        protected MenuStrip menuStrip;
+        protected ToolStripMenuItem fileToolStripMenuItem;
+        protected ToolStripMenuItem openToolStripMenuItem;
+        protected ToolStripMenuItem saveToolStripMenuItem;
+        protected ToolStripMenuItem saveAsToolStripMenuItem;
+        protected ToolStripMenuItem printToolStripMenuItem;
+        protected ToolStripMenuItem exitToolStripMenuItem;
 
 		// CardCalculator.
 		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
-		protected System.Windows.Forms.MenuItem menuSeparator;
-		protected System.Windows.Forms.MenuItem rtfMenuItem;
-		protected System.Windows.Forms.MenuItem editMenuItem;
+        protected ToolStripMenuItem editToolStripMenuItem;
+        protected ToolStripMenuItem editLabelsToolStripMenuItem;
+        protected ToolStripMenuItem rtfToolStripMenuItem;
 
 		// The designer wants the following event handlers to exist otherwise it loses the
 		// associations with the controls.
-		private void editMenuItem_Click(object sender, System.EventArgs e) 
+		private void editLabelsToolStripMenuItem_Click(object sender, System.EventArgs e) 
 		{
 		}
 
-		private void openMenuItem_Click(object sender, System.EventArgs e) 
+        private void exitToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
+
+        private void openToolStripMenuItem_Click (object sender, System.EventArgs e) 
 		{
 		}
 
-		private void printMenuItem_Click(object sender, System.EventArgs e) 
+		private void printToolStripMenuItem_Click(object sender, System.EventArgs e) 
 		{
 		}
 
-		private void saveMenuItem_Click(object sender, System.EventArgs e) 
+		private void saveToolStripMenuItem_Click(object sender, System.EventArgs e) 
 		{
 		}
 
-		private void saveAsMenuItem_Click(object sender, System.EventArgs e) 
+		private void saveAsToolStripMenuItem_Click(object sender, System.EventArgs e) 
 		{
 		}
 
-		private void rtfMenuItem_Click(object sender, System.EventArgs e) 
+		private void rtfToolStripMenuItem_Click(object sender, System.EventArgs e) 
 		{
 		}
 
@@ -214,23 +220,26 @@ namespace Mockingbird.HP.HP67
             this.keyDiv = new Mockingbird.HP.Control_Library.Key ();
             this.keyMult = new Mockingbird.HP.Control_Library.Key ();
             this.keyPlus = new Mockingbird.HP.Control_Library.Key ();
-            this.contextMenu = new System.Windows.Forms.ContextMenu ();
-            this.openMenuItem = new System.Windows.Forms.MenuItem ();
-            this.saveMenuItem = new System.Windows.Forms.MenuItem ();
-            this.saveAsMenuItem = new System.Windows.Forms.MenuItem ();
-            this.printMenuItem = new System.Windows.Forms.MenuItem ();
-            this.menuSeparator = new System.Windows.Forms.MenuItem ();
-            this.editMenuItem = new System.Windows.Forms.MenuItem ();
-            this.rtfMenuItem = new System.Windows.Forms.MenuItem ();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog ();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog ();
             this.printDocument = new System.Drawing.Printing.PrintDocument ();
+            this.menuStrip = new System.Windows.Forms.MenuStrip ();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.editLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.rtfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.menuStrip.SuspendLayout ();
             this.SuspendLayout ();
             // 
             // cardSlot
             // 
             this.cardSlot.Font = new System.Drawing.Font ("Arial Unicode MS", 7F);
-            this.cardSlot.Location = new System.Drawing.Point (8, 80);
+            this.cardSlot.Location = new System.Drawing.Point (8, 104);
             this.cardSlot.Name = "cardSlot";
             this.cardSlot.RichText = false;
             this.cardSlot.Size = new System.Drawing.Size (288, 50);
@@ -248,7 +257,7 @@ namespace Mockingbird.HP.HP67
             // 
             this.display.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.display.ForeColor = System.Drawing.Color.Red;
-            this.display.Location = new System.Drawing.Point (8, 8);
+            this.display.Location = new System.Drawing.Point (8, 32);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size (288, 40);
             this.display.TabIndex = 0;
@@ -260,7 +269,7 @@ namespace Mockingbird.HP.HP67
             this.toggleOffOn.ForeColor = System.Drawing.Color.White;
             this.toggleOffOn.LeftText = "OFF";
             this.toggleOffOn.LeftWidth = 30;
-            this.toggleOffOn.Location = new System.Drawing.Point (8, 56);
+            this.toggleOffOn.Location = new System.Drawing.Point (8, 80);
             this.toggleOffOn.MainWidth = 50;
             this.toggleOffOn.Name = "toggleOffOn";
             this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
@@ -276,7 +285,7 @@ namespace Mockingbird.HP.HP67
             this.toggleWprgmRun.ForeColor = System.Drawing.Color.White;
             this.toggleWprgmRun.LeftText = "W/PRGM";
             this.toggleWprgmRun.LeftWidth = 60;
-            this.toggleWprgmRun.Location = new System.Drawing.Point (160, 56);
+            this.toggleWprgmRun.Location = new System.Drawing.Point (160, 80);
             this.toggleWprgmRun.MainWidth = 50;
             this.toggleWprgmRun.Name = "toggleWprgmRun";
             this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
@@ -296,7 +305,7 @@ namespace Mockingbird.HP.HP67
             this.keyA.GText = "";
             this.keyA.HText = "";
             this.keyA.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyA.Location = new System.Drawing.Point (16, 136);
+            this.keyA.Location = new System.Drawing.Point (16, 160);
             this.keyA.MainBackColor = System.Drawing.Color.Olive;
             this.keyA.MainForeColor = System.Drawing.Color.White;
             this.keyA.MainHeight = 24;
@@ -321,7 +330,7 @@ namespace Mockingbird.HP.HP67
             this.keyf.GText = "";
             this.keyf.HText = "";
             this.keyf.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyf.Location = new System.Drawing.Point (16, 248);
+            this.keyf.Location = new System.Drawing.Point (16, 272);
             this.keyf.MainBackColor = System.Drawing.Color.Gold;
             this.keyf.MainForeColor = System.Drawing.Color.Black;
             this.keyf.MainHeight = 24;
@@ -346,7 +355,7 @@ namespace Mockingbird.HP.HP67
             this.keySST.GText = "f";
             this.keySST.HText = "BST";
             this.keySST.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keySST.Location = new System.Drawing.Point (240, 192);
+            this.keySST.Location = new System.Drawing.Point (240, 216);
             this.keySST.MainBackColor = System.Drawing.Color.Olive;
             this.keySST.MainForeColor = System.Drawing.Color.White;
             this.keySST.MainHeight = 24;
@@ -370,7 +379,7 @@ namespace Mockingbird.HP.HP67
             this.keyi.GText = "";
             this.keyi.HText = "x⇆I";
             this.keyi.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyi.Location = new System.Drawing.Point (184, 192);
+            this.keyi.Location = new System.Drawing.Point (184, 216);
             this.keyi.MainBackColor = System.Drawing.Color.Olive;
             this.keyi.MainForeColor = System.Drawing.Color.White;
             this.keyi.MainHeight = 24;
@@ -394,7 +403,7 @@ namespace Mockingbird.HP.HP67
             this.keyDSP.GText = "SCI";
             this.keyDSP.HText = "ENG";
             this.keyDSP.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyDSP.Location = new System.Drawing.Point (128, 192);
+            this.keyDSP.Location = new System.Drawing.Point (128, 216);
             this.keyDSP.MainBackColor = System.Drawing.Color.Olive;
             this.keyDSP.MainForeColor = System.Drawing.Color.White;
             this.keyDSP.MainHeight = 24;
@@ -418,7 +427,7 @@ namespace Mockingbird.HP.HP67
             this.keyGTO.GText = "f";
             this.keyGTO.HText = "RTN";
             this.keyGTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyGTO.Location = new System.Drawing.Point (72, 192);
+            this.keyGTO.Location = new System.Drawing.Point (72, 216);
             this.keyGTO.MainBackColor = System.Drawing.Color.Olive;
             this.keyGTO.MainForeColor = System.Drawing.Color.White;
             this.keyGTO.MainHeight = 24;
@@ -442,7 +451,7 @@ namespace Mockingbird.HP.HP67
             this.keyΣ.GText = "s";
             this.keyΣ.HText = "Σ-";
             this.keyΣ.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyΣ.Location = new System.Drawing.Point (16, 192);
+            this.keyΣ.Location = new System.Drawing.Point (16, 216);
             this.keyΣ.MainBackColor = System.Drawing.Color.Olive;
             this.keyΣ.MainForeColor = System.Drawing.Color.White;
             this.keyΣ.MainHeight = 24;
@@ -466,7 +475,7 @@ namespace Mockingbird.HP.HP67
             this.keyE.GText = "";
             this.keyE.HText = "";
             this.keyE.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyE.Location = new System.Drawing.Point (240, 136);
+            this.keyE.Location = new System.Drawing.Point (240, 160);
             this.keyE.MainBackColor = System.Drawing.Color.Olive;
             this.keyE.MainForeColor = System.Drawing.Color.White;
             this.keyE.MainHeight = 24;
@@ -491,7 +500,7 @@ namespace Mockingbird.HP.HP67
             this.keyD.GText = "";
             this.keyD.HText = "";
             this.keyD.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyD.Location = new System.Drawing.Point (184, 136);
+            this.keyD.Location = new System.Drawing.Point (184, 160);
             this.keyD.MainBackColor = System.Drawing.Color.Olive;
             this.keyD.MainForeColor = System.Drawing.Color.White;
             this.keyD.MainHeight = 24;
@@ -516,7 +525,7 @@ namespace Mockingbird.HP.HP67
             this.keyC.GText = "";
             this.keyC.HText = "";
             this.keyC.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyC.Location = new System.Drawing.Point (128, 136);
+            this.keyC.Location = new System.Drawing.Point (128, 160);
             this.keyC.MainBackColor = System.Drawing.Color.Olive;
             this.keyC.MainForeColor = System.Drawing.Color.White;
             this.keyC.MainHeight = 24;
@@ -541,7 +550,7 @@ namespace Mockingbird.HP.HP67
             this.keyB.GText = "";
             this.keyB.HText = "";
             this.keyB.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyB.Location = new System.Drawing.Point (72, 136);
+            this.keyB.Location = new System.Drawing.Point (72, 160);
             this.keyB.MainBackColor = System.Drawing.Color.Olive;
             this.keyB.MainForeColor = System.Drawing.Color.White;
             this.keyB.MainHeight = 24;
@@ -566,7 +575,7 @@ namespace Mockingbird.HP.HP67
             this.keyENTER.GText = "MERGE";
             this.keyENTER.HText = "DEG";
             this.keyENTER.HTextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.keyENTER.Location = new System.Drawing.Point (8, 304);
+            this.keyENTER.Location = new System.Drawing.Point (8, 328);
             this.keyENTER.MainBackColor = System.Drawing.Color.Olive;
             this.keyENTER.MainForeColor = System.Drawing.Color.White;
             this.keyENTER.MainHeight = 24;
@@ -591,7 +600,7 @@ namespace Mockingbird.HP.HP67
             this.keyEEX.GText = "";
             this.keyEEX.HText = "GRD";
             this.keyEEX.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyEEX.Location = new System.Drawing.Point (184, 304);
+            this.keyEEX.Location = new System.Drawing.Point (184, 328);
             this.keyEEX.MainBackColor = System.Drawing.Color.Olive;
             this.keyEEX.MainForeColor = System.Drawing.Color.White;
             this.keyEEX.MainHeight = 24;
@@ -615,7 +624,7 @@ namespace Mockingbird.HP.HP67
             this.keyCLx.GText = "";
             this.keyCLx.HText = "DEL";
             this.keyCLx.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyCLx.Location = new System.Drawing.Point (232, 304);
+            this.keyCLx.Location = new System.Drawing.Point (232, 328);
             this.keyCLx.MainBackColor = System.Drawing.Color.Olive;
             this.keyCLx.MainForeColor = System.Drawing.Color.White;
             this.keyCLx.MainHeight = 24;
@@ -639,7 +648,7 @@ namespace Mockingbird.HP.HP67
             this.keyCHS.GText = "";
             this.keyCHS.HText = "RAD";
             this.keyCHS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyCHS.Location = new System.Drawing.Point (128, 304);
+            this.keyCHS.Location = new System.Drawing.Point (128, 328);
             this.keyCHS.MainBackColor = System.Drawing.Color.Olive;
             this.keyCHS.MainForeColor = System.Drawing.Color.White;
             this.keyCHS.MainHeight = 24;
@@ -663,7 +672,7 @@ namespace Mockingbird.HP.HP67
             this.keyh.GText = "";
             this.keyh.HText = "";
             this.keyh.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyh.Location = new System.Drawing.Point (240, 248);
+            this.keyh.Location = new System.Drawing.Point (240, 272);
             this.keyh.MainBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (32)))), ((int) (((byte) (32)))), ((int) (((byte) (32)))));
             this.keyh.MainForeColor = System.Drawing.Color.White;
             this.keyh.MainHeight = 24;
@@ -688,7 +697,7 @@ namespace Mockingbird.HP.HP67
             this.keyRCL.GText = "(i)";
             this.keyRCL.HText = "RC I";
             this.keyRCL.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyRCL.Location = new System.Drawing.Point (184, 248);
+            this.keyRCL.Location = new System.Drawing.Point (184, 272);
             this.keyRCL.MainBackColor = System.Drawing.Color.Olive;
             this.keyRCL.MainForeColor = System.Drawing.Color.White;
             this.keyRCL.MainHeight = 24;
@@ -712,7 +721,7 @@ namespace Mockingbird.HP.HP67
             this.keySTO.GText = "(i)";
             this.keySTO.HText = "ST I";
             this.keySTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keySTO.Location = new System.Drawing.Point (128, 248);
+            this.keySTO.Location = new System.Drawing.Point (128, 272);
             this.keySTO.MainBackColor = System.Drawing.Color.Olive;
             this.keySTO.MainForeColor = System.Drawing.Color.White;
             this.keySTO.MainHeight = 24;
@@ -736,7 +745,7 @@ namespace Mockingbird.HP.HP67
             this.keyg.GText = "";
             this.keyg.HText = "";
             this.keyg.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyg.Location = new System.Drawing.Point (72, 248);
+            this.keyg.Location = new System.Drawing.Point (72, 272);
             this.keyg.MainBackColor = System.Drawing.Color.SkyBlue;
             this.keyg.MainForeColor = System.Drawing.Color.Black;
             this.keyg.MainHeight = 24;
@@ -761,7 +770,7 @@ namespace Mockingbird.HP.HP67
             this.key8.GText = "10 ̽";
             this.key8.HText = "R↓";
             this.key8.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key8.Location = new System.Drawing.Point (152, 360);
+            this.key8.Location = new System.Drawing.Point (152, 384);
             this.key8.MainBackColor = System.Drawing.Color.LightYellow;
             this.key8.MainForeColor = System.Drawing.Color.Black;
             this.key8.MainHeight = 24;
@@ -787,7 +796,7 @@ namespace Mockingbird.HP.HP67
             this.keyRS.GText = "STK";
             this.keyRS.HText = "SPACE";
             this.keyRS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyRS.Location = new System.Drawing.Point (232, 528);
+            this.keyRS.Location = new System.Drawing.Point (232, 552);
             this.keyRS.MainBackColor = System.Drawing.Color.LightYellow;
             this.keyRS.MainForeColor = System.Drawing.Color.Black;
             this.keyRS.MainHeight = 24;
@@ -811,7 +820,7 @@ namespace Mockingbird.HP.HP67
             this.keyPeriod.GText = "FRAC";
             this.keyPeriod.HText = "H.MS+";
             this.keyPeriod.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyPeriod.Location = new System.Drawing.Point (144, 528);
+            this.keyPeriod.Location = new System.Drawing.Point (144, 552);
             this.keyPeriod.MainBackColor = System.Drawing.Color.LightYellow;
             this.keyPeriod.MainForeColor = System.Drawing.Color.Black;
             this.keyPeriod.MainHeight = 24;
@@ -836,7 +845,7 @@ namespace Mockingbird.HP.HP67
             this.key0.GText = "%CH";
             this.key0.HText = "LST x";
             this.key0.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key0.Location = new System.Drawing.Point (72, 528);
+            this.key0.Location = new System.Drawing.Point (72, 552);
             this.key0.MainBackColor = System.Drawing.Color.LightYellow;
             this.key0.MainForeColor = System.Drawing.Color.Black;
             this.key0.MainHeight = 24;
@@ -862,7 +871,7 @@ namespace Mockingbird.HP.HP67
             this.key9.GText = "x²";
             this.key9.HText = "R↑";
             this.key9.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key9.Location = new System.Drawing.Point (232, 360);
+            this.key9.Location = new System.Drawing.Point (232, 384);
             this.key9.MainBackColor = System.Drawing.Color.LightYellow;
             this.key9.MainForeColor = System.Drawing.Color.Black;
             this.key9.MainHeight = 24;
@@ -888,7 +897,7 @@ namespace Mockingbird.HP.HP67
             this.key3.GText = "H.MS";
             this.key3.HText = "REG";
             this.key3.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key3.Location = new System.Drawing.Point (232, 472);
+            this.key3.Location = new System.Drawing.Point (232, 496);
             this.key3.MainBackColor = System.Drawing.Color.LightYellow;
             this.key3.MainForeColor = System.Drawing.Color.Black;
             this.key3.MainHeight = 24;
@@ -914,7 +923,7 @@ namespace Mockingbird.HP.HP67
             this.key2.GText = "R";
             this.key2.HText = "π";
             this.key2.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key2.Location = new System.Drawing.Point (152, 472);
+            this.key2.Location = new System.Drawing.Point (152, 496);
             this.key2.MainBackColor = System.Drawing.Color.LightYellow;
             this.key2.MainForeColor = System.Drawing.Color.Black;
             this.key2.MainHeight = 24;
@@ -940,7 +949,7 @@ namespace Mockingbird.HP.HP67
             this.key1.GText = "P";
             this.key1.HText = "PAUSE";
             this.key1.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key1.Location = new System.Drawing.Point (72, 472);
+            this.key1.Location = new System.Drawing.Point (72, 496);
             this.key1.MainBackColor = System.Drawing.Color.LightYellow;
             this.key1.MainForeColor = System.Drawing.Color.Black;
             this.key1.MainHeight = 24;
@@ -966,7 +975,7 @@ namespace Mockingbird.HP.HP67
             this.key6.GText = "⁻¹";
             this.key6.HText = "ABS";
             this.key6.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key6.Location = new System.Drawing.Point (232, 416);
+            this.key6.Location = new System.Drawing.Point (232, 440);
             this.key6.MainBackColor = System.Drawing.Color.LightYellow;
             this.key6.MainForeColor = System.Drawing.Color.Black;
             this.key6.MainHeight = 24;
@@ -992,7 +1001,7 @@ namespace Mockingbird.HP.HP67
             this.key5.GText = "⁻¹";
             this.key5.HText = "y ̽";
             this.key5.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key5.Location = new System.Drawing.Point (152, 416);
+            this.key5.Location = new System.Drawing.Point (152, 440);
             this.key5.MainBackColor = System.Drawing.Color.LightYellow;
             this.key5.MainForeColor = System.Drawing.Color.Black;
             this.key5.MainHeight = 24;
@@ -1018,7 +1027,7 @@ namespace Mockingbird.HP.HP67
             this.key4.GText = "⁻¹";
             this.key4.HText = "1/x";
             this.key4.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key4.Location = new System.Drawing.Point (72, 416);
+            this.key4.Location = new System.Drawing.Point (72, 440);
             this.key4.MainBackColor = System.Drawing.Color.LightYellow;
             this.key4.MainForeColor = System.Drawing.Color.Black;
             this.key4.MainHeight = 24;
@@ -1044,7 +1053,7 @@ namespace Mockingbird.HP.HP67
             this.key7.GText = "e ̽";
             this.key7.HText = "x⇆y";
             this.key7.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key7.Location = new System.Drawing.Point (72, 360);
+            this.key7.Location = new System.Drawing.Point (72, 384);
             this.key7.MainBackColor = System.Drawing.Color.LightYellow;
             this.key7.MainForeColor = System.Drawing.Color.Black;
             this.key7.MainHeight = 24;
@@ -1070,7 +1079,7 @@ namespace Mockingbird.HP.HP67
             this.keyMinus.GText = "x=y";
             this.keyMinus.HText = "SF";
             this.keyMinus.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyMinus.Location = new System.Drawing.Point (8, 360);
+            this.keyMinus.Location = new System.Drawing.Point (8, 384);
             this.keyMinus.MainBackColor = System.Drawing.Color.Olive;
             this.keyMinus.MainForeColor = System.Drawing.Color.White;
             this.keyMinus.MainHeight = 24;
@@ -1095,7 +1104,7 @@ namespace Mockingbird.HP.HP67
             this.keyDiv.GText = "x>y";
             this.keyDiv.HText = "N!";
             this.keyDiv.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyDiv.Location = new System.Drawing.Point (8, 528);
+            this.keyDiv.Location = new System.Drawing.Point (8, 552);
             this.keyDiv.MainBackColor = System.Drawing.Color.Olive;
             this.keyDiv.MainForeColor = System.Drawing.Color.White;
             this.keyDiv.MainHeight = 24;
@@ -1120,7 +1129,7 @@ namespace Mockingbird.HP.HP67
             this.keyMult.GText = "x≤y";
             this.keyMult.HText = "F?";
             this.keyMult.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyMult.Location = new System.Drawing.Point (8, 472);
+            this.keyMult.Location = new System.Drawing.Point (8, 496);
             this.keyMult.MainBackColor = System.Drawing.Color.Olive;
             this.keyMult.MainForeColor = System.Drawing.Color.White;
             this.keyMult.MainHeight = 24;
@@ -1145,7 +1154,7 @@ namespace Mockingbird.HP.HP67
             this.keyPlus.GText = "x≠y";
             this.keyPlus.HText = "CF";
             this.keyPlus.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyPlus.Location = new System.Drawing.Point (8, 416);
+            this.keyPlus.Location = new System.Drawing.Point (8, 440);
             this.keyPlus.MainBackColor = System.Drawing.Color.Olive;
             this.keyPlus.MainForeColor = System.Drawing.Color.White;
             this.keyPlus.MainHeight = 24;
@@ -1160,58 +1169,6 @@ namespace Mockingbird.HP.HP67
             this.keyPlus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyPlus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
-            // contextMenu
-            // 
-            this.contextMenu.MenuItems.AddRange (new System.Windows.Forms.MenuItem [] {
-            this.openMenuItem,
-            this.saveMenuItem,
-            this.saveAsMenuItem,
-            this.printMenuItem,
-            this.menuSeparator,
-            this.editMenuItem,
-            this.rtfMenuItem});
-            // 
-            // openMenuItem
-            // 
-            this.openMenuItem.Index = 0;
-            this.openMenuItem.Text = "&Open...";
-            this.openMenuItem.Click += new System.EventHandler (this.openMenuItem_Click);
-            // 
-            // saveMenuItem
-            // 
-            this.saveMenuItem.Index = 1;
-            this.saveMenuItem.Text = "&Save";
-            this.saveMenuItem.Click += new System.EventHandler (this.saveMenuItem_Click);
-            // 
-            // saveAsMenuItem
-            // 
-            this.saveAsMenuItem.Index = 2;
-            this.saveAsMenuItem.Text = "Save &As...";
-            this.saveAsMenuItem.Click += new System.EventHandler (this.saveAsMenuItem_Click);
-            // 
-            // printMenuItem
-            // 
-            this.printMenuItem.Index = 3;
-            this.printMenuItem.Text = "Print";
-            this.printMenuItem.Click += new System.EventHandler (this.printMenuItem_Click);
-            // 
-            // menuSeparator
-            // 
-            this.menuSeparator.Index = 4;
-            this.menuSeparator.Text = "-";
-            // 
-            // editMenuItem
-            // 
-            this.editMenuItem.Index = 5;
-            this.editMenuItem.Text = "&Edit Labels";
-            this.editMenuItem.Click += new System.EventHandler (this.editMenuItem_Click);
-            // 
-            // rtfMenuItem
-            // 
-            this.rtfMenuItem.Index = 6;
-            this.rtfMenuItem.Text = "&Rich Text";
-            this.rtfMenuItem.Click += new System.EventHandler (this.rtfMenuItem_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
@@ -1224,12 +1181,98 @@ namespace Mockingbird.HP.HP67
             // 
             this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler (this.printDocument_PrintPage);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.Items.AddRange (new System.Windows.Forms.ToolStripItem [] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point (0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size (304, 24);
+            this.menuStrip.TabIndex = 36;
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem [] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.printToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size (35, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = global::Mockingbird.HP.HP67.Properties.Resources.openHS;
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.openToolStripMenuItem.Text = "&Open...";
+            this.openToolStripMenuItem.Click += new System.EventHandler (this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = global::Mockingbird.HP.HP67.Properties.Resources.saveHS;
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler (this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.saveAsToolStripMenuItem.Text = "Save &As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler (this.saveAsToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = global::Mockingbird.HP.HP67.Properties.Resources.PrintHS;
+            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.printToolStripMenuItem.Text = "&Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler (this.printToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler (this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem [] {
+            this.editLabelsToolStripMenuItem,
+            this.rtfToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size (37, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // editLabelsToolStripMenuItem
+            // 
+            this.editLabelsToolStripMenuItem.Name = "editLabelsToolStripMenuItem";
+            this.editLabelsToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.editLabelsToolStripMenuItem.Text = "&Edit Labels";
+            this.editLabelsToolStripMenuItem.Click += new System.EventHandler (this.editLabelsToolStripMenuItem_Click);
+            // 
+            // rtfToolStripMenuItem
+            // 
+            this.rtfToolStripMenuItem.Name = "rtfToolStripMenuItem";
+            this.rtfToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.rtfToolStripMenuItem.Text = "&Rich Text";
+            this.rtfToolStripMenuItem.Click += new System.EventHandler (this.rtfToolStripMenuItem_Click);
+            // 
             // HP67
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size (5, 13);
             this.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.ClientSize = new System.Drawing.Size (304, 590);
-            this.ContextMenu = this.contextMenu;
+            this.ClientSize = new System.Drawing.Size (304, 614);
             this.Controls.Add (this.keyPlus);
             this.Controls.Add (this.keyMult);
             this.Controls.Add (this.keyDiv);
@@ -1269,17 +1312,22 @@ namespace Mockingbird.HP.HP67
             this.Controls.Add (this.toggleOffOn);
             this.Controls.Add (this.display);
             this.Controls.Add (this.cardSlot);
+            this.Controls.Add (this.menuStrip);
             this.Icon = ((System.Drawing.Icon) (resources.GetObject ("$this.Icon")));
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size (312, 624);
-            this.MinimumSize = new System.Drawing.Size (312, 624);
+            this.MaximumSize = new System.Drawing.Size (312, 648);
+            this.MinimumSize = new System.Drawing.Size (312, 648);
             this.Name = "HP67";
             this.Text = "HP67";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.Calculator_FormClosing);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler (this.Calculator_KeyUp);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler (this.Calculator_KeyDown);
+            this.menuStrip.ResumeLayout (false);
+            this.menuStrip.PerformLayout ();
             this.ResumeLayout (false);
+            this.PerformLayout ();
 
         }
 
