@@ -150,12 +150,12 @@ namespace Mockingbird.HP.Execution
 
         #region UI Event Handlers
 
-        protected void Calculator_Closing (object sender, System.ComponentModel.CancelEventArgs e)
+        protected void Calculator_FormClosing (object sender, FormClosingEventArgs e)
         {
             executionThread.Abort ();
         }
 
-        protected void Calculator_KeyDown (object sender, System.Windows.Forms.KeyEventArgs e)
+        protected void Calculator_KeyDown (object sender, KeyEventArgs e)
         {
             // If a key event is received when the user is not editing the card slot, we look for
             // a key that has the corresponding code as one of its shortcuts, and we send it a
@@ -182,7 +182,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected void Calculator_KeyUp (object sender, System.Windows.Forms.KeyEventArgs e)
+        protected void Calculator_KeyUp (object sender, KeyEventArgs e)
         {
             if (e.Control || e.Alt)
             {
@@ -206,25 +206,25 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected void Key_LeftMouseDown (object sender, System.Windows.Forms.MouseEventArgs e)
+        protected void Key_LeftMouseDown (object sender, MouseEventArgs e)
         {
 
             // Queue a keystroke, and notify the execution thread that its queue is not empty.
             executionThread.Enqueue
-                (new KeystrokeMessage ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Down));
+                (new KeystrokeMessage ((Control) sender, e, KeystrokeMotion.Down));
         }
 
-        protected void Key_LeftMouseUp (object sender, System.Windows.Forms.MouseEventArgs e)
+        protected void Key_LeftMouseUp (object sender, MouseEventArgs e)
         {
 
             // Queue a keystroke, and notify the execution thread that its queue is not empty.
             executionThread.Enqueue
-                (new KeystrokeMessage ((System.Windows.Forms.Control) sender, e, KeystrokeMotion.Up));
+                (new KeystrokeMessage ((Control) sender, e, KeystrokeMotion.Up));
         }
 
         protected void toggleOffOn_ToggleClick (object sender,
             System.EventArgs e,
-            Mockingbird.HP.Control_Library.TogglePosition position)
+            TogglePosition position)
         {
             switch (toggleOffOn.Position)
             {

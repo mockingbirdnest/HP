@@ -153,7 +153,7 @@ namespace Mockingbird.HP.Execution
                         // For some reason Close and Application.Exit won't have an effect here
                         // (maybe because we are in the constructor?).  So I am calling the cleanup
                         // code by hand, and raising an exception to get out of the constructor.
-                        Calculator_Closing (null, null);
+                        Calculator_FormClosing (null, null);
                         throw new Shutdown ();
                     }
                     else

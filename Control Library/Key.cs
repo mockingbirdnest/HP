@@ -23,13 +23,13 @@ namespace Mockingbird.HP.Control_Library
         #region Private Data
 
         private const double brightnessReduction = 0.78;
-        private const int labelsHeight = 27; // This cannot be easily calculated because of overlap.
         private const float sizeReduction = 0.85F;
 
         private Color fgBackColor;
         private TextAlign fgTextAlign;
         private int fgWidth;
         private Font font;
+        private bool inAdjustSize;
         private Keys [] shortcuts;
         private Color mainBackColor;
         private int mainHeight;
@@ -84,7 +84,7 @@ namespace Mockingbird.HP.Control_Library
             gLabel.ForeColor = Color.FromKnownColor
                 (KnownColor.SkyBlue);
 
-            AutoSize ();
+            AdjustSize ();
         }
 
         /// <summary> 
@@ -102,8 +102,6 @@ namespace Mockingbird.HP.Control_Library
             base.Dispose (disposing);
         }
 
-        #endregion
-
         #region Component Designer generated code
         /// <summary> 
         /// Required method for Designer support - do not modify 
@@ -119,55 +117,59 @@ namespace Mockingbird.HP.Control_Library
             // 
             // gLabel
             // 
-            this.gLabel.BackColor = Color.Transparent;
-            this.gLabel.Font = new Font ("Arial Unicode MS", 8.5F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte) (0)));
-            this.gLabel.ForeColor = Color.SkyBlue;
+            this.gLabel.BackColor = System.Drawing.Color.Transparent;
+            this.gLabel.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.gLabel.ForeColor = System.Drawing.Color.SkyBlue;
             this.gLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gLabel.Location = new Point (75, 86);
+            this.gLabel.Location = new System.Drawing.Point (75, 86);
             this.gLabel.Name = "gLabel";
-            this.gLabel.Size = new Size (24, 15);
+            this.gLabel.Size = new System.Drawing.Size (24, 15);
             this.gLabel.TabIndex = 4;
             this.gLabel.Text = "g";
             // 
             // fLabel
             // 
-            this.fLabel.BackColor = Color.Transparent;
-            this.fLabel.Font = new Font ("Arial Unicode MS", 8.5F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte) (0)));
-            this.fLabel.ForeColor = Color.Gold;
+            this.fLabel.BackColor = System.Drawing.Color.Transparent;
+            this.fLabel.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.fLabel.ForeColor = System.Drawing.Color.Gold;
             this.fLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.fLabel.Location = new Point (51, 86);
+            this.fLabel.Location = new System.Drawing.Point (51, 86);
             this.fLabel.Name = "fLabel";
-            this.fLabel.Size = new Size (24, 15);
+            this.fLabel.Size = new System.Drawing.Size (24, 15);
             this.fLabel.TabIndex = 3;
             this.fLabel.Text = "f";
-            this.fLabel.TextAlign = ContentAlignment.TopRight;
+            this.fLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // button
             // 
-            this.button.BackColor = Color.Olive;
-            this.button.Font = new Font ("Arial Unicode MS", 8.5F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte) (0)));
-            this.button.ForeColor = Color.White;
+            this.button.BackColor = System.Drawing.Color.Olive;
+            this.button.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.button.ForeColor = System.Drawing.Color.White;
             this.button.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button.Location = new Point (51, 50);
+            this.button.Location = new System.Drawing.Point (51, 50);
             this.button.Name = "button";
-            this.button.Size = new Size (48, 24);
+            this.button.Size = new System.Drawing.Size (48, 24);
             this.button.TabIndex = 1;
             this.button.Tag = "34";
             this.button.Text = "key";
-            this.button.MouseUp += new System.Windows.Forms.MouseEventHandler (this.button_MouseUp);
+            this.button.UseVisualStyleBackColor = false;
+            this.button.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler (this.button_PreviewKeyDown);
             this.button.MouseDown += new System.Windows.Forms.MouseEventHandler (this.button_MouseDown);
+            this.button.MouseUp += new System.Windows.Forms.MouseEventHandler (this.button_MouseUp);
             // 
             // hButton
             // 
-            this.hButton.BackColor = Color.Olive;
-            this.hButton.Font = new Font ("Arial Unicode MS", 7F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte) (0)));
-            this.hButton.Location = new Point (51, 71);
+            this.hButton.BackColor = System.Drawing.Color.Olive;
+            this.hButton.Font = new System.Drawing.Font ("Arial Unicode MS", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.hButton.Location = new System.Drawing.Point (51, 71);
             this.hButton.Name = "hButton";
-            this.hButton.Size = new Size (48, 18);
+            this.hButton.Size = new System.Drawing.Size (48, 18);
             this.hButton.TabIndex = 2;
             this.hButton.Text = "h";
-            this.hButton.MouseUp += new System.Windows.Forms.MouseEventHandler (this.hButton_MouseUp);
+            this.hButton.UseVisualStyleBackColor = false;
+            this.hButton.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler (this.hButton_PreviewKeyDown);
             this.hButton.MouseDown += new System.Windows.Forms.MouseEventHandler (this.hButton_MouseDown);
+            this.hButton.MouseUp += new System.Windows.Forms.MouseEventHandler (this.hButton_MouseUp);
             // 
             // Key
             // 
@@ -175,7 +177,7 @@ namespace Mockingbird.HP.Control_Library
             this.Controls.Add (this.fLabel);
             this.Controls.Add (this.button);
             this.Controls.Add (this.hButton);
-            this.Font = new Font ("Arial Unicode MS", 8.25F, FontStyle.Bold, GraphicsUnit.Point, ((System.Byte) (0)));
+            this.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "Key";
             this.Resize += new System.EventHandler (this.Key_Resize);
             this.ResumeLayout (false);
@@ -183,15 +185,57 @@ namespace Mockingbird.HP.Control_Library
         }
         #endregion
 
+        #endregion
+
         #region Event Handlers
 
         private void Key_Resize (object sender, System.EventArgs e)
         {
-            Control control = (Control) sender;
 
-            FGWidth = control.Size.Width;
-            MainWidth = control.Size.Width;
-            MainHeight = control.Size.Height - labelsHeight;
+            // Apply a simple homothecy to the control.  This will change the size of the component
+            // controls, including the height of hButton and the labels.  One very important case
+            // where this event is called is if the user has a non-standard screen resolution.  We
+            // want to scale up the entire key to make it more readable.
+            Control control = (Control) sender;
+            double oldWidth = Math.Max (fgWidth, mainWidth);
+            double oldHeight = fLabel.Location.Y + fLabel.Size.Height;
+            double scaleX = control.Size.Width / oldWidth;
+            double scaleY = control.Size.Height / oldHeight;
+
+            // We may land here when changing the size in AdjustSize, but then we expect this
+            // operation to have no effect.
+            if (scaleX != 1.0 || scaleY != 1.0)
+            {
+                Trace.Assert (!inAdjustSize);
+
+                button.Location =
+                    new Point ((int) Math.Round (button.Location.X * scaleX),
+                                (int) Math.Round (button.Location.Y * scaleY));
+                button.Size =
+                    new Size ((int) Math.Round (button.Size.Width * scaleX),
+                                (int) Math.Round (button.Size.Height * scaleY));
+                hButton.Location =
+                    new Point ((int) Math.Round (hButton.Location.X * scaleX),
+                                (int) Math.Round (hButton.Location.Y * scaleY));
+                hButton.Size =
+                    new Size ((int) Math.Round (hButton.Size.Width * scaleX),
+                                (int) Math.Round (hButton.Size.Height * scaleY));
+                fLabel.Location =
+                    new Point ((int) Math.Round (fLabel.Location.X * scaleX),
+                                (int) Math.Round (fLabel.Location.Y * scaleY));
+                fLabel.Size =
+                    new Size ((int) Math.Round (fLabel.Size.Width * scaleX),
+                                (int) Math.Round (fLabel.Size.Height * scaleY));
+                gLabel.Location =
+                    new Point ((int) Math.Round (gLabel.Location.X * scaleX),
+                                (int) Math.Round (gLabel.Location.Y * scaleY));
+                gLabel.Size =
+                    new Size ((int) Math.Round (gLabel.Size.Width * scaleX),
+                                (int) Math.Round (gLabel.Size.Height * scaleY));
+                mainHeight = (int) Math.Round (mainHeight * scaleY);
+                mainWidth = (int) Math.Round (mainWidth * scaleX);
+                fgWidth = (int) Math.Round (fgWidth * scaleX);
+            }
         }
 
         private void hButton_MouseDown (object sender, System.Windows.Forms.MouseEventArgs e)
@@ -209,6 +253,14 @@ namespace Mockingbird.HP.Control_Library
             {
                 button.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
                 button_MouseUp (sender, e);
+            }
+        }
+
+        private void hButton_PreviewKeyDown (object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.IsInputKey = true;
             }
         }
 
@@ -236,6 +288,14 @@ namespace Mockingbird.HP.Control_Library
             }
         }
 
+        private void button_PreviewKeyDown (object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.IsInputKey = true;
+            }
+        }
+
         #endregion
 
         #region Private Properties
@@ -252,22 +312,32 @@ namespace Mockingbird.HP.Control_Library
 
         #region Private Methods
 
-        private new void AutoSize ()
+        private void AdjustSize ()
         {
+
+            // Adjust the size of the control to maintain the invariant that the component controls
+            // "just touch" the border.  This only happens when some specific property of the
+            // control (e.g., MainHeight) is changed.  It doesn't affect the height of the hButton
+            // or of the labels.
             int x = Math.Min (button.Location.X, fLabel.Location.X);
             int y = button.Location.Y;
 
-            button.Location = new Point
-                (button.Location.X - x, button.Location.Y - y);
-            hButton.Location = new Point
-                (hButton.Location.X - x, hButton.Location.Y - y);
-            fLabel.Location = new Point
-                (fLabel.Location.X - x, fLabel.Location.Y - y);
-            gLabel.Location = new Point
-                (gLabel.Location.X - x, gLabel.Location.Y - y);
+            button.Location = new Point (button.Location.X - x, button.Location.Y - y);
+            hButton.Location = new Point (hButton.Location.X - x, hButton.Location.Y - y);
+            fLabel.Location = new Point (fLabel.Location.X - x, fLabel.Location.Y - y);
+            gLabel.Location = new Point (gLabel.Location.X - x, gLabel.Location.Y - y);
 
-            this.Size = new Size (Math.Max (mainWidth, fgWidth),
-                                               fLabel.Location.Y + fLabel.Size.Height);
+            inAdjustSize = true;
+            Size = new Size (Math.Max (fgWidth, mainWidth),
+                            fLabel.Location.Y + fLabel.Size.Height);
+            inAdjustSize = false;
+
+            Trace.Assert (button.Location.Y == 0);
+            Trace.Assert (button.Size.Width == hButton.Size.Width);
+            Trace.Assert (fLabel.Location.X == 0);
+            Trace.Assert (fLabel.Size.Width == gLabel.Location.X);
+            Trace.Assert (fLabel.Location.Y == gLabel.Location.Y);
+            Trace.Assert (gLabel.Location.X + gLabel.Size.Width == Size.Width);
         }
 
         private void CenterFG ()
@@ -409,7 +479,7 @@ namespace Mockingbird.HP.Control_Library
                                                            fLabel.Size.Height);
                 }
 
-                AutoSize ();
+                AdjustSize ();
             }
         }
 
@@ -565,9 +635,8 @@ namespace Mockingbird.HP.Control_Library
 
                 mainHeight = value;
                 button.Size = new Size (button.Size.Width, mainHeight);
-                button.Location =
-                    new Point (button.Location.X, button.Location.Y - ΔHeight);
-                this.Size = new Size (this.Size.Width, mainHeight + labelsHeight);
+                button.Location = new Point (button.Location.X, button.Location.Y - ΔHeight);
+                AdjustSize ();
             }
         }
 
@@ -606,7 +675,7 @@ namespace Mockingbird.HP.Control_Library
                     FGWidth = mainWidth;
                 }
 
-                AutoSize ();
+                AdjustSize ();
             }
         }
 

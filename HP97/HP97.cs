@@ -95,7 +95,7 @@ namespace Mockingbird.HP.HP97
 		{
 		}
 
-		private void Calculator_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		private void Calculator_FormClosing(object sender, FormClosingEventArgs e)
 		{
 		}
 
@@ -2015,7 +2015,7 @@ namespace Mockingbird.HP.HP97
             this.MinimumSize = new System.Drawing.Size (828, 672);
             this.Name = "HP97";
             this.Text = "HP97";
-            this.Closing += new System.ComponentModel.CancelEventHandler (this.Calculator_Closing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.Calculator_FormClosing);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler (this.Calculator_KeyUp);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler (this.Calculator_KeyDown);
             this.panelMain.ResumeLayout (false);

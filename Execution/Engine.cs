@@ -907,8 +907,11 @@ namespace Mockingbird.HP.Execution
 
             // Now check if some key was typed while we were executing the instruction.  If it was,
             // stop the computation.  Note that this is done synchronously to make sure that we can
-            // resume execution with the proper state if the user types R/S again.
-            if (WaitForKeystroke (0))
+            // resume execution with the proper state if the user types R/S again.  We don't do
+            // if we have stopped out work, because we are going to return to the main execution
+            // loop very soon anyway, and if the user types, say, two digits in quick succession we
+            // do not want the second to cause an interruption.
+            if ((running || stepping) && WaitForKeystroke (0))
             {
                 throw new Interrupt ();
             }
@@ -939,7 +942,9 @@ namespace Mockingbird.HP.Execution
             catch (ApplicationException e)
             {
                 Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-                    "Process: Exception " + e.ToString (),
+                    "Process: Exception " +
+                    (running ? "while running" : "") +
+                    (stepping ? "while stepping" : "") + e.ToString (),
                     classTraceSwitch.DisplayName);
                 throw;
             }

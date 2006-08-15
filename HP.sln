@@ -30,7 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP35", "HP35\HP35.csproj", 
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 13
 		SccLocalPath0 = .
 		CanCheckoutShared = false
 		SccProjectUniqueName1 = HP67\\HP67.csproj
@@ -77,6 +77,10 @@ Global
 		SccLocalPath11 = .
 		CanCheckoutShared = false
 		SccProjectFilePathRelativizedFromConnection11 = Execution\\
+		SccProjectUniqueName12 = HP35\\HP35.csproj
+		SccLocalPath12 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection12 = HP35\\
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

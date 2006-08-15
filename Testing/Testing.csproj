@@ -23,7 +23,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Mockingbird.HP.Testing</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Mockingbird.HP.Testing.PrinterTest</StartupObject>
+    <StartupObject>Mockingbird.HP.Testing.KeyTest</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

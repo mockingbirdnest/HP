@@ -14,10 +14,9 @@ namespace Mockingbird.HP.Control_Library
     public class Printer : System.Windows.Forms.UserControl
     {
 
-        //TODO: Make thread-safe.
-
         #region Private Data
 
+        private int emptyLinesAtTop;
         private Graphics graphics;
         private int lines;
 
@@ -42,6 +41,7 @@ namespace Mockingbird.HP.Control_Library
             // Determine the number of lines in the list box, and fill them with empty strings.
             lines = 0;
             Printer_Resize (null, null);
+            emptyLinesAtTop = lines;
         }
 
         /// <summary> 
@@ -102,7 +102,7 @@ namespace Mockingbird.HP.Control_Library
 
         private void Printer_Resize (object sender, EventArgs e)
         {
-            int newLines = listBox.Height / listBox.ItemHeight;
+            int newLines = listBox.DisplayRectangle.Height / listBox.ItemHeight;
 
             if (newLines > lines)
             {
@@ -113,10 +113,14 @@ namespace Mockingbird.HP.Control_Library
             }
             else if (newLines < lines)
             {
-                for (int i = 1; i <= newLines - lines; i++)
+                for (int i = 1; i <= lines - newLines; i++)
                 {
                     ThreadSafe.ItemsRemoveAt (listBox, 0);
                 }
+            }
+            if (emptyLinesAtTop == lines)
+            {
+                emptyLinesAtTop = newLines;
             }
             lines = newLines;
         }
@@ -144,6 +148,15 @@ namespace Mockingbird.HP.Control_Library
                     break;
                 }
             }
+
+            // If we have empty space at the top of the list, remove it.  This will avoid showing
+            // the scroll bar too early.
+            if (emptyLinesAtTop > 0)
+            {
+                ThreadSafe.ItemsRemoveAt (listBox, 0);
+                emptyLinesAtTop--;
+            }
+
             switch (alignment)
             {
                 case HorizontalAlignment.Center:
