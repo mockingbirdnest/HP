@@ -25,14 +25,16 @@ namespace Mockingbird.HP.Execution
         protected string fileName = null;
 
         protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
-        protected System.Windows.Forms.ContextMenu contextMenu;
         protected System.Windows.Forms.OpenFileDialog openFileDialog;
         protected System.Windows.Forms.SaveFileDialog saveFileDialog;
         protected System.Drawing.Printing.PrintDocument printDocument;
-        protected System.Windows.Forms.MenuItem openMenuItem;
-        protected System.Windows.Forms.MenuItem printMenuItem;
-        protected System.Windows.Forms.MenuItem saveMenuItem;
-        protected System.Windows.Forms.MenuItem saveAsMenuItem;
+        protected MenuStrip menuStrip;
+        protected ToolStripMenuItem fileToolStripMenuItem;
+        protected ToolStripMenuItem openToolStripMenuItem;
+        protected ToolStripMenuItem saveToolStripMenuItem;
+        protected ToolStripMenuItem saveAsToolStripMenuItem;
+        protected ToolStripMenuItem printToolStripMenuItem;
+        protected ToolStripMenuItem exitToolStripMenuItem;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -46,6 +48,7 @@ namespace Mockingbird.HP.Execution
             :
             base (argument, model)
         {
+            UpdateUI (true);
         }
 
 
@@ -96,10 +99,10 @@ namespace Mockingbird.HP.Execution
             // possible for a print operation to start, followed immediately by the execution of a
             // program, in which case both would proceed in parallel.  Thread safety is achieved by
             // locking the operations that must access the execution data structures.
-            openMenuItem.Enabled = false;
-            printMenuItem.Enabled = false;
-            saveMenuItem.Enabled = false;
-            saveAsMenuItem.Enabled = false;
+            openToolStripMenuItem.Enabled = false;
+            printToolStripMenuItem.Enabled = false;
+            saveToolStripMenuItem.Enabled = false;
+            saveAsToolStripMenuItem.Enabled = false;
         }
 
         protected override Execution.Thread CreateExecutionThread
@@ -230,7 +233,7 @@ namespace Mockingbird.HP.Execution
             if (stream != null)
             {
                 executionThread.Enqueue (new OpenMessage (/* merge */ false, stream));
-                printMenuItem_Click (null, null);
+                printToolStripMenuItem_Click (null, null);
             }
         }
 
@@ -302,25 +305,25 @@ namespace Mockingbird.HP.Execution
 
         private EngineMode UnbusyUIAndGetEngineMode ()
         {
-            printMenuItem.Enabled = true;
+            printToolStripMenuItem.Enabled = true;
             switch (toggleWprgmRun.Position)
             {
                 case TogglePosition.Left:
 
                     // W/PRGM, can only save.
                     display.Mode = DisplayMode.Instruction;
-                    openMenuItem.Enabled = false;
-                    saveMenuItem.Enabled = true;
-                    saveAsMenuItem.Enabled = true;
+                    openToolStripMenuItem.Enabled = false;
+                    saveToolStripMenuItem.Enabled = true;
+                    saveAsToolStripMenuItem.Enabled = true;
                     return EngineMode.WriteProgram;
 
                 case TogglePosition.Right:
 
                     // RUN, can only open.
                     display.Mode = DisplayMode.Numeric;
-                    openMenuItem.Enabled = true;
-                    saveMenuItem.Enabled = false;
-                    saveAsMenuItem.Enabled = false;
+                    openToolStripMenuItem.Enabled = true;
+                    saveToolStripMenuItem.Enabled = false;
+                    saveAsToolStripMenuItem.Enabled = false;
                     return EngineMode.Run;
 
                 default:
@@ -365,7 +368,12 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected void openMenuItem_Click (object sender, System.EventArgs e)
+        protected void exitToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+            Close ();
+        }
+
+        protected void openToolStripMenuItem_Click (object sender, System.EventArgs e)
         {
             FileStream stream;
 
@@ -380,7 +388,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected void saveMenuItem_Click (object sender, System.EventArgs e)
+        protected void saveToolStripMenuItem_Click (object sender, System.EventArgs e)
         {
             FileStream stream = Save (/* saveAs */ false, ref fileName);
             if (stream != null)
@@ -389,7 +397,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected void saveAsMenuItem_Click (object sender, System.EventArgs e)
+        protected void saveAsToolStripMenuItem_Click (object sender, System.EventArgs e)
         {
             FileStream stream = Save (/* saveAs */ true, ref fileName);
             if (stream != null)
@@ -398,7 +406,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected void printMenuItem_Click (object sender, System.EventArgs e)
+        protected void printToolStripMenuItem_Click (object sender, System.EventArgs e)
         {
             printDocument.Print ();
         }

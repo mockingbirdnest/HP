@@ -8,184 +8,190 @@ using System.Windows.Forms;
 
 namespace Mockingbird.HP.Execution
 {
-	/// <summary>
-	/// Abstract base class for magnetic card calculators.
-	/// </summary>
-	public abstract class CardCalculator : ProgrammableCalculator
-	{
+    /// <summary>
+    /// Abstract base class for magnetic card calculators.
+    /// </summary>
+    public abstract class CardCalculator : ProgrammableCalculator
+    {
 
-		#region Protected & Private Data
+        #region Protected & Private Data
 
-		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
-		protected System.Windows.Forms.MenuItem menuSeparator;
-		protected System.Windows.Forms.MenuItem rtfMenuItem;
-		protected System.Windows.Forms.MenuItem editMenuItem;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
+        protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
+        protected ToolStripMenuItem editToolStripMenuItem;
+        protected ToolStripMenuItem editLabelsToolStripMenuItem;
+        protected ToolStripMenuItem rtfToolStripMenuItem;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
 
-		#endregion
+        #endregion
 
-		#region Constructors & Destructors
-		
-		public CardCalculator (string [] argument, CalculatorModel model) :
-			base (argument, model)
-		{
-		}
+        #region Constructors & Destructors
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if (disposing)
-			{
-				if (components != null) 
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose (disposing);
-		}
+        public CardCalculator (string [] argument, CalculatorModel model)
+            :
+            base (argument, model)
+        {
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		protected abstract override void InitializeComponent();
-		#endregion
-		
-		#endregion
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose (bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose ();
+                }
+            }
+            base.Dispose (disposing);
+        }
 
-		#region Overriding Operations
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        protected abstract override void InitializeComponent ();
+        #endregion
 
-		protected override bool KeyEventsPreempted 
-		{
-			get 
-			{
-				return cardSlot.State >= CardSlotState.Editable && cardSlot.ContainsFocus;
-			}
-		}
+        #endregion
 
-		protected override void PowerOff () 
-		{
-			// OFF.  We abort the execution thread and start a new one.  We leave it in the
-			// state where its display is black and it doesn't accept keystrokes.
-			BusyUI ();
-			executionThread.Reset (); 
-			UpdateCardSlot (/* programIsEmpty */ true);
-		}
+        #region Overriding Operations
 
-		protected override void UpdateUI (bool programIsEmpty) 
-		{
-			UpdateCardSlot (programIsEmpty);
-		}
+        protected override bool KeyEventsPreempted
+        {
+            get
+            {
+                return cardSlot.State >= CardSlotState.Editable && cardSlot.ContainsFocus;
+            }
+        }
 
-		#endregion
+        protected override void PowerOff ()
+        {
+            // OFF.  We abort the execution thread and start a new one.  We leave it in the
+            // state where its display is black and it doesn't accept keystrokes.
+            BusyUI ();
+            executionThread.Reset ();
+            UpdateCardSlot (/* programIsEmpty */ true);
+        }
 
-		#region Cross-Thread Operations
+        protected override void UpdateUI (bool programIsEmpty)
+        {
+            UpdateCardSlot (programIsEmpty);
+        }
 
-		public FileStream CrossThreadOpen () 
-		{
-			string name;
+        #endregion
 
-			if (openFileDialog.ShowDialog () == DialogResult.OK)
-			{
-				name = openFileDialog.FileName;
-				return Open (ref name);
-			}
-			else 
-			{
-				return null;
-			}
-		}
+        #region Cross-Thread Operations
 
-		public FileStream CrossThreadSaveDataAs () 
-		{
-			string name = null;
+        public FileStream CrossThreadOpen ()
+        {
+            string name;
 
-			return Save (/* saveAs */ true, ref name);
-		}	
-		
-		#endregion
+            if (openFileDialog.ShowDialog () == DialogResult.OK)
+            {
+                name = openFileDialog.FileName;
+                return Open (ref name);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
-		#region UI Utilities
+        public FileStream CrossThreadSaveDataAs ()
+        {
+            string name = null;
 
-		private void UpdateCardSlot (bool programIsEmpty) 
-		{
-			bool wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
+            return Save (/* saveAs */ true, ref name);
+        }
 
-			// Make sure that the state of the card slot reflects the state of the program memory.
-			try 
-			{
-				if (programIsEmpty)
-				{
-					cardSlot.State = CardSlotState.Unloaded;
-					editMenuItem.Enabled = false;
-					rtfMenuItem.Enabled = false;
-				}
-				else if (fileName != null &&
-					((File.GetAttributes (fileName) &  FileAttributes.ReadOnly) != 0))
-				{
-					cardSlot.State = CardSlotState.ReadOnly;
-					editMenuItem.Enabled = false;
-					rtfMenuItem.Enabled = false;
-				}
-				else 
-				{
-					cardSlot.State = CardSlotState.ReadWrite;
-					editMenuItem.Enabled = true;
-					rtfMenuItem.Enabled = true;
-				}
-			}
-			finally 
-			{
+        #endregion
 
-				// If the program was just cleared, clear the current file name.  This ensures that
-				// the next program won't be stupidly saved on the previous card.
-				if (! wasUnloaded && cardSlot.State == CardSlotState.Unloaded) 
-				{
-					fileName = null;
-				}
-			}
-		}
+        #region UI Utilities
 
-		#endregion
-		
-		#region UI Event Handlers
+        private void UpdateCardSlot (bool programIsEmpty)
+        {
+            bool wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
 
-		protected void editMenuItem_Click(object sender, System.EventArgs e)
-		{
-			if (cardSlot.State != CardSlotState.Unloaded) 
-			{
-				bool isChecked = ((MenuItem) sender).Checked;
-				isChecked = ! isChecked;
-				((MenuItem) sender).Checked = isChecked;
-				if (isChecked) 
-				{
-					cardSlot.State = CardSlotState.Editable;
-				}
-				else
-				{
-					UpdateCardSlot (/* programIsEmpty */ false);
-				}
-			}
-		}
+            //TODO: Separate UpdateCardSlot from UpdateMenus.  Also disable Save/Print when program is empty. 
+            // Make sure that the state of the card slot reflects the state of the program memory.
+            try
+            {
+                if (programIsEmpty)
+                {
+                    cardSlot.State = CardSlotState.Unloaded;
+                    editLabelsToolStripMenuItem.Enabled = false;
+                    rtfToolStripMenuItem.Enabled = false;
+                }
+                else if (fileName != null &&
+                    ((File.GetAttributes (fileName) & FileAttributes.ReadOnly) != 0))
+                {
+                    cardSlot.State = CardSlotState.ReadOnly;
+                    editLabelsToolStripMenuItem.Enabled = false;
+                    rtfToolStripMenuItem.Enabled = false;
+                }
+                else
+                {
+                    cardSlot.State = CardSlotState.ReadWrite;
+                    editLabelsToolStripMenuItem.Enabled = true;
+                    rtfToolStripMenuItem.Enabled = true;
+                }
+            }
+            finally
+            {
 
-		protected void rtfMenuItem_Click(object sender, System.EventArgs e)
-		{
-			if (cardSlot.State != CardSlotState.Unloaded) 
-			{
-				bool isChecked = ((MenuItem) sender).Checked;
-				isChecked = ! isChecked;
-				((MenuItem) sender).Checked = isChecked;
-				cardSlot.RichText = isChecked;
-			}
-		}
+                // If the program was just cleared, clear the current file name.  This ensures that
+                // the next program won't be stupidly saved on the previous card.
+                if (!wasUnloaded && cardSlot.State == CardSlotState.Unloaded)
+                {
+                    fileName = null;
+                }
+            }
+        }
 
-		#endregion
+        #endregion
 
-	}
+        #region UI Event Handlers
+
+        protected void editLabelsToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+            if (cardSlot.State != CardSlotState.Unloaded)
+            {
+                ToolStripMenuItem item = (ToolStripMenuItem) sender;
+                bool isChecked = item.Checked;
+
+                isChecked = !isChecked;
+                item.Checked = isChecked;
+                if (isChecked)
+                {
+                    cardSlot.State = CardSlotState.Editable;
+                }
+                else
+                {
+                    UpdateCardSlot (/* programIsEmpty */ false);
+                }
+            }
+        }
+
+        protected void rtfToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+            if (cardSlot.State != CardSlotState.Unloaded)
+            {
+                ToolStripMenuItem item = (ToolStripMenuItem) sender;
+                bool isChecked = item.Checked;
+
+                isChecked = !isChecked;
+                item.Checked = isChecked;
+                cardSlot.RichText = isChecked;
+            }
+        }
+
+        #endregion
+
+    }
 }

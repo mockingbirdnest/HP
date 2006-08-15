@@ -33,49 +33,55 @@ namespace Mockingbird.HP.HP97
 		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
 
 		// ProgrammableCalculator.
-		protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
-		protected System.Windows.Forms.ContextMenu contextMenu;
+        protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
 		protected System.Windows.Forms.OpenFileDialog openFileDialog;
 		protected System.Windows.Forms.SaveFileDialog saveFileDialog;
-		protected System.Drawing.Printing.PrintDocument printDocument;
-		protected System.Windows.Forms.MenuItem openMenuItem;
-		protected System.Windows.Forms.MenuItem printMenuItem;
-		protected System.Windows.Forms.MenuItem saveMenuItem;
-		protected System.Windows.Forms.MenuItem saveAsMenuItem;
+        protected System.Drawing.Printing.PrintDocument printDocument;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripMenuItem printToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
 
 		// CardCalculator.
-		protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
-		protected System.Windows.Forms.MenuItem menuSeparator;
-		protected System.Windows.Forms.MenuItem rtfMenuItem;
-		protected System.Windows.Forms.MenuItem editMenuItem;
+        protected Mockingbird.HP.Control_Library.CardSlot cardSlot;
+        private ToolStripMenuItem editToolStripMenuItem;
+        private ToolStripMenuItem editLabelsToolStripMenuItem;
+        private ToolStripMenuItem rtfToolStripMenuItem;
 
 		// The designer wants the following event handlers to exist otherwise it loses the
 		// associations with the controls.
-		private void editMenuItem_Click(object sender, System.EventArgs e) 
-		{
-		}
+        private void editLabelsToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
 
-		private void openMenuItem_Click(object sender, System.EventArgs e) 
-		{
-		}
+        private void exitToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
 
-		private void printMenuItem_Click(object sender, System.EventArgs e) 
-		{
-		}
+        private void openToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
 
-		private void saveMenuItem_Click(object sender, System.EventArgs e) 
-		{
-		}
+        private void printToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
 
-		private void saveAsMenuItem_Click(object sender, System.EventArgs e) 
-		{
-		}
+        private void saveToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
 
-		private void rtfMenuItem_Click(object sender, System.EventArgs e) 
-		{
-		}
+        private void saveAsToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
 
-		private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void rtfToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{	
 		}
 
@@ -276,33 +282,37 @@ namespace Mockingbird.HP.HP97
             this.keyGSB = new Mockingbird.HP.Control_Library.Key ();
             this.keyBST = new Mockingbird.HP.Control_Library.Key ();
             this.keyLBL = new Mockingbird.HP.Control_Library.Key ();
-            this.contextMenu = new System.Windows.Forms.ContextMenu ();
-            this.openMenuItem = new System.Windows.Forms.MenuItem ();
-            this.saveMenuItem = new System.Windows.Forms.MenuItem ();
-            this.saveAsMenuItem = new System.Windows.Forms.MenuItem ();
-            this.printMenuItem = new System.Windows.Forms.MenuItem ();
-            this.menuSeparator = new System.Windows.Forms.MenuItem ();
-            this.editMenuItem = new System.Windows.Forms.MenuItem ();
-            this.rtfMenuItem = new System.Windows.Forms.MenuItem ();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog ();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog ();
             this.printDocument = new System.Drawing.Printing.PrintDocument ();
+            //TODO: Not good, the designers loses this...
             this.display = new Mockingbird.HP.Control_Library.Display (printer);
             this.panelDisplay = new System.Windows.Forms.Panel ();
             this.buttonPrinter = new System.Windows.Forms.Button ();
+            this.menuStrip = new System.Windows.Forms.MenuStrip ();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.editLabelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
+            this.rtfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem ();
             this.panelMain.SuspendLayout ();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBoxLineRight)).BeginInit ();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBoxLineCenter)).BeginInit ();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBoxLineLeft)).BeginInit ();
             this.groupBoxCard.SuspendLayout ();
             this.panelDisplay.SuspendLayout ();
+            this.menuStrip.SuspendLayout ();
             this.SuspendLayout ();
             // 
             // printer
             // 
-            this.printer.Location = new System.Drawing.Point (520, 0);
+            this.printer.Location = new System.Drawing.Point (520, 24);
             this.printer.Name = "printer";
-            this.printer.Size = new System.Drawing.Size (248, 200);
+            this.printer.Size = new System.Drawing.Size (248, 180);
             this.printer.TabIndex = 1;
             // 
             // panelMain
@@ -364,7 +374,7 @@ namespace Mockingbird.HP.HP97
             this.panelMain.Controls.Add (this.keyGSB);
             this.panelMain.Controls.Add (this.keyBST);
             this.panelMain.Controls.Add (this.keyLBL);
-            this.panelMain.Location = new System.Drawing.Point (8, 200);
+            this.panelMain.Location = new System.Drawing.Point (8, 204);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size (804, 432);
             this.panelMain.TabIndex = 2;
@@ -1906,58 +1916,6 @@ namespace Mockingbird.HP.HP97
             this.keyLBL.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyLBL.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
-            // contextMenu
-            // 
-            this.contextMenu.MenuItems.AddRange (new System.Windows.Forms.MenuItem [] {
-            this.openMenuItem,
-            this.saveMenuItem,
-            this.saveAsMenuItem,
-            this.printMenuItem,
-            this.menuSeparator,
-            this.editMenuItem,
-            this.rtfMenuItem});
-            // 
-            // openMenuItem
-            // 
-            this.openMenuItem.Index = 0;
-            this.openMenuItem.Text = "&Open...";
-            this.openMenuItem.Click += new System.EventHandler (this.openMenuItem_Click);
-            // 
-            // saveMenuItem
-            // 
-            this.saveMenuItem.Index = 1;
-            this.saveMenuItem.Text = "&Save";
-            this.saveMenuItem.Click += new System.EventHandler (this.saveMenuItem_Click);
-            // 
-            // saveAsMenuItem
-            // 
-            this.saveAsMenuItem.Index = 2;
-            this.saveAsMenuItem.Text = "Save &As...";
-            this.saveAsMenuItem.Click += new System.EventHandler (this.saveAsMenuItem_Click);
-            // 
-            // printMenuItem
-            // 
-            this.printMenuItem.Index = 3;
-            this.printMenuItem.Text = "Print";
-            this.printMenuItem.Click += new System.EventHandler (this.printMenuItem_Click);
-            // 
-            // menuSeparator
-            // 
-            this.menuSeparator.Index = 4;
-            this.menuSeparator.Text = "-";
-            // 
-            // editMenuItem
-            // 
-            this.editMenuItem.Index = 5;
-            this.editMenuItem.Text = "&Edit Labels";
-            this.editMenuItem.Click += new System.EventHandler (this.editMenuItem_Click);
-            // 
-            // rtfMenuItem
-            // 
-            this.rtfMenuItem.Index = 6;
-            this.rtfMenuItem.Text = "&Rich Text";
-            this.rtfMenuItem.Click += new System.EventHandler (this.rtfMenuItem_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
@@ -1985,34 +1943,121 @@ namespace Mockingbird.HP.HP97
             this.panelDisplay.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (32)))), ((int) (((byte) (32)))), ((int) (((byte) (32)))));
             this.panelDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDisplay.Controls.Add (this.display);
-            this.panelDisplay.Location = new System.Drawing.Point (8, 136);
+            this.panelDisplay.Location = new System.Drawing.Point (8, 140);
             this.panelDisplay.Name = "panelDisplay";
             this.panelDisplay.Size = new System.Drawing.Size (504, 64);
             this.panelDisplay.TabIndex = 4;
             // 
             // buttonPrinter
             // 
-            this.buttonPrinter.Location = new System.Drawing.Point (776, 136);
+            this.buttonPrinter.Location = new System.Drawing.Point (776, 140);
             this.buttonPrinter.Name = "buttonPrinter";
             this.buttonPrinter.Size = new System.Drawing.Size (36, 56);
             this.buttonPrinter.TabIndex = 5;
             this.buttonPrinter.Click += new System.EventHandler (this.buttonPrinter_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange (new System.Windows.Forms.ToolStripItem [] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point (0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size (820, 24);
+            this.menuStrip.TabIndex = 6;
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem [] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
+            this.printToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size (35, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = global::Mockingbird.HP.HP97.Properties.Resources.openHS;
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
+            this.openToolStripMenuItem.Text = "&Open...";
+            this.openToolStripMenuItem.Click += new System.EventHandler (this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = global::Mockingbird.HP.HP97.Properties.Resources.saveHS;
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler (this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
+            this.saveAsToolStripMenuItem.Text = "Save &As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler (this.saveAsToolStripMenuItem_Click);
+            // 
+            // printToolStripMenuItem
+            // 
+            this.printToolStripMenuItem.Image = global::Mockingbird.HP.HP97.Properties.Resources.PrintHS;
+            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
+            this.printToolStripMenuItem.Text = "&Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler (this.printToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler (this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem [] {
+            this.editLabelsToolStripMenuItem,
+            this.rtfToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size (37, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // editLabelsToolStripMenuItem
+            // 
+            this.editLabelsToolStripMenuItem.Name = "editLabelsToolStripMenuItem";
+            this.editLabelsToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.editLabelsToolStripMenuItem.Text = "&Edit Labels";
+            this.editLabelsToolStripMenuItem.Click += new System.EventHandler (this.editLabelsToolStripMenuItem_Click);
+            // 
+            // rtfToolStripMenuItem
+            // 
+            this.rtfToolStripMenuItem.Name = "rtfToolStripMenuItem";
+            this.rtfToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.rtfToolStripMenuItem.Text = "&Rich Text";
+            this.rtfToolStripMenuItem.Click += new System.EventHandler (this.rtfToolStripMenuItem_Click);
+            // 
             // HP97
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size (5, 13);
             this.BackColor = System.Drawing.Color.DarkKhaki;
-            this.ClientSize = new System.Drawing.Size (820, 638);
-            this.ContextMenu = this.contextMenu;
+            this.ClientSize = new System.Drawing.Size (820, 642);
             this.Controls.Add (this.buttonPrinter);
             this.Controls.Add (this.panelDisplay);
             this.Controls.Add (this.panelMain);
             this.Controls.Add (this.printer);
+            this.Controls.Add (this.menuStrip);
             this.Icon = ((System.Drawing.Icon) (resources.GetObject ("$this.Icon")));
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size (828, 672);
-            this.MinimumSize = new System.Drawing.Size (828, 672);
+            this.MaximumSize = new System.Drawing.Size (828, 676);
+            this.MinimumSize = new System.Drawing.Size (828, 676);
             this.Name = "HP97";
             this.Text = "HP97";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.Calculator_FormClosing);
@@ -2025,7 +2070,10 @@ namespace Mockingbird.HP.HP97
             ((System.ComponentModel.ISupportInitialize) (this.pictureBoxLineLeft)).EndInit ();
             this.groupBoxCard.ResumeLayout (false);
             this.panelDisplay.ResumeLayout (false);
+            this.menuStrip.ResumeLayout (false);
+            this.menuStrip.PerformLayout ();
             this.ResumeLayout (false);
+            this.PerformLayout ();
 
 		}
 		#endregion
