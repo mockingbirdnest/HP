@@ -310,9 +310,9 @@ namespace Mockingbird.HP.HP97
             // 
             // printer
             // 
-            this.printer.Location = new System.Drawing.Point (520, 24);
+            this.printer.Location = new System.Drawing.Point (520, 32);
             this.printer.Name = "printer";
-            this.printer.Size = new System.Drawing.Size (248, 180);
+            this.printer.Size = new System.Drawing.Size (248, 144);
             this.printer.TabIndex = 1;
             // 
             // panelMain
@@ -374,7 +374,7 @@ namespace Mockingbird.HP.HP97
             this.panelMain.Controls.Add (this.keyGSB);
             this.panelMain.Controls.Add (this.keyBST);
             this.panelMain.Controls.Add (this.keyLBL);
-            this.panelMain.Location = new System.Drawing.Point (8, 204);
+            this.panelMain.Location = new System.Drawing.Point (8, 184);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size (804, 432);
             this.panelMain.TabIndex = 2;
@@ -1943,14 +1943,14 @@ namespace Mockingbird.HP.HP97
             this.panelDisplay.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (32)))), ((int) (((byte) (32)))), ((int) (((byte) (32)))));
             this.panelDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelDisplay.Controls.Add (this.display);
-            this.panelDisplay.Location = new System.Drawing.Point (8, 140);
+            this.panelDisplay.Location = new System.Drawing.Point (8, 120);
             this.panelDisplay.Name = "panelDisplay";
             this.panelDisplay.Size = new System.Drawing.Size (504, 64);
             this.panelDisplay.TabIndex = 4;
             // 
             // buttonPrinter
             // 
-            this.buttonPrinter.Location = new System.Drawing.Point (776, 140);
+            this.buttonPrinter.Location = new System.Drawing.Point (776, 120);
             this.buttonPrinter.Name = "buttonPrinter";
             this.buttonPrinter.Size = new System.Drawing.Size (36, 56);
             this.buttonPrinter.TabIndex = 5;
@@ -2031,14 +2031,14 @@ namespace Mockingbird.HP.HP97
             // editLabelsToolStripMenuItem
             // 
             this.editLabelsToolStripMenuItem.Name = "editLabelsToolStripMenuItem";
-            this.editLabelsToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.editLabelsToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
             this.editLabelsToolStripMenuItem.Text = "&Edit Labels";
             this.editLabelsToolStripMenuItem.Click += new System.EventHandler (this.editLabelsToolStripMenuItem_Click);
             // 
             // rtfToolStripMenuItem
             // 
             this.rtfToolStripMenuItem.Name = "rtfToolStripMenuItem";
-            this.rtfToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
+            this.rtfToolStripMenuItem.Size = new System.Drawing.Size (125, 22);
             this.rtfToolStripMenuItem.Text = "&Rich Text";
             this.rtfToolStripMenuItem.Click += new System.EventHandler (this.rtfToolStripMenuItem_Click);
             // 
@@ -2046,7 +2046,7 @@ namespace Mockingbird.HP.HP97
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size (5, 13);
             this.BackColor = System.Drawing.Color.DarkKhaki;
-            this.ClientSize = new System.Drawing.Size (820, 642);
+            this.ClientSize = new System.Drawing.Size (820, 622);
             this.Controls.Add (this.buttonPrinter);
             this.Controls.Add (this.panelDisplay);
             this.Controls.Add (this.panelMain);
@@ -2056,8 +2056,8 @@ namespace Mockingbird.HP.HP97
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size (828, 676);
-            this.MinimumSize = new System.Drawing.Size (828, 676);
+            this.MaximumSize = new System.Drawing.Size (828, 656);
+            this.MinimumSize = new System.Drawing.Size (828, 656);
             this.Name = "HP97";
             this.Text = "HP97";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.Calculator_FormClosing);

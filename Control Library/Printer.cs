@@ -131,6 +131,11 @@ namespace Mockingbird.HP.Control_Library
 
         public void Advance ()
         {
+            if (emptyLinesAtTop > 0)
+            {
+                ThreadSafe.ItemsRemoveAt (listBox, 0);
+                emptyLinesAtTop--;
+            }
             ThreadSafe.ItemsAdd (listBox, "");
             ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
         }
