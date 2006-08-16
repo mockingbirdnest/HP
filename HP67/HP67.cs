@@ -238,13 +238,13 @@ namespace Mockingbird.HP.HP67
             // 
             // cardSlot
             // 
-            this.cardSlot.Font = new System.Drawing.Font ("Arial Unicode MS", 7F);
-            this.cardSlot.Location = new System.Drawing.Point (8, 104);
+            this.cardSlot.AccessibleDescription = null;
+            this.cardSlot.AccessibleName = null;
+            resources.ApplyResources (this.cardSlot, "cardSlot");
+            this.cardSlot.BackgroundImage = null;
             this.cardSlot.Name = "cardSlot";
             this.cardSlot.RichText = false;
-            this.cardSlot.Size = new System.Drawing.Size (288, 50);
             this.cardSlot.State = Mockingbird.HP.Control_Library.CardSlotState.Unloaded;
-            this.cardSlot.TabIndex = 1;
             this.cardSlot.TextBoxWidth = 48;
             this.cardSlot.Title = "<TITLE>";
             this.cardSlot.UnloadedTextA = "1/x";
@@ -255,57 +255,59 @@ namespace Mockingbird.HP.HP67
             // 
             // display
             // 
-            this.display.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.display.AccessibleDescription = null;
+            this.display.AccessibleName = null;
+            resources.ApplyResources (this.display, "display");
+            this.display.BackgroundImage = null;
             this.display.ForeColor = System.Drawing.Color.Red;
-            this.display.Location = new System.Drawing.Point (8, 32);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size (288, 40);
-            this.display.TabIndex = 0;
             this.display.Value = 0;
             // 
             // toggleOffOn
             // 
-            this.toggleOffOn.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
+            this.toggleOffOn.AccessibleDescription = null;
+            this.toggleOffOn.AccessibleName = null;
+            resources.ApplyResources (this.toggleOffOn, "toggleOffOn");
+            this.toggleOffOn.BackgroundImage = null;
             this.toggleOffOn.ForeColor = System.Drawing.Color.White;
             this.toggleOffOn.LeftText = "OFF";
             this.toggleOffOn.LeftWidth = 30;
-            this.toggleOffOn.Location = new System.Drawing.Point (8, 80);
             this.toggleOffOn.MainWidth = 50;
             this.toggleOffOn.Name = "toggleOffOn";
             this.toggleOffOn.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
             this.toggleOffOn.RightText = "ON";
             this.toggleOffOn.RightWidth = 30;
-            this.toggleOffOn.Size = new System.Drawing.Size (110, 16);
-            this.toggleOffOn.TabIndex = 2;
             this.toggleOffOn.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent (this.toggleOffOn_ToggleClick);
             // 
             // toggleWprgmRun
             // 
-            this.toggleWprgmRun.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
+            this.toggleWprgmRun.AccessibleDescription = null;
+            this.toggleWprgmRun.AccessibleName = null;
+            resources.ApplyResources (this.toggleWprgmRun, "toggleWprgmRun");
+            this.toggleWprgmRun.BackgroundImage = null;
             this.toggleWprgmRun.ForeColor = System.Drawing.Color.White;
             this.toggleWprgmRun.LeftText = "W/PRGM";
             this.toggleWprgmRun.LeftWidth = 60;
-            this.toggleWprgmRun.Location = new System.Drawing.Point (160, 80);
             this.toggleWprgmRun.MainWidth = 50;
             this.toggleWprgmRun.Name = "toggleWprgmRun";
             this.toggleWprgmRun.Position = Mockingbird.HP.Control_Library.TogglePosition.Right;
             this.toggleWprgmRun.RightText = "RUN";
             this.toggleWprgmRun.RightWidth = 30;
-            this.toggleWprgmRun.Size = new System.Drawing.Size (140, 16);
-            this.toggleWprgmRun.TabIndex = 3;
             this.toggleWprgmRun.ToggleClick += new Mockingbird.HP.Control_Library.Toggle.ToggleClickEvent (this.toggleWprgmRun_ToggleClick);
             // 
             // keyA
             // 
+            this.keyA.AccessibleDescription = null;
+            this.keyA.AccessibleName = null;
+            resources.ApplyResources (this.keyA, "keyA");
+            this.keyA.BackgroundImage = null;
             this.keyA.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyA.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyA.FGWidth = 48;
-            this.keyA.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyA.FText = "a";
             this.keyA.GText = "";
             this.keyA.HText = "";
             this.keyA.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyA.Location = new System.Drawing.Point (16, 160);
             this.keyA.MainBackColor = System.Drawing.Color.Olive;
             this.keyA.MainForeColor = System.Drawing.Color.White;
             this.keyA.MainHeight = 24;
@@ -314,23 +316,23 @@ namespace Mockingbird.HP.HP67
             this.keyA.Name = "keyA";
             this.keyA.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.A};
-            this.keyA.Size = new System.Drawing.Size (48, 51);
-            this.keyA.TabIndex = 1;
             this.keyA.Tag = "6711";
             this.keyA.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyA.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyf
             // 
+            this.keyf.AccessibleDescription = null;
+            this.keyf.AccessibleName = null;
+            resources.ApplyResources (this.keyf, "keyf");
+            this.keyf.BackgroundImage = null;
             this.keyf.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyf.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyf.FGWidth = 48;
-            this.keyf.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyf.FText = "";
             this.keyf.GText = "";
             this.keyf.HText = "";
             this.keyf.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyf.Location = new System.Drawing.Point (16, 272);
             this.keyf.MainBackColor = System.Drawing.Color.Gold;
             this.keyf.MainForeColor = System.Drawing.Color.Black;
             this.keyf.MainHeight = 24;
@@ -339,23 +341,23 @@ namespace Mockingbird.HP.HP67
             this.keyf.Name = "keyf";
             this.keyf.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.F};
-            this.keyf.Size = new System.Drawing.Size (48, 51);
-            this.keyf.TabIndex = 11;
             this.keyf.Tag = "6731";
             this.keyf.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyf.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keySST
             // 
+            this.keySST.AccessibleDescription = null;
+            this.keySST.AccessibleName = null;
+            resources.ApplyResources (this.keySST, "keySST");
+            this.keySST.BackgroundImage = null;
             this.keySST.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keySST.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keySST.FGWidth = 48;
-            this.keySST.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keySST.FText = "LBL";
             this.keySST.GText = "f";
             this.keySST.HText = "BST";
             this.keySST.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keySST.Location = new System.Drawing.Point (240, 216);
             this.keySST.MainBackColor = System.Drawing.Color.Olive;
             this.keySST.MainForeColor = System.Drawing.Color.White;
             this.keySST.MainHeight = 24;
@@ -363,23 +365,23 @@ namespace Mockingbird.HP.HP67
             this.keySST.MainWidth = 48;
             this.keySST.Name = "keySST";
             this.keySST.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keySST.Size = new System.Drawing.Size (48, 51);
-            this.keySST.TabIndex = 10;
             this.keySST.Tag = "6725";
             this.keySST.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keySST.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyi
             // 
+            this.keyi.AccessibleDescription = null;
+            this.keyi.AccessibleName = null;
+            resources.ApplyResources (this.keyi, "keyi");
+            this.keyi.BackgroundImage = null;
             this.keyi.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyi.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyi.FGWidth = 48;
-            this.keyi.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyi.FText = "RND";
             this.keyi.GText = "";
             this.keyi.HText = "x⇆I";
             this.keyi.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyi.Location = new System.Drawing.Point (184, 216);
             this.keyi.MainBackColor = System.Drawing.Color.Olive;
             this.keyi.MainForeColor = System.Drawing.Color.White;
             this.keyi.MainHeight = 24;
@@ -387,23 +389,23 @@ namespace Mockingbird.HP.HP67
             this.keyi.MainWidth = 48;
             this.keyi.Name = "keyi";
             this.keyi.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyi.Size = new System.Drawing.Size (48, 51);
-            this.keyi.TabIndex = 9;
             this.keyi.Tag = "6724";
             this.keyi.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyi.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyDSP
             // 
+            this.keyDSP.AccessibleDescription = null;
+            this.keyDSP.AccessibleName = null;
+            resources.ApplyResources (this.keyDSP, "keyDSP");
+            this.keyDSP.BackgroundImage = null;
             this.keyDSP.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyDSP.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyDSP.FGWidth = 48;
-            this.keyDSP.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyDSP.FText = "FIX";
             this.keyDSP.GText = "SCI";
             this.keyDSP.HText = "ENG";
             this.keyDSP.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyDSP.Location = new System.Drawing.Point (128, 216);
             this.keyDSP.MainBackColor = System.Drawing.Color.Olive;
             this.keyDSP.MainForeColor = System.Drawing.Color.White;
             this.keyDSP.MainHeight = 24;
@@ -411,23 +413,23 @@ namespace Mockingbird.HP.HP67
             this.keyDSP.MainWidth = 48;
             this.keyDSP.Name = "keyDSP";
             this.keyDSP.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyDSP.Size = new System.Drawing.Size (48, 51);
-            this.keyDSP.TabIndex = 8;
             this.keyDSP.Tag = "6723";
             this.keyDSP.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyDSP.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyGTO
             // 
+            this.keyGTO.AccessibleDescription = null;
+            this.keyGTO.AccessibleName = null;
+            resources.ApplyResources (this.keyGTO, "keyGTO");
+            this.keyGTO.BackgroundImage = null;
             this.keyGTO.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyGTO.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyGTO.FGWidth = 48;
-            this.keyGTO.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyGTO.FText = "GSB";
             this.keyGTO.GText = "f";
             this.keyGTO.HText = "RTN";
             this.keyGTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyGTO.Location = new System.Drawing.Point (72, 216);
             this.keyGTO.MainBackColor = System.Drawing.Color.Olive;
             this.keyGTO.MainForeColor = System.Drawing.Color.White;
             this.keyGTO.MainHeight = 24;
@@ -435,23 +437,23 @@ namespace Mockingbird.HP.HP67
             this.keyGTO.MainWidth = 48;
             this.keyGTO.Name = "keyGTO";
             this.keyGTO.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyGTO.Size = new System.Drawing.Size (48, 51);
-            this.keyGTO.TabIndex = 7;
             this.keyGTO.Tag = "6722";
             this.keyGTO.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyGTO.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyΣ
             // 
+            this.keyΣ.AccessibleDescription = null;
+            this.keyΣ.AccessibleName = null;
+            resources.ApplyResources (this.keyΣ, "keyΣ");
+            this.keyΣ.BackgroundImage = null;
             this.keyΣ.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyΣ.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyΣ.FGWidth = 48;
-            this.keyΣ.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyΣ.FText = "x̄";
             this.keyΣ.GText = "s";
             this.keyΣ.HText = "Σ-";
             this.keyΣ.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyΣ.Location = new System.Drawing.Point (16, 216);
             this.keyΣ.MainBackColor = System.Drawing.Color.Olive;
             this.keyΣ.MainForeColor = System.Drawing.Color.White;
             this.keyΣ.MainHeight = 24;
@@ -459,23 +461,23 @@ namespace Mockingbird.HP.HP67
             this.keyΣ.MainWidth = 48;
             this.keyΣ.Name = "keyΣ";
             this.keyΣ.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyΣ.Size = new System.Drawing.Size (48, 51);
-            this.keyΣ.TabIndex = 6;
             this.keyΣ.Tag = "6721";
             this.keyΣ.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyΣ.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyE
             // 
+            this.keyE.AccessibleDescription = null;
+            this.keyE.AccessibleName = null;
+            resources.ApplyResources (this.keyE, "keyE");
+            this.keyE.BackgroundImage = null;
             this.keyE.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyE.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyE.FGWidth = 48;
-            this.keyE.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyE.FText = "e";
             this.keyE.GText = "";
             this.keyE.HText = "";
             this.keyE.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyE.Location = new System.Drawing.Point (240, 160);
             this.keyE.MainBackColor = System.Drawing.Color.Olive;
             this.keyE.MainForeColor = System.Drawing.Color.White;
             this.keyE.MainHeight = 24;
@@ -484,23 +486,23 @@ namespace Mockingbird.HP.HP67
             this.keyE.Name = "keyE";
             this.keyE.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.E};
-            this.keyE.Size = new System.Drawing.Size (48, 51);
-            this.keyE.TabIndex = 5;
             this.keyE.Tag = "6715";
             this.keyE.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyE.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyD
             // 
+            this.keyD.AccessibleDescription = null;
+            this.keyD.AccessibleName = null;
+            resources.ApplyResources (this.keyD, "keyD");
+            this.keyD.BackgroundImage = null;
             this.keyD.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyD.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyD.FGWidth = 48;
-            this.keyD.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyD.FText = "d";
             this.keyD.GText = "";
             this.keyD.HText = "";
             this.keyD.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyD.Location = new System.Drawing.Point (184, 160);
             this.keyD.MainBackColor = System.Drawing.Color.Olive;
             this.keyD.MainForeColor = System.Drawing.Color.White;
             this.keyD.MainHeight = 24;
@@ -509,23 +511,23 @@ namespace Mockingbird.HP.HP67
             this.keyD.Name = "keyD";
             this.keyD.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D};
-            this.keyD.Size = new System.Drawing.Size (48, 51);
-            this.keyD.TabIndex = 4;
             this.keyD.Tag = "6714";
             this.keyD.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyD.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyC
             // 
+            this.keyC.AccessibleDescription = null;
+            this.keyC.AccessibleName = null;
+            resources.ApplyResources (this.keyC, "keyC");
+            this.keyC.BackgroundImage = null;
             this.keyC.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyC.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyC.FGWidth = 48;
-            this.keyC.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyC.FText = "c";
             this.keyC.GText = "";
             this.keyC.HText = "";
             this.keyC.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyC.Location = new System.Drawing.Point (128, 160);
             this.keyC.MainBackColor = System.Drawing.Color.Olive;
             this.keyC.MainForeColor = System.Drawing.Color.White;
             this.keyC.MainHeight = 24;
@@ -534,23 +536,23 @@ namespace Mockingbird.HP.HP67
             this.keyC.Name = "keyC";
             this.keyC.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.C};
-            this.keyC.Size = new System.Drawing.Size (48, 51);
-            this.keyC.TabIndex = 3;
             this.keyC.Tag = "6713";
             this.keyC.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyC.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyB
             // 
+            this.keyB.AccessibleDescription = null;
+            this.keyB.AccessibleName = null;
+            resources.ApplyResources (this.keyB, "keyB");
+            this.keyB.BackgroundImage = null;
             this.keyB.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyB.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyB.FGWidth = 48;
-            this.keyB.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyB.FText = "b";
             this.keyB.GText = "";
             this.keyB.HText = "";
             this.keyB.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyB.Location = new System.Drawing.Point (72, 160);
             this.keyB.MainBackColor = System.Drawing.Color.Olive;
             this.keyB.MainForeColor = System.Drawing.Color.White;
             this.keyB.MainHeight = 24;
@@ -559,23 +561,23 @@ namespace Mockingbird.HP.HP67
             this.keyB.Name = "keyB";
             this.keyB.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.B};
-            this.keyB.Size = new System.Drawing.Size (48, 51);
-            this.keyB.TabIndex = 2;
             this.keyB.Tag = "6712";
             this.keyB.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyB.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyENTER
             // 
+            this.keyENTER.AccessibleDescription = null;
+            this.keyENTER.AccessibleName = null;
+            resources.ApplyResources (this.keyENTER, "keyENTER");
+            this.keyENTER.BackgroundImage = null;
             this.keyENTER.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyENTER.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyENTER.FGWidth = 120;
-            this.keyENTER.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyENTER.FText = "W/DATA";
             this.keyENTER.GText = "MERGE";
             this.keyENTER.HText = "DEG";
             this.keyENTER.HTextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.keyENTER.Location = new System.Drawing.Point (8, 328);
             this.keyENTER.MainBackColor = System.Drawing.Color.Olive;
             this.keyENTER.MainForeColor = System.Drawing.Color.White;
             this.keyENTER.MainHeight = 24;
@@ -584,23 +586,23 @@ namespace Mockingbird.HP.HP67
             this.keyENTER.Name = "keyENTER";
             this.keyENTER.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.Return};
-            this.keyENTER.Size = new System.Drawing.Size (120, 51);
-            this.keyENTER.TabIndex = 16;
             this.keyENTER.Tag = "6741";
             this.keyENTER.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyENTER.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyEEX
             // 
+            this.keyEEX.AccessibleDescription = null;
+            this.keyEEX.AccessibleName = null;
+            resources.ApplyResources (this.keyEEX, "keyEEX");
+            this.keyEEX.BackgroundImage = null;
             this.keyEEX.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyEEX.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyEEX.FGWidth = 48;
-            this.keyEEX.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyEEX.FText = "CL REG";
             this.keyEEX.GText = "";
             this.keyEEX.HText = "GRD";
             this.keyEEX.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyEEX.Location = new System.Drawing.Point (184, 328);
             this.keyEEX.MainBackColor = System.Drawing.Color.Olive;
             this.keyEEX.MainForeColor = System.Drawing.Color.White;
             this.keyEEX.MainHeight = 24;
@@ -608,23 +610,23 @@ namespace Mockingbird.HP.HP67
             this.keyEEX.MainWidth = 48;
             this.keyEEX.Name = "keyEEX";
             this.keyEEX.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyEEX.Size = new System.Drawing.Size (48, 51);
-            this.keyEEX.TabIndex = 18;
             this.keyEEX.Tag = "6743";
             this.keyEEX.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyEEX.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyCLx
             // 
+            this.keyCLx.AccessibleDescription = null;
+            this.keyCLx.AccessibleName = null;
+            resources.ApplyResources (this.keyCLx, "keyCLx");
+            this.keyCLx.BackgroundImage = null;
             this.keyCLx.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyCLx.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyCLx.FGWidth = 64;
-            this.keyCLx.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyCLx.FText = "CL PRGM";
             this.keyCLx.GText = "";
             this.keyCLx.HText = "DEL";
             this.keyCLx.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyCLx.Location = new System.Drawing.Point (232, 328);
             this.keyCLx.MainBackColor = System.Drawing.Color.Olive;
             this.keyCLx.MainForeColor = System.Drawing.Color.White;
             this.keyCLx.MainHeight = 24;
@@ -632,23 +634,23 @@ namespace Mockingbird.HP.HP67
             this.keyCLx.MainWidth = 48;
             this.keyCLx.Name = "keyCLx";
             this.keyCLx.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyCLx.Size = new System.Drawing.Size (64, 51);
-            this.keyCLx.TabIndex = 19;
             this.keyCLx.Tag = "6744";
             this.keyCLx.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyCLx.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyCHS
             // 
+            this.keyCHS.AccessibleDescription = null;
+            this.keyCHS.AccessibleName = null;
+            resources.ApplyResources (this.keyCHS, "keyCHS");
+            this.keyCHS.BackgroundImage = null;
             this.keyCHS.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyCHS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyCHS.FGWidth = 48;
-            this.keyCHS.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyCHS.FText = "P⇆S";
             this.keyCHS.GText = "";
             this.keyCHS.HText = "RAD";
             this.keyCHS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyCHS.Location = new System.Drawing.Point (128, 328);
             this.keyCHS.MainBackColor = System.Drawing.Color.Olive;
             this.keyCHS.MainForeColor = System.Drawing.Color.White;
             this.keyCHS.MainHeight = 24;
@@ -656,23 +658,23 @@ namespace Mockingbird.HP.HP67
             this.keyCHS.MainWidth = 48;
             this.keyCHS.Name = "keyCHS";
             this.keyCHS.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyCHS.Size = new System.Drawing.Size (48, 51);
-            this.keyCHS.TabIndex = 17;
             this.keyCHS.Tag = "6742";
             this.keyCHS.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyCHS.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyh
             // 
+            this.keyh.AccessibleDescription = null;
+            this.keyh.AccessibleName = null;
+            resources.ApplyResources (this.keyh, "keyh");
+            this.keyh.BackgroundImage = null;
             this.keyh.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyh.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyh.FGWidth = 48;
-            this.keyh.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyh.FText = "";
             this.keyh.GText = "";
             this.keyh.HText = "";
             this.keyh.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyh.Location = new System.Drawing.Point (240, 272);
             this.keyh.MainBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (32)))), ((int) (((byte) (32)))), ((int) (((byte) (32)))));
             this.keyh.MainForeColor = System.Drawing.Color.White;
             this.keyh.MainHeight = 24;
@@ -681,23 +683,23 @@ namespace Mockingbird.HP.HP67
             this.keyh.Name = "keyh";
             this.keyh.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.H};
-            this.keyh.Size = new System.Drawing.Size (48, 51);
-            this.keyh.TabIndex = 15;
             this.keyh.Tag = "6735";
             this.keyh.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyh.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyRCL
             // 
+            this.keyRCL.AccessibleDescription = null;
+            this.keyRCL.AccessibleName = null;
+            resources.ApplyResources (this.keyRCL, "keyRCL");
+            this.keyRCL.BackgroundImage = null;
             this.keyRCL.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyRCL.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyRCL.FGWidth = 48;
-            this.keyRCL.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyRCL.FText = "ISZ";
             this.keyRCL.GText = "(i)";
             this.keyRCL.HText = "RC I";
             this.keyRCL.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyRCL.Location = new System.Drawing.Point (184, 272);
             this.keyRCL.MainBackColor = System.Drawing.Color.Olive;
             this.keyRCL.MainForeColor = System.Drawing.Color.White;
             this.keyRCL.MainHeight = 24;
@@ -705,23 +707,23 @@ namespace Mockingbird.HP.HP67
             this.keyRCL.MainWidth = 48;
             this.keyRCL.Name = "keyRCL";
             this.keyRCL.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyRCL.Size = new System.Drawing.Size (48, 51);
-            this.keyRCL.TabIndex = 14;
             this.keyRCL.Tag = "6734";
             this.keyRCL.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyRCL.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keySTO
             // 
+            this.keySTO.AccessibleDescription = null;
+            this.keySTO.AccessibleName = null;
+            resources.ApplyResources (this.keySTO, "keySTO");
+            this.keySTO.BackgroundImage = null;
             this.keySTO.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keySTO.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keySTO.FGWidth = 48;
-            this.keySTO.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keySTO.FText = "DSZ";
             this.keySTO.GText = "(i)";
             this.keySTO.HText = "ST I";
             this.keySTO.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keySTO.Location = new System.Drawing.Point (128, 272);
             this.keySTO.MainBackColor = System.Drawing.Color.Olive;
             this.keySTO.MainForeColor = System.Drawing.Color.White;
             this.keySTO.MainHeight = 24;
@@ -729,23 +731,23 @@ namespace Mockingbird.HP.HP67
             this.keySTO.MainWidth = 48;
             this.keySTO.Name = "keySTO";
             this.keySTO.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keySTO.Size = new System.Drawing.Size (48, 51);
-            this.keySTO.TabIndex = 13;
             this.keySTO.Tag = "6733";
             this.keySTO.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keySTO.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyg
             // 
+            this.keyg.AccessibleDescription = null;
+            this.keyg.AccessibleName = null;
+            resources.ApplyResources (this.keyg, "keyg");
+            this.keyg.BackgroundImage = null;
             this.keyg.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyg.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.keyg.FGWidth = 48;
-            this.keyg.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyg.FText = "";
             this.keyg.GText = "";
             this.keyg.HText = "";
             this.keyg.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyg.Location = new System.Drawing.Point (72, 272);
             this.keyg.MainBackColor = System.Drawing.Color.SkyBlue;
             this.keyg.MainForeColor = System.Drawing.Color.Black;
             this.keyg.MainHeight = 24;
@@ -754,23 +756,23 @@ namespace Mockingbird.HP.HP67
             this.keyg.Name = "keyg";
             this.keyg.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.G};
-            this.keyg.Size = new System.Drawing.Size (48, 51);
-            this.keyg.TabIndex = 12;
             this.keyg.Tag = "6732";
             this.keyg.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyg.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key8
             // 
+            this.key8.AccessibleDescription = null;
+            this.key8.AccessibleName = null;
+            resources.ApplyResources (this.key8, "key8");
+            this.key8.BackgroundImage = null;
             this.key8.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key8.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.key8.FGWidth = 56;
-            this.key8.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key8.FText = "LOG";
             this.key8.GText = "10 ̽";
             this.key8.HText = "R↓";
             this.key8.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key8.Location = new System.Drawing.Point (152, 384);
             this.key8.MainBackColor = System.Drawing.Color.LightYellow;
             this.key8.MainForeColor = System.Drawing.Color.Black;
             this.key8.MainHeight = 24;
@@ -780,23 +782,23 @@ namespace Mockingbird.HP.HP67
             this.key8.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D8,
         System.Windows.Forms.Keys.NumPad8};
-            this.key8.Size = new System.Drawing.Size (56, 51);
-            this.key8.TabIndex = 22;
             this.key8.Tag = "6753";
             this.key8.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key8.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyRS
             // 
+            this.keyRS.AccessibleDescription = null;
+            this.keyRS.AccessibleName = null;
+            resources.ApplyResources (this.keyRS, "keyRS");
+            this.keyRS.BackgroundImage = null;
             this.keyRS.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyRS.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyRS.FGWidth = 56;
-            this.keyRS.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyRS.FText = "–x–";
             this.keyRS.GText = "STK";
             this.keyRS.HText = "SPACE";
             this.keyRS.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyRS.Location = new System.Drawing.Point (232, 552);
             this.keyRS.MainBackColor = System.Drawing.Color.LightYellow;
             this.keyRS.MainForeColor = System.Drawing.Color.Black;
             this.keyRS.MainHeight = 24;
@@ -804,23 +806,23 @@ namespace Mockingbird.HP.HP67
             this.keyRS.MainWidth = 56;
             this.keyRS.Name = "keyRS";
             this.keyRS.Shortcuts = new System.Windows.Forms.Keys [0];
-            this.keyRS.Size = new System.Drawing.Size (56, 51);
-            this.keyRS.TabIndex = 35;
             this.keyRS.Tag = "6784";
             this.keyRS.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyRS.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyPeriod
             // 
+            this.keyPeriod.AccessibleDescription = null;
+            this.keyPeriod.AccessibleName = null;
+            resources.ApplyResources (this.keyPeriod, "keyPeriod");
+            this.keyPeriod.BackgroundImage = null;
             this.keyPeriod.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyPeriod.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyPeriod.FGWidth = 72;
-            this.keyPeriod.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyPeriod.FText = "INT";
             this.keyPeriod.GText = "FRAC";
             this.keyPeriod.HText = "H.MS+";
             this.keyPeriod.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyPeriod.Location = new System.Drawing.Point (144, 552);
             this.keyPeriod.MainBackColor = System.Drawing.Color.LightYellow;
             this.keyPeriod.MainForeColor = System.Drawing.Color.Black;
             this.keyPeriod.MainHeight = 24;
@@ -829,23 +831,23 @@ namespace Mockingbird.HP.HP67
             this.keyPeriod.Name = "keyPeriod";
             this.keyPeriod.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.Decimal};
-            this.keyPeriod.Size = new System.Drawing.Size (72, 51);
-            this.keyPeriod.TabIndex = 34;
             this.keyPeriod.Tag = "6783";
             this.keyPeriod.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyPeriod.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key0
             // 
+            this.key0.AccessibleDescription = null;
+            this.key0.AccessibleName = null;
+            resources.ApplyResources (this.key0, "key0");
+            this.key0.BackgroundImage = null;
             this.key0.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key0.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.key0.FGWidth = 56;
-            this.key0.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key0.FText = "%";
             this.key0.GText = "%CH";
             this.key0.HText = "LST x";
             this.key0.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key0.Location = new System.Drawing.Point (72, 552);
             this.key0.MainBackColor = System.Drawing.Color.LightYellow;
             this.key0.MainForeColor = System.Drawing.Color.Black;
             this.key0.MainHeight = 24;
@@ -855,23 +857,23 @@ namespace Mockingbird.HP.HP67
             this.key0.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D0,
         System.Windows.Forms.Keys.NumPad0};
-            this.key0.Size = new System.Drawing.Size (56, 51);
-            this.key0.TabIndex = 33;
             this.key0.Tag = "6782";
             this.key0.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key0.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key9
             // 
+            this.key9.AccessibleDescription = null;
+            this.key9.AccessibleName = null;
+            resources.ApplyResources (this.key9, "key9");
+            this.key9.BackgroundImage = null;
             this.key9.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key9.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.key9.FGWidth = 56;
-            this.key9.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key9.FText = "√x̅";
             this.key9.GText = "x²";
             this.key9.HText = "R↑";
             this.key9.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key9.Location = new System.Drawing.Point (232, 384);
             this.key9.MainBackColor = System.Drawing.Color.LightYellow;
             this.key9.MainForeColor = System.Drawing.Color.Black;
             this.key9.MainHeight = 24;
@@ -881,23 +883,23 @@ namespace Mockingbird.HP.HP67
             this.key9.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D9,
         System.Windows.Forms.Keys.NumPad9};
-            this.key9.Size = new System.Drawing.Size (56, 51);
-            this.key9.TabIndex = 23;
             this.key9.Tag = "6754";
             this.key9.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key9.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key3
             // 
+            this.key3.AccessibleDescription = null;
+            this.key3.AccessibleName = null;
+            resources.ApplyResources (this.key3, "key3");
+            this.key3.BackgroundImage = null;
             this.key3.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key3.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.key3.FGWidth = 56;
-            this.key3.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key3.FText = "H⇄";
             this.key3.GText = "H.MS";
             this.key3.HText = "REG";
             this.key3.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key3.Location = new System.Drawing.Point (232, 496);
             this.key3.MainBackColor = System.Drawing.Color.LightYellow;
             this.key3.MainForeColor = System.Drawing.Color.Black;
             this.key3.MainHeight = 24;
@@ -907,23 +909,23 @@ namespace Mockingbird.HP.HP67
             this.key3.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D3,
         System.Windows.Forms.Keys.NumPad3};
-            this.key3.Size = new System.Drawing.Size (56, 51);
-            this.key3.TabIndex = 31;
             this.key3.Tag = "6774";
             this.key3.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key3.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key2
             // 
+            this.key2.AccessibleDescription = null;
+            this.key2.AccessibleName = null;
+            resources.ApplyResources (this.key2, "key2");
+            this.key2.BackgroundImage = null;
             this.key2.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key2.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.key2.FGWidth = 56;
-            this.key2.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key2.FText = "D⇄";
             this.key2.GText = "R";
             this.key2.HText = "π";
             this.key2.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key2.Location = new System.Drawing.Point (152, 496);
             this.key2.MainBackColor = System.Drawing.Color.LightYellow;
             this.key2.MainForeColor = System.Drawing.Color.Black;
             this.key2.MainHeight = 24;
@@ -933,23 +935,23 @@ namespace Mockingbird.HP.HP67
             this.key2.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D2,
         System.Windows.Forms.Keys.NumPad2};
-            this.key2.Size = new System.Drawing.Size (56, 51);
-            this.key2.TabIndex = 30;
             this.key2.Tag = "6773";
             this.key2.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key2.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key1
             // 
+            this.key1.AccessibleDescription = null;
+            this.key1.AccessibleName = null;
+            resources.ApplyResources (this.key1, "key1");
+            this.key1.BackgroundImage = null;
             this.key1.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key1.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.key1.FGWidth = 56;
-            this.key1.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key1.FText = "R⇄";
             this.key1.GText = "P";
             this.key1.HText = "PAUSE";
             this.key1.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key1.Location = new System.Drawing.Point (72, 496);
             this.key1.MainBackColor = System.Drawing.Color.LightYellow;
             this.key1.MainForeColor = System.Drawing.Color.Black;
             this.key1.MainHeight = 24;
@@ -959,23 +961,23 @@ namespace Mockingbird.HP.HP67
             this.key1.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D1,
         System.Windows.Forms.Keys.NumPad1};
-            this.key1.Size = new System.Drawing.Size (56, 51);
-            this.key1.TabIndex = 29;
             this.key1.Tag = "6772";
             this.key1.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key1.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key6
             // 
+            this.key6.AccessibleDescription = null;
+            this.key6.AccessibleName = null;
+            resources.ApplyResources (this.key6, "key6");
+            this.key6.BackgroundImage = null;
             this.key6.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key6.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.key6.FGWidth = 56;
-            this.key6.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key6.FText = "TAN";
             this.key6.GText = "⁻¹";
             this.key6.HText = "ABS";
             this.key6.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key6.Location = new System.Drawing.Point (232, 440);
             this.key6.MainBackColor = System.Drawing.Color.LightYellow;
             this.key6.MainForeColor = System.Drawing.Color.Black;
             this.key6.MainHeight = 24;
@@ -985,23 +987,23 @@ namespace Mockingbird.HP.HP67
             this.key6.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D6,
         System.Windows.Forms.Keys.NumPad6};
-            this.key6.Size = new System.Drawing.Size (56, 51);
-            this.key6.TabIndex = 27;
             this.key6.Tag = "6764";
             this.key6.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key6.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key5
             // 
+            this.key5.AccessibleDescription = null;
+            this.key5.AccessibleName = null;
+            resources.ApplyResources (this.key5, "key5");
+            this.key5.BackgroundImage = null;
             this.key5.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key5.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.key5.FGWidth = 56;
-            this.key5.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key5.FText = "COS";
             this.key5.GText = "⁻¹";
             this.key5.HText = "y ̽";
             this.key5.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key5.Location = new System.Drawing.Point (152, 440);
             this.key5.MainBackColor = System.Drawing.Color.LightYellow;
             this.key5.MainForeColor = System.Drawing.Color.Black;
             this.key5.MainHeight = 24;
@@ -1011,23 +1013,23 @@ namespace Mockingbird.HP.HP67
             this.key5.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D5,
         System.Windows.Forms.Keys.NumPad5};
-            this.key5.Size = new System.Drawing.Size (56, 51);
-            this.key5.TabIndex = 26;
             this.key5.Tag = "6763";
             this.key5.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key5.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key4
             // 
+            this.key4.AccessibleDescription = null;
+            this.key4.AccessibleName = null;
+            resources.ApplyResources (this.key4, "key4");
+            this.key4.BackgroundImage = null;
             this.key4.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key4.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Centered;
             this.key4.FGWidth = 56;
-            this.key4.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key4.FText = "SIN";
             this.key4.GText = "⁻¹";
             this.key4.HText = "1/x";
             this.key4.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key4.Location = new System.Drawing.Point (72, 440);
             this.key4.MainBackColor = System.Drawing.Color.LightYellow;
             this.key4.MainForeColor = System.Drawing.Color.Black;
             this.key4.MainHeight = 24;
@@ -1037,23 +1039,23 @@ namespace Mockingbird.HP.HP67
             this.key4.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D4,
         System.Windows.Forms.Keys.NumPad4};
-            this.key4.Size = new System.Drawing.Size (56, 51);
-            this.key4.TabIndex = 25;
             this.key4.Tag = "6762";
             this.key4.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key4.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key7
             // 
+            this.key7.AccessibleDescription = null;
+            this.key7.AccessibleName = null;
+            resources.ApplyResources (this.key7, "key7");
+            this.key7.BackgroundImage = null;
             this.key7.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.key7.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.key7.FGWidth = 56;
-            this.key7.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.key7.FText = "LN";
             this.key7.GText = "e ̽";
             this.key7.HText = "x⇆y";
             this.key7.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.key7.Location = new System.Drawing.Point (72, 384);
             this.key7.MainBackColor = System.Drawing.Color.LightYellow;
             this.key7.MainForeColor = System.Drawing.Color.Black;
             this.key7.MainHeight = 24;
@@ -1063,23 +1065,23 @@ namespace Mockingbird.HP.HP67
             this.key7.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.D7,
         System.Windows.Forms.Keys.NumPad7};
-            this.key7.Size = new System.Drawing.Size (56, 51);
-            this.key7.TabIndex = 21;
             this.key7.Tag = "6752";
             this.key7.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.key7.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyMinus
             // 
+            this.keyMinus.AccessibleDescription = null;
+            this.keyMinus.AccessibleName = null;
+            resources.ApplyResources (this.keyMinus, "keyMinus");
+            this.keyMinus.BackgroundImage = null;
             this.keyMinus.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyMinus.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyMinus.FGWidth = 48;
-            this.keyMinus.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyMinus.FText = "x=0";
             this.keyMinus.GText = "x=y";
             this.keyMinus.HText = "SF";
             this.keyMinus.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyMinus.Location = new System.Drawing.Point (8, 384);
             this.keyMinus.MainBackColor = System.Drawing.Color.Olive;
             this.keyMinus.MainForeColor = System.Drawing.Color.White;
             this.keyMinus.MainHeight = 24;
@@ -1088,23 +1090,23 @@ namespace Mockingbird.HP.HP67
             this.keyMinus.Name = "keyMinus";
             this.keyMinus.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.Subtract};
-            this.keyMinus.Size = new System.Drawing.Size (48, 51);
-            this.keyMinus.TabIndex = 20;
             this.keyMinus.Tag = "6751";
             this.keyMinus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyMinus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyDiv
             // 
+            this.keyDiv.AccessibleDescription = null;
+            this.keyDiv.AccessibleName = null;
+            resources.ApplyResources (this.keyDiv, "keyDiv");
+            this.keyDiv.BackgroundImage = null;
             this.keyDiv.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyDiv.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyDiv.FGWidth = 48;
-            this.keyDiv.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyDiv.FText = "x>0";
             this.keyDiv.GText = "x>y";
             this.keyDiv.HText = "N!";
             this.keyDiv.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyDiv.Location = new System.Drawing.Point (8, 552);
             this.keyDiv.MainBackColor = System.Drawing.Color.Olive;
             this.keyDiv.MainForeColor = System.Drawing.Color.White;
             this.keyDiv.MainHeight = 24;
@@ -1113,23 +1115,23 @@ namespace Mockingbird.HP.HP67
             this.keyDiv.Name = "keyDiv";
             this.keyDiv.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.Divide};
-            this.keyDiv.Size = new System.Drawing.Size (48, 51);
-            this.keyDiv.TabIndex = 32;
             this.keyDiv.Tag = "6781";
             this.keyDiv.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyDiv.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyMult
             // 
+            this.keyMult.AccessibleDescription = null;
+            this.keyMult.AccessibleName = null;
+            resources.ApplyResources (this.keyMult, "keyMult");
+            this.keyMult.BackgroundImage = null;
             this.keyMult.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyMult.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyMult.FGWidth = 48;
-            this.keyMult.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyMult.FText = "x<0";
             this.keyMult.GText = "x≤y";
             this.keyMult.HText = "F?";
             this.keyMult.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyMult.Location = new System.Drawing.Point (8, 496);
             this.keyMult.MainBackColor = System.Drawing.Color.Olive;
             this.keyMult.MainForeColor = System.Drawing.Color.White;
             this.keyMult.MainHeight = 24;
@@ -1138,23 +1140,23 @@ namespace Mockingbird.HP.HP67
             this.keyMult.Name = "keyMult";
             this.keyMult.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.Multiply};
-            this.keyMult.Size = new System.Drawing.Size (48, 51);
-            this.keyMult.TabIndex = 28;
             this.keyMult.Tag = "6771";
             this.keyMult.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyMult.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyPlus
             // 
+            this.keyPlus.AccessibleDescription = null;
+            this.keyPlus.AccessibleName = null;
+            resources.ApplyResources (this.keyPlus, "keyPlus");
+            this.keyPlus.BackgroundImage = null;
             this.keyPlus.FGBackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
             this.keyPlus.FGTextAlign = Mockingbird.HP.Control_Library.TextAlign.Justified;
             this.keyPlus.FGWidth = 48;
-            this.keyPlus.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.keyPlus.FText = "x≠0";
             this.keyPlus.GText = "x≠y";
             this.keyPlus.HText = "CF";
             this.keyPlus.HTextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.keyPlus.Location = new System.Drawing.Point (8, 440);
             this.keyPlus.MainBackColor = System.Drawing.Color.Olive;
             this.keyPlus.MainForeColor = System.Drawing.Color.White;
             this.keyPlus.MainHeight = 24;
@@ -1163,19 +1165,17 @@ namespace Mockingbird.HP.HP67
             this.keyPlus.Name = "keyPlus";
             this.keyPlus.Shortcuts = new System.Windows.Forms.Keys [] {
         System.Windows.Forms.Keys.Add};
-            this.keyPlus.Size = new System.Drawing.Size (48, 51);
-            this.keyPlus.TabIndex = 24;
             this.keyPlus.Tag = "6761";
             this.keyPlus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
             this.keyPlus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // openFileDialog
             // 
-            this.openFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+            resources.ApplyResources (this.openFileDialog, "openFileDialog");
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.Filter = "HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*";
+            resources.ApplyResources (this.saveFileDialog, "saveFileDialog");
             // 
             // printDocument
             // 
@@ -1183,17 +1183,23 @@ namespace Mockingbird.HP.HP67
             // 
             // menuStrip
             // 
+            this.menuStrip.AccessibleDescription = null;
+            this.menuStrip.AccessibleName = null;
+            resources.ApplyResources (this.menuStrip, "menuStrip");
             this.menuStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.menuStrip.BackgroundImage = null;
+            this.menuStrip.Font = null;
             this.menuStrip.Items.AddRange (new System.Windows.Forms.ToolStripItem [] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point (0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size (304, 24);
-            this.menuStrip.TabIndex = 36;
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.AccessibleDescription = null;
+            this.fileToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.fileToolStripMenuItem, "fileToolStripMenuItem");
+            this.fileToolStripMenuItem.BackgroundImage = null;
             this.fileToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem [] {
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
@@ -1201,78 +1207,100 @@ namespace Mockingbird.HP.HP67
             this.printToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size (35, 20);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.fileToolStripMenuItem.ShortcutKeyDisplayString = null;
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.AccessibleDescription = null;
+            this.openToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.openToolStripMenuItem, "openToolStripMenuItem");
+            this.openToolStripMenuItem.BackgroundImage = null;
             this.openToolStripMenuItem.Image = global::Mockingbird.HP.HP67.Properties.Resources.openHS;
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.openToolStripMenuItem.Text = "&Open...";
+            this.openToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.openToolStripMenuItem.Click += new System.EventHandler (this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.AccessibleDescription = null;
+            this.saveToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.saveToolStripMenuItem, "saveToolStripMenuItem");
+            this.saveToolStripMenuItem.BackgroundImage = null;
             this.saveToolStripMenuItem.Image = global::Mockingbird.HP.HP67.Properties.Resources.saveHS;
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.saveToolStripMenuItem.Click += new System.EventHandler (this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
+            this.saveAsToolStripMenuItem.AccessibleDescription = null;
+            this.saveAsToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.saveAsToolStripMenuItem, "saveAsToolStripMenuItem");
+            this.saveAsToolStripMenuItem.BackgroundImage = null;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.saveAsToolStripMenuItem.Text = "Save &As...";
+            this.saveAsToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.saveAsToolStripMenuItem.Click += new System.EventHandler (this.saveAsToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
+            this.printToolStripMenuItem.AccessibleDescription = null;
+            this.printToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.printToolStripMenuItem, "printToolStripMenuItem");
+            this.printToolStripMenuItem.BackgroundImage = null;
             this.printToolStripMenuItem.Image = global::Mockingbird.HP.HP67.Properties.Resources.PrintHS;
-            this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.printToolStripMenuItem.Text = "&Print";
+            this.printToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.printToolStripMenuItem.Click += new System.EventHandler (this.printToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.AccessibleDescription = null;
+            this.exitToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.exitToolStripMenuItem, "exitToolStripMenuItem");
+            this.exitToolStripMenuItem.BackgroundImage = null;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.exitToolStripMenuItem.Click += new System.EventHandler (this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.AccessibleDescription = null;
+            this.editToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.editToolStripMenuItem, "editToolStripMenuItem");
+            this.editToolStripMenuItem.BackgroundImage = null;
             this.editToolStripMenuItem.DropDownItems.AddRange (new System.Windows.Forms.ToolStripItem [] {
             this.editLabelsToolStripMenuItem,
             this.rtfToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size (37, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
+            this.editToolStripMenuItem.ShortcutKeyDisplayString = null;
             // 
             // editLabelsToolStripMenuItem
             // 
+            this.editLabelsToolStripMenuItem.AccessibleDescription = null;
+            this.editLabelsToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.editLabelsToolStripMenuItem, "editLabelsToolStripMenuItem");
+            this.editLabelsToolStripMenuItem.BackgroundImage = null;
             this.editLabelsToolStripMenuItem.Name = "editLabelsToolStripMenuItem";
-            this.editLabelsToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.editLabelsToolStripMenuItem.Text = "&Edit Labels";
+            this.editLabelsToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.editLabelsToolStripMenuItem.Click += new System.EventHandler (this.editLabelsToolStripMenuItem_Click);
             // 
             // rtfToolStripMenuItem
             // 
+            this.rtfToolStripMenuItem.AccessibleDescription = null;
+            this.rtfToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources (this.rtfToolStripMenuItem, "rtfToolStripMenuItem");
+            this.rtfToolStripMenuItem.BackgroundImage = null;
             this.rtfToolStripMenuItem.Name = "rtfToolStripMenuItem";
-            this.rtfToolStripMenuItem.Size = new System.Drawing.Size (152, 22);
-            this.rtfToolStripMenuItem.Text = "&Rich Text";
+            this.rtfToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.rtfToolStripMenuItem.Click += new System.EventHandler (this.rtfToolStripMenuItem_Click);
             // 
             // HP67
             // 
-            this.AutoScaleBaseSize = new System.Drawing.Size (5, 13);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources (this, "$this");
             this.BackColor = System.Drawing.Color.FromArgb (((int) (((byte) (64)))), ((int) (((byte) (64)))), ((int) (((byte) (64)))));
-            this.ClientSize = new System.Drawing.Size (304, 614);
+            this.BackgroundImage = null;
             this.Controls.Add (this.keyPlus);
             this.Controls.Add (this.keyMult);
             this.Controls.Add (this.keyDiv);
@@ -1313,14 +1341,11 @@ namespace Mockingbird.HP.HP67
             this.Controls.Add (this.display);
             this.Controls.Add (this.cardSlot);
             this.Controls.Add (this.menuStrip);
-            this.Icon = ((System.Drawing.Icon) (resources.GetObject ("$this.Icon")));
+            this.Font = null;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size (312, 648);
-            this.MinimumSize = new System.Drawing.Size (312, 648);
             this.Name = "HP67";
-            this.Text = "HP67";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.Calculator_FormClosing);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler (this.Calculator_KeyUp);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler (this.Calculator_KeyDown);
