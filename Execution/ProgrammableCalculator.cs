@@ -137,7 +137,7 @@ namespace Mockingbird.HP.Execution
 
         protected override void ProcessCommandLine (string [] arguments)
         {
-            string caption = Localization.GetString (Localization.IncorrectCommandLineArguments);
+            string caption = Localization.IncorrectCommandLineArguments;
             FileStream stream;
 
             switch (arguments.Length)
@@ -166,18 +166,16 @@ namespace Mockingbird.HP.Execution
                     }
                     else
                     {
-                        MessageBox.Show (string.Format (
-                            Localization.GetString (Localization.IncorrectCommand),
-                            arguments [0],
-                            commandOpen,
-                            commandPrint),
+                        MessageBox.Show (Localization.IncorrectCommandFormat
+                                            (arguments [0],
+                                            commandOpen,
+                                            commandPrint),
                             caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
                 default:
-                    MessageBox.Show (string.Format (
-                        Localization.GetString (Localization.IncorrectArgumentCount),
-                        arguments.Length.ToString (), 0, 2),
+                    MessageBox.Show (Localization.IncorrectArgumentCountFormat
+                                            (arguments.Length.ToString (), 0, 2),
                         caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
@@ -203,10 +201,8 @@ namespace Mockingbird.HP.Execution
             }
             catch (FileNotFoundException)
             {
-                string text = string.Format (
-                    Localization.GetString (Localization.CannotOpenFile),
-                    name);
-                string caption = Localization.GetString (Localization.FileNotFound);
+                string text = Localization.CannotOpenFileFormat (name);
+                string caption = Localization.FileNotFound;
 
                 if (stream != null)
                 {
@@ -217,11 +213,8 @@ namespace Mockingbird.HP.Execution
             }
             catch (Exception ex)
             {
-                string text = string.Format (
-                    Localization.GetString (Localization.ExceptionOpeningFile),
-                    name,
-                    ex.Message);
-                string caption = Localization.GetString (Localization.ErrorDuringOpen);
+                string text = Localization.ExceptionOpeningFileFormat (name, ex.Message);
+                string caption = Localization.ErrorDuringOpen;
 
                 if (stream != null)
                 {
@@ -263,7 +256,7 @@ namespace Mockingbird.HP.Execution
                 }
                 if (fileIsNullOrReadOnly)
                 {
-                    saveFileDialog.FileName = Localization.GetString (Localization.UntitledFileName);
+                    saveFileDialog.FileName = Localization.UntitledFileName;
                 }
                 else
                 {
@@ -289,11 +282,8 @@ namespace Mockingbird.HP.Execution
             }
             catch (Exception ex)
             {
-                string text = string.Format (
-                    Localization.GetString (Localization.ExceptionSavingFile),
-                    name,
-                    ex.Message);
-                string caption = Localization.GetString (Localization.ErrorDuringSave);
+                string text = Localization.ExceptionSavingFileFormat (name, ex.Message);
+                string caption = Localization.ErrorDuringSave;
 
                 if (stream != null)
                 {

@@ -281,7 +281,7 @@ namespace Mockingbird.HP.Execution
             catch (Error)
             {
                 display.Value = display.Value; // Refresh the numeric display.
-                display.ShowText (Localization.GetString (Localization.Error), 500, 100);
+                display.ShowText (Localization.Error, 500, 100);
                 ignoreNextDown = true;
                 ignoreNextUp = true;
                 mustUnbusyUI = false;

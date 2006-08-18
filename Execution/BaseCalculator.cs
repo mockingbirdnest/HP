@@ -4,6 +4,8 @@ using Mockingbird.HP.Execution;
 using Mockingbird.HP.Parser;
 using System;
 using System.Collections;
+using System.Configuration;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.Execution
@@ -58,8 +60,31 @@ namespace Mockingbird.HP.Execution
             return (Control []) allControls.ToArray (typeof (Control));
         }
 
+        private void SetCurrentCulture ()
+        {
+            string cultureName = ConfigurationManager.AppSettings.GetValues ("Culture") [0];
+            if (cultureName != "")
+            {
+                try
+                {
+                    CultureInfo cultureInfo = new CultureInfo (cultureName);
+                    Localization.Culture = cultureInfo;
+                    System.Threading.Thread.CurrentThread.CurrentCulture = cultureInfo;
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                }
+                catch (ArgumentException)
+                {
+                }
+            }
+       }
+
         public BaseCalculator (string [] arguments, CalculatorModel model)
         {
+
+            // This must take place before initializing the UI so that the controls get the proper
+            // resources.
+            SetCurrentCulture ();
+
             // Required for Windows Form Designer support.  Beware, only the base class can call
             // this operation: it will dispatch to the most derived (concrete) so as to initialize
             // all the controls.  Explicitly calling InitializeComponent in the constructor of
