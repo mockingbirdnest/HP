@@ -13,8 +13,7 @@ namespace Mockingbird.HP.Class_Library
 		}
 		public override string ToString () 
 		{
-			return this.GetType ().FullName +
-				": " + Localization.GetString (Localization.ErrorDescription);
+			return this.GetType ().FullName + ": " + Localization.ErrorDescription;
 		}
 	}
 
@@ -28,8 +27,7 @@ namespace Mockingbird.HP.Class_Library
 		}
 		public override string ToString () 
 		{
-			return this.GetType ().FullName +
-				": " + Localization.GetString (Localization.InterruptDescription);
+			return this.GetType ().FullName + Localization.InterruptDescription;
 		}
 	}
 
@@ -43,8 +41,7 @@ namespace Mockingbird.HP.Class_Library
 		}
 		public override string ToString () 
 		{
-			return this.GetType ().FullName +
-				": " + Localization.GetString (Localization.ShutdownDescription);
+			return this.GetType ().FullName + Localization.ShutdownDescription;
 		}
 	}
 
@@ -69,9 +66,7 @@ namespace Mockingbird.HP.Class_Library
 		public override string ToString () 
 		{
 			return this.GetType ().FullName + ": " +
-				string.Format (
-					Localization.GetString (Localization.SyntaxErrorDescription),
-					token.ToString ());
+				Localization.SyntaxErrorDescriptionFormat (token.ToString ());
 		}
 	}
 
