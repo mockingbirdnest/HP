@@ -67,15 +67,6 @@ namespace Mockingbird.HP.Class_Library {
         }
         
         /// <summary>
-        /// Looks up a localized string similar to 'Edit Labels'.
-        /// </summary>
-        public static string EditMenuItem {
-            get {
-                return ResourceManager.GetString("EditMenuItem", _resourceCulture);
-            }
-        }
-        
-        /// <summary>
         /// Looks up a localized string similar to 'Error'.
         /// </summary>
         public static string Error {
@@ -189,51 +180,6 @@ namespace Mockingbird.HP.Class_Library {
         public static string InterruptDescription {
             get {
                 return ResourceManager.GetString("InterruptDescription", _resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Looks up a localized string similar to 'Open...'.
-        /// </summary>
-        public static string OpenMenuItem {
-            get {
-                return ResourceManager.GetString("OpenMenuItem", _resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Looks up a localized string similar to 'Print'.
-        /// </summary>
-        public static string PrintMenuItem {
-            get {
-                return ResourceManager.GetString("PrintMenuItem", _resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Looks up a localized string similar to 'Rich Text'.
-        /// </summary>
-        public static string RtfMenuItem {
-            get {
-                return ResourceManager.GetString("RtfMenuItem", _resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Looks up a localized string similar to 'Save As...'.
-        /// </summary>
-        public static string SaveAsMenuItem {
-            get {
-                return ResourceManager.GetString("SaveAsMenuItem", _resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        /// Looks up a localized string similar to 'Save'.
-        /// </summary>
-        public static string SaveMenuItem {
-            get {
-                return ResourceManager.GetString("SaveMenuItem", _resourceCulture);
             }
         }
         

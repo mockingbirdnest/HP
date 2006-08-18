@@ -120,9 +120,6 @@
   <data name="CannotOpenFile" xml:space="preserve">
     <value>File {0} not found</value>
   </data>
-  <data name="EditMenuItem" xml:space="preserve">
-    <value>Edit Labels</value>
-  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -161,21 +158,6 @@
   </data>
   <data name="InterruptDescription" xml:space="preserve">
     <value>Execution interrupted by user</value>
-  </data>
-  <data name="OpenMenuItem" xml:space="preserve">
-    <value>Open...</value>
-  </data>
-  <data name="PrintMenuItem" xml:space="preserve">
-    <value>Print</value>
-  </data>
-  <data name="RtfMenuItem" xml:space="preserve">
-    <value>Rich Text</value>
-  </data>
-  <data name="SaveAsMenuItem" xml:space="preserve">
-    <value>Save As...</value>
-  </data>
-  <data name="SaveMenuItem" xml:space="preserve">
-    <value>Save</value>
   </data>
   <data name="ShutdownDescription" xml:space="preserve">
     <value>Application shutdown</value>
