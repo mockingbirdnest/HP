@@ -58,11 +58,10 @@ namespace Mockingbird.HP.Persistence
 			{
 				// For some reason (read: compiler bug) we must compute text and caption separately,
 				// we cannot just write one humongous statement.
-				string text = string.Format (
-					Localization.GetString (Localization.FileHasVersion),
+				string text = Localization.FileHasVersionFormat (
 					cds.Card [0].Version.ToString (),
 					Version.ToString ());
-				string caption = Localization.GetString (Localization.IncompatibleVersion);
+				string caption = Localization.IncompatibleVersion;
 
 				MessageBox.Show (text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				throw new Error ();

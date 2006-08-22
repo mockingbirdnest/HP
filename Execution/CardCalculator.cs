@@ -50,14 +50,6 @@ namespace Mockingbird.HP.Execution
             base.Dispose (disposing);
         }
 
-        #region Windows Form Designer generated code
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        protected abstract override void InitializeComponent ();
-        #endregion
-
         #endregion
 
         #region Overriding Operations
@@ -70,81 +62,28 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        protected override void PowerOff ()
+        protected override void UpdateUIToReflectProgram (bool programIsEmpty)
         {
-            // OFF.  We abort the execution thread and start a new one.  We leave it in the
-            // state where its display is black and it doesn't accept keystrokes.
-            BusyUI ();
-            executionThread.Reset ();
-            UpdateUI (/* programIsEmpty */ true);
-        }
-
-        protected override void UpdateUI (bool programIsEmpty)
-        {
-            bool wasUnloaded;
-
-            // Make sure that the state of the card slot and of the related menus reflect the state
-            // of the program memory.
-            base.UpdateUI (programIsEmpty);
-            wasUnloaded = (cardSlot.State == CardSlotState.Unloaded);
-            try
+            base.UpdateUIToReflectProgram (programIsEmpty);
+            if (programIsEmpty)
             {
-                if (programIsEmpty)
-                {
-                    cardSlot.State = CardSlotState.Unloaded;
-                    editLabelsToolStripMenuItem.Enabled = false;
-                    rtfToolStripMenuItem.Enabled = false;
-                }
-                else if (fileName != null &&
-                    ((File.GetAttributes (fileName) & FileAttributes.ReadOnly) != 0))
-                {
-                    cardSlot.State = CardSlotState.ReadOnly;
-                    editLabelsToolStripMenuItem.Enabled = false;
-                    rtfToolStripMenuItem.Enabled = false;
-                }
-                else
-                {
-                    cardSlot.State = CardSlotState.ReadWrite;
-                    editLabelsToolStripMenuItem.Enabled = true;
-                    rtfToolStripMenuItem.Enabled = true;
-                }
+                cardSlot.State = CardSlotState.Unloaded;
+                editLabelsToolStripMenuItem.Enabled = false;
+                rtfToolStripMenuItem.Enabled = false;
             }
-            finally
+            else if (fileName != null &&
+                ((File.GetAttributes (fileName) & FileAttributes.ReadOnly) != 0))
             {
-
-                // If the program was just cleared, clear the current file name.  This ensures that
-                // the next program won't be stupidly saved on the previous card.
-                if (!wasUnloaded && cardSlot.State == CardSlotState.Unloaded)
-                {
-                    fileName = null;
-                }
-            }
-        }
-
-        #endregion
-
-        #region Cross-Thread Operations
-
-        public FileStream CrossThreadOpen ()
-        {
-            string name;
-
-            if (openFileDialog.ShowDialog () == DialogResult.OK)
-            {
-                name = openFileDialog.FileName;
-                return Open (ref name);
+                cardSlot.State = CardSlotState.ReadOnly;
+                editLabelsToolStripMenuItem.Enabled = false;
+                rtfToolStripMenuItem.Enabled = false;
             }
             else
             {
-                return null;
+                cardSlot.State = CardSlotState.ReadWrite;
+                editLabelsToolStripMenuItem.Enabled = true;
+                rtfToolStripMenuItem.Enabled = true;
             }
-        }
-
-        public FileStream CrossThreadSaveDataAs ()
-        {
-            string name = null;
-
-            return Save (/* saveAs */ true, ref name);
         }
 
         #endregion
@@ -166,7 +105,7 @@ namespace Mockingbird.HP.Execution
                 }
                 else
                 {
-                    UpdateUI (/* programIsEmpty */ false);
+                    UpdateUIToReflectProgram (/* programIsEmpty */ false);
                 }
             }
         }
