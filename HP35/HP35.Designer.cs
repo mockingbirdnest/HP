@@ -1,4 +1,4 @@
-﻿namespace HP35
+﻿namespace Mockingbird.HP.HP35
 {
     partial class HP35
     {

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HP35
+namespace Mockingbird.HP.HP35
 {
     public partial class HP35 : Form
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace HP35
+namespace Mockingbird.HP.HP35
 {
     static class Program
     {
