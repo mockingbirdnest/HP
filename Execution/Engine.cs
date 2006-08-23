@@ -258,7 +258,7 @@ namespace Mockingbird.HP.Execution
 
         public void Execute (Instruction instruction)
         {
-            CardCalculator form = (CardCalculator) display.TopLevelControl;
+            ProgrammableCalculator form = (ProgrammableCalculator) display.TopLevelControl;
             bool neutral = stackLift;
             FileStream stream;
             double x, y;
