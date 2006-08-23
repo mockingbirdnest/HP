@@ -23,7 +23,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Mockingbird.HP.HP67</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Mockingbird.HP.HP67.HP67</StartupObject>
+    <StartupObject>Mockingbird.HP.HP67.Program</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
