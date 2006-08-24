@@ -17,16 +17,121 @@ namespace Mockingbird.HP.HP67
     /// </summary>
     public partial class HP67 :
 #if DESIGN
-		Form
+ Form
 #else
-        CardCalculator
+ ProgrammableCalculator, CardInterface
 #endif
     {
+
+        // The silly language doesn't do mixins, so we use containment.  Sigh.
+        ProgrammableCalculator.CardImplementation card;
 
         public HP67 (string [] arguments)
             : base (arguments, CalculatorModel.HP67)
         {
         }
 
+        protected override void PreInitializeComponent (string [] arguments, CalculatorModel model)
+        {
+            base.PreInitializeComponent (arguments, model);
+            card = new CardImplementation (this);
+        }
+
+        #region Implementation of The Card Interface
+
+#if !DESIGN
+
+        public Mockingbird.HP.Control_Library.CardSlot cardSlot
+        {
+            get
+            {
+                return card.cardSlot;
+            }
+            set
+            {
+                card.cardSlot = value;
+            }
+        }
+
+        public ToolStripMenuItem editToolStripMenuItem
+        {
+            get
+            {
+                return card.editToolStripMenuItem;
+            }
+            set
+            {
+                card.editToolStripMenuItem = value;
+            }
+        }
+
+        public ToolStripMenuItem editLabelsToolStripMenuItem
+        {
+            get
+            {
+                return card.editLabelsToolStripMenuItem;
+            }
+            set
+            {
+                card.editLabelsToolStripMenuItem = value;
+            }
+        }
+
+        public ToolStripMenuItem rtfToolStripMenuItem
+        {
+            get
+            {
+                return card.rtfToolStripMenuItem;
+            }
+            set
+            {
+                card.rtfToolStripMenuItem = value;
+            }
+        }
+
+        public void editLabelsToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+            card.editLabelsToolStripMenuItem_Click (sender, e);
+        }
+
+        public void rtfToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+            card.rtfToolStripMenuItem_Click (sender, e);
+        }
+
+#endif
+
+        #endregion
+
+        protected override bool KeyEventsPreempted
+        {
+            get
+            {
+                return card.KeyEventsPreempted;
+            }
+        }
+
+        protected override void UpdateUIToReflectProgram (bool programIsEmpty)
+        {
+            card.UpdateUIToReflectProgram (programIsEmpty);
+        }
+
+
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main (string [] arguments)
+        {
+            try
+            {
+                //Application.EnableVisualStyles ();
+                //Application.SetCompatibleTextRenderingDefault (false);
+                Application.Run (new HP67 (arguments));
+            }
+            catch (Shutdown)
+            {
+            }
+        }
     }
 }

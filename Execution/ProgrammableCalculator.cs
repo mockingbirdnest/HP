@@ -14,7 +14,7 @@ namespace Mockingbird.HP.Execution
     /// <summary>
     /// Abstract base class for programmable calculators.
     /// </summary>
-    public abstract class ProgrammableCalculator : BaseCalculator
+    public abstract partial class ProgrammableCalculator : BaseCalculator
     {
 
         #region Protected & Private Data
@@ -22,7 +22,7 @@ namespace Mockingbird.HP.Execution
         private const string commandOpen = "/open";
         private const string commandPrint = "/print";
 
-        protected string fileName = null;
+        private string fileName = null;
 
         protected Mockingbird.HP.Control_Library.Toggle toggleWprgmRun;
         protected System.Windows.Forms.OpenFileDialog openFileDialog;
@@ -45,10 +45,14 @@ namespace Mockingbird.HP.Execution
         #region Constructors & Destructors
 
         public ProgrammableCalculator (string [] argument, CalculatorModel model)
-            :
-            base (argument, model)
+            : base (argument, model)
+        {
+        }
+
+        protected override void PostInitializeComponent (string [] arguments, CalculatorModel model)
         {
             UpdateUIToReflectProgram (true);
+            base.PostInitializeComponent (arguments, model);
         }
 
 
@@ -69,31 +73,7 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
-        #region Overridable Operations
-
-        protected virtual void UpdateUIToReflectProgram (bool programIsEmpty)
-        {
-            try
-            {
-                saveToolStripMenuItem.Enabled = !programIsEmpty;
-                saveAsToolStripMenuItem.Enabled = !programIsEmpty;
-                printToolStripMenuItem.Enabled = !programIsEmpty;
-            }
-            finally
-            {
-
-                // If the program was cleared, clear the current file name.  This ensures that the
-                // next program won't be stupidly saved on the previous card.
-                if (programIsEmpty)
-                {
-                    fileName = null;
-                }
-            }
-       }
-
-        #endregion
-
-        #region Overriding Operations
+        #region Dispatching Operations
 
         protected override void BusyUI ()
         {
@@ -193,9 +173,29 @@ namespace Mockingbird.HP.Execution
             UnbusyUIAndGetEngineMode ();
         }
 
+        protected virtual void UpdateUIToReflectProgram (bool programIsEmpty)
+        {
+            try
+            {
+                saveToolStripMenuItem.Enabled = !programIsEmpty;
+                saveAsToolStripMenuItem.Enabled = !programIsEmpty;
+                printToolStripMenuItem.Enabled = !programIsEmpty;
+            }
+            finally
+            {
+
+                // If the program was cleared, clear the current file name.  This ensures that the
+                // next program won't be stupidly saved on the previous card.
+                if (programIsEmpty)
+                {
+                    fileName = null;
+                }
+            }
+        }
+
         #endregion
 
-        #region Cross-Thread Operations
+        #region Cross-Thread Callbacks
 
         public FileStream CrossThreadOpen ()
         {
@@ -219,9 +219,9 @@ namespace Mockingbird.HP.Execution
             return Save (/* saveAs */ true, ref name);
         }
 
-       #endregion
+        #endregion
 
-        #region Command Execution Utilities
+        #region Command Execution
 
         public FileStream Open (ref string name)
         {
@@ -329,7 +329,16 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
-        #region UI Utilities
+        #region Utilities
+
+        protected bool FileIsReadOnly
+        {
+            get
+            {
+                return (fileName != null &&
+                    ((File.GetAttributes (fileName) & FileAttributes.ReadOnly) != 0));
+            }
+        }
 
         private EngineMode UnbusyUIAndGetEngineMode ()
         {
@@ -361,7 +370,7 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
-        #region UI Event Handlers
+        #region Event Handlers
 
         protected void printDocument_PrintPage (object sender,
             System.Drawing.Printing.PrintPageEventArgs e)
@@ -371,7 +380,7 @@ namespace Mockingbird.HP.Execution
 
         protected void toggleWprgmRun_ToggleClick (object sender,
             System.EventArgs e,
-			Mockingbird.HP.Control_Library.TogglePosition position)
+            Mockingbird.HP.Control_Library.TogglePosition position)
         {
 
             // Changes to this toggle are actually delayed until the end of the current execution.

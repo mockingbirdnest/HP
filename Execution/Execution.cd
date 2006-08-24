@@ -13,21 +13,11 @@
     <Position X="0.5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <FileName>BaseCalculator.cs</FileName>
-      <HashCode>AAAAACUggCAGAoAABFCAAAiCABEAAAAAAAgAABACAAA=</HashCode>
+      <HashCode>AAAAACckgCAGAgAABFCAAAiCAJEAAAAAAAgAABACAAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="executionThread" />
     </ShowAsAssociation>
-    <Members>
-      <Field Name="components" Hidden="true" />
-    </Members>
-  </Class>
-  <Class Name="Mockingbird.HP.Execution.CardCalculator">
-    <Position X="4.5" Y="10" Width="1.5" />
-    <TypeIdentifier>
-      <FileName>CardCalculator.cs</FileName>
-      <HashCode>AAQAIAAgACAABAAAAACAAgAAAAAAAAAAAAAAABCAABA=</HashCode>
-    </TypeIdentifier>
     <Members>
       <Field Name="components" Hidden="true" />
     </Members>
@@ -42,13 +32,6 @@
       <Field Name="mode" />
       <Field Name="unit" />
     </ShowAsAssociation>
-    <NestedTypes>
-      <Delegate Name="Mockingbird.HP.Execution.Engine.TimedKeystrokeEvent" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Engine.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
   </Class>
   <Class Name="Mockingbird.HP.Execution.Message">
     <Position X="5.25" Y="0.5" Width="1.5" />
@@ -102,7 +85,7 @@
     <Position X="2.5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <FileName>ProgrammableCalculator.cs</FileName>
-      <HashCode>RIyAArCAgDACIACAADCQwAgACAgAQIAAAkAAAAAGQBA=</HashCode>
+      <HashCode>RIzAArCEgDACIACAADCQwAgACAgAQIAAAkAAAAAGQBA=</HashCode>
     </TypeIdentifier>
     <Members>
       <Field Name="components" Hidden="true" />
@@ -115,8 +98,8 @@
       <HashCode>EAxBAAKAAAAAFGFAAAIAAAhAAIGQQQBQAABIAABIAAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="upActions" />
       <Field Name="downActions" />
+      <Field Name="upActions" />
     </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />

@@ -18,6 +18,8 @@ namespace Mockingbird.HP.Execution
 
         #region Protected & Private Data
 
+        private const string configCulture = "Culture";
+
         protected Display display;
         protected Execution.Thread executionThread;
         private Control [] allControls;
@@ -48,21 +50,42 @@ namespace Mockingbird.HP.Execution
 
         #region Constructors & Destructors
 
-        private Control [] GetAllControls (Control control)
+        public BaseCalculator (string [] arguments, CalculatorModel model)
         {
-            ArrayList allControls = new ArrayList ();
 
-            foreach (Control c in control.Controls)
-            {
-                allControls.AddRange (GetAllControls (c));
-                allControls.Add (c);
-            }
-            return (Control []) allControls.ToArray (typeof (Control));
+            PreInitializeComponent (arguments, model);
+
+            // Required for Windows Form Designer support.  Beware, only the base class can call
+            // this operation: it will dispatch to the most derived (concrete) so as to initialize
+            // all the controls.  Explicitly calling InitializeComponent in the constructor of
+            // derived classes would result in multiple initializations (which are bad for
+            // handlers).
+            InitializeComponent ();
+
+            PostInitializeComponent (arguments, model);
         }
 
-        private void SetCurrentCulture ()
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose (bool disposing)
         {
-            string cultureName = ConfigurationManager.AppSettings.GetValues ("Culture") [0];
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose ();
+                }
+            }
+            base.Dispose (disposing);
+        }
+
+        protected virtual void PreInitializeComponent (string [] arguments, CalculatorModel model)
+        {
+
+            // Set the current culture.  This must take place before initializing the UI so that the
+            // controls get the proper resources.
+            string cultureName = ConfigurationManager.AppSettings.GetValues (configCulture) [0];
             if (cultureName != "")
             {
                 try
@@ -76,21 +99,12 @@ namespace Mockingbird.HP.Execution
                 {
                 }
             }
-       }
+        }
 
-        public BaseCalculator (string [] arguments, CalculatorModel model)
+        protected abstract void InitializeComponent ();
+
+        protected virtual void PostInitializeComponent (string [] arguments, CalculatorModel model)
         {
-
-            // This must take place before initializing the UI so that the controls get the proper
-            // resources.
-            SetCurrentCulture ();
-
-            // Required for Windows Form Designer support.  Beware, only the base class can call
-            // this operation: it will dispatch to the most derived (concrete) so as to initialize
-            // all the controls.  Explicitly calling InitializeComponent in the constructor of
-            // derived classes would result in multiple initializations (which are bad for
-            // handlers).
-            InitializeComponent ();
 
             // Read the parser tables.
             allControls = GetAllControls (this);
@@ -117,29 +131,6 @@ namespace Mockingbird.HP.Execution
             // Power on.
             executionThread.PowerOn.Set ();
         }
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        protected override void Dispose (bool disposing)
-        {
-            if (disposing)
-            {
-                if (components != null)
-                {
-                    components.Dispose ();
-                }
-            }
-            base.Dispose (disposing);
-        }
-
-        #region Windows Form Designer generated code
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        protected abstract void InitializeComponent ();
-        #endregion
 
         #endregion
 
@@ -265,6 +256,22 @@ namespace Mockingbird.HP.Execution
                     executionThread.PowerOn.Set ();
                     break;
             }
+        }
+
+        #endregion
+
+        #region Utilities
+
+        private Control [] GetAllControls (Control control)
+        {
+            ArrayList allControls = new ArrayList ();
+
+            foreach (Control c in control.Controls)
+            {
+                allControls.AddRange (GetAllControls (c));
+                allControls.Add (c);
+            }
+            return (Control []) allControls.ToArray (typeof (Control));
         }
 
         #endregion

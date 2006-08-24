@@ -161,9 +161,10 @@
     <Compile Include="BaseCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CardCalculator.cs">
+    <Compile Include="CardImplementation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CardInterface.cs" />
     <Compile Include="Engine.cs">
       <SubType>Code</SubType>
     </Compile>

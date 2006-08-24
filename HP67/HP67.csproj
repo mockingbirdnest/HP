@@ -23,7 +23,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Mockingbird.HP.HP67</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Mockingbird.HP.HP67.Program</StartupObject>
+    <StartupObject>Mockingbird.HP.HP67.HP67</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -142,7 +142,6 @@
     <Compile Include="HP67.Designer.cs">
       <DependentUpon>HP67.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
