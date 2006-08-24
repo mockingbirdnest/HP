@@ -79,6 +79,7 @@ namespace Mockingbird.HP.Execution
             {
                 paperFeedTimer.Interval = 500; // ms
                 paperFeedTimer.Enabled = true;
+                printerPaperRoll.Advance ();
             }
 
             public void printerFeedButton_MouseUp (object sender, MouseEventArgs e)
