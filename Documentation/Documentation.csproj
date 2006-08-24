@@ -103,6 +103,7 @@
   <ItemGroup>
     <None Include="HP35.PDF" />
     <None Include="HP67.PDF" />
+    <None Include="HP97.PDF" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

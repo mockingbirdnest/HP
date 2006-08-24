@@ -31,7 +31,9 @@ namespace Mockingbird.HP.Execution
 
         #region Event Handlers
 
-        void printerFeedButton_Click (object sender, EventArgs e);
+        void printerFeedButton_MouseDown (object sender, MouseEventArgs e);
+
+        void printerFeedButton_MouseUp (object sender, MouseEventArgs e);
 
         #endregion
 

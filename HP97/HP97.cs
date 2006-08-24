@@ -131,9 +131,14 @@ namespace Mockingbird.HP.HP97
             }
         }
 
-        public void printerFeedButton_Click (object sender, EventArgs e)
+        public void printerFeedButton_MouseDown (object sender, MouseEventArgs e)
         {
-            printer.printerFeedButton_Click (sender, e);
+            printer.printerFeedButton_MouseDown (sender, e);
+        }
+
+        public void printerFeedButton_MouseUp (object sender, MouseEventArgs e)
+        {
+            printer.printerFeedButton_MouseUp (sender, e);
         }
 
 #endif

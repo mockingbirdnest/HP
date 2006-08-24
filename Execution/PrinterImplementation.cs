@@ -21,6 +21,17 @@ namespace Mockingbird.HP.Execution
             private Mockingbird.HP.Control_Library.Printer _printerPaperRoll;
             private System.Windows.Forms.Button _printerFeedButton;
 
+            Timer paperFeedTimer;
+
+            #endregion
+
+            #region Event Handlers
+
+            private void paperFeedTimer_Tick (object sender, EventArgs e)
+            {
+                printerPaperRoll.Advance ();
+            }
+
             #endregion
 
             #region Constructor
@@ -28,6 +39,8 @@ namespace Mockingbird.HP.Execution
             public PrinterImplementation (BaseCalculator parent)
             {
                 this.parent = parent;
+                paperFeedTimer = new Timer ();
+                paperFeedTimer.Tick += new EventHandler (paperFeedTimer_Tick);
             }
 
             #endregion
@@ -62,10 +75,15 @@ namespace Mockingbird.HP.Execution
 
             #region Event Handlers
 
-            public void printerFeedButton_Click (object sender, EventArgs e)
+            public void printerFeedButton_MouseDown (object sender, MouseEventArgs e)
             {
-                // TODO: Use a timer.
-                printerPaperRoll.Advance ();
+                paperFeedTimer.Interval = 500; // ms
+                paperFeedTimer.Enabled = true;
+            }
+
+            public void printerFeedButton_MouseUp (object sender, MouseEventArgs e)
+            {
+                paperFeedTimer.Enabled = false;
             }
 
             #endregion
