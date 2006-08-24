@@ -10,28 +10,31 @@ using System.Windows.Forms;
 
 namespace Mockingbird.HP.HP97
 {
-	/// <summary>
-	/// The user interface for the HP-97 calculator.
-	/// </summary>
-	public partial class HP97 :
+    /// <summary>
+    /// The user interface for the HP-97 calculator.
+    /// </summary>
+    public partial class HP97 :
 #if DESIGN
  Form
 #else
  ProgrammableCalculator, CardInterface
 #endif
-	{
+    {
 
         // The silly language doesn't do mixins, so we use containment.  Sigh.
         ProgrammableCalculator.CardImplementation card;
+        BaseCalculator.PrinterImplementation printer;
 
-		public HP97 (string [] arguments) : base (arguments, CalculatorModel.HP97)
-		{
-		}
+        public HP97 (string [] arguments)
+            : base (arguments, CalculatorModel.HP97)
+        {
+        }
 
         protected override void PreInitializeComponent (string [] arguments, CalculatorModel model)
         {
             base.PreInitializeComponent (arguments, model);
             card = new CardImplementation (this);
+            printer = new PrinterImplementation (this);
         }
 
         #region Implementation of The Card Interface
@@ -100,6 +103,43 @@ namespace Mockingbird.HP.HP97
 
         #endregion
 
+        #region Implementation of The Printer Interface
+
+#if !DESIGN
+
+        public Button printerFeedButton
+        {
+            get
+            {
+                return printer.printerFeedButton;
+            }
+            set
+            {
+                printer.printerFeedButton = value;
+            }
+        }
+
+        public Mockingbird.HP.Control_Library.Printer printerPaperRoll
+        {
+            get
+            {
+                return printer.printerPaperRoll;
+            }
+            set
+            {
+                printer.printerPaperRoll = value;
+            }
+        }
+
+        public void printerFeedButton_Click (object sender, EventArgs e)
+        {
+            printer.printerFeedButton_Click (sender, e);
+        }
+
+#endif
+
+        #endregion
+
         protected override bool KeyEventsPreempted
         {
             get
@@ -113,26 +153,21 @@ namespace Mockingbird.HP.HP97
             card.UpdateUIToReflectProgram (programIsEmpty);
         }
 
-        
-        /// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main (string [] arguments) 
-		{
-			try 
-			{
-			Application.Run(new HP97 (arguments));
-			}
-			catch (Shutdown)
-			{
-			}
-		}
 
-        private void buttonPrinter_Click (object sender, EventArgs e)
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main (string [] arguments)
         {
-            printer.Advance ();
+            try
+            {
+                Application.Run (new HP97 (arguments));
+            }
+            catch (Shutdown)
+            {
+            }
         }
 
-	}
+    }
 }

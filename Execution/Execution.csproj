@@ -165,6 +165,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CardInterface.cs" />
+    <Compile Include="PrinterImplementation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrinterInterface.cs" />
     <Compile Include="Engine.cs">
       <SubType>Code</SubType>
     </Compile>

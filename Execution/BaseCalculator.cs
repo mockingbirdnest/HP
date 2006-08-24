@@ -13,7 +13,7 @@ namespace Mockingbird.HP.Execution
     /// <summary>
     /// Abstract base class for all calculators.
     /// </summary>
-    public abstract class BaseCalculator : Form
+    public abstract partial class BaseCalculator : Form
     {
 
         #region Protected & Private Data
