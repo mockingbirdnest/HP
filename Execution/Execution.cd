@@ -84,12 +84,23 @@
   <Class Name="Mockingbird.HP.Execution.ProgrammableCalculator">
     <Position X="2.5" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <FileName>ProgrammableCalculator.cs</FileName>
+      <FileName>CardImplementation.cs</FileName>
       <HashCode>RIzAArCEgDACIACAADCQwAgACAgAQIAAAkAAAAAGQBA=</HashCode>
     </TypeIdentifier>
     <Members>
       <Field Name="components" Hidden="true" />
     </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Mockingbird.HP.Execution.ProgrammableCalculator.CardImplementation" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>CardImplementation.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
   </Class>
   <Class Name="Mockingbird.HP.Execution.Thread">
     <Position X="0.5" Y="5.75" Width="1.5" />
@@ -117,6 +128,13 @@
       </Delegate>
     </NestedTypes>
   </Class>
+  <Interface Name="Mockingbird.HP.Execution.CardInterface" Collapsed="true">
+    <Position X="4.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>CardInterface.cs</FileName>
+      <HashCode>AAAAIAAgAAAABAAAAAAAAgAAAAAAAAAAAAAAAACAABA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="Mockingbird.HP.Execution.AngleUnit" Collapsed="true">
     <Position X="7.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>

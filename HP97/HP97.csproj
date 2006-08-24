@@ -102,12 +102,14 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
     </Reference>
+    <Reference Include="System.Xml" />
     <ProjectReference Include="..\Control Library\Control Library.csproj">
       <Name>Control Library</Name>
       <Project>{71A0054A-FD2B-4DDB-91FB-1470909F91E4}</Project>
@@ -136,6 +138,9 @@
     </Compile>
     <Compile Include="HP97.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HP97.Designer.cs">
+      <DependentUpon>HP97.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
