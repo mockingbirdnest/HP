@@ -151,8 +151,13 @@
     <None Include="Resources\PrintHS.bmp" />
     <None Include="Resources\saveHS.bmp" />
     <None Include="Resources\openHS.bmp" />
+    <EmbeddedResource Include="HP97.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>HP97.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HP97.resx">
       <DependentUpon>HP97.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>

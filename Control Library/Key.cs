@@ -29,7 +29,7 @@ namespace Mockingbird.HP.Control_Library
         private TextAlign fgTextAlign;
         private int fgWidth;
         private Font font;
-        private bool inAdjustSize;
+        private bool inAdjustSize = false;
         private Keys [] shortcuts;
         private Color mainBackColor;
         private int mainHeight;
@@ -179,7 +179,6 @@ namespace Mockingbird.HP.Control_Library
             this.Controls.Add (this.hButton);
             this.Font = new System.Drawing.Font ("Arial Unicode MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.Name = "Key";
-            this.Resize += new System.EventHandler (this.Key_Resize);
             this.ResumeLayout (false);
 
         }
@@ -188,55 +187,6 @@ namespace Mockingbird.HP.Control_Library
         #endregion
 
         #region Event Handlers
-
-        private void Key_Resize (object sender, System.EventArgs e)
-        {
-
-            // Apply a simple homothecy to the control.  This will change the size of the component
-            // controls, including the height of hButton and the labels.  One very important case
-            // where this event is called is if the user has a non-standard screen resolution.  We
-            // want to scale up the entire key to make it more readable.
-            Control control = (Control) sender;
-            double oldWidth = Math.Max (fgWidth, mainWidth);
-            double oldHeight = fLabel.Location.Y + fLabel.Size.Height;
-            double scaleX = control.Size.Width / oldWidth;
-            double scaleY = control.Size.Height / oldHeight;
-
-            // We may land here when changing the size in AdjustSize, but then we expect this
-            // operation to have no effect.
-            if (scaleX != 1.0 || scaleY != 1.0)
-            {
-                Trace.Assert (!inAdjustSize);
-
-                button.Location =
-                    new Point ((int) Math.Round (button.Location.X * scaleX),
-                                (int) Math.Round (button.Location.Y * scaleY));
-                button.Size =
-                    new Size ((int) Math.Round (button.Size.Width * scaleX),
-                                (int) Math.Round (button.Size.Height * scaleY));
-                hButton.Location =
-                    new Point ((int) Math.Round (hButton.Location.X * scaleX),
-                                (int) Math.Round (hButton.Location.Y * scaleY));
-                hButton.Size =
-                    new Size ((int) Math.Round (hButton.Size.Width * scaleX),
-                                (int) Math.Round (hButton.Size.Height * scaleY));
-                fLabel.Location =
-                    new Point ((int) Math.Round (fLabel.Location.X * scaleX),
-                                (int) Math.Round (fLabel.Location.Y * scaleY));
-                fLabel.Size =
-                    new Size ((int) Math.Round (fLabel.Size.Width * scaleX),
-                                (int) Math.Round (fLabel.Size.Height * scaleY));
-                gLabel.Location =
-                    new Point ((int) Math.Round (gLabel.Location.X * scaleX),
-                                (int) Math.Round (gLabel.Location.Y * scaleY));
-                gLabel.Size =
-                    new Size ((int) Math.Round (gLabel.Size.Width * scaleX),
-                                (int) Math.Round (gLabel.Size.Height * scaleY));
-                mainHeight = (int) Math.Round (mainHeight * scaleY);
-                mainWidth = (int) Math.Round (mainWidth * scaleX);
-                fgWidth = (int) Math.Round (fgWidth * scaleX);
-            }
-        }
 
         private void hButton_MouseDown (object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -310,7 +260,7 @@ namespace Mockingbird.HP.Control_Library
 
         #endregion
 
-        #region Private Methods
+        #region Private & Protected Methods
 
         private void AdjustSize ()
         {
@@ -399,6 +349,30 @@ namespace Mockingbird.HP.Control_Library
             else
             {
                 fLabel.TextAlign = ContentAlignment.TopCenter;
+            }
+        }
+
+        protected override void OnResize (EventArgs e)
+        {
+            // Note that the forms have a non-default AutoScaleMode, so we use the .Net 2.0 scaling
+            // system, and therefore we never land here when scaling.
+            base.OnResize (e);
+
+            int oldWidth = Math.Max (fgWidth, mainWidth);
+            int oldHeight = fLabel.Location.Y + fLabel.Size.Height;
+
+            if (inAdjustSize)
+            {
+
+                // We may land here when called from Adjust size, but then we expect the new size
+                // to be "just what we want".
+                Debug.Assert (oldWidth == Size.Width && oldHeight == Size.Height);
+            }
+            else if (oldWidth != Size.Width || oldHeight != Size.Height)
+            {
+                // Otherwise, it means that someone is trying to resize the control, and that's a
+                // no-no: you have to change the properties to make this happen.
+                Size = new Size (oldWidth, oldHeight);
             }
         }
 
