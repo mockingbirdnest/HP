@@ -248,11 +248,13 @@ namespace Mockingbird.HP.Execution
                     PowerOff ();
                     break;
                 case TogglePosition.Right:
-                    // ON.  First, we cancel any key typed when the power was off.  Then we prepare
-                    // the UI to receive user interaction.  And finally we release the execution
-                    // thread.
+                    // ON.  First, we cancel any key typed when the power was off.  Next we prepare
+                    // the UI to receive user interaction.  Then we queue a message to force the
+                    // thread to refresh (e.g., to read the W/PRGM-RUN toggle).  And finally we 
+                    // release the execution thread.
                     executionThread.Clear ();
                     UnbusyUI ();
+                    executionThread.Enqueue (new RefreshMessage ());
                     executionThread.PowerOn.Set ();
                     break;
             }

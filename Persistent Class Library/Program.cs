@@ -456,7 +456,20 @@ namespace Mockingbird.HP.Class_Library
 
 		public void GotoRelative (int displacement)
 		{
-			GotoZeroBasedStep (next + displacement);
+            if (next == noStep  && displacement < 0)
+            {
+
+                // This class implements a circular program memory from step 1 (internally 0) to
+                // step 224 (internally 223).  Step 0 (internally noStep) is special, though, in the
+                // sense that it is "between" 224 and 1.  This code does the adjustment needed to
+                // implement this case.  As far as I can tell, it's only useful for BST called from
+                // step 0.
+                GotoZeroBasedStep (next + displacement + 1);
+            }
+            else
+            {
+                GotoZeroBasedStep (next + displacement);
+            }
 		}
 
 		public void PreviewInstruction ()
@@ -583,6 +596,11 @@ namespace Mockingbird.HP.Class_Library
 
 		public void Insert (Instruction instruction)
 		{
+            if (next == instructions.Length - 1)
+            {
+                // A no-op, which doesn't even cause the program to become non-empty.
+                return;
+            }
 
 			// The program becomes non-empty, even if the instruction is a R/S.
 			isEmpty = false;
