@@ -28,19 +28,21 @@ namespace Mockingbird.HP.Control_Library
 
         #region Private Data
 
+        private const int cardSlotHeight = 50;
         private const float sizeIncrease = 1.25F;
 
         private Pen cornerPen;
         private Point [] cornerSquare;
         private Point [] cornerUpperTriangle;
         private System.Drawing.Font font;
-        private int textBoxWidth;
         private System.Drawing.Font largeFont;
+        private bool inScaleControl = false;
         private Color loadedColor;
         private SolidBrush loadedColorBrush;
         private int margin;
         private bool richText;
         private CardSlotState state;
+        private int textBoxWidth;
         private Color unloadedColor;
         private SolidBrush unloadedColorBrush;
 
@@ -143,8 +145,6 @@ namespace Mockingbird.HP.Control_Library
             }
             base.Dispose (disposing);
         }
-
-        #endregion
 
         #region Component Designer generated code
         /// <summary> 
@@ -591,25 +591,15 @@ namespace Mockingbird.HP.Control_Library
             this.Controls.Add (this.panel);
             this.Name = "CardSlot";
             this.Size = new System.Drawing.Size (300, 50);
-            this.Resize += new System.EventHandler (this.CardSlot_Resize);
             this.panel.ResumeLayout (false);
             this.ResumeLayout (false);
 
         }
         #endregion
 
+        #endregion
+
         #region Event Handlers
-
-        private void CardSlot_Resize (object sender, System.EventArgs e)
-        {
-            Control control = (Control) sender;
-
-            if (control.Size.Height != 50)
-            {
-                control.Size = new Size (control.Size.Width, 50);
-            }
-            Margin = Margin;
-        }
 
         private void cornerPictureBox_Paint (object sender, System.Windows.Forms.PaintEventArgs e)
         {
@@ -755,7 +745,7 @@ namespace Mockingbird.HP.Control_Library
 
         #endregion
 
-        #region Private Operations
+        #region Private & Protected Operations
 
         private void Clear ()
         {
@@ -781,6 +771,33 @@ namespace Mockingbird.HP.Control_Library
             ThreadSafe.SetText (rtfBoxfC, "<fC>");
             ThreadSafe.SetText (rtfBoxfD, "<fD>");
             ThreadSafe.SetText (rtfBoxfE, "<fE>");
+        }
+
+        protected override void OnResize (EventArgs e)
+        {
+            base.OnResize (e);
+
+            if (inScaleControl)
+            {
+
+                // The control is being scaled to adapt to the display resolution.  Do as we are
+                // told.
+            }
+            else if (Size.Height != 50)
+            {
+
+                // We are willing to change the width of the card slot, but not its height which is
+                // related to the size of the labels, etc.
+                Size = new Size (Size.Width, 50);
+                Margin = Margin;
+            }
+        }
+
+        protected override void ScaleControl (SizeF factor, BoundsSpecified specified)
+        {
+            inScaleControl = true;
+            base.ScaleControl (factor, specified);
+            inScaleControl = false;
         }
 
         private void SetEditable (bool editable)

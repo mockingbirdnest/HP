@@ -261,7 +261,7 @@ namespace Mockingbird.HP.Control_Library
 
         #endregion
 
-        #region Private & Protected Methods
+        #region Private & Protected Operations
 
         private void AdjustSize ()
         {
@@ -356,7 +356,7 @@ namespace Mockingbird.HP.Control_Library
         protected override void OnResize (EventArgs e)
         {
             // Note that the forms have a non-default AutoScaleMode, so we use the .Net 2.0 scaling
-            // system, and therefore we never land here when scaling.
+            // system.
             base.OnResize (e);
 
             int oldWidth = Math.Max (fgWidth, mainWidth);
@@ -371,6 +371,9 @@ namespace Mockingbird.HP.Control_Library
             }
             else if (inScaleControl)
             {
+
+                // The control is being scaled to adapt to the display resolution.  Do as we are
+                // told.
             }
             else if (oldWidth != Size.Width || oldHeight != Size.Height)
             {

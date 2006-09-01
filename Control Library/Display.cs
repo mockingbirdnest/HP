@@ -64,6 +64,7 @@ namespace Mockingbird.HP.Control_Library
         private bool enteringMantissa;
         private bool enteringNumber;
         private bool hasAPeriod;
+        private bool inScaleControl = false;
         private bool isBlurred;
         private bool userControlTesting;
 
@@ -230,7 +231,6 @@ namespace Mockingbird.HP.Control_Library
             this.ForeColor = System.Drawing.Color.Red;
             this.Name = "Display";
             this.Size = new System.Drawing.Size (300, 40);
-            this.Resize += new System.EventHandler (this.Display_Resize);
             this.ResumeLayout (false);
 
         }
@@ -239,17 +239,6 @@ namespace Mockingbird.HP.Control_Library
         #endregion
 
         #region Event Handlers
-
-        private void Display_Resize (object sender, System.EventArgs e)
-        {
-            if (Size.Height != height)
-            {
-                Size = new Size (Size.Width, height);
-                ThreadSafe.SetSize (alphabeticTextBox, Size);
-                ThreadSafe.SetSize (instructionTextBox, Size);
-                ThreadSafe.SetSize (numericTextBox, Size);
-            }
-        }
 
         // This stuff is intended to prevent selection of the text.  It doesn't work 100% of the
         // time, but it's good enough in practice.  At any rate, setting the Value property clean
@@ -357,7 +346,36 @@ namespace Mockingbird.HP.Control_Library
 
         #endregion
 
-        #region Private Operations
+        #region Private & Protected Operations
+
+        protected override void ScaleControl (SizeF factor, BoundsSpecified specified)
+        {
+            inScaleControl = true;
+            base.ScaleControl (factor, specified);
+            inScaleControl = false;
+        }
+
+        protected override void OnResize (EventArgs e)
+        {
+            base.OnResize (e);
+
+            if (inScaleControl)
+            {
+
+                // The control is being scaled to adapt to the display resolution.  Do as we are
+                // told.
+            }
+            else if (Size.Height != height)
+            {
+
+                // We are willing to change the width of the display, but not its height which is
+                // determined by the font size.
+                Size = new Size (Size.Width, height);
+                ThreadSafe.SetSize (alphabeticTextBox, Size);
+                ThreadSafe.SetSize (instructionTextBox, Size);
+                ThreadSafe.SetSize (numericTextBox, Size);
+            }
+        }
 
         private void ReplaceExponentWithoutSign (string exponent)
         {
