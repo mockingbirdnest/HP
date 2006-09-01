@@ -375,7 +375,14 @@ namespace Mockingbird.HP.Execution
         protected void printDocument_PrintPage (object sender,
             System.Drawing.Printing.PrintPageEventArgs e)
         {
-            executionThread.Enqueue (new PrintMessage (e));
+            PrintMessage message = new PrintMessage (e);
+
+            // The message must be executed synchronously.  That's because the printing code will
+            // need to access the graphic context contained in e, but if we were to return
+            // immediately this graphic context would be discarded.  The execution thread would
+            // then try to access random memory, and plague and pestilence would ensue.
+            message.Synchronous = true;
+            executionThread.Enqueue (message);
         }
 
         protected void toggleWprgmRun_ToggleClick (object sender,

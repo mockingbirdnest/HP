@@ -26,9 +26,26 @@ namespace Mockingbird.HP.Execution
 
     public abstract class Message : Object
     {
+
+        // By default, messages are executed asynchronously.  If clients want synchronized 
+        // execution, they must ask for it.
+        private bool synchronous = false;
+
         public abstract MessageKind Kind
         {
             get;
+        }
+
+        public bool Synchronous
+        {
+            get
+            {
+                return synchronous;
+            }
+            set
+            {
+                synchronous = value;
+            }
         }
     }
 

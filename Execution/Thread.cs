@@ -123,7 +123,6 @@ namespace Mockingbird.HP.Execution
             try
             {
                 mustUnbusyUI = true;
-                // TODO: What if we get several keys in the queue and keyWasTyped is set only once?
 
                 // We want to protect this sequence against asynchronous changes to the menus which
                 // may happen if the W/PGRM-RUN switch is moved: we wouldn't want the menus to be
@@ -241,7 +240,7 @@ namespace Mockingbird.HP.Execution
             ref bool ignoreNextUp,
             out bool mustReinitialize)
         {
-            Message message;
+            Message message = null;
             bool mustUnbusyUI = false;
 
             mustReinitialize = false;
@@ -304,6 +303,20 @@ namespace Mockingbird.HP.Execution
                 {
                     engine.Mode = (EngineMode) display.Invoke
                         (notifyUI, new object [] { /*threadIsBusy*/ false, program.IsEmpty });
+                }
+
+                // If the message was executed synchronously, release the calling thread now.
+                if (message != null && message.Synchronous)
+                {
+                    try
+                    {
+                        Monitor.Enter (message);
+                        Monitor.Pulse (message);
+                    }
+                    finally
+                    {
+                        Monitor.Exit (message);
+                    }
                 }
             }
         }
@@ -404,7 +417,29 @@ namespace Mockingbird.HP.Execution
         public void Enqueue (Message message)
         {
             messageQueue.Enqueue (message);
-            messagesEnqueued.Release ();
+
+            // In synchronous mode, we use the message as a lock, and we wait until the execution
+            // thread pulses us to tell that it is done with the message.  The synchronous bit is
+            // used to control whether pulsing must happen.  It is not required for correctness, but
+            // it avoids unnecessary pulsing.
+            if (message.Synchronous)
+            {
+                try
+                {
+                    Monitor.Enter (message);
+                    messagesEnqueued.Release ();
+                    Monitor.Wait (message);
+                }
+                finally
+                {
+                    Monitor.Exit (message);
+                }
+            }
+            else
+            {
+                messagesEnqueued.Release ();
+            }
+
             if (message.Kind == MessageKind.Keystroke &&
                 ((KeystrokeMessage) message).Motion == KeystrokeMotion.Down)
             {
