@@ -238,9 +238,7 @@ namespace Mockingbird.HP.Execution
                 (new KeystrokeMessage ((Control) sender, e, KeystrokeMotion.Up));
         }
 
-        protected void toggleOffOn_ToggleClick (object sender,
-            System.EventArgs e,
-            TogglePosition position)
+        protected void toggleOffOn_ToggleMoved (object sender, TogglePosition position)
         {
             switch (toggleOffOn.Position)
             {

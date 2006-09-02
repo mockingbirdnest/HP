@@ -209,8 +209,11 @@
   <data name="key0.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 63</value>
   </data>
-  <data name="labelTrace.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="toggleManNorm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 18</value>
+  </data>
+  <data name="toggleManNorm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 32</value>
   </data>
   <data name="printerFeedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -268,9 +271,6 @@
   </data>
   <data name="editToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edition</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

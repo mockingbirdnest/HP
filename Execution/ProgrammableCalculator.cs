@@ -385,8 +385,7 @@ namespace Mockingbird.HP.Execution
             executionThread.Enqueue (message);
         }
 
-        protected void toggleWprgmRun_ToggleClick (object sender,
-            System.EventArgs e,
+        protected void toggleWprgmRun_ToggleMoved (object sender,
             Mockingbird.HP.Control_Library.TogglePosition position)
         {
 

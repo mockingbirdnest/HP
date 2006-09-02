@@ -1220,7 +1220,8 @@ namespace Mockingbird.HP.Execution
 		public void ReduceRULE_RCL_SUB_I_SHORTCUT (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Rcl_Sub_I_Shortcut> ::= <Sub_I>
-		}
+            token.UserObject = new Indexed ();
+        }
 
 		public void ReduceRULE_NULLARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state)
 		{

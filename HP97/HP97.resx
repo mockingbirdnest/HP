@@ -134,9 +134,6 @@
   <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="keySIN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
   <data name="&gt;&gt;keyReciprocal.Name" xml:space="preserve">
     <value>keyReciprocal</value>
   </data>
@@ -145,9 +142,6 @@
   </data>
   <data name="&gt;&gt;printerPaperRoll.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="keyPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
   </data>
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -167,14 +161,17 @@
   <data name="keyEEX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;key0.Name" xml:space="preserve">
-    <value>key0</value>
+  <data name="&gt;&gt;toggleWprgmRun.Name" xml:space="preserve">
+    <value>toggleWprgmRun</value>
+  </data>
+  <data name="&gt;&gt;labelTrace.Name" xml:space="preserve">
+    <value>labelTrace</value>
+  </data>
+  <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
+    <value>editToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;panelDisplay.Name" xml:space="preserve">
     <value>panelDisplay</value>
-  </data>
-  <data name="key1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="pictureBoxLineRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 2</value>
@@ -203,11 +200,11 @@
   <data name="&gt;&gt;key7.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="keyRDown.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
+  <data name="keyPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
   </data>
-  <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
-    <value>printToolStripMenuItem</value>
+  <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
+    <value>fileToolStripMenuItem</value>
   </data>
   <data name="keyEToTheXth.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
@@ -218,8 +215,11 @@
   <data name="keyBST.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
+  <data name="keyMult.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
+  </data>
   <data name="&gt;&gt;keyCOS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toggleOffOn.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -240,13 +240,13 @@
     <value>Black</value>
   </data>
   <data name="&gt;&gt;keyB.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printerFeedButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;key9.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>828, 656</value>
@@ -269,8 +269,8 @@
   <data name="keyCOS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;key2.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="keySqrt.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
   </data>
   <data name="keyLN.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 264</value>
@@ -287,14 +287,8 @@
   <data name="&gt;&gt;keyΣ.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <data name="keyLBL.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
   <data name="&gt;&gt;keyFIX.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;panelDisplay.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -302,14 +296,14 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>820, 622</value>
   </data>
+  <data name="toggleWprgmRun.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
   <data name="keyCOS.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 320</value>
   </data>
   <data name="&gt;&gt;key4.Name" xml:space="preserve">
     <value>key4</value>
-  </data>
-  <data name="keyPlus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyPercent.Name" xml:space="preserve">
     <value>keyPercent</value>
@@ -332,17 +326,14 @@
   <data name="key6.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
   </data>
-  <data name="&gt;&gt;keyCOS.Name" xml:space="preserve">
-    <value>keyCOS</value>
+  <data name="labelTrace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
   </data>
   <data name="keyPercent.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
   <data name="key4.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
-  </data>
-  <data name="printToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Black</value>
   </data>
   <data name="keyΣ.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
@@ -366,7 +357,10 @@
     <value>38</value>
   </data>
   <data name="&gt;&gt;display.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Display, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Display, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toggleManNorm.Parent" xml:space="preserve">
+    <value>groupBoxCard</value>
   </data>
   <data name="&gt;&gt;keyCLx.Name" xml:space="preserve">
     <value>keyCLx</value>
@@ -386,11 +380,8 @@
   <data name="&gt;&gt;key3.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
-  <data name="keyI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 320</value>
-  </data>
-  <data name="key1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
+  <data name="&gt;&gt;pictureBoxLineRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;keyENTER.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -398,8 +389,8 @@
   <data name="keyYToTheXth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
-  <data name="keySqrt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 376</value>
+  <data name="keyRCL.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
   </data>
   <data name="toggleWprgmRun.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 58</value>
@@ -413,17 +404,20 @@
   <data name="&gt;&gt;keySqrt.Name" xml:space="preserve">
     <value>keySqrt</value>
   </data>
-  <data name="&gt;&gt;openToolStripMenuItem.Name" xml:space="preserve">
-    <value>openToolStripMenuItem</value>
+  <data name="&gt;&gt;key5.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printerFeedButton.Name" xml:space="preserve">
     <value>printerFeedButton</value>
   </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>820, 24</value>
+  </data>
   <data name="key4.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
   </data>
-  <data name="&gt;&gt;saveAsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;keyΣ.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="panelDisplay.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -437,17 +431,17 @@
   <data name="groupBoxCard.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="&gt;&gt;key7.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="keyRS.Location" type="System.Drawing.Point, System.Drawing">
     <value>24, 376</value>
   </data>
   <data name="&gt;&gt;keyD.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;keyCLx.Parent" xml:space="preserve">
-    <value>panelMain</value>
   </data>
   <data name="keyCLx.Location" type="System.Drawing.Point, System.Drawing">
     <value>408, 294</value>
@@ -459,7 +453,7 @@
     <value>64, 69</value>
   </data>
   <data name="&gt;&gt;keyMult.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 20</value>
@@ -470,8 +464,11 @@
   <data name="keyPlus.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 176</value>
   </data>
-  <data name="pictureBoxLineRight.TabIndex" type="System.Int32, mscorlib">
-    <value>65</value>
+  <data name="keyRDown.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="keySubI.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
   </data>
   <data name="&gt;&gt;groupBoxCard.Name" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -495,10 +492,7 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;keyRTN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;keyPercent.Parent" xml:space="preserve">
-    <value>panelMain</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyCHS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
@@ -515,15 +509,17 @@
   <data name="keyRTN.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="keyΣ.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
+  <data name="&gt;&gt;keyRTN.Name" xml:space="preserve">
+    <value>keyRTN</value>
   </data>
   <data name="&gt;&gt;keyXExchangeY.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
   <data name="groupBoxCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>352, 200</value>
+  </data>
+  <data name="keyPercent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 376</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>828, 656</value>
@@ -532,7 +528,7 @@
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyEEX.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyEEX.Location" type="System.Drawing.Point, System.Drawing">
     <value>648, 81</value>
@@ -558,11 +554,17 @@
   <data name="&gt;&gt;keySub.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
+  <data name="&gt;&gt;labelPrint.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="keyEEX.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
   <data name="keyCLx.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyEToTheXth.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyPercent.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -576,11 +578,11 @@
   <data name="&gt;&gt;keyYToTheXth.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
-  <data name="keyE.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 148</value>
+  <data name="&gt;&gt;panelDisplay.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;keySST.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyRS.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
@@ -606,6 +608,9 @@
   <data name="toggleManNorm.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.5pt, style=Bold</value>
   </data>
+  <data name="&gt;&gt;keySquare.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
   <data name="&gt;&gt;keyPRINTx.Name" xml:space="preserve">
     <value>keyPRINTx</value>
   </data>
@@ -615,14 +620,14 @@
   <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
     <value>menuStrip</value>
   </data>
-  <data name="keyPeriod.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+  <data name="&gt;&gt;keyENG.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="keyGSB.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 208</value>
   </data>
-  <data name="&gt;&gt;keySIN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;keyC.Name" xml:space="preserve">
+    <value>keyC</value>
   </data>
   <data name="keySqrt.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
@@ -636,8 +641,8 @@
   <data name="&gt;&gt;pictureBoxLineLeft.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
-  <data name="&gt;&gt;keySquare.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;keyPeriod.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRCL.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -645,8 +650,8 @@
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 22</value>
   </data>
-  <data name="&gt;&gt;toggleWprgmRun.Name" xml:space="preserve">
-    <value>toggleWprgmRun</value>
+  <data name="cardSlot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 7pt</value>
   </data>
   <data name="keyGSB.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -660,14 +665,17 @@
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;keyI.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="keyRS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
   <data name="&gt;&gt;display.Parent" xml:space="preserve">
     <value>panelDisplay</value>
+  </data>
+  <data name="&gt;&gt;printDocument.Name" xml:space="preserve">
+    <value>printDocument</value>
   </data>
   <data name="keyCLx.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -678,8 +686,8 @@
   <data name="keyReciprocal.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
-  <data name="key4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 223</value>
+  <data name="keyGTO.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 208</value>
   </data>
   <data name="keyENTER.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
@@ -693,11 +701,8 @@
   <data name="keyPRINTx.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 69</value>
   </data>
-  <data name="&gt;&gt;keyPercent.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;keyToRectangular.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;printerFeedButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;keyEToTheXth.Name" xml:space="preserve">
     <value>keyEToTheXth</value>
@@ -706,16 +711,13 @@
     <value>panelMain</value>
   </data>
   <data name="&gt;&gt;toggleManNorm.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineCenter.Name" xml:space="preserve">
     <value>pictureBoxLineCenter</value>
   </data>
   <data name="&gt;&gt;keyXExchangeY.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="saveToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Black</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;labelPrint.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -740,6 +742,9 @@
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
+  </data>
+  <data name="toggleOffOn.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="keyPRINTx.Location" type="System.Drawing.Point, System.Drawing">
     <value>648, 10</value>
@@ -786,9 +791,6 @@
   <data name="keyRCL.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;keySubI.Name" xml:space="preserve">
-    <value>keySubI</value>
-  </data>
   <data name="keyPeriod.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
@@ -804,8 +806,8 @@
   <data name="keySCI.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;keySquare.Name" xml:space="preserve">
-    <value>keySquare</value>
+  <data name="&gt;&gt;keyToRectangular.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;saveFileDialog.Name" xml:space="preserve">
     <value>saveFileDialog</value>
@@ -819,11 +821,8 @@
   <data name="keyReciprocal.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <data name="key6.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
-    <value>fileToolStripMenuItem</value>
+  <data name="key5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>568, 223</value>
   </data>
   <data name="keyEToTheXth.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 264</value>
@@ -834,20 +833,17 @@
   <data name="&gt;&gt;keySST.Name" xml:space="preserve">
     <value>keySST</value>
   </data>
-  <data name="&gt;&gt;keyCHS.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="toggleManNorm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 34</value>
+    <value>186, 18</value>
   </data>
   <data name="&gt;&gt;key0.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="panelMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>804, 432</value>
   </data>
-  <data name="&gt;&gt;printerFeedButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;keyPRINTx.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="key7.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
@@ -861,26 +857,20 @@
   <data name="key7.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;keyB.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;key1.ZOrder" xml:space="preserve">
-    <value>24</value>
+  <data name="cardSlot.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
   <data name="toggleOffOn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.5pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyDSP.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyF.Location" type="System.Drawing.Point, System.Drawing">
     <value>296, 148</value>
   </data>
   <data name="&gt;&gt;keyLN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="keyEEX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="pictureBoxLineLeft.Location" type="System.Drawing.Point, System.Drawing">
     <value>466, 66</value>
@@ -890,9 +880,6 @@
   </data>
   <data name="&gt;&gt;keyPeriod.Name" xml:space="preserve">
     <value>keyPeriod</value>
-  </data>
-  <data name="&gt;&gt;key3.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="labelPrint.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -909,9 +896,6 @@
   <data name="&gt;&gt;keySST.ZOrder" xml:space="preserve">
     <value>51</value>
   </data>
-  <data name="&gt;&gt;pictureBoxLineCenter.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
   <data name="&gt;&gt;keySqrt.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
@@ -921,9 +905,6 @@
   <data name="&gt;&gt;keyGSB.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
-  <data name="keySIN.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
-  </data>
   <data name="&gt;&gt;key4.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
@@ -931,7 +912,7 @@
     <value>0</value>
   </data>
   <data name="&gt;&gt;keyF.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyD.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
@@ -941,9 +922,6 @@
   </data>
   <data name="&gt;&gt;key7.Parent" xml:space="preserve">
     <value>panelMain</value>
-  </data>
-  <data name="keyE.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
   </data>
   <data name="openFileDialog.Filter" xml:space="preserve">
     <value>HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*</value>
@@ -957,20 +935,23 @@
   <data name="&gt;&gt;keyΣ.Name" xml:space="preserve">
     <value>keyΣ</value>
   </data>
-  <data name="panelDisplay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>504, 64</value>
+  <data name="saveToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Black</value>
   </data>
   <data name="keyToRectangular.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyDiv.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printerPaperRoll.Name" xml:space="preserve">
     <value>printerPaperRoll</value>
   </data>
   <data name="&gt;&gt;keyGTO.ZOrder" xml:space="preserve">
     <value>50</value>
+  </data>
+  <data name="&gt;&gt;keyLBL.Name" xml:space="preserve">
+    <value>keyLBL</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -990,14 +971,14 @@
   <data name="&gt;&gt;keyRDown.Name" xml:space="preserve">
     <value>keyRDown</value>
   </data>
-  <data name="keyΣ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 376</value>
-  </data>
   <data name="keyLBL.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="key1.Location" type="System.Drawing.Point, System.Drawing">
     <value>488, 294</value>
+  </data>
+  <data name="&gt;&gt;keyPeriod.ZOrder" xml:space="preserve">
+    <value>13</value>
   </data>
   <data name="&gt;&gt;keyΣ.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1012,10 +993,7 @@
     <value>groupBoxCard</value>
   </data>
   <data name="&gt;&gt;keyC.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="keyToRectangular.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;key2.Name" xml:space="preserve">
     <value>key2</value>
@@ -1026,11 +1004,14 @@
   <data name="&gt;&gt;labelPrint.Name" xml:space="preserve">
     <value>labelPrint</value>
   </data>
+  <data name="keyCLx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
+  </data>
   <data name="keyDiv.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
   </data>
-  <data name="&gt;&gt;keyΣ.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="pictureBoxLineRight.TabIndex" type="System.Int32, mscorlib">
+    <value>65</value>
   </data>
   <data name="keySqrt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
@@ -1045,7 +1026,7 @@
     <value>110, 16</value>
   </data>
   <data name="&gt;&gt;keyCLx.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyYToTheXth.ZOrder" xml:space="preserve">
     <value>47</value>
@@ -1063,7 +1044,7 @@
     <value>125, 22</value>
   </data>
   <data name="&gt;&gt;key2.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyE.Name" xml:space="preserve">
     <value>keyE</value>
@@ -1072,16 +1053,280 @@
     <value>8, 92</value>
   </data>
   <data name="&gt;&gt;keyBST.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRCL.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyGTO.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
   <data name="&gt;&gt;printerPaperRoll.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Printer, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Printer, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;keyLBL.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="keyRTN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 208</value>
+  </data>
+  <data name="&gt;&gt;key2.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;toggleManNorm.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="display.Size" type="System.Drawing.Size, System.Drawing">
+    <value>376, 48</value>
+  </data>
+  <data name="&gt;&gt;toggleManNorm.Name" xml:space="preserve">
+    <value>toggleManNorm</value>
+  </data>
+  <data name="keyLN.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;keyPRINTx.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;keyCHS.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;keyCOS.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="keyENG.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
+  </data>
+  <data name="keyCOS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLineCenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;keyCHS.Name" xml:space="preserve">
+    <value>keyCHS</value>
+  </data>
+  <data name="keyC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="&gt;&gt;keySTO.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;editLabelsToolStripMenuItem.Name" xml:space="preserve">
+    <value>editLabelsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;keyF.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="keyReciprocal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 376</value>
+  </data>
+  <data name="&gt;&gt;keyYToTheXth.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="key7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 152</value>
+  </data>
+  <data name="labelPrint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 16</value>
+  </data>
+  <data name="&gt;&gt;keyLBL.ZOrder" xml:space="preserve">
+    <value>54</value>
+  </data>
+  <data name="keyTAN.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;keyE.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="keyA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="&gt;&gt;printDocument.Type" xml:space="preserve">
+    <value>System.Drawing.Printing.PrintDocument, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="&gt;&gt;openToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;key5.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;keySubI.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;key1.Name" xml:space="preserve">
+    <value>key1</value>
+  </data>
+  <data name="&gt;&gt;keyD.Name" xml:space="preserve">
+    <value>keyD</value>
+  </data>
+  <data name="&gt;&gt;keyENTER.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="printerPaperRoll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 144</value>
+  </data>
+  <data name="keySquare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="&gt;&gt;keyRDown.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="keyXExchangeY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;key4.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="panelDisplay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>504, 64</value>
+  </data>
+  <data name="keySub.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="&gt;&gt;keySub.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="key9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
+  </data>
+  <data name="keySTO.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;keyE.Parent" xml:space="preserve">
+    <value>groupBoxCard</value>
+  </data>
+  <data name="keyC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 148</value>
+  </data>
+  <data name="&gt;&gt;printerPaperRoll.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;keyLN.Name" xml:space="preserve">
+    <value>keyLN</value>
+  </data>
+  <data name="keyA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 148</value>
+  </data>
+  <data name="&gt;&gt;keyLN.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLineRight.Name" xml:space="preserve">
+    <value>pictureBoxLineRight</value>
+  </data>
+  <data name="&gt;&gt;keySTO.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;key1.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="keyRCL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="printerFeedButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 56</value>
+  </data>
+  <data name="&gt;&gt;key0.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="&gt;&gt;keyI.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="rtfToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="&gt;&gt;cardSlot.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;key4.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="key3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
+  </data>
+  <data name="&gt;&gt;saveAsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toggleWprgmRun.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="rtfToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Rich Text</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxLineRight.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 22</value>
+  </data>
+  <data name="&gt;&gt;labelTrace.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;keyENG.Name" xml:space="preserve">
+    <value>keyENG</value>
+  </data>
+  <data name="&gt;&gt;keyToPolar.ZOrder" xml:space="preserve">
+    <value>42</value>
+  </data>
+  <data name="&gt;&gt;key5.Name" xml:space="preserve">
+    <value>key5</value>
+  </data>
+  <data name="keyEToTheXth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
+  </data>
+  <data name="printerFeedButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>776, 120</value>
+  </data>
+  <data name="keyPlus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>728, 294</value>
+  </data>
+  <data name="key0.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="keyToPolar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
+  <data name="&gt;&gt;toggleWprgmRun.Parent" xml:space="preserve">
+    <value>groupBoxCard</value>
+  </data>
+  <data name="&gt;&gt;keySIN.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;keyXExchangeY.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;keyFIX.Parent" xml:space="preserve">
+    <value>panelMain</value>
+  </data>
+  <data name="groupBoxCard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 4</value>
+  </data>
+  <data name="&gt;&gt;keyC.Parent" xml:space="preserve">
+    <value>groupBoxCard</value>
+  </data>
+  <data name="keyToRectangular.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;key0.Name" xml:space="preserve">
+    <value>key0</value>
+  </data>
+  <data name="key0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>408, 364</value>
+  </data>
+  <data name="&gt;&gt;keyFIX.Name" xml:space="preserve">
+    <value>keyFIX</value>
+  </data>
+  <data name="&gt;&gt;keyCLx.Parent" xml:space="preserve">
+    <value>panelMain</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1462,261 +1707,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <data name="&gt;&gt;keyLBL.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;key2.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;toggleManNorm.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="keyGTO.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 208</value>
-  </data>
-  <data name="display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>376, 48</value>
-  </data>
-  <data name="&gt;&gt;toggleManNorm.Name" xml:space="preserve">
-    <value>toggleManNorm</value>
-  </data>
-  <data name="keyLN.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;keyPRINTx.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;keyCHS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;keyCOS.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="keyENG.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
-  </data>
-  <data name="keyCOS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLineCenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;keyCHS.Name" xml:space="preserve">
-    <value>keyCHS</value>
-  </data>
-  <data name="keyC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
-  <data name="&gt;&gt;keySTO.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;editLabelsToolStripMenuItem.Name" xml:space="preserve">
-    <value>editLabelsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;keyF.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="keyReciprocal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 376</value>
-  </data>
-  <data name="key7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>488, 152</value>
-  </data>
-  <data name="labelPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 16</value>
-  </data>
-  <data name="&gt;&gt;keyToPolar.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;keyE.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="keyA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
-  <data name="&gt;&gt;printDocument.Type" xml:space="preserve">
-    <value>System.Drawing.Printing.PrintDocument, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="&gt;&gt;key5.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;keySubI.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;key1.Name" xml:space="preserve">
-    <value>key1</value>
-  </data>
-  <data name="&gt;&gt;keyD.Name" xml:space="preserve">
-    <value>keyD</value>
-  </data>
-  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="&gt;&gt;keyEEX.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="printerPaperRoll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 144</value>
-  </data>
-  <data name="keySquare.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
-  <data name="keyXExchangeY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
-  </data>
-  <data name="key6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>648, 223</value>
-  </data>
-  <data name="labelTrace.Text" xml:space="preserve">
-    <value>TRACE</value>
-  </data>
-  <data name="key5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>568, 223</value>
-  </data>
-  <data name="keySub.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="&gt;&gt;keySub.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="key9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
-  </data>
-  <data name="keySTO.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
-  </data>
-  <data name="keyC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 148</value>
-  </data>
-  <data name="&gt;&gt;printerPaperRoll.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;keyLN.Name" xml:space="preserve">
-    <value>keyLN</value>
-  </data>
-  <data name="labelPrint.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 8.5pt, style=Bold</value>
-  </data>
-  <data name="keyA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 148</value>
-  </data>
-  <data name="&gt;&gt;keyLN.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;panelMain.Name" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;keyI.Name" xml:space="preserve">
-    <value>keyI</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLineRight.Name" xml:space="preserve">
-    <value>pictureBoxLineRight</value>
-  </data>
-  <data name="&gt;&gt;keySTO.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="&gt;&gt;key1.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="keyRCL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
-  <data name="printerFeedButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 56</value>
-  </data>
-  <data name="&gt;&gt;keyI.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;keySIN.Name" xml:space="preserve">
-    <value>keySIN</value>
-  </data>
-  <data name="rtfToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="&gt;&gt;cardSlot.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;key4.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="key3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
-  </data>
-  <data name="keyPlus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>728, 294</value>
-  </data>
-  <data name="&gt;&gt;keySquare.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;toggleWprgmRun.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="rtfToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Rich Text</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxLineRight.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
-  </data>
-  <data name="&gt;&gt;labelTrace.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;keyENG.Name" xml:space="preserve">
-    <value>keyENG</value>
-  </data>
-  <data name="&gt;&gt;keyToPolar.ZOrder" xml:space="preserve">
-    <value>42</value>
-  </data>
-  <data name="&gt;&gt;key5.Name" xml:space="preserve">
-    <value>key5</value>
-  </data>
-  <data name="keyEToTheXth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
-  </data>
-  <data name="printerFeedButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>776, 120</value>
-  </data>
-  <data name="cardSlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 50</value>
-  </data>
-  <data name="key0.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="keyToPolar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 51</value>
-  </data>
-  <data name="&gt;&gt;toggleWprgmRun.Parent" xml:space="preserve">
-    <value>groupBoxCard</value>
-  </data>
-  <data name="&gt;&gt;keyD.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;keyXExchangeY.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;keyFIX.Parent" xml:space="preserve">
-    <value>panelMain</value>
-  </data>
-  <data name="groupBoxCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 4</value>
-  </data>
-  <data name="&gt;&gt;keyC.Parent" xml:space="preserve">
-    <value>groupBoxCard</value>
-  </data>
-  <data name="key0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>408, 364</value>
-  </data>
-  <data name="&gt;&gt;keyFIX.Name" xml:space="preserve">
-    <value>keyFIX</value>
-  </data>
-  <data name="keyRCL.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="&gt;&gt;keyYToTheXth.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="labelTrace.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -1726,11 +1716,11 @@
   <data name="keyENG.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
   </data>
-  <data name="&gt;&gt;keyENTER.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="keyCHS.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
+  </data>
+  <data name="keyMult.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
   </data>
   <data name="key3.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -1753,8 +1743,8 @@
   <data name="keyRDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
   </data>
-  <data name="key1.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
+  <data name="&gt;&gt;keyA.Parent" xml:space="preserve">
+    <value>groupBoxCard</value>
   </data>
   <data name="keyCHS.Location" type="System.Drawing.Point, System.Drawing">
     <value>568, 81</value>
@@ -1768,8 +1758,8 @@
   <data name="labelTrace.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
-  <data name="keyB.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="&gt;&gt;keyFIX.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="pictureBoxLineLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 2</value>
@@ -1781,25 +1771,28 @@
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;key8.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="keyEEX.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+  <data name="&gt;&gt;pictureBoxLineCenter.Parent" xml:space="preserve">
+    <value>panelMain</value>
   </data>
-  <data name="&gt;&gt;keyRDown.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="keyPlus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;key0.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
   <data name="&gt;&gt;keyPlus.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="key6.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
   </data>
   <data name="&gt;&gt;keyGSB.Name" xml:space="preserve">
     <value>keyGSB</value>
   </data>
-  <data name="keySqrt.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+  <data name="&gt;&gt;keyCHS.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="keyF.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
@@ -1807,23 +1800,23 @@
   <data name="&gt;&gt;keyDiv.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="&gt;&gt;keyC.Name" xml:space="preserve">
-    <value>keyC</value>
+  <data name="keyB.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;keyF.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
   </data>
   <data name="&gt;&gt;keyGTO.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyTAN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;keyRTN.Name" xml:space="preserve">
-    <value>keyRTN</value>
+  <data name="&gt;&gt;keySquare.Name" xml:space="preserve">
+    <value>keySquare</value>
   </data>
-  <data name="&gt;&gt;keyPRINTx.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="key6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>648, 223</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -1840,11 +1833,11 @@
   <data name="keyA.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="labelTrace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 18</value>
+  <data name="&gt;&gt;keyCHS.Parent" xml:space="preserve">
+    <value>panelMain</value>
   </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>820, 24</value>
+  <data name="&gt;&gt;key3.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySub.ZOrder" xml:space="preserve">
     <value>15</value>
@@ -1852,8 +1845,8 @@
   <data name="keySub.Location" type="System.Drawing.Point, System.Drawing">
     <value>728, 223</value>
   </data>
-  <data name="&gt;&gt;keyFIX.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="keySIN.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyRDown.ZOrder" xml:space="preserve">
     <value>28</value>
@@ -1864,11 +1857,11 @@
   <data name="keyENTER.Location" type="System.Drawing.Point, System.Drawing">
     <value>408, 81</value>
   </data>
-  <data name="&gt;&gt;key8.ZOrder" xml:space="preserve">
-    <value>22</value>
+  <data name="keyGTO.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
-  <data name="keyToRectangular.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
+  <data name="key1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;key3.ZOrder" xml:space="preserve">
     <value>18</value>
@@ -1886,22 +1879,22 @@
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keySubI.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyC.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyMult.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
-  <data name="&gt;&gt;keyRTN.ZOrder" xml:space="preserve">
-    <value>49</value>
+  <data name="labelTrace.Text" xml:space="preserve">
+    <value>TRACE</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
-  <data name="keySubI.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+  <data name="&gt;&gt;key8.ZOrder" xml:space="preserve">
+    <value>22</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineLeft.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1924,8 +1917,8 @@
   <data name="keySST.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 208</value>
   </data>
-  <data name="toggleWprgmRun.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="keySqrt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 376</value>
   </data>
   <data name="keyBST.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 208</value>
@@ -1933,23 +1926,29 @@
   <data name="keySIN.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
+  <data name="keyRS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
+  </data>
   <data name="&gt;&gt;cardSlot.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.CardSlot, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.CardSlot, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key7.Name" xml:space="preserve">
     <value>key7</value>
   </data>
-  <data name="keyXExchangeY.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
+  <data name="printToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Black</value>
   </data>
-  <data name="keyCLx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>HP97</value>
+  </data>
+  <data name="key4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 223</value>
+  </data>
+  <data name="labelPrint.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 8.5pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyCLx.ZOrder" xml:space="preserve">
     <value>27</value>
-  </data>
-  <data name="keyGTO.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyGSB.ZOrder" xml:space="preserve">
     <value>52</value>
@@ -1957,26 +1956,26 @@
   <data name="key8.Location" type="System.Drawing.Point, System.Drawing">
     <value>568, 152</value>
   </data>
-  <data name="&gt;&gt;labelTrace.Name" xml:space="preserve">
-    <value>labelTrace</value>
+  <data name="&gt;&gt;keyToPolar.Parent" xml:space="preserve">
+    <value>panelMain</value>
   </data>
   <data name="keyE.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;keyToPolar.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="key2.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
   </data>
-  <data name="&gt;&gt;toggleManNorm.Parent" xml:space="preserve">
-    <value>groupBoxCard</value>
+  <data name="&gt;&gt;keyB.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;keyA.Name" xml:space="preserve">
     <value>keyA</value>
   </data>
-  <data name="&gt;&gt;key7.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;openToolStripMenuItem.Name" xml:space="preserve">
+    <value>openToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1985,13 +1984,13 @@
     <value>64, 69</value>
   </data>
   <data name="&gt;&gt;keyReciprocal.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;key0.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="labelTrace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 18</value>
   </data>
   <data name="&gt;&gt;toggleOffOn.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keyA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
@@ -1999,8 +1998,8 @@
   <data name="key9.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
   </data>
-  <data name="&gt;&gt;keyI.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
   </data>
   <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -2011,14 +2010,14 @@
   <data name="&gt;&gt;labelTrace.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="keyToRectangular.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 320</value>
+  <data name="&gt;&gt;key1.ZOrder" xml:space="preserve">
+    <value>24</value>
   </data>
   <data name="key3.Location" type="System.Drawing.Point, System.Drawing">
     <value>648, 294</value>
   </data>
-  <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;keyRTN.ZOrder" xml:space="preserve">
+    <value>49</value>
   </data>
   <data name="keyRS.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -2027,7 +2026,7 @@
     <value>keyGTO</value>
   </data>
   <data name="&gt;&gt;keyRS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineRight.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -2036,13 +2035,13 @@
     <value>50</value>
   </data>
   <data name="&gt;&gt;keyENG.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="keySquare.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 376</value>
   </data>
-  <data name="key0.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
+  <data name="keyEEX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
   </data>
   <data name="&gt;&gt;keyRDown.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -2056,8 +2055,8 @@
   <data name="keySubI.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
-  <data name="&gt;&gt;keyCHS.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="&gt;&gt;keySquare.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="pictureBoxLineRight.Location" type="System.Drawing.Point, System.Drawing">
     <value>619, 66</value>
@@ -2078,16 +2077,19 @@
     <value>keyB</value>
   </data>
   <data name="&gt;&gt;keySqrt.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>HP97</value>
+  <data name="key1.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
   </data>
   <data name="key7.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
   </data>
   <data name="keyC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
+  </data>
+  <data name="keyE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 148</value>
   </data>
   <data name="&gt;&gt;keyYToTheXth.Name" xml:space="preserve">
     <value>keyYToTheXth</value>
@@ -2098,20 +2100,14 @@
   <data name="keySTO.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
   </data>
-  <data name="keyFIX.TabIndex" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;key4.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
+    <value>printToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;keySCI.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="toggleOffOn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 34</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key9.ZOrder" xml:space="preserve">
     <value>19</value>
@@ -2119,32 +2115,29 @@
   <data name="keySubI.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 320</value>
   </data>
-  <data name="&gt;&gt;printDocument.Name" xml:space="preserve">
-    <value>printDocument</value>
+  <data name="keyToRectangular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
   </data>
   <data name="&gt;&gt;keyA.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="keyTAN.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
+  <data name="&gt;&gt;keySIN.Name" xml:space="preserve">
+    <value>keySIN</value>
   </data>
   <data name="toggleManNorm.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="printerFeedButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="toggleOffOn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 34</value>
   </data>
   <data name="keyD.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="keySub.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 69</value>
-  </data>
   <data name="key2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
-  <data name="labelTrace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 16</value>
+  <data name="keyE.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
   <data name="keyLN.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
@@ -2158,8 +2151,8 @@
   <data name="printerPaperRoll.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;labelPrint.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="key1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
   </data>
   <data name="panelMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 184</value>
@@ -2185,8 +2178,8 @@
   <data name="&gt;&gt;editLabelsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;keyLBL.Name" xml:space="preserve">
-    <value>keyLBL</value>
+  <data name="keyLBL.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
   <data name="keyENTER.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 69</value>
@@ -2194,20 +2187,23 @@
   <data name="key5.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
   </data>
-  <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
-    <value>editToolStripMenuItem</value>
+  <data name="&gt;&gt;keyEEX.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="display.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;keyENG.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;keyD.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key6.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;display.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="keyPRINTx.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="keyDSP.Location" type="System.Drawing.Point, System.Drawing">
     <value>648, 364</value>
@@ -2218,11 +2214,8 @@
   <data name="&gt;&gt;pictureBoxLineCenter.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="keyYToTheXth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 264</value>
-  </data>
-  <data name="&gt;&gt;keyENTER.Parent" xml:space="preserve">
-    <value>panelMain</value>
+  <data name="&gt;&gt;keyI.Name" xml:space="preserve">
+    <value>keyI</value>
   </data>
   <data name="keyBST.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 8.25pt, style=Bold</value>
@@ -2233,20 +2226,21 @@
   <data name="keySCI.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
   </data>
-  <data name="&gt;&gt;pictureBoxLineRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="keyΣ.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
   <data name="keyD.Location" type="System.Drawing.Point, System.Drawing">
     <value>184, 148</value>
   </data>
-  <data name="toggleOffOn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="keyI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 320</value>
   </data>
   <data name="keyGSB.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
-  <data name="keyRTN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 208</value>
+  <data name="keySub.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 69</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineLeft.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -2254,23 +2248,26 @@
   <data name="pictureBoxLineCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>544, 66</value>
   </data>
-  <data name="&gt;&gt;keyLBL.ZOrder" xml:space="preserve">
-    <value>54</value>
+  <data name="&gt;&gt;keyENTER.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="keyMult.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
+  <data name="&gt;&gt;key2.Parent" xml:space="preserve">
+    <value>panelMain</value>
   </data>
   <data name="keyENG.Location" type="System.Drawing.Point, System.Drawing">
     <value>568, 10</value>
   </data>
+  <data name="keyXExchangeY.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
   <data name="&gt;&gt;display.Name" xml:space="preserve">
     <value>display</value>
   </data>
-  <data name="&gt;&gt;openToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;keyPercent.Type" xml:space="preserve">
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyGSB.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21693, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="labelTrace.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -2278,20 +2275,17 @@
   <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
     <value>openFileDialog</value>
   </data>
-  <data name="cardSlot.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="printerFeedButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="keyFIX.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 69</value>
   </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;keyPercent.Parent" xml:space="preserve">
+    <value>panelMain</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 22</value>
-  </data>
-  <data name="&gt;&gt;keyPlus.ZOrder" xml:space="preserve">
-    <value>11</value>
   </data>
   <data name="keyCOS.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -2299,8 +2293,11 @@
   <data name="keyCHS.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
   </data>
-  <data name="keyPercent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 376</value>
+  <data name="keyToRectangular.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 320</value>
+  </data>
+  <data name="&gt;&gt;keyPlus.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="&gt;&gt;keyRCL.Name" xml:space="preserve">
     <value>keyRCL</value>
@@ -2308,8 +2305,8 @@
   <data name="keyYToTheXth.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 51</value>
   </data>
-  <data name="keyMult.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+  <data name="keySIN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 51</value>
   </data>
   <data name="&gt;&gt;key5.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -2320,20 +2317,20 @@
   <data name="&gt;&gt;rtfToolStripMenuItem.Name" xml:space="preserve">
     <value>rtfToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;keyA.Parent" xml:space="preserve">
-    <value>groupBoxCard</value>
+  <data name="keyYToTheXth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 264</value>
   </data>
-  <data name="keyPRINTx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 10pt, style=Bold</value>
+  <data name="keyFIX.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
   </data>
-  <data name="&gt;&gt;keyPeriod.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="keyPeriod.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
   </data>
   <data name="&gt;&gt;labelPrint.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;keyPeriod.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="keyΣ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 376</value>
   </data>
   <data name="key0.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 69</value>
@@ -2350,8 +2347,14 @@
   <data name="key6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
+  <data name="cardSlot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 50</value>
+  </data>
   <data name="&gt;&gt;keyTAN.Name" xml:space="preserve">
     <value>keyTAN</value>
+  </data>
+  <data name="key0.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
   <data name="key4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
@@ -2362,151 +2365,148 @@
   <data name="key9.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Unicode MS, 10pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;key5.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2428.42442, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;keyCOS.Name" xml:space="preserve">
+    <value>keyCOS</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open...</value>
   </data>
+  <data name="&gt;&gt;keySubI.Name" xml:space="preserve">
+    <value>keySubI</value>
+  </data>
   <data name="&gt;&gt;keySIN.ZOrder" xml:space="preserve">
     <value>41</value>
-  </data>
-  <data name="cardSlot.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Unicode MS, 7pt</value>
-  </data>
-  <data name="&gt;&gt;keyE.Parent" xml:space="preserve">
-    <value>groupBoxCard</value>
   </data>
   <data name="&gt;&gt;keySCI.Parent" xml:space="preserve">
     <value>panelMain</value>
   </data>
-  <metadata name="keyPercent.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="keyPercent.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keyReciprocal.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keyReciprocal.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keySqrt.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keySqrt.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keySubI.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keySubI.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keySST.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyC.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="cardSlot.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyToPolar.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyLBL.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyTAN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keySIN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="groupBoxCard.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyE.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyLN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyToRectangular.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>243, 17</value>
-  </metadata>
-  <metadata name="keyF.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyI.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyRS.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyGSB.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>French</value>
-  </metadata>
-  <metadata name="keyEToTheXth.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="printDocument.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>365, 17</value>
-  </metadata>
-  <metadata name="keyGTO.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="toggleWprgmRun.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyRCL.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyΣ.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keySquare.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="toggleManNorm.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="labelTrace.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="toggleOffOn.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="keyYToTheXth.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>50</value>
-  </metadata>
-  <metadata name="keyA.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
-  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="keySST.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyC.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="cardSlot.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyToPolar.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyLBL.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyTAN.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keySIN.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBoxCard.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyE.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyLN.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyBST.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>243, 17</value>
+  </data>
+  <data name="keyF.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyI.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyRS.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyGSB.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.Language" type="System.Globalization.CultureInfo, mscorlib">
+    <value>French</value>
+  </data>
+  <data name="printDocument.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>365, 17</value>
+  </data>
+  <data name="keyGTO.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toggleWprgmRun.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyRCL.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyΣ.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keySquare.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toggleManNorm.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelTrace.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toggleOffOn.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyYToTheXth.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="keyA.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="keyEToTheXth.Locked" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>119, 17</value>
-  </metadata>
-  <metadata name="keyBST.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keyToRectangular.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keyB.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keyB.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keyD.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keyD.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keyCOS.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keyCOS.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keySTO.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keySTO.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="keyRTN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="keyRTN.Locked" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
 </root>
