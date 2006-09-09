@@ -1,5 +1,4 @@
 using com.calitha.goldparser;
-using Mockingbird.HP.Control_Library;
 using Mockingbird.HP.Parser;
 using Mockingbird.HP.Persistence;
 using System;
@@ -77,7 +76,7 @@ namespace Mockingbird.HP.Class_Library
 
 	public interface IDigits
 	{
-		void SetDigits (Memory m, Display d);
+		void SetDigits (Memory m, Number.Formatter f);
 	}
 
 	public interface ILabel
@@ -149,9 +148,9 @@ namespace Mockingbird.HP.Class_Library
 			m.Store (x, digit, o);
 		}
 
-		public void SetDigits (Memory m, Display d)
+		public void SetDigits (Memory m, Number.Formatter f)
 		{
-			d.Digits = digit;
+			f.Digits = digit;
 		}
 
 		public void Goto (Memory m, Program p)
@@ -208,7 +207,7 @@ namespace Mockingbird.HP.Class_Library
 			m.StoreIndexed (x, o);
 		}
 
-		public void SetDigits (Memory m, Display d)
+		public void SetDigits (Memory m, Number.Formatter f)
 		{
 			byte digits = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
 			if (digits > 9) 
@@ -217,7 +216,7 @@ namespace Mockingbird.HP.Class_Library
 			}
 			else 
 			{
-				d.Digits = digits;
+				f.Digits = digits;
 			}
 		}
 

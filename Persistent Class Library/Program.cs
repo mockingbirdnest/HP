@@ -1,7 +1,6 @@
 using com.calitha.commons;
 using com.calitha.goldparser;
 using com.calitha.goldparser.lalr;
-using Mockingbird.HP.Control_Library;
 using Mockingbird.HP.Parser;
 using Mockingbird.HP.Persistence;
 using System;
@@ -47,7 +46,7 @@ namespace Mockingbird.HP.Class_Library
 		private ArrayList [] labels; 
 		private int [] returns;
 
-		private Display display;
+		private IDisplay display;
 		private bool isEmpty;
 		private int lastPrinted;
 		private int next;
@@ -57,7 +56,7 @@ namespace Mockingbird.HP.Class_Library
 
 		#region Constructors & Destructors
 
-		public Program (Display display, Reader reader)
+		public Program (IDisplay display, Reader reader)
 		{
 			Symbol r_s_symbol = new SymbolNonterminal ((int) SymbolConstants.SYMBOL_R_S, "R_S");
 			Argument [] r_s_args = new Argument [0];

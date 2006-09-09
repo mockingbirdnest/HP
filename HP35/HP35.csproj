@@ -86,6 +86,10 @@
       <Project>{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}</Project>
       <Name>Persistence</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Persistent Class Library\Persistent Class Library.csproj">
+      <Project>{76E1A007-1E22-40BC-826D-834FE3673BD8}</Project>
+      <Name>Persistent Class Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Transient Class Library\Transient Class Library.csproj">
       <Project>{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}</Project>
       <Name>Transient Class Library</Name>

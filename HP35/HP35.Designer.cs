@@ -442,7 +442,6 @@
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size (288, 40);
             this.display.TabIndex = 0;
-            this.display.Value = 0;
             // 
             // keyPlus
             // 

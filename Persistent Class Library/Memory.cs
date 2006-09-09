@@ -1,5 +1,4 @@
-﻿using Mockingbird.HP.Control_Library;
-using Mockingbird.HP.Parser;
+﻿using Mockingbird.HP.Parser;
 using Mockingbird.HP.Persistence;
 using System;
 using System.Diagnostics;
@@ -27,7 +26,7 @@ namespace Mockingbird.HP.Class_Library
 		#region Private Declarations
 
 		private double[] registers;
-		private Display theDisplay;
+		private IDisplay display;
 
 		private enum ΣRegister
 		{
@@ -51,9 +50,9 @@ namespace Mockingbird.HP.Class_Library
 
 		#region Constructors & Destructors
 
-		public Memory (Display display)
+		public Memory (IDisplay display)
 		{
-			theDisplay = display;
+			this.display = display;
 			registers = new double [(int) LetterRegister.I - 0 + 1];
 			for (int i = 0; i < registers.Length; i++)
 			{
@@ -380,11 +379,11 @@ namespace Mockingbird.HP.Class_Library
 		{
 			for (int i = 0; i <= 9; i++) 
 			{
-				theDisplay.ShowMemory (i, this [i], 800);
+				display.ShowMemory (i, this [i], 800);
 			}
 			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++) 
 			{
-				theDisplay.ShowMemory ((int) i, this [i], 800);
+				display.ShowMemory ((int) i, this [i], 800);
 			}
 		}
 

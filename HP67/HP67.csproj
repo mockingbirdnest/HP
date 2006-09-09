@@ -125,6 +125,10 @@
       <Project>{D97548CE-C80A-4DAE-BA32-1E3FA7273153}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
+    <ProjectReference Include="..\Persistent Class Library\Persistent Class Library.csproj">
+      <Project>{76E1A007-1E22-40BC-826D-834FE3673BD8}</Project>
+      <Name>Persistent Class Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Transient Class Library\Transient Class Library.csproj">
       <Name>Transient Class Library</Name>
       <Project>{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}</Project>
