@@ -20,10 +20,21 @@ namespace Mockingbird.HP.Execution
         Radian
     }
 
-    public enum EngineMode
+    public struct EngineModes
     {
-        Run,
-        WriteProgram
+        public enum Execution
+        {
+            Run,
+            WriteProgram
+        }
+        public enum Tracing
+        {
+            Manual,
+            Trace,
+            Normal
+        }
+        public Execution execution;
+        public Tracing tracing;
     }
 
     public class Engine
@@ -40,7 +51,7 @@ namespace Mockingbird.HP.Execution
         private const double radianToGrade = 200.0 / Math.PI;
 
         private bool enableBlur;
-        private EngineMode mode;
+        private EngineModes modes;
         private bool running = false;
         private bool stackLift = false;
         private bool stepping = false;
@@ -49,7 +60,10 @@ namespace Mockingbird.HP.Execution
         private AngleUnit unit;
 
         private Display display;
+        private Number.Formatter formatter;
+        private Number.Validater validater;
         private Memory memory;
+        private Printer printer;
         private Program program;
         private Reader reader;
         private Stack stack;
@@ -63,14 +77,17 @@ namespace Mockingbird.HP.Execution
         public event TimedKeystrokeEvent WaitForKeystroke;
 
         #endregion
-        
-#region Constructors & Destructors
+
+        #region Constructors & Destructors
 
         public Engine (Display display,
-                        Memory memory,
-                        Program program,
-                        Reader reader,
-                        Stack stack)
+                       Number.Formatter formatter,
+                       Number.Validater validater,
+                       Memory memory,
+                       Printer printer,
+                       Program program,
+                       Reader reader,
+                       Stack stack)
         {
             string [] appSettingsEnableBlur =
                 System.Configuration.ConfigurationManager.AppSettings.GetValues
@@ -87,11 +104,17 @@ namespace Mockingbird.HP.Execution
             flags = new bool [4];
             unit = AngleUnit.Degree;
             this.display = display;
-            this.display.EnteringNumber += new Display.DisplayStateChangeEvent (Enter);
+            this.formatter = formatter;
+            this.validater = validater;
             this.memory = memory;
+            this.printer = printer;
             this.program = program;
             this.reader = reader;
             this.stack = stack;
+            this.validater.ExponentChanged += new Number.ChangeEvent (ExponentChanged);
+            this.validater.MantissaChanged += new Number.ChangeEvent (MantissaChanged);
+            this.validater.NumberDone += new Number.ChangeEvent (NumberDone);
+            this.validater.NumberStarted += new Number.ChangeEvent (NumberStarted);
             Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
             Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
         }
@@ -100,7 +123,33 @@ namespace Mockingbird.HP.Execution
 
         #region Event Handlers
 
-        public void ReadFromDataset (CardDataset cds, Reader reader)
+        private void ExponentChanged (string mantissa, string exponent, double value)
+        {
+            display.ShowNumeric (mantissa, exponent);
+        }
+
+        private void MantissaChanged (string mantissa, string exponent, double value)
+        {
+            display.ShowNumeric (mantissa, exponent);
+        }
+
+        private void NumberDone (string mantissa, string exponent, double value)
+        {
+            // Note that the stack also handles this event, but as far as I can tell the order of
+            // notification doesn't matter.
+            if (printer != null && modes.tracing != EngineModes.Tracing.Manual)
+            {
+                printer.Append (mantissa + exponent, HorizontalAlignment.Right);
+            }
+            formatter.Value = value;
+        }
+
+        private void NumberStarted (string mantissa, string exponent, double value)
+        {
+            EnterIfNeeded ();
+        }
+
+        private void ReadFromDataset (CardDataset cds, Reader reader)
         {
             CardDataset.CardRow cr;
             CardDataset.EngineRow er;
@@ -122,7 +171,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        public void WriteToDataset (CardDataset cds, CardPart part)
+        private void WriteToDataset (CardDataset cds, CardPart part)
         {
             if (part == CardPart.Program)
             {
@@ -153,7 +202,7 @@ namespace Mockingbird.HP.Execution
 
         #region Private Operations
 
-        private void Enter (object sender)
+        private void EnterIfNeeded ()
         {
             if (stackLift)
             {
@@ -239,17 +288,17 @@ namespace Mockingbird.HP.Execution
 
         #region Public Operations
 
-        public EngineMode Mode
+        public EngineModes Modes
         {
             set
             {
-                mode = value;
-                switch (mode)
+                modes = value;
+                switch (modes.execution)
                 {
-                    case EngineMode.Run:
+                    case EngineModes.Execution.Run:
                         display.Mode = DisplayMode.Numeric;
                         break;
-                    case EngineMode.WriteProgram:
+                    case EngineModes.Execution.WriteProgram:
                         display.Mode = DisplayMode.Instruction;
                         break;
                 }
@@ -279,7 +328,7 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_SST:
                     break;
                 default:
-                    display.DoneEntering ();
+                    validater.DoneEntering ();
                     break;
             }
 
@@ -327,7 +376,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_CHS:
                     bool changeSignDone;
-                    display.ChangeSign (out changeSignDone);
+                    validater.ChangeSign (out changeSignDone);
                     if (!changeSignDone)
                     {
                         stack.X = -stack.X;
@@ -353,7 +402,7 @@ namespace Mockingbird.HP.Execution
                     // Cancel the h key.
                     break;
                 case SymbolConstants.SYMBOL_DIGIT:
-                    display.EnterDigit (((Digit) instruction.Arguments [0]).Value);
+                    validater.EnterDigit (((Digit) instruction.Arguments [0]).Value);
                     if (!running)
                     {
                         // Flag 3 is the data entry flag.
@@ -361,12 +410,13 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_DISPLAY_X:
-                    switch (reader.Model) {
+                    switch (reader.Model)
+                    {
                         case CalculatorModel.HP67:
                             display.PauseAndBlink (5000);
                             break;
                         case CalculatorModel.HP97:
-                            display.Print ();
+                            printer.AppendNumeric ();
                             break;
                     }
                     break;
@@ -382,7 +432,7 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_DSP:
-                    ((IDigits) instruction.Arguments [0]).SetDigits (memory, display);
+                    ((IDigits) instruction.Arguments [0]).SetDigits (memory, formatter);
                     break;
                 case SymbolConstants.SYMBOL_DSZ:
                     if (memory.DecrementAndSkipIfZero ())
@@ -397,10 +447,10 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_EEX:
-                    display.EnterExponent ();
+                    validater.EnterExponent ();
                     break;
                 case SymbolConstants.SYMBOL_ENG:
-                    display.Format = DisplayFormat.Engineering;
+                    formatter.Format = Number.DisplayFormat.Engineering;
                     break;
                 case SymbolConstants.SYMBOL_ENTER:
                     stack.Enter ();
@@ -438,7 +488,7 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_FIX:
-                    display.Format = DisplayFormat.Fixed;
+                    formatter.Format = Number.DisplayFormat.Fixed;
                     break;
                 case SymbolConstants.SYMBOL_FRAC:
                     stack.Get (out x);
@@ -585,10 +635,10 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_PERIOD:
-                    display.EnterPeriod ();
+                    validater.EnterPeriod ();
                     break;
                 case SymbolConstants.SYMBOL_PI:
-                    Enter (this);
+                    EnterIfNeeded ();
                     stack.X = Math.PI;
                     break;
                 case SymbolConstants.SYMBOL_R_DOWN:
@@ -617,11 +667,11 @@ namespace Mockingbird.HP.Execution
                     unit = AngleUnit.Radian;
                     break;
                 case SymbolConstants.SYMBOL_RC_I:
-                    Enter (this);
+                    EnterIfNeeded ();
                     stack.X = memory.Recall (Memory.LetterRegister.I);
                     break;
                 case SymbolConstants.SYMBOL_RCL:
-                    Enter (this);
+                    EnterIfNeeded ();
                     stack.X = ((IAddress) instruction.Arguments [0]).Recall (memory);
                     break;
                 case SymbolConstants.SYMBOL_RCL_SIGMA_PLUS:
@@ -646,7 +696,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_RND:
                     stack.Get (out x); // To set Last X.
-                    display.Round ();
+                    formatter.Round (x);
                     break;
                 case SymbolConstants.SYMBOL_RTN:
                     bool stop;
@@ -663,7 +713,7 @@ namespace Mockingbird.HP.Execution
                     stack.Y = y;
                     break;
                 case SymbolConstants.SYMBOL_SCI:
-                    display.Format = DisplayFormat.Scientific;
+                    formatter.Format = Number.DisplayFormat.Scientific;
                     break;
                 case SymbolConstants.SYMBOL_SF:
                     flags [((Digit) instruction.Arguments [0]).Value] = true;
@@ -688,7 +738,7 @@ namespace Mockingbird.HP.Execution
                         case CalculatorModel.HP67:
                             break;
                         case CalculatorModel.HP97:
-                            //TODO: Printer.Advance ();
+                            printer.Advance ();
                             break;
                     }
                     break;
@@ -961,9 +1011,9 @@ namespace Mockingbird.HP.Execution
                 instruction.Symbol.Name + " " + instruction.ToString (),
                 classTraceSwitch.DisplayName);
 
-            switch (mode)
+            switch (modes.execution)
             {
-                case EngineMode.Run:
+                case EngineModes.Execution.Run:
                     switch (motion)
                     {
                         case KeystrokeMotion.Down:
@@ -1003,7 +1053,7 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
 
-                case EngineMode.WriteProgram:
+                case EngineModes.Execution.WriteProgram:
                     switch (motion)
                     {
                         case KeystrokeMotion.Down:

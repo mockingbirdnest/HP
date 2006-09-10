@@ -13,7 +13,7 @@
     <Position X="0.5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <FileName>BaseCalculator.cs</FileName>
-      <HashCode>AAAAACckgCAGAgAABFCAAAiCAJEAAAAAAAgAABACAAA=</HashCode>
+      <HashCode>AAAAACckgCAGAAAABFCAAAiCAJEAACAAAAgAABACAAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="executionThread" />
@@ -25,9 +25,9 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Class Name="Mockingbird.HP.Execution.BaseCalculator.PrinterImplementation" Collapsed="true">
+      <Class Name="Mockingbird.HP.Execution.BaseCalculator.PrinterMixin" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>PrinterImplementation.cs</NewMemberFileName>
+          <NewMemberFileName>PrinterMixin.cs</NewMemberFileName>
         </TypeIdentifier>
         <Lollipop Position="0.2" />
       </Class>
@@ -37,18 +37,18 @@
     <Position X="5.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Engine.cs</FileName>
-      <HashCode>QBAABACBAYIgAAaAAgIAAgAABAkMAIEAAQAAAIIQASU=</HashCode>
+      <HashCode>QBAABImBAQIgAEYAAgIAAgAARAkIAMGAAQgAAIIQASU=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="mode" />
       <Field Name="unit" />
+      <Field Name="modes" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Mockingbird.HP.Execution.Message">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Messages.cs</FileName>
-      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAABQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Kind" />
@@ -95,8 +95,8 @@
   <Class Name="Mockingbird.HP.Execution.ProgrammableCalculator">
     <Position X="3" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <FileName>CardImplementation.cs</FileName>
-      <HashCode>RIzAArCEgDACIACAADCQwAgACAgAQIAAAkAAAAAGQBA=</HashCode>
+      <FileName>CardMixin.cs</FileName>
+      <HashCode>RITAArCEgDAAIECAADCQwAgACAgAQIAAAkAAAIAGQBA=</HashCode>
     </TypeIdentifier>
     <Members>
       <Field Name="components" Hidden="true" />
@@ -105,9 +105,9 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Class Name="Mockingbird.HP.Execution.ProgrammableCalculator.CardImplementation" Collapsed="true">
+      <Class Name="Mockingbird.HP.Execution.ProgrammableCalculator.CardMixin" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>CardImplementation.cs</NewMemberFileName>
+          <NewMemberFileName>CardMixin.cs</NewMemberFileName>
         </TypeIdentifier>
         <Lollipop Position="0.2" />
       </Class>
@@ -117,7 +117,7 @@
     <Position X="0.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Thread.cs</FileName>
-      <HashCode>EAxBAAKAAAAAFGFAAAIAAAhAAIGQQQBQAABIAABIAAA=</HashCode>
+      <HashCode>EAxBAAKAAAAAFGFAAAIAAAhAAIGQQQBQAABIAABIAAE=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="downActions" />
@@ -139,17 +139,39 @@
       </Delegate>
     </NestedTypes>
   </Class>
-  <Interface Name="Mockingbird.HP.Execution.CardInterface">
+  <Struct Name="Mockingbird.HP.Execution.EngineModes">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Engine.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Mockingbird.HP.Execution.EngineModes.Execution">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Mockingbird.HP.Execution.EngineModes.Tracing">
+        <TypeIdentifier>
+          <NewMemberFileName>Engine.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Struct>
+  <Interface Name="Mockingbird.HP.Execution.ICardMixin">
     <Position X="5.25" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <FileName>CardInterface.cs</FileName>
+      <FileName>ICardMixin.cs</FileName>
       <HashCode>AAAAIAAgAAAABAAAAAAAAgAAAAAAAAAAAAAAAACAABA=</HashCode>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Mockingbird.HP.Execution.PrinterInterface">
+  <Interface Name="Mockingbird.HP.Execution.IPrinterMixin">
     <Position X="5.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
-      <FileName>PrinterInterface.cs</FileName>
+      <FileName>IPrinterMixin.cs</FileName>
       <HashCode>AAAAAAAAABAAAAAAIAAAAAAAAAAAAAAgAAAAAAAACAA=</HashCode>
     </TypeIdentifier>
   </Interface>
@@ -158,13 +180,6 @@
     <TypeIdentifier>
       <FileName>Engine.cs</FileName>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAQAAAAAAAAAAAAAAEAAAA=</HashCode>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Mockingbird.HP.Execution.EngineMode" Collapsed="true">
-    <Position X="7.5" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <FileName>Engine.cs</FileName>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAI=</HashCode>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Mockingbird.HP.Execution.MessageKind" Collapsed="true">

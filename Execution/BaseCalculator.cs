@@ -152,7 +152,7 @@ namespace Mockingbird.HP.Execution
         protected abstract void BusyUI ();
 
         // Called by the execution thread to notify the UI thread that of a state change.
-        public abstract EngineMode CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty);
+        public abstract EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty);
 
         // Power-off the calculator.
         protected abstract void PowerOff ();

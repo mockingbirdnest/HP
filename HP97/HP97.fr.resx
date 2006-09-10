@@ -209,10 +209,10 @@
   <data name="key0.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 63</value>
   </data>
-  <data name="toggleManNorm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 18</value>
+  <data name="toggleManTraceNorm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 8.5pt, style=Bold</value>
   </data>
-  <data name="toggleManNorm.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toggleManTraceNorm.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 32</value>
   </data>
   <data name="printerFeedButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">

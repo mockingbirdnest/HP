@@ -21,7 +21,7 @@ namespace Mockingbird.HP.Execution
         #region Public Data
 
         // Delegates used for cross-thread invocation.
-        public delegate EngineMode CrossThreadUINotification
+        public delegate EngineModes CrossThreadUINotification
             (bool threadIsBusy, bool programIsEmpty);
         public delegate FileStream CrossThreadFileOperation ();
 
@@ -324,7 +324,7 @@ namespace Mockingbird.HP.Execution
             {
                 if (mustUnbusyUI)
                 {
-                    engine.Mode = (EngineMode) display.Invoke
+                    engine.Modes = (EngineModes) display.Invoke
                         (notifyUI, new object [] { /*threadIsBusy*/ false, program.IsEmpty });
                 }
 

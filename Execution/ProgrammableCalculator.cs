@@ -90,18 +90,22 @@ namespace Mockingbird.HP.Execution
             saveAsToolStripMenuItem.Enabled = false;
         }
 
-        public override EngineMode CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
+        public override EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
         {
+            EngineModes modes;
+
+            modes.tracing = EngineModes.Tracing.Normal;
             if (threadIsBusy)
             {
                 BusyUI ();
-                return EngineMode.Run;
+                modes.execution = EngineModes.Execution.Run;
             }
             else
             {
                 UpdateUIToReflectProgram (programIsEmpty);
-                return UnbusyUIAndGetEngineMode ();
+                modes.execution = UnbusyUIAndGetEngineModes ();
             }
+            return modes;
         }
 
         protected override void PowerOff ()
@@ -161,7 +165,7 @@ namespace Mockingbird.HP.Execution
 
         protected override void UnbusyUI ()
         {
-            UnbusyUIAndGetEngineMode ();
+            UnbusyUIAndGetEngineModes ();
         }
 
         protected virtual void UpdateUIToReflectProgram (bool programIsEmpty)
@@ -331,7 +335,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        private EngineMode UnbusyUIAndGetEngineMode ()
+        private EngineModes.Execution UnbusyUIAndGetEngineModes ()
         {
             printToolStripMenuItem.Enabled = true;
             switch (toggleWprgmRun.Position)
@@ -343,7 +347,7 @@ namespace Mockingbird.HP.Execution
                     openToolStripMenuItem.Enabled = false;
                     saveToolStripMenuItem.Enabled = true;
                     saveAsToolStripMenuItem.Enabled = true;
-                    return EngineMode.WriteProgram;
+                    return EngineModes.Execution.WriteProgram;
 
                 case TogglePosition.Right:
 
@@ -352,10 +356,10 @@ namespace Mockingbird.HP.Execution
                     openToolStripMenuItem.Enabled = true;
                     saveToolStripMenuItem.Enabled = false;
                     saveAsToolStripMenuItem.Enabled = false;
-                    return EngineMode.Run;
+                    return EngineModes.Execution.Run;
 
                 default:
-                    return EngineMode.Run; // To make the compiler happy.
+                    return EngineModes.Execution.Run; // To make the compiler happy.
             }
         }
 

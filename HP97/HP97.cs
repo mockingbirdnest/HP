@@ -6,6 +6,7 @@ using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.HP97
@@ -152,6 +153,24 @@ namespace Mockingbird.HP.HP97
 
         #endregion
 
+        public override EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
+        {
+            EngineModes modes = base.CrossThreadNotifyUI (threadIsBusy, programIsEmpty);
+
+            switch (toggleManTraceNorm.Position) {
+                case TogglePosition.Left:
+                    modes.tracing = EngineModes.Tracing.Manual;
+                    break;
+                case TogglePosition.Center:
+                    modes.tracing = EngineModes.Tracing.Trace;
+                    break;
+                case TogglePosition.Right:
+                    modes.tracing = EngineModes.Tracing.Normal;
+                    break;
+            }
+            return modes;
+        }
+
         protected override bool KeyEventsPreempted
         {
             get
@@ -165,6 +184,21 @@ namespace Mockingbird.HP.HP97
             card.UpdateUIToReflectProgram (programIsEmpty);
         }
 
+        private void toggleManTraceNorm_ToggleMoved (object sender, TogglePosition position)
+        {
+            // See toggleWprgmRun_ToggleMoved for explanations.
+            if (Monitor.TryEnter (executionThread.IsBusy))
+            {
+                try
+                {
+                    executionThread.Enqueue (new RefreshMessage ());
+                }
+                finally
+                {
+                    Monitor.Exit (executionThread.IsBusy);
+                }
+            }
+        }
 
         /// <summary>
         /// The main entry point for the application.
