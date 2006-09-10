@@ -161,14 +161,14 @@
     <Compile Include="BaseCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CardImplementation.cs">
+    <Compile Include="CardMixin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ICard.cs" />
-    <Compile Include="PrinterImplementation.cs">
+    <Compile Include="ICardMixin.cs" />
+    <Compile Include="PrinterMixin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IPrinter.cs" />
+    <Compile Include="IPrinterMixin.cs" />
     <Compile Include="Engine.cs">
       <SubType>Code</SubType>
     </Compile>

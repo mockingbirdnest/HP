@@ -22,15 +22,17 @@ namespace Mockingbird.HP.Class_Library
         private double lastX;
         private double [] stack;
 
+        private Number.Formatter formatter;
         private Number.Validater validater;
 
         #endregion
 
         #region Contructors & Destructors
 
-        public Stack (IDisplay display, Number.Validater validater)
+        public Stack (IDisplay display, Number.Formatter formatter, Number.Validater validater)
         {
             this.display = display;
+            this.formatter = formatter;
             this.validater = validater;
             this.validater.NumberDone += new Number.ChangeEvent (UpdateXFromValidater);
 
@@ -65,12 +67,12 @@ namespace Mockingbird.HP.Class_Library
             set
             {
                 stack [(int) p] = value;
+                formatter.Value = value;
             }
         }
 
         private void UpdateXFromValidater (string mantissa, string exponent, double value)
         {
-            // TODO: Refresh the display, somehow.
             stack [(int) Position.x] = value;
         }
 

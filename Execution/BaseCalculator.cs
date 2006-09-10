@@ -62,7 +62,7 @@ namespace Mockingbird.HP.Execution
             // handlers).
             InitializeComponent ();
 
-            PostInitializeComponent (arguments, model);
+            PostInitializeComponent (arguments, model, new Control [] { display });
         }
 
         /// <summary>
@@ -103,7 +103,8 @@ namespace Mockingbird.HP.Execution
 
         protected abstract void InitializeComponent ();
 
-        protected virtual void PostInitializeComponent (string [] arguments, CalculatorModel model)
+        protected virtual void PostInitializeComponent
+            (string [] arguments, CalculatorModel model, Control [] sharedControls)
         {
 
             // Read the parser tables.
@@ -117,7 +118,11 @@ namespace Mockingbird.HP.Execution
             }
 
             // Initialize the execution thread and wait until it is ready to process requests.
-            executionThread = CreateExecutionThread (model, tags);
+            executionThread = new Execution.Thread
+                (model,
+                 tags,
+                 sharedControls,
+                 new Execution.Thread.CrossThreadUINotification (CrossThreadNotifyUI));
 
             // Now see if we were called from the command line with arguments.
             if (arguments.Length > 0)
@@ -145,10 +150,6 @@ namespace Mockingbird.HP.Execution
 
         // Make the UI busy so as to prevent user interactions.
         protected abstract void BusyUI ();
-
-        // Creates the execution thread that parses and processes UI requests.
-        protected abstract Execution.Thread CreateExecutionThread
-            (CalculatorModel model, string [] tags);
 
         // Called by the execution thread to notify the UI thread that of a state change.
         public abstract EngineMode CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty);

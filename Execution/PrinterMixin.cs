@@ -11,7 +11,7 @@ namespace Mockingbird.HP.Execution
         // Logically, this class is a mixin applicable to BaseCalculator.  It is nested within
         // BaseCalculator in order to have visibility to its internal data and methods.
 
-        public class PrinterImplementation : IPrinter
+        public class PrinterMixin : IPrinterMixin
         {
             #region Private Data
 
@@ -35,7 +35,7 @@ namespace Mockingbird.HP.Execution
 
             #region Constructor
 
-            public PrinterImplementation (BaseCalculator parent)
+            public PrinterMixin (BaseCalculator parent)
             {
                 this.parent = parent;
                 paperFeedTimer = new Timer ();

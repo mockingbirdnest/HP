@@ -16,9 +16,15 @@ namespace Mockingbird.HP.Control_Library
 
         #region Private Data
 
+        private const string mantissaExponentSeparator = "";
+
         private int emptyLinesAtTop;
         private Graphics graphics;
-        private int lines;
+        private int lines = 0;
+
+        private string exponent;
+        private Number.Formatter formatter;
+        private string mantissa;
 
         private System.Windows.Forms.ListBox listBox;
         /// <summary> 
@@ -38,9 +44,6 @@ namespace Mockingbird.HP.Control_Library
             // A graphic context will prove handy to align text.
             graphics = listBox.CreateGraphics ();
 
-            // Determine the number of lines in the list box, and fill them with empty strings.
-            lines = 0;
-            Printer_Resize (null, null);
             emptyLinesAtTop = lines;
         }
 
@@ -90,7 +93,6 @@ namespace Mockingbird.HP.Control_Library
             this.Controls.Add (this.listBox);
             this.Name = "Printer";
             this.Size = new System.Drawing.Size (192, 216);
-            this.Resize += new System.EventHandler (this.Printer_Resize);
             this.ResumeLayout (false);
 
         }
@@ -100,8 +102,20 @@ namespace Mockingbird.HP.Control_Library
 
         #region Event Handlers
 
-        private void Printer_Resize (object sender, EventArgs e)
+        private void RecordNumeric (string mantissa, string exponent, double value)
         {
+            this.mantissa = mantissa;
+            this.exponent = exponent;
+        }
+
+        #endregion
+
+        #region Overriding Operations
+
+        protected override void OnResize (EventArgs e)
+        {
+            base.OnResize (e);
+
             int newLines = listBox.DisplayRectangle.Height / listBox.ItemHeight;
 
             if (newLines > lines)
@@ -123,6 +137,19 @@ namespace Mockingbird.HP.Control_Library
                 emptyLinesAtTop = newLines;
             }
             lines = newLines;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public Number.Formatter Formatter
+        {
+            set
+            {
+                formatter = value;
+                formatter.FormattingChanged += new Number.ChangeEvent (RecordNumeric);
+            }
         }
 
         #endregion
@@ -175,6 +202,11 @@ namespace Mockingbird.HP.Control_Library
                     break;
             }
             ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
+        }
+
+        public void AppendNumeric ()
+        {
+            Append (mantissa + mantissaExponentSeparator + exponent, HorizontalAlignment.Right);
         }
 
         #endregion

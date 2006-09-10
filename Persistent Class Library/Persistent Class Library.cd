@@ -39,33 +39,69 @@
       <HashCode>QAgBAAAAQAAAAAAAAgAAAAAAABAQCgAAAAAogAAAAgA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Mockingbird.HP.Class_Library.Instruction" Collapsed="true">
+  <Class Name="Mockingbird.HP.Class_Library.Instruction">
     <Position X="2.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Instruction.cs</FileName>
       <HashCode>AAgAAAAAAAAAAAAAAIAAAAAAAAAgAAAIKAAACAAACAA=</HashCode>
     </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
   </Class>
-  <Class Name="Mockingbird.HP.Class_Library.Memory" Collapsed="true">
+  <Class Name="Mockingbird.HP.Class_Library.Memory">
     <Position X="4" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Memory.cs</FileName>
       <HashCode>CEAAAgAAAAIAAAAACEgCQREAAAMgAAEAAUCgARDAAAA=</HashCode>
     </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Mockingbird.HP.Class_Library.Memory.LetterRegister" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Memory.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Delegate Name="Mockingbird.HP.Class_Library.Memory.Operator" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Memory.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Enum Name="Mockingbird.HP.Class_Library.Memory.ΣRegister" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Memory.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
   </Class>
-  <Class Name="Mockingbird.HP.Class_Library.Program" Collapsed="true">
+  <Class Name="Mockingbird.HP.Class_Library.Program">
     <Position X="5.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Program.cs</FileName>
       <HashCode>wABgAEAMAgIABBgICAIIANCAAAEaGAEQCAAAEAJUUIA=</HashCode>
     </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Mockingbird.HP.Class_Library.Program.LetterLabel" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Program.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
   </Class>
   <Class Name="Mockingbird.HP.Class_Library.Stack">
     <Position X="7.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Stack.cs</FileName>
-      <HashCode>AAAAAIAQQAAAAIBACACAAQAAAgEEAJAAAAAAAAAAYAA=</HashCode>
+      <HashCode>AAAAAIEQQAAAAIBACACAAQAAAgEEAJAAAAAAAAAAYAA=</HashCode>
     </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <NestedTypes>
       <Enum Name="Mockingbird.HP.Class_Library.Stack.Position" Collapsed="true">
         <TypeIdentifier>
@@ -81,32 +117,37 @@
       <HashCode>AAAEAAABAAAACAEAAAECAAABAAAAIAAAAgAAAiAAAAA=</HashCode>
     </TypeIdentifier>
     <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Class Name="Mockingbird.HP.Class_Library.Number.Validater">
-        <TypeIdentifier>
-          <NewMemberFileName>Number.Validater.cs</NewMemberFileName>
-        </TypeIdentifier>
-        <Compartments>
-          <Compartment Name="Nested Types" Collapsed="false" />
-        </Compartments>
-      </Class>
-      <Class Name="Mockingbird.HP.Class_Library.Number.Formatter">
-        <TypeIdentifier>
-          <NewMemberFileName>Number.Formatter.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Enum Name="Mockingbird.HP.Class_Library.Number.DisplayFormat" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Number.Formatter.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
       <Delegate Name="Mockingbird.HP.Class_Library.Number.ChangeEvent" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Number.cs</NewMemberFileName>
         </TypeIdentifier>
       </Delegate>
+      <Enum Name="Mockingbird.HP.Class_Library.Number.DisplayFormat" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Number.Formatter.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Mockingbird.HP.Class_Library.Number.Formatter">
+        <TypeIdentifier>
+          <NewMemberFileName>Number.Formatter.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Compartments>
+          <Compartment Name="Fields" Collapsed="true" />
+        </Compartments>
+      </Class>
+      <Class Name="Mockingbird.HP.Class_Library.Number.Validater">
+        <TypeIdentifier>
+          <NewMemberFileName>Number.Validater.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Compartments>
+          <Compartment Name="Fields" Collapsed="true" />
+          <Compartment Name="Nested Types" Collapsed="false" />
+        </Compartments>
+      </Class>
     </NestedTypes>
   </Class>
   <Interface Name="Mockingbird.HP.Class_Library.IAddress">
@@ -131,7 +172,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Mockingbird.HP.Class_Library.IDisplay">
-    <Position X="5.75" Y="7.75" Width="1.5" />
+    <Position X="5.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>IDisplay.cs</FileName>
       <HashCode>AAAgAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

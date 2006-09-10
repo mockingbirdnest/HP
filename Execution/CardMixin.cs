@@ -13,7 +13,7 @@ namespace Mockingbird.HP.Execution
         // within ProgrammableCalculator in order to have visibility to its internal data and
         // methods.
 
-        public class CardImplementation : ICard
+        public class CardMixin : ICardMixin
         {
             #region Private Data
 
@@ -28,7 +28,7 @@ namespace Mockingbird.HP.Execution
 
             #region Constructor
 
-            public CardImplementation (ProgrammableCalculator parent)
+            public CardMixin (ProgrammableCalculator parent)
             {
                 this.parent = parent;
             }

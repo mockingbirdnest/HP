@@ -104,26 +104,26 @@ namespace Mockingbird.HP.Control_Library
             // numericTextBox
             // 
             this.numericTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)
-                | System.Windows.Forms.AnchorStyles.Right)));
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.numericTextBox.BackColor = System.Drawing.Color.Black;
-            this.numericTextBox.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte) (0)));
+            this.numericTextBox.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.numericTextBox.ForeColor = System.Drawing.Color.Red;
             this.numericTextBox.Location = new System.Drawing.Point (0, 0);
             this.numericTextBox.Name = "numericTextBox";
             this.numericTextBox.ReadOnly = true;
             this.numericTextBox.Size = new System.Drawing.Size (300, 40);
             this.numericTextBox.TabIndex = 0;
-            this.numericTextBox.Text = "0.00";
+            this.numericTextBox.Text = " 0.00          ";
             this.numericTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // instructionTextBox
             // 
             this.instructionTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)
-                | System.Windows.Forms.AnchorStyles.Right)));
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.instructionTextBox.BackColor = System.Drawing.Color.Black;
-            this.instructionTextBox.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte) (0)));
+            this.instructionTextBox.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.instructionTextBox.ForeColor = System.Drawing.Color.Red;
             this.instructionTextBox.Location = new System.Drawing.Point (0, 0);
             this.instructionTextBox.Name = "instructionTextBox";
@@ -136,10 +136,10 @@ namespace Mockingbird.HP.Control_Library
             // alphabeticTextBox
             // 
             this.alphabeticTextBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                | System.Windows.Forms.AnchorStyles.Left)
-                | System.Windows.Forms.AnchorStyles.Right)));
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.alphabeticTextBox.BackColor = System.Drawing.Color.Black;
-            this.alphabeticTextBox.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte) (0)));
+            this.alphabeticTextBox.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.alphabeticTextBox.ForeColor = System.Drawing.Color.Red;
             this.alphabeticTextBox.Location = new System.Drawing.Point (0, 0);
             this.alphabeticTextBox.Name = "alphabeticTextBox";
@@ -154,11 +154,12 @@ namespace Mockingbird.HP.Control_Library
             this.Controls.Add (this.alphabeticTextBox);
             this.Controls.Add (this.numericTextBox);
             this.Controls.Add (this.instructionTextBox);
-            this.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte) (0)));
+            this.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.ForeColor = System.Drawing.Color.Red;
             this.Name = "Display";
             this.Size = new System.Drawing.Size (300, 40);
             this.ResumeLayout (false);
+            this.PerformLayout ();
 
         }
 

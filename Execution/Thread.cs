@@ -54,6 +54,7 @@ namespace Mockingbird.HP.Execution
 
         private Display display;
         private CalculatorModel model;
+        private Printer printer;
         private string [] tags;
         private CrossThreadUINotification notifyUI;
         private System.Threading.Thread thread;
@@ -65,15 +66,31 @@ namespace Mockingbird.HP.Execution
         #region Constructors & Destructors
 
         public Thread
-            (Display display,
-            CalculatorModel model,
-            string [] tags,
-            CrossThreadUINotification notifyUI)
+            (CalculatorModel model,
+             string [] tags,
+             Control [] sharedControls,
+             CrossThreadUINotification notifyUI)
         {
-            this.display = display;
             this.model = model;
             this.tags = tags;
             this.notifyUI = notifyUI;
+            for (int i = 0; i < sharedControls.Length; i++)
+            {
+                if (sharedControls [i] is Display)
+                {
+                    Trace.Assert (this.display == null);
+                    this.display = (Display) sharedControls [i];
+                }
+                else if (sharedControls [i] is Printer)
+                {
+                    Trace.Assert (this.printer == null);
+                    this.printer = (Printer) sharedControls [i];
+                }
+                else
+                {
+                    Trace.Assert (false);
+                }
+            }
 
             // Create the execution thread and wait until it is ready to process requests.
             messageQueue = Queue.Synchronized (new Queue ());
@@ -114,11 +131,13 @@ namespace Mockingbird.HP.Execution
 
         private void ExecutionProcessKeystrokeMessage
             (KeystrokeMessage keystroke,
-            Engine engine,
-            Program program,
-            ref bool ignoreNextDown,
-            ref bool ignoreNextUp,
-            out bool mustUnbusyUI)
+             Engine           engine,
+             Number.Formatter formatter,
+             Program          program,
+             Stack            stack,
+             ref bool         ignoreNextDown,
+             ref bool         ignoreNextUp,
+             out bool         mustUnbusyUI)
         {
             try
             {
@@ -174,7 +193,7 @@ namespace Mockingbird.HP.Execution
             }
             catch (Interrupt)
             {
-                display.Value = display.Value; // Refresh the numeric display.
+                formatter.Value = stack.X; // Refresh the numeric display.
                 ignoreNextDown = true;
                 ignoreNextUp = true;
                 mustUnbusyUI = true;
@@ -233,12 +252,14 @@ namespace Mockingbird.HP.Execution
         }
 
         private void ExecutionProcessMessage
-            (Engine engine,
-            Program program,
-            Reader reader,
-            ref bool ignoreNextDown,
-            ref bool ignoreNextUp,
-            out bool mustReinitialize)
+            (Engine           engine,
+             Number.Formatter formatter,
+             Program          program,
+             Reader           reader,
+             Stack            stack,
+             ref bool         ignoreNextDown,
+             ref bool         ignoreNextUp,
+             out bool         mustReinitialize)
         {
             Message message = null;
             bool mustUnbusyUI = false;
@@ -255,11 +276,13 @@ namespace Mockingbird.HP.Execution
                 {
                     case MessageKind.Keystroke:
                         ExecutionProcessKeystrokeMessage ((KeystrokeMessage) message,
-                                                            engine,
-                                                            program,
-                                                            ref ignoreNextDown,
-                                                            ref ignoreNextUp,
-                                                            out mustUnbusyUI);
+                                                           engine,
+                                                           formatter,
+                                                           program,
+                                                           stack,
+                                                           ref ignoreNextDown,
+                                                           ref ignoreNextUp,
+                                                           out mustUnbusyUI);
                         break;
                     case MessageKind.Open:
                         ExecutionProcessOpenMessage ((OpenMessage) message,
@@ -279,7 +302,7 @@ namespace Mockingbird.HP.Execution
             }
             catch (Error)
             {
-                display.Value = display.Value; // Refresh the numeric display.
+                formatter.Value = stack.X; // Refresh the numeric display.
                 display.ShowText (Localization.Error, 500, 100);
                 ignoreNextDown = true;
                 ignoreNextUp = true;
@@ -327,11 +350,13 @@ namespace Mockingbird.HP.Execution
 
         private void Execution ()
         {
-            Engine engine;
-            Memory memory;
-            Program program;
-            Reader reader;
-            Stack stack;
+            Engine           engine;
+            Number.Formatter formatter;
+            Number.Validater validater;
+            Memory           memory;
+            Program          program;
+            Reader           reader;
+            Stack            stack;
 
             bool ignoreNextDown = false;
             bool ignoreNextUp = false;
@@ -349,15 +374,31 @@ namespace Mockingbird.HP.Execution
             for (; ; )
             {
 
+                // Create the component that do not depend on the display.
+                reader = new Reader ("Mockingbird.HP.Parser.Parser", "CGT", model, tags);
+                formatter = new Number.Formatter (2, Number.DisplayFormat.Fixed);
+                validater = new Number.Validater ();
+                if (printer != null)
+                {
+                    printer.Formatter = formatter;
+                }
+
                 // The display is initially black, as when the calculator is powered off.
+                display.Formatter = formatter;
                 display.ShowText ("", 0, 0);
 
                 // Create the components that depend on the display.
-                reader = new Reader ("Mockingbird.HP.Parser.Parser", "CGT", model, tags);
                 memory = new Memory (display);
                 program = new Program (display, reader);
-                stack = new Class_Library.Stack (display);
-                engine = new Engine (display, memory, program, reader, stack);
+                stack = new Stack (display, formatter, validater);
+                engine = new Engine (display,
+                                     formatter,
+                                     validater,
+                                     memory,
+                                     printer,
+                                     program,
+                                     reader,
+                                     stack);
                 engine.WaitForKeystroke +=
                     new Engine.TimedKeystrokeEvent (ExecutionWaitForKeystroke);
 
@@ -375,20 +416,20 @@ namespace Mockingbird.HP.Execution
                 PowerOn.WaitOne ();
 
                 // Reinitialize the display to its power-on state.
-                display.Digits = 2;
-                display.Format = DisplayFormat.Fixed;
                 display.Mode = DisplayMode.Numeric;
-                display.Value = 0;
+                formatter.Value = 0.0;
 
                 do
                 {
                     ExecutionProcessMessage
                         (engine,
-                        program,
-                        reader,
-                        ref ignoreNextDown,
-                        ref ignoreNextUp,
-                        out mustReinitialize);
+                         formatter,
+                         program,
+                         reader,
+                         stack,
+                         ref ignoreNextDown,
+                         ref ignoreNextUp,
+                         out mustReinitialize);
                 } while (!mustReinitialize);
             }
         }

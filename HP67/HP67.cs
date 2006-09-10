@@ -19,12 +19,12 @@ namespace Mockingbird.HP.HP67
 #if DESIGN
  Form
 #else
- ProgrammableCalculator, CardInterface
+ ProgrammableCalculator, ICardMixin
 #endif
     {
 
         // The silly language doesn't do mixins, so we use containment.  Sigh.
-        ProgrammableCalculator.CardImplementation card;
+        ProgrammableCalculator.CardMixin card;
 
         public HP67 (string [] arguments)
             : base (arguments, CalculatorModel.HP67)
@@ -34,7 +34,7 @@ namespace Mockingbird.HP.HP67
         protected override void PreInitializeComponent (string [] arguments, CalculatorModel model)
         {
             base.PreInitializeComponent (arguments, model);
-            card = new CardImplementation (this);
+            card = new CardMixin (this);
         }
 
         #region Implementation of The Card Interface

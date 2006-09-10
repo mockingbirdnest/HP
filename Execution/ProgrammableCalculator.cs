@@ -49,10 +49,11 @@ namespace Mockingbird.HP.Execution
         {
         }
 
-        protected override void PostInitializeComponent (string [] arguments, CalculatorModel model)
+        protected override void PostInitializeComponent
+            (string [] arguments, CalculatorModel model, Control [] sharedControls)
         {
             UpdateUIToReflectProgram (true);
-            base.PostInitializeComponent (arguments, model);
+            base.PostInitializeComponent (arguments, model, sharedControls);
         }
 
 
@@ -87,16 +88,6 @@ namespace Mockingbird.HP.Execution
             printToolStripMenuItem.Enabled = false;
             saveToolStripMenuItem.Enabled = false;
             saveAsToolStripMenuItem.Enabled = false;
-        }
-
-        protected override Execution.Thread CreateExecutionThread
-            (CalculatorModel model, string [] tags)
-        {
-            return new Execution.Thread
-                (display,
-                model,
-                tags,
-                new Execution.Thread.CrossThreadUINotification (CrossThreadNotifyUI));
         }
 
         public override EngineMode CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
