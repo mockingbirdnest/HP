@@ -5,14 +5,13 @@ using System.Windows.Forms;
 
 namespace Mockingbird.HP.Execution
 {
-
     public partial class BaseCalculator
     {
 
         // Logically, this class is a mixin applicable to BaseCalculator.  It is nested within
         // BaseCalculator in order to have visibility to its internal data and methods.
 
-        public class PrinterImplementation : PrinterInterface
+        public class PrinterImplementation : IPrinter
         {
             #region Private Data
 
@@ -21,7 +20,7 @@ namespace Mockingbird.HP.Execution
             private Mockingbird.HP.Control_Library.Printer _printerPaperRoll;
             private System.Windows.Forms.Button _printerFeedButton;
 
-            Timer paperFeedTimer;
+            private Timer paperFeedTimer;
 
             #endregion
 

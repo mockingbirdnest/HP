@@ -13,7 +13,7 @@ namespace Mockingbird.HP.Execution
         // within ProgrammableCalculator in order to have visibility to its internal data and
         // methods.
 
-        public class CardImplementation : CardInterface
+        public class CardImplementation : ICard
         {
             #region Private Data
 

@@ -14,6 +14,8 @@ namespace Mockingbird.HP.Testing
 	{
 		private System.Windows.Forms.PropertyGrid PropertyGrid;
 		private Mockingbird.HP.Control_Library.Display DisplayUnderTest;
+        private Mockingbird.HP.Class_Library.Number.Formatter formatter;
+        private Mockingbird.HP.Class_Library.Number.Validater validater;
 		private System.Windows.Forms.NumericUpDown numericUpDown;
 		private System.Windows.Forms.Label labelDigits;
 		private System.Windows.Forms.RadioButton radioButtonScientific;
@@ -45,6 +47,19 @@ namespace Mockingbird.HP.Testing
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+
+            formatter = new Mockingbird.HP.Class_Library.Number.Formatter
+                (2, Mockingbird.HP.Class_Library.Number.DisplayFormat.Fixed);
+            validater = new Mockingbird.HP.Class_Library.Number.Validater ();
+            validater.ExponentChanged +=
+                new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
+            validater.MantissaChanged +=
+                new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
+            validater.NumberDone +=
+                new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberDoneEvent);
+            validater.NumberStarted +=
+                new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
+            DisplayUnderTest.Formatter = formatter;
 		}
 
 		/// <summary>
@@ -118,7 +133,6 @@ namespace Mockingbird.HP.Testing
 			this.DisplayUnderTest.Name = "DisplayUnderTest";
 			this.DisplayUnderTest.Size = new System.Drawing.Size(310, 40);
 			this.DisplayUnderTest.TabIndex = 5;
-			this.DisplayUnderTest.Value = 0;
 			// 
 			// numericUpDown
 			// 
@@ -365,16 +379,26 @@ namespace Mockingbird.HP.Testing
 			Application.Run(new DisplayTest());
 		}
 
-		private void numericUpDown_ValueChanged(object sender, System.EventArgs e)
+        private void NumberChangeEvent (string mantissa, string exponent, double value)
+        {
+            DisplayUnderTest.ShowNumeric (mantissa, exponent);
+        }
+
+        private void NumberDoneEvent (string mantissa, string exponent, double value)
+        {
+            formatter.Value = value;
+        }
+
+        private void numericUpDown_ValueChanged (object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.Digits = (byte) numericUpDown.Value;
+			formatter.Digits = (byte) numericUpDown.Value;
 		}
 
 		private void radioButtonEngineering_CheckedChanged(object sender, System.EventArgs e)
 		{
 			if (radioButtonEngineering.Checked) 
 			{
-				DisplayUnderTest.Format = Mockingbird.HP.Control_Library.DisplayFormat.Engineering;
+				formatter.Format = Mockingbird.HP.Class_Library.Number.DisplayFormat.Engineering;
 			}
 		}
 
@@ -382,7 +406,7 @@ namespace Mockingbird.HP.Testing
 		{
 			if (radioButtonFixed.Checked) 
 			{
-				DisplayUnderTest.Format = Mockingbird.HP.Control_Library.DisplayFormat.Fixed;
+				formatter.Format = Mockingbird.HP.Class_Library.Number.DisplayFormat.Fixed;
 			}
 		}
 
@@ -390,34 +414,34 @@ namespace Mockingbird.HP.Testing
 		{
 			if (radioButtonScientific.Checked) 
 			{
-				DisplayUnderTest.Format = Mockingbird.HP.Control_Library.DisplayFormat.Scientific;
+				formatter.Format = Mockingbird.HP.Class_Library.Number.DisplayFormat.Scientific;
 			}
 		}
 
 		private void digit_Click(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.EnterDigit (byte.Parse ((string) ((Button) sender).Tag));
+			validater.EnterDigit (byte.Parse ((string) ((Button) sender).Tag));
 		}
 
 		private void eex_Click(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.EnterExponent ();
+			validater.EnterExponent ();
 		}
 
 		private void chs_Click(object sender, System.EventArgs e)
 		{
 			bool changeSignDone;
-			DisplayUnderTest.ChangeSign (out changeSignDone);
+			validater.ChangeSign (out changeSignDone);
 		}
 
 		private void period_Click(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.EnterPeriod ();
+			validater.EnterPeriod ();
 		}
 
 		private void done_Click(object sender, System.EventArgs e)
 		{
-			DisplayUnderTest.DoneEntering ();		
+			validater.DoneEntering ();		
 			PropertyGrid.Refresh ();
 		}
 

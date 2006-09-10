@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Mockingbird.HP.Execution
 {
-    public interface CardInterface
+    public interface ICard
     {
 
         // This interface supports a poor man's mixin.  The concrete calculator classes that have a
