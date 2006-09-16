@@ -7,6 +7,7 @@ namespace Mockingbird.HP.Class_Library
     public static class ThreadSafe
     {
         private delegate int CrossThreadGetInt (Control control);
+        private delegate object CrossThreadGetObjectFromInt (Control control, int i);
         private delegate string CrossThreadGetString (Control control);
         private delegate void CrossThread (Control control);
         private delegate void CrossThreadSetBool (Control control, bool b);
@@ -96,6 +97,32 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        public static int ItemsCount (Control control)
+        {
+            if (control.InvokeRequired)
+            {
+                return (int) control.Invoke
+                    (new CrossThreadGetInt (ItemsCount), new object [] { control });
+            }
+            else
+            {
+                return ((ListBox) control).Items.Count;
+            }
+        }
+
+        public static object ItemsGetItem (Control control, int i)
+        {
+            if (control.InvokeRequired)
+            {
+                return control.Invoke
+                    (new CrossThreadGetObjectFromInt (ItemsGetItem), new object [] { control, i });
+            }
+            else
+            {
+                return ((ListBox) control).Items [i];
+            }
+        }
+
         public static void ItemsInsert (Control control, int i, object o)
         {
             if (control.InvokeRequired)
@@ -119,6 +146,19 @@ namespace Mockingbird.HP.Class_Library
             else
             {
                 ((ListBox) control).Items.RemoveAt (i);
+            }
+        }
+
+        public static void ItemsSetItem (Control control, int i, object o)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetIntObject (ItemsSetItem), new object [] { control, i, o });
+            }
+            else
+            {
+                ((ListBox) control).Items [i] = o;
             }
         }
 

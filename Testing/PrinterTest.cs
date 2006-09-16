@@ -23,18 +23,19 @@ namespace Mockingbird.HP.Testing
 
         private void buttonAppend_Click (object sender, EventArgs e)
         {
-            if (radioButtonCenter.Checked)
-            {
-                PrinterUnderTest.Append (textBox.Text, HorizontalAlignment.Center);
-            }
-            else if (radioButtonLeft.Checked)
-            {
-                PrinterUnderTest.Append (textBox.Text, HorizontalAlignment.Left);
-            }
-            else if (radioButtonRight.Checked)
-            {
-                PrinterUnderTest.Append (textBox.Text, HorizontalAlignment.Right);
-            }
+            PrinterUnderTest.PrintNumeric (textBox.Text, ""); // TODO: Improve testability.
+            //if (radioButtonCenter.Checked)
+            //{
+            //    PrinterUnderTest.Append (textBox.Text, HorizontalAlignment.Center);
+            //}
+            //else if (radioButtonLeft.Checked)
+            //{
+            //    PrinterUnderTest.Append (textBox.Text, HorizontalAlignment.Left);
+            //}
+            //else if (radioButtonRight.Checked)
+            //{
+            //    PrinterUnderTest.Append (textBox.Text, HorizontalAlignment.Right);
+            //}
         }
     }
 }
