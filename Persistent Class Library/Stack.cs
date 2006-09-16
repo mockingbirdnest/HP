@@ -22,17 +22,15 @@ namespace Mockingbird.HP.Class_Library
         private double lastX;
         private double [] stack;
 
-        private Number.Formatter formatter;
         private Number.Validater validater;
 
         #endregion
 
         #region Contructors & Destructors
 
-        public Stack (IDisplay display, Number.Formatter formatter, Number.Validater validater)
+        public Stack (IDisplay display, Number.Validater validater)
         {
             this.display = display;
-            this.formatter = formatter;
             this.validater = validater;
             this.validater.NumberDone += new Number.ChangeEvent (UpdateXFromValidater);
 
@@ -66,8 +64,11 @@ namespace Mockingbird.HP.Class_Library
             }
             set
             {
+
+                // Writing x only causes the display to be modified for a top-level call, see
+                // property X.  We don't want all the stack management operation to trigger printer
+                // tracing.
                 stack [(int) p] = value;
-                formatter.Value = value;
             }
         }
 
@@ -127,6 +128,9 @@ namespace Mockingbird.HP.Class_Library
             set
             {
                 this [Position.x] = value;
+
+                // Update the display formatter.  This may in turn trigger printer tracing.
+                display.Formatter.Value = value;
             }
         }
 

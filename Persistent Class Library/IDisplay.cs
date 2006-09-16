@@ -8,5 +8,9 @@ namespace Mockingbird.HP.Class_Library
         void Pause (int ms);
         void ShowInstruction (string instruction, int step, bool setMode);
         void ShowMemory (int address, double register, int ms);
+        Number.Formatter Formatter
+        {
+            get;
+        }
     }
 }

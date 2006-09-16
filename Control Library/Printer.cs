@@ -2,6 +2,7 @@ using Mockingbird.HP.Class_Library;
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
@@ -145,6 +146,11 @@ namespace Mockingbird.HP.Control_Library
 
         public Number.Formatter Formatter
         {
+            get
+            {
+                Trace.Assert (formatter != null);
+                return formatter;
+            }
             set
             {
                 formatter = value;

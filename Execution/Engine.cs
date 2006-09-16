@@ -60,13 +60,12 @@ namespace Mockingbird.HP.Execution
         private AngleUnit unit;
 
         private Display display;
-        private Number.Formatter formatter;
-        private Number.Validater validater;
         private Memory memory;
         private Printer printer;
         private Program program;
         private Reader reader;
         private Stack stack;
+        private Number.Validater validater;
 
         #endregion
 
@@ -81,13 +80,12 @@ namespace Mockingbird.HP.Execution
         #region Constructors & Destructors
 
         public Engine (Display display,
-                       Number.Formatter formatter,
-                       Number.Validater validater,
                        Memory memory,
                        Printer printer,
                        Program program,
                        Reader reader,
-                       Stack stack)
+                       Stack stack,
+                       Number.Validater validater)
         {
             string [] appSettingsEnableBlur =
                 System.Configuration.ConfigurationManager.AppSettings.GetValues
@@ -104,13 +102,14 @@ namespace Mockingbird.HP.Execution
             flags = new bool [4];
             unit = AngleUnit.Degree;
             this.display = display;
-            this.formatter = formatter;
             this.validater = validater;
             this.memory = memory;
             this.printer = printer;
             this.program = program;
             this.reader = reader;
             this.stack = stack;
+            this.display.Formatter.FormattingChanged +=
+                new Number.ChangeEvent(DisplayFormattingChanged);
             this.validater.ExponentChanged += new Number.ChangeEvent (ExponentChanged);
             this.validater.MantissaChanged += new Number.ChangeEvent (MantissaChanged);
             this.validater.NumberDone += new Number.ChangeEvent (NumberDone);
@@ -122,6 +121,18 @@ namespace Mockingbird.HP.Execution
         #endregion
 
         #region Event Handlers
+
+        private void DisplayFormattingChanged (string mantissa, string exponent, double value)
+        {
+            if (printer != null)
+            {
+                printer.Formatter.Value = value;
+                if (modes.tracing == EngineModes.Tracing.Trace)
+                {
+                    printer.AppendNumeric ();
+                }
+            }
+        }
 
         private void ExponentChanged (string mantissa, string exponent, double value)
         {
@@ -135,13 +146,27 @@ namespace Mockingbird.HP.Execution
 
         private void NumberDone (string mantissa, string exponent, double value)
         {
+
             // Note that the stack also handles this event, but as far as I can tell the order of
             // notification doesn't matter.
-            if (printer != null && modes.tracing != EngineModes.Tracing.Manual)
+            display.Formatter.Value = value;
+            if (printer != null & modes.tracing == EngineModes.Tracing.Normal)
             {
-                printer.Append (mantissa + exponent, HorizontalAlignment.Right);
+
+                // In Trace mode this will have happened as part of DisplayFormattingChanged.  But
+                // in Normal mode we have to do it here, using the raw input.  The test below
+                // implements the special case described on page 41 of the documentation: in Fixed
+                // format if no exponent was typed and no truncation happened, then use the
+                // specified format.
+                if (display.Formatter.MustUseRaw)
+                {
+                    printer.Append (mantissa + exponent, HorizontalAlignment.Right);
+                }
+                else
+                {
+                    printer.AppendNumeric ();
+                }
             }
-            formatter.Value = value;
         }
 
         private void NumberStarted (string mantissa, string exponent, double value)
@@ -432,7 +457,12 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_DSP:
-                    ((IDigits) instruction.Arguments [0]).SetDigits (memory, formatter);
+                    IDigits argument = ((IDigits) instruction.Arguments [0]);
+                    argument.SetDigits (memory, display.Formatter);
+                    if (printer != null)
+                    {
+                        argument.SetDigits (memory, printer.Formatter);
+                    }
                     break;
                 case SymbolConstants.SYMBOL_DSZ:
                     if (memory.DecrementAndSkipIfZero ())
@@ -450,7 +480,11 @@ namespace Mockingbird.HP.Execution
                     validater.EnterExponent ();
                     break;
                 case SymbolConstants.SYMBOL_ENG:
-                    formatter.Format = Number.DisplayFormat.Engineering;
+                    display.Formatter.Format = Number.DisplayFormat.Engineering;
+                    if (printer != null)
+                    {
+                        printer.Formatter.Format = Number.DisplayFormat.Engineering;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_ENTER:
                     stack.Enter ();
@@ -488,7 +522,11 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_FIX:
-                    formatter.Format = Number.DisplayFormat.Fixed;
+                    display.Formatter.Format = Number.DisplayFormat.Fixed;
+                    if (printer != null)
+                    {
+                        printer.Formatter.Format = Number.DisplayFormat.Fixed;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_FRAC:
                     stack.Get (out x);
@@ -696,7 +734,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_RND:
                     stack.Get (out x); // To set Last X.
-                    formatter.Round (x);
+                    display.Formatter.Round (x); // TODO: Is this going to inform the printer?
                     break;
                 case SymbolConstants.SYMBOL_RTN:
                     bool stop;
@@ -713,7 +751,11 @@ namespace Mockingbird.HP.Execution
                     stack.Y = y;
                     break;
                 case SymbolConstants.SYMBOL_SCI:
-                    formatter.Format = Number.DisplayFormat.Scientific;
+                    display.Formatter.Format = Number.DisplayFormat.Scientific;
+                    if (printer != null)
+                    {
+                        printer.Formatter.Format = Number.DisplayFormat.Scientific;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_SF:
                     flags [((Digit) instruction.Arguments [0]).Value] = true;

@@ -49,7 +49,10 @@ namespace Mockingbird.HP.Testing
 			InitializeComponent();
 
             formatter = new Mockingbird.HP.Class_Library.Number.Formatter
-                (2, Mockingbird.HP.Class_Library.Number.DisplayFormat.Fixed);
+                (2,
+                 Mockingbird.HP.Class_Library.Number.DisplayFormat.Fixed,
+                 /*padMantissa*/ true,
+                 /*showPlusSignInExponent*/ false);
             validater = new Mockingbird.HP.Class_Library.Number.Validater ();
             validater.ExponentChanged +=
                 new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);

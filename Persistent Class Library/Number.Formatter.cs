@@ -25,17 +25,19 @@ namespace Mockingbird.HP.Class_Library
             private const double overflowLimit = 9.999999999E99;
             private const double underflowLimit = 1.0E-99;
 
-            private const string exponentTemplate = " 00;-00";
+            private const string exponentMetaTemplate = "*00;-00";
             private const string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
 
             private string engMantissaTemplate1;
             private string engMantissaTemplate10;
             private string engMantissaTemplate100;
+            private string exponentTemplate;
             private string fixMantissaTemplate;
             private string sciMantissaTemplate;
 
             private byte digits;
             private DisplayFormat format;
+            private bool padMantissa;
 
             private bool fixedUnderflowOverflow;
             private bool overflows;
@@ -53,8 +55,20 @@ namespace Mockingbird.HP.Class_Library
 
             #region Constructors & Destructors
 
-            public Formatter (byte digits, DisplayFormat format)
+            public Formatter
+                (byte digits, DisplayFormat format, bool padMantissa, bool showPlusSignInExponent)
             {
+                // Assign *before* calling Digits/Format below.
+                this.padMantissa = padMantissa;
+                if (showPlusSignInExponent)
+                {
+                    exponentTemplate = "+" + exponentMetaTemplate.Substring (1);
+                }
+                else
+                {
+                    exponentTemplate = " " + exponentMetaTemplate.Substring (1);
+                }
+
                 Digits = digits;
                 Format = format;
             }
@@ -264,8 +278,10 @@ namespace Mockingbird.HP.Class_Library
                                         string m = mantissa.ToString
                                             (fixMantissaTemplate, NumberFormatInfo.InvariantInfo);
                                         return m.Substring
-                                            (mantissaSignFirst, mantissaSignLength + mantissaLength);
-                                    };
+                                            (mantissaSignFirst,
+                                             Math.Min (m.Length,
+                                                       mantissaSignLength + mantissaLength));
+                                    }
                                 }
                             case DisplayFormat.Scientific:
                                 {
@@ -308,7 +324,14 @@ namespace Mockingbird.HP.Class_Library
 
                     Trace.Assert (value <= 9);
                     digits = value;
-                    blanks = new String (' ', 9 - value);
+                    if (padMantissa)
+                    {
+                        blanks = new String (' ', 9 - value);
+                    }
+                    else
+                    {
+                        blanks = "";
+                    }
 
                     if (value == 0)
                     {
@@ -358,6 +381,10 @@ namespace Mockingbird.HP.Class_Library
 
             public DisplayFormat Format
             {
+                get
+                {
+                    return format;
+                }
                 set
                 {
                     format = value;
@@ -367,6 +394,20 @@ namespace Mockingbird.HP.Class_Library
                         FormattingChanged (Mantissa, Exponent, Value);
                     }
                 }
+            }
+
+            public bool MustUseRaw
+            {
+                get
+                {
+
+                    // TODO: The test exponent != 0 is not really equivalent to "EEX was pressed".
+                    // TODO: This will lose trailing zeros.
+                    return format != Number.DisplayFormat.Fixed ||
+                           overflows ||
+                           exponent != 0 ||
+                           fixedUnderflowOverflow;
+               }
             }
 
             public double Value

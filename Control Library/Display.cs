@@ -1,5 +1,6 @@
 using Mockingbird.HP.Class_Library;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Threading;
@@ -69,7 +70,10 @@ namespace Mockingbird.HP.Control_Library
             InitializeComponent ();
 
             random = new Random ();
-            randomFormatter = new Number.Formatter (9, Number.DisplayFormat.Scientific);
+            randomFormatter = new Number.Formatter (9,
+                                                    Number.DisplayFormat.Scientific,
+                                                    /*padMantissa*/ true,
+                                                    /*showPlusSignInExponent*/ false);
 
             // Make the control non-selectable, otherwise the application will select its
             // text at startup.
@@ -233,6 +237,11 @@ namespace Mockingbird.HP.Control_Library
 
         public Number.Formatter Formatter
         {
+            get
+            {
+                Trace.Assert (formatter != null);
+                return formatter;
+            }
             set
             {
                 formatter = value;

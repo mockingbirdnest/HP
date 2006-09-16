@@ -132,7 +132,6 @@ namespace Mockingbird.HP.Execution
         private void ExecutionProcessKeystrokeMessage
             (KeystrokeMessage keystroke,
              Engine           engine,
-             Number.Formatter formatter,
              Program          program,
              Stack            stack,
              ref bool         ignoreNextDown,
@@ -193,7 +192,7 @@ namespace Mockingbird.HP.Execution
             }
             catch (Interrupt)
             {
-                formatter.Value = stack.X; // Refresh the numeric display.
+                display.Formatter.Value = stack.X; // Refresh the numeric display.
                 ignoreNextDown = true;
                 ignoreNextUp = true;
                 mustUnbusyUI = true;
@@ -253,7 +252,6 @@ namespace Mockingbird.HP.Execution
 
         private void ExecutionProcessMessage
             (Engine           engine,
-             Number.Formatter formatter,
              Program          program,
              Reader           reader,
              Stack            stack,
@@ -277,7 +275,6 @@ namespace Mockingbird.HP.Execution
                     case MessageKind.Keystroke:
                         ExecutionProcessKeystrokeMessage ((KeystrokeMessage) message,
                                                            engine,
-                                                           formatter,
                                                            program,
                                                            stack,
                                                            ref ignoreNextDown,
@@ -302,7 +299,7 @@ namespace Mockingbird.HP.Execution
             }
             catch (Error)
             {
-                formatter.Value = stack.X; // Refresh the numeric display.
+                display.Formatter.Value = stack.X; // Refresh the numeric display.
                 display.ShowText (Localization.Error, 500, 100);
                 ignoreNextDown = true;
                 ignoreNextUp = true;
@@ -351,12 +348,11 @@ namespace Mockingbird.HP.Execution
         private void Execution ()
         {
             Engine           engine;
-            Number.Formatter formatter;
-            Number.Validater validater;
             Memory           memory;
             Program          program;
             Reader           reader;
             Stack            stack;
+            Number.Validater validater;
 
             bool ignoreNextDown = false;
             bool ignoreNextUp = false;
@@ -376,29 +372,33 @@ namespace Mockingbird.HP.Execution
 
                 // Create the component that do not depend on the display.
                 reader = new Reader ("Mockingbird.HP.Parser.Parser", "CGT", model, tags);
-                formatter = new Number.Formatter (2, Number.DisplayFormat.Fixed);
                 validater = new Number.Validater ();
                 if (printer != null)
                 {
-                    printer.Formatter = formatter;
+                    printer.Formatter = new Number.Formatter (2,
+                                                              Number.DisplayFormat.Fixed,
+                                                              /*padMantissa*/ false,
+                                                              /*showPlusSignInExponent*/ true);
                 }
 
                 // The display is initially black, as when the calculator is powered off.
-                display.Formatter = formatter;
+                display.Formatter = new Number.Formatter (2,
+                                                          Number.DisplayFormat.Fixed,
+                                                          /*padMantissa*/ true,
+                                                          /*showPlusSignInExponent*/ false);
                 display.ShowText ("", 0, 0);
 
                 // Create the components that depend on the display.
                 memory = new Memory (display);
                 program = new Program (display, reader);
-                stack = new Stack (display, formatter, validater);
+                stack = new Stack (display, validater);
                 engine = new Engine (display,
-                                     formatter,
-                                     validater,
                                      memory,
                                      printer,
                                      program,
                                      reader,
-                                     stack);
+                                     stack,
+                                     validater);
                 engine.WaitForKeystroke +=
                     new Engine.TimedKeystrokeEvent (ExecutionWaitForKeystroke);
 
@@ -417,13 +417,12 @@ namespace Mockingbird.HP.Execution
 
                 // Reinitialize the display to its power-on state.
                 display.Mode = DisplayMode.Numeric;
-                formatter.Value = 0.0;
+                display.Formatter.Value = 0.0;
 
                 do
                 {
                     ExecutionProcessMessage
                         (engine,
-                         formatter,
                          program,
                          reader,
                          stack,
