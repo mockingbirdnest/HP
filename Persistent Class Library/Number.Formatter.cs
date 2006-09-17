@@ -317,6 +317,10 @@ namespace Mockingbird.HP.Class_Library
 
             public byte Digits
             {
+                get
+                {
+                    return digits;
+                }
                 set
                 {
                     string zeros;
@@ -372,10 +376,6 @@ namespace Mockingbird.HP.Class_Library
                     sciMantissaTemplate = fixMantissaTemplate;
 
                     Value = Value;
-                    if (FormattingChanged != null)
-                    {
-                        FormattingChanged (Mantissa, Exponent, Value);
-                    }
                 }
             }
 
@@ -389,10 +389,6 @@ namespace Mockingbird.HP.Class_Library
                 {
                     format = value;
                     Value = Value;
-                    if (FormattingChanged != null)
-                    {
-                        FormattingChanged (Mantissa, Exponent, Value);
-                    }
                 }
             }
 
@@ -401,8 +397,10 @@ namespace Mockingbird.HP.Class_Library
                 get
                 {
 
-                    // TODO: The test exponent != 0 is not really equivalent to "EEX was pressed".
-                    // TODO: This will lose trailing zeros.
+                    // This gives a number of conditions under which the raw input (as opposed to:
+                    // the formatted input) must be echoed by the printer.  This is *not* complete,
+                    // though: there are other conditions (no exponent entered, no truncation) that
+                    // can only be checked based on the raw input given by the validater.
                     return format != Number.DisplayFormat.Fixed ||
                            overflows ||
                            exponent != 0 ||

@@ -13,7 +13,7 @@ namespace Mockingbird.HP.Control_Library
     /// <summary>
     /// The dot-matrix printer of the HP97 calculator
     /// </summary>
-    public class Printer : System.Windows.Forms.UserControl
+    public class Printer : UserControl, Mockingbird.HP.Class_Library.IPrinter
     {
 
         #region Private Data
@@ -25,10 +25,11 @@ namespace Mockingbird.HP.Control_Library
             Step
         }
 
-        private static string defaultTag = new string (' ', tagColumnWidth - 3) + "***";
+        private static string defaultTag = new string (' ', symbolicWidth - 3) + "***";
         private const string mantissaExponentSeparator = "";
         private const string stepTemplate = "000  ";
-        private const byte tagColumnWidth = 5;
+        private const byte keycodeWidth = 10;
+        private const byte symbolicWidth = 5;
 
         private Column lastPrintedColumn;
         private int emptyLinesAtTop;
@@ -194,6 +195,36 @@ namespace Mockingbird.HP.Control_Library
             ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
         }
 
+        private void Replace (string s, int index, HorizontalAlignment alignment)
+        {
+            int padding;
+
+            for (padding = 1; ; padding++)
+            {
+                if (graphics.MeasureString (new string (' ', padding) + s, listBox.Font).Width >
+                    listBox.DisplayRectangle.Width)
+                {
+                    padding--;
+                    break;
+                }
+            }
+
+            switch (alignment)
+            {
+                case HorizontalAlignment.Center:
+                    ThreadSafe.ItemsSetItem (listBox, index, new string (' ', padding / 2) + s);
+                    break;
+                case HorizontalAlignment.Left:
+                    ThreadSafe.ItemsSetItem (listBox, index, s);
+                    ThreadSafe.ItemsAdd (listBox, s);
+                    break;
+                case HorizontalAlignment.Right:
+                    ThreadSafe.ItemsSetItem (listBox, index, new string (' ', padding) + s);
+                    break;
+            }
+            ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
+        }
+
         private void PrintNumeric (string s)
         {
 
@@ -259,9 +290,16 @@ namespace Mockingbird.HP.Control_Library
             lastPrintedColumn = Column.Step;
         }
 
-        public void PrintInstruction (string s)
+        public void PrintInstruction (Instruction instruction, bool showKeycodes)
         {
-            Trace.Assert (s.Length <= tagColumnWidth);
+            string s = instruction.TraceableText;
+
+            Trace.Assert (s.Length <= symbolicWidth);
+            s = s.PadLeft (symbolicWidth);
+            if (showKeycodes)
+            {
+                s += instruction.Text.PadLeft (keycodeWidth);
+            }
             switch (lastPrintedColumn)
             {
                 case Column.Numeric:
@@ -270,11 +308,8 @@ namespace Mockingbird.HP.Control_Library
                         int count = ThreadSafe.ItemsCount (listBox);
                         string lastItem = (string) ThreadSafe.ItemsGetItem(listBox, count - 1);
 
-                        lastItem = lastItem.Substring (0, lastItem.Length - tagColumnWidth) +
-                                   s.PadLeft (tagColumnWidth, ' ');
-                        ThreadSafe.ItemsSetItem (listBox, count - 1, lastItem);
-                        ThreadSafe.SetTopIndex
-                            (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
+                        lastItem = lastItem.Substring (0, lastItem.Length - symbolicWidth) + s;
+                        Replace (lastItem.Trim (), count - 1, HorizontalAlignment.Right);
                         break;
                     }
                 case Column.Instruction:

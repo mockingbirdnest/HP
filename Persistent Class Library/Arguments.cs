@@ -9,505 +9,542 @@ using System.Reflection;
 namespace Mockingbird.HP.Class_Library
 {
 
-	#region Root & Interfaces for Arguments
+    #region Root & Interfaces for Arguments
 
-	/// <summary>
-	/// An argument for an instructions of an HP calculator.
-	/// </summary>
-	public abstract class Argument : Object
-	{
-		protected abstract string PersistableText
-		{
-			get;
-		}
+    /// <summary>
+    /// An argument for an instructions of an HP calculator.
+    /// </summary>
+    public abstract class Argument : Object
+    {
+        protected abstract string PersistableText
+        {
+            get;
+        }
 
-		public abstract string PrintableText
-		{
-			get;
-		}
+        public abstract string PrintableText
+        {
+            get;
+        }
 
-		public abstract string Unparse (Reader reader);
+        public abstract string TraceableText
+        {
+            get;
+        }
 
-		public static object ReadFromArgumentRow (CardDataset.ArgumentRow ar)
-		{
-			Type type = Type.GetType (ar.Type);
-			ConstructorInfo [] constructors =
-				type.GetConstructors (
-					BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+        public abstract string Unparse (Reader reader);
 
-			// To build an instance of argument we favor parameterless constructors and
-			// constructors that take a single character.  This could be modified if needed.
-			foreach (ConstructorInfo c in constructors) 
-			{
-				ParameterInfo [] parameters = c.GetParameters ();
-				switch (parameters.Length) 
-				{
-					case 0:
-						return c.Invoke (new object [0]);
-					case 1:
-						if (parameters [0].ParameterType == typeof (char))
-						{
-							char ch = ar.Value [0];
-							return c.Invoke (new object [1] {ch});
-						}
-						break;
-					default:
-						Trace.Assert (false);
-						return null;
-				}
-			}
-			Trace.Assert (false);
-			return null;
-		}
+        public static object ReadFromArgumentRow (CardDataset.ArgumentRow ar)
+        {
+            Type type = Type.GetType (ar.Type);
+            ConstructorInfo [] constructors =
+                type.GetConstructors (
+                    BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
 
-		public void WriteToArgumentRow (CardDataset.ArgumentRow ar)
-		{
-			ar.Type = this.GetType ().ToString ();
-			ar.Value = PersistableText;
-		}
-	}
+            // To build an instance of argument we favor parameterless constructors and
+            // constructors that take a single character.  This could be modified if needed.
+            foreach (ConstructorInfo c in constructors)
+            {
+                ParameterInfo [] parameters = c.GetParameters ();
+                switch (parameters.Length)
+                {
+                    case 0:
+                        return c.Invoke (new object [0]);
+                    case 1:
+                        if (parameters [0].ParameterType == typeof (char))
+                        {
+                            char ch = ar.Value [0];
+                            return c.Invoke (new object [1] { ch });
+                        }
+                        break;
+                    default:
+                        Trace.Assert (false);
+                        return null;
+                }
+            }
+            Trace.Assert (false);
+            return null;
+        }
 
-	public interface IAddress 
-	{
-		double Recall (Memory m);
-		void Store (Memory m, double x);
-		void Store (Memory m, double x, Memory.Operator o);
-	}
+        public void WriteToArgumentRow (CardDataset.ArgumentRow ar)
+        {
+            ar.Type = this.GetType ().ToString ();
+            ar.Value = PersistableText;
+        }
+    }
 
-	public interface IDigits
-	{
-		void SetDigits (Memory m, Number.Formatter f);
-	}
+    public interface IAddress
+    {
+        double Recall (Memory m);
+        void Store (Memory m, double x);
+        void Store (Memory m, double x, Memory.Operator o);
+    }
 
-	public interface ILabel
-	{
-		void Goto (Memory m, Program p);
-		void Gosub (Memory m, Program p);
-	}
+    public interface IDigits
+    {
+        void SetDigits (Memory m, Number.Formatter f);
+    }
 
-	#endregion
+    public interface ILabel
+    {
+        void Goto (Memory m, Program p);
+        void Gosub (Memory m, Program p);
+    }
 
-	#region Concrete Arguments
+    #endregion
 
-	public class Digit : Argument, IAddress, IDigits, ILabel
-	{
-		private const string digitTemplate = "00";
-		private byte digit;
+    #region Concrete Arguments
 
-		private Digit (char c)
-		{
-			digit = byte.Parse (new String (c, 1));
-		}
+    public class Digit : Argument, IAddress, IDigits, ILabel
+    {
+        private const string digitTemplate = "00";
+        private byte digit;
 
-		public Digit (byte d) 
-		{
-			digit = d;
-		}
+        private Digit (char c)
+        {
+            digit = byte.Parse (new String (c, 1));
+        }
 
-		protected override string PersistableText
-		{
-			get
-			{
-				return digit.ToString ();
-			}
-		}
+        public Digit (byte d)
+        {
+            digit = d;
+        }
 
-		public override string PrintableText
-		{
-			get
-			{
-				return PersistableText;
-			}
-		}
+        protected override string PersistableText
+        {
+            get
+            {
+                return digit.ToString ();
+            }
+        }
 
-		public byte Value 
-		{
-			get 
-			{
-				return digit;
-			}
-		}
+        public override string PrintableText
+        {
+            get
+            {
+                return PersistableText;
+            }
+        }
 
-		public override string Unparse (Reader reader) 
-		{
-			return digit.ToString (digitTemplate, NumberFormatInfo.InvariantInfo);
-		}
+        public override string TraceableText
+        {
+            get
+            {
+                return PersistableText;
+            }
+        }
 
-		public double Recall (Memory m) 
-		{
-			return m.Recall (digit);
-		}
+        public byte Value
+        {
+            get
+            {
+                return digit;
+            }
+        }
 
-		public void Store (Memory m, double x)
-		{
-			m.Store (x, digit);
-		}
+        public override string Unparse (Reader reader)
+        {
+            return digit.ToString (digitTemplate, NumberFormatInfo.InvariantInfo);
+        }
 
-		public void Store (Memory m, double x, Memory.Operator o)
-		{
-			m.Store (x, digit, o);
-		}
+        public double Recall (Memory m)
+        {
+            return m.Recall (digit);
+        }
 
-		public void SetDigits (Memory m, Number.Formatter f)
-		{
-			f.Digits = digit;
-		}
+        public void Store (Memory m, double x)
+        {
+            m.Store (x, digit);
+        }
 
-		public void Goto (Memory m, Program p)
-		{
-			p.Goto (digit);
-		}
+        public void Store (Memory m, double x, Memory.Operator o)
+        {
+            m.Store (x, digit, o);
+        }
 
-		public void Gosub (Memory m, Program p)
-		{
-			p.Gosub (digit);
-		}
-	}
+        public void SetDigits (Memory m, Number.Formatter f)
+        {
+            f.Digits = digit;
+        }
 
-	public class Indexed : Argument, IAddress, IDigits, ILabel
-	{
-		public Indexed () 
-		{
-		}
+        public void Goto (Memory m, Program p)
+        {
+            p.Goto (digit);
+        }
 
-		protected override string PersistableText
-		{
-			get 
-			{
-				return "";
-			}
-		}
+        public void Gosub (Memory m, Program p)
+        {
+            p.Gosub (digit);
+        }
+    }
 
-		public override string PrintableText
-		{
-			get
-			{
-				return "(i)";
-			}
-		}
+    public class Indexed : Argument, IAddress, IDigits, ILabel
+    {
+        public Indexed ()
+        {
+        }
 
-		public override string Unparse (Reader reader) 
-		{
-			return reader.Unparse
-				(new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUB_I, "SUB_I"));
-		}
+        protected override string PersistableText
+        {
+            get
+            {
+                return "";
+            }
+        }
 
-		public double Recall (Memory m) 
-		{
-			return m.RecallIndexed ();
-		}
+        public override string PrintableText
+        {
+            get
+            {
+                return "(i)";
+            }
+        }
 
-		public void Store (Memory m, double x)
-		{
-			m.StoreIndexed (x);
-		}
+        public override string TraceableText
+        {
+            get
+            {
+                return "i";
+            }
+        }
 
-		public void Store (Memory m, double x, Memory.Operator o)
-		{
-			m.StoreIndexed (x, o);
-		}
+        public override string Unparse (Reader reader)
+        {
+            return reader.Unparse
+                (new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUB_I, "SUB_I"));
+        }
 
-		public void SetDigits (Memory m, Number.Formatter f)
-		{
-			byte digits = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
-			if (digits > 9) 
-			{
-				throw new Error ();
-			}
-			else 
-			{
-				f.Digits = digits;
-			}
-		}
+        public double Recall (Memory m)
+        {
+            return m.RecallIndexed ();
+        }
 
-		public void Goto (Memory m, Program p)
-		{
-			int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
+        public void Store (Memory m, double x)
+        {
+            m.StoreIndexed (x);
+        }
 
-			if (label <= -1000 || label >= 20) 
-			{
-				throw new Error ();
-			}
-			else if (label < 0)
-			{
-				// The - 1 is because the program counter has already moved to the next
-				// instruction.
-				p.GotoRelative (label - 1);
-			}
-			else
-			{
-				p.Goto ((byte) label);
-			}
-		}
+        public void Store (Memory m, double x, Memory.Operator o)
+        {
+            m.StoreIndexed (x, o);
+        }
 
-		public void Gosub (Memory m, Program p)
-		{
-			int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
+        public void SetDigits (Memory m, Number.Formatter f)
+        {
+            byte digits = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+            if (digits > 9)
+            {
+                throw new Error ();
+            }
+            else
+            {
+                f.Digits = digits;
+            }
+        }
 
-			if (label <= -1000 || label >= 20) 
-			{
-				throw new Error ();
-			}
-			else if (label < 0)
-			{
-				// The - 1 is because the program counter has already moved to the next
-				// instruction.
-				p.GosubRelative (label - 1);
-			}
-			else
-			{
-				p.Gosub ((byte) label);
-			}
-		}
-	}
+        public void Goto (Memory m, Program p)
+        {
+            int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
 
-	public class Letter : Argument, IAddress, ILabel
-	{
-		private char letter;
+            if (label <= -1000 || label >= 20)
+            {
+                throw new Error ();
+            }
+            else if (label < 0)
+            {
+                // The - 1 is because the program counter has already moved to the next
+                // instruction.
+                p.GotoRelative (label - 1);
+            }
+            else
+            {
+                p.Goto ((byte) label);
+            }
+        }
 
-		public Letter (char l) 
-		{
-			// We only expect to get a lower case letter here when reading from a dataset.
-			Trace.Assert ((l >= 'A' && l <= 'E') || (l >= 'a' && l <= 'e'));
-			letter = l;
-		}
+        public void Gosub (Memory m, Program p)
+        {
+            int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
 
-		public bool IsLower 
-		{
-			get 
-			{
-				return (letter >= 'a' && letter <= 'e');
-			}
-		}
+            if (label <= -1000 || label >= 20)
+            {
+                throw new Error ();
+            }
+            else if (label < 0)
+            {
+                // The - 1 is because the program counter has already moved to the next
+                // instruction.
+                p.GosubRelative (label - 1);
+            }
+            else
+            {
+                p.Gosub ((byte) label);
+            }
+        }
+    }
 
-		protected override string PersistableText
-		{
-			get 
-			{
-				return new String (letter, 1);
-			}
-		}
+    public class Letter : Argument, IAddress, ILabel
+    {
+        private char letter;
 
-		public override string PrintableText
-		{
-			get
-			{
-				return PersistableText;
-			}
-		}
+        public Letter (char l)
+        {
+            // We only expect to get a lower case letter here when reading from a dataset.
+            Trace.Assert ((l >= 'A' && l <= 'E') || (l >= 'a' && l <= 'e'));
+            letter = l;
+        }
 
-		public char Value 
-		{
-			get 
-			{
-				return letter;
-			}
-		}
+        public bool IsLower
+        {
+            get
+            {
+                return (letter >= 'a' && letter <= 'e');
+            }
+        }
 
-		public override string Unparse (Reader reader) 
-		{
-			if (IsLower) 
-			{
-				// Use the special nonterminals of the grammar that represent lowercase letters. 
-				return reader.Unparse (reader.ToSymbol ("LC_" + letter));
-			}
-			else 
-			{
-				return reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
-			}
-		}
+        protected override string PersistableText
+        {
+            get
+            {
+                return new String (letter, 1);
+            }
+        }
 
-		public void ToLower ()
-		{
-			letter = char.ToLower (letter);
-		}
+        public override string PrintableText
+        {
+            get
+            {
+                return PersistableText;
+            }
+        }
 
-		public double Recall (Memory m) 
-		{
-			return m.Recall ((Memory.LetterRegister) Enum.Parse
-				(typeof (Memory.LetterRegister), new String (letter, 1)));
-		}
+        public override string TraceableText
+        {
+            get
+            {
+                return PersistableText;
+            }
+        }
 
-		public void Store (Memory m, double x)
-		{
-			m.Store (x, (Memory.LetterRegister) Enum.Parse
-				(typeof (Memory.LetterRegister), new String (letter, 1)));
-		}
+        public char Value
+        {
+            get
+            {
+                return letter;
+            }
+        }
 
-		public void Store (Memory m, double x, Memory.Operator o)
-		{
-			// A letter is not an operable memory.
-			Trace.Assert (false);
-		}
+        public override string Unparse (Reader reader)
+        {
+            if (IsLower)
+            {
+                // Use the special nonterminals of the grammar that represent lowercase letters. 
+                return reader.Unparse (reader.ToSymbol ("LC_" + letter));
+            }
+            else
+            {
+                return reader.Unparse (reader.ToSymbol (new string (char.ToUpper (letter), 1)));
+            }
+        }
 
-		public void Goto (Memory m, Program p)
-		{
-			p.Goto ((Program.LetterLabel) Enum.Parse
-				(typeof (Program.LetterLabel), new String (letter, 1)));
-		}
+        public void ToLower ()
+        {
+            letter = char.ToLower (letter);
+        }
 
-		public void Gosub (Memory m, Program p)
-		{
-			p.Gosub ((Program.LetterLabel)
-				Enum.Parse (typeof (Program.LetterLabel), new String (letter, 1)));
-		}
-	}
+        public double Recall (Memory m)
+        {
+            return m.Recall ((Memory.LetterRegister) Enum.Parse
+                (typeof (Memory.LetterRegister), new String (letter, 1)));
+        }
 
-	public class Operator : Argument
-	{
-		private SymbolNonterminal additionSymbol =
-			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_ADDITION, "ADDITION");
-		private SymbolNonterminal subtractionSymbol =
-			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUBTRACTION, "SUBTRACTION");
-		private SymbolNonterminal multiplicationSymbol =
-			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_MULTIPLICATION, "MULTIPLICATION");
-		private SymbolNonterminal divisionSymbol =
-			new SymbolNonterminal ((int) SymbolConstants.SYMBOL_DIVISION, "DIVISION");
-	
-		private Memory.Operator op;
+        public void Store (Memory m, double x)
+        {
+            m.Store (x, (Memory.LetterRegister) Enum.Parse
+                (typeof (Memory.LetterRegister), new String (letter, 1)));
+        }
 
-		static public double Addition (double x, double y)
-		{
-			return x + y;
-		}
+        public void Store (Memory m, double x, Memory.Operator o)
+        {
+            // A letter is not an operable memory.
+            Trace.Assert (false);
+        }
 
-		static public double Subtraction (double x, double y)
-		{
-			return x - y;
-		}
+        public void Goto (Memory m, Program p)
+        {
+            p.Goto ((Program.LetterLabel) Enum.Parse
+                (typeof (Program.LetterLabel), new String (letter, 1)));
+        }
 
-		static public double Multiplication (double x, double y)
-		{
-			return x * y;
-		}
+        public void Gosub (Memory m, Program p)
+        {
+            p.Gosub ((Program.LetterLabel)
+                Enum.Parse (typeof (Program.LetterLabel), new String (letter, 1)));
+        }
+    }
 
-		static public double Division (double x, double y)
-		{
-			if (y == 0.0) 
-			{
-				throw new Error ();
-			}
-			else
-			{
-				return x / y;
-			}
-		}
+    public class Operator : Argument
+    {
+        private SymbolNonterminal additionSymbol =
+            new SymbolNonterminal ((int) SymbolConstants.SYMBOL_ADDITION, "ADDITION");
+        private SymbolNonterminal subtractionSymbol =
+            new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUBTRACTION, "SUBTRACTION");
+        private SymbolNonterminal multiplicationSymbol =
+            new SymbolNonterminal ((int) SymbolConstants.SYMBOL_MULTIPLICATION, "MULTIPLICATION");
+        private SymbolNonterminal divisionSymbol =
+            new SymbolNonterminal ((int) SymbolConstants.SYMBOL_DIVISION, "DIVISION");
 
-		private Operator (char c) 
-		{
-			switch (c) 
-			{
-				case '+' :
-					op = new Memory.Operator (Addition);
-					break;
-				case '-' :
-					op = new Memory.Operator (Subtraction);
-					break;
-				case '*' :
-					op = new Memory.Operator (Multiplication);
-					break;
-				case '/' :
-					op = new Memory.Operator (Division);
-					break;
-			}
-		}
+        private Memory.Operator op;
 
-		public Operator (Memory.Operator o)
-		{
-			op = o;
-		}
+        static public double Addition (double x, double y)
+        {
+            return x + y;
+        }
 
-		protected override string PersistableText
-		{
-			get 
-			{
-				if (op == new Memory.Operator (Addition))
-				{
-					return "+";
-				}
-				else if (op == new Memory.Operator (Subtraction))
-				{
-					return "-";
-				}
-				else if (op == new Memory.Operator (Multiplication))
-				{
-					return "*";
-				}
-				else if (op == new Memory.Operator (Division))
-				{
-					return "/";
-				}
-				else
-				{
-					Trace.Assert (false);
-					return ""; // To make the compiler happy.
-				}
-			}
-		}
+        static public double Subtraction (double x, double y)
+        {
+            return x - y;
+        }
 
-		public override string PrintableText
-		{
-			get
-			{
-				if (op == new Memory.Operator (Addition))
-				{
-					return "+";
-				}
-				else if (op == new Memory.Operator (Subtraction))
-				{
-					return "-";
-				}
-				else if (op == new Memory.Operator (Multiplication))
-				{
-					return "×";
-				}
-				else if (op == new Memory.Operator (Division))
-				{
-					return "÷";
-				}
-				else
-				{
-					Trace.Assert (false);
-					return ""; // To make the compiler happy.
-				}
-			}
-		}
+        static public double Multiplication (double x, double y)
+        {
+            return x * y;
+        }
 
-		public Memory.Operator Value
-		{
-			get
-			{
-				return op;
-			}
-		}
+        static public double Division (double x, double y)
+        {
+            if (y == 0.0)
+            {
+                throw new Error ();
+            }
+            else
+            {
+                return x / y;
+            }
+        }
 
-		public override string Unparse (Reader reader) 
-		{
-			if (op == new Memory.Operator (Addition))
-			{
-				return reader.Unparse (additionSymbol);
-			}
-			else if (op == new Memory.Operator (Subtraction))
-			{
-				return reader.Unparse (subtractionSymbol);
-			}
-			else if (op == new Memory.Operator (Multiplication))
-			{
-				return reader.Unparse (multiplicationSymbol);
-			}
-			else if (op == new Memory.Operator (Division))
-			{
-				return reader.Unparse (divisionSymbol);
-			}
-			else
-			{
-				Trace.Assert (false);
-				return ""; // To make the compiler happy.
-			}
-		}
-	}
+        private Operator (char c)
+        {
+            switch (c)
+            {
+                case '+':
+                    op = new Memory.Operator (Addition);
+                    break;
+                case '-':
+                    op = new Memory.Operator (Subtraction);
+                    break;
+                case '*':
+                    op = new Memory.Operator (Multiplication);
+                    break;
+                case '/':
+                    op = new Memory.Operator (Division);
+                    break;
+            }
+        }
+
+        public Operator (Memory.Operator o)
+        {
+            op = o;
+        }
+
+        protected override string PersistableText
+        {
+            get
+            {
+                if (op == new Memory.Operator (Addition))
+                {
+                    return "+";
+                }
+                else if (op == new Memory.Operator (Subtraction))
+                {
+                    return "-";
+                }
+                else if (op == new Memory.Operator (Multiplication))
+                {
+                    return "*";
+                }
+                else if (op == new Memory.Operator (Division))
+                {
+                    return "/";
+                }
+                else
+                {
+                    Trace.Assert (false);
+                    return ""; // To make the compiler happy.
+                }
+            }
+        }
+
+        public override string PrintableText
+        {
+            get
+            {
+                if (op == new Memory.Operator (Addition))
+                {
+                    return "+";
+                }
+                else if (op == new Memory.Operator (Subtraction))
+                {
+                    return "-";
+                }
+                else if (op == new Memory.Operator (Multiplication))
+                {
+                    return "×";
+                }
+                else if (op == new Memory.Operator (Division))
+                {
+                    return "÷";
+                }
+                else
+                {
+                    Trace.Assert (false);
+                    return ""; // To make the compiler happy.
+                }
+            }
+        }
+
+        public override string TraceableText
+        {
+            get
+            {
+                return PrintableText;
+            }
+        }
+
+        public Memory.Operator Value
+        {
+            get
+            {
+                return op;
+            }
+        }
+
+        public override string Unparse (Reader reader)
+        {
+            if (op == new Memory.Operator (Addition))
+            {
+                return reader.Unparse (additionSymbol);
+            }
+            else if (op == new Memory.Operator (Subtraction))
+            {
+                return reader.Unparse (subtractionSymbol);
+            }
+            else if (op == new Memory.Operator (Multiplication))
+            {
+                return reader.Unparse (multiplicationSymbol);
+            }
+            else if (op == new Memory.Operator (Division))
+            {
+                return reader.Unparse (divisionSymbol);
+            }
+            else
+            {
+                Trace.Assert (false);
+                return ""; // To make the compiler happy.
+            }
+        }
+    }
 
 
-	#endregion
+    #endregion
 
 }

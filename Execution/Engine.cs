@@ -51,6 +51,7 @@ namespace Mockingbird.HP.Execution
         private const double radianToGrade = 200.0 / Math.PI;
 
         private bool enableBlur;
+        private bool inNumberDone = false;
         private EngineModes modes;
         private bool running = false;
         private bool stackLift = false;
@@ -109,7 +110,7 @@ namespace Mockingbird.HP.Execution
             this.reader = reader;
             this.stack = stack;
             this.display.Formatter.FormattingChanged +=
-                new Number.ChangeEvent(DisplayFormattingChanged);
+                new Number.ChangeEvent (DisplayFormattingChanged);
             this.validater.ExponentChanged += new Number.ChangeEvent (ExponentChanged);
             this.validater.MantissaChanged += new Number.ChangeEvent (MantissaChanged);
             this.validater.NumberDone += new Number.ChangeEvent (NumberDone);
@@ -127,9 +128,11 @@ namespace Mockingbird.HP.Execution
             if (printer != null)
             {
                 printer.Formatter.Value = value;
-                if (modes.tracing == EngineModes.Tracing.Trace)
+
+                // NumberDone does its one tracing because it needs the raw input.
+                if (!inNumberDone && modes.tracing == EngineModes.Tracing.Trace)
                 {
-                    printer.AppendNumeric ();
+                    printer.PrintNumeric ();
                 }
             }
         }
@@ -149,23 +152,43 @@ namespace Mockingbird.HP.Execution
 
             // Note that the stack also handles this event, but as far as I can tell the order of
             // notification doesn't matter.
-            display.Formatter.Value = value;
-            if (printer != null & modes.tracing == EngineModes.Tracing.Normal)
+            try
             {
+                inNumberDone = true;
+                display.Formatter.Value = value;
 
-                // In Trace mode this will have happened as part of DisplayFormattingChanged.  But
-                // in Normal mode we have to do it here, using the raw input.  The test below
-                // implements the special case described on page 41 of the documentation: in Fixed
-                // format if no exponent was typed and no truncation happened, then use the
-                // specified format.
-                if (display.Formatter.MustUseRaw)
+                if (MustTrace)
                 {
-                    printer.Append (mantissa + exponent, HorizontalAlignment.Right);
+
+                    // This code implements the special case described on page 41 of the
+                    // documentation: in Fixed format if no exponent was typed and no truncation
+                    // happened, then print using the specified format.  Other print the raw input.
+
+                    bool hasExponent = exponent != new string (' ', exponent.Length);
+                    int mantissaAft = mantissa.TrimEnd (null).Length - mantissa.IndexOf ('.') - 1;
+
+                    if (printer.Formatter.MustUseRaw ||
+                        hasExponent ||
+                        mantissaAft > printer.Formatter.Digits)
+                    {
+                        if (hasExponent)
+                        {
+                            printer.PrintNumeric (mantissa, ""); // No exponent typed, strip it.
+                        }
+                        else
+                        {
+                            printer.PrintNumeric (mantissa, exponent);
+                        }
+                    }
+                    else
+                    {
+                        printer.PrintNumeric ();
+                    }
                 }
-                else
-                {
-                    printer.AppendNumeric ();
-                }
+            }
+            finally
+            {
+                inNumberDone = false;
             }
         }
 
@@ -220,6 +243,20 @@ namespace Mockingbird.HP.Execution
                     fr.EngineRow = er;
                     cds.Flag.AddFlagRow (fr);
                 }
+            }
+        }
+
+        #endregion
+
+        #region Private Properties
+
+        private bool MustTrace
+        {
+            get
+            {
+                return printer != null &&
+                        modes.tracing != EngineModes.Tracing.Manual &&
+                        !(running && modes.tracing == EngineModes.Tracing.Normal);
             }
         }
 
@@ -352,8 +389,33 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_PERIOD:
                 case SymbolConstants.SYMBOL_SST:
                     break;
+                case SymbolConstants.SYMBOL_GTO_PERIOD:
+                case SymbolConstants.SYMBOL_PRINT_PRGM:
+                    // Do not trace those.
+                    validater.DoneEntering ();
+                    break;
+                case SymbolConstants.SYMBOL_DISPLAY_X:
+                case SymbolConstants.SYMBOL_SPACE:
+                    // Only trace those when executing.
+                    validater.DoneEntering ();
+                    if (MustTrace && (running || stepping))
+                    {
+                        //TODO: How do we get the step?
+                        printer.PrintStep (1);
+                        printer.PrintInstruction (instruction, /*showKeycodes*/ false);
+                    }
+                    break;
                 default:
                     validater.DoneEntering ();
+                    if (MustTrace)
+                    {
+                        if (running || stepping)
+                        {
+                            //TODO: How do we get the step?
+                            printer.PrintStep (1);
+                        }
+                        printer.PrintInstruction (instruction, /*showKeycodes*/ false);
+                    }
                     break;
             }
 
@@ -441,7 +503,7 @@ namespace Mockingbird.HP.Execution
                             display.PauseAndBlink (5000);
                             break;
                         case CalculatorModel.HP97:
-                            printer.AppendNumeric ();
+                            printer.PrintNumeric ();
                             break;
                     }
                     break;
@@ -458,11 +520,13 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_DSP:
                     IDigits argument = ((IDigits) instruction.Arguments [0]);
-                    argument.SetDigits (memory, display.Formatter);
+
+                    // Change the printer first because the display will trigger reprint.
                     if (printer != null)
                     {
                         argument.SetDigits (memory, printer.Formatter);
                     }
+                    argument.SetDigits (memory, display.Formatter);
                     break;
                 case SymbolConstants.SYMBOL_DSZ:
                     if (memory.DecrementAndSkipIfZero ())
@@ -480,11 +544,13 @@ namespace Mockingbird.HP.Execution
                     validater.EnterExponent ();
                     break;
                 case SymbolConstants.SYMBOL_ENG:
-                    display.Formatter.Format = Number.DisplayFormat.Engineering;
+
+                    // Change the printer first because the display will trigger reprint.
                     if (printer != null)
                     {
                         printer.Formatter.Format = Number.DisplayFormat.Engineering;
                     }
+                    display.Formatter.Format = Number.DisplayFormat.Engineering;
                     break;
                 case SymbolConstants.SYMBOL_ENTER:
                     stack.Enter ();
@@ -522,11 +588,13 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_FIX:
-                    display.Formatter.Format = Number.DisplayFormat.Fixed;
+
+                    // Change the printer first because the display will trigger reprint.
                     if (printer != null)
                     {
                         printer.Formatter.Format = Number.DisplayFormat.Fixed;
                     }
+                    display.Formatter.Format = Number.DisplayFormat.Fixed;
                     break;
                 case SymbolConstants.SYMBOL_FRAC:
                     stack.Get (out x);
@@ -679,6 +747,10 @@ namespace Mockingbird.HP.Execution
                     EnterIfNeeded ();
                     stack.X = Math.PI;
                     break;
+                case SymbolConstants.SYMBOL_PRINT_PRGM:
+                    program.PrintProgram
+                        (/*showKeycodes*/ modes.tracing == EngineModes.Tracing.Manual);
+                    break;
                 case SymbolConstants.SYMBOL_R_DOWN:
                     stack.RollDown ();
                     break;
@@ -730,11 +802,25 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_REG:
-                    memory.Display ();
+                    switch (reader.Model)
+                    {
+                        case CalculatorModel.HP67:
+                            memory.Display ();
+                            break;
+                        case CalculatorModel.HP97:
+                            //TODO: Implement.
+                            break;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_RND:
                     stack.Get (out x); // To set Last X.
-                    display.Formatter.Round (x); // TODO: Is this going to inform the printer?
+
+                    // Change the printer first because the display will trigger reprint.
+                    if (printer != null)
+                    {
+                        printer.Formatter.Round (x);
+                    }
+                    display.Formatter.Round (x);
                     break;
                 case SymbolConstants.SYMBOL_RTN:
                     bool stop;
@@ -751,11 +837,13 @@ namespace Mockingbird.HP.Execution
                     stack.Y = y;
                     break;
                 case SymbolConstants.SYMBOL_SCI:
-                    display.Formatter.Format = Number.DisplayFormat.Scientific;
+
+                    // Change the printer first because the display will trigger reprint.
                     if (printer != null)
                     {
                         printer.Formatter.Format = Number.DisplayFormat.Scientific;
                     }
+                    display.Formatter.Format = Number.DisplayFormat.Scientific;
                     break;
                 case SymbolConstants.SYMBOL_SF:
                     flags [((Digit) instruction.Arguments [0]).Value] = true;
@@ -805,7 +893,15 @@ namespace Mockingbird.HP.Execution
                     memory.Store (stack.X, Memory.LetterRegister.I);
                     break;
                 case SymbolConstants.SYMBOL_STK:
-                    stack.Display ();
+                    switch (reader.Model)
+                    {
+                        case CalculatorModel.HP67:
+                            stack.Display ();
+                            break;
+                        case CalculatorModel.HP97:
+                            //TODO: Implement.
+                            break;
+                    }
                     break;
                 case SymbolConstants.SYMBOL_STO:
                     if (instruction.Arguments.Length == 2)
@@ -1000,7 +1096,7 @@ namespace Mockingbird.HP.Execution
             // Now check if some key was typed while we were executing the instruction.  If it was,
             // stop the computation.  Note that this is done synchronously to make sure that we can
             // resume execution with the proper state if the user types R/S again.  We don't do
-            // if we have stopped out work, because we are going to return to the main execution
+            // it if we have stopped our work, because we are going to return to the main execution
             // loop very soon anyway, and if the user types, say, two digits in quick succession we
             // do not want the second to cause an interruption.
             if ((running || stepping) && WaitForKeystroke (0))

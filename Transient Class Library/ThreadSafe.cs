@@ -13,6 +13,8 @@ namespace Mockingbird.HP.Class_Library
         private delegate void CrossThreadSetBool (Control control, bool b);
         private delegate void CrossThreadSetColor (Control control, Color c);
         private delegate void CrossThreadSetFont (Control control, Font f);
+        private delegate void CrossThreadSetHorizontalAlignment (Control control,
+                                                                 HorizontalAlignment h);
         private delegate void CrossThreadSetInt (Control control, int i);
         private delegate void CrossThreadSetIntObject (Control control, int i, Object o);
         private delegate void CrossThreadSetObject (Control control, Object o);
@@ -162,6 +164,18 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        public static void SelectAll (Control control) {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThread (SelectAll), new object [] { control });
+            }
+            else
+            {
+                ((TextBoxBase) control).SelectAll ();
+            }
+        }
+
         public static void SetBackColor (Control control, Color backColor)
         {
             if (control.InvokeRequired)
@@ -237,6 +251,20 @@ namespace Mockingbird.HP.Class_Library
             else
             {
                 ((RichTextBox) control).Rtf = rtf;
+            }
+        }
+
+        public static void SetSelectionAlignment (Control control, HorizontalAlignment h)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke
+                    (new CrossThreadSetHorizontalAlignment
+                        (SetSelectionAlignment), new object [] { control, h });
+            }
+            else
+            {
+                ((RichTextBox) control).SelectionAlignment = h;
             }
         }
 

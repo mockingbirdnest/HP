@@ -985,19 +985,17 @@ namespace Mockingbird.HP.Control_Library
                 }
                 if (richText)
                 {
-                    //TODO: Make thread-safe.
-                    titleRTFBox.SelectAll ();
-                    titleRTFBox.SelectionAlignment =
-                        System.Windows.Forms.HorizontalAlignment.Center;
+                    ThreadSafe.SelectAll (titleRTFBox);
+                    ThreadSafe.SetSelectionAlignment (titleRTFBox, HorizontalAlignment.Center);
                     foreach (System.Windows.Forms.RichTextBox r in textBoxes)
                     {
-                        r.SelectAll ();
-                        r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+                        ThreadSafe.SelectAll (r);
+                        ThreadSafe.SetSelectionAlignment (r, HorizontalAlignment.Center);
                     }
                     foreach (System.Windows.Forms.RichTextBox r in fTextBoxes)
                     {
-                        r.SelectAll ();
-                        r.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+                        ThreadSafe.SelectAll (r);
+                        ThreadSafe.SetSelectionAlignment (r, HorizontalAlignment.Center);
                     }
                 }
 

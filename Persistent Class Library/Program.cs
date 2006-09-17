@@ -47,6 +47,7 @@ namespace Mockingbird.HP.Class_Library
 		private int [] returns;
 
 		private IDisplay display;
+        private IPrinter printer;
 		private bool isEmpty;
 		private int lastPrinted;
 		private int next;
@@ -56,12 +57,13 @@ namespace Mockingbird.HP.Class_Library
 
 		#region Constructors & Destructors
 
-		public Program (IDisplay display, Reader reader)
+		public Program (IDisplay display, IPrinter printer, Reader reader)
 		{
 			Symbol r_s_symbol = new SymbolNonterminal ((int) SymbolConstants.SYMBOL_R_S, "R_S");
 			Argument [] r_s_args = new Argument [0];
 
 			this.display = display;
+            this.printer = printer;
 			this.reader = reader;
 
 			r_s = new Instruction (reader, r_s_symbol, r_s_args);
@@ -649,7 +651,7 @@ namespace Mockingbird.HP.Class_Library
 
 		#region Printing
 
-		public void PrintOnePage (PrintPageEventArgs e, Font font) 
+        public void PrintOnePage (PrintPageEventArgs e, Font font) 
 		{
 			float fontHeight = font.GetHeight (e.Graphics);
 			string instructionImage;
@@ -761,6 +763,30 @@ namespace Mockingbird.HP.Class_Library
 			lastPrinted = noStep;
 			e.HasMorePages = false ;
 		}
+
+        public void PrintProgram (bool showKeycodes)
+        {
+            int r_s_count = 0;
+
+            for (int i = 0; i < instructions.Length; i++)
+            {
+                if ((SymbolConstants) instructions [i].Symbol.Id == SymbolConstants.SYMBOL_R_S)
+                {
+                    r_s_count++;
+                }
+                else
+                {
+                    r_s_count = 0;
+                }
+                if (r_s_count == 2)
+                {
+                    // Stop printing if two R/S in a row are encountered, p.131.
+                    break;
+                }
+                printer.PrintStep (i + 1);
+                printer.PrintInstruction (instructions [i], showKeycodes);
+            }
+        }
 
 		#endregion
 

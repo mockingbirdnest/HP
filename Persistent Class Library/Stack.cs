@@ -85,7 +85,7 @@ namespace Mockingbird.HP.Class_Library
         {
             double temp;
             temp = this [Position.x];
-            this [Position.x] = this [Position.y];
+            X = this [Position.y]; // Assign to X, not this [x], to force tracing.
             this [Position.y] = temp;
         }
 

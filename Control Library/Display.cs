@@ -239,13 +239,15 @@ namespace Mockingbird.HP.Control_Library
         {
             get
             {
-                Trace.Assert (formatter != null);
                 return formatter;
             }
             set
             {
                 formatter = value;
-                formatter.FormattingChanged += new Number.ChangeEvent (ShowNumeric);
+                if (formatter != null)
+                {
+                    formatter.FormattingChanged += new Number.ChangeEvent (ShowNumeric);
+                }
             }
         }
 

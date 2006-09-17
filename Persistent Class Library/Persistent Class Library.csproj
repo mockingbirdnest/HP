@@ -151,6 +151,7 @@
     <Compile Include="Instruction.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IPrinter.cs" />
     <Compile Include="Memory.cs">
       <SubType>Code</SubType>
     </Compile>
