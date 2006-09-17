@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.Control_Library
@@ -17,8 +18,19 @@ namespace Mockingbird.HP.Control_Library
 
         #region Private Data
 
-        private const string mantissaExponentSeparator = "";
+        private enum Column
+        {
+            Instruction,
+            Numeric,
+            Step
+        }
 
+        private static string defaultTag = new string (' ', tagColumnWidth - 3) + "***";
+        private const string mantissaExponentSeparator = "";
+        private const string stepTemplate = "000  ";
+        private const byte tagColumnWidth = 5;
+
+        private Column lastPrintedColumn;
         private int emptyLinesAtTop;
         private Graphics graphics;
         private int lines = 0;
@@ -45,6 +57,7 @@ namespace Mockingbird.HP.Control_Library
             // A graphic context will prove handy to align text.
             graphics = listBox.CreateGraphics ();
 
+            lastPrintedColumn = Column.Instruction;
             emptyLinesAtTop = lines;
         }
 
@@ -142,38 +155,9 @@ namespace Mockingbird.HP.Control_Library
 
         #endregion
 
-        #region Public Properties
+        #region Private Operations
 
-        public Number.Formatter Formatter
-        {
-            get
-            {
-                Trace.Assert (formatter != null);
-                return formatter;
-            }
-            set
-            {
-                formatter = value;
-                formatter.FormattingChanged += new Number.ChangeEvent (RecordNumeric);
-            }
-        }
-
-        #endregion
-
-        #region Public Operations
-
-        public void Advance ()
-        {
-            if (emptyLinesAtTop > 0)
-            {
-                ThreadSafe.ItemsRemoveAt (listBox, 0);
-                emptyLinesAtTop--;
-            }
-            ThreadSafe.ItemsAdd (listBox, "");
-            ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
-        }
-
-        public void Append (string s, HorizontalAlignment alignment)
+        private void Append (string s, HorizontalAlignment alignment)
         {
             int padding;
 
@@ -210,9 +194,96 @@ namespace Mockingbird.HP.Control_Library
             ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
         }
 
-        public void AppendNumeric ()
+        private void PrintNumeric (string s)
         {
-            Append (mantissa + mantissaExponentSeparator + exponent, HorizontalAlignment.Right);
+
+            // If we try to append spaces, the silly control will strip them.  So we use the
+            // default tag, which is made of stars.  If a tag is explicitly inserted by the engine,
+            // the default tag will be overwritten and will be invisible to the user.  Otherwise,
+            // we'll have just what we want for the final result.
+            Append (s + defaultTag, HorizontalAlignment.Right);
+            lastPrintedColumn = Column.Numeric;
+        }
+
+        #endregion
+
+        #region Public Properties
+
+        public Number.Formatter Formatter
+        {
+            get
+            {
+                return formatter;
+            }
+            set
+            {
+                formatter = value;
+                if (formatter != null)
+                {
+                    formatter.FormattingChanged += new Number.ChangeEvent (RecordNumeric);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Public Operations
+
+        public void Advance ()
+        {
+            if (emptyLinesAtTop > 0)
+            {
+                ThreadSafe.ItemsRemoveAt (listBox, 0);
+                emptyLinesAtTop--;
+            }
+            ThreadSafe.ItemsAdd (listBox, "");
+            ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
+            lastPrintedColumn = Column.Instruction;
+        }
+
+        public void PrintNumeric ()
+        {
+            PrintNumeric (mantissa + mantissaExponentSeparator + exponent);
+        }
+
+        public void PrintNumeric (string mantissa, string exponent)
+        {
+            PrintNumeric (mantissa + mantissaExponentSeparator + exponent);
+        }
+
+        public void PrintStep (int step)
+        {
+            Trace.Assert (lastPrintedColumn != Column.Step);
+            Append (step.ToString (stepTemplate, NumberFormatInfo.InvariantInfo) + defaultTag,
+                    HorizontalAlignment.Right);
+            lastPrintedColumn = Column.Step;
+        }
+
+        public void PrintInstruction (string s)
+        {
+            Trace.Assert (s.Length <= tagColumnWidth);
+            switch (lastPrintedColumn)
+            {
+                case Column.Numeric:
+                case Column.Step:
+                    {
+                        int count = ThreadSafe.ItemsCount (listBox);
+                        string lastItem = (string) ThreadSafe.ItemsGetItem(listBox, count - 1);
+
+                        lastItem = lastItem.Substring (0, lastItem.Length - tagColumnWidth) +
+                                   s.PadLeft (tagColumnWidth, ' ');
+                        ThreadSafe.ItemsSetItem (listBox, count - 1, lastItem);
+                        ThreadSafe.SetTopIndex
+                            (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
+                        break;
+                    }
+                case Column.Instruction:
+                    {
+                        Append (s, HorizontalAlignment.Right);
+                        break;
+                    }
+            }
+            lastPrintedColumn = Column.Instruction;
         }
 
         #endregion
