@@ -289,7 +289,7 @@ namespace Mockingbird.HP.Class_Library
         public Letter (char l)
         {
             // We only expect to get a lower case letter here when reading from a dataset.
-            Trace.Assert ((l >= 'A' && l <= 'E') || (l >= 'a' && l <= 'e'));
+            Trace.Assert ((l >= 'A' && l <= 'E') || (l >= 'a' && l <= 'e') || l == 'I');
             letter = l;
         }
 
@@ -297,6 +297,7 @@ namespace Mockingbird.HP.Class_Library
         {
             get
             {
+                Trace.Assert (letter != 'i');
                 return (letter >= 'a' && letter <= 'e');
             }
         }
@@ -348,6 +349,7 @@ namespace Mockingbird.HP.Class_Library
 
         public void ToLower ()
         {
+            Trace.Assert (letter != 'I');
             letter = char.ToLower (letter);
         }
 
@@ -543,7 +545,6 @@ namespace Mockingbird.HP.Class_Library
             }
         }
     }
-
 
     #endregion
 

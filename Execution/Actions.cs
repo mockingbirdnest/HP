@@ -65,10 +65,17 @@ namespace Mockingbird.HP.Execution
 				Trace.WriteLineIf (classTraceSwitch.TraceInfo,
 					"ParserError: error before '" + token.Text + "'",
 					classTraceSwitch.DisplayName);
-				Trace.Assert (token.Location.Position > 0);
-
-				remainingText = input.Substring (token.Location.Position);
-				retry = true;
+                if (token.Location.Position == 0)
+                {
+                    // The entire text is broken, e.g., I on the HP-97.  Drop it.
+                    remainingText = "";
+                    retry = false;
+                }
+                else
+                {
+                    remainingText = input.Substring (token.Location.Position);
+                    retry = true;
+                }
 			}
 
 			Trace.WriteLineIf (classTraceSwitch.TraceInfo,
@@ -112,7 +119,12 @@ namespace Mockingbird.HP.Execution
 			// <Abs> ::= 'f97' 'Y_To_The_Xth97'
 		}
 
-		public void ReduceRULE_ADDITION_ADDITION67 (Reader reader, Token token, Token [] tokens, object state)
+        public void ReduceRULE_ADDITION_ADDITION35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Addition> ::= 'Addition35'
+        }
+
+        public void ReduceRULE_ADDITION_ADDITION67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Addition> ::= 'Addition67'
 		}
@@ -122,7 +134,12 @@ namespace Mockingbird.HP.Execution
 			// <Addition> ::= 'Addition97'
 		}
 
-		public void ReduceRULE_ARCCOS_G67_FIVE67 (Reader reader, Token token, Token [] tokens, object state)
+        public void ReduceRULE_ARCCOS_ARC35_COS35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Arccos> ::= 'Arc35' 'Cos35'
+        }
+
+        public void ReduceRULE_ARCCOS_G67_FIVE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Arccos> ::= 'g67' 'Five67'
 		}
@@ -132,7 +149,12 @@ namespace Mockingbird.HP.Execution
 			// <Arccos> ::= 'f97' 'Cos97'
 		}
 
-		public void ReduceRULE_ARCSIN_G67_FOUR67 (Reader reader, Token token, Token [] tokens, object state)
+        public void ReduceRULE_ARCSIN_ARC35_SIN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Arcsin> ::= 'Arc35' 'Sin35'
+        }
+
+        public void ReduceRULE_ARCSIN_G67_FOUR67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Arcsin> ::= 'g67' 'Four67'
 		}
@@ -141,6 +163,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Arcsin> ::= 'f97' 'Sin97'
 		}
+
+        public void ReduceRULE_ARCTAN_ARC35_TAN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Arctan> ::= 'Arc35' 'Tan35'
+        }
 
 		public void ReduceRULE_ARCTAN_G67_SIX67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -192,6 +219,11 @@ namespace Mockingbird.HP.Execution
 			// <CF> ::= 'f97' 'Gto97'
 		}
 
+        public void ReduceRULE_CHS_CHS35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Chs> ::= 'Chs35'
+        }
+
 		public void ReduceRULE_CHS_CHS67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Chs> ::= 'Chs67'
@@ -222,6 +254,16 @@ namespace Mockingbird.HP.Execution
 			// <Cl_Reg> ::= 'f97' 'Two97'
 		}
 
+        public void ReduceRULE_CLR_CLR35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Clr> ::= 'Clr35'
+        }
+
+        public void ReduceRULE_CLX_CLX35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Clx> ::= 'Clx35'
+        }
+
 		public void ReduceRULE_CLX_CLX67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Clx> ::= 'Clx67'
@@ -231,6 +273,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Clx> ::= 'Clx97'
 		}
+
+        public void ReduceRULE_COS_COS35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Cos> ::= 'Cos35'
+        }
 
 		public void ReduceRULE_COS_F67_FIVE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -282,6 +329,11 @@ namespace Mockingbird.HP.Execution
 			// <Display_X> ::= 'Display_X97'
 		}
 
+        public void ReduceRULE_DIVISION_DIVISION35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Division> ::= 'Division35'
+        }
+
 		public void ReduceRULE_DIVISION_DIVISION67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Division> ::= 'Division67'
@@ -332,6 +384,11 @@ namespace Mockingbird.HP.Execution
 			// <E> ::= 'E97'
 		}
 
+        public void ReduceRULE_EEX_EEX35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Eex> ::= 'Eex35'
+        }
+
 		public void ReduceRULE_EEX_EEX67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Eex> ::= 'Eex67'
@@ -341,6 +398,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Eex> ::= 'Eex97'
 		}
+
+        public void ReduceRULE_EIGHT_EIGHT35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Eight> ::= 'Eight35'
+        }
 
 		public void ReduceRULE_EIGHT_EIGHT67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -362,6 +424,11 @@ namespace Mockingbird.HP.Execution
 			// <Eng> ::= 'Eng97'
 		}
 
+        public void ReduceRULE_ENTER_ENTER35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Enter> ::= 'Enter35'
+        }
+
 		public void ReduceRULE_ENTER_ENTER67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Enter> ::= 'Enter67'
@@ -371,6 +438,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Enter> ::= 'Enter97'
 		}
+
+        public void ReduceRULE_EXP_EXP35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Exp> ::= 'Exp35'
+        }
 
 		public void ReduceRULE_EXP_G67_SEVEN67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -412,6 +484,11 @@ namespace Mockingbird.HP.Execution
 			// <Factorial> ::= 'f97' 'Reciprocal97'
 		}
 
+        public void ReduceRULE_FIVE_FIVE35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Five> ::= 'Five35'
+        }
+
 		public void ReduceRULE_FIVE_FIVE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Five> ::= 'Five67'
@@ -431,6 +508,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Fix> ::= 'Fix97'
 		}
+
+        public void ReduceRULE_FOUR_FOUR35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Four> ::= 'Four35'
+        }
 
 		public void ReduceRULE_FOUR_FOUR67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -497,6 +579,11 @@ namespace Mockingbird.HP.Execution
 			// <HMS_Plus> ::= 'f97' 'Addition97'
 		}
 
+        public void ReduceRULE_I_I97 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <I> ::= 'I97'
+        }
+
 		public void ReduceRULE_INT_F67_PERIOD67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Int> ::= 'f67' 'Period67'
@@ -542,6 +629,11 @@ namespace Mockingbird.HP.Execution
 			// <Lbl> ::= 'Lbl97'
 		}
 
+        public void ReduceRULE_LN_LN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Ln> ::= 'Ln35'
+        }
+
 		public void ReduceRULE_LN_F67_SEVEN67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Ln> ::= 'f67' 'Seven67'
@@ -551,6 +643,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Ln> ::= 'Ln97'
 		}
+
+        public void ReduceRULE_LOG_LOG35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Log> ::= 'Log35'
+        }
 
 		public void ReduceRULE_LOG_F67_EIGHT67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -582,6 +679,11 @@ namespace Mockingbird.HP.Execution
 			// <Merge> ::= 'f97' 'Period97'
 		}
 
+        public void ReduceRULE_MULTIPLICATION_MULTIPLICATION35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Multiplication> ::= 'Multiplication35'
+        }
+
 		public void ReduceRULE_MULTIPLICATION_MULTIPLICATION67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Multiplication> ::= 'Multiplication67'
@@ -592,6 +694,11 @@ namespace Mockingbird.HP.Execution
 			// <Multiplication> ::= 'Multiplication97'
 		}
 
+        public void ReduceRULE_NINE_NINE35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Nine> ::= 'Nine35'
+        }
+
 		public void ReduceRULE_NINE_NINE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nine> ::= 'Nine67'
@@ -601,6 +708,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Nine> ::= 'Nine97'
 		}
+
+        public void ReduceRULE_ONE_ONE35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <One> ::= 'One35'
+        }
 
 		public void ReduceRULE_ONE_ONE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -652,6 +764,11 @@ namespace Mockingbird.HP.Execution
 			// <Percent> ::= 'Percent97'
 		}
 
+        public void ReduceRULE_PERIOD_PERIOD35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Period> ::= 'Period35'
+        }
+
 		public void ReduceRULE_PERIOD_PERIOD67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Period> ::= 'Period67'
@@ -661,6 +778,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Period> ::= 'Period97'
 		}
+
+        public void ReduceRULE_PI_PI35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Pi> ::= 'Pi35'
+        }
 
 		public void ReduceRULE_PI_H67_TWO67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -676,6 +798,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Print_Prgm> ::= 'f97' 'Sci97'
 		}
+
+        public void ReduceRULE_R_DOWN_R_DOWN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <R_Down> ::= 'R_Down35'
+        }
 
 		public void ReduceRULE_R_DOWN_H67_EIGHT67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -717,15 +844,15 @@ namespace Mockingbird.HP.Execution
 			// <Rad> ::= 'f97' 'Chs97'
 		}
 
-		public void ReduceRULE_RC_I_H67_RCL67 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Rc_I> ::= 'h67' 'Rcl67'
-		}
+        public void ReduceRULE_RC_I_67_H67_RCL67 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Rc_I_67> ::= 'h67' 'Rcl67'
+        }
 
-		public void ReduceRULE_RC_I_RCL97_I97 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Rc_I> ::= 'Rcl97' 'I97'
-		}
+        public void ReduceRULE_RCL_NULLARY_RCL35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Rcl_Nullary> ::= 'Rcl35'
+        }
 
 		public void ReduceRULE_RCL_RCL67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -736,6 +863,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Rcl> ::= 'Rcl97'
 		}
+
+        public void ReduceRULE_RECIPROCAL_RECIPROCAL35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Reciprocal> ::= 'Reciprocal35'
+        }
 
 		public void ReduceRULE_RECIPROCAL_H67_FOUR67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -797,6 +929,11 @@ namespace Mockingbird.HP.Execution
 			// <Sci> ::= 'Sci97'
 		}
 
+        public void ReduceRULE_SEVEN_SEVEN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Seven> ::= 'Seven35'
+        }
+
 		public void ReduceRULE_SEVEN_SEVEN67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Seven> ::= 'Seven67'
@@ -837,6 +974,11 @@ namespace Mockingbird.HP.Execution
 			// <Sigma_Plus> ::= 'Sigma_Plus97'
 		}
 
+        public void ReduceRULE_SIN_SIN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Sin> ::= 'Sin35'
+        }
+
 		public void ReduceRULE_SIN_F67_FOUR67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Sin> ::= 'f67' 'Four67'
@@ -846,6 +988,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Sin> ::= 'Sin97'
 		}
+
+        public void ReduceRULE_SIX_SIX35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Six> ::= 'Six35'
+        }
 
 		public void ReduceRULE_SIX_SIX67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -866,6 +1013,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Space> ::= 'f97' 'Fix97'
 		}
+
+        public void ReduceRULE_SQRT_SQRT35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Sqrt> ::= 'Sqrt35'
+        }
 
 		public void ReduceRULE_SQRT_F67_NINE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -897,16 +1049,6 @@ namespace Mockingbird.HP.Execution
 			// <Sst> ::= 'Sst97'
 		}
 
-		public void ReduceRULE_ST_I_H67_STO67 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <St_I> ::= 'h67' 'Sto67'
-		}
-
-		public void ReduceRULE_ST_I_STO97_I97 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <St_I> ::= 'Sto97' 'I97'
-		}
-
 		public void ReduceRULE_STK_G67_R_S67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Stk> ::= 'g67' 'R_S67'
@@ -916,6 +1058,16 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Stk> ::= 'f97' 'Display_X97'
 		}
+
+        public void ReduceRULE_ST_I_67_H67_STO67 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <St_I_67> ::= 'h67' 'Sto67'
+        }
+
+        public void ReduceRULE_STO_NULLARY_STO35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Sto_Nullary> ::= 'Sto35'
+        }
 
 		public void ReduceRULE_STO_STO67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -937,6 +1089,11 @@ namespace Mockingbird.HP.Execution
 			// <Sub_I> ::= 'Sub_I97'
 		}
 
+        public void ReduceRULE_SUBTRACTION_SUBTRACTION35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Subtraction> ::= 'Subtraction35'
+        }
+
 		public void ReduceRULE_SUBTRACTION_SUBTRACTION67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Subtraction> ::= 'Subtraction67'
@@ -946,6 +1103,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Subtraction> ::= 'Subtraction97'
 		}
+
+        public void ReduceRULE_TAN_TAN35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Tan> ::= 'Tan35'
+        }
 
 		public void ReduceRULE_TAN_F67_SIX67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -966,6 +1128,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Ten_To_The_Xth> ::= 'f97' 'Exp97'
 		}
+
+        public void ReduceRULE_THREE_THREE35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Three> ::= 'Three35'
+        }
 
 		public void ReduceRULE_THREE_THREE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -1037,6 +1204,11 @@ namespace Mockingbird.HP.Execution
 			// <To_Rectangular> ::= 'To_Rectangular97'
 		}
 
+        public void ReduceRULE_TWO_TWO35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Two> ::= 'Two35'
+        }
+
 		public void ReduceRULE_TWO_TWO67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Two> ::= 'Two67'
@@ -1096,6 +1268,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <X_Exchange_I> ::= 'f97' 'X_Exchange_Y97'
 		}
+
+        public void ReduceRULE_X_EXCHANGE_Y_X_EXCHANGE_Y35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <X_Exchange_Y> ::= 'X_Exchange_Y35'
+        }
 
 		public void ReduceRULE_X_EXCHANGE_Y_H67_SEVEN67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -1167,6 +1344,11 @@ namespace Mockingbird.HP.Execution
 			// <X_NE_Y> ::= 'f97' 'Seven97'
 		}
 
+        public void ReduceRULE_X_TO_THE_YTH_X_TO_THE_YTH35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <X_To_The_Yth> ::= 'X_To_The_Yth35'
+        }
+
 		public void ReduceRULE_Y_TO_THE_XTH_H67_FIVE67 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Y_To_The_Xth> ::= 'h67' 'Five67'
@@ -1176,6 +1358,11 @@ namespace Mockingbird.HP.Execution
 		{
 			// <Y_To_The_Xth> ::= 'Y_To_The_Xth97'
 		}
+
+        public void ReduceRULE_ZERO_ZERO35 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Zero> ::= 'Zero35'
+        }
 
 		public void ReduceRULE_ZERO_ZERO67 (Reader reader, Token token, Token [] tokens, object state)
 		{
@@ -1277,241 +1464,257 @@ namespace Mockingbird.HP.Execution
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens, object state)
+        public void ReduceRULE_NULLARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Nullary_Instruction> ::= <Clr>
+        }
+
+		public void ReduceRULE_NULLARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Clx>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION12 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Cos>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION12 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION13 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Deg>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION13 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION14 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Del>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION14 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION15 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Digit>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION15 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION16 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Display_X>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION16 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION17 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Division>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION17 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION18 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Dsz_Sub_I>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION18 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION19 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Dsz>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION19 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION20 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Eex>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION20 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION21 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Eng>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION21 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION22 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Enter>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION22 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION23 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Exp>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION23 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION24 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Factorial>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION24 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION25 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Fix>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION25 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION26 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Frac>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION26 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION27 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Grd>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION27 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION28 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <HMS_Plus>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION28 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION29 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Int>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION29 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION30 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Isz_Sub_I>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION30 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION31 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Isz>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION31 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION32 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Ln>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION32 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION33 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Log>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION33 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION34 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Lst_X>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION34 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION35 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Merge>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION35 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION36 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Multiplication>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION36 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION37 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <P_Exchange_S>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION37 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION38 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Pause>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION38 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION39 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Percent_Change>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION39 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION40 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Percent>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION40 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION41 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Period>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION41 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION42 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Pi>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION42 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION43 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Print_Prgm>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION43 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION44 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <R_Down>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION44 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION45 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <R_S>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION45 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION46 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <R_Up>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION46 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION47 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Rad>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION47 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION48 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Nullary_Instruction> ::= <Rc_I>
-			engine.Process (new Instruction (reader, tokens), motion);
+			// <Nullary_Instruction> ::= <Rc_I_67>
+            engine.Process
+                (new Instruction
+                (reader,
+                reader.ToSymbol (SymbolConstants.SYMBOL_RCL),
+                new Argument [] { new Letter ('I') }),
+                motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION48 (Reader reader, Token token, Token [] tokens, object state)
+        public void ReduceRULE_NULLARY_INSTRUCTION49 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Nullary_Instruction> ::= <Rcl_Nullary>
+            engine.Process (new Instruction (reader, tokens), motion);
+        }
+
+        public void ReduceRULE_NULLARY_INSTRUCTION50 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION49 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION51 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
 			engine.Process
@@ -1522,229 +1725,246 @@ namespace Mockingbird.HP.Execution
 				motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION50 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION52 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Reciprocal>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION51 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION53 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Reg>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION52 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION54 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Rnd>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION53 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION55 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Rtn>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION54 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION56 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <S>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION55 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION57 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Sci>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION56 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION58 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Sigma_Minus>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION57 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION59 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Sigma_Plus>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION58 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION60 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Sin>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION59 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION61 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Space>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION60 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION62 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Sqrt>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION61 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION63 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Square>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION62 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION64 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Sst>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION63 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Nullary_Instruction> ::= <St_I>
-			engine.Process (new Instruction (reader, tokens), motion);
-		}
-
-		public void ReduceRULE_NULLARY_INSTRUCTION64 (Reader reader, Token token, Token [] tokens, object state)
-		{
-			// <Nullary_Instruction> ::= <Stk>
-			engine.Process (new Instruction (reader, tokens), motion);
-		}
-
 		public void ReduceRULE_NULLARY_INSTRUCTION65 (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <Nullary_Instruction> ::= <St_I_67>
+            engine.Process
+                (new Instruction
+                (reader,
+                reader.ToSymbol (SymbolConstants.SYMBOL_STO),
+                new Argument [] { new Letter ('I') }),
+                motion);
+        }
+
+		public void ReduceRULE_NULLARY_INSTRUCTION66 (Reader reader, Token token, Token [] tokens, object state)
+		{
+			// <Nullary_Instruction> ::= <Sto_Nullary>
+			engine.Process (new Instruction (reader, tokens), motion);
+		}
+
+        public void ReduceRULE_NULLARY_INSTRUCTION67 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Nullary_Instruction> ::= <Stk>
+            engine.Process (new Instruction (reader, tokens), motion);
+        }
+
+        public void ReduceRULE_NULLARY_INSTRUCTION68 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Subtraction>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION66 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION69 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Tan>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION67 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION70 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <Ten_To_The_Xth>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION68 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION71 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <To_Degrees>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION69 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION72 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <To_HMS>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION70 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION73 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <To_Hours>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION71 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION74 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <To_Polar>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION72 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION75 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <To_Radians>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION73 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION76 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <To_Rectangular>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION74 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION77 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <W_Data>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION75 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION78 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_Average>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION76 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION79 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_EQ_0>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION77 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION80 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_EQ_Y>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION78 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION81 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_Exchange_I>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION79 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION82 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_Exchange_Y>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION80 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION83 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_GT_0>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION81 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION84 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_GT_Y>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION82 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION85 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_LE_Y>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION83 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION86 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_LT_0>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION84 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION87 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_NE_0>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION85 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION88 (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Nullary_Instruction> ::= <X_NE_Y>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_NULLARY_INSTRUCTION86 (Reader reader, Token token, Token [] tokens, object state)
+		public void ReduceRULE_NULLARY_INSTRUCTION89 (Reader reader, Token token, Token [] tokens, object state)
 		{
-			// <Nullary_Instruction> ::= <Y_To_The_Xth>
+			// <Nullary_Instruction> ::= <X_To_The_Yth>
 			engine.Process (new Instruction (reader, tokens), motion);
 		}
 
-		public void ReduceRULE_UNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state)
+        public void ReduceRULE_NULLARY_INSTRUCTION90 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Nullary_Instruction> ::= <Y_To_The_Xth>
+            engine.Process (new Instruction (reader, tokens), motion);
+        }
+
+        public void ReduceRULE_UNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state)
 		{
 			// <Unary_Instruction> ::= <CF> <Flag>
 			engine.Process (new Instruction (reader, tokens), motion);
@@ -2195,7 +2415,13 @@ namespace Mockingbird.HP.Execution
 			// <Memory> ::= <Uppercase_Letter>
 		}
 
-		#endregion
+        public void ReduceRULE_MEMORY3 (Reader reader, Token token, Token [] tokens, object state)
+        {
+            // <Memory> ::= <I>
+            token.UserObject = new Letter ('I');
+        }
+
+        #endregion
 
 	}
 

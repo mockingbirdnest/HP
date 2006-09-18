@@ -774,10 +774,6 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_RAD:
                     unit = AngleUnit.Radian;
                     break;
-                case SymbolConstants.SYMBOL_RC_I:
-                    EnterIfNeeded ();
-                    stack.X = memory.Recall (Memory.LetterRegister.I);
-                    break;
                 case SymbolConstants.SYMBOL_RCL:
                     EnterIfNeeded ();
                     stack.X = ((IAddress) instruction.Arguments [0]).Recall (memory);
@@ -886,9 +882,6 @@ namespace Mockingbird.HP.Execution
                     stack.X = x * x;
                     break;
                 case SymbolConstants.SYMBOL_SST:
-                    break;
-                case SymbolConstants.SYMBOL_ST_I:
-                    memory.Store (stack.X, Memory.LetterRegister.I);
                     break;
                 case SymbolConstants.SYMBOL_STK:
                     switch (reader.Model)

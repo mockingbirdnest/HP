@@ -18,7 +18,7 @@ namespace Mockingbird.HP.Persistence
 	/// </summary>
 	public class Card
 	{
-		private const float Version = 1.7F;
+		private const float Version = 1.8F;
 
 		#region Event Definitions
 
@@ -116,8 +116,45 @@ namespace Mockingbird.HP.Persistence
 					}
 				}
 			}
-			cds.Card [0].Version = Version;
-		}
+            if (cr.Version <= 1.7F)
+            {
+                // Version 1.7 used to have RC_I and ST_I.
+                prs = cr.GetProgramRows ();
+                if (prs.Length > 0)
+                {
+                    pr = prs [0];
+                    irs = pr.GetInstructionRows ();
+                    foreach (CardDataset.InstructionRow ir in irs)
+                    {
+                        bool mustPatch = false;
+
+                        if (ir.Instruction == "Rc_I")
+                        {
+                            ir.Instruction = "Rcl";
+                            mustPatch = true;
+                        }
+                        else if (ir.Instruction == "St_I")
+                        {
+                            ir.Instruction = "Sto";
+                            mustPatch = true;
+                        }
+                        if (mustPatch)
+                        {
+                            CardDataset.ArgumentRow ar;
+
+                            ir.ArgumentCount = 1;
+                            ar = cds.Argument.NewArgumentRow ();
+                            ar.Id = 0;
+                            ar.Type = "Mockingbird.HP.Class_Library.Letter";
+                            ar.Value = "I";
+                            ar.InstructionRow = ir;
+                            cds.Argument.AddArgumentRow (ar);
+                        }
+                    }
+                }
+            }
+            cds.Card [0].Version = Version;
+        }
 
 		#endregion
 
