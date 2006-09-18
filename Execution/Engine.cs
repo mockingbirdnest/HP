@@ -400,8 +400,7 @@ namespace Mockingbird.HP.Execution
                     validater.DoneEntering ();
                     if (MustTrace && (running || stepping))
                     {
-                        //TODO: How do we get the step?
-                        printer.PrintStep (1);
+                        program.PrintStep ();
                         printer.PrintInstruction (instruction, /*showKeycodes*/ false);
                     }
                     break;
@@ -411,8 +410,7 @@ namespace Mockingbird.HP.Execution
                     {
                         if (running || stepping)
                         {
-                            //TODO: How do we get the step?
-                            printer.PrintStep (1);
+                            program.PrintStep ();
                         }
                         printer.PrintInstruction (instruction, /*showKeycodes*/ false);
                     }
@@ -808,7 +806,7 @@ namespace Mockingbird.HP.Execution
                             memory.Display ();
                             break;
                         case CalculatorModel.HP97:
-                            //TODO: Implement.
+                            memory.Print ();
                             break;
                     }
                     break;
@@ -1206,11 +1204,12 @@ namespace Mockingbird.HP.Execution
                                 case SymbolConstants.SYMBOL_DEL:
                                     program.Delete ();
                                     break;
-                                case SymbolConstants.SYMBOL_GTO_PERIOD:
-                                    Execute (instruction);
-                                    break;
                                 case SymbolConstants.SYMBOL_SST:
                                     program.GotoRelative (+1);
+                                    break;
+                                case SymbolConstants.SYMBOL_GTO_PERIOD:
+                                case SymbolConstants.SYMBOL_PRINT_PRGM:
+                                    Execute (instruction);
                                     break;
                                 default:
                                     program.Insert (instruction);

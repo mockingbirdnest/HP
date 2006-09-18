@@ -25,8 +25,9 @@ namespace Mockingbird.HP.Class_Library
 
 		#region Private Declarations
 
-		private double[] registers;
 		private IDisplay display;
+        private IPrinter printer;
+		private double[] registers;
 
 		private enum ΣRegister
 		{
@@ -38,21 +39,14 @@ namespace Mockingbird.HP.Class_Library
 			n = 19
 		}
 
-		private void CheckIndex ()
-		{
-			if (Math.Floor (Math.Abs (this [LetterRegister.I])) > (int) LetterRegister.I)
-			{
-				throw new Error ();
-			}
-		}
-
 		#endregion
 
 		#region Constructors & Destructors
 
-		public Memory (IDisplay display)
+		public Memory (IDisplay display, IPrinter printer)
 		{
 			this.display = display;
+            this.printer = printer;
 			registers = new double [(int) LetterRegister.I - 0 + 1];
 			for (int i = 0; i < registers.Length; i++)
 			{
@@ -210,9 +204,21 @@ namespace Mockingbird.HP.Class_Library
 
 		#endregion
 
-		#region Public Operations
+        #region Public Properties
 
-		public void ΣPlus (double X, double Y)
+		public double N 
+		{
+			get 
+			{
+				return this [ΣRegister.n];
+			}
+		}
+
+        #endregion
+
+        #region Public Operations
+
+        public void ΣPlus (double X, double Y)
 		{
 			this [ΣRegister.n]++;
 			this [ΣRegister.Σxy] += X * Y;
@@ -232,19 +238,113 @@ namespace Mockingbird.HP.Class_Library
 			this [ΣRegister.Σx]  -= X;
 		}
 
-		public void X̄ (out double x, out double y)
+		private void CheckIndex ()
 		{
-			int n = (int) this [ΣRegister.n];
-
-			if (n == 0) 
+			if (Math.Floor (Math.Abs (this [LetterRegister.I])) > (int) LetterRegister.I)
 			{
 				throw new Error ();
 			}
-			else 
+		}
+
+		public void Clear ()
+		{
+			for (int i = 0; i <= 9; i++)
 			{
-				x =  this [ΣRegister.Σx] / n;
-				y =  this [ΣRegister.Σy] / n;
+				this [i] = 0.0;
 			}
+			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
+			{
+				this [i] = 0.0;
+			}
+		}
+
+		public bool DecrementAndSkipIfZero ()
+		{
+			this [LetterRegister.I]--;
+			return Math.Abs (this [LetterRegister.I]) < 1.0;
+		}
+
+		public bool DecrementAndSkipIfZeroIndexed ()
+		{
+			CheckIndex ();
+			this [Math.Floor (Math.Abs (this [LetterRegister.I]))]--;
+			return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
+		}
+
+		public void Display ()
+		{
+			for (int i = 0; i <= 9; i++) 
+			{
+				display.ShowMemory (i, this [i], 800);
+			}
+			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++) 
+			{
+				display.ShowMemory ((int) i, this [i], 800);
+			}
+		}
+
+		public bool IncrementAndSkipIfZero ()
+		{
+			this [LetterRegister.I]++;
+			return Math.Abs (this [LetterRegister.I]) < 1.0;
+		}
+
+		public bool IncrementAndSkipIfZeroIndexed ()
+		{
+			CheckIndex ();
+			this [Math.Floor (Math.Abs (this [LetterRegister.I]))]++;
+			return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
+		}
+
+		public void PrimarySecondaryExchange ()
+		{
+			double temp;
+			
+			for (int i = 0; i <= 9; i++)
+			{
+				temp = registers [i];
+				registers [i] = registers [i + 10];
+				registers [i + 10] = temp;
+			}
+		}
+
+        public void Print ()
+        {
+            for (int i = 0; i <= 9; i++)
+            {
+                printer.Formatter.Value = this [i];
+                printer.PrintNumeric ();
+                printer.PrintAddress (i);
+            }
+            for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
+            {
+                printer.Formatter.Value = this [i];
+                printer.PrintNumeric ();
+                printer.PrintAddress (i);
+            }
+        }
+
+        public double Recall (Byte Index)
+		{
+			Trace.Assert(Index <= 9);
+			return registers [Index];
+		}
+
+		public double Recall (LetterRegister Index)
+		{
+			return this [Index];
+		}
+
+		public void RecallΣPlus (out double x, out double y)
+		{
+			x = this [ΣRegister.Σx];
+			y = this [ΣRegister.Σy];
+		}
+
+		public double RecallIndexed ()
+		{
+			CheckIndex ();
+			return this [Math.Floor (Math.Abs (this [LetterRegister.I]))];
 		}
 
 		public void S(out double x, out double y)
@@ -261,26 +361,6 @@ namespace Mockingbird.HP.Class_Library
 					n) / (n - 1));
 				y = Math.Sqrt ((this [ΣRegister.Σy2] - (this [ΣRegister.Σy] * this [ΣRegister.Σy])/
 					n) / (n - 1));
-			}
-		}
-
-		public double N 
-		{
-			get 
-			{
-				return this [ΣRegister.n];
-			}
-		}
-
-		public void PrimarySecondaryExchange ()
-		{
-			double temp;
-			
-			for (int i = 0; i <= 9; i++)
-			{
-				temp = registers [i];
-				registers [i] = registers [i + 10];
-				registers [i + 10] = temp;
 			}
 		}
 
@@ -314,76 +394,18 @@ namespace Mockingbird.HP.Class_Library
 				Modifier (Math.Floor (Math.Abs (this [LetterRegister.I])), Value);
 		}
 
-		public double Recall (Byte Index)
+		public void X̄ (out double x, out double y)
 		{
-			Trace.Assert(Index <= 9);
-			return registers [Index];
-		}
+			int n = (int) this [ΣRegister.n];
 
-		public double Recall (LetterRegister Index)
-		{
-			return this [Index];
-		}
-
-		public double RecallIndexed ()
-		{
-			CheckIndex ();
-			return this [Math.Floor (Math.Abs (this [LetterRegister.I]))];
-		}
-
-		public void RecallΣPlus (out double x, out double y)
-		{
-			x = this [ΣRegister.Σx];
-			y = this [ΣRegister.Σy];
-		}
-
-		public bool IncrementAndSkipIfZero ()
-		{
-			this [LetterRegister.I]++;
-			return Math.Abs (this [LetterRegister.I]) < 1.0;
-		}
-
-		public bool IncrementAndSkipIfZeroIndexed ()
-		{
-			CheckIndex ();
-			this [Math.Floor (Math.Abs (this [LetterRegister.I]))]++;
-			return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
-		}
-
-		public bool DecrementAndSkipIfZero ()
-		{
-			this [LetterRegister.I]--;
-			return Math.Abs (this [LetterRegister.I]) < 1.0;
-		}
-
-		public bool DecrementAndSkipIfZeroIndexed ()
-		{
-			CheckIndex ();
-			this [Math.Floor (Math.Abs (this [LetterRegister.I]))]--;
-			return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
-		}
-
-		public void Clear ()
-		{
-			for (int i = 0; i <= 9; i++)
+			if (n == 0) 
 			{
-				this [i] = 0.0;
+				throw new Error ();
 			}
-			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
+			else 
 			{
-				this [i] = 0.0;
-			}
-		}
-
-		public void Display ()
-		{
-			for (int i = 0; i <= 9; i++) 
-			{
-				display.ShowMemory (i, this [i], 800);
-			}
-			for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++) 
-			{
-				display.ShowMemory ((int) i, this [i], 800);
+				x =  this [ΣRegister.Σx] / n;
+				y =  this [ΣRegister.Σy] / n;
 			}
 		}
 

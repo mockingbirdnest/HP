@@ -5,45 +5,45 @@
     <Position X="3.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <FileName>Arguments.cs</FileName>
-      <HashCode>AAgAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAgAAAgA=</HashCode>
+      <HashCode>AAgAAAAAAAAQAIAAAAAAAAAAAAAQAAAAAAAAAgAAAgA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Mockingbird.HP.Class_Library.Digit" Collapsed="true">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+    <Position X="0.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Arguments.cs</FileName>
-      <HashCode>AAgQAAAAAAAAAAAAAEAAAAAAAAATAAAAAAEgAQAAAoA=</HashCode>
+      <HashCode>AAgQAAAAAAAAAIAAAEAAAAAAAAATAAAAAAEgAQAAAoA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Mockingbird.HP.Class_Library.Indexed" Collapsed="true">
-    <Position X="2.75" Y="4.5" Width="1.5" />
+    <Position X="2.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Arguments.cs</FileName>
-      <HashCode>AAgQAAAAAAAAAAAAAEAAAAAAAAASAAAAAAAAAQAAAoA=</HashCode>
+      <HashCode>AAgQAAAAAAAAAIAAAEAAAAAAAAASAAAAAAAAAQAAAoA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Mockingbird.HP.Class_Library.Letter" Collapsed="true">
-    <Position X="5" Y="4.5" Width="1.5" />
+    <Position X="5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Arguments.cs</FileName>
-      <HashCode>AAgAAAAAAAAAAAAAAEAAAAAAACASAEAAAABgAQAAAoA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAIAAAEAAAAAAACASAEAAAABgAQAAAoA=</HashCode>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Mockingbird.HP.Class_Library.Operator" Collapsed="true">
-    <Position X="7.25" Y="4.5" Width="1.5" />
+    <Position X="7.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Arguments.cs</FileName>
-      <HashCode>QAgBAAAAQAAAAAAAAgAAAAAAABAQCgAAAAAogAAAAgA=</HashCode>
+      <HashCode>QAgBAAAAQAAAAIAAAgAAAAAAABAQCgAAAAAogAAAAgA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Mockingbird.HP.Class_Library.Instruction">
     <Position X="2.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Instruction.cs</FileName>
-      <HashCode>AAgAAAAAAAAAAAAAAIAAAAAAAAAgAAAIKAAACAAACAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAIAAAIAAAAAAAAAgAAAIKAAACAAACAA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -53,8 +53,12 @@
     <Position X="4" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Memory.cs</FileName>
-      <HashCode>CEAAAgAAAAIAAAAACEgCQREAAAMgAAEAAUCgARDAAAA=</HashCode>
+      <HashCode>CEAAAgAAAAIAAAAACEgCQREAAAMgAAEAAUCgARDEAAE=</HashCode>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="display" />
+      <Field Name="printer" />
+    </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -80,8 +84,12 @@
     <Position X="5.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Program.cs</FileName>
-      <HashCode>wABgAEAMAgIABBgICAIIANCAAAEaGAEQCAAAEAJUUIA=</HashCode>
+      <HashCode>wABgAEAMCgIABBgICAIIENCAAAEaGAEQCAAAEAJUUIE=</HashCode>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="printer" />
+      <Field Name="display" />
+    </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -97,8 +105,11 @@
     <Position X="7.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Stack.cs</FileName>
-      <HashCode>AAAAAIEQQAAAAIBACACAAQAAAgEEAJAAAAAAAAAAYAA=</HashCode>
+      <HashCode>AAAAAIAQQAAAAIBACACAAQAAAgEEAJAAAAAAAAAAYAA=</HashCode>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="display" />
+    </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -172,10 +183,17 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="Mockingbird.HP.Class_Library.IDisplay">
-    <Position X="5.75" Y="12.75" Width="1.5" />
+    <Position X="6.75" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>IDisplay.cs</FileName>
-      <HashCode>AAAgAEAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAEAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Mockingbird.HP.Class_Library.IPrinter">
+    <Position X="4.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IPrinter.cs</FileName>
+      <HashCode>AAAAAAAACIABAAAABAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
     </TypeIdentifier>
   </Interface>
 </ClassDiagram>

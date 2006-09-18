@@ -389,7 +389,7 @@ namespace Mockingbird.HP.Execution
                 display.ShowText ("", 0, 0);
 
                 // Create the components that depend on the display.
-                memory = new Memory (display);
+                memory = new Memory (display, printer);
                 program = new Program (display, printer, reader);
                 stack = new Stack (display, validater);
                 engine = new Engine (display,

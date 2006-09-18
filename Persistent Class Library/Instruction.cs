@@ -395,6 +395,9 @@ namespace Mockingbird.HP.Class_Library
                     case SymbolConstants.SYMBOL_R_UP:
                         result = "R↑";
                         break;
+                    case SymbolConstants.SYMBOL_RC_I:
+                        result = "RCLI";
+                        break;
                     case SymbolConstants.SYMBOL_RCL_SIGMA_PLUS:
                         result = "RCLΣ";
                         break;
@@ -421,6 +424,9 @@ namespace Mockingbird.HP.Class_Library
                         break;
                     case SymbolConstants.SYMBOL_SQUARE:
                         result = "X²";
+                        break;
+                    case SymbolConstants.SYMBOL_ST_I:
+                        result = "STOI";
                         break;
                     case SymbolConstants.SYMBOL_STO:
                         if (arguments.Length > 1)

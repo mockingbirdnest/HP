@@ -179,7 +179,7 @@
     <Content Include="Toggle.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Display.cd" />
+    <None Include="Control Library.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

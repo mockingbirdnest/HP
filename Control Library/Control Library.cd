@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Font Name="Tahoma" Size="8.25" />
-  <Class Name="Mockingbird.HP.Control_Library.Display">
-    <Position X="5.75" Y="0.75" Width="1.5" />
+  <Class Name="Mockingbird.HP.Control_Library.Display" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Display.cs</FileName>
       <NewMemberFileName>DisplayV2.cs</NewMemberFileName>
-      <HashCode>gCIgCEEIEqAAAgaURQAAAAACBUAAAAEAAARgAgQCACA=</HashCode>
+      <HashCode>gCIgCEEIEqABAgaURQAAAAACBUAAAAEAAARgAgQCACA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
       <Delegate Name="Mockingbird.HP.Control_Library.Display.DisplayStateChangeEvent" Collapsed="true">
@@ -28,13 +29,99 @@
         </TypeIdentifier>
       </Delegate>
     </NestedTypes>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Mockingbird.HP.Control_Library.CardSlot">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>CardSlot.cs</FileName>
+      <HashCode>QAIAAAlE8GMABFICQACBIIADATghEEFEJYhYBwTLEIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="Mockingbird.HP.Control_Library.Key">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Key.cs</FileName>
+      <HashCode>EgIQYYlADCCAQIYkSAKEAIlCBAABAAAAIEAAACEjYAQ=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="Mockingbird.HP.Control_Library.Key.KeystrokeEvent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Key.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+  </Class>
+  <Class Name="Mockingbird.HP.Control_Library.Toggle">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Toggle.cs</FileName>
+      <HashCode>AgIAAYBAECEAAAAhCACAIABSABABAQAoQAFAgyBDAIQ=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="Mockingbird.HP.Control_Library.Toggle.ToggleEvent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Toggle.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+  </Class>
+  <Class Name="Mockingbird.HP.Control_Library.Printer">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Printer.cs</FileName>
+      <HashCode>AAIAAAMICqABIAAARQGAAQACAAIQAQgAAAgCAIAAACA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Mockingbird.HP.Control_Library.Printer.Column" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Printer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <Lollipop Position="0.2" />
   </Class>
-  <Enum Name="Mockingbird.HP.Control_Library.DisplayMode">
-    <Position X="0.5" Y="2" Width="1.5" />
+  <Enum Name="Mockingbird.HP.Control_Library.DisplayMode" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Display.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAIAAAAAABAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Mockingbird.HP.Control_Library.CardSlotState" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>CardSlot.cs</FileName>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAKAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Mockingbird.HP.Control_Library.TextAlign" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Key.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Mockingbird.HP.Control_Library.TogglePosition" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Toggle.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAIAAA=</HashCode>
     </TypeIdentifier>
   </Enum>
 </ClassDiagram>

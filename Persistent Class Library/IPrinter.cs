@@ -5,7 +5,14 @@ namespace Mockingbird.HP.Class_Library
     // and Control_Library.
     public interface IPrinter
     {
+        void PrintAddress (int address);
+        void PrintAddress (Memory.LetterRegister address);
         void PrintInstruction (Instruction instruction, bool showKeycodes);
+        void PrintNumeric ();
         void PrintStep (int step);
+        Number.Formatter Formatter
+        {
+            get;
+        }
     }
 }

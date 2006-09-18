@@ -768,6 +768,8 @@ namespace Mockingbird.HP.Class_Library
         {
             int r_s_count = 0;
 
+            //TODO: Should start from current step.
+            //TODO: Should stop on any key.
             for (int i = 0; i < instructions.Length; i++)
             {
                 if ((SymbolConstants) instructions [i].Symbol.Id == SymbolConstants.SYMBOL_R_S)
@@ -786,6 +788,14 @@ namespace Mockingbird.HP.Class_Library
                 printer.PrintStep (i + 1);
                 printer.PrintInstruction (instructions [i], showKeycodes);
             }
+        }
+
+        public void PrintStep ()
+        {
+            // This is not ideal: PrintStep is called *after* the instruction has been fetched, so
+            // it must really print next - 1 + 1.
+            //TODO: Maybe the autoincrement is a bad idea...
+            printer.PrintStep (next);
         }
 
 		#endregion
