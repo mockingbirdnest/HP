@@ -9,6 +9,7 @@ namespace Mockingbird.HP.Parser
 
     public enum CalculatorModel
     {
+        HP35 = 35,
         HP67 = 67,
         HP97 = 97
     }

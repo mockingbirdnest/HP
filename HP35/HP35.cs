@@ -1,19 +1,61 @@
 using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Execution;
+using Mockingbird.HP.Parser;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.HP35
 {
-    public partial class HP35 : Form
+    public partial class HP35:
+#if DESIGN
+ Form
+#else
+ BaseCalculator
+#endif
     {
+
         public HP35 (string [] arguments)
+            : base (arguments, CalculatorModel.HP35)
         {
-            InitializeComponent ();
+        }
+
+        protected override void PreInitializeComponent (string [] arguments, CalculatorModel model)
+        {
+            base.PreInitializeComponent (arguments, model);
+        }
+
+        protected override bool KeyEventsPreempted
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        protected override void BusyUI ()
+        {
+        }
+
+        public override EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
+        {
+            EngineModes modes;
+
+            modes.execution = EngineModes.Execution.Run;
+            modes.tracing = EngineModes.Tracing.Manual;
+            return modes;
+        }
+
+        protected override void PowerOff ()
+        {
+            //TODO: Implement.
+        }
+
+        protected override void ProcessCommandLine (string [] arguments)
+        {
+        }
+
+        protected override void UnbusyUI ()
+        {
         }
 
         /// <summary>

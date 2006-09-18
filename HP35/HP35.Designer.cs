@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent ()
+        protected override void InitializeComponent ()
         {
             this.keyXExchangeY = new Mockingbird.HP.Control_Library.Key ();
             this.keyRDown = new Mockingbird.HP.Control_Library.Key ();
@@ -960,8 +960,6 @@
 
         #endregion
 
-        private Mockingbird.HP.Control_Library.Display display;
-        protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
         private Mockingbird.HP.Control_Library.Key keyXExchangeY;
         private Mockingbird.HP.Control_Library.Key keyRDown;
         private Mockingbird.HP.Control_Library.Key keySTO;
@@ -997,6 +995,44 @@
         private Mockingbird.HP.Control_Library.Key keyCLx;
         private Mockingbird.HP.Control_Library.Key keyEEX;
         private Mockingbird.HP.Control_Library.Key keyENTER;
+
+ #if DESIGN
+		// Unfortunate, but for the design mode to work we need to replicate the declarations of the
+		// controls that occur in parent classes.  Danger!  Double-check what happens here if the
+		// UI is edited.
+
+		// BaseCalculator.
+        protected Mockingbird.HP.Control_Library.Display display;
+		protected Mockingbird.HP.Control_Library.Toggle toggleOffOn;
+
+        private void exitToolStripMenuItem_Click (object sender, System.EventArgs e)
+        {
+        }
+
+		private void Key_LeftMouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+		}
+
+		private void Key_LeftMouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+		}
+
+		private void toggleOffOn_ToggleMoved(object sender, Mockingbird.HP.Control_Library.TogglePosition position)
+		{
+		}
+
+		private void Calculator_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+		{
+		}
+
+		private void Calculator_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+		}
+
+		private void Calculator_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+		{
+		}
+#endif
     }
 }
 
