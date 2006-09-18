@@ -273,64 +273,11 @@ namespace Mockingbird.HP.Control_Library
             lastPrintedColumn = Column.Instruction;
         }
 
-        public void PrintAddress (int address)
+        public void PrintAddress (Argument address)
         {
             //TODO: Factorize, revise columns.
-            string s = address.ToString (addressTemplate, NumberFormatInfo.InvariantInfo);
+            string s = address.TraceableText;
 
-            s = s.PadLeft (symbolicWidth);
-            switch (lastPrintedColumn)
-            {
-                case Column.Numeric:
-                    {
-                        int count = ThreadSafe.ItemsCount (listBox);
-                        string lastItem = (string) ThreadSafe.ItemsGetItem (listBox, count - 1);
-
-                        lastItem = lastItem.Substring (0, lastItem.Length - symbolicWidth) + s;
-                        Replace (lastItem.Trim (), count - 1, HorizontalAlignment.Right);
-                        break;
-                    }
-                case Column.Instruction:
-                    {
-                        Append (s, HorizontalAlignment.Right);
-                        break;
-                    }
-                case Column.Step:
-                    {
-                        Trace.Assert (false);
-                        break;
-                    }
-            }
-            lastPrintedColumn = Column.Instruction;
-        }
-
-        public void PrintAddress (Memory.LetterRegister address)
-        {
-            //TODO: Not exactly pretty, would love to pass an argument, but this would require
-            // make RC_I and ST_I consistent with the rest.
-            string s = null;
-
-            switch (address)
-            {
-                case Memory.LetterRegister.A:
-                    s = "A";
-                    break;
-                case Memory.LetterRegister.B:
-                    s = "B";
-                    break;
-                case Memory.LetterRegister.C:
-                    s = "C";
-                    break;
-                case Memory.LetterRegister.D:
-                    s = "D";
-                    break;
-                case Memory.LetterRegister.E:
-                    s = "E";
-                    break;
-                case Memory.LetterRegister.I:
-                    s = "I";
-                    break;
-            }
             s = s.PadLeft (symbolicWidth);
             switch (lastPrintedColumn)
             {
