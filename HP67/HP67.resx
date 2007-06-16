@@ -135,7 +135,7 @@
     <value>cardSlot</value>
   </data>
   <data name="&gt;&gt;cardSlot.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.CardSlot, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.CardSlot, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cardSlot.Parent" xml:space="preserve">
     <value>$this</value>
@@ -159,7 +159,7 @@
     <value>display</value>
   </data>
   <data name="&gt;&gt;display.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Display, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Display, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;display.Parent" xml:space="preserve">
     <value>$this</value>
@@ -174,7 +174,7 @@
     <value>8, 80</value>
   </data>
   <data name="toggleOffOn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 32</value>
+    <value>110, 16</value>
   </data>
   <data name="toggleOffOn.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -183,7 +183,7 @@
     <value>toggleOffOn</value>
   </data>
   <data name="&gt;&gt;toggleOffOn.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toggleOffOn.Parent" xml:space="preserve">
     <value>$this</value>
@@ -198,7 +198,7 @@
     <value>160, 80</value>
   </data>
   <data name="toggleWprgmRun.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 32</value>
+    <value>140, 16</value>
   </data>
   <data name="toggleWprgmRun.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -207,7 +207,7 @@
     <value>toggleWprgmRun</value>
   </data>
   <data name="&gt;&gt;toggleWprgmRun.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toggleWprgmRun.Parent" xml:space="preserve">
     <value>$this</value>
@@ -231,7 +231,7 @@
     <value>keyA</value>
   </data>
   <data name="&gt;&gt;keyA.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyA.Parent" xml:space="preserve">
     <value>$this</value>
@@ -255,7 +255,7 @@
     <value>keyf</value>
   </data>
   <data name="&gt;&gt;keyf.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyf.Parent" xml:space="preserve">
     <value>$this</value>
@@ -279,7 +279,7 @@
     <value>keySST</value>
   </data>
   <data name="&gt;&gt;keySST.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySST.Parent" xml:space="preserve">
     <value>$this</value>
@@ -303,7 +303,7 @@
     <value>keyi</value>
   </data>
   <data name="&gt;&gt;keyi.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyi.Parent" xml:space="preserve">
     <value>$this</value>
@@ -327,7 +327,7 @@
     <value>keyDSP</value>
   </data>
   <data name="&gt;&gt;keyDSP.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyDSP.Parent" xml:space="preserve">
     <value>$this</value>
@@ -351,7 +351,7 @@
     <value>keyGTO</value>
   </data>
   <data name="&gt;&gt;keyGTO.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyGTO.Parent" xml:space="preserve">
     <value>$this</value>
@@ -375,7 +375,7 @@
     <value>keyΣ</value>
   </data>
   <data name="&gt;&gt;keyΣ.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyΣ.Parent" xml:space="preserve">
     <value>$this</value>
@@ -399,7 +399,7 @@
     <value>keyE</value>
   </data>
   <data name="&gt;&gt;keyE.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyE.Parent" xml:space="preserve">
     <value>$this</value>
@@ -423,7 +423,7 @@
     <value>keyD</value>
   </data>
   <data name="&gt;&gt;keyD.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyD.Parent" xml:space="preserve">
     <value>$this</value>
@@ -447,7 +447,7 @@
     <value>keyC</value>
   </data>
   <data name="&gt;&gt;keyC.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyC.Parent" xml:space="preserve">
     <value>$this</value>
@@ -471,7 +471,7 @@
     <value>keyB</value>
   </data>
   <data name="&gt;&gt;keyB.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyB.Parent" xml:space="preserve">
     <value>$this</value>
@@ -495,7 +495,7 @@
     <value>keyENTER</value>
   </data>
   <data name="&gt;&gt;keyENTER.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyENTER.Parent" xml:space="preserve">
     <value>$this</value>
@@ -519,7 +519,7 @@
     <value>keyEEX</value>
   </data>
   <data name="&gt;&gt;keyEEX.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyEEX.Parent" xml:space="preserve">
     <value>$this</value>
@@ -543,7 +543,7 @@
     <value>keyCLx</value>
   </data>
   <data name="&gt;&gt;keyCLx.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyCLx.Parent" xml:space="preserve">
     <value>$this</value>
@@ -567,7 +567,7 @@
     <value>keyCHS</value>
   </data>
   <data name="&gt;&gt;keyCHS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyCHS.Parent" xml:space="preserve">
     <value>$this</value>
@@ -591,7 +591,7 @@
     <value>keyh</value>
   </data>
   <data name="&gt;&gt;keyh.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyh.Parent" xml:space="preserve">
     <value>$this</value>
@@ -615,7 +615,7 @@
     <value>keyRCL</value>
   </data>
   <data name="&gt;&gt;keyRCL.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRCL.Parent" xml:space="preserve">
     <value>$this</value>
@@ -639,7 +639,7 @@
     <value>keySTO</value>
   </data>
   <data name="&gt;&gt;keySTO.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySTO.Parent" xml:space="preserve">
     <value>$this</value>
@@ -663,7 +663,7 @@
     <value>keyg</value>
   </data>
   <data name="&gt;&gt;keyg.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyg.Parent" xml:space="preserve">
     <value>$this</value>
@@ -687,7 +687,7 @@
     <value>key8</value>
   </data>
   <data name="&gt;&gt;key8.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key8.Parent" xml:space="preserve">
     <value>$this</value>
@@ -711,7 +711,7 @@
     <value>keyRS</value>
   </data>
   <data name="&gt;&gt;keyRS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRS.Parent" xml:space="preserve">
     <value>$this</value>
@@ -735,7 +735,7 @@
     <value>keyPeriod</value>
   </data>
   <data name="&gt;&gt;keyPeriod.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyPeriod.Parent" xml:space="preserve">
     <value>$this</value>
@@ -759,7 +759,7 @@
     <value>key0</value>
   </data>
   <data name="&gt;&gt;key0.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key0.Parent" xml:space="preserve">
     <value>$this</value>
@@ -783,7 +783,7 @@
     <value>key9</value>
   </data>
   <data name="&gt;&gt;key9.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key9.Parent" xml:space="preserve">
     <value>$this</value>
@@ -807,7 +807,7 @@
     <value>key3</value>
   </data>
   <data name="&gt;&gt;key3.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key3.Parent" xml:space="preserve">
     <value>$this</value>
@@ -831,7 +831,7 @@
     <value>key2</value>
   </data>
   <data name="&gt;&gt;key2.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -855,7 +855,7 @@
     <value>key1</value>
   </data>
   <data name="&gt;&gt;key1.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -879,7 +879,7 @@
     <value>key6</value>
   </data>
   <data name="&gt;&gt;key6.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key6.Parent" xml:space="preserve">
     <value>$this</value>
@@ -903,7 +903,7 @@
     <value>key5</value>
   </data>
   <data name="&gt;&gt;key5.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key5.Parent" xml:space="preserve">
     <value>$this</value>
@@ -927,7 +927,7 @@
     <value>key4</value>
   </data>
   <data name="&gt;&gt;key4.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key4.Parent" xml:space="preserve">
     <value>$this</value>
@@ -951,7 +951,7 @@
     <value>key7</value>
   </data>
   <data name="&gt;&gt;key7.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key7.Parent" xml:space="preserve">
     <value>$this</value>
@@ -975,7 +975,7 @@
     <value>keyMinus</value>
   </data>
   <data name="&gt;&gt;keyMinus.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyMinus.Parent" xml:space="preserve">
     <value>$this</value>
@@ -999,7 +999,7 @@
     <value>keyDiv</value>
   </data>
   <data name="&gt;&gt;keyDiv.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyDiv.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1023,7 +1023,7 @@
     <value>keyMult</value>
   </data>
   <data name="&gt;&gt;keyMult.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyMult.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1047,7 +1047,7 @@
     <value>keyPlus</value>
   </data>
   <data name="&gt;&gt;keyPlus.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2436.21638, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2723.38432, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyPlus.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1059,7 +1059,7 @@
     <value>119, 17</value>
   </metadata>
   <data name="openFileDialog.Filter" xml:space="preserve">
-    <value>HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*</value>
+    <value>HP67 Card Files (*.hp67)|*.hp67|HP97 Card Files (*.hp97)|*.hp97|All files (*.*)|*.*</value>
   </data>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>243, 17</value>
@@ -1071,7 +1071,7 @@
     <value>365, 17</value>
   </metadata>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>-3, 18</value>
   </metadata>
   <data name="openToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
