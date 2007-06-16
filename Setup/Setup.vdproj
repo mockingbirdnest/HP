@@ -195,12 +195,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6F23A649E71E47368A053BFB0A2E2966"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7A227A4A426D407FB399CF09A59C039E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -257,6 +251,12 @@
         {
         "MsmKey" = "8:_B547159C5FD944F704AC8EB403853CBF"
         "OwnerKey" = "8:_0A9EA3E3E99343B2CA35D90582F5C38B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B7997D6E97F14F7AA2EC5D2C97E48201"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -345,7 +345,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E75A26068E114BED977CE10EAC89662A"
+        "MsmKey" = "8:_E28A0DCD1D974219AD57ED66503C1FAC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -678,7 +678,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -718,7 +718,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -758,7 +758,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -840,26 +840,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6F23A649E71E47368A053BFB0A2E2966"
-            {
-            "SourcePath" = "8:..\\Pacs\\Standard Pac\\Moving Average.hp67"
-            "TargetName" = "8:Moving Average.hp67"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A227A4A426D407FB399CF09A59C039E"
             {
             "SourcePath" = "8:HP97 Document.ico"
@@ -920,7 +900,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -962,6 +942,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B7997D6E97F14F7AA2EC5D2C97E48201"
+            {
+            "SourcePath" = "8:..\\Pacs\\Standard Pac\\Tabulator.hp67"
+            "TargetName" = "8:Tabulator.hp67"
+            "Tag" = "8:"
+            "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BCF7A56A97184CE4A803ABE4B29FD787"
             {
             "SourcePath" = "8:..\\Pacs\\Math Pac I\\Spherical Triangles.hp67"
@@ -971,7 +971,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1062,7 +1062,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1113,7 +1113,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1133,7 +1133,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1144,16 +1144,16 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E75A26068E114BED977CE10EAC89662A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E28A0DCD1D974219AD57ED66503C1FAC"
             {
-            "SourcePath" = "8:..\\Pacs\\Standard Pac\\Tabulator.hp67"
-            "TargetName" = "8:Tabulator.hp67"
+            "SourcePath" = "8:..\\Pacs\\Standard Pac\\Moving Average.hp67"
+            "TargetName" = "8:Moving Average.hp67"
             "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1173,7 +1173,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1193,7 +1193,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1213,7 +1213,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1249,6 +1249,36 @@
                     "Order" = "3:0"
                     }
                     "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_F8F4A58407714DCFA83C371042338D5E"
+                    {
+                    "Command" = "8:&Print"
+                    "Verb" = "8:print"
+                    "Arguments" = "8:/print \"%1\""
+                    "Order" = "3:1"
+                    }
+                }
+            }
+            "{5EB83D71-FA18-4901-BE56-DE22E13CC478}:_E21397FF0E484B80A73CBC66B6BFCC0A"
+            {
+            "Name" = "8:HP97 Card"
+            "Description" = "8:HP97 Card"
+            "Extensions" = "8:hp97"
+            "MIME" = "8:"
+            "Icon" = "8:_7A227A4A426D407FB399CF09A59C039E"
+            "IconIndex" = "3:0"
+                "Command"
+                {
+                "Command" = "8:_FF1B3FB657C042ED9A063AF979D07AE5"
+                }
+                "Verbs"
+                {
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_5C1FCDF736C540019846D30991EE8BDF"
+                    {
+                    "Command" = "8:&Open"
+                    "Verb" = "8:open"
+                    "Arguments" = "8:/open \"%1\""
+                    "Order" = "3:0"
+                    }
+                    "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_9A7D351CA8EF4EF9AE235F40504070B7"
                     {
                     "Command" = "8:&Print"
                     "Verb" = "8:print"
@@ -1365,7 +1395,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HP"
         "ProductCode" = "8:{81A27FF1-E91F-411B-8444-FA26EF60C11F}"
-        "PackageCode" = "8:{5A797D10-00C9-4899-A961-656CFE160603}"
+        "PackageCode" = "8:{6FEA86DE-FC21-48E9-A572-EB4BCB6B8DED}"
         "UpgradeCode" = "8:{2FBD7568-F146-4463-A202-04EDF04C018A}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
