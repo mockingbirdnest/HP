@@ -163,8 +163,7 @@ namespace Mockingbird.HP.Class_Library
                 printer.Formatter.Value = this [p];
                 printer.PrintNumeric ();
                 
-                //TODO: Are trailing spaces discarded?
-                printer.PrintAddress (Enum.Format (typeof (Position), p, "G").ToUpper () + " ");
+                printer.PrintAddress (Enum.Format (typeof (Position), p, "G").ToUpper ());
             }
         }
 
