@@ -391,7 +391,7 @@ namespace Mockingbird.HP.Execution
                 // Create the components that depend on the display.
                 memory = new Memory (display, printer);
                 program = new Program (display, printer, reader);
-                stack = new Stack (display, validater);
+                stack = new Stack (display, printer, validater);
                 engine = new Engine (display,
                                      memory,
                                      printer,

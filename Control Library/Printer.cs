@@ -241,6 +241,19 @@ namespace Mockingbird.HP.Control_Library
 
         #region Public Properties
 
+        public override Font Font
+        {
+            get
+            {
+                return listBox.Font;
+            }
+            set
+            {
+                base.Font = value;
+                listBox.Font = value;
+            }
+        }
+
         public Number.Formatter Formatter
         {
             get
@@ -273,12 +286,11 @@ namespace Mockingbird.HP.Control_Library
             lastPrintedColumn = Column.Instruction;
         }
 
-        public void PrintAddress (Argument address)
+        public void PrintAddress (string address)
         {
-            //TODO: Factorize, revise columns.
-            string s = address.TraceableText;
+            //TODO: Factorize with step, revise columns.
+            string s = address.PadLeft (symbolicWidth);
 
-            s = s.PadLeft (symbolicWidth);
             switch (lastPrintedColumn)
             {
                 case Column.Numeric:
@@ -302,6 +314,11 @@ namespace Mockingbird.HP.Control_Library
                     }
             }
             lastPrintedColumn = Column.Instruction;
+        }
+
+        public void PrintAddress (Argument address)
+        {
+            PrintAddress (address.TraceableText + " "); //TODO: Are trailing spaces discarded?
         }
 
         public void PrintNumeric ()

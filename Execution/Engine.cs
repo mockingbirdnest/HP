@@ -890,7 +890,7 @@ namespace Mockingbird.HP.Execution
                             stack.Display ();
                             break;
                         case CalculatorModel.HP97:
-                            //TODO: Implement.
+                            stack.Print ();
                             break;
                     }
                     break;

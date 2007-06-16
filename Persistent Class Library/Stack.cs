@@ -20,6 +20,7 @@ namespace Mockingbird.HP.Class_Library
 
         private IDisplay display;
         private double lastX;
+        private IPrinter printer;
         private double [] stack;
 
         private Number.Validater validater;
@@ -28,9 +29,10 @@ namespace Mockingbird.HP.Class_Library
 
         #region Contructors & Destructors
 
-        public Stack (IDisplay display, Number.Validater validater)
+        public Stack (IDisplay display, IPrinter printer, Number.Validater validater)
         {
             this.display = display;
+            this.printer = printer;
             this.validater = validater;
             this.validater.NumberDone += new Number.ChangeEvent (UpdateXFromValidater);
 
@@ -79,37 +81,7 @@ namespace Mockingbird.HP.Class_Library
 
         #endregion
 
-        #region Public Operations & Properties
-
-        public void XExchangeY ()
-        {
-            double temp;
-            temp = this [Position.x];
-            X = this [Position.y]; // Assign to X, not this [x], to force tracing.
-            this [Position.y] = temp;
-        }
-
-        public void RollDown ()
-        {
-            double temp;
-            temp = this [Position.x];
-            for (Position i = Position.x; i < Position.t; i++)
-            {
-                this [i] = this [i + 1];
-            }
-            this [Position.t] = temp;
-        }
-
-        public void RollUp ()
-        {
-            double temp;
-            temp = this [Position.t];
-            for (Position i = Position.t; i > Position.x; i--)
-            {
-                this [i] = this [i - 1];
-            }
-            this [Position.x] = temp;
-        }
+        #region Public Properties
 
         public double LastX
         {
@@ -146,6 +118,27 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
+        #endregion
+
+        #region Public Operations
+
+        public void Enter ()
+        {
+            for (Position i = Position.t; i > Position.x; i--)
+            {
+                this [i] = this [i - 1];
+            }
+        }
+
+        public void Display ()
+        {
+            for (Position p = Position.x; p <= Position.t; p++)
+            {
+                RollUp ();
+                display.Pause (500);
+            }
+        }
+
         public void Get (out double X)
         {
             X = this [Position.x];
@@ -163,21 +156,46 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        public void Enter ()
+        public void Print ()
         {
+            for (Position p = Position.t; p >= Position.x; p--)
+            {
+                printer.Formatter.Value = this [p];
+                printer.PrintNumeric ();
+                
+                //TODO: Are trailing spaces discarded?
+                printer.PrintAddress (Enum.Format (typeof (Position), p, "G").ToUpper () + " ");
+            }
+        }
+
+        public void RollDown ()
+        {
+            double temp;
+            temp = this [Position.x];
+            for (Position i = Position.x; i < Position.t; i++)
+            {
+                this [i] = this [i + 1];
+            }
+            this [Position.t] = temp;
+        }
+
+        public void RollUp ()
+        {
+            double temp;
+            temp = this [Position.t];
             for (Position i = Position.t; i > Position.x; i--)
             {
                 this [i] = this [i - 1];
             }
+            this [Position.x] = temp;
         }
 
-        public void Display ()
+        public void XExchangeY ()
         {
-            for (Position p = Position.x; p <= Position.t; p++)
-            {
-                RollUp ();
-                display.Pause (500);
-            }
+            double temp;
+            temp = this [Position.x];
+            X = this [Position.y]; // Assign to X, not this [x], to force tracing.
+            this [Position.y] = temp;
         }
 
         #endregion
