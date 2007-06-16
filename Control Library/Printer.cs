@@ -32,14 +32,15 @@ namespace Mockingbird.HP.Control_Library
         private const byte keycodeWidth = 10;
         private const byte symbolicWidth = 5;
 
-        private Column lastPrintedColumn;
         private int emptyLinesAtTop;
         private Graphics graphics;
+        private Column lastPrintedColumn;
         private int lines = 0;
 
         private string exponent;
         private Number.Formatter formatter;
         private string mantissa;
+        private StringFormat stringFormatter = new StringFormat (StringFormat.GenericTypographic);
 
         private System.Windows.Forms.ListBox listBox;
         /// <summary> 
@@ -59,8 +60,13 @@ namespace Mockingbird.HP.Control_Library
             // A graphic context will prove handy to align text.
             graphics = listBox.CreateGraphics ();
 
-            lastPrintedColumn = Column.Instruction;
             emptyLinesAtTop = lines;
+            lastPrintedColumn = Column.Instruction;
+
+            // It is very important to measure the strings using a formatter that takes trailing
+            // spaces into account.  Otherwise we would end up padding too much, and the trailing
+            // spaces would disappear.
+            stringFormatter.FormatFlags = StringFormatFlags.MeasureTrailingSpaces;
         }
 
         /// <summary> 
@@ -162,11 +168,13 @@ namespace Mockingbird.HP.Control_Library
         private void Append (string s, HorizontalAlignment alignment)
         {
             int padding;
+            float width;
 
             for (padding = 1; ; padding++)
             {
-                if (graphics.MeasureString (new string (' ', padding) + s, listBox.Font).Width >
-                    listBox.DisplayRectangle.Width)
+                width = graphics.MeasureString (new string (' ', padding) + s,
+                                                listBox.Font, listBox.Width, stringFormatter).Width;
+                if (width > listBox.DisplayRectangle.Width)
                 {
                     padding--;
                     break;
@@ -199,11 +207,13 @@ namespace Mockingbird.HP.Control_Library
         private void Replace (string s, int index, HorizontalAlignment alignment)
         {
             int padding;
+            float width;
 
             for (padding = 1; ; padding++)
             {
-                if (graphics.MeasureString (new string (' ', padding) + s, listBox.Font).Width >
-                    listBox.DisplayRectangle.Width)
+                width = graphics.MeasureString (new string (' ', padding) + s,
+                                                listBox.Font, listBox.Width, stringFormatter).Width;
+                if (width > listBox.DisplayRectangle.Width)
                 {
                     padding--;
                     break;
@@ -228,11 +238,7 @@ namespace Mockingbird.HP.Control_Library
 
         private void PrintNumeric (string s)
         {
-
-            // If we try to append spaces, the silly control will strip them.  So we use the
-            // default tag, which is made of stars.  If a tag is explicitly inserted by the engine,
-            // the default tag will be overwritten and will be invisible to the user.  Otherwise,
-            // we'll have just what we want for the final result.
+            // Append the default tag, which is the one we'll display if nothing replaces it.
             Append (s + defaultTag, HorizontalAlignment.Right);
             lastPrintedColumn = Column.Numeric;
         }
@@ -289,7 +295,7 @@ namespace Mockingbird.HP.Control_Library
         public void PrintAddress (string address)
         {
             //TODO: Factorize with step, revise columns.
-            string s = address.PadLeft (symbolicWidth);
+            string s = address.PadLeft (symbolicWidth - 1) + " ";
 
             switch (lastPrintedColumn)
             {
@@ -299,7 +305,7 @@ namespace Mockingbird.HP.Control_Library
                         string lastItem = (string) ThreadSafe.ItemsGetItem (listBox, count - 1);
 
                         lastItem = lastItem.Substring (0, lastItem.Length - symbolicWidth) + s;
-                        Replace (lastItem.Trim (), count - 1, HorizontalAlignment.Right);
+                        Replace (lastItem, count - 1, HorizontalAlignment.Right);
                         break;
                     }
                 case Column.Instruction:
@@ -318,7 +324,7 @@ namespace Mockingbird.HP.Control_Library
 
         public void PrintAddress (Argument address)
         {
-            PrintAddress (address.TraceableText + " "); //TODO: Are trailing spaces discarded?
+            PrintAddress (address.TraceableText);
         }
 
         public void PrintNumeric ()
@@ -358,7 +364,10 @@ namespace Mockingbird.HP.Control_Library
                         string lastItem = (string) ThreadSafe.ItemsGetItem(listBox, count - 1);
 
                         lastItem = lastItem.Substring (0, lastItem.Length - symbolicWidth) + s;
-                        Replace (lastItem.Trim (), count - 1, HorizontalAlignment.Right);
+
+                        // We trim the leading spaces here because if we are showing the keycodes
+                        // there will be too many of them.
+                        Replace (lastItem.TrimStart (), count - 1, HorizontalAlignment.Right);
                         break;
                     }
                 case Column.Instruction:
