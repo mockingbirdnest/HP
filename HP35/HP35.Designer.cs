@@ -90,6 +90,8 @@
             this.keyXExchangeY.Size = new System.Drawing.Size (48, 51);
             this.keyXExchangeY.TabIndex = 27;
             this.keyXExchangeY.Tag = "3532";
+            this.keyXExchangeY.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyXExchangeY.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyRDown
             // 
@@ -113,6 +115,8 @@
             this.keyRDown.Size = new System.Drawing.Size (48, 51);
             this.keyRDown.TabIndex = 28;
             this.keyRDown.Tag = "3533";
+            this.keyRDown.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyRDown.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keySTO
             // 
@@ -136,6 +140,8 @@
             this.keySTO.Size = new System.Drawing.Size (48, 51);
             this.keySTO.TabIndex = 29;
             this.keySTO.Tag = "3534";
+            this.keySTO.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keySTO.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyRCL
             // 
@@ -160,6 +166,8 @@
             this.keyRCL.Size = new System.Drawing.Size (48, 51);
             this.keyRCL.TabIndex = 30;
             this.keyRCL.Tag = "3535";
+            this.keyRCL.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyRCL.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyLOG
             // 
@@ -184,6 +192,8 @@
             this.keyLOG.Size = new System.Drawing.Size (48, 51);
             this.keyLOG.TabIndex = 17;
             this.keyLOG.Tag = "3512";
+            this.keyLOG.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyLOG.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyLN
             // 
@@ -208,6 +218,8 @@
             this.keyLN.Size = new System.Drawing.Size (48, 51);
             this.keyLN.TabIndex = 18;
             this.keyLN.Tag = "3513";
+            this.keyLN.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyLN.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyExp
             // 
@@ -232,6 +244,8 @@
             this.keyExp.Size = new System.Drawing.Size (48, 51);
             this.keyExp.TabIndex = 19;
             this.keyExp.Tag = "3514";
+            this.keyExp.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyExp.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyCLR
             // 
@@ -256,6 +270,8 @@
             this.keyCLR.Size = new System.Drawing.Size (48, 51);
             this.keyCLR.TabIndex = 20;
             this.keyCLR.Tag = "3515";
+            this.keyCLR.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyCLR.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keySqrt
             // 
@@ -279,6 +295,8 @@
             this.keySqrt.Size = new System.Drawing.Size (48, 51);
             this.keySqrt.TabIndex = 21;
             this.keySqrt.Tag = "3521";
+            this.keySqrt.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keySqrt.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyARC
             // 
@@ -302,6 +320,8 @@
             this.keyARC.Size = new System.Drawing.Size (48, 51);
             this.keyARC.TabIndex = 22;
             this.keyARC.Tag = "3522";
+            this.keyARC.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyARC.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keySIN
             // 
@@ -325,6 +345,8 @@
             this.keySIN.Size = new System.Drawing.Size (48, 51);
             this.keySIN.TabIndex = 23;
             this.keySIN.Tag = "3523";
+            this.keySIN.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keySIN.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyCOS
             // 
@@ -348,6 +370,8 @@
             this.keyCOS.Size = new System.Drawing.Size (48, 51);
             this.keyCOS.TabIndex = 24;
             this.keyCOS.Tag = "3524";
+            this.keyCOS.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyCOS.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyTAN
             // 
@@ -371,6 +395,8 @@
             this.keyTAN.Size = new System.Drawing.Size (48, 51);
             this.keyTAN.TabIndex = 25;
             this.keyTAN.Tag = "3525";
+            this.keyTAN.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyTAN.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyReciprocal
             // 
@@ -395,6 +421,8 @@
             this.keyReciprocal.Size = new System.Drawing.Size (48, 51);
             this.keyReciprocal.TabIndex = 26;
             this.keyReciprocal.Tag = "3531";
+            this.keyReciprocal.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyReciprocal.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyXToTheY
             // 
@@ -418,9 +446,12 @@
             this.keyXToTheY.Size = new System.Drawing.Size (48, 51);
             this.keyXToTheY.TabIndex = 16;
             this.keyXToTheY.Tag = "3511";
+            this.keyXToTheY.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyXToTheY.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // toggleOffOn
             // 
+            this.toggleOffOn.CenterText = "center";
             this.toggleOffOn.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
             this.toggleOffOn.ForeColor = System.Drawing.Color.White;
             this.toggleOffOn.LeftText = "OFF";
@@ -438,6 +469,7 @@
             // 
             this.display.Font = new System.Drawing.Font ("Quartz", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.display.ForeColor = System.Drawing.Color.Red;
+            this.display.Formatter = null;
             this.display.Location = new System.Drawing.Point (8, 8);
             this.display.Name = "display";
             this.display.Size = new System.Drawing.Size (288, 40);
@@ -465,6 +497,8 @@
             this.keyPlus.Size = new System.Drawing.Size (48, 51);
             this.keyPlus.TabIndex = 44;
             this.keyPlus.Tag = "3561";
+            this.keyPlus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyPlus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyMult
             // 
@@ -488,6 +522,8 @@
             this.keyMult.Size = new System.Drawing.Size (48, 51);
             this.keyMult.TabIndex = 48;
             this.keyMult.Tag = "3571";
+            this.keyMult.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyMult.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyDiv
             // 
@@ -511,6 +547,8 @@
             this.keyDiv.Size = new System.Drawing.Size (48, 51);
             this.keyDiv.TabIndex = 52;
             this.keyDiv.Tag = "3581";
+            this.keyDiv.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyDiv.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyMinus
             // 
@@ -534,6 +572,8 @@
             this.keyMinus.Size = new System.Drawing.Size (48, 51);
             this.keyMinus.TabIndex = 40;
             this.keyMinus.Tag = "3551";
+            this.keyMinus.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyMinus.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key7
             // 
@@ -558,6 +598,8 @@
             this.key7.Size = new System.Drawing.Size (56, 51);
             this.key7.TabIndex = 41;
             this.key7.Tag = "3552";
+            this.key7.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key7.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key4
             // 
@@ -582,6 +624,8 @@
             this.key4.Size = new System.Drawing.Size (56, 51);
             this.key4.TabIndex = 45;
             this.key4.Tag = "3562";
+            this.key4.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key4.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key5
             // 
@@ -606,6 +650,8 @@
             this.key5.Size = new System.Drawing.Size (56, 51);
             this.key5.TabIndex = 46;
             this.key5.Tag = "3563";
+            this.key5.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key5.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key6
             // 
@@ -630,6 +676,8 @@
             this.key6.Size = new System.Drawing.Size (56, 51);
             this.key6.TabIndex = 47;
             this.key6.Tag = "3564";
+            this.key6.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key6.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key1
             // 
@@ -654,6 +702,8 @@
             this.key1.Size = new System.Drawing.Size (56, 51);
             this.key1.TabIndex = 49;
             this.key1.Tag = "3572";
+            this.key1.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key1.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key2
             // 
@@ -678,6 +728,8 @@
             this.key2.Size = new System.Drawing.Size (56, 51);
             this.key2.TabIndex = 50;
             this.key2.Tag = "3573";
+            this.key2.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key2.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key3
             // 
@@ -702,6 +754,8 @@
             this.key3.Size = new System.Drawing.Size (56, 51);
             this.key3.TabIndex = 51;
             this.key3.Tag = "3574";
+            this.key3.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key3.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key9
             // 
@@ -726,6 +780,8 @@
             this.key9.Size = new System.Drawing.Size (56, 51);
             this.key9.TabIndex = 43;
             this.key9.Tag = "3554";
+            this.key9.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key9.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key0
             // 
@@ -750,6 +806,8 @@
             this.key0.Size = new System.Drawing.Size (56, 51);
             this.key0.TabIndex = 53;
             this.key0.Tag = "3582";
+            this.key0.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key0.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyPeriod
             // 
@@ -773,6 +831,8 @@
             this.keyPeriod.Size = new System.Drawing.Size (72, 51);
             this.keyPeriod.TabIndex = 54;
             this.keyPeriod.Tag = "3583";
+            this.keyPeriod.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyPeriod.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyPi
             // 
@@ -795,6 +855,8 @@
             this.keyPi.Size = new System.Drawing.Size (56, 51);
             this.keyPi.TabIndex = 55;
             this.keyPi.Tag = "3584";
+            this.keyPi.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyPi.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // key8
             // 
@@ -819,6 +881,8 @@
             this.key8.Size = new System.Drawing.Size (56, 51);
             this.key8.TabIndex = 42;
             this.key8.Tag = "3553";
+            this.key8.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.key8.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyCHS
             // 
@@ -841,6 +905,8 @@
             this.keyCHS.Size = new System.Drawing.Size (48, 51);
             this.keyCHS.TabIndex = 37;
             this.keyCHS.Tag = "3542";
+            this.keyCHS.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyCHS.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyCLx
             // 
@@ -863,6 +929,8 @@
             this.keyCLx.Size = new System.Drawing.Size (64, 51);
             this.keyCLx.TabIndex = 39;
             this.keyCLx.Tag = "3544";
+            this.keyCLx.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyCLx.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyEEX
             // 
@@ -885,6 +953,8 @@
             this.keyEEX.Size = new System.Drawing.Size (48, 51);
             this.keyEEX.TabIndex = 38;
             this.keyEEX.Tag = "3543";
+            this.keyEEX.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyEEX.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // keyENTER
             // 
@@ -908,6 +978,8 @@
             this.keyENTER.Size = new System.Drawing.Size (120, 51);
             this.keyENTER.TabIndex = 36;
             this.keyENTER.Tag = "3541";
+            this.keyENTER.LeftMouseDown += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseDown);
+            this.keyENTER.LeftMouseUp += new Mockingbird.HP.Control_Library.Key.KeystrokeEvent (this.Key_LeftMouseUp);
             // 
             // HP35
             // 
@@ -954,6 +1026,7 @@
             this.Controls.Add (this.display);
             this.Name = "HP35";
             this.Text = "HP35";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler (this.Calculator_FormClosing);
             this.ResumeLayout (false);
 
         }

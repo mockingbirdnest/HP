@@ -47,7 +47,10 @@ namespace Mockingbird.HP.HP35
 
         protected override void PowerOff ()
         {
-            //TODO: Implement.
+            // OFF.  We abort the execution thread and start a new one.  We leave it in the
+            // state where its display is black and it doesn't accept keystrokes.
+            BusyUI ();
+            executionThread.Reset ();
         }
 
         protected override void ProcessCommandLine (string [] arguments)

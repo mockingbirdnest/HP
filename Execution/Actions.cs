@@ -1467,6 +1467,7 @@ namespace Mockingbird.HP.Execution
         public void ReduceRULE_NULLARY_INSTRUCTION10 (Reader reader, Token token, Token [] tokens, object state)
         {
             // <Nullary_Instruction> ::= <Clr>
+            engine.Process (new Instruction (reader, tokens), motion);
         }
 
 		public void ReduceRULE_NULLARY_INSTRUCTION11 (Reader reader, Token token, Token [] tokens, object state)

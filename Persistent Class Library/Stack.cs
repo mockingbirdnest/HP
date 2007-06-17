@@ -176,6 +176,7 @@ namespace Mockingbird.HP.Class_Library
                 this [i] = this [i + 1];
             }
             this [Position.t] = temp;
+            X = this [Position.x]; // Assign to X to force tracing.
         }
 
         public void RollUp ()
@@ -186,7 +187,7 @@ namespace Mockingbird.HP.Class_Library
             {
                 this [i] = this [i - 1];
             }
-            this [Position.x] = temp;
+            X = temp; // Assign to X, not this [x], to force tracing.
         }
 
         public void XExchangeY ()

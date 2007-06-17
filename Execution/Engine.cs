@@ -363,9 +363,7 @@ namespace Mockingbird.HP.Execution
 
         public void Execute (Instruction instruction)
         {
-            ProgrammableCalculator form = (ProgrammableCalculator) display.TopLevelControl;
             bool neutral = stackLift;
-            FileStream stream;
             double x, y;
 
             Trace.WriteLineIf (classTraceSwitch.TraceInfo,
@@ -466,6 +464,12 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_CL_REG:
                     memory.Clear ();
+                    break;
+                case SymbolConstants.SYMBOL_CLR:
+                    stack.X = 0.0;
+                    stack.Enter ();
+                    stack.Enter ();
+                    stack.Enter ();
                     break;
                 case SymbolConstants.SYMBOL_CLX:
                     stack.X = 0.0;
@@ -689,21 +693,25 @@ namespace Mockingbird.HP.Execution
                     stack.X = stack.LastX;
                     break;
                 case SymbolConstants.SYMBOL_MERGE:
-                    stream = (FileStream) form.Invoke
-                        (new Execution.Thread.CrossThreadFileOperation (form.CrossThreadOpen));
-                    if (stream == null)
                     {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        try
+                        ProgrammableCalculator form =
+                            (ProgrammableCalculator) display.TopLevelControl;
+                        FileStream stream = (FileStream) form.Invoke
+                            (new Execution.Thread.CrossThreadFileOperation (form.CrossThreadOpen));
+                        if (stream == null)
                         {
-                            Card.Merge (stream, reader);
+                            throw new Error ();
                         }
-                        finally
+                        else
                         {
-                            stream.Close ();
+                            try
+                            {
+                                Card.Merge (stream, reader);
+                            }
+                            finally
+                            {
+                                stream.Close ();
+                            }
                         }
                     }
                     break;
@@ -771,6 +779,11 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_RCL:
                     EnterIfNeeded ();
                     stack.X = ((IAddress) instruction.Arguments [0]).Recall (memory);
+                    break;
+                case SymbolConstants.SYMBOL_RCL_NULLARY:
+                    EnterIfNeeded ();
+                    // Simulated with memory 0.
+                    stack.X = new Digit (0).Recall (memory);
                     break;
                 case SymbolConstants.SYMBOL_RCL_SIGMA_PLUS:
                     stack.Get (out x);
@@ -901,6 +914,11 @@ namespace Mockingbird.HP.Execution
                         ((IAddress) instruction.Arguments [0]).Store (memory, stack.X);
                     }
                     break;
+                case SymbolConstants.SYMBOL_STO_NULLARY:
+                    EnterIfNeeded ();
+                    // Simulated with memory 0.
+                    new Digit (0).Store (memory, stack.X);
+                    break;
                 case SymbolConstants.SYMBOL_SUBTRACTION:
                     stack.Get (out x, out y);
                     stack.X = y - x;
@@ -943,22 +961,26 @@ namespace Mockingbird.HP.Execution
                     stack.Y = r * Math.Sin (ToRadian (θ));
                     break;
                 case SymbolConstants.SYMBOL_W_DATA:
-                    stream =
-                        (FileStream) form.Invoke (new Execution.Thread.CrossThreadFileOperation
-                                        (form.CrossThreadSaveDataAs));
-                    if (stream == null)
                     {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        try
+                        ProgrammableCalculator form =
+                            (ProgrammableCalculator) display.TopLevelControl;
+                        FileStream stream =
+                            (FileStream) form.Invoke (new Execution.Thread.CrossThreadFileOperation
+                                            (form.CrossThreadSaveDataAs));
+                        if (stream == null)
                         {
-                            Card.Write (stream, CardPart.Data);
+                            throw new Error ();
                         }
-                        finally
+                        else
                         {
-                            stream.Close ();
+                            try
+                            {
+                                Card.Write (stream, CardPart.Data);
+                            }
+                            finally
+                            {
+                                stream.Close ();
+                            }
                         }
                     }
                     break;
@@ -1022,6 +1044,21 @@ namespace Mockingbird.HP.Execution
                     if (stack.X == stack.Y)
                     {
                         program.Skip ();
+                    }
+                    break;
+                case SymbolConstants.SYMBOL_X_TO_THE_YTH:
+                    stack.Get (out x, out y);
+                    if (x == 0.0 && y <= 0.0)
+                    {
+                        throw new Error ();
+                    }
+                    else if (x < 0 && y != Math.Floor (y))
+                    {
+                        throw new Error ();
+                    }
+                    else
+                    {
+                        stack.X = Math.Pow (x, y);
                     }
                     break;
                 case SymbolConstants.SYMBOL_Y_TO_THE_XTH:
