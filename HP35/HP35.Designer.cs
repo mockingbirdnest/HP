@@ -451,7 +451,7 @@
             // 
             // toggleOffOn
             // 
-            this.toggleOffOn.CenterText = "center";
+            this.toggleOffOn.CenterText = "";
             this.toggleOffOn.Font = new System.Drawing.Font ("Arial Unicode MS", 8.5F, System.Drawing.FontStyle.Bold);
             this.toggleOffOn.ForeColor = System.Drawing.Color.White;
             this.toggleOffOn.LeftText = "OFF";
@@ -464,6 +464,7 @@
             this.toggleOffOn.RightWidth = 30;
             this.toggleOffOn.Size = new System.Drawing.Size (110, 16);
             this.toggleOffOn.TabIndex = 3;
+            this.toggleOffOn.ToggleMoved += new Mockingbird.HP.Control_Library.Toggle.ToggleEvent (this.toggleOffOn_ToggleMoved);
             // 
             // display
             // 
