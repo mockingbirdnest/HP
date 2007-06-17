@@ -26,7 +26,7 @@ namespace Mockingbird.HP.Control_Library
         }
 
         private const string addressTemplate = "0 ";
-        private static string defaultTag = new string (' ', symbolicWidth - 3) + "***";
+        private static string endMarker = new string (' ', symbolicWidth - 3) + "***";
         private const string mantissaExponentSeparator = "";
         private const string stepTemplate = "000  ";
         private const byte keycodeWidth = 10;
@@ -238,8 +238,8 @@ namespace Mockingbird.HP.Control_Library
 
         private void PrintNumeric (string s)
         {
-            // Append the default tag, which is the one we'll display if nothing replaces it.
-            Append (s + defaultTag, HorizontalAlignment.Right);
+            // Append the end marker, which is the one we'll display if nothing replaces it.
+            Append (s + endMarker, HorizontalAlignment.Right);
             lastPrintedColumn = Column.Numeric;
         }
 
@@ -327,20 +327,34 @@ namespace Mockingbird.HP.Control_Library
             PrintAddress (address.TraceableText);
         }
 
+        public void PrintEndMarker ()
+        {
+
+            // Nothing to print, because the end marker is already there.  But we need to reset the column.
+            lastPrintedColumn = Column.Instruction;
+        }
+
         public void PrintNumeric ()
         {
-            PrintNumeric (mantissa + mantissaExponentSeparator + exponent);
+            PrintNumeric (mantissa, exponent);
         }
 
         public void PrintNumeric (string mantissa, string exponent)
         {
-            PrintNumeric (mantissa + mantissaExponentSeparator + exponent);
+            if (exponent == new string (' ', exponent.Length))
+            {
+                PrintNumeric (mantissa);
+            }
+            else
+            {
+                PrintNumeric (mantissa + mantissaExponentSeparator + exponent);
+            }
         }
 
         public void PrintStep (int step)
         {
             Trace.Assert (lastPrintedColumn != Column.Step);
-            Append (step.ToString (stepTemplate, NumberFormatInfo.InvariantInfo) + defaultTag,
+            Append (step.ToString (stepTemplate, NumberFormatInfo.InvariantInfo) + endMarker,
                     HorizontalAlignment.Right);
             lastPrintedColumn = Column.Step;
         }

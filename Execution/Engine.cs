@@ -133,6 +133,7 @@ namespace Mockingbird.HP.Execution
                 if (!inNumberDone && modes.tracing == EngineModes.Tracing.Trace)
                 {
                     printer.PrintNumeric ();
+                    printer.PrintEndMarker ();
                 }
             }
         }
@@ -171,14 +172,7 @@ namespace Mockingbird.HP.Execution
                         hasExponent ||
                         mantissaAft > printer.Formatter.Digits)
                     {
-                        if (hasExponent)
-                        {
-                            printer.PrintNumeric (mantissa, ""); // No exponent typed, strip it.
-                        }
-                        else
-                        {
-                            printer.PrintNumeric (mantissa, exponent);
-                        }
+                        printer.PrintNumeric (mantissa, exponent);
                     }
                     else
                     {

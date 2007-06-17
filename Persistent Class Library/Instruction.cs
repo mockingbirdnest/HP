@@ -364,7 +364,7 @@ namespace Mockingbird.HP.Class_Library
                 switch ((SymbolConstants) Symbol.Id)
                 {
                     case SymbolConstants.SYMBOL_ADDITION:
-                        result = "+";
+                        result = "+ ";
                         break;
                     case SymbolConstants.SYMBOL_ARCCOS:
                         result = "COS⁻¹";
@@ -388,7 +388,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "PRTX";
                         break;
                     case SymbolConstants.SYMBOL_DIVISION:
-                        result = "÷";
+                        result = "÷ ";
                         break;
                     case SymbolConstants.SYMBOL_ENTER:
                         result = "ENT↑";
@@ -418,7 +418,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "MRG";
                         break;
                     case SymbolConstants.SYMBOL_MULTIPLICATION:
-                        result = "×";
+                        result = "× ";
                         break;
                     case SymbolConstants.SYMBOL_P_EXCHANGE_S:
                         result = "P⇄S";
@@ -427,7 +427,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "PSE";
                         break;
                     case SymbolConstants.SYMBOL_PERCENT:
-                        result = "%";
+                        result = "% ";
                         break;
                     case SymbolConstants.SYMBOL_PERCENT_CHANGE:
                         result = "%CH";
@@ -457,7 +457,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "PREG";
                         break;
                     case SymbolConstants.SYMBOL_S:
-                        result = "S";
+                        result = "S ";
                         break;
                     case SymbolConstants.SYMBOL_SIGMA_MINUS:
                         result = "Σ-";
@@ -488,7 +488,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "PRST";
                         break;
                     case SymbolConstants.SYMBOL_SUBTRACTION:
-                        result = "-";
+                        result = "- ";
                         break;
                     case SymbolConstants.SYMBOL_TEN_TO_THE_XTH:
                         result = "10ˣ";
@@ -515,7 +515,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "WDTA";
                         break;
                     case SymbolConstants.SYMBOL_X_AVERAGE:
-                        result = "̄̄̄̄X̄";
+                        result = "̄̄̄̄X̄ ";
                         break;
                     case SymbolConstants.SYMBOL_X_EQ_0:
                         result = "X=0?";
