@@ -129,6 +129,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0D91573823B04ACF919A83608B427D31"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1532EB6DA1304D35AA239368C3845462"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -189,6 +195,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_41D380811BD3436D944D56DA3F0ADD84"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4C1FCC698D34481C828B203A85CC50DF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -219,7 +231,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_72B740077D30460A86BDB34F02008897"
+        "MsmKey" = "8:_77C86C1C57E84CBFA5151A01D17ACB60"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -231,13 +243,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_85658E1036374B789D17487A79ACC77B"
+        "MsmKey" = "8:_8B3B2E39C6E9474586A8E7DA544BF415"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_8B3B2E39C6E9474586A8E7DA544BF415"
+        "MsmKey" = "8:_9656A13AEABA47F384E3240E54759DD5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -387,12 +399,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D40467BA02044BC9A09BD0DDF1D26A76"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_DFC89A7454F64C16824A4C4D8D1978E4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -406,6 +412,12 @@
         "Entry"
         {
         "MsmKey" = "8:_F96EDF484A604B0CA83E633070BFB3B9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC1D0C4584B74812986FFCB1332AC4F6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -728,6 +740,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0D91573823B04ACF919A83608B427D31"
+            {
+            "SourcePath" = "8:Math Pac I Folder.ico"
+            "TargetName" = "8:Math Pac I Folder.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1532EB6DA1304D35AA239368C3845462"
             {
             "SourcePath" = "8:..\\Pacs\\Math Pac I\\Optimal Scale, Plotting.hp67"
@@ -928,6 +960,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41D380811BD3436D944D56DA3F0ADD84"
+            {
+            "SourcePath" = "8:Math Pac I desktop.ini"
+            "TargetName" = "8:desktop.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_28879B2D811F4D29ACCB35390272ED6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:TRUE"
+            "System" = "11:TRUE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C1FCC698D34481C828B203A85CC50DF"
             {
             "SourcePath" = "8:..\\Control Library\\Arial Unicode MS.ttf"
@@ -979,18 +1031,18 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_72B740077D30460A86BDB34F02008897"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_77C86C1C57E84CBFA5151A01D17ACB60"
             {
-            "SourcePath" = "8:\\\\Carpaccio\\shared documents\\Shared Icons\\Custom\\Math Pac I Folder.ico"
-            "TargetName" = "8:Math Pac I Folder.ico"
+            "SourcePath" = "8:Standard Pac desktop.ini"
+            "TargetName" = "8:desktop.ini"
             "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Folder" = "8:_F094AD0A5079439B9A71F917414BDB11"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
+            "Hidden" = "11:TRUE"
+            "System" = "11:TRUE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
@@ -1019,10 +1071,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_85658E1036374B789D17487A79ACC77B"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8B3B2E39C6E9474586A8E7DA544BF415"
             {
-            "SourcePath" = "8:\\\\Carpaccio\\shared documents\\Shared Icons\\Custom\\Standard Pac Folder.ico"
-            "TargetName" = "8:Standard Pac Folder.ico"
+            "SourcePath" = "8:..\\Documentation\\HP67 Math Pac I.pdf"
+            "TargetName" = "8:HP67 Math Pac I.pdf"
             "Tag" = "8:"
             "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
             "Condition" = "8:"
@@ -1039,10 +1091,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8B3B2E39C6E9474586A8E7DA544BF415"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9656A13AEABA47F384E3240E54759DD5"
             {
-            "SourcePath" = "8:..\\Documentation\\HP67 Math Pac I.pdf"
-            "TargetName" = "8:HP67 Math Pac I.pdf"
+            "SourcePath" = "8:PDF Document.ico"
+            "TargetName" = "8:PDF Document.ico"
             "Tag" = "8:"
             "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
             "Condition" = "8:"
@@ -1343,26 +1395,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D40467BA02044BC9A09BD0DDF1D26A76"
-            {
-            "SourcePath" = "8:\\\\Carpaccio\\shared documents\\Shared Icons\\Custom\\PDF Document.ico"
-            "TargetName" = "8:PDF Document.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DFC89A7454F64C16824A4C4D8D1978E4"
             {
             "SourcePath" = "8:..\\Pacs\\Math Pac I\\Factors and Primes.hp67"
@@ -1413,6 +1445,26 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC1D0C4584B74812986FFCB1332AC4F6"
+            {
+            "SourcePath" = "8:Standard Pac Folder.ico"
+            "TargetName" = "8:Standard Pac Folder.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
@@ -1775,7 +1827,7 @@
             "Target" = "8:_30A0E1D7C9E24A1490014FE8643E7F46"
             "Folder" = "8:_DD71596A3C1D443FBBE44AE31246CC61"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:_D40467BA02044BC9A09BD0DDF1D26A76"
+            "Icon" = "8:_9656A13AEABA47F384E3240E54759DD5"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_22E2A86F08F64FBCAF83A470E0C54F7A"
@@ -1789,14 +1841,14 @@
             "Target" = "8:_8B3B2E39C6E9474586A8E7DA544BF415"
             "Folder" = "8:_A1C4C7CB924B4F278138DF14676E08E2"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:_D40467BA02044BC9A09BD0DDF1D26A76"
+            "Icon" = "8:_9656A13AEABA47F384E3240E54759DD5"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_363C09E00E544DD8AF0002763C97BB59"
             {
             "Name" = "8:HP-97 Calculator"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:Launch the HP-97 Programmable Printing Calculator"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
@@ -1810,21 +1862,21 @@
             {
             "Name" = "8:HP-67 HP-97 Standard Pac"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:The nucleus from which to build your program library"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_F094AD0A5079439B9A71F917414BDB11"
             "Folder" = "8:_A1C4C7CB924B4F278138DF14676E08E2"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:_85658E1036374B789D17487A79ACC77B"
+            "Icon" = "8:_FC1D0C4584B74812986FFCB1332AC4F6"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_80955C9CEDD544A1A9BCEA42C9798B34"
             {
             "Name" = "8:HP-67 Calculator"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:Launch the HP-67 Programmable Pocket Calculator"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
@@ -1845,21 +1897,21 @@
             "Target" = "8:_16EEE2F95759432FA2C333EE4D7F13E4"
             "Folder" = "8:_A1C4C7CB924B4F278138DF14676E08E2"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:_D40467BA02044BC9A09BD0DDF1D26A76"
+            "Icon" = "8:_9656A13AEABA47F384E3240E54759DD5"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B13392E9F7EA4840AA2D55248D5897F4"
             {
             "Name" = "8:HP-67 HP-97 Math Pac I"
             "Arguments" = "8:"
-            "Description" = "8:"
+            "Description" = "8:Number theory, algerbra, trigonometry, analytical geometry, calculus, and special functions"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_28879B2D811F4D29ACCB35390272ED6D"
             "Folder" = "8:_A1C4C7CB924B4F278138DF14676E08E2"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:_72B740077D30460A86BDB34F02008897"
+            "Icon" = "8:_0D91573823B04ACF919A83608B427D31"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E4A04E4856254558B237DD3E5C9A28C9"
@@ -1873,7 +1925,7 @@
             "Target" = "8:_B841FE3D8830462BBDFCAE8D55BEA98D"
             "Folder" = "8:_DD71596A3C1D443FBBE44AE31246CC61"
             "WorkingFolder" = "8:_30445573CCD84BF6ACCB453685CC6A05"
-            "Icon" = "8:_D40467BA02044BC9A09BD0DDF1D26A76"
+            "Icon" = "8:_9656A13AEABA47F384E3240E54759DD5"
             "Feature" = "8:"
             }
         }
