@@ -67,11 +67,11 @@ namespace Mockingbird.HP.Class_Library {
         }
         
         /// <summary>
-        /// Looks up a localized string similar to 'Error'.
+        /// Looks up a localized string similar to 'Error         '.
         /// </summary>
-        public static string Error {
+        public static string DisplayError {
             get {
-                return ResourceManager.GetString("Error", _resourceCulture);
+                return ResourceManager.GetString("DisplayError", _resourceCulture);
             }
         }
         
@@ -180,6 +180,15 @@ namespace Mockingbird.HP.Class_Library {
         public static string InterruptDescription {
             get {
                 return ResourceManager.GetString("InterruptDescription", _resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Looks up a localized string similar to 'ERROR'.
+        /// </summary>
+        public static string PrinterError {
+            get {
+                return ResourceManager.GetString("PrinterError", _resourceCulture);
             }
         }
         

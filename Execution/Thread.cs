@@ -299,8 +299,14 @@ namespace Mockingbird.HP.Execution
             }
             catch (Error)
             {
+                // It is important to update the printer before the display, otherwise the error
+                // message will be printed after a long delay.
+                if (printer != null)
+                {
+                    printer.PrintText (Localization.PrinterError);
+                }
                 display.Formatter.Value = stack.X; // Refresh the numeric display.
-                display.ShowText (Localization.Error, 500, 100);
+                display.ShowText (Localization.DisplayError, 500, 100);
                 ignoreNextDown = true;
                 ignoreNextUp = true;
                 mustUnbusyUI = false;
@@ -401,6 +407,8 @@ namespace Mockingbird.HP.Execution
                                      validater);
                 engine.WaitForKeystroke +=
                     new Engine.TimedKeystrokeEvent (ExecutionWaitForKeystroke);
+                engine.Modes = (EngineModes) display.Invoke
+                    (notifyUI, new object [] { /*threadIsBusy*/ false, /* programIsEmpty */ true });
 
                 // We need two parsers: one that processes the MouseDown events, and one that
                 // processes the MouseUp events, because both events have different effects for a

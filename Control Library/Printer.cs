@@ -345,6 +345,11 @@ namespace Mockingbird.HP.Control_Library
             {
                 PrintNumeric (mantissa);
             }
+            else if (exponent.Length >= 1 && exponent [0] == ' ')
+            {
+                //TODO: Should we use a formatter to prepend a + to the exponent?
+                PrintNumeric (mantissa + mantissaExponentSeparator + '+' + exponent.Substring (1));
+            }
             else
             {
                 PrintNumeric (mantissa + mantissaExponentSeparator + exponent);
@@ -390,6 +395,12 @@ namespace Mockingbird.HP.Control_Library
                         break;
                     }
             }
+            lastPrintedColumn = Column.Instruction;
+        }
+
+        public void PrintText (string s)
+        {
+            Append (s, HorizontalAlignment.Right);
             lastPrintedColumn = Column.Instruction;
         }
 

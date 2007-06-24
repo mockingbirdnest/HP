@@ -247,22 +247,36 @@ namespace Mockingbird.HP.Class_Library
                         {
                             case DisplayFormat.Engineering:
                                 {
+                                    // Note that we have to do rounding explicitly here, we cannot
+                                    // just let the formatter do it.  The reason is that we want to
+                                    // get zeros *before* the decimal point if the number of digits
+                                    // is very small.
                                     double absMantissa = Math.Abs (mantissa);
+                                    double formattableMantissa;
 
                                     if (absMantissa < 10.0)
                                     {
-                                        return mantissa.ToString
+                                        formattableMantissa =
+                                            Math.Round (mantissa, digits,
+                                                        MidpointRounding.AwayFromZero);
+                                        return formattableMantissa.ToString
                                             (engMantissaTemplate1, NumberFormatInfo.InvariantInfo);
                                     }
                                     else if (absMantissa < 100.0)
                                     {
-                                        return mantissa.ToString
+                                        formattableMantissa = 10.0 *
+                                            Math.Round (mantissa / 10.0, digits,
+                                                        MidpointRounding.AwayFromZero);
+                                        return formattableMantissa.ToString
                                             (engMantissaTemplate10, NumberFormatInfo.InvariantInfo);
                                     }
                                     else
                                     {
                                         Trace.Assert (absMantissa < 1000.0);
-                                        return mantissa.ToString
+                                        formattableMantissa = 100.0 *
+                                            Math.Round (mantissa / 100.0, digits,
+                                                        MidpointRounding.AwayFromZero);
+                                        return formattableMantissa.ToString
                                             (engMantissaTemplate100, NumberFormatInfo.InvariantInfo);
                                     }
                                 }

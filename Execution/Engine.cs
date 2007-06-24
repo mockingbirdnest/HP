@@ -166,13 +166,13 @@ namespace Mockingbird.HP.Execution
                     // happened, then print using the specified format.  Other print the raw input.
 
                     bool hasExponent = exponent != new string (' ', exponent.Length);
-                    int mantissaAft = mantissa.TrimEnd (null).Length - mantissa.IndexOf ('.') - 1;
+                    int mantissaAft = mantissa.TrimEnd ().Length - mantissa.IndexOf ('.') - 1;
 
                     if (printer.Formatter.MustUseRaw ||
                         hasExponent ||
                         mantissaAft > printer.Formatter.Digits)
                     {
-                        printer.PrintNumeric (mantissa, exponent);
+                        printer.PrintNumeric (mantissa.TrimEnd (), exponent);
                     }
                     else
                     {
@@ -500,6 +500,7 @@ namespace Mockingbird.HP.Execution
                             break;
                         case CalculatorModel.HP97:
                             printer.PrintNumeric ();
+                            printer.PrintEndMarker ();
                             break;
                     }
                     break;

@@ -120,8 +120,8 @@
   <data name="CannotOpenFile" xml:space="preserve">
     <value>File {0} not found</value>
   </data>
-  <data name="Error" xml:space="preserve">
-    <value>Error</value>
+  <data name="DisplayError" xml:space="preserve">
+    <value>Error         </value>
   </data>
   <data name="ErrorDescription" xml:space="preserve">
     <value>Invalid argument in a computation</value>
@@ -158,6 +158,9 @@
   </data>
   <data name="InterruptDescription" xml:space="preserve">
     <value>Execution interrupted by user</value>
+  </data>
+  <data name="PrinterError" xml:space="preserve">
+    <value>ERROR</value>
   </data>
   <data name="ShutdownDescription" xml:space="preserve">
     <value>Application shutdown</value>
