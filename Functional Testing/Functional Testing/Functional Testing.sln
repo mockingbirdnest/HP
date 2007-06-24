@@ -5,11 +5,15 @@ Project("{5CB7ECA2-77EC-4168-97A3-21393157BA5A}") = "Functional Testing", "Funct
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = Functional\u0020Testing\\Functional\u0020Testing.rftvs
+		SccProjectUniqueName1 = Functional\u0020Testing\\Functional\u0020Testing\u0020-\u0020IBM\u0020Rational\u0020Functional\u0020Tester.vbproj
+		SccProjectTopLevelParentUniqueName1 = Functional\u0020Testing\\Functional\u0020Testing.rftvs
 		SccLocalPath1 = .
 		SccProjectFilePathRelativizedFromConnection1 = Functional\u0020Testing\\
+		SccProjectUniqueName2 = Functional\u0020Testing\\Functional\u0020Testing.rftvs
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = Functional\u0020Testing\\
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Test|Configuration = Test|Configuration
