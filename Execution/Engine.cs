@@ -810,7 +810,10 @@ namespace Mockingbird.HP.Execution
                             memory.Display ();
                             break;
                         case CalculatorModel.HP97:
+                            // The output is surrounded by spaces, see p. 210.
+                            printer.Advance ();
                             memory.Print ();
+                            printer.Advance ();
                             break;
                     }
                     break;
@@ -898,7 +901,10 @@ namespace Mockingbird.HP.Execution
                             stack.Display ();
                             break;
                         case CalculatorModel.HP97:
+                            // The output is surrounded by spaces, see p. 210.
+                            printer.Advance ();
                             stack.Print ();
+                            printer.Advance ();
                             break;
                     }
                     break;
