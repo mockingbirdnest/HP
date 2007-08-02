@@ -181,6 +181,9 @@ namespace Mockingbird.HP.Class_Library
                     case SymbolConstants.SYMBOL_DIVISION:
                         result = "÷";
                         break;
+                    case SymbolConstants.SYMBOL_ENTER:
+                        result = "ENTER↑";
+                        break;
                     case SymbolConstants.SYMBOL_EXP:
                         result = "eˣ";
                         break;
@@ -226,7 +229,7 @@ namespace Mockingbird.HP.Class_Library
                     case SymbolConstants.SYMBOL_RCL:
                         if (model == CalculatorModel.HP67 && ArgumentIsI)
                         {
-                            result = "RC I";
+                            result = "RC";
                         }
                         else
                         {
@@ -257,7 +260,7 @@ namespace Mockingbird.HP.Class_Library
                     case SymbolConstants.SYMBOL_STO:
                         if (model == CalculatorModel.HP67 && ArgumentIsI)
                         {
-                            result = "ST I";
+                            result = "ST";
                         }
                         else
                         {
