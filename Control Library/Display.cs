@@ -354,8 +354,9 @@ namespace Mockingbird.HP.Control_Library
             randomFormatter.Value = r;
         }
 
-        public void ShowInstruction (string instruction, int step, bool setMode)
+        public void ShowInstruction (Instruction instruction, int step, bool setMode)
         {
+            string instructionImage;
             string stepImage = step.ToString
                 (stepTemplate, NumberFormatInfo.InvariantInfo);
 
@@ -363,8 +364,16 @@ namespace Mockingbird.HP.Control_Library
             {
                 Mode = DisplayMode.Instruction;
             }
+            if (instruction == null)
+            {
+                instructionImage = "";
+            }
+            else
+            {
+                instructionImage = instruction.Text;
+            }
             ThreadSafe.SetText (instructionTextBox,
-                stepImage + instruction.PadLeft (instructionLength));
+                stepImage + instructionImage.PadLeft (instructionLength));
         }
 
         public void ShowMemory (int address, double register, int ms)

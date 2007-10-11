@@ -8,15 +8,15 @@ namespace Mockingbird.HP.Class_Library
     public class Stack
     {
 
-        #region Private Data
-
-        private enum Position
+        public enum Position
         {
             x = 0,
             y = 1,
             z = 2,
             t = 3
         }
+
+        #region Private Data
 
         private IDisplay display;
         private double lastX;
@@ -163,7 +163,7 @@ namespace Mockingbird.HP.Class_Library
                 printer.Formatter.Value = this [p];
                 printer.PrintNumeric ();
                 
-                printer.PrintAddress (Enum.Format (typeof (Position), p, "G").ToUpper ());
+                printer.PrintAddress (p);
             }
         }
 

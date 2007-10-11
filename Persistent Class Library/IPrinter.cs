@@ -6,7 +6,7 @@ namespace Mockingbird.HP.Class_Library
     public interface IPrinter
     {
         void PrintAddress (Argument address);
-        void PrintAddress (string address); //TODO: Groan, untyped.
+        void PrintAddress (Stack.Position address);
         void PrintInstruction (Instruction instruction, bool showKeycodes);
         void PrintNumeric ();
         void PrintStep (int step);

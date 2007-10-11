@@ -6,7 +6,7 @@ namespace Mockingbird.HP.Class_Library
     public interface IDisplay
     {
         void Pause (int ms);
-        void ShowInstruction (string instruction, int step, bool setMode);
+        void ShowInstruction (Instruction instruction, int step, bool setMode);
         void ShowMemory (int address, double register, int ms);
         Number.Formatter Formatter
         {

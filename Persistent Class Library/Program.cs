@@ -332,7 +332,7 @@ namespace Mockingbird.HP.Class_Library
 		private void GotoBegin ()
 		{
 			next = noStep;
-			display.ShowInstruction ("", 0, false);
+			display.ShowInstruction (null, 0, false);
 		}
 
 		private void GotoZeroBasedStep (int step) 
@@ -357,7 +357,7 @@ namespace Mockingbird.HP.Class_Library
 			{
 				next = step;
 			}
-			display.ShowInstruction (instructions [next].Text, next + 1, false);
+			display.ShowInstruction (instructions [next], next + 1, false);
 		}
 
 		private void SaveReturnAddress ()

@@ -204,6 +204,35 @@ namespace Mockingbird.HP.Control_Library
             ThreadSafe.SetTopIndex (listBox, ThreadSafe.GetItemsCount (listBox) - lines);
         }
 
+        private void PrintAddress (string address)
+        {
+            string s = address.PadLeft (symbolicWidth - 1) + " ";
+
+            switch (lastPrintedColumn)
+            {
+                case Column.Numeric:
+                    {
+                        int count = ThreadSafe.ItemsCount (listBox);
+                        string lastItem = (string) ThreadSafe.ItemsGetItem (listBox, count - 1);
+
+                        lastItem = lastItem.Substring (0, lastItem.Length - symbolicWidth) + s;
+                        Replace (lastItem, count - 1, HorizontalAlignment.Right);
+                        break;
+                    }
+                case Column.Instruction:
+                    {
+                        Append (s, HorizontalAlignment.Right);
+                        break;
+                    }
+                case Column.Step:
+                    {
+                        Trace.Assert (false);
+                        break;
+                    }
+            }
+            lastPrintedColumn = Column.Instruction;
+        }
+
         private void Replace (string s, int index, HorizontalAlignment alignment)
         {
             int padding;
@@ -292,45 +321,22 @@ namespace Mockingbird.HP.Control_Library
             lastPrintedColumn = Column.Instruction;
         }
 
-        public void PrintAddress (string address)
-        {
-            //TODO: Factorize with step, revise columns.
-            string s = address.PadLeft (symbolicWidth - 1) + " ";
-
-            switch (lastPrintedColumn)
-            {
-                case Column.Numeric:
-                    {
-                        int count = ThreadSafe.ItemsCount (listBox);
-                        string lastItem = (string) ThreadSafe.ItemsGetItem (listBox, count - 1);
-
-                        lastItem = lastItem.Substring (0, lastItem.Length - symbolicWidth) + s;
-                        Replace (lastItem, count - 1, HorizontalAlignment.Right);
-                        break;
-                    }
-                case Column.Instruction:
-                    {
-                        Append (s, HorizontalAlignment.Right);
-                        break;
-                    }
-                case Column.Step:
-                    {
-                        Trace.Assert (false);
-                        break;
-                    }
-            }
-            lastPrintedColumn = Column.Instruction;
-        }
-
         public void PrintAddress (Argument address)
         {
             PrintAddress (address.TraceableText);
         }
 
+        public void PrintAddress (Mockingbird.HP.Class_Library.Stack.Position address)
+        {
+            PrintAddress (Enum.Format (typeof (Mockingbird.HP.Class_Library.Stack.Position),
+                          address, "G").ToUpper ());
+        }
+
         public void PrintEndMarker ()
         {
 
-            // Nothing to print, because the end marker is already there.  But we need to reset the column.
+            // Nothing to print, because the end marker is already there.  But we need to reset the
+            // column.
             lastPrintedColumn = Column.Instruction;
         }
 
