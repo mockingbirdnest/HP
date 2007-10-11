@@ -139,6 +139,18 @@ namespace Mockingbird.HP.HP97
             }
         }
 
+        public Mockingbird.HP.Control_Library.Toggle toggleManTraceNorm
+        {
+            get 
+            {
+                return printer.toggleManTraceNorm;
+            }
+            set
+            {
+                printer.toggleManTraceNorm = value;
+            }
+        }
+
         public void printerFeedButton_MouseDown (object sender, MouseEventArgs e)
         {
             printer.printerFeedButton_MouseDown (sender, e);
@@ -147,6 +159,11 @@ namespace Mockingbird.HP.HP97
         public void printerFeedButton_MouseUp (object sender, MouseEventArgs e)
         {
             printer.printerFeedButton_MouseUp (sender, e);
+        }
+
+        public void toggleManTraceNorm_ToggleMoved (object sender, TogglePosition position)
+        {
+            printer.toggleManTraceNorm_ToggleMoved (sender, position);
         }
 
 #endif
@@ -182,22 +199,6 @@ namespace Mockingbird.HP.HP97
         protected override void UpdateUIToReflectProgram (bool programIsEmpty)
         {
             card.UpdateUIToReflectProgram (programIsEmpty);
-        }
-
-        private void toggleManTraceNorm_ToggleMoved (object sender, TogglePosition position)
-        {
-            // See toggleWprgmRun_ToggleMoved for explanations.
-            if (Monitor.TryEnter (executionThread.IsBusy))
-            {
-                try
-                {
-                    executionThread.Enqueue (new RefreshMessage ());
-                }
-                finally
-                {
-                    Monitor.Exit (executionThread.IsBusy);
-                }
-            }
         }
 
         /// <summary>

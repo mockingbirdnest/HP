@@ -1,6 +1,7 @@
 using Mockingbird.HP.Control_Library;
 using System;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Mockingbird.HP.Execution
@@ -19,12 +20,13 @@ namespace Mockingbird.HP.Execution
 
             private Mockingbird.HP.Control_Library.Printer _printerPaperRoll;
             private System.Windows.Forms.Button _printerFeedButton;
+            private Mockingbird.HP.Control_Library.Toggle _toggleManTraceNorm;
 
-            private Timer paperFeedTimer;
+            private System.Windows.Forms.Timer paperFeedTimer;
 
             #endregion
 
-            #region Event Handlers
+            #region Private Event Handlers
 
             private void paperFeedTimer_Tick (object sender, EventArgs e)
             {
@@ -38,7 +40,7 @@ namespace Mockingbird.HP.Execution
             public PrinterMixin (BaseCalculator parent)
             {
                 this.parent = parent;
-                paperFeedTimer = new Timer ();
+                paperFeedTimer = new System.Windows.Forms.Timer ();
                 paperFeedTimer.Tick += new EventHandler (paperFeedTimer_Tick);
             }
 
@@ -70,9 +72,21 @@ namespace Mockingbird.HP.Execution
                 }
             }
 
+            public Mockingbird.HP.Control_Library.Toggle toggleManTraceNorm
+            {
+                get
+                {
+                    return _toggleManTraceNorm;
+                }
+                set
+                {
+                    _toggleManTraceNorm = value;
+                }
+            }
+
             #endregion
 
-            #region Event Handlers
+            #region Inherited Event Handlers
 
             public void printerFeedButton_MouseDown (object sender, MouseEventArgs e)
             {
@@ -84,6 +98,22 @@ namespace Mockingbird.HP.Execution
             public void printerFeedButton_MouseUp (object sender, MouseEventArgs e)
             {
                 paperFeedTimer.Enabled = false;
+            }
+
+            public void toggleManTraceNorm_ToggleMoved (object sender, TogglePosition position)
+            {
+                // See toggleWprgmRun_ToggleMoved for explanations.
+                if (Monitor.TryEnter (parent.executionThread.IsBusy))
+                {
+                    try
+                    {
+                        parent.executionThread.Enqueue (new RefreshMessage ());
+                    }
+                    finally
+                    {
+                        Monitor.Exit (parent.executionThread.IsBusy);
+                    }
+                }
             }
 
             #endregion
