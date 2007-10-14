@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Mockingbird.HP.Class_Library
 {
-    public static partial class Number
+    public partial struct Number
     {
         public class Validater
         {
@@ -136,26 +136,26 @@ namespace Mockingbird.HP.Class_Library
 
             #region Private Properties
 
-            private double Value
+            private Number Value
             {
                 get
                 {
                     if (enteringExponent)
                     {
-                        return double.Parse (mantissa, NumberFormatInfo.InvariantInfo) *
-                                Math.Pow (10, sbyte.Parse (exponent, NumberFormatInfo.InvariantInfo));
+                        return new Number (decimal.Parse (mantissa, NumberFormatInfo.InvariantInfo),
+                                           sbyte.Parse (exponent, NumberFormatInfo.InvariantInfo));
                     }
                     else
                     {
                         try
                         {
-                            return double.Parse (mantissa, NumberFormatInfo.InvariantInfo);
+                            return decimal.Parse (mantissa, NumberFormatInfo.InvariantInfo);
                         }
                         catch
                         {
                             // This may happen: (1) if mantissa is null or (2) if mantissa doesn't
                             // parse, e.g. because it's " .       ".
-                            return 0.0;
+                            return 0.0M;
                         }
                     }
                 }

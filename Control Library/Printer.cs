@@ -124,7 +124,7 @@ namespace Mockingbird.HP.Control_Library
 
         #region Event Handlers
 
-        private void RecordNumeric (string mantissa, string exponent, double value)
+        private void RecordNumeric (string mantissa, string exponent, Number value)
         {
             this.mantissa = mantissa;
             this.exponent = exponent;

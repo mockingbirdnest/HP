@@ -19,9 +19,9 @@ namespace Mockingbird.HP.Class_Library
         #region Private Data
 
         private IDisplay display;
-        private double lastX;
+        private Number lastX;
         private IPrinter printer;
-        private double [] stack;
+        private Number [] stack;
 
         private Number.Validater validater;
 
@@ -36,12 +36,12 @@ namespace Mockingbird.HP.Class_Library
             this.validater = validater;
             this.validater.NumberDone += new Number.ChangeEvent (UpdateXFromValidater);
 
-            stack = new double [Position.t - Position.x + 1];
-            lastX = 0.0;
+            stack = new Number [Position.t - Position.x + 1];
+            lastX = 0.0M;
 
             for (int i = 0; i < stack.Length; i++)
             {
-                stack [i] = 0.0;
+                stack [i] = 0.0M;
             }
         }
 
@@ -49,7 +49,7 @@ namespace Mockingbird.HP.Class_Library
 
         #region Private Operations
 
-        private double this [Position p]
+        private Number this [Position p]
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        private void UpdateXFromValidater (string mantissa, string exponent, double value)
+        private void UpdateXFromValidater (string mantissa, string exponent, Number value)
         {
             stack [(int) Position.x] = value;
         }
@@ -83,7 +83,7 @@ namespace Mockingbird.HP.Class_Library
 
         #region Public Properties
 
-        public double LastX
+        public Number LastX
         {
             get
             {
@@ -91,7 +91,7 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        public double X
+        public Number X
         {
             get
             {
@@ -106,7 +106,7 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        public double Y
+        public Number Y
         {
             get
             {
@@ -139,13 +139,13 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        public void Get (out double X)
+        public void Get (out Number X)
         {
             X = this [Position.x];
             lastX = this [Position.x];
         }
 
-        public void Get (out double X, out double Y)
+        public void Get (out Number X, out Number Y)
         {
             X = this [Position.x];
             Y = this [Position.y];
@@ -169,7 +169,7 @@ namespace Mockingbird.HP.Class_Library
 
         public void RollDown ()
         {
-            double temp;
+            Number temp;
             temp = this [Position.x];
             for (Position i = Position.x; i < Position.t; i++)
             {
@@ -181,7 +181,7 @@ namespace Mockingbird.HP.Class_Library
 
         public void RollUp ()
         {
-            double temp;
+            Number temp;
             temp = this [Position.t];
             for (Position i = Position.t; i > Position.x; i--)
             {
@@ -192,7 +192,7 @@ namespace Mockingbird.HP.Class_Library
 
         public void XExchangeY ()
         {
-            double temp;
+            Number temp;
             temp = this [Position.x];
             X = this [Position.y]; // Assign to X, not this [x], to force tracing.
             this [Position.y] = temp;

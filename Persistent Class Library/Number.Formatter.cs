@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace Mockingbird.HP.Class_Library
 {
-    public static partial class Number
+    public partial struct Number
     {
         public enum DisplayFormat
         {
@@ -21,9 +21,9 @@ namespace Mockingbird.HP.Class_Library
             #region Private Data
 
             private const sbyte overflowExponent = 99;
-            private const double overflowMantissa = 9.999999999;
-            private const double overflowLimit = 9.999999999E99;
-            private const double underflowLimit = 1.0E-99;
+            private const decimal overflowMantissa = 9.999999999M;
+            private const sbyte underflowExponent = -99;
+            private const decimal underflowMantissa = 1.0M;
 
             private const string exponentMetaTemplate = "*00;-00";
             private const string fixUnderflowOverflowMantissaTemplate = " 0.000000000;-0.000000000";
@@ -42,8 +42,7 @@ namespace Mockingbird.HP.Class_Library
             private bool fixedUnderflowOverflow;
             private bool overflows;
 
-            private sbyte exponent;
-            private double mantissa;
+            private Number formatted; // Beware!  Not normalized!
 
             #endregion
 
@@ -68,7 +67,7 @@ namespace Mockingbird.HP.Class_Library
                 {
                     exponentTemplate = " " + exponentMetaTemplate.Substring (1);
                 }
-
+                formatted = 0.0M;
                 Digits = digits;
                 Format = format;
             }
@@ -115,47 +114,43 @@ namespace Mockingbird.HP.Class_Library
 
             #region Private Operations
 
-            private void Split (double x)
+            private void Split (Number x)
             {
-                double absX = Math.Abs (x);
-                double log10;
+                Number absX = Abs (x);
+                Number large = new Number (overflowMantissa, overflowExponent);
+                Number small = new Number (underflowMantissa, underflowExponent);
 
                 // Deal with possible underflow or overflow.
                 overflows = false;
-                if (absX > overflowLimit)
+                if (absX > large)
                 {
-                    exponent = 0;
-                    if (x > 0.0)
+                    if (x > 0.0M)
                     {
-                        mantissa = double.PositiveInfinity;
+                        formatted = large;
                     }
                     else
                     {
-                        mantissa = double.NegativeInfinity;
+                        formatted = -large;
                     }
                     overflows = true;
                     return;
                 }
 
-                if (absX < underflowLimit)
+                if (absX < small)
                 {
-                    exponent = 0;
-                    x = 0;
+                    formatted = 0.0M;
+                    return;
                 }
                 else
                 {
 
-                    // Compute the exponent in base 10, so that the mantissa has one digit before
-                    // the decimal point.
-                    log10 = Math.Log10 (absX);
-                    if (log10 >= 0.0)
+                    // The exponent is such that the mantissa has one digit before the decimal point.
+                    formatted.exponent = x.exponent;
+                    if (x.mantissa == 10.0M)
                     {
-                        exponent = (sbyte) Math.Floor (log10);
+                        formatted.exponent++;
                     }
-                    else
-                    {
-                        exponent = (sbyte) (-Math.Ceiling (-log10));
-                    }
+                    formatted.sign = x.sign;
                 }
 
                 // Adjust the computed exponent based on the display format, and determine if the
@@ -165,30 +160,32 @@ namespace Mockingbird.HP.Class_Library
                 {
                     case DisplayFormat.Engineering:
                         {
-                            if (exponent % 3 != 0)
+                            if (formatted.exponent % 3 != 0)
                             {
-                                exponent = (sbyte) (exponent - (exponent % 3) - (exponent >= 0 ? 0 : 3));
+                                formatted.exponent =
+                                    (sbyte) (formatted.exponent - (formatted.exponent % 3) -
+                                             (formatted.exponent >= 0 ? 0 : 3));
                             }
                             break;
                         }
                     case DisplayFormat.Fixed:
                         {
-                            if (exponent < -digits - 1 || exponent > 9)
+                            if (formatted.exponent < -digits - 1 || formatted.exponent > 9)
                             {
                                 fixedUnderflowOverflow = true;
                             }
-                            else if (exponent == -digits - 1)
+                            else if (formatted.exponent == -digits - 1)
                             {
                                 // A subtlety here.  If digits is, say, 2, the values ±0.005 round to
                                 // ±0.01, but the values ±0.004 underflow.
-                                if (absX < 0.5 * Math.Pow (10, -digits))
+                                if (absX < 0.5M * PowerOfTen (-digits))
                                 {
                                     fixedUnderflowOverflow = true;
                                 }
                             }
                             if (!fixedUnderflowOverflow)
                             {
-                                exponent = 0;
+                                formatted.exponent = 0;
                             }
                             break;
                         }
@@ -197,7 +194,7 @@ namespace Mockingbird.HP.Class_Library
                             break;
                         }
                 }
-                mantissa = x / Math.Pow (10, exponent);
+                formatted.mantissa = x.mantissa * PowerOfTen (x.exponent - formatted.exponent);
             }
 
             #endregion
@@ -213,13 +210,14 @@ namespace Mockingbird.HP.Class_Library
                         return overflowExponent.ToString
                             (exponentTemplate, NumberFormatInfo.InvariantInfo);
                     }
-                    else if (exponent == 0 && format == DisplayFormat.Fixed)
+                    else if (formatted.exponent == 0 && format == DisplayFormat.Fixed)
                     {
                         return new String (' ', exponentSignLength + exponentLength);
                     }
                     else
                     {
-                        return exponent.ToString (exponentTemplate, NumberFormatInfo.InvariantInfo);
+                        return formatted.exponent.ToString
+                                (exponentTemplate, NumberFormatInfo.InvariantInfo);
                     }
                 }
             }
@@ -230,7 +228,7 @@ namespace Mockingbird.HP.Class_Library
                 {
                     if (overflows)
                     {
-                        if (mantissa > 0.0)
+                        if (formatted.mantissa > 0.0M)
                         {
                             return overflowMantissa.ToString (fixUnderflowOverflowMantissaTemplate,
                                                                 NumberFormatInfo.InvariantInfo);
@@ -251,30 +249,30 @@ namespace Mockingbird.HP.Class_Library
                                     // just let the formatter do it.  The reason is that we want to
                                     // get zeros *before* the decimal point if the number of digits
                                     // is very small.
-                                    double absMantissa = Math.Abs (mantissa);
-                                    double formattableMantissa;
+                                    decimal absMantissa = Math.Abs (formatted.mantissa);
+                                    decimal formattableMantissa;
 
-                                    if (absMantissa < 10.0)
+                                    if (absMantissa < 10.0M)
                                     {
                                         formattableMantissa =
-                                            Math.Round (mantissa, digits,
+                                            Math.Round (formatted.mantissa, digits,
                                                         MidpointRounding.AwayFromZero);
                                         return formattableMantissa.ToString
                                             (engMantissaTemplate1, NumberFormatInfo.InvariantInfo);
                                     }
-                                    else if (absMantissa < 100.0)
+                                    else if (absMantissa < 100.0M)
                                     {
-                                        formattableMantissa = 10.0 *
-                                            Math.Round (mantissa / 10.0, digits,
+                                        formattableMantissa = 10.0M *
+                                            Math.Round (formatted.mantissa / 10.0M, digits,
                                                         MidpointRounding.AwayFromZero);
                                         return formattableMantissa.ToString
                                             (engMantissaTemplate10, NumberFormatInfo.InvariantInfo);
                                     }
                                     else
                                     {
-                                        Trace.Assert (absMantissa < 1000.0);
-                                        formattableMantissa = 100.0 *
-                                            Math.Round (mantissa / 100.0, digits,
+                                        Trace.Assert (absMantissa < 1000.0M);
+                                        formattableMantissa = 100.0M *
+                                            Math.Round (formatted.mantissa / 100.0M, digits,
                                                         MidpointRounding.AwayFromZero);
                                         return formattableMantissa.ToString
                                             (engMantissaTemplate100, NumberFormatInfo.InvariantInfo);
@@ -284,12 +282,13 @@ namespace Mockingbird.HP.Class_Library
                                 {
                                     if (fixedUnderflowOverflow)
                                     {
-                                        return mantissa.ToString (fixUnderflowOverflowMantissaTemplate,
-                                                                NumberFormatInfo.InvariantInfo);
+                                        return formatted.mantissa.ToString
+                                                    (fixUnderflowOverflowMantissaTemplate,
+                                                     NumberFormatInfo.InvariantInfo);
                                     }
                                     else
                                     {
-                                        string m = mantissa.ToString
+                                        string m = formatted.mantissa.ToString
                                             (fixMantissaTemplate, NumberFormatInfo.InvariantInfo);
                                         return m.Substring
                                             (mantissaSignFirst,
@@ -299,7 +298,7 @@ namespace Mockingbird.HP.Class_Library
                                 }
                             case DisplayFormat.Scientific:
                                 {
-                                    return mantissa.ToString
+                                    return formatted.mantissa.ToString
                                         (sciMantissaTemplate, NumberFormatInfo.InvariantInfo);
                                 }
                             default:
@@ -315,10 +314,9 @@ namespace Mockingbird.HP.Class_Library
 
             #region Public Operations
 
-            public void Round (double x)
+            public void Round (Number x)
             {
                 Split (x);
-                mantissa = double.Parse (Mantissa);
                 if (FormattingChanged != null)
                 {
                     FormattingChanged (Mantissa, Exponent, Value); // Probably unnecessary, but...
@@ -417,12 +415,12 @@ namespace Mockingbird.HP.Class_Library
                     // can only be checked based on the raw input given by the validater.
                     return format != Number.DisplayFormat.Fixed ||
                            overflows ||
-                           exponent != 0 ||
+                           formatted.exponent != 0 ||
                            fixedUnderflowOverflow;
                }
             }
 
-            public double Value
+            public Number Value
             {
                 set
                 {
@@ -434,7 +432,7 @@ namespace Mockingbird.HP.Class_Library
                 }
                 private get
                 {
-                    return mantissa * Math.Pow (10.0, exponent);
+                    return new Number (formatted.mantissa, formatted.exponent);
                 }
             }
 

@@ -425,7 +425,7 @@ namespace Mockingbird.HP.Execution
 
                 // Reinitialize the display to its power-on state.
                 display.Mode = DisplayMode.Numeric;
-                display.Formatter.Value = 0.0;
+                display.Formatter.Value = 0.0M;
 
                 do
                 {

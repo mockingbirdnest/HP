@@ -173,12 +173,12 @@ namespace Mockingbird.HP.Control_Library
 
         #region Event Handlers
 
-        private void ShowNumeric (string mantissa, string exponent, double value)
+        private void ShowNumeric (string mantissa, string exponent, Number value)
         {
             ThreadSafe.SetText (numericTextBox, mantissa + mantissaExponentSeparator + exponent);
         }
 
-        private void ShowText (string mantissa, string exponent, double value)
+        private void ShowText (string mantissa, string exponent, Number value)
         {
             ThreadSafe.SetText (alphabeticTextBox, mantissa + mantissaExponentSeparator + exponent);
         }
@@ -351,7 +351,7 @@ namespace Mockingbird.HP.Control_Library
 
             Mode = DisplayMode.Alphabetic;
             isBlurred = true;
-            randomFormatter.Value = r;
+            randomFormatter.Value = (Number) r;
         }
 
         public void ShowInstruction (Instruction instruction, int step, bool setMode)
@@ -376,7 +376,7 @@ namespace Mockingbird.HP.Control_Library
                 stepImage + instructionImage.PadLeft (instructionLength));
         }
 
-        public void ShowMemory (int address, double register, int ms)
+        public void ShowMemory (int address, Number register, int ms)
         {
             string addressImage = address.ToString ();
             string numericText = ThreadSafe.GetText (numericTextBox);

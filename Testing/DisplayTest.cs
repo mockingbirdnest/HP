@@ -1,3 +1,4 @@
+using Mockingbird.HP.Class_Library;
 using System;
 using System.Drawing;
 using System.Collections;
@@ -382,12 +383,12 @@ namespace Mockingbird.HP.Testing
 			Application.Run(new DisplayTest());
 		}
 
-        private void NumberChangeEvent (string mantissa, string exponent, double value)
+        private void NumberChangeEvent (string mantissa, string exponent, Number value)
         {
             DisplayUnderTest.ShowNumeric (mantissa, exponent);
         }
 
-        private void NumberDoneEvent (string mantissa, string exponent, double value)
+        private void NumberDoneEvent (string mantissa, string exponent, Number value)
         {
             formatter.Value = value;
         }

@@ -18,7 +18,7 @@ namespace Mockingbird.HP.Persistence
 	/// </summary>
 	public class Card
 	{
-		private const float Version = 1.8F;
+		private const float Version = 1.9F;
 
 		#region Event Definitions
 
@@ -45,8 +45,12 @@ namespace Mockingbird.HP.Persistence
 			CardDataset.CardRow cr = cds.Card [0];
 			CardDataset.ArgumentRow [] ars;
 			CardDataset.InstructionRow [] irs;
+            CardDataset.MemoryRow mr;
+            CardDataset.MemoryRow [] mrs;
 			CardDataset.ProgramRow pr;
 			CardDataset.ProgramRow [] prs;
+            CardDataset.RegisterRow rr;
+            CardDataset.RegisterRow [] rrs;
 
 			if (cr.Version == Version) 
 			{
@@ -150,6 +154,30 @@ namespace Mockingbird.HP.Persistence
                             ar.InstructionRow = ir;
                             cds.Argument.AddArgumentRow (ar);
                         }
+                    }
+                }
+            }
+            if (cr.Version <= 1.8F)
+            {
+                // Version 1.8 used to have the value of registers stored as double.  Note that the
+                // Value column still exists so as to read old cards, but it is not used anymore.
+                mrs = cr.GetMemoryRows ();
+                if (mrs.Length > 0)
+                {
+                    mr = mrs [0];
+                    rrs = mr.GetRegisterRows ();
+                    if (rrs.Length > 0)
+                    {
+                        //TODO: There is similar code in Number, but we don't see it.  Sigh. 
+                        double d;
+                        int n;
+
+                        rr = rrs [0];
+                        d = rr.Value;
+                        //TODO: This is probably not properly normalized.
+                        n = (int) Math.Ceiling (Math.Log10 ((double) Math.Abs (d)));
+                        rr.Mantissa = (decimal) (d * Math.Pow (10.0, -n));
+                        rr.Exponent = (sbyte) n;
                     }
                 }
             }

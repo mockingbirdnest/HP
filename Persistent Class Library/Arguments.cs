@@ -74,9 +74,9 @@ namespace Mockingbird.HP.Class_Library
 
     public interface IAddress
     {
-        double Recall (Memory m);
-        void Store (Memory m, double x);
-        void Store (Memory m, double x, Memory.Operator o);
+        Number Recall (Memory m);
+        void Store (Memory m, Number x);
+        void Store (Memory m, Number x, Memory.Operator o);
     }
 
     public interface IDigits
@@ -146,17 +146,17 @@ namespace Mockingbird.HP.Class_Library
             return digit.ToString (digitTemplate, NumberFormatInfo.InvariantInfo);
         }
 
-        public double Recall (Memory m)
+        public Number Recall (Memory m)
         {
             return m.Recall (digit);
         }
 
-        public void Store (Memory m, double x)
+        public void Store (Memory m, Number x)
         {
             m.Store (x, digit);
         }
 
-        public void Store (Memory m, double x, Memory.Operator o)
+        public void Store (Memory m, Number x, Memory.Operator o)
         {
             m.Store (x, digit, o);
         }
@@ -213,24 +213,24 @@ namespace Mockingbird.HP.Class_Library
                 (new SymbolNonterminal ((int) SymbolConstants.SYMBOL_SUB_I, "SUB_I"));
         }
 
-        public double Recall (Memory m)
+        public Number Recall (Memory m)
         {
             return m.RecallIndexed ();
         }
 
-        public void Store (Memory m, double x)
+        public void Store (Memory m, Number x)
         {
             m.StoreIndexed (x);
         }
 
-        public void Store (Memory m, double x, Memory.Operator o)
+        public void Store (Memory m, Number x, Memory.Operator o)
         {
             m.StoreIndexed (x, o);
         }
 
         public void SetDigits (Memory m, Number.Formatter f)
         {
-            byte digits = (byte) Math.Floor (Math.Abs (m.Recall (Memory.LetterRegister.I)));
+            byte digits = (byte) Number.Floor (Number.Abs (m.Recall (Memory.LetterRegister.I)));
             if (digits > 9)
             {
                 throw new Error ();
@@ -243,7 +243,7 @@ namespace Mockingbird.HP.Class_Library
 
         public void Goto (Memory m, Program p)
         {
-            int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
+            int label = (int) Number.Floor (m.Recall (Memory.LetterRegister.I));
 
             if (label <= -1000 || label >= 20)
             {
@@ -263,7 +263,7 @@ namespace Mockingbird.HP.Class_Library
 
         public void Gosub (Memory m, Program p)
         {
-            int label = (int) Math.Floor (m.Recall (Memory.LetterRegister.I));
+            int label = Number.Floor (m.Recall (Memory.LetterRegister.I));
 
             if (label <= -1000 || label >= 20)
             {
@@ -353,19 +353,19 @@ namespace Mockingbird.HP.Class_Library
             letter = char.ToLower (letter);
         }
 
-        public double Recall (Memory m)
+        public Number Recall (Memory m)
         {
             return m.Recall ((Memory.LetterRegister) Enum.Parse
                 (typeof (Memory.LetterRegister), new String (letter, 1)));
         }
 
-        public void Store (Memory m, double x)
+        public void Store (Memory m, Number x)
         {
             m.Store (x, (Memory.LetterRegister) Enum.Parse
                 (typeof (Memory.LetterRegister), new String (letter, 1)));
         }
 
-        public void Store (Memory m, double x, Memory.Operator o)
+        public void Store (Memory m, Number x, Memory.Operator o)
         {
             // A letter is not an operable memory.
             Trace.Assert (false);
@@ -397,24 +397,24 @@ namespace Mockingbird.HP.Class_Library
 
         private Memory.Operator op;
 
-        static public double Addition (double x, double y)
+        static public Number Addition (Number x, Number y)
         {
             return x + y;
         }
 
-        static public double Subtraction (double x, double y)
+        static public Number Subtraction (Number x, Number y)
         {
             return x - y;
         }
 
-        static public double Multiplication (double x, double y)
+        static public Number Multiplication (Number x, Number y)
         {
             return x * y;
         }
 
-        static public double Division (double x, double y)
+        static public Number Division (Number x, Number y)
         {
-            if (y == 0.0)
+            if (y == 0.0M)
             {
                 throw new Error ();
             }

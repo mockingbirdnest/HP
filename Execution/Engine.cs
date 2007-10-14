@@ -45,10 +45,10 @@ namespace Mockingbird.HP.Execution
         private static TraceSwitch classTraceSwitch =
             new TraceSwitch ("Mockingbird.HP.Execution.Engine", "Execution engine");
 
-        private const double degreeToRadian = Math.PI / 180.0;
-        private const double gradeToRadian = Math.PI / 200.0;
-        private const double radianToDegree = 180.0 / Math.PI;
-        private const double radianToGrade = 200.0 / Math.PI;
+        private const decimal degreeToRadian = Number.PI / 180.0M;
+        private const decimal gradeToRadian = Number.PI / 200.0M;
+        private const decimal radianToDegree = 180.0M / Number.PI;
+        private const decimal radianToGrade = 200.0M / Number.PI;
 
         private bool enableBlur;
         private bool inNumberDone = false;
@@ -123,7 +123,7 @@ namespace Mockingbird.HP.Execution
 
         #region Event Handlers
 
-        private void DisplayFormattingChanged (string mantissa, string exponent, double value)
+        private void DisplayFormattingChanged (string mantissa, string exponent, Number value)
         {
             if (printer != null)
             {
@@ -138,17 +138,17 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        private void ExponentChanged (string mantissa, string exponent, double value)
+        private void ExponentChanged (string mantissa, string exponent, Number value)
         {
             display.ShowNumeric (mantissa, exponent);
         }
 
-        private void MantissaChanged (string mantissa, string exponent, double value)
+        private void MantissaChanged (string mantissa, string exponent, Number value)
         {
             display.ShowNumeric (mantissa, exponent);
         }
 
-        private void NumberDone (string mantissa, string exponent, double value)
+        private void NumberDone (string mantissa, string exponent, Number value)
         {
 
             // Note that the stack also handles this event, but as far as I can tell the order of
@@ -186,7 +186,7 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        private void NumberStarted (string mantissa, string exponent, double value)
+        private void NumberStarted (string mantissa, string exponent, Number value)
         {
             EnterIfNeeded ();
         }
@@ -266,17 +266,17 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        private double Factorial (long x)
+        private Number Factorial (Number n)
         {
-            double factorial;
-            for (factorial = 1.0; x > 1; x--)
+            Number factorial;
+            for (factorial = 1.0M; n > 1; n--)
             {
-                factorial = factorial * (double) x;
+                factorial = factorial * n;
             }
             return factorial;
         }
 
-        private double FromRadian (double angle)
+        private Number FromRadian (Number angle)
         {
             switch (unit)
             {
@@ -288,43 +288,43 @@ namespace Mockingbird.HP.Execution
                     return angle;
                 default:
                     Trace.Assert (false);
-                    return 0.0;
+                    return 0.0M;
             }
         }
 
-        private double ToH (double x)
+        private Number ToH (Number x)
         {
-            double absX = Math.Abs (x);
-            double h = Math.Floor (absX);
-            double m = Math.Floor ((absX - h) * 100.0);
-            double s = (absX - h - m / 100.0) * 10000.0;
-            if (x < 0.0)
+            Number absX = Number.Abs (x);
+            int h = Number.Floor (absX);
+            int m = Number.Floor ((absX - h) * 100.0M);
+            Number s = (absX - h - m / 100.0M) * 10000.0M;
+            if (x < 0.0M)
             {
-                return -h - m / 60.0 - s / 3600.0;
+                return -h - m / 60.0M - s / 3600.0M;
             }
             else
             {
-                return h + m / 60.0 + s / 3600.0;
+                return h + m / 60.0M + s / 3600.0M;
             }
         }
 
-        private double ToHMS (double x)
+        private Number ToHMS (Number x)
         {
-            double absX = Math.Abs (x);
-            double h = Math.Floor (absX);
-            double m = Math.Floor ((absX - h) * 60.0);
-            double s = (absX - h - m / 60.0) * 3600.0;
-            if (x < 0.0)
+            Number absX = Number.Abs (x);
+            int h = Number.Floor (absX);
+            int m = Number.Floor ((absX - h) * 60.0M);
+            Number s = (absX - h - m / 60.0M) * 3600.0M;
+            if (x < 0.0M)
             {
-                return -h - m / 100.0 - s / 10000.0;
+                return -h - m / 100.0M - s / 10000.0M;
             }
             else
             {
-                return h + m / 100.0 + s / 10000.0;
+                return h + m / 100.0M + s / 10000.0M;
             }
         }
 
-        private double ToRadian (double angle)
+        private Number ToRadian (Number angle)
         {
             switch (unit)
             {
@@ -336,7 +336,7 @@ namespace Mockingbird.HP.Execution
                     return angle;
                 default:
                     Trace.Assert (false);
-                    return 0.0;
+                    return 0.0M;
             }
         }
 
@@ -364,7 +364,7 @@ namespace Mockingbird.HP.Execution
         public void Execute (Instruction instruction)
         {
             bool neutral = stackLift;
-            double x, y;
+            Number x, y;
 
             Trace.WriteLineIf (classTraceSwitch.TraceInfo,
                 "Execute: " + instruction.PrintableText,
@@ -413,7 +413,7 @@ namespace Mockingbird.HP.Execution
             {
                 case SymbolConstants.SYMBOL_ABS:
                     stack.Get (out x);
-                    stack.X = Math.Abs (x);
+                    stack.X = Number.Abs (x);
                     break;
                 case SymbolConstants.SYMBOL_ADDITION:
                     stack.Get (out x, out y);
@@ -421,29 +421,29 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_ARCCOS:
                     stack.Get (out x);
-                    if (Math.Abs (x) > 1.0)
+                    if (Number.Abs (x) > 1.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = FromRadian (Math.Acos (x));
+                        stack.X = FromRadian (Number.Acos (x));
                     }
                     break;
                 case SymbolConstants.SYMBOL_ARCSIN:
                     stack.Get (out x);
-                    if (Math.Abs (x) > 1.0)
+                    if (Number.Abs (x) > 1.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = FromRadian (Math.Asin (x));
+                        stack.X = FromRadian (Number.Asin (x));
                     }
                     break;
                 case SymbolConstants.SYMBOL_ARCTAN:
                     stack.Get (out x);
-                    stack.X = FromRadian (Math.Atan (x));
+                    stack.X = FromRadian (Number.Atan (x));
                     break;
                 case SymbolConstants.SYMBOL_BST:
                     // Does nothing, moved backward on MouseDown.
@@ -466,17 +466,17 @@ namespace Mockingbird.HP.Execution
                     memory.Clear ();
                     break;
                 case SymbolConstants.SYMBOL_CLR:
-                    stack.X = 0.0;
+                    stack.X = 0.0M;
                     stack.Enter ();
                     stack.Enter ();
                     stack.Enter ();
                     break;
                 case SymbolConstants.SYMBOL_CLX:
-                    stack.X = 0.0;
+                    stack.X = 0.0M;
                     break;
                 case SymbolConstants.SYMBOL_COS:
                     stack.Get (out x);
-                    stack.X = Math.Cos (ToRadian (x));
+                    stack.X = Number.Cos (ToRadian (x));
                     break;
                 case SymbolConstants.SYMBOL_DEG:
                     unit = AngleUnit.Degree;
@@ -506,7 +506,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_DIVISION:
                     stack.Get (out x, out y);
-                    if (x == 0.0)
+                    if (x == 0.0M)
                     {
                         throw new Error ();
                     }
@@ -554,7 +554,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_EXP:
                     stack.Get (out x);
-                    stack.X = Math.Exp (x);
+                    stack.X = Number.Exp (x);
                     break;
                 case SymbolConstants.SYMBOL_F_TEST:
                     byte flagId = ((Digit) instruction.Arguments [0]).Value;
@@ -575,9 +575,9 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_FACTORIAL:
                     stack.Get (out x);
-                    if (x >= 0 && x == Math.Floor (x))
+                    if (x >= 0.0M && x == Number.Floor (x))
                     {
-                        stack.X = Factorial ((long) x);
+                        stack.X = Factorial (x);
                     }
                     else
                     {
@@ -595,13 +595,13 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_FRAC:
                     stack.Get (out x);
-                    if (x < 0.0)
+                    if (x < 0.0M)
                     {
-                        stack.X = x + Math.Floor (-x);
+                        stack.X = x + Number.Floor (-x);
                     }
                     else
                     {
-                        stack.X = x - Math.Floor (x);
+                        stack.X = x - Number.Floor (x);
                     }
                     break;
                 case SymbolConstants.SYMBOL_GRD:
@@ -644,13 +644,13 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_INT:
                     stack.Get (out x);
-                    if (x < 0.0)
+                    if (x < 0.0M)
                     {
-                        stack.X = -Math.Floor (-x);
+                        stack.X = -Number.Floor (-x);
                     }
                     else
                     {
-                        stack.X = Math.Floor (x);
+                        stack.X = Number.Floor (x);
                     }
                     break;
                 case SymbolConstants.SYMBOL_ISZ:
@@ -669,24 +669,24 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_LN:
                     stack.Get (out x);
-                    if (x <= 0.0)
+                    if (x <= 0.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = Math.Log (x);
+                        stack.X = Number.Log (x);
                     }
                     break;
                 case SymbolConstants.SYMBOL_LOG:
                     stack.Get (out x);
-                    if (x <= 0.0)
+                    if (x <= 0.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = Math.Log10 (x);
+                        stack.X = Number.Log10 (x);
                     }
                     break;
                 case SymbolConstants.SYMBOL_LST_X:
@@ -728,17 +728,17 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_PERCENT:
                     stack.Get (out x);
-                    stack.X = stack.Y * x / 100.0;
+                    stack.X = stack.Y * x / 100.0M;
                     break;
                 case SymbolConstants.SYMBOL_PERCENT_CHANGE:
                     stack.Get (out x, out y);
-                    if (y == 0)
+                    if (y == 0.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = (x - y) * 100.0 / y;
+                        stack.X = (x - y) * 100.0M / y;
                     }
                     break;
                 case SymbolConstants.SYMBOL_PERIOD:
@@ -746,7 +746,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_PI:
                     EnterIfNeeded ();
-                    stack.X = Math.PI;
+                    stack.X = Number.PI;
                     break;
                 case SymbolConstants.SYMBOL_PRINT_PRGM:
                     program.PrintProgram
@@ -794,13 +794,13 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_RECIPROCAL:
                     stack.Get (out x);
-                    if (x == 0.0)
+                    if (x == 0.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = 1.0 / x;
+                        stack.X = 1.0M / x;
                     }
                     break;
                 case SymbolConstants.SYMBOL_REG:
@@ -865,7 +865,7 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_SIN:
                     stack.Get (out x);
-                    stack.X = Math.Sin (ToRadian (x));
+                    stack.X = Number.Sin (ToRadian (x));
                     break;
                 case SymbolConstants.SYMBOL_SPACE:
                     switch (reader.Model)
@@ -879,13 +879,13 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_SQRT:
                     stack.Get (out x);
-                    if (x < 0.0)
+                    if (x < 0.0M)
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = Math.Sqrt (x);
+                        stack.X = Number.Sqrt (x);
                     }
                     break;
                 case SymbolConstants.SYMBOL_SQUARE:
@@ -932,11 +932,11 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_TAN:
                     stack.Get (out x);
-                    stack.X = Math.Tan (ToRadian (x));
+                    stack.X = Number.Tan (ToRadian (x));
                     break;
                 case SymbolConstants.SYMBOL_TEN_TO_THE_XTH:
                     stack.Get (out x);
-                    stack.X = Math.Pow (10.0, x);
+                    stack.X = Number.Pow (10.0M, x);
                     break;
                 case SymbolConstants.SYMBOL_TO_DEGREES:
                     stack.Get (out x);
@@ -953,19 +953,19 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_TO_POLAR:
                     stack.Get (out x);
                     y = stack.Y;
-                    stack.X = Math.Sqrt (x * x + y * y);
-                    stack.Y = FromRadian (Math.Atan2 (y, x));
+                    stack.X = Number.Sqrt (x * x + y * y);
+                    stack.Y = FromRadian (Number.Atan2 (y, x));
                     break;
                 case SymbolConstants.SYMBOL_TO_RADIANS:
                     stack.Get (out x);
                     stack.X = x * degreeToRadian;
                     break;
                 case SymbolConstants.SYMBOL_TO_RECTANGULAR:
-                    double θ = stack.Y;
-                    double r;
+                    Number θ = stack.Y;
+                    Number r;
                     stack.Get (out r);
-                    stack.X = r * Math.Cos (ToRadian (θ));
-                    stack.Y = r * Math.Sin (ToRadian (θ));
+                    stack.X = r * Number.Cos (ToRadian (θ));
+                    stack.Y = r * Number.Sin (ToRadian (θ));
                     break;
                 case SymbolConstants.SYMBOL_W_DATA:
                     {
@@ -998,7 +998,7 @@ namespace Mockingbird.HP.Execution
                     stack.Y = y;
                     break;
                 case SymbolConstants.SYMBOL_X_EQ_0:
-                    if (stack.X != 0.0)
+                    if (stack.X != 0.0M)
                     {
                         program.Skip ();
                     }
@@ -1010,7 +1010,7 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_X_EXCHANGE_I:
-                    double i = memory.Recall (Memory.LetterRegister.I);
+                    Number i = memory.Recall (Memory.LetterRegister.I);
                     memory.Store (stack.X, Memory.LetterRegister.I);
                     stack.X = i;
                     break;
@@ -1018,7 +1018,7 @@ namespace Mockingbird.HP.Execution
                     stack.XExchangeY ();
                     break;
                 case SymbolConstants.SYMBOL_X_GT_0:
-                    if (stack.X <= 0.0)
+                    if (stack.X <= 0.0M)
                     {
                         program.Skip ();
                     }
@@ -1036,13 +1036,13 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_X_LT_0:
-                    if (stack.X >= 0.0)
+                    if (stack.X >= 0.0M)
                     {
                         program.Skip ();
                     }
                     break;
                 case SymbolConstants.SYMBOL_X_NE_0:
-                    if (stack.X == 0.0)
+                    if (stack.X == 0.0M)
                     {
                         program.Skip ();
                     }
@@ -1055,32 +1055,32 @@ namespace Mockingbird.HP.Execution
                     break;
                 case SymbolConstants.SYMBOL_X_TO_THE_YTH:
                     stack.Get (out x, out y);
-                    if (x == 0.0 && y <= 0.0)
+                    if (x == 0.0M && y <= 0.0M)
                     {
                         throw new Error ();
                     }
-                    else if (x < 0 && y != Math.Floor (y))
+                    else if (x < 0 && y != Number.Floor (y))
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = Math.Pow (x, y);
+                        stack.X = Number.Pow (x, y);
                     }
                     break;
                 case SymbolConstants.SYMBOL_Y_TO_THE_XTH:
                     stack.Get (out x, out y);
-                    if (y == 0.0 && x <= 0.0)
+                    if (y == 0.0M && x <= 0.0M)
                     {
                         throw new Error ();
                     }
-                    else if (y < 0 && x != Math.Floor (x))
+                    else if (y < 0.0M && x != Number.Floor (x))
                     {
                         throw new Error ();
                     }
                     else
                     {
-                        stack.X = Math.Pow (y, x);
+                        stack.X = Number.Pow (y, x);
                     }
                     break;
                 default:

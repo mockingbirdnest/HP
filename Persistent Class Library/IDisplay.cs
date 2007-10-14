@@ -7,7 +7,7 @@ namespace Mockingbird.HP.Class_Library
     {
         void Pause (int ms);
         void ShowInstruction (Instruction instruction, int step, bool setMode);
-        void ShowMemory (int address, double register, int ms);
+        void ShowMemory (int address, Number register, int ms);
         Number.Formatter Formatter
         {
             get;

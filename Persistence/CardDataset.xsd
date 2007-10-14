@@ -1,130 +1,242 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<xs:schema id="CardDataset" targetNamespace="http://tempuri.org/CardDataset.xsd" elementFormDefault="qualified"
-	attributeFormDefault="qualified" xmlns="http://tempuri.org/CardDataset.xsd" xmlns:mstns="http://tempuri.org/CardDataset.xsd"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-	<xs:element name="CardDataset" msdata:IsDataSet="true">
-		<xs:complexType>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element name="Card">
-					<xs:complexType>
-						<xs:all>
-							<xs:element name="CardSlot" minOccurs="1" maxOccurs="1">
-								<xs:complexType>
-									<xs:all>
-										<xs:element name="FontName" type="xs:string" />
-										<xs:element name="FontSize" type="xs:float" minOccurs="0" />
-										<xs:element name="LargeFontName" type="xs:string" />
-										<xs:element name="LargeFontSize" type="xs:float" minOccurs="0" />
-										<xs:element name="TextTitle" type="xs:string" minOccurs="0" />
-										<xs:element name="RTFTitle" type="xs:string" minOccurs="0" />
-										<xs:element name="Margin" type="xs:int" />
-										<xs:element name="TextBoxWidth" type="xs:int" />
-										<xs:element name="IsRichText" type="xs:boolean" />
-										<xs:element name="TextBoxCount" type="xs:int" minOccurs="0" />
-										<xs:element name="TextBox">
-											<xs:complexType>
-												<xs:sequence minOccurs="0" maxOccurs="unbounded">
-													<xs:element name="Id" type="xs:int" minOccurs="0" />
-													<xs:element name="Text" type="xs:string" />
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="RTFBox">
-											<xs:complexType>
-												<xs:sequence minOccurs="0" maxOccurs="unbounded">
-													<xs:element name="Id" type="xs:int" minOccurs="0" />
-													<xs:element name="RTF" type="xs:string" />
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-									</xs:all>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Display">
-								<xs:complexType>
-									<xs:all>
-										<xs:element name="Format" type="xs:string" />
-										<xs:element name="Digits" type="xs:unsignedByte" />
-									</xs:all>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Engine">
-								<xs:complexType>
-									<xs:all>
-										<xs:element name="AngleUnit" type="xs:string" />
-										<xs:element name="Flag">
-											<xs:complexType>
-												<xs:sequence minOccurs="0" maxOccurs="unbounded">
-													<xs:element name="Id" type="xs:int" />
-													<xs:element name="Value" type="xs:boolean" />
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="FlagCount" type="xs:int" />
-									</xs:all>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Memory">
-								<xs:complexType>
-									<xs:all>
-										<xs:element name="RegisterCount" type="xs:int" />
-										<xs:element name="Register" minOccurs="0">
-											<xs:complexType>
-												<xs:sequence minOccurs="0" maxOccurs="unbounded">
-													<xs:element name="Id" type="xs:int" />
-													<xs:element name="Value" type="xs:double" />
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-									</xs:all>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Program">
-								<xs:complexType>
-									<xs:sequence minOccurs="0" maxOccurs="unbounded">
-										<xs:element name="Instruction">
-											<xs:complexType>
-												<xs:all>
-													<xs:element name="Step" type="xs:int" />
-													<xs:element name="Instruction" type="xs:string" />
-													<xs:element name="Argument">
-														<xs:complexType>
-															<xs:sequence minOccurs="0" maxOccurs="unbounded">
-																<xs:element name="Id" type="xs:int" />
-																<xs:element name="Type" type="xs:string" />
-																<xs:element name="Value" type="xs:string" />
-															</xs:sequence>
-														</xs:complexType>
-													</xs:element>
-													<xs:element name="ArgumentCount" type="xs:int" minOccurs="0" />
-												</xs:all>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="Label" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:all>
-													<xs:element name="Id" type="xs:int" minOccurs="0" />
-													<xs:element name="Step">
-														<xs:complexType>
-															<xs:sequence minOccurs="0" maxOccurs="unbounded">
-																<xs:element name="Step" type="xs:int" />
-															</xs:sequence>
-														</xs:complexType>
-													</xs:element>
-													<xs:element name="StepCount" type="xs:int" minOccurs="0" />
-												</xs:all>
-											</xs:complexType>
-										</xs:element>
-										<xs:element name="InstructionCount" type="xs:int" minOccurs="0" />
-										<xs:element name="LabelCount" type="xs:int" minOccurs="0" />
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
-							<xs:element name="Version" type="xs:float" minOccurs="0" />
-						</xs:all>
-					</xs:complexType>
-				</xs:element>
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CardDataset" targetNamespace="http://tempuri.org/CardDataset.xsd" xmlns:mstns="http://tempuri.org/CardDataset.xsd" xmlns="http://tempuri.org/CardDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CardDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="CardDataset" msprop:Generator_DataSetName="CardDataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Card" msprop:Generator_UserTableName="Card" msprop:Generator_RowDeletedName="CardRowDeleted" msprop:Generator_TableClassName="CardDataTable" msprop:Generator_RowChangedName="CardRowChanged" msprop:Generator_RowClassName="CardRow" msprop:Generator_RowChangingName="CardRowChanging" msprop:Generator_RowEvArgName="CardRowChangeEvent" msprop:Generator_RowEvHandlerName="CardRowChangeEventHandler" msprop:Generator_TablePropName="Card" msprop:Generator_TableVarName="tableCard" msprop:Generator_RowDeletingName="CardRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Version" msprop:Generator_UserColumnName="Version" msprop:Generator_ColumnPropNameInRow="Version" msprop:Generator_ColumnVarNameInTable="columnVersion" msprop:Generator_ColumnPropNameInTable="VersionColumn" type="xs:float" minOccurs="0" />
+              <xs:element name="CardSlot" msprop:Generator_UserTableName="CardSlot" msprop:Generator_RowDeletedName="CardSlotRowDeleted" msprop:Generator_TableClassName="CardSlotDataTable" msprop:Generator_RowChangedName="CardSlotRowChanged" msprop:Generator_RowClassName="CardSlotRow" msprop:Generator_RowChangingName="CardSlotRowChanging" msprop:Generator_RowEvArgName="CardSlotRowChangeEvent" msprop:Generator_RowEvHandlerName="CardSlotRowChangeEventHandler" msprop:Generator_TablePropName="CardSlot" msprop:Generator_TableVarName="tableCardSlot" msprop:Generator_RowDeletingName="CardSlotRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="FontName" msprop:Generator_UserColumnName="FontName" msprop:Generator_ColumnPropNameInRow="FontName" msprop:Generator_ColumnVarNameInTable="columnFontName" msprop:Generator_ColumnPropNameInTable="FontNameColumn" type="xs:string" />
+                    <xs:element name="FontSize" msprop:Generator_UserColumnName="FontSize" msprop:Generator_ColumnPropNameInRow="FontSize" msprop:Generator_ColumnVarNameInTable="columnFontSize" msprop:Generator_ColumnPropNameInTable="FontSizeColumn" type="xs:float" minOccurs="0" />
+                    <xs:element name="LargeFontName" msprop:Generator_UserColumnName="LargeFontName" msprop:Generator_ColumnPropNameInRow="LargeFontName" msprop:Generator_ColumnVarNameInTable="columnLargeFontName" msprop:Generator_ColumnPropNameInTable="LargeFontNameColumn" type="xs:string" />
+                    <xs:element name="LargeFontSize" msprop:Generator_UserColumnName="LargeFontSize" msprop:Generator_ColumnPropNameInRow="LargeFontSize" msprop:Generator_ColumnVarNameInTable="columnLargeFontSize" msprop:Generator_ColumnPropNameInTable="LargeFontSizeColumn" type="xs:float" minOccurs="0" />
+                    <xs:element name="TextTitle" msprop:Generator_UserColumnName="TextTitle" msprop:Generator_ColumnPropNameInRow="TextTitle" msprop:Generator_ColumnVarNameInTable="columnTextTitle" msprop:Generator_ColumnPropNameInTable="TextTitleColumn" type="xs:string" minOccurs="0" />
+                    <xs:element name="RTFTitle" msprop:Generator_UserColumnName="RTFTitle" msprop:Generator_ColumnPropNameInRow="RTFTitle" msprop:Generator_ColumnVarNameInTable="columnRTFTitle" msprop:Generator_ColumnPropNameInTable="RTFTitleColumn" type="xs:string" minOccurs="0" />
+                    <xs:element name="Margin" msprop:Generator_UserColumnName="Margin" msprop:Generator_ColumnPropNameInRow="Margin" msprop:Generator_ColumnVarNameInTable="columnMargin" msprop:Generator_ColumnPropNameInTable="MarginColumn" type="xs:int" />
+                    <xs:element name="TextBoxWidth" msprop:Generator_UserColumnName="TextBoxWidth" msprop:Generator_ColumnPropNameInRow="TextBoxWidth" msprop:Generator_ColumnVarNameInTable="columnTextBoxWidth" msprop:Generator_ColumnPropNameInTable="TextBoxWidthColumn" type="xs:int" />
+                    <xs:element name="IsRichText" msprop:Generator_UserColumnName="IsRichText" msprop:Generator_ColumnPropNameInRow="IsRichText" msprop:Generator_ColumnVarNameInTable="columnIsRichText" msprop:Generator_ColumnPropNameInTable="IsRichTextColumn" type="xs:boolean" />
+                    <xs:element name="TextBoxCount" msprop:Generator_UserColumnName="TextBoxCount" msprop:Generator_ColumnPropNameInRow="TextBoxCount" msprop:Generator_ColumnVarNameInTable="columnTextBoxCount" msprop:Generator_ColumnPropNameInTable="TextBoxCountColumn" type="xs:int" minOccurs="0" />
+                    <xs:element name="TextBox" msprop:Generator_UserTableName="TextBox" msprop:Generator_RowDeletedName="TextBoxRowDeleted" msprop:Generator_TableClassName="TextBoxDataTable" msprop:Generator_RowChangedName="TextBoxRowChanged" msprop:Generator_RowClassName="TextBoxRow" msprop:Generator_RowChangingName="TextBoxRowChanging" msprop:Generator_RowEvArgName="TextBoxRowChangeEvent" msprop:Generator_RowEvHandlerName="TextBoxRowChangeEventHandler" msprop:Generator_TablePropName="TextBox" msprop:Generator_TableVarName="tableTextBox" msprop:Generator_RowDeletingName="TextBoxRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" minOccurs="0" />
+                          <xs:element name="Text" msprop:Generator_UserColumnName="Text" msprop:Generator_ColumnPropNameInRow="Text" msprop:Generator_ColumnVarNameInTable="columnText" msprop:Generator_ColumnPropNameInTable="TextColumn" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="CardSlot_Id" msprop:Generator_UserColumnName="CardSlot_Id" msprop:Generator_ColumnPropNameInRow="CardSlot_Id" msprop:Generator_ColumnVarNameInTable="columnCardSlot_Id" msprop:Generator_ColumnPropNameInTable="CardSlot_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="RTFBox" msprop:Generator_UserTableName="RTFBox" msprop:Generator_RowDeletedName="RTFBoxRowDeleted" msprop:Generator_TableClassName="RTFBoxDataTable" msprop:Generator_RowChangedName="RTFBoxRowChanged" msprop:Generator_RowClassName="RTFBoxRow" msprop:Generator_RowChangingName="RTFBoxRowChanging" msprop:Generator_RowEvArgName="RTFBoxRowChangeEvent" msprop:Generator_RowEvHandlerName="RTFBoxRowChangeEventHandler" msprop:Generator_TablePropName="RTFBox" msprop:Generator_TableVarName="tableRTFBox" msprop:Generator_RowDeletingName="RTFBoxRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" minOccurs="0" />
+                          <xs:element name="RTF" msprop:Generator_UserColumnName="RTF" msprop:Generator_ColumnPropNameInRow="RTF" msprop:Generator_ColumnVarNameInTable="columnRTF" msprop:Generator_ColumnPropNameInTable="RTFColumn" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="CardSlot_Id" msprop:Generator_UserColumnName="CardSlot_Id" msprop:Generator_ColumnPropNameInRow="CardSlot_Id" msprop:Generator_ColumnVarNameInTable="columnCardSlot_Id" msprop:Generator_ColumnPropNameInTable="CardSlot_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="CardSlot_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="CardSlot_Id" msprop:Generator_ColumnPropNameInRow="CardSlot_Id" msprop:Generator_ColumnVarNameInTable="columnCardSlot_Id" msprop:Generator_ColumnPropNameInTable="CardSlot_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Card_Id" msprop:Generator_UserColumnName="Card_Id" msprop:Generator_ColumnPropNameInRow="Card_Id" msprop:Generator_ColumnVarNameInTable="columnCard_Id" msprop:Generator_ColumnPropNameInTable="Card_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Display" msprop:Generator_UserTableName="Display" msprop:Generator_RowDeletedName="DisplayRowDeleted" msprop:Generator_TableClassName="DisplayDataTable" msprop:Generator_RowChangedName="DisplayRowChanged" msprop:Generator_RowClassName="DisplayRow" msprop:Generator_RowChangingName="DisplayRowChanging" msprop:Generator_RowEvArgName="DisplayRowChangeEvent" msprop:Generator_RowEvHandlerName="DisplayRowChangeEventHandler" msprop:Generator_TablePropName="Display" msprop:Generator_TableVarName="tableDisplay" msprop:Generator_RowDeletingName="DisplayRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Format" msprop:Generator_UserColumnName="Format" msprop:Generator_ColumnPropNameInRow="Format" msprop:Generator_ColumnVarNameInTable="columnFormat" msprop:Generator_ColumnPropNameInTable="FormatColumn" type="xs:string" />
+                    <xs:element name="Digits" msprop:Generator_UserColumnName="Digits" msprop:Generator_ColumnPropNameInRow="Digits" msprop:Generator_ColumnVarNameInTable="columnDigits" msprop:Generator_ColumnPropNameInTable="DigitsColumn" type="xs:unsignedByte" />
+                  </xs:sequence>
+                  <xs:attribute name="Card_Id" msprop:Generator_UserColumnName="Card_Id" msprop:Generator_ColumnPropNameInRow="Card_Id" msprop:Generator_ColumnVarNameInTable="columnCard_Id" msprop:Generator_ColumnPropNameInTable="Card_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Engine" msprop:Generator_UserTableName="Engine" msprop:Generator_RowDeletedName="EngineRowDeleted" msprop:Generator_TableClassName="EngineDataTable" msprop:Generator_RowChangedName="EngineRowChanged" msprop:Generator_RowClassName="EngineRow" msprop:Generator_RowChangingName="EngineRowChanging" msprop:Generator_RowEvArgName="EngineRowChangeEvent" msprop:Generator_RowEvHandlerName="EngineRowChangeEventHandler" msprop:Generator_TablePropName="Engine" msprop:Generator_TableVarName="tableEngine" msprop:Generator_RowDeletingName="EngineRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="AngleUnit" msprop:Generator_UserColumnName="AngleUnit" msprop:Generator_ColumnPropNameInRow="AngleUnit" msprop:Generator_ColumnVarNameInTable="columnAngleUnit" msprop:Generator_ColumnPropNameInTable="AngleUnitColumn" type="xs:string" />
+                    <xs:element name="FlagCount" msprop:Generator_UserColumnName="FlagCount" msprop:Generator_ColumnPropNameInRow="FlagCount" msprop:Generator_ColumnVarNameInTable="columnFlagCount" msprop:Generator_ColumnPropNameInTable="FlagCountColumn" type="xs:int" />
+                    <xs:element name="Flag" msprop:Generator_UserTableName="Flag" msprop:Generator_RowDeletedName="FlagRowDeleted" msprop:Generator_TableClassName="FlagDataTable" msprop:Generator_RowChangedName="FlagRowChanged" msprop:Generator_RowClassName="FlagRow" msprop:Generator_RowChangingName="FlagRowChanging" msprop:Generator_RowEvArgName="FlagRowChangeEvent" msprop:Generator_RowEvHandlerName="FlagRowChangeEventHandler" msprop:Generator_TablePropName="Flag" msprop:Generator_TableVarName="tableFlag" msprop:Generator_RowDeletingName="FlagRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" />
+                          <xs:element name="Value" msprop:Generator_UserColumnName="Value" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInTable="ValueColumn" type="xs:boolean" />
+                        </xs:sequence>
+                        <xs:attribute name="Engine_Id" msprop:Generator_UserColumnName="Engine_Id" msprop:Generator_ColumnPropNameInRow="Engine_Id" msprop:Generator_ColumnVarNameInTable="columnEngine_Id" msprop:Generator_ColumnPropNameInTable="Engine_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Engine_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Engine_Id" msprop:Generator_ColumnPropNameInRow="Engine_Id" msprop:Generator_ColumnVarNameInTable="columnEngine_Id" msprop:Generator_ColumnPropNameInTable="Engine_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Card_Id" msprop:Generator_UserColumnName="Card_Id" msprop:Generator_ColumnPropNameInRow="Card_Id" msprop:Generator_ColumnVarNameInTable="columnCard_Id" msprop:Generator_ColumnPropNameInTable="Card_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Memory" msprop:Generator_UserTableName="Memory" msprop:Generator_RowDeletedName="MemoryRowDeleted" msprop:Generator_TableClassName="MemoryDataTable" msprop:Generator_RowChangedName="MemoryRowChanged" msprop:Generator_RowClassName="MemoryRow" msprop:Generator_RowChangingName="MemoryRowChanging" msprop:Generator_RowEvArgName="MemoryRowChangeEvent" msprop:Generator_RowEvHandlerName="MemoryRowChangeEventHandler" msprop:Generator_TablePropName="Memory" msprop:Generator_TableVarName="tableMemory" msprop:Generator_RowDeletingName="MemoryRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RegisterCount" msprop:Generator_UserColumnName="RegisterCount" msprop:Generator_ColumnPropNameInRow="RegisterCount" msprop:Generator_ColumnVarNameInTable="columnRegisterCount" msprop:Generator_ColumnPropNameInTable="RegisterCountColumn" type="xs:int" />
+                    <xs:element name="Register" msprop:Generator_UserTableName="Register" msprop:Generator_RowDeletedName="RegisterRowDeleted" msprop:Generator_TableClassName="RegisterDataTable" msprop:Generator_RowChangedName="RegisterRowChanged" msprop:Generator_RowClassName="RegisterRow" msprop:Generator_RowChangingName="RegisterRowChanging" msprop:Generator_RowEvArgName="RegisterRowChangeEvent" msprop:Generator_RowEvHandlerName="RegisterRowChangeEventHandler" msprop:Generator_TablePropName="Register" msprop:Generator_TableVarName="tableRegister" msprop:Generator_RowDeletingName="RegisterRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" />
+                          <xs:element name="Value" msprop:Generator_UserColumnName="Value" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInTable="ValueColumn" type="xs:double" />
+                          <xs:element name="Mantissa" msprop:Generator_UserColumnName="Mantissa" msprop:Generator_ColumnPropNameInRow="Mantissa" msprop:Generator_ColumnVarNameInTable="columnMantissa" msprop:Generator_ColumnPropNameInTable="MantissaColumn" type="xs:decimal" minOccurs="0" />
+                          <xs:element name="Exponent" msprop:Generator_UserColumnName="Exponent" msprop:Generator_ColumnPropNameInRow="Exponent" msprop:Generator_ColumnVarNameInTable="columnExponent" msprop:Generator_ColumnPropNameInTable="ExponentColumn" type="xs:byte" minOccurs="0" />
+                        </xs:sequence>
+                        <xs:attribute name="Memory_Id" msprop:Generator_UserColumnName="Memory_Id" msprop:Generator_ColumnPropNameInRow="Memory_Id" msprop:Generator_ColumnVarNameInTable="columnMemory_Id" msprop:Generator_ColumnPropNameInTable="Memory_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Memory_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Memory_Id" msprop:Generator_ColumnPropNameInRow="Memory_Id" msprop:Generator_ColumnVarNameInTable="columnMemory_Id" msprop:Generator_ColumnPropNameInTable="Memory_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Card_Id" msprop:Generator_UserColumnName="Card_Id" msprop:Generator_ColumnPropNameInRow="Card_Id" msprop:Generator_ColumnVarNameInTable="columnCard_Id" msprop:Generator_ColumnPropNameInTable="Card_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Program" msprop:Generator_UserTableName="Program" msprop:Generator_RowDeletedName="ProgramRowDeleted" msprop:Generator_TableClassName="ProgramDataTable" msprop:Generator_RowChangedName="ProgramRowChanged" msprop:Generator_RowClassName="ProgramRow" msprop:Generator_RowChangingName="ProgramRowChanging" msprop:Generator_RowEvArgName="ProgramRowChangeEvent" msprop:Generator_RowEvHandlerName="ProgramRowChangeEventHandler" msprop:Generator_TablePropName="Program" msprop:Generator_TableVarName="tableProgram" msprop:Generator_RowDeletingName="ProgramRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="InstructionCount" msprop:Generator_UserColumnName="InstructionCount" msprop:Generator_ColumnPropNameInRow="InstructionCount" msprop:Generator_ColumnVarNameInTable="columnInstructionCount" msprop:Generator_ColumnPropNameInTable="InstructionCountColumn" type="xs:int" minOccurs="0" />
+                    <xs:element name="LabelCount" msprop:Generator_UserColumnName="LabelCount" msprop:Generator_ColumnPropNameInRow="LabelCount" msprop:Generator_ColumnVarNameInTable="columnLabelCount" msprop:Generator_ColumnPropNameInTable="LabelCountColumn" type="xs:int" minOccurs="0" />
+                    <xs:element name="Instruction" msprop:Generator_UserTableName="Instruction" msprop:Generator_RowDeletedName="InstructionRowDeleted" msprop:Generator_TableClassName="InstructionDataTable" msprop:Generator_RowChangedName="InstructionRowChanged" msprop:Generator_RowClassName="InstructionRow" msprop:Generator_RowChangingName="InstructionRowChanging" msprop:Generator_RowEvArgName="InstructionRowChangeEvent" msprop:Generator_RowEvHandlerName="InstructionRowChangeEventHandler" msprop:Generator_TablePropName="Instruction" msprop:Generator_TableVarName="tableInstruction" msprop:Generator_RowDeletingName="InstructionRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Step" msprop:Generator_UserColumnName="Step" msprop:Generator_ColumnPropNameInRow="Step" msprop:Generator_ColumnVarNameInTable="columnStep" msprop:Generator_ColumnPropNameInTable="StepColumn" type="xs:int" />
+                          <xs:element name="Instruction" msprop:Generator_UserColumnName="Instruction" msprop:Generator_ColumnPropNameInRow="Instruction" msprop:Generator_ColumnVarNameInTable="columnInstruction" msprop:Generator_ColumnPropNameInTable="InstructionColumn" type="xs:string" />
+                          <xs:element name="ArgumentCount" msprop:Generator_UserColumnName="ArgumentCount" msprop:Generator_ColumnPropNameInRow="ArgumentCount" msprop:Generator_ColumnVarNameInTable="columnArgumentCount" msprop:Generator_ColumnPropNameInTable="ArgumentCountColumn" type="xs:int" minOccurs="0" />
+                          <xs:element name="Argument" msprop:Generator_UserTableName="Argument" msprop:Generator_RowDeletedName="ArgumentRowDeleted" msprop:Generator_TableClassName="ArgumentDataTable" msprop:Generator_RowChangedName="ArgumentRowChanged" msprop:Generator_RowClassName="ArgumentRow" msprop:Generator_RowChangingName="ArgumentRowChanging" msprop:Generator_RowEvArgName="ArgumentRowChangeEvent" msprop:Generator_RowEvHandlerName="ArgumentRowChangeEventHandler" msprop:Generator_TablePropName="Argument" msprop:Generator_TableVarName="tableArgument" msprop:Generator_RowDeletingName="ArgumentRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" />
+                                <xs:element name="Type" msprop:Generator_UserColumnName="Type" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInTable="TypeColumn" type="xs:string" />
+                                <xs:element name="Value" msprop:Generator_UserColumnName="Value" msprop:Generator_ColumnPropNameInRow="Value" msprop:Generator_ColumnVarNameInTable="columnValue" msprop:Generator_ColumnPropNameInTable="ValueColumn" type="xs:string" />
+                              </xs:sequence>
+                              <xs:attribute name="Instruction_Id" msprop:Generator_UserColumnName="Instruction_Id" msprop:Generator_ColumnPropNameInRow="Instruction_Id" msprop:Generator_ColumnVarNameInTable="columnInstruction_Id" msprop:Generator_ColumnPropNameInTable="Instruction_IdColumn" type="xs:int" use="prohibited" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Instruction_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Instruction_Id" msprop:Generator_ColumnPropNameInRow="Instruction_Id" msprop:Generator_ColumnVarNameInTable="columnInstruction_Id" msprop:Generator_ColumnPropNameInTable="Instruction_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                        <xs:attribute name="Program_Id" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Label" msprop:Generator_UserTableName="Label" msprop:Generator_RowDeletedName="LabelRowDeleted" msprop:Generator_TableClassName="LabelDataTable" msprop:Generator_RowChangedName="LabelRowChanged" msprop:Generator_RowClassName="LabelRow" msprop:Generator_RowChangingName="LabelRowChanging" msprop:Generator_RowEvArgName="LabelRowChangeEvent" msprop:Generator_RowEvHandlerName="LabelRowChangeEventHandler" msprop:Generator_TablePropName="Label" msprop:Generator_TableVarName="tableLabel" msprop:Generator_RowDeletingName="LabelRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Id" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" minOccurs="0" />
+                          <xs:element name="StepCount" msprop:Generator_UserColumnName="StepCount" msprop:Generator_ColumnPropNameInRow="StepCount" msprop:Generator_ColumnVarNameInTable="columnStepCount" msprop:Generator_ColumnPropNameInTable="StepCountColumn" type="xs:int" minOccurs="0" />
+                          <xs:element name="Step" msprop:Generator_UserTableName="Step" msprop:Generator_RowDeletedName="StepRowDeleted" msprop:Generator_TableClassName="StepDataTable" msprop:Generator_RowChangedName="StepRowChanged" msprop:Generator_RowClassName="StepRow" msprop:Generator_RowChangingName="StepRowChanging" msprop:Generator_RowEvArgName="StepRowChangeEvent" msprop:Generator_RowEvHandlerName="StepRowChangeEventHandler" msprop:Generator_TablePropName="Step" msprop:Generator_TableVarName="tableStep" msprop:Generator_RowDeletingName="StepRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Step" msprop:Generator_UserColumnName="Step" msprop:Generator_ColumnPropNameInRow="Step" msprop:Generator_ColumnVarNameInTable="columnStep" msprop:Generator_ColumnPropNameInTable="StepColumn" type="xs:int" />
+                              </xs:sequence>
+                              <xs:attribute name="Label_Id" msprop:Generator_UserColumnName="Label_Id" msprop:Generator_ColumnPropNameInRow="Label_Id" msprop:Generator_ColumnVarNameInTable="columnLabel_Id" msprop:Generator_ColumnPropNameInTable="Label_IdColumn" type="xs:int" use="prohibited" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Label_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Label_Id" msprop:Generator_ColumnPropNameInRow="Label_Id" msprop:Generator_ColumnVarNameInTable="columnLabel_Id" msprop:Generator_ColumnPropNameInTable="Label_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                        <xs:attribute name="Program_Id" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Program_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Card_Id" msprop:Generator_UserColumnName="Card_Id" msprop:Generator_ColumnPropNameInRow="Card_Id" msprop:Generator_ColumnVarNameInTable="columnCard_Id" msprop:Generator_ColumnPropNameInTable="Card_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Card_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Card_Id" msprop:Generator_ColumnPropNameInRow="Card_Id" msprop:Generator_ColumnVarNameInTable="columnCard_Id" msprop:Generator_ColumnPropNameInTable="Card_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="CardSlot_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CardSlot" />
+      <xs:field xpath="@mstns:CardSlot_Id" />
+    </xs:unique>
+    <xs:unique name="Engine_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Engine" />
+      <xs:field xpath="@mstns:Engine_Id" />
+    </xs:unique>
+    <xs:unique name="Memory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Memory" />
+      <xs:field xpath="@mstns:Memory_Id" />
+    </xs:unique>
+    <xs:unique name="Instruction_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Instruction" />
+      <xs:field xpath="@mstns:Instruction_Id" />
+    </xs:unique>
+    <xs:unique name="Label_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Label" />
+      <xs:field xpath="@mstns:Label_Id" />
+    </xs:unique>
+    <xs:unique name="Program_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Program" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Card" />
+      <xs:field xpath="@mstns:Card_Id" />
+    </xs:unique>
+    <xs:keyref name="Card_Program" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Card_Program" msprop:rel_Generator_RelationVarName="relationCard_Program" msprop:rel_Generator_UserChildTable="Program" msprop:rel_Generator_UserParentTable="Card" msprop:rel_Generator_ParentPropName="CardRow" msprop:rel_Generator_ChildPropName="GetProgramRows">
+      <xs:selector xpath=".//mstns:Program" />
+      <xs:field xpath="@mstns:Card_Id" />
+    </xs:keyref>
+    <xs:keyref name="Program_Label" refer="Program_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Program_Label" msprop:rel_Generator_RelationVarName="relationProgram_Label" msprop:rel_Generator_UserChildTable="Label" msprop:rel_Generator_UserParentTable="Program" msprop:rel_Generator_ParentPropName="ProgramRow" msprop:rel_Generator_ChildPropName="GetLabelRows">
+      <xs:selector xpath=".//mstns:Label" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:keyref>
+    <xs:keyref name="Label_Step" refer="Label_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Label_Step" msprop:rel_Generator_RelationVarName="relationLabel_Step" msprop:rel_Generator_UserChildTable="Step" msprop:rel_Generator_UserParentTable="Label" msprop:rel_Generator_ParentPropName="LabelRow" msprop:rel_Generator_ChildPropName="GetStepRows">
+      <xs:selector xpath=".//mstns:Step" />
+      <xs:field xpath="@mstns:Label_Id" />
+    </xs:keyref>
+    <xs:keyref name="Program_Instruction" refer="Program_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Program_Instruction" msprop:rel_Generator_RelationVarName="relationProgram_Instruction" msprop:rel_Generator_UserChildTable="Instruction" msprop:rel_Generator_UserParentTable="Program" msprop:rel_Generator_ParentPropName="ProgramRow" msprop:rel_Generator_ChildPropName="GetInstructionRows">
+      <xs:selector xpath=".//mstns:Instruction" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:keyref>
+    <xs:keyref name="Instruction_Argument" refer="Instruction_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Instruction_Argument" msprop:rel_Generator_RelationVarName="relationInstruction_Argument" msprop:rel_Generator_UserChildTable="Argument" msprop:rel_Generator_UserParentTable="Instruction" msprop:rel_Generator_ParentPropName="InstructionRow" msprop:rel_Generator_ChildPropName="GetArgumentRows">
+      <xs:selector xpath=".//mstns:Argument" />
+      <xs:field xpath="@mstns:Instruction_Id" />
+    </xs:keyref>
+    <xs:keyref name="Card_Memory" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Card_Memory" msprop:rel_Generator_RelationVarName="relationCard_Memory" msprop:rel_Generator_UserChildTable="Memory" msprop:rel_Generator_UserParentTable="Card" msprop:rel_Generator_ParentPropName="CardRow" msprop:rel_Generator_ChildPropName="GetMemoryRows">
+      <xs:selector xpath=".//mstns:Memory" />
+      <xs:field xpath="@mstns:Card_Id" />
+    </xs:keyref>
+    <xs:keyref name="Memory_Register" refer="Memory_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Memory_Register" msprop:rel_Generator_RelationVarName="relationMemory_Register" msprop:rel_Generator_UserChildTable="Register" msprop:rel_Generator_UserParentTable="Memory" msprop:rel_Generator_ParentPropName="MemoryRow" msprop:rel_Generator_ChildPropName="GetRegisterRows">
+      <xs:selector xpath=".//mstns:Register" />
+      <xs:field xpath="@mstns:Memory_Id" />
+    </xs:keyref>
+    <xs:keyref name="Card_Engine" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Card_Engine" msprop:rel_Generator_RelationVarName="relationCard_Engine" msprop:rel_Generator_UserChildTable="Engine" msprop:rel_Generator_UserParentTable="Card" msprop:rel_Generator_ParentPropName="CardRow" msprop:rel_Generator_ChildPropName="GetEngineRows">
+      <xs:selector xpath=".//mstns:Engine" />
+      <xs:field xpath="@mstns:Card_Id" />
+    </xs:keyref>
+    <xs:keyref name="Engine_Flag" refer="Engine_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Engine_Flag" msprop:rel_Generator_RelationVarName="relationEngine_Flag" msprop:rel_Generator_UserChildTable="Flag" msprop:rel_Generator_UserParentTable="Engine" msprop:rel_Generator_ParentPropName="EngineRow" msprop:rel_Generator_ChildPropName="GetFlagRows">
+      <xs:selector xpath=".//mstns:Flag" />
+      <xs:field xpath="@mstns:Engine_Id" />
+    </xs:keyref>
+    <xs:keyref name="Card_Display" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Card_Display" msprop:rel_Generator_RelationVarName="relationCard_Display" msprop:rel_Generator_UserChildTable="Display" msprop:rel_Generator_UserParentTable="Card" msprop:rel_Generator_ParentPropName="CardRow" msprop:rel_Generator_ChildPropName="GetDisplayRows">
+      <xs:selector xpath=".//mstns:Display" />
+      <xs:field xpath="@mstns:Card_Id" />
+    </xs:keyref>
+    <xs:keyref name="Card_CardSlot" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Card_CardSlot" msprop:rel_Generator_RelationVarName="relationCard_CardSlot" msprop:rel_Generator_UserChildTable="CardSlot" msprop:rel_Generator_UserParentTable="Card" msprop:rel_Generator_ParentPropName="CardRow" msprop:rel_Generator_ChildPropName="GetCardSlotRows">
+      <xs:selector xpath=".//mstns:CardSlot" />
+      <xs:field xpath="@mstns:Card_Id" />
+    </xs:keyref>
+    <xs:keyref name="CardSlot_RTFBox" refer="CardSlot_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="CardSlot_RTFBox" msprop:rel_Generator_RelationVarName="relationCardSlot_RTFBox" msprop:rel_Generator_UserChildTable="RTFBox" msprop:rel_Generator_UserParentTable="CardSlot" msprop:rel_Generator_ParentPropName="CardSlotRow" msprop:rel_Generator_ChildPropName="GetRTFBoxRows">
+      <xs:selector xpath=".//mstns:RTFBox" />
+      <xs:field xpath="@mstns:CardSlot_Id" />
+    </xs:keyref>
+    <xs:keyref name="CardSlot_TextBox" refer="CardSlot_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="CardSlot_TextBox" msprop:rel_Generator_RelationVarName="relationCardSlot_TextBox" msprop:rel_Generator_UserChildTable="TextBox" msprop:rel_Generator_UserParentTable="CardSlot" msprop:rel_Generator_ParentPropName="CardSlotRow" msprop:rel_Generator_ChildPropName="GetTextBoxRows">
+      <xs:selector xpath=".//mstns:TextBox" />
+      <xs:field xpath="@mstns:CardSlot_Id" />
+    </xs:keyref>
+  </xs:element>
 </xs:schema>

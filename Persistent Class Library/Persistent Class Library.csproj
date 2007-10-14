@@ -155,7 +155,6 @@
     <Compile Include="Memory.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Number.Arithmetic.cs" />
     <Compile Include="Number.cs" />
     <Compile Include="Number.Formatter.cs" />
     <Compile Include="Number.Validater.cs" />

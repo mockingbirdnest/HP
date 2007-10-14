@@ -21,13 +21,14 @@ namespace Mockingbird.HP.Class_Library
             I = 25
         }
 
-        public delegate double Operator (double X, double Y);
+        public delegate Number Operator (Number X, Number Y);
 
         #region Private Declarations
 
+        private const int displayDuration = 800;
         private IDisplay display;
         private IPrinter printer;
-        private double [] registers;
+        private Number [] registers;
 
         private enum ΣRegister
         {
@@ -47,10 +48,10 @@ namespace Mockingbird.HP.Class_Library
         {
             this.display = display;
             this.printer = printer;
-            registers = new double [(int) LetterRegister.I - 0 + 1];
+            registers = new Number [(int) LetterRegister.I - 0 + 1];
             for (int i = 0; i < registers.Length; i++)
             {
-                registers [i] = 0.0;
+                registers [i] = 0.0M;
             }
             Card.MergeFromDataset += new Card.DatasetImporterDelegate (MergeFromDataset);
             Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
@@ -90,13 +91,13 @@ namespace Mockingbird.HP.Class_Library
 
                 if (!sourceMemoryIsEmpty)
                 {
-                    int last = (int) Math.Floor (Math.Abs (this [LetterRegister.I]));
+                    int last = (int) Number.Floor (Number.Abs (this [LetterRegister.I]));
 
                     foreach (CardDataset.RegisterRow rr in rrs)
                     {
                         if (rr.Id <= last)
                         {
-                            registers [rr.Id] = rr.Value;
+                            registers [rr.Id] = Number.ReadFromRow (rr);
                         }
                     }
                 }
@@ -115,11 +116,11 @@ namespace Mockingbird.HP.Class_Library
             if (mrs.Length > 0)
             {
                 mr = mrs [0];
-                registers = new double [mr.RegisterCount];
+                registers = new Number [mr.RegisterCount];
                 rrs = mr.GetRegisterRows ();
                 foreach (CardDataset.RegisterRow rr in rrs)
                 {
-                    registers [rr.Id] = rr.Value;
+                    registers [rr.Id] = Number.ReadFromRow (rr);
                 }
             }
         }
@@ -143,7 +144,8 @@ namespace Mockingbird.HP.Class_Library
                 {
                     rr = cds.Register.NewRegisterRow ();
                     rr.Id = i;
-                    rr.Value = registers [i];
+                    // rr.Value = ...; // Not used anymore!
+                    registers [i].WriteToRow (rr);
                     rr.MemoryRow = mr;
                     cds.Register.AddRegisterRow (rr);
                 }
@@ -154,7 +156,7 @@ namespace Mockingbird.HP.Class_Library
 
         #region Private Operations
 
-        private double this [int r]
+        private Number this [int r]
         {
             get
             {
@@ -166,7 +168,7 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        private double this [LetterRegister r]
+        private Number this [LetterRegister r]
         {
             get
             {
@@ -178,7 +180,7 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        private double this [ΣRegister r]
+        private Number this [ΣRegister r]
         {
             get
             {
@@ -190,7 +192,7 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        private double this [double r]
+        private Number this [double r]
         {
             get
             {
@@ -206,7 +208,7 @@ namespace Mockingbird.HP.Class_Library
 
         #region Public Properties
 
-        public double N
+        public Number N
         {
             get
             {
@@ -218,7 +220,7 @@ namespace Mockingbird.HP.Class_Library
 
         #region Public Operations
 
-        public void ΣPlus (double X, double Y)
+        public void ΣPlus (Number X, Number Y)
         {
             this [ΣRegister.n]++;
             this [ΣRegister.Σxy] += X * Y;
@@ -228,7 +230,7 @@ namespace Mockingbird.HP.Class_Library
             this [ΣRegister.Σx] += X;
         }
 
-        public void ΣMinus (double X, double Y)
+        public void ΣMinus (Number X, Number Y)
         {
             this [ΣRegister.n]--;
             this [ΣRegister.Σxy] -= X * Y;
@@ -240,7 +242,7 @@ namespace Mockingbird.HP.Class_Library
 
         private void CheckIndex ()
         {
-            if (Math.Floor (Math.Abs (this [LetterRegister.I])) > (int) LetterRegister.I)
+            if (Number.Floor (Number.Abs (this [LetterRegister.I])) > (int) LetterRegister.I)
             {
                 throw new Error ();
             }
@@ -250,55 +252,55 @@ namespace Mockingbird.HP.Class_Library
         {
             for (int i = 0; i <= 9; i++)
             {
-                this [i] = 0.0;
+                this [i] = 0.0M;
             }
             for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
             {
-                this [i] = 0.0;
+                this [i] = 0.0M;
             }
         }
 
         public bool DecrementAndSkipIfZero ()
         {
             this [LetterRegister.I]--;
-            return Math.Abs (this [LetterRegister.I]) < 1.0;
+            return Number.Abs (this [LetterRegister.I]) < 1.0M;
         }
 
         public bool DecrementAndSkipIfZeroIndexed ()
         {
             CheckIndex ();
-            this [Math.Floor (Math.Abs (this [LetterRegister.I]))]--;
-            return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
+            this [Number.Floor (Number.Abs (this [LetterRegister.I]))]--;
+            return Number.Abs (this [Number.Floor (Number.Abs (this [LetterRegister.I]))]) < 1.0M;
         }
 
         public void Display ()
         {
             for (int i = 0; i <= 9; i++)
             {
-                display.ShowMemory (i, this [i], 800);
+                display.ShowMemory (i, this [i], displayDuration);
             }
             for (LetterRegister i = LetterRegister.A; i <= LetterRegister.I; i++)
             {
-                display.ShowMemory ((int) i, this [i], 800);
+                display.ShowMemory ((int) i, this [i], displayDuration);
             }
         }
 
         public bool IncrementAndSkipIfZero ()
         {
             this [LetterRegister.I]++;
-            return Math.Abs (this [LetterRegister.I]) < 1.0;
+            return Number.Abs (this [LetterRegister.I]) < 1.0M;
         }
 
         public bool IncrementAndSkipIfZeroIndexed ()
         {
             CheckIndex ();
-            this [Math.Floor (Math.Abs (this [LetterRegister.I]))]++;
-            return Math.Abs (this [Math.Floor (Math.Abs (this [LetterRegister.I]))]) < 1.0;
+            this [Number.Floor (Number.Abs (this [LetterRegister.I]))]++;
+            return Number.Abs (this [Number.Floor (Number.Abs (this [LetterRegister.I]))]) < 1.0M;
         }
 
         public void PrimarySecondaryExchange ()
         {
-            double temp;
+            Number temp;
 
             for (int i = 0; i <= 9; i++)
             {
@@ -325,32 +327,32 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        public double Recall (Byte Index)
+        public Number Recall (Byte Index)
         {
             Trace.Assert (Index <= 9);
             return registers [Index];
         }
 
-        public double Recall (LetterRegister Index)
+        public Number Recall (LetterRegister Index)
         {
             return this [Index];
         }
 
-        public void RecallΣPlus (out double x, out double y)
+        public void RecallΣPlus (out Number x, out Number y)
         {
             x = this [ΣRegister.Σx];
             y = this [ΣRegister.Σy];
         }
 
-        public double RecallIndexed ()
+        public Number RecallIndexed ()
         {
             CheckIndex ();
-            return this [Math.Floor (Math.Abs (this [LetterRegister.I]))];
+            return this [Number.Floor (Number.Abs (this [LetterRegister.I]))];
         }
 
-        public void S (out double x, out double y)
+        public void S (out Number x, out Number y)
         {
-            int n = (int) this [ΣRegister.n];
+            int n = Number.Floor (this [ΣRegister.n]);
 
             if (n <= 1)
             {
@@ -358,46 +360,48 @@ namespace Mockingbird.HP.Class_Library
             }
             else
             {
-                x = Math.Sqrt ((this [ΣRegister.Σx2] - (this [ΣRegister.Σx] * this [ΣRegister.Σx]) /
-                    n) / (n - 1));
-                y = Math.Sqrt ((this [ΣRegister.Σy2] - (this [ΣRegister.Σy] * this [ΣRegister.Σy]) /
-                    n) / (n - 1));
+                x = Number.Sqrt 
+                        ((this [ΣRegister.Σx2] -
+                            (this [ΣRegister.Σx] * this [ΣRegister.Σx]) / n) / (n - 1));
+                y = Number.Sqrt 
+                        ((this [ΣRegister.Σy2] -
+                            (this [ΣRegister.Σy] * this [ΣRegister.Σy]) / n) / (n - 1));
             }
         }
 
-        public void Store (double Value, Byte Index)
+        public void Store (Number Value, Byte Index)
         {
             Trace.Assert (Index <= 9);
             registers [Index] = Value;
         }
 
-        public void Store (double Value, LetterRegister Index)
+        public void Store (Number Value, LetterRegister Index)
         {
             this [Index] = Value;
         }
 
-        public void Store (double Value, Byte Index, Operator Modifier)
+        public void Store (Number Value, Byte Index, Operator Modifier)
         {
             Trace.Assert (Index <= 9);
             registers [Index] = Modifier (registers [Index], Value);
         }
 
-        public void StoreIndexed (double Value)
+        public void StoreIndexed (Number Value)
         {
             CheckIndex ();
-            this [Math.Floor (Math.Abs (this [LetterRegister.I]))] = Value;
+            this [Number.Floor (Number.Abs (this [LetterRegister.I]))] = Value;
         }
 
-        public void StoreIndexed (double Value, Operator Modifier)
+        public void StoreIndexed (Number Value, Operator Modifier)
         {
             CheckIndex ();
-            this [Math.Floor (Math.Abs (this [LetterRegister.I]))] =
-                Modifier (Math.Floor (Math.Abs (this [LetterRegister.I])), Value);
+            this [Number.Floor (Number.Abs (this [LetterRegister.I]))] =
+                Modifier (Number.Floor (Number.Abs (this [LetterRegister.I])), Value);
         }
 
-        public void X̄ (out double x, out double y)
+        public void X̄ (out Number x, out Number y)
         {
-            int n = (int) this [ΣRegister.n];
+            int n = Number.Floor (this [ΣRegister.n]);
 
             if (n == 0)
             {
