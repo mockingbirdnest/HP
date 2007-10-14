@@ -134,7 +134,7 @@ namespace Mockingbird.HP.Class_Library
 
         public static Number Abs (Number x)
         {
-            if (x.mantissa >= 0.0M)
+            if (x.sign >= 0)
             {
                 return x;
             }
@@ -226,6 +226,8 @@ namespace Mockingbird.HP.Class_Library
         public static Number ReadFromRow (CardDataset.RegisterRow rr)
         {
             // We don't want to expose the mantissa + exponent representation except for storage.
+            // Note that we don't assume that the number in the row is normalized.  Among other
+            // things, it helps for compatibility with version 1.8.  See Card for details.
             return new Number (rr.Mantissa, rr.Exponent);
         }
 

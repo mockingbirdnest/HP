@@ -168,16 +168,15 @@ namespace Mockingbird.HP.Persistence
                     rrs = mr.GetRegisterRows ();
                     if (rrs.Length > 0)
                     {
-                        //TODO: There is similar code in Number, but we don't see it.  Sigh. 
+                        // We need to split the Value because it might not be representable as a
+                        // decimal.  However, it doesn't really matter how we do the split, because
+                        // Number will renormalize it anyway.
                         double d;
-                        int n;
 
                         rr = rrs [0];
                         d = rr.Value;
-                        //TODO: This is probably not properly normalized.
-                        n = (int) Math.Ceiling (Math.Log10 ((double) Math.Abs (d)));
-                        rr.Mantissa = (decimal) (d * Math.Pow (10.0, -n));
-                        rr.Exponent = (sbyte) n;
+                        rr.Exponent = (sbyte) Math.Log10 ((double) Math.Abs (d));
+                        rr.Mantissa = (decimal) (d * Math.Pow (10.0, -rr.Exponent));
                     }
                 }
             }
