@@ -231,60 +231,61 @@ namespace Mockingbird.HP.Parser
         SYMBOL_RAD                    = 215, // <Rad>
         SYMBOL_RC_I_67                = 216, // <Rc_I_67>
         SYMBOL_RCL                    = 217, // <Rcl>
-        SYMBOL_RCL_NULLARY            = 218, // <Rcl_Nullary>
-        SYMBOL_RCL_SIGMA_PLUS         = 219, // <Rcl_Sigma_Plus>
-        SYMBOL_RCL_SUB_I_SHORTCUT     = 220, // <Rcl_Sub_I_Shortcut>
-        SYMBOL_RECIPROCAL             = 221, // <Reciprocal>
-        SYMBOL_REG                    = 222, // <Reg>
-        SYMBOL_RND                    = 223, // <Rnd>
-        SYMBOL_RTN                    = 224, // <Rtn>
-        SYMBOL_S                      = 225, // <S>
-        SYMBOL_SCI                    = 226, // <Sci>
-        SYMBOL_SEVEN                  = 227, // <Seven>
-        SYMBOL_SF                     = 228, // <SF>
-        SYMBOL_SIGMA_MINUS            = 229, // <Sigma_Minus>
-        SYMBOL_SIGMA_PLUS             = 230, // <Sigma_Plus>
-        SYMBOL_SIN                    = 231, // <Sin>
-        SYMBOL_SIX                    = 232, // <Six>
-        SYMBOL_SPACE                  = 233, // <Space>
-        SYMBOL_SQRT                   = 234, // <Sqrt>
-        SYMBOL_SQUARE                 = 235, // <Square>
-        SYMBOL_SST                    = 236, // <Sst>
-        SYMBOL_ST_I_67                = 237, // <St_I_67>
-        SYMBOL_STK                    = 238, // <Stk>
-        SYMBOL_STO                    = 239, // <Sto>
-        SYMBOL_STO_NULLARY            = 240, // <Sto_Nullary>
-        SYMBOL_SUB_I                  = 241, // <Sub_I>
-        SYMBOL_SUBTRACTION            = 242, // <Subtraction>
-        SYMBOL_TAN                    = 243, // <Tan>
-        SYMBOL_TEN_TO_THE_XTH         = 244, // <Ten_To_The_Xth>
-        SYMBOL_TERNARY_INSTRUCTION    = 245, // <Ternary_Instruction>
-        SYMBOL_THREE                  = 246, // <Three>
-        SYMBOL_TO_DEGREES             = 247, // <To_Degrees>
-        SYMBOL_TO_HMS                 = 248, // <To_HMS>
-        SYMBOL_TO_HOURS               = 249, // <To_Hours>
-        SYMBOL_TO_POLAR               = 250, // <To_Polar>
-        SYMBOL_TO_RADIANS             = 251, // <To_Radians>
-        SYMBOL_TO_RECTANGULAR         = 252, // <To_Rectangular>
-        SYMBOL_TWO                    = 253, // <Two>
-        SYMBOL_UNARY_INSTRUCTION      = 254, // <Unary_Instruction>
-        SYMBOL_UPPERCASE_LETTER       = 255, // <Uppercase_Letter>
-        SYMBOL_UPPERCASE_LETTER_LABEL = 256, // <Uppercase_Letter_Label>
-        SYMBOL_W_DATA                 = 257, // <W_Data>
-        SYMBOL_X_AVERAGE              = 258, // <X_Average>
-        SYMBOL_X_EQ_0                 = 259, // <X_EQ_0>
-        SYMBOL_X_EQ_Y                 = 260, // <X_EQ_Y>
-        SYMBOL_X_EXCHANGE_I           = 261, // <X_Exchange_I>
-        SYMBOL_X_EXCHANGE_Y           = 262, // <X_Exchange_Y>
-        SYMBOL_X_GT_0                 = 263, // <X_GT_0>
-        SYMBOL_X_GT_Y                 = 264, // <X_GT_Y>
-        SYMBOL_X_LE_Y                 = 265, // <X_LE_Y>
-        SYMBOL_X_LT_0                 = 266, // <X_LT_0>
-        SYMBOL_X_NE_0                 = 267, // <X_NE_0>
-        SYMBOL_X_NE_Y                 = 268, // <X_NE_Y>
-        SYMBOL_X_TO_THE_YTH           = 269, // <X_To_The_Yth>
-        SYMBOL_Y_TO_THE_XTH           = 270, // <Y_To_The_Xth>
-        SYMBOL_ZERO                   = 271  // <Zero>
+        SYMBOL_RCL_I_SHORTCUT         = 218, // <Rcl_I_Shortcut>
+        SYMBOL_RCL_NULLARY            = 219, // <Rcl_Nullary>
+        SYMBOL_RCL_SIGMA_PLUS         = 220, // <Rcl_Sigma_Plus>
+        SYMBOL_RCL_SUB_I_SHORTCUT     = 221, // <Rcl_Sub_I_Shortcut>
+        SYMBOL_RECIPROCAL             = 222, // <Reciprocal>
+        SYMBOL_REG                    = 223, // <Reg>
+        SYMBOL_RND                    = 224, // <Rnd>
+        SYMBOL_RTN                    = 225, // <Rtn>
+        SYMBOL_S                      = 226, // <S>
+        SYMBOL_SCI                    = 227, // <Sci>
+        SYMBOL_SEVEN                  = 228, // <Seven>
+        SYMBOL_SF                     = 229, // <SF>
+        SYMBOL_SIGMA_MINUS            = 230, // <Sigma_Minus>
+        SYMBOL_SIGMA_PLUS             = 231, // <Sigma_Plus>
+        SYMBOL_SIN                    = 232, // <Sin>
+        SYMBOL_SIX                    = 233, // <Six>
+        SYMBOL_SPACE                  = 234, // <Space>
+        SYMBOL_SQRT                   = 235, // <Sqrt>
+        SYMBOL_SQUARE                 = 236, // <Square>
+        SYMBOL_SST                    = 237, // <Sst>
+        SYMBOL_ST_I_67                = 238, // <St_I_67>
+        SYMBOL_STK                    = 239, // <Stk>
+        SYMBOL_STO                    = 240, // <Sto>
+        SYMBOL_STO_NULLARY            = 241, // <Sto_Nullary>
+        SYMBOL_SUB_I                  = 242, // <Sub_I>
+        SYMBOL_SUBTRACTION            = 243, // <Subtraction>
+        SYMBOL_TAN                    = 244, // <Tan>
+        SYMBOL_TEN_TO_THE_XTH         = 245, // <Ten_To_The_Xth>
+        SYMBOL_TERNARY_INSTRUCTION    = 246, // <Ternary_Instruction>
+        SYMBOL_THREE                  = 247, // <Three>
+        SYMBOL_TO_DEGREES             = 248, // <To_Degrees>
+        SYMBOL_TO_HMS                 = 249, // <To_HMS>
+        SYMBOL_TO_HOURS               = 250, // <To_Hours>
+        SYMBOL_TO_POLAR               = 251, // <To_Polar>
+        SYMBOL_TO_RADIANS             = 252, // <To_Radians>
+        SYMBOL_TO_RECTANGULAR         = 253, // <To_Rectangular>
+        SYMBOL_TWO                    = 254, // <Two>
+        SYMBOL_UNARY_INSTRUCTION      = 255, // <Unary_Instruction>
+        SYMBOL_UPPERCASE_LETTER       = 256, // <Uppercase_Letter>
+        SYMBOL_UPPERCASE_LETTER_LABEL = 257, // <Uppercase_Letter_Label>
+        SYMBOL_W_DATA                 = 258, // <W_Data>
+        SYMBOL_X_AVERAGE              = 259, // <X_Average>
+        SYMBOL_X_EQ_0                 = 260, // <X_EQ_0>
+        SYMBOL_X_EQ_Y                 = 261, // <X_EQ_Y>
+        SYMBOL_X_EXCHANGE_I           = 262, // <X_Exchange_I>
+        SYMBOL_X_EXCHANGE_Y           = 263, // <X_Exchange_Y>
+        SYMBOL_X_GT_0                 = 264, // <X_GT_0>
+        SYMBOL_X_GT_Y                 = 265, // <X_GT_Y>
+        SYMBOL_X_LE_Y                 = 266, // <X_LE_Y>
+        SYMBOL_X_LT_0                 = 267, // <X_LT_0>
+        SYMBOL_X_NE_0                 = 268, // <X_NE_0>
+        SYMBOL_X_NE_Y                 = 269, // <X_NE_Y>
+        SYMBOL_X_TO_THE_YTH           = 270, // <X_To_The_Yth>
+        SYMBOL_Y_TO_THE_XTH           = 271, // <Y_To_The_Xth>
+        SYMBOL_ZERO                   = 272  // <Zero>
     };
 
     enum RuleConstants : int
@@ -550,161 +551,163 @@ namespace Mockingbird.HP.Parser
         RULE_INSTRUCTION4                    = 258, // <Instruction> ::= <Ternary_Instruction>
         RULE_GSB_LC_SHORTCUT                 = 259, // <Gsb_LC_Shortcut> ::= <Lowercase_Letter_Label>
         RULE_GSB_UC_SHORTCUT                 = 260, // <Gsb_UC_Shortcut> ::= <Uppercase_Letter_Label>
-        RULE_RCL_SUB_I_SHORTCUT              = 261, // <Rcl_Sub_I_Shortcut> ::= <Sub_I>
-        RULE_NULLARY_INSTRUCTION             = 262, // <Nullary_Instruction> ::= <Abs>
-        RULE_NULLARY_INSTRUCTION2            = 263, // <Nullary_Instruction> ::= <Addition>
-        RULE_NULLARY_INSTRUCTION3            = 264, // <Nullary_Instruction> ::= <Arccos>
-        RULE_NULLARY_INSTRUCTION4            = 265, // <Nullary_Instruction> ::= <Arcsin>
-        RULE_NULLARY_INSTRUCTION5            = 266, // <Nullary_Instruction> ::= <Arctan>
-        RULE_NULLARY_INSTRUCTION6            = 267, // <Nullary_Instruction> ::= <Bst>
-        RULE_NULLARY_INSTRUCTION7            = 268, // <Nullary_Instruction> ::= <Chs>
-        RULE_NULLARY_INSTRUCTION8            = 269, // <Nullary_Instruction> ::= <Cl_Prgm>
-        RULE_NULLARY_INSTRUCTION9            = 270, // <Nullary_Instruction> ::= <Cl_Reg>
-        RULE_NULLARY_INSTRUCTION10           = 271, // <Nullary_Instruction> ::= <Clr>
-        RULE_NULLARY_INSTRUCTION11           = 272, // <Nullary_Instruction> ::= <Clx>
-        RULE_NULLARY_INSTRUCTION12           = 273, // <Nullary_Instruction> ::= <Cos>
-        RULE_NULLARY_INSTRUCTION13           = 274, // <Nullary_Instruction> ::= <Deg>
-        RULE_NULLARY_INSTRUCTION14           = 275, // <Nullary_Instruction> ::= <Del>
-        RULE_NULLARY_INSTRUCTION15           = 276, // <Nullary_Instruction> ::= <Digit>
-        RULE_NULLARY_INSTRUCTION16           = 277, // <Nullary_Instruction> ::= <Display_X>
-        RULE_NULLARY_INSTRUCTION17           = 278, // <Nullary_Instruction> ::= <Division>
-        RULE_NULLARY_INSTRUCTION18           = 279, // <Nullary_Instruction> ::= <Dsz_Sub_I>
-        RULE_NULLARY_INSTRUCTION19           = 280, // <Nullary_Instruction> ::= <Dsz>
-        RULE_NULLARY_INSTRUCTION20           = 281, // <Nullary_Instruction> ::= <Eex>
-        RULE_NULLARY_INSTRUCTION21           = 282, // <Nullary_Instruction> ::= <Eng>
-        RULE_NULLARY_INSTRUCTION22           = 283, // <Nullary_Instruction> ::= <Enter>
-        RULE_NULLARY_INSTRUCTION23           = 284, // <Nullary_Instruction> ::= <Exp>
-        RULE_NULLARY_INSTRUCTION24           = 285, // <Nullary_Instruction> ::= <Factorial>
-        RULE_NULLARY_INSTRUCTION25           = 286, // <Nullary_Instruction> ::= <Fix>
-        RULE_NULLARY_INSTRUCTION26           = 287, // <Nullary_Instruction> ::= <Frac>
-        RULE_NULLARY_INSTRUCTION27           = 288, // <Nullary_Instruction> ::= <Grd>
-        RULE_NULLARY_INSTRUCTION28           = 289, // <Nullary_Instruction> ::= <HMS_Plus>
-        RULE_NULLARY_INSTRUCTION29           = 290, // <Nullary_Instruction> ::= <Int>
-        RULE_NULLARY_INSTRUCTION30           = 291, // <Nullary_Instruction> ::= <Isz_Sub_I>
-        RULE_NULLARY_INSTRUCTION31           = 292, // <Nullary_Instruction> ::= <Isz>
-        RULE_NULLARY_INSTRUCTION32           = 293, // <Nullary_Instruction> ::= <Ln>
-        RULE_NULLARY_INSTRUCTION33           = 294, // <Nullary_Instruction> ::= <Log>
-        RULE_NULLARY_INSTRUCTION34           = 295, // <Nullary_Instruction> ::= <Lst_X>
-        RULE_NULLARY_INSTRUCTION35           = 296, // <Nullary_Instruction> ::= <Merge>
-        RULE_NULLARY_INSTRUCTION36           = 297, // <Nullary_Instruction> ::= <Multiplication>
-        RULE_NULLARY_INSTRUCTION37           = 298, // <Nullary_Instruction> ::= <P_Exchange_S>
-        RULE_NULLARY_INSTRUCTION38           = 299, // <Nullary_Instruction> ::= <Pause>
-        RULE_NULLARY_INSTRUCTION39           = 300, // <Nullary_Instruction> ::= <Percent_Change>
-        RULE_NULLARY_INSTRUCTION40           = 301, // <Nullary_Instruction> ::= <Percent>
-        RULE_NULLARY_INSTRUCTION41           = 302, // <Nullary_Instruction> ::= <Period>
-        RULE_NULLARY_INSTRUCTION42           = 303, // <Nullary_Instruction> ::= <Pi>
-        RULE_NULLARY_INSTRUCTION43           = 304, // <Nullary_Instruction> ::= <Print_Prgm>
-        RULE_NULLARY_INSTRUCTION44           = 305, // <Nullary_Instruction> ::= <R_Down>
-        RULE_NULLARY_INSTRUCTION45           = 306, // <Nullary_Instruction> ::= <R_S>
-        RULE_NULLARY_INSTRUCTION46           = 307, // <Nullary_Instruction> ::= <R_Up>
-        RULE_NULLARY_INSTRUCTION47           = 308, // <Nullary_Instruction> ::= <Rad>
-        RULE_NULLARY_INSTRUCTION48           = 309, // <Nullary_Instruction> ::= <Rc_I_67>
-        RULE_NULLARY_INSTRUCTION49           = 310, // <Nullary_Instruction> ::= <Rcl_Nullary>
-        RULE_NULLARY_INSTRUCTION50           = 311, // <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
-        RULE_NULLARY_INSTRUCTION51           = 312, // <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
-        RULE_NULLARY_INSTRUCTION52           = 313, // <Nullary_Instruction> ::= <Reciprocal>
-        RULE_NULLARY_INSTRUCTION53           = 314, // <Nullary_Instruction> ::= <Reg>
-        RULE_NULLARY_INSTRUCTION54           = 315, // <Nullary_Instruction> ::= <Rnd>
-        RULE_NULLARY_INSTRUCTION55           = 316, // <Nullary_Instruction> ::= <Rtn>
-        RULE_NULLARY_INSTRUCTION56           = 317, // <Nullary_Instruction> ::= <S>
-        RULE_NULLARY_INSTRUCTION57           = 318, // <Nullary_Instruction> ::= <Sci>
-        RULE_NULLARY_INSTRUCTION58           = 319, // <Nullary_Instruction> ::= <Sigma_Minus>
-        RULE_NULLARY_INSTRUCTION59           = 320, // <Nullary_Instruction> ::= <Sigma_Plus>
-        RULE_NULLARY_INSTRUCTION60           = 321, // <Nullary_Instruction> ::= <Sin>
-        RULE_NULLARY_INSTRUCTION61           = 322, // <Nullary_Instruction> ::= <Space>
-        RULE_NULLARY_INSTRUCTION62           = 323, // <Nullary_Instruction> ::= <Sqrt>
-        RULE_NULLARY_INSTRUCTION63           = 324, // <Nullary_Instruction> ::= <Square>
-        RULE_NULLARY_INSTRUCTION64           = 325, // <Nullary_Instruction> ::= <Sst>
-        RULE_NULLARY_INSTRUCTION65           = 326, // <Nullary_Instruction> ::= <St_I_67>
-        RULE_NULLARY_INSTRUCTION66           = 327, // <Nullary_Instruction> ::= <Sto_Nullary>
-        RULE_NULLARY_INSTRUCTION67           = 328, // <Nullary_Instruction> ::= <Stk>
-        RULE_NULLARY_INSTRUCTION68           = 329, // <Nullary_Instruction> ::= <Subtraction>
-        RULE_NULLARY_INSTRUCTION69           = 330, // <Nullary_Instruction> ::= <Tan>
-        RULE_NULLARY_INSTRUCTION70           = 331, // <Nullary_Instruction> ::= <Ten_To_The_Xth>
-        RULE_NULLARY_INSTRUCTION71           = 332, // <Nullary_Instruction> ::= <To_Degrees>
-        RULE_NULLARY_INSTRUCTION72           = 333, // <Nullary_Instruction> ::= <To_HMS>
-        RULE_NULLARY_INSTRUCTION73           = 334, // <Nullary_Instruction> ::= <To_Hours>
-        RULE_NULLARY_INSTRUCTION74           = 335, // <Nullary_Instruction> ::= <To_Polar>
-        RULE_NULLARY_INSTRUCTION75           = 336, // <Nullary_Instruction> ::= <To_Radians>
-        RULE_NULLARY_INSTRUCTION76           = 337, // <Nullary_Instruction> ::= <To_Rectangular>
-        RULE_NULLARY_INSTRUCTION77           = 338, // <Nullary_Instruction> ::= <W_Data>
-        RULE_NULLARY_INSTRUCTION78           = 339, // <Nullary_Instruction> ::= <X_Average>
-        RULE_NULLARY_INSTRUCTION79           = 340, // <Nullary_Instruction> ::= <X_EQ_0>
-        RULE_NULLARY_INSTRUCTION80           = 341, // <Nullary_Instruction> ::= <X_EQ_Y>
-        RULE_NULLARY_INSTRUCTION81           = 342, // <Nullary_Instruction> ::= <X_Exchange_I>
-        RULE_NULLARY_INSTRUCTION82           = 343, // <Nullary_Instruction> ::= <X_Exchange_Y>
-        RULE_NULLARY_INSTRUCTION83           = 344, // <Nullary_Instruction> ::= <X_GT_0>
-        RULE_NULLARY_INSTRUCTION84           = 345, // <Nullary_Instruction> ::= <X_GT_Y>
-        RULE_NULLARY_INSTRUCTION85           = 346, // <Nullary_Instruction> ::= <X_LE_Y>
-        RULE_NULLARY_INSTRUCTION86           = 347, // <Nullary_Instruction> ::= <X_LT_0>
-        RULE_NULLARY_INSTRUCTION87           = 348, // <Nullary_Instruction> ::= <X_NE_0>
-        RULE_NULLARY_INSTRUCTION88           = 349, // <Nullary_Instruction> ::= <X_NE_Y>
-        RULE_NULLARY_INSTRUCTION89           = 350, // <Nullary_Instruction> ::= <X_To_The_Yth>
-        RULE_NULLARY_INSTRUCTION90           = 351, // <Nullary_Instruction> ::= <Y_To_The_Xth>
-        RULE_UNARY_INSTRUCTION               = 352, // <Unary_Instruction> ::= <CF> <Flag>
-        RULE_UNARY_INSTRUCTION2              = 353, // <Unary_Instruction> ::= <Dsp> <Digit_Count>
-        RULE_UNARY_INSTRUCTION3              = 354, // <Unary_Instruction> ::= <F_Test> <Flag>
-        RULE_UNARY_INSTRUCTION4              = 355, // <Unary_Instruction> ::= <Gsb> <Label>
-        RULE_UNARY_INSTRUCTION5              = 356, // <Unary_Instruction> ::= <Gsb_LC_67> <Uppercase_Letter_Label>
-        RULE_UNARY_INSTRUCTION6              = 357, // <Unary_Instruction> ::= <Gsb_LC_Shortcut>
-        RULE_UNARY_INSTRUCTION7              = 358, // <Unary_Instruction> ::= <Gsb_UC_Shortcut>
-        RULE_UNARY_INSTRUCTION8              = 359, // <Unary_Instruction> ::= <Gto> <Label>
-        RULE_UNARY_INSTRUCTION9              = 360, // <Unary_Instruction> ::= <Lbl> <Label>
-        RULE_UNARY_INSTRUCTION10             = 361, // <Unary_Instruction> ::= <Lbl_LC_67> <Uppercase_Letter_Label>
-        RULE_UNARY_INSTRUCTION11             = 362, // <Unary_Instruction> ::= <Rcl> <Memory>
-        RULE_UNARY_INSTRUCTION12             = 363, // <Unary_Instruction> ::= <SF> <Flag>
-        RULE_UNARY_INSTRUCTION13             = 364, // <Unary_Instruction> ::= <Sto> <Memory>
-        RULE_BINARY_INSTRUCTION              = 365, // <Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
-        RULE_TERNARY_INSTRUCTION             = 366, // <Ternary_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
-        RULE_RCL_SIGMA_PLUS                  = 367, // <Rcl_Sigma_Plus> ::= <Rcl> <Sigma_Plus>
-        RULE_GTO_PERIOD                      = 368, // <Gto_Period> ::= <Gto> <Period>
-        RULE_OPERATOR                        = 369, // <Operator> ::= <Subtraction>
-        RULE_OPERATOR2                       = 370, // <Operator> ::= <Addition>
-        RULE_OPERATOR3                       = 371, // <Operator> ::= <Multiplication>
-        RULE_OPERATOR4                       = 372, // <Operator> ::= <Division>
-        RULE_DIGIT                           = 373, // <Digit> ::= <Zero>
-        RULE_DIGIT2                          = 374, // <Digit> ::= <One>
-        RULE_DIGIT3                          = 375, // <Digit> ::= <Two>
-        RULE_DIGIT4                          = 376, // <Digit> ::= <Three>
-        RULE_DIGIT5                          = 377, // <Digit> ::= <Four>
-        RULE_DIGIT6                          = 378, // <Digit> ::= <Five>
-        RULE_DIGIT7                          = 379, // <Digit> ::= <Six>
-        RULE_DIGIT8                          = 380, // <Digit> ::= <Seven>
-        RULE_DIGIT9                          = 381, // <Digit> ::= <Eight>
-        RULE_DIGIT10                         = 382, // <Digit> ::= <Nine>
-        RULE_DIGIT_COUNT                     = 383, // <Digit_Count> ::= <Digit>
-        RULE_DIGIT_COUNT2                    = 384, // <Digit_Count> ::= <Sub_I>
-        RULE_FLAG                            = 385, // <Flag> ::= <Zero>
-        RULE_FLAG2                           = 386, // <Flag> ::= <One>
-        RULE_FLAG3                           = 387, // <Flag> ::= <Two>
-        RULE_FLAG4                           = 388, // <Flag> ::= <Three>
-        RULE_UPPERCASE_LETTER                = 389, // <Uppercase_Letter> ::= <A>
-        RULE_UPPERCASE_LETTER2               = 390, // <Uppercase_Letter> ::= <B>
-        RULE_UPPERCASE_LETTER3               = 391, // <Uppercase_Letter> ::= <C>
-        RULE_UPPERCASE_LETTER4               = 392, // <Uppercase_Letter> ::= <D>
-        RULE_UPPERCASE_LETTER5               = 393, // <Uppercase_Letter> ::= <E>
-        RULE_LC_A                            = 394, // <LC_a> ::= <f> <A>
-        RULE_LC_B                            = 395, // <LC_b> ::= <f> <B>
-        RULE_LC_C                            = 396, // <LC_c> ::= <f> <C>
-        RULE_LC_D                            = 397, // <LC_d> ::= <f> <D>
-        RULE_LC_E                            = 398, // <LC_e> ::= <f> <E>
-        RULE_UPPERCASE_LETTER_LABEL          = 399, // <Uppercase_Letter_Label> ::= <Uppercase_Letter>
-        RULE_LOWERCASE_LETTER_LABEL          = 400, // <Lowercase_Letter_Label> ::= <LC_a>
-        RULE_LOWERCASE_LETTER_LABEL2         = 401, // <Lowercase_Letter_Label> ::= <LC_b>
-        RULE_LOWERCASE_LETTER_LABEL3         = 402, // <Lowercase_Letter_Label> ::= <LC_c>
-        RULE_LOWERCASE_LETTER_LABEL4         = 403, // <Lowercase_Letter_Label> ::= <LC_d>
-        RULE_LOWERCASE_LETTER_LABEL5         = 404, // <Lowercase_Letter_Label> ::= <LC_e>
-        RULE_LETTER_LABEL                    = 405, // <Letter_Label> ::= <Lowercase_Letter_Label>
-        RULE_LETTER_LABEL2                   = 406, // <Letter_Label> ::= <Uppercase_Letter_Label>
-        RULE_DIGIT_LABEL                     = 407, // <Digit_Label> ::= <Digit>
-        RULE_LABEL                           = 408, // <Label> ::= <Digit_Label>
-        RULE_LABEL2                          = 409, // <Label> ::= <Letter_Label>
-        RULE_LABEL3                          = 410, // <Label> ::= <Sub_I>
-        RULE_OPERABLE_MEMORY                 = 411, // <Operable_Memory> ::= <Digit>
-        RULE_OPERABLE_MEMORY2                = 412, // <Operable_Memory> ::= <Sub_I>
-        RULE_MEMORY                          = 413, // <Memory> ::= <Operable_Memory>
-        RULE_MEMORY2                         = 414, // <Memory> ::= <Uppercase_Letter>
-        RULE_MEMORY3                         = 415  // <Memory> ::= <I>
+        RULE_RCL_I_SHORTCUT                  = 261, // <Rcl_I_Shortcut> ::= <I>
+        RULE_RCL_SUB_I_SHORTCUT              = 262, // <Rcl_Sub_I_Shortcut> ::= <Sub_I>
+        RULE_NULLARY_INSTRUCTION             = 263, // <Nullary_Instruction> ::= <Abs>
+        RULE_NULLARY_INSTRUCTION2            = 264, // <Nullary_Instruction> ::= <Addition>
+        RULE_NULLARY_INSTRUCTION3            = 265, // <Nullary_Instruction> ::= <Arccos>
+        RULE_NULLARY_INSTRUCTION4            = 266, // <Nullary_Instruction> ::= <Arcsin>
+        RULE_NULLARY_INSTRUCTION5            = 267, // <Nullary_Instruction> ::= <Arctan>
+        RULE_NULLARY_INSTRUCTION6            = 268, // <Nullary_Instruction> ::= <Bst>
+        RULE_NULLARY_INSTRUCTION7            = 269, // <Nullary_Instruction> ::= <Chs>
+        RULE_NULLARY_INSTRUCTION8            = 270, // <Nullary_Instruction> ::= <Cl_Prgm>
+        RULE_NULLARY_INSTRUCTION9            = 271, // <Nullary_Instruction> ::= <Cl_Reg>
+        RULE_NULLARY_INSTRUCTION10           = 272, // <Nullary_Instruction> ::= <Clr>
+        RULE_NULLARY_INSTRUCTION11           = 273, // <Nullary_Instruction> ::= <Clx>
+        RULE_NULLARY_INSTRUCTION12           = 274, // <Nullary_Instruction> ::= <Cos>
+        RULE_NULLARY_INSTRUCTION13           = 275, // <Nullary_Instruction> ::= <Deg>
+        RULE_NULLARY_INSTRUCTION14           = 276, // <Nullary_Instruction> ::= <Del>
+        RULE_NULLARY_INSTRUCTION15           = 277, // <Nullary_Instruction> ::= <Digit>
+        RULE_NULLARY_INSTRUCTION16           = 278, // <Nullary_Instruction> ::= <Display_X>
+        RULE_NULLARY_INSTRUCTION17           = 279, // <Nullary_Instruction> ::= <Division>
+        RULE_NULLARY_INSTRUCTION18           = 280, // <Nullary_Instruction> ::= <Dsz_Sub_I>
+        RULE_NULLARY_INSTRUCTION19           = 281, // <Nullary_Instruction> ::= <Dsz>
+        RULE_NULLARY_INSTRUCTION20           = 282, // <Nullary_Instruction> ::= <Eex>
+        RULE_NULLARY_INSTRUCTION21           = 283, // <Nullary_Instruction> ::= <Eng>
+        RULE_NULLARY_INSTRUCTION22           = 284, // <Nullary_Instruction> ::= <Enter>
+        RULE_NULLARY_INSTRUCTION23           = 285, // <Nullary_Instruction> ::= <Exp>
+        RULE_NULLARY_INSTRUCTION24           = 286, // <Nullary_Instruction> ::= <Factorial>
+        RULE_NULLARY_INSTRUCTION25           = 287, // <Nullary_Instruction> ::= <Fix>
+        RULE_NULLARY_INSTRUCTION26           = 288, // <Nullary_Instruction> ::= <Frac>
+        RULE_NULLARY_INSTRUCTION27           = 289, // <Nullary_Instruction> ::= <Grd>
+        RULE_NULLARY_INSTRUCTION28           = 290, // <Nullary_Instruction> ::= <HMS_Plus>
+        RULE_NULLARY_INSTRUCTION29           = 291, // <Nullary_Instruction> ::= <Int>
+        RULE_NULLARY_INSTRUCTION30           = 292, // <Nullary_Instruction> ::= <Isz_Sub_I>
+        RULE_NULLARY_INSTRUCTION31           = 293, // <Nullary_Instruction> ::= <Isz>
+        RULE_NULLARY_INSTRUCTION32           = 294, // <Nullary_Instruction> ::= <Ln>
+        RULE_NULLARY_INSTRUCTION33           = 295, // <Nullary_Instruction> ::= <Log>
+        RULE_NULLARY_INSTRUCTION34           = 296, // <Nullary_Instruction> ::= <Lst_X>
+        RULE_NULLARY_INSTRUCTION35           = 297, // <Nullary_Instruction> ::= <Merge>
+        RULE_NULLARY_INSTRUCTION36           = 298, // <Nullary_Instruction> ::= <Multiplication>
+        RULE_NULLARY_INSTRUCTION37           = 299, // <Nullary_Instruction> ::= <P_Exchange_S>
+        RULE_NULLARY_INSTRUCTION38           = 300, // <Nullary_Instruction> ::= <Pause>
+        RULE_NULLARY_INSTRUCTION39           = 301, // <Nullary_Instruction> ::= <Percent_Change>
+        RULE_NULLARY_INSTRUCTION40           = 302, // <Nullary_Instruction> ::= <Percent>
+        RULE_NULLARY_INSTRUCTION41           = 303, // <Nullary_Instruction> ::= <Period>
+        RULE_NULLARY_INSTRUCTION42           = 304, // <Nullary_Instruction> ::= <Pi>
+        RULE_NULLARY_INSTRUCTION43           = 305, // <Nullary_Instruction> ::= <Print_Prgm>
+        RULE_NULLARY_INSTRUCTION44           = 306, // <Nullary_Instruction> ::= <R_Down>
+        RULE_NULLARY_INSTRUCTION45           = 307, // <Nullary_Instruction> ::= <R_S>
+        RULE_NULLARY_INSTRUCTION46           = 308, // <Nullary_Instruction> ::= <R_Up>
+        RULE_NULLARY_INSTRUCTION47           = 309, // <Nullary_Instruction> ::= <Rad>
+        RULE_NULLARY_INSTRUCTION48           = 310, // <Nullary_Instruction> ::= <Rc_I_67>
+        RULE_NULLARY_INSTRUCTION49           = 311, // <Nullary_Instruction> ::= <Rcl_I_Shortcut>
+        RULE_NULLARY_INSTRUCTION50           = 312, // <Nullary_Instruction> ::= <Rcl_Nullary>
+        RULE_NULLARY_INSTRUCTION51           = 313, // <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
+        RULE_NULLARY_INSTRUCTION52           = 314, // <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
+        RULE_NULLARY_INSTRUCTION53           = 315, // <Nullary_Instruction> ::= <Reciprocal>
+        RULE_NULLARY_INSTRUCTION54           = 316, // <Nullary_Instruction> ::= <Reg>
+        RULE_NULLARY_INSTRUCTION55           = 317, // <Nullary_Instruction> ::= <Rnd>
+        RULE_NULLARY_INSTRUCTION56           = 318, // <Nullary_Instruction> ::= <Rtn>
+        RULE_NULLARY_INSTRUCTION57           = 319, // <Nullary_Instruction> ::= <S>
+        RULE_NULLARY_INSTRUCTION58           = 320, // <Nullary_Instruction> ::= <Sci>
+        RULE_NULLARY_INSTRUCTION59           = 321, // <Nullary_Instruction> ::= <Sigma_Minus>
+        RULE_NULLARY_INSTRUCTION60           = 322, // <Nullary_Instruction> ::= <Sigma_Plus>
+        RULE_NULLARY_INSTRUCTION61           = 323, // <Nullary_Instruction> ::= <Sin>
+        RULE_NULLARY_INSTRUCTION62           = 324, // <Nullary_Instruction> ::= <Space>
+        RULE_NULLARY_INSTRUCTION63           = 325, // <Nullary_Instruction> ::= <Sqrt>
+        RULE_NULLARY_INSTRUCTION64           = 326, // <Nullary_Instruction> ::= <Square>
+        RULE_NULLARY_INSTRUCTION65           = 327, // <Nullary_Instruction> ::= <Sst>
+        RULE_NULLARY_INSTRUCTION66           = 328, // <Nullary_Instruction> ::= <St_I_67>
+        RULE_NULLARY_INSTRUCTION67           = 329, // <Nullary_Instruction> ::= <Sto_Nullary>
+        RULE_NULLARY_INSTRUCTION68           = 330, // <Nullary_Instruction> ::= <Stk>
+        RULE_NULLARY_INSTRUCTION69           = 331, // <Nullary_Instruction> ::= <Subtraction>
+        RULE_NULLARY_INSTRUCTION70           = 332, // <Nullary_Instruction> ::= <Tan>
+        RULE_NULLARY_INSTRUCTION71           = 333, // <Nullary_Instruction> ::= <Ten_To_The_Xth>
+        RULE_NULLARY_INSTRUCTION72           = 334, // <Nullary_Instruction> ::= <To_Degrees>
+        RULE_NULLARY_INSTRUCTION73           = 335, // <Nullary_Instruction> ::= <To_HMS>
+        RULE_NULLARY_INSTRUCTION74           = 336, // <Nullary_Instruction> ::= <To_Hours>
+        RULE_NULLARY_INSTRUCTION75           = 337, // <Nullary_Instruction> ::= <To_Polar>
+        RULE_NULLARY_INSTRUCTION76           = 338, // <Nullary_Instruction> ::= <To_Radians>
+        RULE_NULLARY_INSTRUCTION77           = 339, // <Nullary_Instruction> ::= <To_Rectangular>
+        RULE_NULLARY_INSTRUCTION78           = 340, // <Nullary_Instruction> ::= <W_Data>
+        RULE_NULLARY_INSTRUCTION79           = 341, // <Nullary_Instruction> ::= <X_Average>
+        RULE_NULLARY_INSTRUCTION80           = 342, // <Nullary_Instruction> ::= <X_EQ_0>
+        RULE_NULLARY_INSTRUCTION81           = 343, // <Nullary_Instruction> ::= <X_EQ_Y>
+        RULE_NULLARY_INSTRUCTION82           = 344, // <Nullary_Instruction> ::= <X_Exchange_I>
+        RULE_NULLARY_INSTRUCTION83           = 345, // <Nullary_Instruction> ::= <X_Exchange_Y>
+        RULE_NULLARY_INSTRUCTION84           = 346, // <Nullary_Instruction> ::= <X_GT_0>
+        RULE_NULLARY_INSTRUCTION85           = 347, // <Nullary_Instruction> ::= <X_GT_Y>
+        RULE_NULLARY_INSTRUCTION86           = 348, // <Nullary_Instruction> ::= <X_LE_Y>
+        RULE_NULLARY_INSTRUCTION87           = 349, // <Nullary_Instruction> ::= <X_LT_0>
+        RULE_NULLARY_INSTRUCTION88           = 350, // <Nullary_Instruction> ::= <X_NE_0>
+        RULE_NULLARY_INSTRUCTION89           = 351, // <Nullary_Instruction> ::= <X_NE_Y>
+        RULE_NULLARY_INSTRUCTION90           = 352, // <Nullary_Instruction> ::= <X_To_The_Yth>
+        RULE_NULLARY_INSTRUCTION91           = 353, // <Nullary_Instruction> ::= <Y_To_The_Xth>
+        RULE_UNARY_INSTRUCTION               = 354, // <Unary_Instruction> ::= <CF> <Flag>
+        RULE_UNARY_INSTRUCTION2              = 355, // <Unary_Instruction> ::= <Dsp> <Digit_Count>
+        RULE_UNARY_INSTRUCTION3              = 356, // <Unary_Instruction> ::= <F_Test> <Flag>
+        RULE_UNARY_INSTRUCTION4              = 357, // <Unary_Instruction> ::= <Gsb> <Label>
+        RULE_UNARY_INSTRUCTION5              = 358, // <Unary_Instruction> ::= <Gsb_LC_67> <Uppercase_Letter_Label>
+        RULE_UNARY_INSTRUCTION6              = 359, // <Unary_Instruction> ::= <Gsb_LC_Shortcut>
+        RULE_UNARY_INSTRUCTION7              = 360, // <Unary_Instruction> ::= <Gsb_UC_Shortcut>
+        RULE_UNARY_INSTRUCTION8              = 361, // <Unary_Instruction> ::= <Gto> <Label>
+        RULE_UNARY_INSTRUCTION9              = 362, // <Unary_Instruction> ::= <Lbl> <Label>
+        RULE_UNARY_INSTRUCTION10             = 363, // <Unary_Instruction> ::= <Lbl_LC_67> <Uppercase_Letter_Label>
+        RULE_UNARY_INSTRUCTION11             = 364, // <Unary_Instruction> ::= <Rcl> <Memory>
+        RULE_UNARY_INSTRUCTION12             = 365, // <Unary_Instruction> ::= <SF> <Flag>
+        RULE_UNARY_INSTRUCTION13             = 366, // <Unary_Instruction> ::= <Sto> <Memory>
+        RULE_BINARY_INSTRUCTION              = 367, // <Binary_Instruction> ::= <Sto> <Operator> <Operable_Memory>
+        RULE_TERNARY_INSTRUCTION             = 368, // <Ternary_Instruction> ::= <Gto_Period> <Digit> <Digit> <Digit>
+        RULE_RCL_SIGMA_PLUS                  = 369, // <Rcl_Sigma_Plus> ::= <Rcl> <Sigma_Plus>
+        RULE_GTO_PERIOD                      = 370, // <Gto_Period> ::= <Gto> <Period>
+        RULE_OPERATOR                        = 371, // <Operator> ::= <Subtraction>
+        RULE_OPERATOR2                       = 372, // <Operator> ::= <Addition>
+        RULE_OPERATOR3                       = 373, // <Operator> ::= <Multiplication>
+        RULE_OPERATOR4                       = 374, // <Operator> ::= <Division>
+        RULE_DIGIT                           = 375, // <Digit> ::= <Zero>
+        RULE_DIGIT2                          = 376, // <Digit> ::= <One>
+        RULE_DIGIT3                          = 377, // <Digit> ::= <Two>
+        RULE_DIGIT4                          = 378, // <Digit> ::= <Three>
+        RULE_DIGIT5                          = 379, // <Digit> ::= <Four>
+        RULE_DIGIT6                          = 380, // <Digit> ::= <Five>
+        RULE_DIGIT7                          = 381, // <Digit> ::= <Six>
+        RULE_DIGIT8                          = 382, // <Digit> ::= <Seven>
+        RULE_DIGIT9                          = 383, // <Digit> ::= <Eight>
+        RULE_DIGIT10                         = 384, // <Digit> ::= <Nine>
+        RULE_DIGIT_COUNT                     = 385, // <Digit_Count> ::= <Digit>
+        RULE_DIGIT_COUNT2                    = 386, // <Digit_Count> ::= <Sub_I>
+        RULE_FLAG                            = 387, // <Flag> ::= <Zero>
+        RULE_FLAG2                           = 388, // <Flag> ::= <One>
+        RULE_FLAG3                           = 389, // <Flag> ::= <Two>
+        RULE_FLAG4                           = 390, // <Flag> ::= <Three>
+        RULE_UPPERCASE_LETTER                = 391, // <Uppercase_Letter> ::= <A>
+        RULE_UPPERCASE_LETTER2               = 392, // <Uppercase_Letter> ::= <B>
+        RULE_UPPERCASE_LETTER3               = 393, // <Uppercase_Letter> ::= <C>
+        RULE_UPPERCASE_LETTER4               = 394, // <Uppercase_Letter> ::= <D>
+        RULE_UPPERCASE_LETTER5               = 395, // <Uppercase_Letter> ::= <E>
+        RULE_LC_A                            = 396, // <LC_a> ::= <f> <A>
+        RULE_LC_B                            = 397, // <LC_b> ::= <f> <B>
+        RULE_LC_C                            = 398, // <LC_c> ::= <f> <C>
+        RULE_LC_D                            = 399, // <LC_d> ::= <f> <D>
+        RULE_LC_E                            = 400, // <LC_e> ::= <f> <E>
+        RULE_UPPERCASE_LETTER_LABEL          = 401, // <Uppercase_Letter_Label> ::= <Uppercase_Letter>
+        RULE_LOWERCASE_LETTER_LABEL          = 402, // <Lowercase_Letter_Label> ::= <LC_a>
+        RULE_LOWERCASE_LETTER_LABEL2         = 403, // <Lowercase_Letter_Label> ::= <LC_b>
+        RULE_LOWERCASE_LETTER_LABEL3         = 404, // <Lowercase_Letter_Label> ::= <LC_c>
+        RULE_LOWERCASE_LETTER_LABEL4         = 405, // <Lowercase_Letter_Label> ::= <LC_d>
+        RULE_LOWERCASE_LETTER_LABEL5         = 406, // <Lowercase_Letter_Label> ::= <LC_e>
+        RULE_LETTER_LABEL                    = 407, // <Letter_Label> ::= <Lowercase_Letter_Label>
+        RULE_LETTER_LABEL2                   = 408, // <Letter_Label> ::= <Uppercase_Letter_Label>
+        RULE_DIGIT_LABEL                     = 409, // <Digit_Label> ::= <Digit>
+        RULE_LABEL                           = 410, // <Label> ::= <Digit_Label>
+        RULE_LABEL2                          = 411, // <Label> ::= <Letter_Label>
+        RULE_LABEL3                          = 412, // <Label> ::= <Sub_I>
+        RULE_OPERABLE_MEMORY                 = 413, // <Operable_Memory> ::= <Digit>
+        RULE_OPERABLE_MEMORY2                = 414, // <Operable_Memory> ::= <Sub_I>
+        RULE_MEMORY                          = 415, // <Memory> ::= <Operable_Memory>
+        RULE_MEMORY2                         = 416, // <Memory> ::= <Uppercase_Letter>
+        RULE_MEMORY3                         = 417  // <Memory> ::= <I>
     };
 
     public interface IActions
@@ -981,6 +984,7 @@ namespace Mockingbird.HP.Parser
         void ReduceRULE_INSTRUCTION4 (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_GSB_LC_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_GSB_UC_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_RCL_I_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_RCL_SUB_I_SHORTCUT (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_NULLARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_NULLARY_INSTRUCTION2 (Reader reader, Token token, Token [] tokens, object state);
@@ -1072,6 +1076,7 @@ namespace Mockingbird.HP.Parser
         void ReduceRULE_NULLARY_INSTRUCTION88 (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_NULLARY_INSTRUCTION89 (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_NULLARY_INSTRUCTION90 (Reader reader, Token token, Token [] tokens, object state);
+        void ReduceRULE_NULLARY_INSTRUCTION91 (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_UNARY_INSTRUCTION (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_UNARY_INSTRUCTION2 (Reader reader, Token token, Token [] tokens, object state);
         void ReduceRULE_UNARY_INSTRUCTION3 (Reader reader, Token token, Token [] tokens, object state);
@@ -2209,6 +2214,10 @@ namespace Mockingbird.HP.Parser
 						// <Gsb_UC_Shortcut> ::= <Uppercase_Letter_Label>
 						actions.ReduceRULE_GSB_UC_SHORTCUT (reader, args.Token, args.Token.Tokens, state);
 						return;
+					case RuleConstants.RULE_RCL_I_SHORTCUT :
+						// <Rcl_I_Shortcut> ::= <I>
+						actions.ReduceRULE_RCL_I_SHORTCUT (reader, args.Token, args.Token.Tokens, state);
+						return;
 					case RuleConstants.RULE_RCL_SUB_I_SHORTCUT :
 						// <Rcl_Sub_I_Shortcut> ::= <Sub_I>
 						actions.ReduceRULE_RCL_SUB_I_SHORTCUT (reader, args.Token, args.Token.Tokens, state);
@@ -2406,172 +2415,176 @@ namespace Mockingbird.HP.Parser
 						actions.ReduceRULE_NULLARY_INSTRUCTION48 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION49 :
-						// <Nullary_Instruction> ::= <Rcl_Nullary>
+						// <Nullary_Instruction> ::= <Rcl_I_Shortcut>
 						actions.ReduceRULE_NULLARY_INSTRUCTION49 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION50 :
-						// <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
+						// <Nullary_Instruction> ::= <Rcl_Nullary>
 						actions.ReduceRULE_NULLARY_INSTRUCTION50 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION51 :
-						// <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
+						// <Nullary_Instruction> ::= <Rcl_Sigma_Plus>
 						actions.ReduceRULE_NULLARY_INSTRUCTION51 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION52 :
-						// <Nullary_Instruction> ::= <Reciprocal>
+						// <Nullary_Instruction> ::= <Rcl_Sub_I_Shortcut>
 						actions.ReduceRULE_NULLARY_INSTRUCTION52 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION53 :
-						// <Nullary_Instruction> ::= <Reg>
+						// <Nullary_Instruction> ::= <Reciprocal>
 						actions.ReduceRULE_NULLARY_INSTRUCTION53 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION54 :
-						// <Nullary_Instruction> ::= <Rnd>
+						// <Nullary_Instruction> ::= <Reg>
 						actions.ReduceRULE_NULLARY_INSTRUCTION54 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION55 :
-						// <Nullary_Instruction> ::= <Rtn>
+						// <Nullary_Instruction> ::= <Rnd>
 						actions.ReduceRULE_NULLARY_INSTRUCTION55 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION56 :
-						// <Nullary_Instruction> ::= <S>
+						// <Nullary_Instruction> ::= <Rtn>
 						actions.ReduceRULE_NULLARY_INSTRUCTION56 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION57 :
-						// <Nullary_Instruction> ::= <Sci>
+						// <Nullary_Instruction> ::= <S>
 						actions.ReduceRULE_NULLARY_INSTRUCTION57 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION58 :
-						// <Nullary_Instruction> ::= <Sigma_Minus>
+						// <Nullary_Instruction> ::= <Sci>
 						actions.ReduceRULE_NULLARY_INSTRUCTION58 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION59 :
-						// <Nullary_Instruction> ::= <Sigma_Plus>
+						// <Nullary_Instruction> ::= <Sigma_Minus>
 						actions.ReduceRULE_NULLARY_INSTRUCTION59 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION60 :
-						// <Nullary_Instruction> ::= <Sin>
+						// <Nullary_Instruction> ::= <Sigma_Plus>
 						actions.ReduceRULE_NULLARY_INSTRUCTION60 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION61 :
-						// <Nullary_Instruction> ::= <Space>
+						// <Nullary_Instruction> ::= <Sin>
 						actions.ReduceRULE_NULLARY_INSTRUCTION61 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION62 :
-						// <Nullary_Instruction> ::= <Sqrt>
+						// <Nullary_Instruction> ::= <Space>
 						actions.ReduceRULE_NULLARY_INSTRUCTION62 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION63 :
-						// <Nullary_Instruction> ::= <Square>
+						// <Nullary_Instruction> ::= <Sqrt>
 						actions.ReduceRULE_NULLARY_INSTRUCTION63 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION64 :
-						// <Nullary_Instruction> ::= <Sst>
+						// <Nullary_Instruction> ::= <Square>
 						actions.ReduceRULE_NULLARY_INSTRUCTION64 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION65 :
-						// <Nullary_Instruction> ::= <St_I_67>
+						// <Nullary_Instruction> ::= <Sst>
 						actions.ReduceRULE_NULLARY_INSTRUCTION65 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION66 :
-						// <Nullary_Instruction> ::= <Sto_Nullary>
+						// <Nullary_Instruction> ::= <St_I_67>
 						actions.ReduceRULE_NULLARY_INSTRUCTION66 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION67 :
-						// <Nullary_Instruction> ::= <Stk>
+						// <Nullary_Instruction> ::= <Sto_Nullary>
 						actions.ReduceRULE_NULLARY_INSTRUCTION67 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION68 :
-						// <Nullary_Instruction> ::= <Subtraction>
+						// <Nullary_Instruction> ::= <Stk>
 						actions.ReduceRULE_NULLARY_INSTRUCTION68 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION69 :
-						// <Nullary_Instruction> ::= <Tan>
+						// <Nullary_Instruction> ::= <Subtraction>
 						actions.ReduceRULE_NULLARY_INSTRUCTION69 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION70 :
-						// <Nullary_Instruction> ::= <Ten_To_The_Xth>
+						// <Nullary_Instruction> ::= <Tan>
 						actions.ReduceRULE_NULLARY_INSTRUCTION70 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION71 :
-						// <Nullary_Instruction> ::= <To_Degrees>
+						// <Nullary_Instruction> ::= <Ten_To_The_Xth>
 						actions.ReduceRULE_NULLARY_INSTRUCTION71 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION72 :
-						// <Nullary_Instruction> ::= <To_HMS>
+						// <Nullary_Instruction> ::= <To_Degrees>
 						actions.ReduceRULE_NULLARY_INSTRUCTION72 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION73 :
-						// <Nullary_Instruction> ::= <To_Hours>
+						// <Nullary_Instruction> ::= <To_HMS>
 						actions.ReduceRULE_NULLARY_INSTRUCTION73 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION74 :
-						// <Nullary_Instruction> ::= <To_Polar>
+						// <Nullary_Instruction> ::= <To_Hours>
 						actions.ReduceRULE_NULLARY_INSTRUCTION74 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION75 :
-						// <Nullary_Instruction> ::= <To_Radians>
+						// <Nullary_Instruction> ::= <To_Polar>
 						actions.ReduceRULE_NULLARY_INSTRUCTION75 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION76 :
-						// <Nullary_Instruction> ::= <To_Rectangular>
+						// <Nullary_Instruction> ::= <To_Radians>
 						actions.ReduceRULE_NULLARY_INSTRUCTION76 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION77 :
-						// <Nullary_Instruction> ::= <W_Data>
+						// <Nullary_Instruction> ::= <To_Rectangular>
 						actions.ReduceRULE_NULLARY_INSTRUCTION77 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION78 :
-						// <Nullary_Instruction> ::= <X_Average>
+						// <Nullary_Instruction> ::= <W_Data>
 						actions.ReduceRULE_NULLARY_INSTRUCTION78 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION79 :
-						// <Nullary_Instruction> ::= <X_EQ_0>
+						// <Nullary_Instruction> ::= <X_Average>
 						actions.ReduceRULE_NULLARY_INSTRUCTION79 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION80 :
-						// <Nullary_Instruction> ::= <X_EQ_Y>
+						// <Nullary_Instruction> ::= <X_EQ_0>
 						actions.ReduceRULE_NULLARY_INSTRUCTION80 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION81 :
-						// <Nullary_Instruction> ::= <X_Exchange_I>
+						// <Nullary_Instruction> ::= <X_EQ_Y>
 						actions.ReduceRULE_NULLARY_INSTRUCTION81 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION82 :
-						// <Nullary_Instruction> ::= <X_Exchange_Y>
+						// <Nullary_Instruction> ::= <X_Exchange_I>
 						actions.ReduceRULE_NULLARY_INSTRUCTION82 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION83 :
-						// <Nullary_Instruction> ::= <X_GT_0>
+						// <Nullary_Instruction> ::= <X_Exchange_Y>
 						actions.ReduceRULE_NULLARY_INSTRUCTION83 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION84 :
-						// <Nullary_Instruction> ::= <X_GT_Y>
+						// <Nullary_Instruction> ::= <X_GT_0>
 						actions.ReduceRULE_NULLARY_INSTRUCTION84 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION85 :
-						// <Nullary_Instruction> ::= <X_LE_Y>
+						// <Nullary_Instruction> ::= <X_GT_Y>
 						actions.ReduceRULE_NULLARY_INSTRUCTION85 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION86 :
-						// <Nullary_Instruction> ::= <X_LT_0>
+						// <Nullary_Instruction> ::= <X_LE_Y>
 						actions.ReduceRULE_NULLARY_INSTRUCTION86 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION87 :
-						// <Nullary_Instruction> ::= <X_NE_0>
+						// <Nullary_Instruction> ::= <X_LT_0>
 						actions.ReduceRULE_NULLARY_INSTRUCTION87 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION88 :
-						// <Nullary_Instruction> ::= <X_NE_Y>
+						// <Nullary_Instruction> ::= <X_NE_0>
 						actions.ReduceRULE_NULLARY_INSTRUCTION88 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION89 :
-						// <Nullary_Instruction> ::= <X_To_The_Yth>
+						// <Nullary_Instruction> ::= <X_NE_Y>
 						actions.ReduceRULE_NULLARY_INSTRUCTION89 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_NULLARY_INSTRUCTION90 :
-						// <Nullary_Instruction> ::= <Y_To_The_Xth>
+						// <Nullary_Instruction> ::= <X_To_The_Yth>
 						actions.ReduceRULE_NULLARY_INSTRUCTION90 (reader, args.Token, args.Token.Tokens, state);
+						return;
+					case RuleConstants.RULE_NULLARY_INSTRUCTION91 :
+						// <Nullary_Instruction> ::= <Y_To_The_Xth>
+						actions.ReduceRULE_NULLARY_INSTRUCTION91 (reader, args.Token, args.Token.Tokens, state);
 						return;
 					case RuleConstants.RULE_UNARY_INSTRUCTION :
 						// <Unary_Instruction> ::= <CF> <Flag>

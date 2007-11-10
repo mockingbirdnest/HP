@@ -291,6 +291,7 @@ Period97         = '97-62'
 ! is empty.
 <Gsb_LC_Shortcut>    ::= <Lowercase_Letter_Label>
 <Gsb_UC_Shortcut>    ::= <Uppercase_Letter_Label>
+<Rcl_I_Shortcut>     ::= <I>
 <Rcl_Sub_I_Shortcut> ::= <Sub_I>
                                         
 <Nullary_Instruction> ::= <Abs>
@@ -341,6 +342,7 @@ Period97         = '97-62'
                         | <R_Up>
                         | <Rad>
                         | <Rc_I_67>
+                        | <Rcl_I_Shortcut>
                         | <Rcl_Nullary>
                         | <Rcl_Sigma_Plus>
                         | <Rcl_Sub_I_Shortcut>
