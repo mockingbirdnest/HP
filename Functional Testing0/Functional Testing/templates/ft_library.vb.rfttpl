@@ -1,0 +1,13 @@
+%utilityclass:NamespaceDeclaration%
+
+'Description   : Utility class 
+'since  %date:MMMM dd, yyyy%
+'author %system:user.name%
+ 
+Public Class %utilityclass:name% 
+    
+'TODO Insert utility code here
+
+End Class
+	
+%utilityclass:EndNamespaceDeclaration%

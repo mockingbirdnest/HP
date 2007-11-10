@@ -1,0 +1,30 @@
+#Region " Script Header "
+' Functional Test Script
+' author %system:user.name%
+Imports Microsoft.VisualBasic
+Imports Rational.Test.Ft
+Imports Rational.Test.Ft.Object.Interfaces
+Imports Rational.Test.Ft.Script
+Imports Rational.Test.Ft.Value
+Imports Rational.Test.Ft.Vp
+Imports Utilities
+#End Region
+%script:NamespaceDeclaration%
+Public Class %script:name% 
+    Inherits %helper:name%
+
+    'Script Name   : %script:name%
+    'Generated     : %date% %time%
+    'Description   : Functional Test Script
+    'Original Host : %system:os.name% %system:os.arch% %system:os.version% 
+
+    'since  %date:yyyy/MM/dd%
+    'author %system:user.name%
+
+    Public Function TestMain(ByVal args() As Object) As Object
+        %script:insertBefore% this entire line will be deleted during initial script generation
+    Return Nothing
+    End Function
+End Class
+%script:EndNamespaceDeclaration%
+

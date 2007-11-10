@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScriptDefinition L=".ScriptDefinition">
+  <ScriptName>HP97</ScriptName>
+  <Language>vb</Language>
+  <Map>UI.rftmap</Map>
+  <Datapool />
+  <DatapoolIterator>Rational.Test.Ft.Datapool.SequentialIterator</DatapoolIterator>
+  <HelperSuper />
+  <ScriptNameMap L=".ScriptDefinitionNameMap" />
+  <Properties L=".PropSet" />
+</ScriptDefinition>

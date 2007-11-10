@@ -1,0 +1,15 @@
+    '
+    ' %map:description% with default state.
+    '		%map:properties%
+    '
+    Protected Function %helper:methodName%() As %helper:testObjectInterfaceName%
+        %helper:methodName% = New %helper:testObjectInterfaceName%(GetMappedTestObject("%helper:methodName%"))
+    End Function
+    '
+    ' %map:description% with specific test context and state.
+    '		%map:properties%
+    '
+    Protected Function %helper:methodName%(anchor As TestObject, flags As Long) As  %helper:testObjectInterfaceName%
+        %helper:methodName% = New %helper:testObjectInterfaceName%(GetMappedTestObject("%helper:methodName%"), anchor, flags)
+    End Function
+	
