@@ -43,7 +43,7 @@
     <Position X="2.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Instruction.cs</FileName>
-      <HashCode>AAgAAAAAAAAAAIAAAIAAAAAAAAAgAAAIKAAACAAACAA=</HashCode>
+      <HashCode>AAgCAAAAAAAAAIAAAIAAAAAAAAAgAAAIKAAACAAICAA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -53,7 +53,7 @@
     <Position X="4" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Memory.cs</FileName>
-      <HashCode>CEAAAgAAAAIAAAAACEgCQREAAAMgAAEAAUCgARDEAAE=</HashCode>
+      <HashCode>CEAAAgAAAAoAAAAACEgCQREAAAMgAAEAAUCgARDEAAE=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="display" />
@@ -87,8 +87,8 @@
       <HashCode>wABgAEAMCgIABBgICAIIENCAAAEaGAEQCAAAEAJUUIE=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="printer" />
       <Field Name="display" />
+      <Field Name="printer" />
     </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -105,7 +105,7 @@
     <Position X="7.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Stack.cs</FileName>
-      <HashCode>AAAAAIAQQAAAAIBACACAAQAAAgEEAJAAAAAAAAAAYAA=</HashCode>
+      <HashCode>AAAAAIAQQAAAAIBACACAAQAAAgEEAJAAAAAAAAAEYAE=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="display" />
@@ -121,14 +121,15 @@
       </Enum>
     </NestedTypes>
   </Class>
-  <Class Name="Mockingbird.HP.Class_Library.Number">
+  <Struct Name="Mockingbird.HP.Class_Library.Number">
     <Position X="0.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Number.cs</FileName>
-      <HashCode>AAAEAAABAAAACAEAAAECAAABAAAAIAAAAgAAAiAAAAA=</HashCode>
+      <HashCode>ggAGFAAJAAAgCgkA4BWWIgIBAA2QIIJABggAAiCAByA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
@@ -156,11 +157,10 @@
         </TypeIdentifier>
         <Compartments>
           <Compartment Name="Fields" Collapsed="true" />
-          <Compartment Name="Nested Types" Collapsed="false" />
         </Compartments>
       </Class>
     </NestedTypes>
-  </Class>
+  </Struct>
   <Interface Name="Mockingbird.HP.Class_Library.IAddress">
     <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>

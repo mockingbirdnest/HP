@@ -51,6 +51,7 @@ namespace Mockingbird.HP.Execution
         private const decimal radianToGrade = 200.0M / Number.PI;
 
         private bool enableBlur;
+        private bool inDisplayX = false;
         private bool inNumberDone = false;
         private EngineModes modes;
         private bool running = false;
@@ -114,6 +115,7 @@ namespace Mockingbird.HP.Execution
             this.validater.ExponentChanged += new Number.ChangeEvent (ExponentChanged);
             this.validater.MantissaChanged += new Number.ChangeEvent (MantissaChanged);
             this.validater.NumberDone += new Number.ChangeEvent (NumberDone);
+            this.validater.NumberPeek += new Number.ChangeEvent (NumberPeek);
             this.validater.NumberStarted += new Number.ChangeEvent (NumberStarted);
             Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
             Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
@@ -163,12 +165,14 @@ namespace Mockingbird.HP.Execution
 
                     // This code implements the special case described on page 41 of the
                     // documentation: in Fixed format if no exponent was typed and no truncation
-                    // happened, then print using the specified format.  Other print the raw input.
+                    // happened, then print using the specified format.  Otherwise print the raw
+                    // input.  Note that DISPLAY_X always prints the raw input.
 
                     bool hasExponent = exponent != new string (' ', exponent.Length);
                     int mantissaAft = mantissa.TrimEnd ().Length - mantissa.IndexOf ('.') - 1;
 
-                    if (printer.Formatter.MustUseRaw ||
+                    if (inDisplayX ||
+                        printer.Formatter.MustUseRaw ||
                         hasExponent ||
                         mantissaAft > printer.Formatter.Digits)
                     {
@@ -184,6 +188,11 @@ namespace Mockingbird.HP.Execution
             {
                 inNumberDone = false;
             }
+        }
+
+        private void NumberPeek (string mantissa, string exponent, Number value)
+        {
+            printer.PrintNumeric ();
         }
 
         private void NumberStarted (string mantissa, string exponent, Number value)
@@ -249,8 +258,9 @@ namespace Mockingbird.HP.Execution
             get
             {
                 return printer != null &&
-                        modes.tracing != EngineModes.Tracing.Manual &&
-                        !(running && modes.tracing == EngineModes.Tracing.Normal);
+                       (inDisplayX ||
+                        (modes.tracing != EngineModes.Tracing.Manual &&
+                         !(running && modes.tracing == EngineModes.Tracing.Normal)));
             }
         }
 
@@ -376,10 +386,18 @@ namespace Mockingbird.HP.Execution
             switch ((SymbolConstants) instruction.Symbol.Id)
             {
                 case SymbolConstants.SYMBOL_CHS:
+                case SymbolConstants.SYMBOL_CL_PRGM:
+                case SymbolConstants.SYMBOL_DEL:
                 case SymbolConstants.SYMBOL_DIGIT:
                 case SymbolConstants.SYMBOL_EEX:
+                case SymbolConstants.SYMBOL_MERGE:
                 case SymbolConstants.SYMBOL_PERIOD:
+                case SymbolConstants.SYMBOL_SPACE:
                 case SymbolConstants.SYMBOL_SST:
+                    // These functions do not interrupt digit entry (they are a subset of those
+                    // documented as "not affecting the stack" on page 293 of the HP-97 manual). 
+                    // Their list was determined experimentally on the HP-67 calculator.
+                    //TODO: It seems that we should be tracing the instruction when running/stepping.
                     break;
                 case SymbolConstants.SYMBOL_GTO_PERIOD:
                 case SymbolConstants.SYMBOL_PRINT_PRGM:
@@ -387,9 +405,8 @@ namespace Mockingbird.HP.Execution
                     validater.DoneEntering ();
                     break;
                 case SymbolConstants.SYMBOL_DISPLAY_X:
-                case SymbolConstants.SYMBOL_SPACE:
-                    // Only trace those when executing.
-                    validater.DoneEntering ();
+                    // This one traces the contents of X in raw mode.  So it will only terminate
+                    // digit entry later.  Also, it only prints the instruction if executing.
                     if (MustTrace && (running || stepping))
                     {
                         program.PrintStep ();
@@ -493,15 +510,23 @@ namespace Mockingbird.HP.Execution
                     }
                     break;
                 case SymbolConstants.SYMBOL_DISPLAY_X:
-                    switch (reader.Model)
+                    try
                     {
-                        case CalculatorModel.HP67:
-                            display.PauseAndBlink (5000);
-                            break;
-                        case CalculatorModel.HP97:
-                            printer.PrintNumeric ();
-                            printer.PrintEndMarker ();
-                            break;
+                        inDisplayX = true;
+                        switch (reader.Model)
+                        {
+                            case CalculatorModel.HP67:
+                                display.PauseAndBlink (5000);
+                                break;
+                            case CalculatorModel.HP97:
+                                validater.DoneEnteringOrPeek ();
+                                printer.PrintEndMarker ();
+                                break;
+                        }
+                    }
+                    finally
+                    {
+                        inDisplayX = false;
                     }
                     break;
                 case SymbolConstants.SYMBOL_DIVISION:

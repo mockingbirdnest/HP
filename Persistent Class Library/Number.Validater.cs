@@ -27,6 +27,7 @@ namespace Mockingbird.HP.Class_Library
             public event ChangeEvent ExponentChanged;
             public event ChangeEvent MantissaChanged;
             public event ChangeEvent NumberDone;
+            public event ChangeEvent NumberPeek;
             public event ChangeEvent NumberStarted;
 
             #endregion
@@ -211,6 +212,25 @@ namespace Mockingbird.HP.Class_Library
                     if (NumberDone != null)
                     {
                         NumberDone (mantissa, exponent, Value);
+                    }
+                }
+            }
+
+            public void DoneEnteringOrPeek ()
+            {
+                if (enteringNumber)
+                {
+                    enteringNumber = false;
+                    if (NumberDone != null)
+                    {
+                        NumberDone (mantissa, exponent, Value);
+                    }
+                }
+                else
+                {
+                    if (NumberPeek != null)
+                    {
+                        NumberPeek (mantissa, exponent, Value);
                     }
                 }
             }
