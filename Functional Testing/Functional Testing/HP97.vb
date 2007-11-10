@@ -45,6 +45,8 @@ Public Class HP97
         CallScript("HP97p59p60")
         CallScript("HP97p60p61")
         CallScript("HP97p64p65")
+        CallScript("HP97p65")
+        CallScript("HP97p66p72")
 
         CallScript("HP97PrintXOfUnformattedNumber")
         Return Nothing
