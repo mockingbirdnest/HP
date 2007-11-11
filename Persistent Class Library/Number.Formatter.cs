@@ -121,6 +121,7 @@ namespace Mockingbird.HP.Class_Library
                 Number small = new Number (underflowMantissa, underflowExponent);
 
                 // Deal with possible underflow or overflow.
+                fixedUnderflowOverflow = false;
                 overflows = false;
                 if (absX > large)
                 {
@@ -155,7 +156,6 @@ namespace Mockingbird.HP.Class_Library
 
                 // Adjust the computed exponent based on the display format, and determine if the
                 // fixed format underflows or overflows.
-                fixedUnderflowOverflow = false;
                 switch (format)
                 {
                     case DisplayFormat.Engineering:
