@@ -52,9 +52,13 @@ namespace Mockingbird.HP.Execution
         private Semaphore messagesEnqueued = new Semaphore (0, capacity);
         private Queue messageQueue;
 
+        private byte digits;
         private Display display;
+        private sbyte fixedUnderflowExponentThreshold;
+        private bool hasExtraDigitBetween0And1;
         private CalculatorModel model;
         private Printer printer;
+        private bool stripZeros;
         private string [] tags;
         private CrossThreadUINotification notifyUI;
         private System.Threading.Thread thread;
@@ -74,6 +78,22 @@ namespace Mockingbird.HP.Execution
             this.model = model;
             this.tags = tags;
             this.notifyUI = notifyUI;
+            switch (model)
+            {
+                case CalculatorModel.HP35:
+                    digits = 9;
+                    fixedUnderflowExponentThreshold = -2;
+                    hasExtraDigitBetween0And1 = true;
+                    stripZeros = true;
+                    break;
+                case CalculatorModel.HP67:
+                case CalculatorModel.HP97:
+                    digits = 2;
+                    fixedUnderflowExponentThreshold = sbyte.MinValue;
+                    hasExtraDigitBetween0And1 = false;
+                    stripZeros = false;
+                    break;
+            }
             for (int i = 0; i < sharedControls.Length; i++)
             {
                 if (sharedControls [i] is Display)
@@ -381,17 +401,23 @@ namespace Mockingbird.HP.Execution
                 validater = new Number.Validater ();
                 if (printer != null)
                 {
-                    printer.Formatter = new Number.Formatter (2,
+                    printer.Formatter = new Number.Formatter (digits,
                                                               Number.DisplayFormat.Fixed,
+                                                              fixedUnderflowExponentThreshold,
+                                                              hasExtraDigitBetween0And1,
                                                               /*padMantissa*/ false,
-                                                              /*showPlusSignInExponent*/ true);
+                                                              /*showPlusSignInExponent*/ true,
+                                                              stripZeros);
                 }
 
                 // The display is initially black, as when the calculator is powered off.
-                display.Formatter = new Number.Formatter (2,
+                display.Formatter = new Number.Formatter (digits,
                                                           Number.DisplayFormat.Fixed,
+                                                          fixedUnderflowExponentThreshold,
+                                                          hasExtraDigitBetween0And1,
                                                           /*padMantissa*/ true,
-                                                          /*showPlusSignInExponent*/ false);
+                                                          /*showPlusSignInExponent*/ false,
+                                                          stripZeros);
                 display.ShowText ("", 0, 0);
 
                 // Create the components that depend on the display.

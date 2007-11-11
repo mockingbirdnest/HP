@@ -20,6 +20,8 @@ namespace Mockingbird.HP.Class_Library
 
             #region Private Data
 
+            private char [] decimalDigits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
             private const sbyte overflowExponent = 99;
             private const decimal overflowMantissa = 9.999999999M;
             private const sbyte underflowExponent = -99;
@@ -32,12 +34,16 @@ namespace Mockingbird.HP.Class_Library
             private string engMantissaTemplate10;
             private string engMantissaTemplate100;
             private string exponentTemplate;
-            private string fixMantissaTemplate;
+            private string fixMantissaTemplateD;
+            private string fixMantissaTemplateDPlus1;
             private string sciMantissaTemplate;
 
             private byte digits;
+            private sbyte fixedUnderflowExponentThreshold;
             private DisplayFormat format;
+            private bool hasExtraDigitBetween0And1;
             private bool padMantissa;
+            private bool stripZeros;
 
             private bool fixedUnderflowOverflow;
             private bool overflows;
@@ -54,11 +60,19 @@ namespace Mockingbird.HP.Class_Library
 
             #region Constructors & Destructors
 
-            public Formatter
-                (byte digits, DisplayFormat format, bool padMantissa, bool showPlusSignInExponent)
+            public Formatter (byte digits,
+                            DisplayFormat format,
+                            sbyte fixedUnderflowExponentThreshold,
+                            bool hasExtraDigitBetween0And1,
+                            bool padMantissa,
+                            bool showPlusSignInExponent,
+                            bool stripZeros)
             {
                 // Assign *before* calling Digits/Format below.
+                this.fixedUnderflowExponentThreshold = fixedUnderflowExponentThreshold;
+                this.hasExtraDigitBetween0And1 = hasExtraDigitBetween0And1;
                 this.padMantissa = padMantissa;
+                this.stripZeros = stripZeros;
                 if (showPlusSignInExponent)
                 {
                     exponentTemplate = "+" + exponentMetaTemplate.Substring (1);
@@ -68,8 +82,8 @@ namespace Mockingbird.HP.Class_Library
                     exponentTemplate = " " + exponentMetaTemplate.Substring (1);
                 }
                 formatted = 0.0M;
-                Digits = digits;
-                Format = format;
+                Digits    = digits;
+                Format    = format;
             }
 
             #endregion
@@ -116,7 +130,7 @@ namespace Mockingbird.HP.Class_Library
 
             private void Split (Number x)
             {
-                Number absX = Abs (x);
+                Number absX  = Abs (x);
                 Number large = new Number (overflowMantissa, overflowExponent);
                 Number small = new Number (underflowMantissa, underflowExponent);
 
@@ -170,7 +184,14 @@ namespace Mockingbird.HP.Class_Library
                         }
                     case DisplayFormat.Fixed:
                         {
-                            if (formatted.exponent < -digits - 1 || formatted.exponent > 9)
+                            if ((formatted.exponent == fixedUnderflowExponentThreshold - 1 &&
+                                 formatted.mantissa != 10.0M) ||
+                                 formatted.exponent < fixedUnderflowExponentThreshold - 1)
+                            {
+                                fixedUnderflowOverflow = true;
+                            }
+                            else if (formatted.exponent < -digits - 1 ||
+                                     formatted.exponent > 9)
                             {
                                 fixedUnderflowOverflow = true;
                             }
@@ -195,6 +216,46 @@ namespace Mockingbird.HP.Class_Library
                         }
                 }
                 formatted.mantissa = x.mantissa * PowerOfTen (x.exponent - formatted.exponent);
+            }
+
+            private string StripIfNeeded (string mantissa)
+            {
+                if (stripZeros)
+                {
+                    // First, find any zeros to the right of the decimal point.
+                    int lastDigit = mantissa.LastIndexOfAny (decimalDigits);
+                    int lastZero = mantissa.LastIndexOf ('0');
+                    if (lastZero >= 0)
+                    {
+                        int period = mantissa.IndexOf ('.');
+                        Trace.Assert (period >= 0);
+                        int firstZero = mantissa.Length; // A value that works if there are no 0s.
+                        if (period < lastZero && lastDigit == lastZero)
+                        {
+                            for (int i = lastZero; i > period; i--)
+                            {
+                                if (mantissa [i] == '0')
+                                {
+                                    firstZero = i;
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        return mantissa.Substring (0, firstZero) +
+                               mantissa.Substring (firstZero).Replace ('0', ' ');
+                    }
+                    else
+                    {
+                        return mantissa;
+                    }
+                }
+                else
+                {
+                    return mantissa;
+                }
             }
 
             #endregion
@@ -282,14 +343,29 @@ namespace Mockingbird.HP.Class_Library
                                 {
                                     if (fixedUnderflowOverflow)
                                     {
-                                        return formatted.mantissa.ToString
+                                        return StripIfNeeded 
+                                                (formatted.mantissa.ToString
                                                     (fixUnderflowOverflowMantissaTemplate,
-                                                     NumberFormatInfo.InvariantInfo);
+                                                     NumberFormatInfo.InvariantInfo));
                                     }
                                     else
                                     {
-                                        string m = formatted.mantissa.ToString
-                                            (fixMantissaTemplate, NumberFormatInfo.InvariantInfo);
+                                        string m = "";
+                                        if (hasExtraDigitBetween0And1 &&
+                                            formatted.mantissa > -1.0M &&
+                                            formatted.mantissa < 1.0M)
+                                        {
+                                            m = formatted.mantissa.ToString
+                                                    (fixMantissaTemplateDPlus1,
+                                                     NumberFormatInfo.InvariantInfo);
+                                        }
+                                        else
+                                        {
+                                            m = formatted.mantissa.ToString
+                                                    (fixMantissaTemplateD,
+                                                     NumberFormatInfo.InvariantInfo);
+                                        }
+                                        m = StripIfNeeded (m);
                                         return m.Substring
                                             (mantissaSignFirst,
                                              Math.Min (m.Length,
@@ -352,12 +428,18 @@ namespace Mockingbird.HP.Class_Library
                     if (value == 0)
                     {
                         // Make sure that we don't lose the period when the count is 0.
-                        fixMantissaTemplate = " 0\\." + blanks + ";-0\\." + blanks;
+                        fixMantissaTemplateD = " 0\\." + blanks + ";-0\\." + blanks;
+                        fixMantissaTemplateDPlus1 = " #.0" + blanks +
+                                                    ";-#.0" + blanks +
+                                                    "; 0\\." + blanks;
                     }
                     else
                     {
                         zeros = new String ('0', value);
-                        fixMantissaTemplate = " 0." + zeros + blanks + ";-0." + zeros + blanks;
+                        fixMantissaTemplateD = " 0." + zeros + blanks + ";-0." + zeros + blanks;
+                        fixMantissaTemplateDPlus1 = " #.0" + zeros + blanks + 
+                                                    ";-#.0" + zeros + blanks +
+                                                    "; 0." + zeros + blanks;
                     }
 
                     // Engineering is weird because the Digits is the total number of digits
@@ -384,8 +466,8 @@ namespace Mockingbird.HP.Class_Library
                         engMantissaTemplate100 = " 000." + zeros + blanks + ";-000." + zeros + blanks;
                     }
 
-                    engMantissaTemplate1 = fixMantissaTemplate;
-                    sciMantissaTemplate = fixMantissaTemplate;
+                    engMantissaTemplate1 = fixMantissaTemplateD;
+                    sciMantissaTemplate = fixMantissaTemplateD;
 
                     Value = Value;
                 }

@@ -70,10 +70,14 @@ namespace Mockingbird.HP.Control_Library
             InitializeComponent ();
 
             random = new Random ();
-            randomFormatter = new Number.Formatter (9,
-                                                    Number.DisplayFormat.Scientific,
-                                                    /*padMantissa*/ true,
-                                                    /*showPlusSignInExponent*/ false);
+            randomFormatter = new Number.Formatter
+                                    (/*digits*/ 9,
+                                     Number.DisplayFormat.Scientific,
+                                     /*fixedUnderflowExponentThreshold*/ sbyte.MinValue,
+                                     /*hasExtraDigitBetween0And1*/ false,
+                                     /*padMantissa*/ true,
+                                     /*showPlusSignInExponent*/ false,
+                                     /*stripTrailingZeros */ false);
 
             // Make the control non-selectable, otherwise the application will select its
             // text at startup.

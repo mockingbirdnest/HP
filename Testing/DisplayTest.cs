@@ -52,8 +52,11 @@ namespace Mockingbird.HP.Testing
             formatter = new Mockingbird.HP.Class_Library.Number.Formatter
                 (2,
                  Mockingbird.HP.Class_Library.Number.DisplayFormat.Fixed,
+                 /*fixedUnderflowExponentThreshold*/ sbyte.MinValue,
+                 /*hasExtraDigitBetween0And1*/ false,
                  /*padMantissa*/ true,
-                 /*showPlusSignInExponent*/ false);
+                 /*showPlusSignInExponent*/ false,
+                 /*stripTrailingZeros*/ false);
             validater = new Mockingbird.HP.Class_Library.Number.Validater ();
             validater.ExponentChanged +=
                 new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
