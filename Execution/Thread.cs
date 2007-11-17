@@ -69,11 +69,10 @@ namespace Mockingbird.HP.Execution
 
         #region Constructors & Destructors
 
-        public Thread
-            (CalculatorModel model,
-             string [] tags,
-             Control [] sharedControls,
-             CrossThreadUINotification notifyUI)
+        public Thread (CalculatorModel model,
+                       string [] tags,
+                       Control [] sharedControls,
+                       CrossThreadUINotification notifyUI)
         {
             this.model = model;
             this.tags = tags;
@@ -168,8 +167,9 @@ namespace Mockingbird.HP.Execution
                 // parser, or during the execution of the keystroke.
                 lock (IsBusy)
                 {
+                    bool programWasEmpty = program.IsEmpty;
                     display.Invoke
-                        (notifyUI, new object [] { /* threadIsBusy */ true, program.IsEmpty });
+                        (notifyUI, new object [] { /* threadIsBusy */ true, programWasEmpty });
 
                     switch (keystroke.Motion)
                     {
@@ -190,9 +190,13 @@ namespace Mockingbird.HP.Execution
                             break;
                         case KeystrokeMotion.Down:
 
-                            // We only refresh the display if it is blurred, or if this is the key
-                            // that clears an error.  That's because a down keystroke may display
-                            // the current instruction.
+                            // In general we *don't* refresh the display here because a down
+                            // keystroke may display the current instruction.  There are three
+                            // exceptions to this, though: we refresh if the display is blurred, or
+                            // if this is the key that clears an error, or if the state of the
+                            // program changed.  The latter is necessary because we are not sure to
+                            // get an up keystroke for MERGE, as the mouse is likely to move to the
+                            // dialog box.
 
                             // TODO: What if another down key was queued in-between?
                             downKeystrokeWasEnqueued.Reset ();
@@ -205,7 +209,9 @@ namespace Mockingbird.HP.Execution
                             {
                                 downParser.Parse (keystroke.Tag);
                             }
-                            mustUnbusyUI = ignoreNextUp || display.IsBlurred;
+                            mustUnbusyUI = ignoreNextUp ||
+                                           display.IsBlurred ||
+                                           program.IsEmpty != programWasEmpty;
                             break;
                     }
                 }
@@ -399,6 +405,18 @@ namespace Mockingbird.HP.Execution
                 // Create the component that do not depend on the display.
                 reader = new Reader ("Mockingbird.HP.Parser.Parser", "CGT", model, tags);
                 validater = new Number.Validater ();
+
+                // Initialize the display and the printer.  This must happen early, because the
+                // engine might want to echo the display on the printer, and that's not appropriate
+                // at power on.
+                display.Formatter = new Number.Formatter (digits,
+                                                          Number.DisplayFormat.Fixed,
+                                                          fixedUnderflowExponentThreshold,
+                                                          hasExtraDigitBetween0And1,
+                                                          /*padMantissa*/ true,
+                                                          /*showPlusSignInExponent*/ false,
+                                                          stripZeros);
+                display.Formatter.Value = 0.0M;
                 if (printer != null)
                 {
                     printer.Formatter = new Number.Formatter (digits,
@@ -409,16 +427,6 @@ namespace Mockingbird.HP.Execution
                                                               /*showPlusSignInExponent*/ true,
                                                               stripZeros);
                 }
-
-                // The display is initially black, as when the calculator is powered off.
-                display.Formatter = new Number.Formatter (digits,
-                                                          Number.DisplayFormat.Fixed,
-                                                          fixedUnderflowExponentThreshold,
-                                                          hasExtraDigitBetween0And1,
-                                                          /*padMantissa*/ true,
-                                                          /*showPlusSignInExponent*/ false,
-                                                          stripZeros);
-                display.ShowText ("", 0, 0);
 
                 // Create the components that depend on the display.
                 memory = new Memory (display, printer);
@@ -446,12 +454,15 @@ namespace Mockingbird.HP.Execution
                 upActions = new Actions (engine, KeystrokeMotion.Up);
                 upParser = new Parser.Parser (reader, program, upActions);
 
+                // The display is initially black, as when the calculator is powered off.  This must
+                // be done last, as some of the operations above may interact with the display.
+                display.ShowText ("", 0, 0);
+
                 // Now wait until the main thread tells us that the calculator has been powered on.
                 PowerOn.WaitOne ();
 
                 // Reinitialize the display to its power-on state.
                 display.Mode = DisplayMode.Numeric;
-                display.Formatter.Value = 0.0M;
 
                 do
                 {
