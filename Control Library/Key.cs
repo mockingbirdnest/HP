@@ -8,6 +8,12 @@ using System.Windows.Forms;
 
 namespace Mockingbird.HP.Control_Library
 {
+    public enum VerticalPosition
+    {
+        Top,
+        Bottom
+    }
+
     public enum TextAlign
     {
         Centered,
@@ -27,8 +33,10 @@ namespace Mockingbird.HP.Control_Library
 
         private Color fgBackColor;
         private TextAlign fgTextAlign;
+        private VerticalPosition fgVerticalPosition;
         private int fgWidth;
         private Font font;
+        private int hButtonMargin;
         private bool inAdjustSize = false;
         private bool inScaleControl = false;
         private Keys [] shortcuts;
@@ -63,7 +71,13 @@ namespace Mockingbird.HP.Control_Library
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent ();
 
+            // This is the part of the h button that is hidden, either by the f/g labels, or by the
+            // bottom of the control.  It is chosen in the designer and used when moving the controls
+            // around.
+            hButtonMargin = hButton.Location.Y + hButton.Size.Height - fLabel.Location.Y;
+
             fgTextAlign = TextAlign.Justified;
+            fgVerticalPosition = VerticalPosition.Bottom;
             fgWidth = button.Size.Width;
             shortcuts = new Keys [0];
             mainHeight = button.Height;
@@ -271,7 +285,7 @@ namespace Mockingbird.HP.Control_Library
             // control (e.g., MainHeight) is changed.  It doesn't affect the height of the hButton
             // or of the labels.
             int x = Math.Min (button.Location.X, fLabel.Location.X);
-            int y = button.Location.Y;
+            int y = Math.Min (button.Location.Y, fLabel.Location.Y);
 
             button.Location = new Point (button.Location.X - x, button.Location.Y - y);
             hButton.Location = new Point (hButton.Location.X - x, hButton.Location.Y - y);
@@ -280,10 +294,15 @@ namespace Mockingbird.HP.Control_Library
 
             inAdjustSize = true;
             Size = new Size (Math.Max (fgWidth, mainWidth),
-                            fLabel.Location.Y + fLabel.Size.Height);
+                             Math.Max (hButton.Location.Y + hButton.Size.Height - hButtonMargin,
+                                       fLabel.Location.Y + fLabel.Size.Height));
             inAdjustSize = false;
 
-            Trace.Assert (button.Location.Y == 0);
+            Trace.Assert (button.Location.Y == 0 || 
+                          (fLabel.Location.Y == 0 && gLabel.Location.Y == 0));
+            Trace.Assert (hButton.Location.Y + hButton.Size.Height - hButtonMargin == Size.Height ||
+                          (fLabel.Location.Y + fLabel.Size.Height == Size.Height &&
+                           gLabel.Location.Y + gLabel.Size.Height == Size.Height));
             Trace.Assert (button.Size.Width == hButton.Size.Width);
             Trace.Assert (fLabel.Location.X == 0);
             Trace.Assert (fLabel.Size.Width == gLabel.Location.X);
@@ -360,7 +379,8 @@ namespace Mockingbird.HP.Control_Library
             base.OnResize (e);
 
             int oldWidth = Math.Max (fgWidth, mainWidth);
-            int oldHeight = fLabel.Location.Y + fLabel.Size.Height;
+            int oldHeight = Math.Max (hButton.Location.Y + hButton.Size.Height - hButtonMargin,
+                                      fLabel.Location.Y + fLabel.Size.Height);
 
             if (inAdjustSize)
             {
@@ -393,6 +413,18 @@ namespace Mockingbird.HP.Control_Library
         #endregion
 
         #region Public Properties
+
+        public Color FForeColor
+        {
+            get
+            {
+                return fLabel.ForeColor;
+            }
+            set
+            {
+                fLabel.ForeColor = value;
+            }
+        }
 
         public Color FGBackColor
         {
@@ -432,6 +464,56 @@ namespace Mockingbird.HP.Control_Library
                                 break;
                             }
                     }
+                }
+            }
+        }
+
+        public VerticalPosition FGVerticalPosition
+        {
+            get
+            {
+                return fgVerticalPosition;
+            }
+            set
+            {
+                if (fgVerticalPosition != value)
+                {
+                    int ΔYButton;
+                    fgVerticalPosition = value;
+                    switch (fgVerticalPosition)
+                    {
+                        case VerticalPosition.Bottom:
+                            int hButtonBottom =
+                                hButton.Location.Y + hButton.Size.Height - hButtonMargin;
+                            int fgTop = fLabel.Location.Y;
+                            ΔYButton = fgTop - button.Location.Y;
+                            button.Location = new Point (button.Location.X,
+                                                         button.Location.Y + ΔYButton);
+                            hButton.Location = new Point (hButton.Location.X,
+                                                          hButton.Location.Y + ΔYButton);
+                            fLabel.Location = new Point (fLabel.Location.X,
+                                                         hButtonBottom - fLabel.Size.Height);
+                            gLabel.Location = new Point (gLabel.Location.X, 
+                                                         hButtonBottom - gLabel.Size.Height);
+                            fLabel.BringToFront ();
+                            gLabel.BringToFront ();
+                            break;
+                        case VerticalPosition.Top:
+                            int buttonTop = button.Location.Y;
+                            int fgBottom = fLabel.Location.Y + fLabel.Size.Height;
+                            ΔYButton =
+                                fgBottom + hButtonMargin - hButton.Location.Y - hButton.Size.Height;
+                            button.Location = new Point (button.Location.X,
+                                                         button.Location.Y + ΔYButton);
+                            hButton.Location = new Point (hButton.Location.X,
+                                                          hButton.Location.Y + ΔYButton);
+                            fLabel.Location = new Point (fLabel.Location.X, buttonTop);
+                            gLabel.Location = new Point (gLabel.Location.X, buttonTop);
+                            fLabel.SendToBack ();
+                            gLabel.SendToBack ();
+                            break;
+                    }
+                    AdjustSize ();
                 }
             }
         }
@@ -511,6 +593,18 @@ namespace Mockingbird.HP.Control_Library
             }
         }
 
+        public Color GForeColor
+        {
+            get
+            {
+                return gLabel.ForeColor;
+            }
+            set
+            {
+                gLabel.ForeColor = value;
+            }
+        }
+
         public string GText
         {
             get
@@ -555,6 +649,18 @@ namespace Mockingbird.HP.Control_Library
                 {
                     CenterFG ();
                 }
+            }
+        }
+
+        public Color HForeColor
+        {
+            get
+            {
+                return hButton.ForeColor;
+            }
+            set
+            {
+                hButton.ForeColor = value;
             }
         }
 
