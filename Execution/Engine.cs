@@ -251,22 +251,17 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
-        #region Private Properties
+        #region Private Operations
 
-        private bool MustTrace
+        private void ClobberTIf (bool needed)
         {
-            get
+            // The HP-35 uses the T register to compute the trigonometric functions (see Operating
+            // Manual p. 17).
+            if (needed)
             {
-                return printer != null &&
-                       (inDisplayX ||
-                        (modes.tracing != EngineModes.Tracing.Manual &&
-                         !(running && modes.tracing == EngineModes.Tracing.Normal)));
+                stack.T = stack.Z;
             }
         }
-
-        #endregion
-
-        #region Private Operations
 
         private void EnterIfNeeded ()
         {
@@ -352,6 +347,21 @@ namespace Mockingbird.HP.Execution
 
         #endregion
 
+        #region Public Properties
+
+        public bool MustTrace
+        {
+            get
+            {
+                return printer != null &&
+                       (inDisplayX ||
+                        (modes.tracing != EngineModes.Tracing.Manual &&
+                         !(running && modes.tracing == EngineModes.Tracing.Normal)));
+            }
+        }
+
+        #endregion
+
         #region Public Operations
 
         public EngineModes Modes
@@ -397,7 +407,8 @@ namespace Mockingbird.HP.Execution
                     // These functions do not interrupt digit entry (they are a subset of those
                     // documented as "not affecting the stack" on page 293 of the HP-97 manual). 
                     // Their list was determined experimentally on the HP-67 calculator.
-                    //TODO: It seems that we should be tracing the instruction when running/stepping.
+                    //TODO: It seems that we should be tracing the instruction when running/
+                    // stepping.
                     break;
                 case SymbolConstants.SYMBOL_GTO_PERIOD:
                 case SymbolConstants.SYMBOL_PRINT_PRGM:
@@ -445,6 +456,7 @@ namespace Mockingbird.HP.Execution
                     else
                     {
                         stack.X = FromRadian (Number.Acos (x));
+                        ClobberTIf (reader.Model == CalculatorModel.HP35);
                     }
                     break;
                 case SymbolConstants.SYMBOL_ARCSIN:
@@ -456,11 +468,13 @@ namespace Mockingbird.HP.Execution
                     else
                     {
                         stack.X = FromRadian (Number.Asin (x));
+                        ClobberTIf (reader.Model == CalculatorModel.HP35);
                     }
                     break;
                 case SymbolConstants.SYMBOL_ARCTAN:
                     stack.Get (out x);
                     stack.X = FromRadian (Number.Atan (x));
+                    ClobberTIf (reader.Model == CalculatorModel.HP35);
                     break;
                 case SymbolConstants.SYMBOL_BST:
                     // Does nothing, moved backward on MouseDown.
@@ -494,6 +508,7 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_COS:
                     stack.Get (out x);
                     stack.X = Number.Cos (ToRadian (x));
+                    ClobberTIf (reader.Model == CalculatorModel.HP35);
                     break;
                 case SymbolConstants.SYMBOL_DEG:
                     unit = AngleUnit.Degree;
@@ -891,6 +906,7 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_SIN:
                     stack.Get (out x);
                     stack.X = Number.Sin (ToRadian (x));
+                    ClobberTIf (reader.Model == CalculatorModel.HP35);
                     break;
                 case SymbolConstants.SYMBOL_SPACE:
                     switch (reader.Model)
@@ -958,6 +974,7 @@ namespace Mockingbird.HP.Execution
                 case SymbolConstants.SYMBOL_TAN:
                     stack.Get (out x);
                     stack.X = Number.Tan (ToRadian (x));
+                    ClobberTIf (reader.Model == CalculatorModel.HP35);
                     break;
                 case SymbolConstants.SYMBOL_TEN_TO_THE_XTH:
                     stack.Get (out x);
@@ -1110,29 +1127,6 @@ namespace Mockingbird.HP.Execution
                     break;
                 default:
                     throw new Error ();
-            }
-
-            switch (reader.Model)
-            {
-                // The HP-35 Uses the T register to compute the following
-                // functions (see Operating manual p.17).
-                case CalculatorModel.HP35:
-                    switch ((SymbolConstants)instruction.Symbol.Id)
-                    {
-                        case SymbolConstants.SYMBOL_ARCCOS:
-                        case SymbolConstants.SYMBOL_ARCSIN:
-                        case SymbolConstants.SYMBOL_ARCTAN:
-                        case SymbolConstants.SYMBOL_COS:
-                        case SymbolConstants.SYMBOL_SIN:
-                        case SymbolConstants.SYMBOL_TAN:
-                            stack.T = stack.Z;
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                default:
-                    break;
             }
 
             // Set the stack lift as specified in Appendix D of the Programming Guide.

@@ -327,7 +327,7 @@ namespace Mockingbird.HP.Execution
             {
                 // It is important to update the printer before the display, otherwise the error
                 // message will be printed after a long delay.
-                if (printer != null)
+                if (engine.MustTrace)
                 {
                     printer.PrintText (Localization.PrinterError);
                 }
