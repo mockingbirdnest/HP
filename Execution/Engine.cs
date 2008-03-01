@@ -1112,6 +1112,29 @@ namespace Mockingbird.HP.Execution
                     throw new Error ();
             }
 
+            switch (reader.Model)
+            {
+                // The HP-35 Uses the T register to compute the following
+                // functions (see Operating manual p.17).
+                case CalculatorModel.HP35:
+                    switch ((SymbolConstants)instruction.Symbol.Id)
+                    {
+                        case SymbolConstants.SYMBOL_ARCCOS:
+                        case SymbolConstants.SYMBOL_ARCSIN:
+                        case SymbolConstants.SYMBOL_ARCTAN:
+                        case SymbolConstants.SYMBOL_COS:
+                        case SymbolConstants.SYMBOL_SIN:
+                        case SymbolConstants.SYMBOL_TAN:
+                            stack.T = stack.Z;
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
             // Set the stack lift as specified in Appendix D of the Programming Guide.
             switch ((SymbolConstants) instruction.Symbol.Id)
             {

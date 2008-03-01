@@ -117,6 +117,28 @@ namespace Mockingbird.HP.Class_Library
                 this [Position.y] = value;
             }
         }
+        public Number Z
+        {
+            get
+            {
+                return this[Position.z];
+            }
+            set
+            {
+                this[Position.z] = value;
+            }
+        }
+        public Number T
+        {
+            get
+            {
+                return this[Position.t];
+            }
+            set
+            {
+                this[Position.t] = value;
+            }
+        }
 
         #endregion
 
