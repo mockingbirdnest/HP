@@ -31,8 +31,11 @@ Public Class HP97p45
         SqrtButton().Click()
         AlphabeticTextBoxText().PerformTest(alphabeticTextBox_standardVP())
         ListBoxList().PerformTest(listBox_listVP())
+        Move2Left(toggleManTraceNormButton())
+        SqrtButton().Click()
+        AlphabeticTextBoxText().PerformTest(alphabeticTextBox_standard_2VP())
+        ListBoxList().PerformTest(listBox_list_2VP())
         CLXButton().Click()
-        NumericTextBoxText().PerformTest(numericTextBox_standard_2VP())
         HP97Window(ANY, MAY_EXIT).Click(CLOSE_BUTTON)
         Return Nothing
     End Function

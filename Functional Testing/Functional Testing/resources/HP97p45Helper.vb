@@ -13,11 +13,11 @@ Imports Rational.Test.Ft.Vp
 
 
 'Script Name   : HP97p45
-'Generated     : 2007/06/24 10:19:03 PM
+'Generated     : 2008/03/01 3:05:54 PM
 'Description   : Helper class for script
 'Original Host : Windows XP x86 5.1 build 2600 Service Pack 2
  
-'since  June 24, 2007
+'since  March 01, 2008
 'author phl
  
 Public MustInherit Class HP97p45Helper 
@@ -47,8 +47,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' CHS: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CHS
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : RAD
     ' 		.classIndex : 0
@@ -59,8 +59,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' CHS: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CHS
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : RAD
     ' 		.classIndex : 0
@@ -72,8 +72,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' CLX: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CL x
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : P⇄S
     ' 		.classIndex : 0
@@ -84,8 +84,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' CLX: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CL x
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : P⇄S
     ' 		.classIndex : 0
@@ -97,8 +97,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' HP97: with default state.
     '		Name : HP97
-    ' 		TabIndex : 0
     ' 		Text : HP97
+    ' 		TabIndex : 0
     ' 		.class : Mockingbird.HP.HP97.HP97
     ' 		.processName : Mockingbird.HP.HP97.exe
     '
@@ -108,8 +108,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' HP97: with specific test context and state.
     '		Name : HP97
-    ' 		TabIndex : 0
     ' 		Text : HP97
+    ' 		TabIndex : 0
     ' 		.class : Mockingbird.HP.HP97.HP97
     ' 		.processName : Mockingbird.HP.HP97.exe
     '
@@ -162,8 +162,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' Sqrt: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : √x̅
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : S
     ' 		.classIndex : 0
@@ -174,8 +174,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' Sqrt: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : √x̅
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : S
     ' 		.classIndex : 0
@@ -185,10 +185,35 @@ Public MustInherit Class HP97p45Helper
     End Function
 	
     '
+    ' toggleManTraceNorm: with default state.
+    '		Name : button
+    ' 		Text : 
+    ' 		TabIndex : 5
+    ' 		.class : System.Windows.Forms.Button
+    ' 		.priorLabel : TRACE
+    ' 		.classIndex : 0
+    '
+    Protected Function ToggleManTraceNormButton() As GuiTestObject
+        ToggleManTraceNormButton = New GuiTestObject(GetMappedTestObject("ToggleManTraceNormButton"))
+    End Function
+    '
+    ' toggleManTraceNorm: with specific test context and state.
+    '		Name : button
+    ' 		Text : 
+    ' 		TabIndex : 5
+    ' 		.class : System.Windows.Forms.Button
+    ' 		.priorLabel : TRACE
+    ' 		.classIndex : 0
+    '
+    Protected Function ToggleManTraceNormButton(anchor As TestObject, flags As Long) As  GuiTestObject
+        ToggleManTraceNormButton = New GuiTestObject(GetMappedTestObject("ToggleManTraceNormButton"), anchor, flags)
+    End Function
+	
+    '
     ' _4: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 4
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x≠0?
     ' 		.classIndex : 0
@@ -199,8 +224,8 @@ Public MustInherit Class HP97p45Helper
     '
     ' _4: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 4
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x≠0?
     ' 		.classIndex : 0
@@ -220,6 +245,16 @@ Public MustInherit Class HP97p45Helper
     End Function
 	
     '
+    ' Locate and return the verification point alphabeticTextBox_standard_2 object in the SUT.
+    '
+    Protected Function alphabeticTextBox_standard_2VP() As IFtVerificationPoint
+        alphabeticTextBox_standard_2VP = vp("alphabeticTextBox_standard_2")
+    End Function
+    Protected Function alphabeticTextBox_standard_2VP(anchor As TestObject)As IFtVerificationPoint
+        alphabeticTextBox_standard_2VP = vp("alphabeticTextBox_standard_2", anchor)
+    End Function
+	
+    '
     ' Locate and return the verification point listBox_list object in the SUT.
     '
     Protected Function listBox_listVP() As IFtVerificationPoint
@@ -227,6 +262,16 @@ Public MustInherit Class HP97p45Helper
     End Function
     Protected Function listBox_listVP(anchor As TestObject)As IFtVerificationPoint
         listBox_listVP = vp("listBox_list", anchor)
+    End Function
+	
+    '
+    ' Locate and return the verification point listBox_list_2 object in the SUT.
+    '
+    Protected Function listBox_list_2VP() As IFtVerificationPoint
+        listBox_list_2VP = vp("listBox_list_2")
+    End Function
+    Protected Function listBox_list_2VP(anchor As TestObject)As IFtVerificationPoint
+        listBox_list_2VP = vp("listBox_list_2", anchor)
     End Function
 	
     '
