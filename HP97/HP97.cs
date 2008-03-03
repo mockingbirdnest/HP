@@ -38,7 +38,8 @@ namespace Mockingbird.HP.HP97
             printer = new PrinterMixin (this);
         }
 
-        protected override void PostInitializeComponent (string [] arguments, CalculatorModel model, Control [] sharedControls)
+        protected override void PostInitializeComponent 
+            (string [] arguments, CalculatorModel model, Control [] sharedControls)
         {
             Array.Resize<Control> (ref sharedControls, sharedControls.Length + 1);
             sharedControls [sharedControls.Length - 1] = printerPaperRoll;
@@ -170,30 +171,18 @@ namespace Mockingbird.HP.HP97
 
         #endregion
 
-        public override EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
-        {
-            EngineModes modes = base.CrossThreadNotifyUI (threadIsBusy, programIsEmpty);
-
-            switch (toggleManTraceNorm.Position) {
-                case TogglePosition.Left:
-                    modes.tracing = EngineModes.Tracing.Manual;
-                    break;
-                case TogglePosition.Center:
-                    modes.tracing = EngineModes.Tracing.Trace;
-                    break;
-                case TogglePosition.Right:
-                    modes.tracing = EngineModes.Tracing.Normal;
-                    break;
-            }
-            return modes;
-        }
-
         protected override bool KeyEventsPreempted
         {
             get
             {
                 return card.KeyEventsPreempted;
             }
+        }
+
+        protected override void PowerOn ()
+        {
+            base.PowerOn ();
+            printer.PowerOn ();
         }
 
         protected override void UpdateUIToReflectProgram (bool programIsEmpty)

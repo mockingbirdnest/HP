@@ -21,8 +21,7 @@ namespace Mockingbird.HP.Execution
         #region Public Data
 
         // Delegates used for cross-thread invocation.
-        public delegate EngineModes CrossThreadUINotification
-            (bool threadIsBusy, bool programIsEmpty);
+        public delegate void CrossThreadUINotification (bool threadIsBusy, bool programIsEmpty);
         public delegate FileStream CrossThreadFileOperation ();
 
         // Lock this object to ensure that the thread is idle.
@@ -148,6 +147,14 @@ namespace Mockingbird.HP.Execution
 
         #region Message Handling
 
+        private void ExecutionProcessExecutionModeMessage (ExecutionModeMessage execution,
+                                                           Engine engine,
+                                                           out bool mustUnbusyUI)
+        {
+            engine.ExecutionMode = execution.Mode;
+            mustUnbusyUI = true;
+        }
+
         private void ExecutionProcessKeystrokeMessage
             (KeystrokeMessage keystroke,
              Engine           engine,
@@ -257,10 +264,10 @@ namespace Mockingbird.HP.Execution
             program.PrintOnePage (print.Arguments, new Font ("Arial Unicode MS", 10));
         }
 
-        private void ExecutionProcessRefreshMessage (RefreshMessage message, out bool mustUnbusyUI)
-        {
-            mustUnbusyUI = true;
-        }
+        //private void ExecutionProcessRefreshMessage (RefreshMessage message, out bool mustUnbusyUI)
+        //{
+        //    mustUnbusyUI = true;
+        //}
 
         private void ExecutionProcessSaveMessage (SaveMessage save)
         {
@@ -274,6 +281,14 @@ namespace Mockingbird.HP.Execution
             {
                 stream.Close ();
             }
+        }
+
+        private void ExecutionProcessTracingModeMessage (TracingModeMessage tracing, 
+                                                         Engine engine,
+                                                         out bool mustUnbusyUI)
+        {
+            engine.TracingMode = tracing.Mode;
+            mustUnbusyUI = true;
         }
 
         private void ExecutionProcessMessage
@@ -298,6 +313,11 @@ namespace Mockingbird.HP.Execution
 
                 switch (message.Kind)
                 {
+                    case MessageKind.ExecutionMode:
+                        ExecutionProcessExecutionModeMessage ((ExecutionModeMessage) message,
+                                                              engine,
+                                                              out mustUnbusyUI);
+                        break;
                     case MessageKind.Keystroke:
                         ExecutionProcessKeystrokeMessage ((KeystrokeMessage) message,
                                                            engine,
@@ -309,17 +329,19 @@ namespace Mockingbird.HP.Execution
                         break;
                     case MessageKind.Open:
                         ExecutionProcessOpenMessage ((OpenMessage) message,
-                                                        reader,
-                                                        out mustUnbusyUI);
+                                                     reader,
+                                                     out mustUnbusyUI);
                         break;
                     case MessageKind.Print:
                         ExecutionProcessPrintMessage ((PrintMessage) message, program);
                         break;
-                    case MessageKind.Refresh:
-                        ExecutionProcessRefreshMessage ((RefreshMessage) message, out mustUnbusyUI);
-                        break;
                     case MessageKind.Save:
                         ExecutionProcessSaveMessage ((SaveMessage) message);
+                        break;
+                    case MessageKind.TracingMode:
+                        ExecutionProcessTracingModeMessage ((TracingModeMessage) message,
+                                                            engine,
+                                                            out mustUnbusyUI);
                         break;
                 }
             }
@@ -353,7 +375,7 @@ namespace Mockingbird.HP.Execution
             {
                 if (mustUnbusyUI)
                 {
-                    engine.Modes = (EngineModes) display.Invoke
+                    display.Invoke
                         (notifyUI, new object [] { /*threadIsBusy*/ false, program.IsEmpty });
                 }
 
@@ -441,7 +463,7 @@ namespace Mockingbird.HP.Execution
                                      validater);
                 engine.WaitForKeystroke +=
                     new Engine.TimedKeystrokeEvent (ExecutionWaitForKeystroke);
-                engine.Modes = (EngineModes) display.Invoke
+                display.Invoke
                     (notifyUI, new object [] { /*threadIsBusy*/ false, /* programIsEmpty */ true });
 
                 // We need two parsers: one that processes the MouseDown events, and one that

@@ -36,13 +36,8 @@ namespace Mockingbird.HP.HP35
         {
         }
 
-        public override EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
+        public override void CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
         {
-            EngineModes modes;
-
-            modes.execution = EngineModes.Execution.Run;
-            modes.tracing = EngineModes.Tracing.Manual;
-            return modes;
         }
 
         protected override void PowerOff ()

@@ -4,6 +4,7 @@ using Mockingbird.HP.Execution;
 using Mockingbird.HP.Parser;
 using Mockingbird.HP.Persistence;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -90,22 +91,17 @@ namespace Mockingbird.HP.Execution
             saveAsToolStripMenuItem.Enabled = false;
         }
 
-        public override EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
+        public override void CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty)
         {
-            EngineModes modes;
-
-            modes.tracing = EngineModes.Tracing.Normal;
             if (threadIsBusy)
             {
                 BusyUI ();
-                modes.execution = EngineModes.Execution.Run;
             }
             else
             {
                 UpdateUIToReflectProgram (programIsEmpty);
-                modes.execution = UnbusyUIAndGetEngineModes ();
+                UnbusyUI ();
             }
-            return modes;
         }
 
         protected override void PowerOff ()
@@ -115,6 +111,12 @@ namespace Mockingbird.HP.Execution
             BusyUI ();
             executionThread.Reset ();
             UpdateUIToReflectProgram (/* programIsEmpty */ true);
+        }
+
+        protected override void PowerOn ()
+        {
+            base.PowerOn ();
+            toggleWprgmRun_ToggleMoved (toggleWprgmRun, toggleWprgmRun.Position);
         }
 
         protected override void ProcessCommandLine (string [] arguments)
@@ -165,7 +167,27 @@ namespace Mockingbird.HP.Execution
 
         protected override void UnbusyUI ()
         {
-            UnbusyUIAndGetEngineModes ();
+            printToolStripMenuItem.Enabled = true;
+            switch (toggleWprgmRun.Position)
+            {
+                case TogglePosition.Left:
+
+                    // W/PRGM, can only save.
+                    display.Mode = DisplayMode.Instruction;
+                    openToolStripMenuItem.Enabled = false;
+                    saveToolStripMenuItem.Enabled = true;
+                    saveAsToolStripMenuItem.Enabled = true;
+                    break;
+
+                case TogglePosition.Right:
+
+                    // RUN, can only open.
+                    display.Mode = DisplayMode.Numeric;
+                    openToolStripMenuItem.Enabled = true;
+                    saveToolStripMenuItem.Enabled = false;
+                    saveAsToolStripMenuItem.Enabled = false;
+                    break;
+            }
         }
 
         protected virtual void UpdateUIToReflectProgram (bool programIsEmpty)
@@ -335,34 +357,6 @@ namespace Mockingbird.HP.Execution
             }
         }
 
-        private EngineModes.Execution UnbusyUIAndGetEngineModes ()
-        {
-            printToolStripMenuItem.Enabled = true;
-            switch (toggleWprgmRun.Position)
-            {
-                case TogglePosition.Left:
-
-                    // W/PRGM, can only save.
-                    display.Mode = DisplayMode.Instruction;
-                    openToolStripMenuItem.Enabled = false;
-                    saveToolStripMenuItem.Enabled = true;
-                    saveAsToolStripMenuItem.Enabled = true;
-                    return EngineModes.Execution.WriteProgram;
-
-                case TogglePosition.Right:
-
-                    // RUN, can only open.
-                    display.Mode = DisplayMode.Numeric;
-                    openToolStripMenuItem.Enabled = true;
-                    saveToolStripMenuItem.Enabled = false;
-                    saveAsToolStripMenuItem.Enabled = false;
-                    return EngineModes.Execution.Run;
-
-                default:
-                    return EngineModes.Execution.Run; // To make the compiler happy.
-            }
-        }
-
         #endregion
 
         #region Event Handlers
@@ -389,20 +383,24 @@ namespace Mockingbird.HP.Execution
             // proceed immediately.  If it is busy, we won't be able to grab the lock, and we will
             // return without doing anything.  That's not a problem because the execution thread
             // will update the menus as soon as the current computation finishes.
-            if (Monitor.TryEnter (executionThread.IsBusy))
-            {
-                try
-                {
 
-                    // Ask the execution thread to refresh its state based on the new state of the
-                    // UI.  This will cause the display mode and the menus to reflect the current
-                    // position of the toggle.
-                    executionThread.Enqueue (new RefreshMessage ());
-                }
-                finally
-                {
-                    Monitor.Exit (executionThread.IsBusy);
-                }
+            // Ask the execution thread to refresh its state based on the new state of the
+            // UI.  This will cause the display mode and the menus to reflect the current
+            // position of the toggle.
+            //TODO: This comment is incorrect.
+            switch (position)
+            {
+                case TogglePosition.Left:
+                    executionThread.Enqueue 
+                        (new ExecutionModeMessage (EngineModes.Execution.WriteProgram));
+                    break;
+                case TogglePosition.Right:
+                    executionThread.Enqueue
+                        (new ExecutionModeMessage (EngineModes.Execution.Run));
+                    break;
+                default:
+                    Trace.Assert (false);
+                    break;
             }
         }
 

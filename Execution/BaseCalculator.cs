@@ -130,11 +130,8 @@ namespace Mockingbird.HP.Execution
                 ProcessCommandLine (arguments);
             }
 
-            // Prepare the UI.
-            UnbusyUI ();
-
-            // Power on.
-            executionThread.PowerOn.Set ();
+            // Start the calculator.
+            PowerOn ();
         }
 
         #endregion
@@ -152,7 +149,7 @@ namespace Mockingbird.HP.Execution
         protected abstract void BusyUI ();
 
         // Called by the execution thread to notify the UI thread that of a state change.
-        public abstract EngineModes CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty);
+        public abstract void CrossThreadNotifyUI (bool threadIsBusy, bool programIsEmpty);
 
         // Power-off the calculator.
         protected abstract void PowerOff ();
@@ -162,6 +159,19 @@ namespace Mockingbird.HP.Execution
 
         // Make the UI unbusy so as to allow user interactions.
         protected abstract void UnbusyUI ();
+
+        #endregion
+
+        #region Dispatching Operations
+
+        protected virtual void PowerOn ()
+        {
+            // Prepare the UI.
+            UnbusyUI ();
+
+            // Power on.
+            executionThread.PowerOn.Set ();
+        }
 
         #endregion
 
@@ -251,10 +261,9 @@ namespace Mockingbird.HP.Execution
                     // the UI to receive user interaction.  Then we queue a message to force the
                     // thread to refresh (e.g., to read the W/PRGM-RUN toggle).  And finally we 
                     // release the execution thread.
+                    //TODO: This comment is wrong.
                     executionThread.Clear ();
-                    UnbusyUI ();
-                    executionThread.Enqueue (new RefreshMessage ());
-                    executionThread.PowerOn.Set ();
+                    PowerOn ();
                     break;
             }
         }

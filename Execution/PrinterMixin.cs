@@ -46,6 +46,15 @@ namespace Mockingbird.HP.Execution
 
             #endregion
 
+            #region Dispatching Operations
+
+            public void PowerOn ()
+            {
+                toggleManTraceNorm_ToggleMoved (_toggleManTraceNorm, _toggleManTraceNorm.Position);
+            }
+
+            #endregion
+
             #region Controls
 
             public Button printerFeedButton
@@ -102,17 +111,20 @@ namespace Mockingbird.HP.Execution
 
             public void toggleManTraceNorm_ToggleMoved (object sender, TogglePosition position)
             {
-                // See toggleWprgmRun_ToggleMoved for explanations.
-                if (Monitor.TryEnter (parent.executionThread.IsBusy))
+                switch (position)
                 {
-                    try
-                    {
-                        parent.executionThread.Enqueue (new RefreshMessage ());
-                    }
-                    finally
-                    {
-                        Monitor.Exit (parent.executionThread.IsBusy);
-                    }
+                    case TogglePosition.Left:
+                        parent.executionThread.Enqueue
+                            (new TracingModeMessage (EngineModes.Tracing.Manual));
+                        break;
+                    case TogglePosition.Center:
+                        parent.executionThread.Enqueue
+                            (new TracingModeMessage (EngineModes.Tracing.Trace));
+                        break;
+                    case TogglePosition.Right:
+                        parent.executionThread.Enqueue
+                            (new TracingModeMessage (EngineModes.Tracing.Normal));
+                        break;
                 }
             }
 

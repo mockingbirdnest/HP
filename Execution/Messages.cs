@@ -9,11 +9,12 @@ namespace Mockingbird.HP.Execution
 
     public enum MessageKind
     {
+        ExecutionMode,
         Keystroke,
         Open,
         Print,
-        Refresh,
-        Save
+        Save,
+        TracingMode,
     }
 
     public enum KeystrokeMotion
@@ -52,6 +53,31 @@ namespace Mockingbird.HP.Execution
     #endregion
 
     #region Concrete Messages
+
+    public class ExecutionModeMessage : Message
+    {
+        private EngineModes.Execution execution;
+
+        public ExecutionModeMessage (EngineModes.Execution execution)
+        {
+            this.execution = execution;
+        }
+
+        public override MessageKind Kind
+        {
+            get {
+                return MessageKind.ExecutionMode;
+            }
+        }
+
+        public EngineModes.Execution Mode
+        {
+            get
+            {
+                return execution;
+            }
+        }
+    }
 
     public class KeystrokeMessage : Message
     {
@@ -154,21 +180,6 @@ namespace Mockingbird.HP.Execution
         }
     }
 
-    public class RefreshMessage : Message
-    {
-        public RefreshMessage ()
-        {
-        }
-
-        public override MessageKind Kind
-        {
-            get
-            {
-                return MessageKind.Refresh;
-            }
-        }
-    }
-
     public class SaveMessage : Message
     {
         private CardPart part;
@@ -201,6 +212,32 @@ namespace Mockingbird.HP.Execution
             get
             {
                 return stream;
+            }
+        }
+    }
+
+    public class TracingModeMessage : Message
+    {
+        private EngineModes.Tracing tracing;
+
+        public TracingModeMessage (EngineModes.Tracing tracing)
+        {
+            this.tracing = tracing;
+        }
+
+        public override MessageKind Kind
+        {
+            get
+            {
+                return MessageKind.TracingMode;
+            }
+        }
+
+        public EngineModes.Tracing Mode
+        {
+            get
+            {
+                return tracing;
             }
         }
     }

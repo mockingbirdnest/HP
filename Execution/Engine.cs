@@ -364,11 +364,11 @@ namespace Mockingbird.HP.Execution
 
         #region Public Operations
 
-        public EngineModes Modes
+        public EngineModes.Execution ExecutionMode
         {
             set
             {
-                modes = value;
+                modes.execution = value;
                 switch (modes.execution)
                 {
                     case EngineModes.Execution.Run:
@@ -378,6 +378,14 @@ namespace Mockingbird.HP.Execution
                         display.Mode = DisplayMode.Instruction;
                         break;
                 }
+            }
+        }
+
+        public EngineModes.Tracing TracingMode
+        {
+            set
+            {
+                modes.tracing = value;
             }
         }
 
