@@ -539,7 +539,8 @@ namespace Mockingbird.HP.Execution
                         switch (reader.Model)
                         {
                             case CalculatorModel.HP67:
-                                display.PauseAndBlink (5000);
+                                display.PauseAndBlink (/* count */ 8, 
+                                                       /* msPeriod */ 5000 / 8);
                                 break;
                             case CalculatorModel.HP97:
                                 validater.DoneEnteringOrPeek ();

@@ -315,21 +315,21 @@ namespace Mockingbird.HP.Control_Library
             }
         }
 
-        public void PauseAndBlink (int ms)
+        public void PauseAndBlink (int count, int msPeriod)
         {
-            int interval = ms / 16;
             string textWithPeriod = ThreadSafe.GetText (numericTextBox);
             string textWithoutPeriod = textWithPeriod.Replace (period, ' ');
             string [] texts = new String [] { textWithoutPeriod, textWithPeriod };
+            int interval = msPeriod / texts.Length;
 
             Mode = DisplayMode.Numeric;
             try
             {
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < count; i++)
                 {
-                    for (int j = 0; j < 2; j++)
+                    foreach (string text in texts)
                     {
-                        ThreadSafe.SetText (numericTextBox, texts [j]);
+                        ThreadSafe.SetText (numericTextBox, text);
                         ThreadSafe.Update (this);
 
                         // Most of the time the following call will just be equivalent to

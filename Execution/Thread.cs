@@ -264,11 +264,6 @@ namespace Mockingbird.HP.Execution
             program.PrintOnePage (print.Arguments, new Font ("Arial Unicode MS", 10));
         }
 
-        //private void ExecutionProcessRefreshMessage (RefreshMessage message, out bool mustUnbusyUI)
-        //{
-        //    mustUnbusyUI = true;
-        //}
-
         private void ExecutionProcessSaveMessage (SaveMessage save)
         {
             FileStream stream = save.Stream;
