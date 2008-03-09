@@ -119,6 +119,12 @@ namespace Mockingbird.HP.Execution
             this.validater.NumberStarted += new Number.ChangeEvent (NumberStarted);
             Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
             Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
+
+            // Now initialize the validater.  This will cause the delegates of the validater to be
+            // notified of the current value (zero).  This is necessary in case someone wants to
+            // peek at the current value before any digit has been entered.
+            validater.EnterDigit (0);
+            validater.DoneEntering ();
         }
 
         #endregion
@@ -509,6 +515,7 @@ namespace Mockingbird.HP.Execution
                     stack.Enter ();
                     stack.Enter ();
                     stack.Enter ();
+                    memory.Clear ();
                     break;
                 case SymbolConstants.SYMBOL_CLX:
                     stack.X = 0.0M;

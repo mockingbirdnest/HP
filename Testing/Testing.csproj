@@ -119,6 +119,10 @@
       <Project>{71A0054A-FD2B-4DDB-91FB-1470909F91E4}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
+    <ProjectReference Include="..\Parser\Parser.csproj">
+      <Project>{D97548CE-C80A-4DAE-BA32-1E3FA7273153}</Project>
+      <Name>Parser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persistent Class Library\Persistent Class Library.csproj">
       <Project>{76E1A007-1E22-40BC-826D-834FE3673BD8}</Project>
       <Name>Persistent Class Library</Name>

@@ -1,3 +1,4 @@
+using Mockingbird.HP.Parser;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -15,10 +16,21 @@ namespace Mockingbird.HP.Class_Library
             private bool enteringMantissa;
             private bool enteringNumber;
             private bool hasAPeriod;
+            private bool isZero;
+            private CalculatorModel model;
 
             // These fields include the respective signs.
             private string exponent;
             private string mantissa;
+
+            #endregion
+
+            #region Constructors & Destructors
+
+            public Validater (CalculatorModel model)
+            {
+                this.model = model;
+            }
 
             #endregion
 
@@ -130,6 +142,7 @@ namespace Mockingbird.HP.Class_Library
                 enteringMantissa = true;
                 enteringExponent = false;
                 hasAPeriod = false;
+                isZero = true;
                 ReplaceExponentWithSign (new String (' ', exponentSignLength + exponentLength));
             }
 
@@ -177,24 +190,29 @@ namespace Mockingbird.HP.Class_Library
                 // that it didn't do its duty.  Clients will have to cope.
                 if (enteringNumber)
                 {
-                    if (enteringMantissa)
+                    // On the HP-35 the sequence period-CHS produces -. but not on the other models.
+                    // See HP-35 Operating Manual, p. 14.
+                    if (!isZero || (model == CalculatorModel.HP35))
                     {
-                        sign = mantissa [mantissaSignFirst];
-                    }
-                    else
-                    {
-                        Trace.Assert (enteringExponent);
-                        sign = exponent [exponentSignFirst];
-                    }
-                    sign = OtherSign (sign);
-                    if (enteringMantissa)
-                    {
-                        ReplaceMantissaSign (sign);
-                    }
-                    else
-                    {
-                        Trace.Assert (enteringExponent);
-                        ReplaceExponentSign (sign);
+                        if (enteringMantissa)
+                        {
+                            sign = mantissa [mantissaSignFirst];
+                        }
+                        else
+                        {
+                            Trace.Assert (enteringExponent);
+                            sign = exponent [exponentSignFirst];
+                        }
+                        sign = OtherSign (sign);
+                        if (enteringMantissa)
+                        {
+                            ReplaceMantissaSign (sign);
+                        }
+                        else
+                        {
+                            Trace.Assert (enteringExponent);
+                            ReplaceExponentSign (sign);
+                        }
                     }
                     done = true;
                 }
@@ -282,6 +300,10 @@ namespace Mockingbird.HP.Class_Library
                             Trace.Assert (m [m.Length - 1] == period);
                             m = m.Substring (0, m.Length - 1) + d + period;
                         }
+                    }
+                    if (b != 0)
+                    {
+                        isZero = false;
                     }
                     ReplaceMantissaWithSign (m);
                 }

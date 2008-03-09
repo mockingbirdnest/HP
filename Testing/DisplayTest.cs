@@ -1,4 +1,5 @@
 using Mockingbird.HP.Class_Library;
+using Mockingbird.HP.Parser;
 using System;
 using System.Drawing;
 using System.Collections;
@@ -57,7 +58,7 @@ namespace Mockingbird.HP.Testing
                  /*padMantissa*/ true,
                  /*showPlusSignInExponent*/ false,
                  /*stripTrailingZeros*/ false);
-            validater = new Mockingbird.HP.Class_Library.Number.Validater ();
+            validater = new Mockingbird.HP.Class_Library.Number.Validater (CalculatorModel.HP67);
             validater.ExponentChanged +=
                 new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
             validater.MantissaChanged +=

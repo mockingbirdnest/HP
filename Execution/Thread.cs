@@ -421,7 +421,7 @@ namespace Mockingbird.HP.Execution
 
                 // Create the component that do not depend on the display.
                 reader = new Reader ("Mockingbird.HP.Parser.Parser", "CGT", model, tags);
-                validater = new Number.Validater ();
+                validater = new Number.Validater (model);
 
                 // Initialize the display and the printer.  This must happen early, because the
                 // engine might want to echo the display on the printer, and that's not appropriate

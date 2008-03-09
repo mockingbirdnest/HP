@@ -49,7 +49,10 @@ Public Class HP97
         CallScript("HP97p66p72")
         CallScript("HP97p73p74")
 
+        CallScript("HP97PeriodCHS")
         CallScript("HP97PrintXOfUnformattedNumber")
+        CallScript("HP97PrintXStartup")
+
         Return Nothing
     End Function
 End Class
