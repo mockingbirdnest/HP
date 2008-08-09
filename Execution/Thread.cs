@@ -459,7 +459,8 @@ namespace Mockingbird.HP.Execution
                 engine.WaitForKeystroke +=
                     new Engine.TimedKeystrokeEvent (ExecutionWaitForKeystroke);
                 display.Invoke
-                    (notifyUI, new object [] { /*threadIsBusy*/ false, /* programIsEmpty */ true });
+                    (notifyUI, new object [] 
+                                       { /*threadIsBusy*/ false, /* programIsEmpty */ true });
 
                 // We need two parsers: one that processes the MouseDown events, and one that
                 // processes the MouseUp events, because both events have different effects for a
@@ -471,8 +472,9 @@ namespace Mockingbird.HP.Execution
                 upActions = new Actions (engine, KeystrokeMotion.Up);
                 upParser = new Parser.Parser (reader, program, upActions);
 
-                // The display is initially black, as when the calculator is powered off.  This must
-                // be done last, as some of the operations above may interact with the display.
+                // The display is initially black, as when the calculator is powered off.  This
+                // must be done last, as some of the operations above may interact with the
+                // display.
                 display.ShowText ("", 0, 0);
 
                 // Now wait until the main thread tells us that the calculator has been powered on.
