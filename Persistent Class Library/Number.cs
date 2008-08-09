@@ -68,8 +68,8 @@ namespace Mockingbird.HP.Class_Library
             n = (int) Math.Ceiling (log10);
             // Here we hope that:
             //    10 ** (n - 1) < m <= 10 ** n
-            // but in fact the computation of log10 may have introduced rounding errors, so we have to
-            // assume that:
+            // but in fact the computation of log10 may have introduced rounding errors, so we have
+            // to assume that:
             //    10 ** (n - 2) < m <= 10 ** (n + 1).
 
             mantissa = m * PowerOfTen (2 - n);
