@@ -45,9 +45,10 @@ namespace Mockingbird.HP.Execution
 
         // This will look strange.  We want to keep track of the number of entries in the message
         // queue, and to block when that number is 0.  We use a semaphore which is initially fully
-        // reserved, and has therefore a free count of 0.  When a message is queued, we call Release
-        // to increment the free count.  The execution thread suspends by calling WaitOne until
-        // the free count is positive, i.e., until there is one or several messages in the queue.
+        // reserved, and has therefore a free count of 0.  When a message is queued, we call
+        // Release to increment the free count.  The execution thread suspends by calling WaitOne
+        // until the free count is positive, i.e., until there is one or several messages in the
+        // queue.
         private Semaphore messagesEnqueued = new Semaphore (0, capacity);
         private Queue messageQueue;
 
@@ -170,8 +171,8 @@ namespace Mockingbird.HP.Execution
 
                 // We want to protect this sequence against asynchronous changes to the menus which
                 // may happen if the W/PGRM-RUN switch is moved: we wouldn't want the menus to be
-                // changed by the main thread between the invocation of notifyUI and the call to the
-                // parser, or during the execution of the keystroke.
+                // changed by the main thread between the invocation of notifyUI and the call to
+                // the parser, or during the execution of the keystroke.
                 lock (IsBusy)
                 {
                     bool programWasEmpty = program.IsEmpty;
