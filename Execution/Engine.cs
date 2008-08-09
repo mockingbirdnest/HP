@@ -50,16 +50,18 @@ namespace Mockingbird.HP.Execution
         private const decimal radianToDegree = 180.0M / Number.PI;
         private const decimal radianToGrade = 200.0M / Number.PI;
 
+        private bool doWeirdCHS = false;
         private bool enableBlur;
         private bool inDisplayX = false;
         private bool inNumberDone = false;
         private EngineModes modes;
+        private SymbolConstants previousSymbol = SymbolConstants.SYMBOL_EOF;
         private bool running = false;
         private bool stackLift = false;
         private bool stepping = false;
 
         private bool [] flags;
-        private AngleUnit unit;
+        private AngleUnit unit = AngleUnit.Degree;
 
         private Display display;
         private Memory memory;
@@ -102,7 +104,6 @@ namespace Mockingbird.HP.Execution
             }
 
             flags = new bool [4];
-            unit = AngleUnit.Degree;
             this.display = display;
             this.validater = validater;
             this.memory = memory;
@@ -203,6 +204,19 @@ namespace Mockingbird.HP.Execution
 
         private void NumberStarted (string mantissa, string exponent, Number value)
         {
+            // The HP-35 allows the user to press the CHS sign before or during number entry.  If a
+            // number is in the display as a result of something other than digit entry, pressing
+            // CHS negates it, but if the CHS key is then followed by a digit, the calculator
+            // assumes the CHS was actually meant for the following entry.  Thus the previous number
+            // displayed is pushed onto the stack without the (already displayed) sign change.  (See
+            // Museum of HP Calculators.)
+            doWeirdCHS = reader.Model == CalculatorModel.HP35 &&
+                         previousSymbol == SymbolConstants.SYMBOL_CHS;
+            if (doWeirdCHS)
+            {
+                // Undo the "normal" CHS.
+                stack.X = -stack.X;
+            }
             EnterIfNeeded ();
         }
 
@@ -397,798 +411,816 @@ namespace Mockingbird.HP.Execution
 
         public void Execute (Instruction instruction)
         {
-            bool neutral = stackLift;
-            Number x, y;
-
-            Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-                "Execute: " + instruction.PrintableText,
-                classTraceSwitch.DisplayName);
-
-            // Most operations terminate digit entry.  The only ones that don't are those that are
-            // used to construct digits, and SST which does not change the state of the engine at
-            // all.
-            switch ((SymbolConstants) instruction.Symbol.Id)
+            try
             {
-                case SymbolConstants.SYMBOL_CHS:
-                case SymbolConstants.SYMBOL_CL_PRGM:
-                case SymbolConstants.SYMBOL_DEL:
-                case SymbolConstants.SYMBOL_DIGIT:
-                case SymbolConstants.SYMBOL_EEX:
-                case SymbolConstants.SYMBOL_MERGE:
-                case SymbolConstants.SYMBOL_PERIOD:
-                case SymbolConstants.SYMBOL_SPACE:
-                case SymbolConstants.SYMBOL_SST:
-                    // These functions do not interrupt digit entry (they are a subset of those
-                    // documented as "not affecting the stack" on page 293 of the HP-97 manual). 
-                    // Their list was determined experimentally on the HP-67 calculator.
-                    //TODO: It seems that we should be tracing the instruction when running/
-                    // stepping.
-                    break;
-                case SymbolConstants.SYMBOL_GTO_PERIOD:
-                case SymbolConstants.SYMBOL_PRINT_PRGM:
-                    // Do not trace those.
-                    validater.DoneEntering ();
-                    break;
-                case SymbolConstants.SYMBOL_DISPLAY_X:
-                    // This one traces the contents of X in raw mode.  So it will only terminate
-                    // digit entry later.  Also, it only prints the instruction if executing.
-                    if (MustTrace && (running || stepping))
-                    {
-                        program.PrintStep ();
-                        printer.PrintInstruction (instruction, /*showKeycodes*/ false);
-                    }
-                    break;
-                default:
-                    validater.DoneEntering ();
-                    if (MustTrace)
-                    {
-                        if (running || stepping)
+                bool neutral = stackLift;
+                Number x, y;
+
+                Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+                    "Execute: " + instruction.PrintableText,
+                    classTraceSwitch.DisplayName);
+
+                // Most operations terminate digit entry.  The only ones that don't are those that
+                // are used to construct digits, and SST which does not change the state of the
+                // engine at all.
+                switch ((SymbolConstants) instruction.Symbol.Id)
+                {
+                    case SymbolConstants.SYMBOL_CHS:
+                    case SymbolConstants.SYMBOL_CL_PRGM:
+                    case SymbolConstants.SYMBOL_DEL:
+                    case SymbolConstants.SYMBOL_DIGIT:
+                    case SymbolConstants.SYMBOL_EEX:
+                    case SymbolConstants.SYMBOL_MERGE:
+                    case SymbolConstants.SYMBOL_PERIOD:
+                    case SymbolConstants.SYMBOL_SPACE:
+                    case SymbolConstants.SYMBOL_SST:
+                        // These functions do not interrupt digit entry (they are a subset of those
+                        // documented as "not affecting the stack" on page 293 of the HP-97 manual). 
+                        // Their list was determined experimentally on the HP-67 calculator.
+                        //TODO: It seems that we should be tracing the instruction when running/
+                        // stepping.
+                        break;
+                    case SymbolConstants.SYMBOL_GTO_PERIOD:
+                    case SymbolConstants.SYMBOL_PRINT_PRGM:
+                        // Do not trace those.
+                        validater.DoneEntering ();
+                        break;
+                    case SymbolConstants.SYMBOL_DISPLAY_X:
+                        // This one traces the contents of X in raw mode.  So it will only terminate
+                        // digit entry later.  Also, it only prints the instruction if executing.
+                        if (MustTrace && (running || stepping))
                         {
                             program.PrintStep ();
+                            printer.PrintInstruction (instruction, /*showKeycodes*/ false);
                         }
-                        printer.PrintInstruction (instruction, /*showKeycodes*/ false);
-                    }
-                    break;
-            }
+                        break;
+                    default:
+                        validater.DoneEntering ();
+                        if (MustTrace)
+                        {
+                            if (running || stepping)
+                            {
+                                program.PrintStep ();
+                            }
+                            printer.PrintInstruction (instruction, /*showKeycodes*/ false);
+                        }
+                        break;
+                }
 
-            switch ((SymbolConstants) instruction.Symbol.Id)
-            {
-                case SymbolConstants.SYMBOL_ABS:
-                    stack.Get (out x);
-                    stack.X = Number.Abs (x);
-                    break;
-                case SymbolConstants.SYMBOL_ADDITION:
-                    stack.Get (out x, out y);
-                    stack.X = y + x;
-                    break;
-                case SymbolConstants.SYMBOL_ARCCOS:
-                    stack.Get (out x);
-                    if (Number.Abs (x) > 1.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = FromRadian (Number.Acos (x));
+                switch ((SymbolConstants) instruction.Symbol.Id)
+                {
+                    case SymbolConstants.SYMBOL_ABS:
+                        stack.Get (out x);
+                        stack.X = Number.Abs (x);
+                        break;
+                    case SymbolConstants.SYMBOL_ADDITION:
+                        stack.Get (out x, out y);
+                        stack.X = y + x;
+                        break;
+                    case SymbolConstants.SYMBOL_ARCCOS:
+                        stack.Get (out x);
+                        if (Number.Abs (x) > 1.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = FromRadian (Number.Acos (x));
+                            ClobberTIf (reader.Model == CalculatorModel.HP35);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_ARCSIN:
+                        stack.Get (out x);
+                        if (Number.Abs (x) > 1.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = FromRadian (Number.Asin (x));
+                            ClobberTIf (reader.Model == CalculatorModel.HP35);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_ARCTAN:
+                        stack.Get (out x);
+                        stack.X = FromRadian (Number.Atan (x));
                         ClobberTIf (reader.Model == CalculatorModel.HP35);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_ARCSIN:
-                    stack.Get (out x);
-                    if (Number.Abs (x) > 1.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = FromRadian (Number.Asin (x));
+                        break;
+                    case SymbolConstants.SYMBOL_BST:
+                        // Does nothing, moved backward on MouseDown.
+                        break;
+                    case SymbolConstants.SYMBOL_CF:
+                        flags [((Digit) instruction.Arguments [0]).Value] = false;
+                        break;
+                    case SymbolConstants.SYMBOL_CHS:
+                        bool changeSignDone;
+                        validater.ChangeSign (out changeSignDone);
+                        if (!changeSignDone)
+                        {
+                            stack.X = -stack.X;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_CL_PRGM:
+                        // Cancels the f key.
+                        break;
+                    case SymbolConstants.SYMBOL_CL_REG:
+                        memory.Clear ();
+                        break;
+                    case SymbolConstants.SYMBOL_CLR:
+                        stack.X = 0.0M;
+                        stack.Enter ();
+                        stack.Enter ();
+                        stack.Enter ();
+                        memory.Clear ();
+                        break;
+                    case SymbolConstants.SYMBOL_CLX:
+                        stack.X = 0.0M;
+                        break;
+                    case SymbolConstants.SYMBOL_COS:
+                        stack.Get (out x);
+                        stack.X = Number.Cos (ToRadian (x));
                         ClobberTIf (reader.Model == CalculatorModel.HP35);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_ARCTAN:
-                    stack.Get (out x);
-                    stack.X = FromRadian (Number.Atan (x));
-                    ClobberTIf (reader.Model == CalculatorModel.HP35);
-                    break;
-                case SymbolConstants.SYMBOL_BST:
-                    // Does nothing, moved backward on MouseDown.
-                    break;
-                case SymbolConstants.SYMBOL_CF:
-                    flags [((Digit) instruction.Arguments [0]).Value] = false;
-                    break;
-                case SymbolConstants.SYMBOL_CHS:
-                    bool changeSignDone;
-                    validater.ChangeSign (out changeSignDone);
-                    if (!changeSignDone)
-                    {
-                        stack.X = -stack.X;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_CL_PRGM:
-                    // Cancels the f key.
-                    break;
-                case SymbolConstants.SYMBOL_CL_REG:
-                    memory.Clear ();
-                    break;
-                case SymbolConstants.SYMBOL_CLR:
-                    stack.X = 0.0M;
-                    stack.Enter ();
-                    stack.Enter ();
-                    stack.Enter ();
-                    memory.Clear ();
-                    break;
-                case SymbolConstants.SYMBOL_CLX:
-                    stack.X = 0.0M;
-                    break;
-                case SymbolConstants.SYMBOL_COS:
-                    stack.Get (out x);
-                    stack.X = Number.Cos (ToRadian (x));
-                    ClobberTIf (reader.Model == CalculatorModel.HP35);
-                    break;
-                case SymbolConstants.SYMBOL_DEG:
-                    unit = AngleUnit.Degree;
-                    break;
-                case SymbolConstants.SYMBOL_DEL:
-                    // Cancel the h key.
-                    break;
-                case SymbolConstants.SYMBOL_DIGIT:
-                    validater.EnterDigit (((Digit) instruction.Arguments [0]).Value);
-                    if (!running)
-                    {
-                        // Flag 3 is the data entry flag.
-                        flags [3] = true;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_DISPLAY_X:
-                    try
-                    {
-                        inDisplayX = true;
+                        break;
+                    case SymbolConstants.SYMBOL_DEG:
+                        unit = AngleUnit.Degree;
+                        break;
+                    case SymbolConstants.SYMBOL_DEL:
+                        // Cancel the h key.
+                        break;
+                    case SymbolConstants.SYMBOL_DIGIT:
+                        validater.EnterDigit (((Digit) instruction.Arguments [0]).Value);
+                        if (!running)
+                        {
+                            // Flag 3 is the data entry flag.
+                            flags [3] = true;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_DISPLAY_X:
+                        try
+                        {
+                            inDisplayX = true;
+                            switch (reader.Model)
+                            {
+                                case CalculatorModel.HP67:
+                                    display.PauseAndBlink (/* count */ 8,
+                                        /* msPeriod */ 5000 / 8);
+                                    break;
+                                case CalculatorModel.HP97:
+                                    validater.DoneEnteringOrPeek ();
+                                    printer.PrintEndMarker ();
+                                    break;
+                            }
+                        }
+                        finally
+                        {
+                            inDisplayX = false;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_DIVISION:
+                        stack.Get (out x, out y);
+                        if (x == 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = y / x;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_DSP:
+                        IDigits argument = ((IDigits) instruction.Arguments [0]);
+
+                        // Change the printer first because the display will trigger reprint.
+                        if (printer != null)
+                        {
+                            argument.SetDigits (memory, printer.Formatter);
+                        }
+                        argument.SetDigits (memory, display.Formatter);
+                        break;
+                    case SymbolConstants.SYMBOL_DSZ:
+                        if (memory.DecrementAndSkipIfZero ())
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_DSZ_SUB_I:
+                        if (memory.DecrementAndSkipIfZeroIndexed ())
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_EEX:
+                        validater.EnterExponent ();
+                        break;
+                    case SymbolConstants.SYMBOL_ENG:
+
+                        // Change the printer first because the display will trigger reprint.
+                        if (printer != null)
+                        {
+                            printer.Formatter.Format = Number.DisplayFormat.Engineering;
+                        }
+                        display.Formatter.Format = Number.DisplayFormat.Engineering;
+                        break;
+                    case SymbolConstants.SYMBOL_ENTER:
+                        stack.Enter ();
+                        break;
+                    case SymbolConstants.SYMBOL_EXP:
+                        stack.Get (out x);
+                        stack.X = Number.Exp (x);
+                        break;
+                    case SymbolConstants.SYMBOL_F_TEST:
+                        byte flagId = ((Digit) instruction.Arguments [0]).Value;
+                        if (!flags [flagId])
+                        {
+                            program.Skip ();
+                        }
+                        switch (flagId)
+                        {
+                            case 0:
+                            case 1:
+                                break;
+                            case 2:
+                            case 3:
+                                flags [flagId] = false;
+                                break;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_FACTORIAL:
+                        stack.Get (out x);
+                        if (x >= 0.0M && x == Number.Floor (x))
+                        {
+                            stack.X = Factorial (x);
+                        }
+                        else
+                        {
+                            throw new Error ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_FIX:
+
+                        // Change the printer first because the display will trigger reprint.
+                        if (printer != null)
+                        {
+                            printer.Formatter.Format = Number.DisplayFormat.Fixed;
+                        }
+                        display.Formatter.Format = Number.DisplayFormat.Fixed;
+                        break;
+                    case SymbolConstants.SYMBOL_FRAC:
+                        stack.Get (out x);
+                        if (x < 0.0M)
+                        {
+                            stack.X = x + Number.Floor (-x);
+                        }
+                        else
+                        {
+                            stack.X = x - Number.Floor (x);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_GRD:
+                        unit = AngleUnit.Grade;
+                        break;
+                    case SymbolConstants.SYMBOL_GSB:
+                        if (running)
+                        {
+                            ((ILabel) instruction.Arguments [0]).Gosub (memory, program);
+                        }
+                        else if (stepping)
+                        {
+                            program.Segregate ();
+                            ((ILabel) instruction.Arguments [0]).Gosub (memory, program);
+                            running = true;
+                        }
+                        else
+                        {
+                            ((ILabel) instruction.Arguments [0]).Goto (memory, program);
+                            program.Reset ();
+                            Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+                                "Running",
+                                classTraceSwitch.DisplayName);
+                            running = true;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_GTO:
+                        ((ILabel) instruction.Arguments [0]).Goto (memory, program);
+                        break;
+                    case SymbolConstants.SYMBOL_GTO_PERIOD:
+                        byte b0, b1, b2;
+                        b0 = ((Digit) instruction.Arguments [0]).Value;
+                        b1 = ((Digit) instruction.Arguments [1]).Value;
+                        b2 = ((Digit) instruction.Arguments [2]).Value;
+                        program.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
+                        break;
+                    case SymbolConstants.SYMBOL_HMS_PLUS:
+                        stack.Get (out x, out y);
+                        stack.X = ToHMS (ToH (y) + ToH (x));
+                        break;
+                    case SymbolConstants.SYMBOL_INT:
+                        stack.Get (out x);
+                        if (x < 0.0M)
+                        {
+                            stack.X = -Number.Floor (-x);
+                        }
+                        else
+                        {
+                            stack.X = Number.Floor (x);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_ISZ:
+                        if (memory.IncrementAndSkipIfZero ())
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_ISZ_SUB_I:
+                        if (memory.IncrementAndSkipIfZeroIndexed ())
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_LBL:
+                        break;
+                    case SymbolConstants.SYMBOL_LN:
+                        stack.Get (out x);
+                        if (x <= 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = Number.Log (x);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_LOG:
+                        stack.Get (out x);
+                        if (x <= 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = Number.Log10 (x);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_LST_X:
+                        stack.Enter ();
+                        stack.X = stack.LastX;
+                        break;
+                    case SymbolConstants.SYMBOL_MERGE:
+                        {
+                            ProgrammableCalculator form =
+                                (ProgrammableCalculator) display.TopLevelControl;
+                            FileStream stream = (FileStream) form.Invoke
+                                (new Execution.Thread.CrossThreadFileOperation
+                                    (form.CrossThreadOpen));
+                            if (stream == null)
+                            {
+                                throw new Error ();
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    Card.Merge (stream, reader);
+                                }
+                                finally
+                                {
+                                    stream.Close ();
+                                }
+                            }
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_MULTIPLICATION:
+                        stack.Get (out x, out y);
+                        stack.X = y * x;
+                        break;
+                    case SymbolConstants.SYMBOL_P_EXCHANGE_S:
+                        memory.PrimarySecondaryExchange ();
+                        break;
+                    case SymbolConstants.SYMBOL_PAUSE:
+                        display.PauseAndAcceptKeystrokes (1000);
+                        break;
+                    case SymbolConstants.SYMBOL_PERCENT:
+                        stack.Get (out x);
+                        stack.X = stack.Y * x / 100.0M;
+                        break;
+                    case SymbolConstants.SYMBOL_PERCENT_CHANGE:
+                        stack.Get (out x, out y);
+                        if (y == 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = (x - y) * 100.0M / y;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_PERIOD:
+                        validater.EnterPeriod ();
+                        break;
+                    case SymbolConstants.SYMBOL_PI:
+                        EnterIfNeeded ();
+                        stack.X = Number.PI;
+                        break;
+                    case SymbolConstants.SYMBOL_PRINT_PRGM:
+                        program.PrintProgram
+                            (/*showKeycodes*/ modes.tracing == EngineModes.Tracing.Manual);
+                        break;
+                    case SymbolConstants.SYMBOL_R_DOWN:
+                        stack.RollDown ();
+                        break;
+                    case SymbolConstants.SYMBOL_R_S:
+                        if (running)
+                        {
+                            running = false;
+                        }
+                        else if (stepping)
+                        {
+                        }
+                        else
+                        {
+                            Trace.WriteLineIf (classTraceSwitch.TraceInfo,
+                                "Running",
+                                classTraceSwitch.DisplayName);
+                            running = true;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_R_UP:
+                        stack.RollUp ();
+                        break;
+                    case SymbolConstants.SYMBOL_RAD:
+                        unit = AngleUnit.Radian;
+                        break;
+                    case SymbolConstants.SYMBOL_RCL:
+                        EnterIfNeeded ();
+                        stack.X = ((IAddress) instruction.Arguments [0]).Recall (memory);
+                        break;
+                    case SymbolConstants.SYMBOL_RCL_NULLARY:
+                        EnterIfNeeded ();
+                        // Simulated with memory 0.
+                        stack.X = new Digit (0).Recall (memory);
+                        break;
+                    case SymbolConstants.SYMBOL_RCL_SIGMA_PLUS:
+                        stack.Get (out x);
+                        memory.RecallΣPlus (out x, out y);
+                        stack.X = x;
+                        stack.Y = y;
+                        break;
+                    case SymbolConstants.SYMBOL_RECIPROCAL:
+                        stack.Get (out x);
+                        if (x == 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = 1.0M / x;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_REG:
                         switch (reader.Model)
                         {
                             case CalculatorModel.HP67:
-                                display.PauseAndBlink (/* count */ 8, 
-                                                       /* msPeriod */ 5000 / 8);
+                                memory.Display ();
                                 break;
                             case CalculatorModel.HP97:
-                                validater.DoneEnteringOrPeek ();
-                                printer.PrintEndMarker ();
+                                // The output is surrounded by spaces, see p. 210.
+                                printer.Advance ();
+                                memory.Print ();
+                                printer.Advance ();
                                 break;
                         }
-                    }
-                    finally
-                    {
-                        inDisplayX = false;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_DIVISION:
-                    stack.Get (out x, out y);
-                    if (x == 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = y / x;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_DSP:
-                    IDigits argument = ((IDigits) instruction.Arguments [0]);
+                        break;
+                    case SymbolConstants.SYMBOL_RND:
+                        stack.Get (out x); // To set Last X.
 
-                    // Change the printer first because the display will trigger reprint.
-                    if (printer != null)
-                    {
-                        argument.SetDigits (memory, printer.Formatter);
-                    }
-                    argument.SetDigits (memory, display.Formatter);
-                    break;
-                case SymbolConstants.SYMBOL_DSZ:
-                    if (memory.DecrementAndSkipIfZero ())
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_DSZ_SUB_I:
-                    if (memory.DecrementAndSkipIfZeroIndexed ())
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_EEX:
-                    validater.EnterExponent ();
-                    break;
-                case SymbolConstants.SYMBOL_ENG:
+                        // Change the printer first because the display will trigger reprint.
+                        if (printer != null)
+                        {
+                            printer.Formatter.Round (x);
+                        }
+                        display.Formatter.Round (x);
+                        break;
+                    case SymbolConstants.SYMBOL_RTN:
+                        bool stop;
+                        program.Return (out stop);
+                        if (stop)
+                        {
+                            running = false;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_S:
+                        stack.Get (out x);
+                        memory.S (out x, out y);
+                        stack.X = x;
+                        stack.Y = y;
+                        break;
+                    case SymbolConstants.SYMBOL_SCI:
 
-                    // Change the printer first because the display will trigger reprint.
-                    if (printer != null)
-                    {
-                        printer.Formatter.Format = Number.DisplayFormat.Engineering;
-                    }
-                    display.Formatter.Format = Number.DisplayFormat.Engineering;
-                    break;
-                case SymbolConstants.SYMBOL_ENTER:
-                    stack.Enter ();
-                    break;
-                case SymbolConstants.SYMBOL_EXP:
-                    stack.Get (out x);
-                    stack.X = Number.Exp (x);
-                    break;
-                case SymbolConstants.SYMBOL_F_TEST:
-                    byte flagId = ((Digit) instruction.Arguments [0]).Value;
-                    if (!flags [flagId])
-                    {
-                        program.Skip ();
-                    }
-                    switch (flagId)
-                    {
-                        case 0:
-                        case 1:
-                            break;
-                        case 2:
-                        case 3:
-                            flags [flagId] = false;
-                            break;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_FACTORIAL:
-                    stack.Get (out x);
-                    if (x >= 0.0M && x == Number.Floor (x))
-                    {
-                        stack.X = Factorial (x);
-                    }
-                    else
-                    {
-                        throw new Error ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_FIX:
-
-                    // Change the printer first because the display will trigger reprint.
-                    if (printer != null)
-                    {
-                        printer.Formatter.Format = Number.DisplayFormat.Fixed;
-                    }
-                    display.Formatter.Format = Number.DisplayFormat.Fixed;
-                    break;
-                case SymbolConstants.SYMBOL_FRAC:
-                    stack.Get (out x);
-                    if (x < 0.0M)
-                    {
-                        stack.X = x + Number.Floor (-x);
-                    }
-                    else
-                    {
-                        stack.X = x - Number.Floor (x);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_GRD:
-                    unit = AngleUnit.Grade;
-                    break;
-                case SymbolConstants.SYMBOL_GSB:
-                    if (running)
-                    {
-                        ((ILabel) instruction.Arguments [0]).Gosub (memory, program);
-                    }
-                    else if (stepping)
-                    {
-                        program.Segregate ();
-                        ((ILabel) instruction.Arguments [0]).Gosub (memory, program);
-                        running = true;
-                    }
-                    else
-                    {
-                        ((ILabel) instruction.Arguments [0]).Goto (memory, program);
-                        program.Reset ();
-                        Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-                            "Running",
-                            classTraceSwitch.DisplayName);
-                        running = true;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_GTO:
-                    ((ILabel) instruction.Arguments [0]).Goto (memory, program);
-                    break;
-                case SymbolConstants.SYMBOL_GTO_PERIOD:
-                    byte b0, b1, b2;
-                    b0 = ((Digit) instruction.Arguments [0]).Value;
-                    b1 = ((Digit) instruction.Arguments [1]).Value;
-                    b2 = ((Digit) instruction.Arguments [2]).Value;
-                    program.GotoStep (100 * (int) b0 + 10 * (int) b1 + (int) b2);
-                    break;
-                case SymbolConstants.SYMBOL_HMS_PLUS:
-                    stack.Get (out x, out y);
-                    stack.X = ToHMS (ToH (y) + ToH (x));
-                    break;
-                case SymbolConstants.SYMBOL_INT:
-                    stack.Get (out x);
-                    if (x < 0.0M)
-                    {
-                        stack.X = -Number.Floor (-x);
-                    }
-                    else
-                    {
-                        stack.X = Number.Floor (x);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_ISZ:
-                    if (memory.IncrementAndSkipIfZero ())
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_ISZ_SUB_I:
-                    if (memory.IncrementAndSkipIfZeroIndexed ())
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_LBL:
-                    break;
-                case SymbolConstants.SYMBOL_LN:
-                    stack.Get (out x);
-                    if (x <= 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = Number.Log (x);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_LOG:
-                    stack.Get (out x);
-                    if (x <= 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = Number.Log10 (x);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_LST_X:
-                    stack.Enter ();
-                    stack.X = stack.LastX;
-                    break;
-                case SymbolConstants.SYMBOL_MERGE:
-                    {
-                        ProgrammableCalculator form =
-                            (ProgrammableCalculator) display.TopLevelControl;
-                        FileStream stream = (FileStream) form.Invoke
-                            (new Execution.Thread.CrossThreadFileOperation (form.CrossThreadOpen));
-                        if (stream == null)
+                        // Change the printer first because the display will trigger reprint.
+                        if (printer != null)
+                        {
+                            printer.Formatter.Format = Number.DisplayFormat.Scientific;
+                        }
+                        display.Formatter.Format = Number.DisplayFormat.Scientific;
+                        break;
+                    case SymbolConstants.SYMBOL_SF:
+                        flags [((Digit) instruction.Arguments [0]).Value] = true;
+                        break;
+                    case SymbolConstants.SYMBOL_SIGMA_MINUS:
+                        stack.Get (out x);
+                        memory.ΣMinus (x, stack.Y);
+                        stack.X = memory.N;
+                        break;
+                    case SymbolConstants.SYMBOL_SIGMA_PLUS:
+                        stack.Get (out x);
+                        memory.ΣPlus (x, stack.Y);
+                        stack.X = memory.N;
+                        break;
+                    case SymbolConstants.SYMBOL_SIN:
+                        stack.Get (out x);
+                        stack.X = Number.Sin (ToRadian (x));
+                        ClobberTIf (reader.Model == CalculatorModel.HP35);
+                        break;
+                    case SymbolConstants.SYMBOL_SPACE:
+                        switch (reader.Model)
+                        {
+                            case CalculatorModel.HP67:
+                                break;
+                            case CalculatorModel.HP97:
+                                printer.Advance ();
+                                break;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_SQRT:
+                        stack.Get (out x);
+                        if (x < 0.0M)
                         {
                             throw new Error ();
                         }
                         else
                         {
-                            try
-                            {
-                                Card.Merge (stream, reader);
-                            }
-                            finally
-                            {
-                                stream.Close ();
-                            }
+                            stack.X = Number.Sqrt (x);
                         }
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_MULTIPLICATION:
-                    stack.Get (out x, out y);
-                    stack.X = y * x;
-                    break;
-                case SymbolConstants.SYMBOL_P_EXCHANGE_S:
-                    memory.PrimarySecondaryExchange ();
-                    break;
-                case SymbolConstants.SYMBOL_PAUSE:
-                    display.PauseAndAcceptKeystrokes (1000);
-                    break;
-                case SymbolConstants.SYMBOL_PERCENT:
-                    stack.Get (out x);
-                    stack.X = stack.Y * x / 100.0M;
-                    break;
-                case SymbolConstants.SYMBOL_PERCENT_CHANGE:
-                    stack.Get (out x, out y);
-                    if (y == 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = (x - y) * 100.0M / y;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_PERIOD:
-                    validater.EnterPeriod ();
-                    break;
-                case SymbolConstants.SYMBOL_PI:
-                    EnterIfNeeded ();
-                    stack.X = Number.PI;
-                    break;
-                case SymbolConstants.SYMBOL_PRINT_PRGM:
-                    program.PrintProgram
-                        (/*showKeycodes*/ modes.tracing == EngineModes.Tracing.Manual);
-                    break;
-                case SymbolConstants.SYMBOL_R_DOWN:
-                    stack.RollDown ();
-                    break;
-                case SymbolConstants.SYMBOL_R_S:
-                    if (running)
-                    {
-                        running = false;
-                    }
-                    else if (stepping)
-                    {
-                    }
-                    else
-                    {
-                        Trace.WriteLineIf (classTraceSwitch.TraceInfo,
-                            "Running",
-                            classTraceSwitch.DisplayName);
-                        running = true;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_R_UP:
-                    stack.RollUp ();
-                    break;
-                case SymbolConstants.SYMBOL_RAD:
-                    unit = AngleUnit.Radian;
-                    break;
-                case SymbolConstants.SYMBOL_RCL:
-                    EnterIfNeeded ();
-                    stack.X = ((IAddress) instruction.Arguments [0]).Recall (memory);
-                    break;
-                case SymbolConstants.SYMBOL_RCL_NULLARY:
-                    EnterIfNeeded ();
-                    // Simulated with memory 0.
-                    stack.X = new Digit (0).Recall (memory);
-                    break;
-                case SymbolConstants.SYMBOL_RCL_SIGMA_PLUS:
-                    stack.Get (out x);
-                    memory.RecallΣPlus (out x, out y);
-                    stack.X = x;
-                    stack.Y = y;
-                    break;
-                case SymbolConstants.SYMBOL_RECIPROCAL:
-                    stack.Get (out x);
-                    if (x == 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = 1.0M / x;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_REG:
-                    switch (reader.Model)
-                    {
-                        case CalculatorModel.HP67:
-                            memory.Display ();
-                            break;
-                        case CalculatorModel.HP97:
-                            // The output is surrounded by spaces, see p. 210.
-                            printer.Advance ();
-                            memory.Print ();
-                            printer.Advance ();
-                            break;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_RND:
-                    stack.Get (out x); // To set Last X.
-
-                    // Change the printer first because the display will trigger reprint.
-                    if (printer != null)
-                    {
-                        printer.Formatter.Round (x);
-                    }
-                    display.Formatter.Round (x);
-                    break;
-                case SymbolConstants.SYMBOL_RTN:
-                    bool stop;
-                    program.Return (out stop);
-                    if (stop)
-                    {
-                        running = false;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_S:
-                    stack.Get (out x);
-                    memory.S (out x, out y);
-                    stack.X = x;
-                    stack.Y = y;
-                    break;
-                case SymbolConstants.SYMBOL_SCI:
-
-                    // Change the printer first because the display will trigger reprint.
-                    if (printer != null)
-                    {
-                        printer.Formatter.Format = Number.DisplayFormat.Scientific;
-                    }
-                    display.Formatter.Format = Number.DisplayFormat.Scientific;
-                    break;
-                case SymbolConstants.SYMBOL_SF:
-                    flags [((Digit) instruction.Arguments [0]).Value] = true;
-                    break;
-                case SymbolConstants.SYMBOL_SIGMA_MINUS:
-                    stack.Get (out x);
-                    memory.ΣMinus (x, stack.Y);
-                    stack.X = memory.N;
-                    break;
-                case SymbolConstants.SYMBOL_SIGMA_PLUS:
-                    stack.Get (out x);
-                    memory.ΣPlus (x, stack.Y);
-                    stack.X = memory.N;
-                    break;
-                case SymbolConstants.SYMBOL_SIN:
-                    stack.Get (out x);
-                    stack.X = Number.Sin (ToRadian (x));
-                    ClobberTIf (reader.Model == CalculatorModel.HP35);
-                    break;
-                case SymbolConstants.SYMBOL_SPACE:
-                    switch (reader.Model)
-                    {
-                        case CalculatorModel.HP67:
-                            break;
-                        case CalculatorModel.HP97:
-                            printer.Advance ();
-                            break;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_SQRT:
-                    stack.Get (out x);
-                    if (x < 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = Number.Sqrt (x);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_SQUARE:
-                    stack.Get (out x);
-                    stack.X = x * x;
-                    break;
-                case SymbolConstants.SYMBOL_SST:
-                    break;
-                case SymbolConstants.SYMBOL_STK:
-                    switch (reader.Model)
-                    {
-                        case CalculatorModel.HP67:
-                            stack.Display ();
-                            break;
-                        case CalculatorModel.HP97:
-                            // The output is surrounded by spaces, see p. 210.
-                            printer.Advance ();
-                            stack.Print ();
-                            printer.Advance ();
-                            break;
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_STO:
-                    if (instruction.Arguments.Length == 2)
-                    {
-                        ((IAddress) instruction.Arguments [1]).Store
-                            (memory, stack.X,
-                            ((Operator) instruction.Arguments [0]).Value);
-                    }
-                    else
-                    {
-                        Trace.Assert (instruction.Arguments.Length == 1);
-                        ((IAddress) instruction.Arguments [0]).Store (memory, stack.X);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_STO_NULLARY:
-                    EnterIfNeeded ();
-                    // Simulated with memory 0.
-                    new Digit (0).Store (memory, stack.X);
-                    break;
-                case SymbolConstants.SYMBOL_SUBTRACTION:
-                    stack.Get (out x, out y);
-                    stack.X = y - x;
-                    break;
-                case SymbolConstants.SYMBOL_TAN:
-                    stack.Get (out x);
-                    stack.X = Number.Tan (ToRadian (x));
-                    ClobberTIf (reader.Model == CalculatorModel.HP35);
-                    break;
-                case SymbolConstants.SYMBOL_TEN_TO_THE_XTH:
-                    stack.Get (out x);
-                    stack.X = Number.Pow (10.0M, x);
-                    break;
-                case SymbolConstants.SYMBOL_TO_DEGREES:
-                    stack.Get (out x);
-                    stack.X = x * radianToDegree;
-                    break;
-                case SymbolConstants.SYMBOL_TO_HMS:
-                    stack.Get (out x);
-                    stack.X = ToHMS (x);
-                    break;
-                case SymbolConstants.SYMBOL_TO_HOURS:
-                    stack.Get (out x);
-                    stack.X = ToH (x);
-                    break;
-                case SymbolConstants.SYMBOL_TO_POLAR:
-                    stack.Get (out x);
-                    y = stack.Y;
-                    stack.X = Number.Sqrt (x * x + y * y);
-                    stack.Y = FromRadian (Number.Atan2 (y, x));
-                    break;
-                case SymbolConstants.SYMBOL_TO_RADIANS:
-                    stack.Get (out x);
-                    stack.X = x * degreeToRadian;
-                    break;
-                case SymbolConstants.SYMBOL_TO_RECTANGULAR:
-                    Number θ = stack.Y;
-                    Number r;
-                    stack.Get (out r);
-                    stack.X = r * Number.Cos (ToRadian (θ));
-                    stack.Y = r * Number.Sin (ToRadian (θ));
-                    break;
-                case SymbolConstants.SYMBOL_W_DATA:
-                    {
-                        ProgrammableCalculator form =
-                            (ProgrammableCalculator) display.TopLevelControl;
-                        FileStream stream =
-                            (FileStream) form.Invoke (new Execution.Thread.CrossThreadFileOperation
+                        break;
+                    case SymbolConstants.SYMBOL_SQUARE:
+                        stack.Get (out x);
+                        stack.X = x * x;
+                        break;
+                    case SymbolConstants.SYMBOL_SST:
+                        break;
+                    case SymbolConstants.SYMBOL_STK:
+                        switch (reader.Model)
+                        {
+                            case CalculatorModel.HP67:
+                                stack.Display ();
+                                break;
+                            case CalculatorModel.HP97:
+                                // The output is surrounded by spaces, see p. 210.
+                                printer.Advance ();
+                                stack.Print ();
+                                printer.Advance ();
+                                break;
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_STO:
+                        if (instruction.Arguments.Length == 2)
+                        {
+                            ((IAddress) instruction.Arguments [1]).Store
+                                (memory, stack.X,
+                                ((Operator) instruction.Arguments [0]).Value);
+                        }
+                        else
+                        {
+                            Trace.Assert (instruction.Arguments.Length == 1);
+                            ((IAddress) instruction.Arguments [0]).Store (memory, stack.X);
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_STO_NULLARY:
+                        EnterIfNeeded ();
+                        // Simulated with memory 0.
+                        new Digit (0).Store (memory, stack.X);
+                        break;
+                    case SymbolConstants.SYMBOL_SUBTRACTION:
+                        stack.Get (out x, out y);
+                        stack.X = y - x;
+                        break;
+                    case SymbolConstants.SYMBOL_TAN:
+                        stack.Get (out x);
+                        stack.X = Number.Tan (ToRadian (x));
+                        ClobberTIf (reader.Model == CalculatorModel.HP35);
+                        break;
+                    case SymbolConstants.SYMBOL_TEN_TO_THE_XTH:
+                        stack.Get (out x);
+                        stack.X = Number.Pow (10.0M, x);
+                        break;
+                    case SymbolConstants.SYMBOL_TO_DEGREES:
+                        stack.Get (out x);
+                        stack.X = x * radianToDegree;
+                        break;
+                    case SymbolConstants.SYMBOL_TO_HMS:
+                        stack.Get (out x);
+                        stack.X = ToHMS (x);
+                        break;
+                    case SymbolConstants.SYMBOL_TO_HOURS:
+                        stack.Get (out x);
+                        stack.X = ToH (x);
+                        break;
+                    case SymbolConstants.SYMBOL_TO_POLAR:
+                        stack.Get (out x);
+                        y = stack.Y;
+                        stack.X = Number.Sqrt (x * x + y * y);
+                        stack.Y = FromRadian (Number.Atan2 (y, x));
+                        break;
+                    case SymbolConstants.SYMBOL_TO_RADIANS:
+                        stack.Get (out x);
+                        stack.X = x * degreeToRadian;
+                        break;
+                    case SymbolConstants.SYMBOL_TO_RECTANGULAR:
+                        Number θ = stack.Y;
+                        Number r;
+                        stack.Get (out r);
+                        stack.X = r * Number.Cos (ToRadian (θ));
+                        stack.Y = r * Number.Sin (ToRadian (θ));
+                        break;
+                    case SymbolConstants.SYMBOL_W_DATA:
+                        {
+                            ProgrammableCalculator form =
+                                (ProgrammableCalculator) display.TopLevelControl;
+                            FileStream stream =
+                                (FileStream) form.Invoke 
+                                    (new Execution.Thread.CrossThreadFileOperation
                                             (form.CrossThreadSaveDataAs));
-                        if (stream == null)
+                            if (stream == null)
+                            {
+                                throw new Error ();
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    Card.Write (stream, CardPart.Data);
+                                }
+                                finally
+                                {
+                                    stream.Close ();
+                                }
+                            }
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_AVERAGE:
+                        stack.Get (out x);
+                        memory.X̄ (out x, out y);
+                        stack.X = x;
+                        stack.Y = y;
+                        break;
+                    case SymbolConstants.SYMBOL_X_EQ_0:
+                        if (stack.X != 0.0M)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_EQ_Y:
+                        if (stack.X != stack.Y)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_EXCHANGE_I:
+                        Number i = memory.Recall (Memory.LetterRegister.I);
+                        memory.Store (stack.X, Memory.LetterRegister.I);
+                        stack.X = i;
+                        break;
+                    case SymbolConstants.SYMBOL_X_EXCHANGE_Y:
+                        stack.XExchangeY ();
+                        break;
+                    case SymbolConstants.SYMBOL_X_GT_0:
+                        if (stack.X <= 0.0M)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_GT_Y:
+                        if (stack.X <= stack.Y)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_LE_Y:
+                        if (stack.X > stack.Y)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_LT_0:
+                        if (stack.X >= 0.0M)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_NE_0:
+                        if (stack.X == 0.0M)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_NE_Y:
+                        if (stack.X == stack.Y)
+                        {
+                            program.Skip ();
+                        }
+                        break;
+                    case SymbolConstants.SYMBOL_X_TO_THE_YTH:
+                        stack.Get (out x, out y);
+                        if (x == 0.0M && y <= 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else if (x < 0 && y != Number.Floor (y))
                         {
                             throw new Error ();
                         }
                         else
                         {
-                            try
-                            {
-                                Card.Write (stream, CardPart.Data);
-                            }
-                            finally
-                            {
-                                stream.Close ();
-                            }
+                            stack.X = Number.Pow (x, y);
                         }
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_AVERAGE:
-                    stack.Get (out x);
-                    memory.X̄ (out x, out y);
-                    stack.X = x;
-                    stack.Y = y;
-                    break;
-                case SymbolConstants.SYMBOL_X_EQ_0:
-                    if (stack.X != 0.0M)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_EQ_Y:
-                    if (stack.X != stack.Y)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_EXCHANGE_I:
-                    Number i = memory.Recall (Memory.LetterRegister.I);
-                    memory.Store (stack.X, Memory.LetterRegister.I);
-                    stack.X = i;
-                    break;
-                case SymbolConstants.SYMBOL_X_EXCHANGE_Y:
-                    stack.XExchangeY ();
-                    break;
-                case SymbolConstants.SYMBOL_X_GT_0:
-                    if (stack.X <= 0.0M)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_GT_Y:
-                    if (stack.X <= stack.Y)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_LE_Y:
-                    if (stack.X > stack.Y)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_LT_0:
-                    if (stack.X >= 0.0M)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_NE_0:
-                    if (stack.X == 0.0M)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_NE_Y:
-                    if (stack.X == stack.Y)
-                    {
-                        program.Skip ();
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_X_TO_THE_YTH:
-                    stack.Get (out x, out y);
-                    if (x == 0.0M && y <= 0.0M)
-                    {
+                        break;
+                    case SymbolConstants.SYMBOL_Y_TO_THE_XTH:
+                        stack.Get (out x, out y);
+                        if (y == 0.0M && x <= 0.0M)
+                        {
+                            throw new Error ();
+                        }
+                        else if (y < 0.0M && x != Number.Floor (x))
+                        {
+                            throw new Error ();
+                        }
+                        else
+                        {
+                            stack.X = Number.Pow (y, x);
+                        }
+                        break;
+                    default:
                         throw new Error ();
-                    }
-                    else if (x < 0 && y != Number.Floor (y))
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = Number.Pow (x, y);
-                    }
-                    break;
-                case SymbolConstants.SYMBOL_Y_TO_THE_XTH:
-                    stack.Get (out x, out y);
-                    if (y == 0.0M && x <= 0.0M)
-                    {
-                        throw new Error ();
-                    }
-                    else if (y < 0.0M && x != Number.Floor (x))
-                    {
-                        throw new Error ();
-                    }
-                    else
-                    {
-                        stack.X = Number.Pow (y, x);
-                    }
-                    break;
-                default:
-                    throw new Error ();
-            }
+                }
 
-            // Set the stack lift as specified in Appendix D of the Programming Guide.
-            switch ((SymbolConstants) instruction.Symbol.Id)
-            {
-                case SymbolConstants.SYMBOL_SST:
-                    // Don't change the stack lift, not even to neutral: the necessary changes have
-                    // been done by the instruction called by SST.
-                    stepping = true;
-                    break;
-                case SymbolConstants.SYMBOL_CLX:
-                case SymbolConstants.SYMBOL_ENTER:
-                case SymbolConstants.SYMBOL_SIGMA_MINUS:
-                case SymbolConstants.SYMBOL_SIGMA_PLUS:
-                    stackLift = false;
-                    stepping = false;
-                    break;
-                case SymbolConstants.SYMBOL_CL_PRGM:
-                case SymbolConstants.SYMBOL_DEL:
-                case SymbolConstants.SYMBOL_DISPLAY_X:
-                case SymbolConstants.SYMBOL_DSP:
-                case SymbolConstants.SYMBOL_ENG:
-                case SymbolConstants.SYMBOL_FIX:
-                case SymbolConstants.SYMBOL_MERGE:
-                case SymbolConstants.SYMBOL_REG:
-                case SymbolConstants.SYMBOL_SCI:
-                case SymbolConstants.SYMBOL_SPACE:
-                case SymbolConstants.SYMBOL_STK:
-                    stackLift = neutral;
-                    stepping = false;
-                    break;
-                default:
-                    stackLift = true;
-                    stepping = false;
-                    break;
-            }
+                // The HP-35 weird CHS.  See the comments in NumberStarted.
+                if (doWeirdCHS)
+                {
+                    bool changeSignDone;
+                    validater.ChangeSign (out changeSignDone);
+                    Trace.Assert (changeSignDone);
+                }
 
-            // Now check if some key was typed while we were executing the instruction.  If it was,
-            // stop the computation.  Note that this is done synchronously to make sure that we can
-            // resume execution with the proper state if the user types R/S again.  We don't do
-            // it if we have stopped our work, because we are going to return to the main execution
-            // loop very soon anyway, and if the user types, say, two digits in quick succession we
-            // do not want the second to cause an interruption.
-            if ((running || stepping) && WaitForKeystroke (0))
+                // Set the stack lift as specified in Appendix D of the Programming Guide.
+                switch ((SymbolConstants) instruction.Symbol.Id)
+                {
+                    case SymbolConstants.SYMBOL_SST:
+                        // Don't change the stack lift, not even to neutral: the necessary changes
+                        // have been done by the instruction called by SST.
+                        stepping = true;
+                        break;
+                    case SymbolConstants.SYMBOL_CLX:
+                    case SymbolConstants.SYMBOL_ENTER:
+                    case SymbolConstants.SYMBOL_SIGMA_MINUS:
+                    case SymbolConstants.SYMBOL_SIGMA_PLUS:
+                        stackLift = false;
+                        stepping = false;
+                        break;
+                    case SymbolConstants.SYMBOL_CL_PRGM:
+                    case SymbolConstants.SYMBOL_DEL:
+                    case SymbolConstants.SYMBOL_DISPLAY_X:
+                    case SymbolConstants.SYMBOL_DSP:
+                    case SymbolConstants.SYMBOL_ENG:
+                    case SymbolConstants.SYMBOL_FIX:
+                    case SymbolConstants.SYMBOL_MERGE:
+                    case SymbolConstants.SYMBOL_REG:
+                    case SymbolConstants.SYMBOL_SCI:
+                    case SymbolConstants.SYMBOL_SPACE:
+                    case SymbolConstants.SYMBOL_STK:
+                        stackLift = neutral;
+                        stepping = false;
+                        break;
+                    default:
+                        stackLift = true;
+                        stepping = false;
+                        break;
+                }
+
+                // Now check if some key was typed while we were executing the instruction.  If it
+                // was, stop the computation.  Note that this is done synchronously to make sure
+                // that we can resume execution with the proper state if the user types R/S again. 
+                // We don't do it if we have stopped our work, because we are going to return to the
+                // main execution loop very soon anyway, and if the user types, say, two digits in
+                // quick succession we do not want the second to cause an interruption.
+                if ((running || stepping) && WaitForKeystroke (0))
+                {
+                    throw new Interrupt ();
+                }
+            }
+            finally
             {
-                throw new Interrupt ();
+                doWeirdCHS = false;
+                previousSymbol = (SymbolConstants) instruction.Symbol.Id;
             }
         }
 
