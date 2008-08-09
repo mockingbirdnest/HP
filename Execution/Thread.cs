@@ -524,8 +524,8 @@ namespace Mockingbird.HP.Execution
 
             // In synchronous mode, we use the message as a lock, and we wait until the execution
             // thread pulses us to tell that it is done with the message.  The synchronous bit is
-            // used to control whether pulsing must happen.  It is not required for correctness, but
-            // it avoids unnecessary pulsing.
+            // used to control whether pulsing must happen.  It is not required for correctness,
+            // but it avoids unnecessary pulsing.
             if (message.Synchronous)
             {
                 try
