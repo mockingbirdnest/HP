@@ -14,6 +14,11 @@ namespace Mockingbird.HP.Class_Library
         private const sbyte maxDecimalExponent = 28;
         private const decimal maxDecimalMantissa = 7.9228162514264337593543950335M;
 
+        private const sbyte overflowExponent = 99;
+        private const decimal overflowMantissa = 9.999999999M;
+        private const sbyte underflowExponent = -100;
+        private const decimal underflowMantissa = 10.0M;
+
         private const int exponentFirst = 1;
         private const int exponentLength = 2;
         private const int exponentSignFirst = 0;
@@ -60,8 +65,8 @@ namespace Mockingbird.HP.Class_Library
             else /* m == 0.0M */
             {
                 sign = 0;
-                exponent = 0;
                 mantissa = 0.0M;
+                exponent = 0;
                 return;
             }
 
@@ -84,6 +89,21 @@ namespace Mockingbird.HP.Class_Library
             // Here 1 < mantissa <= 10.  This choice gives us the best precision because the type
             // decimal is not very good at representing numbers close to 0 since it cannot have a
             // negative scale.  Therefore, the choice 0.1 < mantissa <= 1 would be less precise.
+
+            if (exponent > overflowExponent || 
+                (exponent == overflowExponent && mantissa > overflowMantissa))
+            {
+                // Overflow.
+                mantissa = overflowMantissa;
+                exponent = overflowExponent;
+            }
+            else if (exponent < underflowExponent || 
+                     (exponent == underflowExponent && mantissa < underflowMantissa)) {
+                // Underflow.
+                sign = 0;
+                mantissa = 0.0M;
+                exponent = 0;
+            }
         }
 
         #endregion
@@ -272,8 +292,19 @@ namespace Mockingbird.HP.Class_Library
         public static explicit operator Number (double d)
         {
             // Approximative.
-            int n = (int) Math.Ceiling (Math.Log10 ((double) Math.Abs (d)));
-            return new Number ((decimal) (d * Math.Pow (10.0, -n)), n);
+            if (double.IsNegativeInfinity (d))
+            {
+                return new Number (-overflowMantissa, overflowExponent);
+            }
+            else if (double.IsPositiveInfinity (d))
+            {
+                return new Number (overflowMantissa, overflowExponent);
+            }
+            else
+            {
+                int n = (int) Math.Ceiling (Math.Log10 ((double) Math.Abs (d)));
+                return new Number ((decimal) (d * Math.Pow (10.0, -n)), n);
+            }
         }
 
         public static explicit operator double (Number x)
