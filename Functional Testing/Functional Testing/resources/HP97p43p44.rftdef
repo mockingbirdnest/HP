@@ -1,1 +1,132 @@
-<?xml version="1.0" encoding="UTF-8"?><ScriptDefinition L=".ScriptDefinition"><ScriptName>HP97p43p44</ScriptName><Language>vb</Language><Map>UI.rftmap</Map><Datapool/><DatapoolIterator>Rational.Test.Ft.Datapool.SequentialIterator</DatapoolIterator><HelperSuper></HelperSuper><ScriptNameMap L=".ScriptDefinitionNameMap"><TestObject L=".ScriptDefNameMapElement"><Name>CHSButton</Name><ID>1e.zymQGSnwuBD:1VER8s:KobXINn:8WW</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>CLXButton</Name><ID>1g.zymQGSnwuBD:1VER8s:KobXINn:8WW</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>DSPButton</Name><ID>1q.zymQGSnwuBD:1hAUam:Koxknb1:8WW</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>DivButton</Name><ID>V.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>EEXButton</Name><ID>25.zymQGSnwuBD:tCkDJ:Koz0m2u:8WW</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>ENTERButton</Name><ID>b.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>FIXButton</Name><ID>21.zymQGSnwuBD:1hAUam:Koxknb1:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>HP97PDFAdobeReaderWindow</Name><ID>26.zymQGSnwuBD:tCkDJ:Koz0m2u:8WW</ID><Role>Window</Role><Deleted>true</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>HP97Window</Name><ID>0.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Window</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>ListBoxList</Name><ID>1J.zymQGSnwuBD:1DVAfB:KoH276P:8WW</ID><Role>List</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>MultButton</Name><ID>9.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>NumericTextBoxText</Name><ID>X.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Text</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>PRINTXButton</Name><ID>7.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>PeriodButton</Name><ID>1G.zymQGSnwuBD:1DVAfB:KoH276P:8WW</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>SCIButton</Name><ID>1z.zymQGSnwuBD:1hAUam:Koxknb1:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>_0Button</Name><ID>F.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>_1Button</Name><ID>t.zymQGSnwuBD:2D4a2B:KoEb3YL:8WW</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>_2Button</Name><ID>T.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>_5Button</Name><ID>Z.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>_6Button</Name><ID>d.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject><TestObject L=".ScriptDefNameMapElement"><Name>_7Button</Name><ID>L.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID><Role>Button</Role><Deleted>false</Deleted></TestObject></ScriptNameMap><Properties L=".PropSet"></Properties><ScriptEncoding/></ScriptDefinition>
+<?xml version="1.0" encoding="utf-8"?>
+<ScriptDefinition L=".ScriptDefinition">
+  <ScriptName>HP97p43p44</ScriptName>
+  <Language>vb</Language>
+  <Map>UI.rftmap</Map>
+  <Datapool />
+  <DatapoolIterator>Rational.Test.Ft.Datapool.SequentialIterator</DatapoolIterator>
+  <HelperSuper />
+  <ScriptNameMap L=".ScriptDefinitionNameMap">
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>_0Button</Name>
+      <ID>F.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>_1Button</Name>
+      <ID>t.zymQGSnwuBD:2D4a2B:KoEb3YL:8WW</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>_2Button</Name>
+      <ID>T.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>_5Button</Name>
+      <ID>Z.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>_6Button</Name>
+      <ID>d.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>_7Button</Name>
+      <ID>L.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>CHSButton</Name>
+      <ID>1e.zymQGSnwuBD:1VER8s:KobXINn:8WW</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>CLXButton</Name>
+      <ID>1g.zymQGSnwuBD:1VER8s:KobXINn:8WW</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>DivButton</Name>
+      <ID>V.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>DSPButton</Name>
+      <ID>1q.zymQGSnwuBD:1hAUam:Koxknb1:8WW</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>EEXButton</Name>
+      <ID>25.zymQGSnwuBD:tCkDJ:Koz0m2u:8WW</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>ENTERButton</Name>
+      <ID>b.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>FIXButton</Name>
+      <ID>21.zymQGSnwuBD:1hAUam:Koxknb1:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>HP97Window</Name>
+      <ID>0.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Window</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>ListBoxList</Name>
+      <ID>1J.zymQGSnwuBD:1DVAfB:KoH276P:8WW</ID>
+      <Role>List</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>MultButton</Name>
+      <ID>9.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>NumericTextBoxText</Name>
+      <ID>X.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Text</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>PeriodButton</Name>
+      <ID>1G.zymQGSnwuBD:1DVAfB:KoH276P:8WW</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>PRINTXButton</Name>
+      <ID>7.zymQGSnwuBD:112qKV:KoEDePp:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+    <TestObject L=".ScriptDefNameMapElement">
+      <Name>SCIButton</Name>
+      <ID>1z.zymQGSnwuBD:1hAUam:Koxknb1:8WU</ID>
+      <Role>Button</Role>
+      <Deleted>False</Deleted>
+    </TestObject>
+  </ScriptNameMap>
+  <Properties L=".PropSet" />
+</ScriptDefinition>

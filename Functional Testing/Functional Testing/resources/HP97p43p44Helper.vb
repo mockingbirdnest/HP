@@ -13,11 +13,11 @@ Imports Rational.Test.Ft.Vp
 
 
 'Script Name   : HP97p43p44
-'Generated     : 2007/06/24 9:31:25 PM
+'Generated     : 2008/08/11 12:48:31 PM
 'Description   : Helper class for script
 'Original Host : Windows XP x86 5.1 build 2600 Service Pack 2
  
-'since  June 24, 2007
+'since  August 11, 2008
 'author phl
  
 Public MustInherit Class HP97p43p44Helper 
@@ -26,8 +26,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' CHS: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CHS
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : RAD
     ' 		.classIndex : 0
@@ -38,8 +38,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' CHS: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CHS
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : RAD
     ' 		.classIndex : 0
@@ -51,8 +51,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' CLX: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CL x
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : P⇄S
     ' 		.classIndex : 0
@@ -63,8 +63,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' CLX: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : CL x
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : P⇄S
     ' 		.classIndex : 0
@@ -76,8 +76,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' DSP: with default state.
     '		Name : button
-    ' 		Text : DSP
     ' 		TabIndex : 1
+    ' 		Text : DSP
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : LAST x
     ' 		.classIndex : 0
@@ -88,8 +88,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' DSP: with specific test context and state.
     '		Name : button
-    ' 		Text : DSP
     ' 		TabIndex : 1
+    ' 		Text : DSP
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : LAST x
     ' 		.classIndex : 0
@@ -101,8 +101,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' Div: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : ÷
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : π
     ' 		.classIndex : 0
@@ -113,8 +113,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' Div: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : ÷
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : π
     ' 		.classIndex : 0
@@ -126,8 +126,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' EEX: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : EEX
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : GRD
     ' 		.classIndex : 0
@@ -138,8 +138,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' EEX: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : EEX
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : GRD
     ' 		.classIndex : 0
@@ -151,8 +151,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' ENTER: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : ENTER ↑
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : DEG
     ' 		.classIndex : 0
@@ -163,8 +163,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' ENTER: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : ENTER ↑
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : DEG
     ' 		.classIndex : 0
@@ -176,8 +176,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' FIX: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : FIX
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : SPACE
     ' 		.classIndex : 0
@@ -188,8 +188,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' FIX: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : FIX
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : SPACE
     ' 		.classIndex : 0
@@ -201,8 +201,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' HP97: with default state.
     '		Name : HP97
-    ' 		TabIndex : 0
     ' 		Text : HP97
+    ' 		TabIndex : 0
     ' 		.class : Mockingbird.HP.HP97.HP97
     ' 		.processName : Mockingbird.HP.HP97.exe
     '
@@ -212,8 +212,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' HP97: with specific test context and state.
     '		Name : HP97
-    ' 		TabIndex : 0
     ' 		Text : HP97
+    ' 		TabIndex : 0
     ' 		.class : Mockingbird.HP.HP97.HP97
     ' 		.processName : Mockingbird.HP.HP97.exe
     '
@@ -245,8 +245,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' Mult: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : ×
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x≤y?
     ' 		.classIndex : 0
@@ -257,8 +257,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' Mult: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : ×
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x≤y?
     ' 		.classIndex : 0
@@ -291,8 +291,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' PRINTX: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : PRINT x
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : STACK
     ' 		.classIndex : 0
@@ -303,8 +303,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' PRINTX: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : PRINT x
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : STACK
     ' 		.classIndex : 0
@@ -316,8 +316,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' Period: with default state.
     '		Name : button
-    ' 		Text :  ・
     ' 		TabIndex : 1
+    ' 		Text :  ・
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : MERGE
     ' 		.classIndex : 0
@@ -328,8 +328,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' Period: with specific test context and state.
     '		Name : button
-    ' 		Text :  ・
     ' 		TabIndex : 1
+    ' 		Text :  ・
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : MERGE
     ' 		.classIndex : 0
@@ -341,8 +341,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' SCI: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : SCI
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : PRGM
     ' 		.classIndex : 0
@@ -353,8 +353,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' SCI: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : SCI
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : PRGM
     ' 		.classIndex : 0
@@ -366,8 +366,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _0: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 0
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : WRITE DATA
     ' 		.classIndex : 0
@@ -378,8 +378,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _0: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 0
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : WRITE DATA
     ' 		.classIndex : 0
@@ -391,8 +391,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _1: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 1
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : DEL
     ' 		.classIndex : 0
@@ -403,8 +403,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _1: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 1
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : DEL
     ' 		.classIndex : 0
@@ -416,8 +416,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _2: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 2
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : CL REG
     ' 		.classIndex : 0
@@ -428,8 +428,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _2: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 2
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : CL REG
     ' 		.classIndex : 0
@@ -441,8 +441,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _5: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 5
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x=0?
     ' 		.classIndex : 0
@@ -453,8 +453,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _5: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 5
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x=0?
     ' 		.classIndex : 0
@@ -466,8 +466,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _6: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 6
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x>0?
     ' 		.classIndex : 0
@@ -478,8 +478,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _6: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 6
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x>0?
     ' 		.classIndex : 0
@@ -491,8 +491,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _7: with default state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 7
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x≠y?
     ' 		.classIndex : 0
@@ -503,8 +503,8 @@ Public MustInherit Class HP97p43p44Helper
     '
     ' _7: with specific test context and state.
     '		Name : button
-    ' 		TabIndex : 1
     ' 		Text : 7
+    ' 		TabIndex : 1
     ' 		.class : System.Windows.Forms.Button
     ' 		.priorLabel : x≠y?
     ' 		.classIndex : 0

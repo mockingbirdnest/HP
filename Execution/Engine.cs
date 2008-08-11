@@ -45,10 +45,10 @@ namespace Mockingbird.HP.Execution
         private static TraceSwitch classTraceSwitch =
             new TraceSwitch ("Mockingbird.HP.Execution.Engine", "Execution engine");
 
-        private const decimal degreeToRadian = Number.PI / 180.0M;
-        private const decimal gradeToRadian = Number.PI / 200.0M;
-        private const decimal radianToDegree = 180.0M / Number.PI;
-        private const decimal radianToGrade = 200.0M / Number.PI;
+        private const decimal degreeToRadian = Number.π / 180.0M;
+        private const decimal gradeToRadian = Number.π / 200.0M;
+        private const decimal radianToDegree = 180.0M / Number.π;
+        private const decimal radianToGrade = 200.0M / Number.π;
 
         private bool doWeirdCHS = false;
         private bool enableBlur;
@@ -819,7 +819,7 @@ namespace Mockingbird.HP.Execution
                         break;
                     case SymbolConstants.SYMBOL_PI:
                         EnterIfNeeded ();
-                        stack.X = Number.PI;
+                        stack.X = Number.π;
                         break;
                     case SymbolConstants.SYMBOL_PRINT_PRGM:
                         program.PrintProgram

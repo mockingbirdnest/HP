@@ -249,6 +249,7 @@ namespace Mockingbird.HP.Class_Library
             {
                 get
                 {
+                    decimal formattableMantissa = formatted.sign * formatted.mantissa;
                     switch (format)
                     {
                         case DisplayFormat.Engineering:
@@ -257,30 +258,27 @@ namespace Mockingbird.HP.Class_Library
                                 // just let the formatter do it.  The reason is that we want to
                                 // get zeros *before* the decimal point if the number of digits
                                 // is very small.
-                                decimal absMantissa = Math.Abs (formatted.mantissa);
-                                decimal formattableMantissa;
-
-                                if (absMantissa < 10.0M)
+                                if (formatted.mantissa < 10.0M)
                                 {
                                     formattableMantissa =
-                                        Math.Round (formatted.mantissa, digits,
+                                        Math.Round (formattableMantissa, digits,
                                                     MidpointRounding.AwayFromZero);
                                     return formattableMantissa.ToString
                                         (engMantissaTemplate1, NumberFormatInfo.InvariantInfo);
                                 }
-                                else if (absMantissa < 100.0M)
+                                else if (formatted.mantissa < 100.0M)
                                 {
                                     formattableMantissa = 10.0M *
-                                        Math.Round (formatted.mantissa / 10.0M, digits,
+                                        Math.Round (formattableMantissa / 10.0M, digits,
                                                     MidpointRounding.AwayFromZero);
                                     return formattableMantissa.ToString
                                         (engMantissaTemplate10, NumberFormatInfo.InvariantInfo);
                                 }
                                 else
                                 {
-                                    Trace.Assert (absMantissa < 1000.0M);
+                                    Trace.Assert (formatted.mantissa < 1000.0M);
                                     formattableMantissa = 100.0M *
-                                        Math.Round (formatted.mantissa / 100.0M, digits,
+                                        Math.Round (formattableMantissa / 100.0M, digits,
                                                     MidpointRounding.AwayFromZero);
                                     return formattableMantissa.ToString
                                         (engMantissaTemplate100, NumberFormatInfo.InvariantInfo);
@@ -290,8 +288,8 @@ namespace Mockingbird.HP.Class_Library
                             {
                                 if (fixedUnderflowOverflow)
                                 {
-                                    return StripIfNeeded 
-                                            (formatted.mantissa.ToString
+                                    return StripIfNeeded
+                                            (formattableMantissa.ToString
                                                 (fixUnderflowOverflowMantissaTemplate,
                                                  NumberFormatInfo.InvariantInfo));
                                 }
@@ -299,16 +297,15 @@ namespace Mockingbird.HP.Class_Library
                                 {
                                     string m = "";
                                     if (hasExtraDigitBetween0And1 &&
-                                        formatted.mantissa > -1.0M &&
                                         formatted.mantissa < 1.0M)
                                     {
-                                        m = formatted.mantissa.ToString
+                                        m = formattableMantissa.ToString
                                                 (fixMantissaTemplateDPlus1,
                                                  NumberFormatInfo.InvariantInfo);
                                     }
                                     else
                                     {
-                                        m = formatted.mantissa.ToString
+                                        m = formattableMantissa.ToString
                                                 (fixMantissaTemplateD,
                                                  NumberFormatInfo.InvariantInfo);
                                     }
@@ -321,7 +318,7 @@ namespace Mockingbird.HP.Class_Library
                             }
                         case DisplayFormat.Scientific:
                             {
-                                return formatted.mantissa.ToString
+                                return formattableMantissa.ToString
                                     (sciMantissaTemplate, NumberFormatInfo.InvariantInfo);
                             }
                         default:
@@ -459,7 +456,7 @@ namespace Mockingbird.HP.Class_Library
                 }
                 private get
                 {
-                    return new Number (formatted.mantissa, formatted.exponent);
+                    return new Number (formatted.sign * formatted.mantissa, formatted.exponent);
                 }
             }
 
