@@ -30,6 +30,7 @@ namespace Mockingbird.HP.Control_Library
         private int fgWidth;
         private Font font;
         private bool inAdjustSize = false;
+        private bool inScaleControl = false;
         private Keys [] shortcuts;
         private Color mainBackColor;
         private int mainHeight;
@@ -368,12 +369,22 @@ namespace Mockingbird.HP.Control_Library
                 // to be "just what we want".
                 Debug.Assert (oldWidth == Size.Width && oldHeight == Size.Height);
             }
+            else if (inScaleControl)
+            {
+            }
             else if (oldWidth != Size.Width || oldHeight != Size.Height)
             {
                 // Otherwise, it means that someone is trying to resize the control, and that's a
                 // no-no: you have to change the properties to make this happen.
-                Size = new Size (oldWidth, oldHeight);
+                Size = new Size(oldWidth, oldHeight);
             }
+        }
+
+        protected override void ScaleControl(SizeF factor, BoundsSpecified specified)
+        {
+            inScaleControl = true;
+            base.ScaleControl(factor, specified);
+            inScaleControl = false;
         }
 
         #endregion
