@@ -33,18 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mockingbird.HP.Parser, Version=1.0.2416.36270, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Parser\bin\Design\Mockingbird.HP.Parser.dll</HintPath>
-    </Reference>
-    <Reference Include="Mockingbird.HP.Persistence, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Persistence\bin\Design\Mockingbird.HP.Persistence.dll</HintPath>
-    </Reference>
-    <Reference Include="Mockingbird.HP.Transient Class Library, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Transient Class Library\bin\Design\Mockingbird.HP.Transient Class Library.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -89,6 +77,18 @@
     <ProjectReference Include="..\Control Library\Control Library.csproj">
       <Project>{71A0054A-FD2B-4DDB-91FB-1470909F91E4}</Project>
       <Name>Control Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Parser\Parser.csproj">
+      <Project>{D97548CE-C80A-4DAE-BA32-1E3FA7273153}</Project>
+      <Name>Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistence\Persistence.csproj">
+      <Project>{D40AF3D7-0F5F-4CBF-ACD2-815EAA164C52}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transient Class Library\Transient Class Library.csproj">
+      <Project>{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}</Project>
+      <Name>Transient Class Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
