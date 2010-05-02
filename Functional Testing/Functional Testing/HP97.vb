@@ -52,6 +52,7 @@ Public Class HP97
         CallScript("HP97PeriodCHS")
         CallScript("HP97PrintXOfUnformattedNumber")
         CallScript("HP97PrintXStartup")
+        CallScript("HP97TrigonometricsLargeAngles")
 
         Return Nothing
     End Function
