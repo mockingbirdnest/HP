@@ -101,13 +101,13 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalithaLib">
-      <Name>CalithaLib</Name>
-      <HintPath>..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
+    <Reference Include="CalithaLib, Version=1.11.2083.28932, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
     </Reference>
-    <Reference Include="GoldParserEngine">
-      <Name>GoldParserEngine</Name>
-      <HintPath>..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
+    <Reference Include="GoldParserEngine, Version=1.11.2083.28932, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
