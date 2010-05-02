@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
+﻿Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67", "HP67\HP67.csproj", "{BBC69744-109D-439E-94ED-CE3EC892241C}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -29,7 +29,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP35", "HP35\HP35.csproj", "{487BEF8E-E641-463B-9AF5-411E2248D9AA}"
 EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
+	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 13
 		SccLocalPath0 = .
 		CanCheckoutShared = false
