@@ -1,5 +1,6 @@
-﻿Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP67", "HP67\HP67.csproj", "{BBC69744-109D-439E-94ED-CE3EC892241C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{76E1A007-1E22-40BC-826D-834FE3673BD8} = {76E1A007-1E22-40BC-826D-834FE3673BD8}
@@ -22,65 +23,56 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transient Class Library", "Transient Class Library\Transient Class Library.csproj", "{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{4E3D8364-638A-4B6F-B556-40EA50003482}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Execution", "Execution\Execution.csproj", "{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP35", "HP35\HP35.csproj", "{487BEF8E-E641-463B-9AF5-411E2248D9AA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AACAA546-014A-4AB5-A5E3-58F4C85BC395}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "\\CARPACCIO\Profiles\Redirection\phl\My Documents\My Projects\Mockingbird\HP2010\Setup\Setup.vdproj", "{F115330F-E25F-4D77-8D95-E08E93D9A9D7}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 13
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://veneziano:8080/tfs/defaultcollection
 		SccLocalPath0 = .
-		CanCheckoutShared = false
 		SccProjectUniqueName1 = HP67\\HP67.csproj
 		SccLocalPath1 = .
-		CanCheckoutShared = false
 		SccProjectFilePathRelativizedFromConnection1 = HP67\\
 		SccProjectUniqueName2 = HP97\\HP97.csproj
 		SccLocalPath2 = .
-		CanCheckoutShared = false
 		SccProjectFilePathRelativizedFromConnection2 = HP97\\
 		SccProjectUniqueName3 = Control\u0020Library\\Control\u0020Library.csproj
-		SccProjectName3 = \u0022$/HP/Control\u0020Library\u0022,\u0020ENAAAAAA
+		SccProjectName3 = Control\u0020Library
 		SccLocalPath3 = Control\u0020Library
-		CanCheckoutShared = false
 		SccProjectUniqueName4 = Documentation\\Documentation.csproj
-		SccProjectName4 = \u0022$/HP/Documentation\u0022,\u0020GQAAAAAA
+		SccProjectName4 = Documentation
 		SccLocalPath4 = Documentation
-		CanCheckoutShared = false
 		SccProjectUniqueName5 = Parser\\Parser.csproj
-		SccProjectName5 = \u0022$/HP/Parser\u0022,\u0020RQAAAAAA
+		SccProjectName5 = Parser
 		SccLocalPath5 = Parser
-		CanCheckoutShared = false
 		SccProjectUniqueName6 = Persistence\\Persistence.csproj
-		SccProjectName6 = \u0022$/HP/Persistence\u0022,\u0020ERAAAAAA
+		SccProjectName6 = Persistence
 		SccLocalPath6 = Persistence
-		CanCheckoutShared = false
 		SccProjectUniqueName7 = Persistent\u0020Class\u0020Library\\Persistent\u0020Class\u0020Library.csproj
-		SccProjectName7 = \u0022$/HP/Persistent\u0020Class\u0020Library\u0022,\u0020MRAAAAAA
+		SccProjectName7 = Persistent\u0020Class\u0020Library
 		SccLocalPath7 = Persistent\u0020Class\u0020Library
-		CanCheckoutShared = false
 		SccProjectUniqueName8 = Testing\\Testing.csproj
-		SccProjectName8 = \u0022$/HP/Testing\u0022,\u0020PNAAAAAA
+		SccProjectName8 = Testing
 		SccLocalPath8 = Testing
-		CanCheckoutShared = false
 		SccProjectUniqueName9 = Transient\u0020Class\u0020Library\\Transient\u0020Class\u0020Library.csproj
-		SccProjectName9 = \u0022$/HP/Transient\u0020Class\u0020Library\u0022,\u0020VRAAAAAA
+		SccProjectName9 = Transient\u0020Class\u0020Library
 		SccLocalPath9 = Transient\u0020Class\u0020Library
-		CanCheckoutShared = false
-		SccProjectUniqueName10 = Setup\\Setup.vdproj
-		SccProjectName10 = \u0022$/HP/Setup\u0022,\u0020KNAAAAAA
-		SccLocalPath10 = Setup
-		CanCheckoutShared = false
-		SccProjectUniqueName11 = Execution\\Execution.csproj
+		SccProjectUniqueName10 = Execution\\Execution.csproj
+		SccLocalPath10 = .
+		SccProjectFilePathRelativizedFromConnection10 = Execution\\
+		SccProjectUniqueName11 = HP35\\HP35.csproj
 		SccLocalPath11 = .
-		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection11 = Execution\\
-		SccProjectUniqueName12 = HP35\\HP35.csproj
-		SccLocalPath12 = .
-		CanCheckoutShared = false
-		SccProjectFilePathRelativizedFromConnection12 = HP35\\
+		SccProjectFilePathRelativizedFromConnection11 = HP35\\
+		SccProjectUniqueName12 = \\\\CARPACCIO\\Profiles\\Redirection\\phl\\My\u0020Documents\\My\u0020Projects\\Mockingbird\\HP2010\\Setup\\Setup.vdproj
+		SccProjectName12 = Setup
+		SccLocalPath12 = \\\\CARPACCIO\\Profiles\\Redirection\\phl\\My\u0020Documents\\My\u0020Projects\\Mockingbird\\HP2010\\Setup
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,10 +130,6 @@ Global
 		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Design|Any CPU.Build.0 = Design|Any CPU
 		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A3EBBDA-A3B6-4BE9-8860-2AF02093369B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E3D8364-638A-4B6F-B556-40EA50003482}.Debug|Any CPU.ActiveCfg = Debug
-		{4E3D8364-638A-4B6F-B556-40EA50003482}.Design|Any CPU.ActiveCfg = Design
-		{4E3D8364-638A-4B6F-B556-40EA50003482}.Release|Any CPU.ActiveCfg = Release
-		{4E3D8364-638A-4B6F-B556-40EA50003482}.Release|Any CPU.Build.0 = Release
 		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E83C0FF4-B7EC-4D09-B738-B764A8E3E8AE}.Design|Any CPU.ActiveCfg = Design|Any CPU
@@ -154,6 +142,12 @@ Global
 		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Design|Any CPU.Build.0 = Design|Any CPU
 		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Debug|Any CPU.ActiveCfg = Debug
+		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Debug|Any CPU.Build.0 = Debug
+		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Design|Any CPU.ActiveCfg = Design
+		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Design|Any CPU.Build.0 = Design
+		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Release|Any CPU.ActiveCfg = Release
+		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
