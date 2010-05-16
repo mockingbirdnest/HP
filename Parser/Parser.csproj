@@ -125,11 +125,11 @@
   <ItemGroup>
     <Reference Include="CalithaLib, Version=1.11.2083.28932, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
+      <HintPath>C:\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
     </Reference>
     <Reference Include="GoldParserEngine, Version=1.11.2083.28932, Culture=neutral">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\..\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
+      <HintPath>C:\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
