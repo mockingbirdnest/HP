@@ -28,8 +28,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HP35", "HP35\HP35.csproj", "{487BEF8E-E641-463B-9AF5-411E2248D9AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AACAA546-014A-4AB5-A5E3-58F4C85BC395}"
+	ProjectSection(SolutionItems) = preProject
+		HP.vsmdi = HP.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "\\CARPACCIO\Profiles\Redirection\phl\My Documents\My Projects\Mockingbird\HP2010\Setup\Setup.vdproj", "{F115330F-E25F-4D77-8D95-E08E93D9A9D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User Interface Testing", "User Interface Testing\User Interface Testing.csproj", "{911874CA-33C1-41AE-B0D1-00B463904492}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -70,9 +75,12 @@ Global
 		SccProjectUniqueName11 = HP35\\HP35.csproj
 		SccLocalPath11 = .
 		SccProjectFilePathRelativizedFromConnection11 = HP35\\
-		SccProjectUniqueName12 = \\\\CARPACCIO\\Profiles\\Redirection\\phl\\My\u0020Documents\\My\u0020Projects\\Mockingbird\\HP2010\\Setup\\Setup.vdproj
-		SccProjectName12 = Setup
-		SccLocalPath12 = \\\\CARPACCIO\\Profiles\\Redirection\\phl\\My\u0020Documents\\My\u0020Projects\\Mockingbird\\HP2010\\Setup
+		SccProjectUniqueName12 = User\u0020Interface\u0020Testing\\User\u0020Interface\u0020Testing.csproj
+		SccProjectName12 = User\u0020Interface\u0020Testing
+		SccLocalPath12 = User\u0020Interface\u0020Testing
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = HP.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,10 +150,12 @@ Global
 		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Design|Any CPU.Build.0 = Design|Any CPU
 		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{487BEF8E-E641-463B-9AF5-411E2248D9AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Debug|Any CPU.ActiveCfg = Debug
-		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Design|Any CPU.ActiveCfg = Design
-		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Release|Any CPU.ActiveCfg = Release
-		{F115330F-E25F-4D77-8D95-E08E93D9A9D7}.Release|Any CPU.Build.0 = Release
+		{911874CA-33C1-41AE-B0D1-00B463904492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911874CA-33C1-41AE-B0D1-00B463904492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911874CA-33C1-41AE-B0D1-00B463904492}.Design|Any CPU.ActiveCfg = Debug|Any CPU
+		{911874CA-33C1-41AE-B0D1-00B463904492}.Design|Any CPU.Build.0 = Debug|Any CPU
+		{911874CA-33C1-41AE-B0D1-00B463904492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911874CA-33C1-41AE-B0D1-00B463904492}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
