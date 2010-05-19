@@ -27,6 +27,12 @@
             AssertPrinterLine0();
         }
 
+        public void OpenStandardPacCard(string name)
+        {
+            OpenStandardPacCardParams.UIFilenameComboBoxEditableItem = name;
+            OpenStandardPacCard();
+        }
+
         public void Pi()
         {
             f();
