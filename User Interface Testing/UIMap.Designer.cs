@@ -235,9 +235,9 @@ namespace User_Interface_Testing
         }
         
         /// <summary>
-        /// Enter
+        /// ENTER
         /// </summary>
-        public void Enter()
+        public void ENTER()
         {
             #region Variable Declarations
             WinButton uIENTERButton = this.UIHP97Window.UIENTERWindow.UIENTERButton;
@@ -319,9 +319,9 @@ namespace User_Interface_Testing
         }
         
         /// <summary>
-        /// F
+        /// f
         /// </summary>
-        public void F()
+        public void f()
         {
             #region Variable Declarations
             WinButton uIFButton = this.UIHP97Window.UIFWindow.UIFButton;
@@ -332,9 +332,9 @@ namespace User_Interface_Testing
         }
         
         /// <summary>
-        /// Sin
+        /// SIN
         /// </summary>
-        public void Sin()
+        public void SIN()
         {
             #region Variable Declarations
             WinButton uISINButton = this.UIHP97Window.UISINWindow.UISINButton;
@@ -358,9 +358,9 @@ namespace User_Interface_Testing
         }
         
         /// <summary>
-        /// DisplayX
+        /// PRINTx
         /// </summary>
-        public void DisplayX()
+        public void PRINTx()
         {
             #region Variable Declarations
             WinButton uIPRINTxButton = this.UIHP97Window.UIPRINTxWindow.UIPRINTxButton;
@@ -448,6 +448,404 @@ namespace User_Interface_Testing
             Mouse.Click(uICHSButton, new Point(29, 16));
         }
         
+        /// <summary>
+        /// OneOne
+        /// </summary>
+        public void OneOne()
+        {
+            #region Variable Declarations
+            WinButton uIHButtonButton = this.UIHP97Window.UIHButtonWindow.UIHButtonButton;
+            #endregion
+
+            // Double-Click 'hButton' button
+            Mouse.DoubleClick(uIHButtonButton, new Point(37, 4));
+        }
+        
+        /// <summary>
+        /// TwoTwo - Use 'TwoTwoParams' to pass parameters into this method.
+        /// </summary>
+        public void TwoTwo()
+        {
+            #region Variable Declarations
+            WinClient uIPanelMainClient = this.UIHP97Window.UIPanelMainWindow.UIPanelMainClient;
+            WinListItem uIItemListItem4 = this.UIHP97Window.UIListBoxWindow.UIItemListItem4;
+            #endregion
+
+            // Click 'panelMain' client
+            Mouse.Click(uIPanelMainClient, new Point(376, 410));
+
+            // Type '22' in 'Unknown Name' list item
+            Keyboard.SendKeys(uIItemListItem4, this.TwoTwoParams.UIItemListItem4SendKeys, ModifierKeys.None);
+        }
+        
+        /// <summary>
+        /// FourFour - Use 'FourFourParams' to pass parameters into this method.
+        /// </summary>
+        public void FourFour()
+        {
+            #region Variable Declarations
+            WinClient uIPanelMainClient = this.UIHP97Window.UIPanelMainWindow.UIPanelMainClient;
+            WinListItem uIItemListItem4 = this.UIHP97Window.UIListBoxWindow.UIItemListItem4;
+            #endregion
+
+            // Click 'panelMain' client
+            Mouse.Click(uIPanelMainClient, new Point(378, 388));
+
+            // Type '{NumPad4}{NumPad4}' in 'Unknown Name' list item
+            Keyboard.SendKeys(uIItemListItem4, this.FourFourParams.UIItemListItem4SendKeys, ModifierKeys.None);
+        }
+        
+        /// <summary>
+        /// A
+        /// </summary>
+        public void A()
+        {
+            #region Variable Declarations
+            WinButton uIAButton = this.UIHP97Window.UIAWindow.UIAButton;
+            #endregion
+
+            // Click 'A' button
+            Mouse.Click(uIAButton, new Point(22, 14));
+        }
+        
+        /// <summary>
+        /// B
+        /// </summary>
+        public void B()
+        {
+            #region Variable Declarations
+            WinButton uIBButton = this.UIHP97Window.UIBWindow.UIBButton;
+            #endregion
+
+            // Click 'B' button
+            Mouse.Click(uIBButton, new Point(24, 14));
+        }
+        
+        /// <summary>
+        /// C
+        /// </summary>
+        public void C()
+        {
+            #region Variable Declarations
+            WinButton uICButton = this.UIHP97Window.UICWindow.UICButton;
+            #endregion
+
+            // Click 'C' button
+            Mouse.Click(uICButton, new Point(30, 10));
+        }
+        
+        /// <summary>
+        /// CLx
+        /// </summary>
+        public void CLx()
+        {
+            #region Variable Declarations
+            WinButton uICLxButton = this.UIHP97Window.UICLxWindow.UICLxButton;
+            #endregion
+
+            // Click 'CL x' button
+            Mouse.Click(uICLxButton, new Point(33, 19));
+        }
+        
+        /// <summary>
+        /// COS
+        /// </summary>
+        public void COS()
+        {
+            #region Variable Declarations
+            WinButton uICOSButton = this.UIHP97Window.UICOSWindow.UICOSButton;
+            #endregion
+
+            // Click 'COS' button
+            Mouse.Click(uICOSButton, new Point(13, 15));
+        }
+        
+        /// <summary>
+        /// DSP
+        /// </summary>
+        public void DSP()
+        {
+            #region Variable Declarations
+            WinButton uIDSPButton = this.UIHP97Window.UIDSPWindow.UIDSPButton;
+            #endregion
+
+            // Click 'DSP' button
+            Mouse.Click(uIDSPButton, new Point(41, 23));
+        }
+        
+        /// <summary>
+        /// EEX
+        /// </summary>
+        public void EEX()
+        {
+            #region Variable Declarations
+            WinButton uIEEXButton = this.UIHP97Window.UIEEXWindow.UIEEXButton;
+            #endregion
+
+            // Click 'EEX' button
+            Mouse.Click(uIEEXButton, new Point(27, 20));
+        }
+        
+        /// <summary>
+        /// ENG
+        /// </summary>
+        public void ENG()
+        {
+            #region Variable Declarations
+            WinButton uIENGButton = this.UIHP97Window.UIENGWindow.UIENGButton;
+            #endregion
+
+            // Click 'ENG' button
+            Mouse.Click(uIENGButton, new Point(48, 17));
+        }
+        
+        /// <summary>
+        /// Exp
+        /// </summary>
+        public void Exp()
+        {
+            #region Variable Declarations
+            WinButton uIE̽Button = this.UIHP97Window.UIE̽Window.UIE̽Button;
+            #endregion
+
+            // Click 'e ̽' button
+            Mouse.Click(uIE̽Button, new Point(28, 9));
+        }
+        
+        /// <summary>
+        /// FIX
+        /// </summary>
+        public void FIX()
+        {
+            #region Variable Declarations
+            WinButton uIFIXButton = this.UIHP97Window.UIFIXWindow.UIFIXButton;
+            #endregion
+
+            // Click 'FIX' button
+            Mouse.Click(uIFIXButton, new Point(39, 15));
+        }
+        
+        /// <summary>
+        /// I
+        /// </summary>
+        public void I()
+        {
+            #region Variable Declarations
+            WinButton uIIButton = this.UIHP97Window.UIIWindow.UIIButton;
+            #endregion
+
+            // Click 'I' button
+            Mouse.Click(uIIButton, new Point(27, 15));
+        }
+        
+        /// <summary>
+        /// LBL
+        /// </summary>
+        public void LBL()
+        {
+            #region Variable Declarations
+            WinButton uILBLButton = this.UIHP97Window.UILBLWindow.UILBLButton;
+            #endregion
+
+            // Click 'LBL' button
+            Mouse.Click(uILBLButton, new Point(29, 13));
+        }
+        
+        /// <summary>
+        /// LN
+        /// </summary>
+        public void LN()
+        {
+            #region Variable Declarations
+            WinButton uILNButton = this.UIHP97Window.UILNWindow.UILNButton;
+            #endregion
+
+            // Click 'LN' button
+            Mouse.Click(uILNButton, new Point(9, 9));
+        }
+        
+        /// <summary>
+        /// Percent
+        /// </summary>
+        public void Percent()
+        {
+            #region Variable Declarations
+            WinButton uIItemButton = this.UIHP97Window.UIItemWindow5.UIItemButton;
+            #endregion
+
+            // Click '%' button
+            Mouse.Click(uIItemButton, new Point(27, 9));
+        }
+        
+        /// <summary>
+        /// PrinterFeedShort
+        /// </summary>
+        public void PrinterFeedShort()
+        {
+            #region Variable Declarations
+            WinButton uIPrinterFeedButtonButton = this.UIHP97Window.UIPrinterFeedButtonWindow.UIPrinterFeedButtonButton;
+            #endregion
+
+            // Click 'printerFeedButton' button
+            Mouse.Click(uIPrinterFeedButtonButton, new Point(15, 25));
+        }
+        
+        /// <summary>
+        /// PrinterFeedLong
+        /// </summary>
+        public void PrinterFeedLong()
+        {
+            #region Variable Declarations
+            WinButton uIPrinterFeedButtonButton = this.UIHP97Window.UIPrinterFeedButtonWindow.UIPrinterFeedButtonButton;
+            #endregion
+
+            // Click 'printerFeedButton' button
+            Mouse.Click(uIPrinterFeedButtonButton, new Point(13, 29));
+        }
+        
+        /// <summary>
+        /// RCL
+        /// </summary>
+        public void RCL()
+        {
+            #region Variable Declarations
+            WinButton uIRCLButton = this.UIHP97Window.UIRCLWindow.UIRCLButton;
+            #endregion
+
+            // Click 'RCL' button
+            Mouse.Click(uIRCLButton, new Point(13, 11));
+        }
+        
+        /// <summary>
+        /// RDown
+        /// </summary>
+        public void RDown()
+        {
+            #region Variable Declarations
+            WinButton uIRButton = this.UIHP97Window.UIRWindow.UIRButton;
+            #endregion
+
+            // Click 'R↓' button
+            Mouse.Click(uIRButton, new Point(29, 25));
+        }
+        
+        /// <summary>
+        /// RTN
+        /// </summary>
+        public void RTN()
+        {
+            #region Variable Declarations
+            WinButton uIRTNButton = this.UIHP97Window.UIRTNWindow.UIRTNButton;
+            #endregion
+
+            // Click 'RTN' button
+            Mouse.Click(uIRTNButton, new Point(21, 13));
+        }
+        
+        /// <summary>
+        /// SCI
+        /// </summary>
+        public void SCI()
+        {
+            #region Variable Declarations
+            WinButton uISCIButton = this.UIHP97Window.UISCIWindow.UISCIButton;
+            #endregion
+
+            // Click 'SCI' button
+            Mouse.Click(uISCIButton, new Point(37, 9));
+        }
+        
+        /// <summary>
+        /// Sqrt
+        /// </summary>
+        public void Sqrt()
+        {
+            #region Variable Declarations
+            WinButton uIX̅Button = this.UIHP97Window.UIX̅Window.UIX̅Button;
+            #endregion
+
+            // Click '√x̅' button
+            Mouse.Click(uIX̅Button, new Point(35, 11));
+        }
+        
+        /// <summary>
+        /// STO
+        /// </summary>
+        public void STO()
+        {
+            #region Variable Declarations
+            WinButton uISTOButton = this.UIHP97Window.UISTOWindow.UISTOButton;
+            #endregion
+
+            // Click 'STO' button
+            Mouse.Click(uISTOButton, new Point(19, 13));
+        }
+        
+        /// <summary>
+        /// TAN
+        /// </summary>
+        public void TAN()
+        {
+            #region Variable Declarations
+            WinButton uITANButton = this.UIHP97Window.UITANWindow.UITANButton;
+            #endregion
+
+            // Click 'TAN' button
+            Mouse.Click(uITANButton, new Point(21, 7));
+        }
+        
+        /// <summary>
+        /// ToggleOffOn
+        /// </summary>
+        public void ToggleOffOn()
+        {
+            #region Variable Declarations
+            WinButton uIONButton = this.UIHP97Window.UIButtonWindow1.UIONButton;
+            #endregion
+
+            // Click 'ON' button
+            Mouse.Click(uIONButton, new Point(15, 3));
+        }
+        
+        /// <summary>
+        /// TogglePrgmRun
+        /// </summary>
+        public void TogglePrgmRun()
+        {
+            #region Variable Declarations
+            WinButton uIRUNButton = this.UIHP97Window.UIButtonWindow2.UIRUNButton;
+            #endregion
+
+            // Click 'RUN' button
+            Mouse.Click(uIRUNButton, new Point(7, 5));
+        }
+        
+        /// <summary>
+        /// XExchangeY
+        /// </summary>
+        public void XExchangeY()
+        {
+            #region Variable Declarations
+            WinButton uIXYButton = this.UIHP97Window.UIXYWindow.UIXYButton;
+            #endregion
+
+            // Click 'x⇄y' button
+            Mouse.Click(uIXYButton, new Point(33, 14));
+        }
+        
+        /// <summary>
+        /// YToTheXth
+        /// </summary>
+        public void YToTheXth()
+        {
+            #region Variable Declarations
+            WinButton uIY̽Button = this.UIHP97Window.UIY̽Window.UIY̽Button;
+            #endregion
+
+            // Click 'y ̽' button
+            Mouse.Click(uIY̽Button, new Point(29, 7));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -521,6 +919,30 @@ namespace User_Interface_Testing
             }
         }
         
+        public virtual TwoTwoParams TwoTwoParams
+        {
+            get
+            {
+                if ((this.mTwoTwoParams == null))
+                {
+                    this.mTwoTwoParams = new TwoTwoParams();
+                }
+                return this.mTwoTwoParams;
+            }
+        }
+        
+        public virtual FourFourParams FourFourParams
+        {
+            get
+            {
+                if ((this.mFourFourParams == null))
+                {
+                    this.mFourFourParams = new FourFourParams();
+                }
+                return this.mFourFourParams;
+            }
+        }
+        
         public UIHP97Window UIHP97Window
         {
             get
@@ -546,6 +968,10 @@ namespace User_Interface_Testing
         private AssertPrinterLine2ExpectedValues mAssertPrinterLine2ExpectedValues;
         
         private AssertPrinterLine3ExpectedValues mAssertPrinterLine3ExpectedValues;
+        
+        private TwoTwoParams mTwoTwoParams;
+        
+        private FourFourParams mFourFourParams;
         
         private UIHP97Window mUIHP97Window;
         #endregion
@@ -645,6 +1071,36 @@ namespace User_Interface_Testing
         /// Verify that list item numbered 4 in 'listBox' window's property 'DisplayText' equals ''
         /// </summary>
         public string UIItemListItem3DisplayText = "";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'TwoTwo'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class TwoTwoParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type '22' in 'Unknown Name' list item
+        /// </summary>
+        public string UIItemListItem4SendKeys = "22";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'FourFour'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class FourFourParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Type '{NumPad4}{NumPad4}' in 'Unknown Name' list item
+        /// </summary>
+        public string UIItemListItem4SendKeys = "{NumPad4}{NumPad4}";
         #endregion
     }
     
@@ -997,6 +1453,342 @@ namespace User_Interface_Testing
                 return this.mUICHSWindow;
             }
         }
+        
+        public UIHButtonWindow UIHButtonWindow
+        {
+            get
+            {
+                if ((this.mUIHButtonWindow == null))
+                {
+                    this.mUIHButtonWindow = new UIHButtonWindow(this);
+                }
+                return this.mUIHButtonWindow;
+            }
+        }
+        
+        public UIPanelMainWindow UIPanelMainWindow
+        {
+            get
+            {
+                if ((this.mUIPanelMainWindow == null))
+                {
+                    this.mUIPanelMainWindow = new UIPanelMainWindow(this);
+                }
+                return this.mUIPanelMainWindow;
+            }
+        }
+        
+        public UIAWindow UIAWindow
+        {
+            get
+            {
+                if ((this.mUIAWindow == null))
+                {
+                    this.mUIAWindow = new UIAWindow(this);
+                }
+                return this.mUIAWindow;
+            }
+        }
+        
+        public UIBWindow UIBWindow
+        {
+            get
+            {
+                if ((this.mUIBWindow == null))
+                {
+                    this.mUIBWindow = new UIBWindow(this);
+                }
+                return this.mUIBWindow;
+            }
+        }
+        
+        public UICWindow UICWindow
+        {
+            get
+            {
+                if ((this.mUICWindow == null))
+                {
+                    this.mUICWindow = new UICWindow(this);
+                }
+                return this.mUICWindow;
+            }
+        }
+        
+        public UICLxWindow UICLxWindow
+        {
+            get
+            {
+                if ((this.mUICLxWindow == null))
+                {
+                    this.mUICLxWindow = new UICLxWindow(this);
+                }
+                return this.mUICLxWindow;
+            }
+        }
+        
+        public UICOSWindow UICOSWindow
+        {
+            get
+            {
+                if ((this.mUICOSWindow == null))
+                {
+                    this.mUICOSWindow = new UICOSWindow(this);
+                }
+                return this.mUICOSWindow;
+            }
+        }
+        
+        public UIDSPWindow UIDSPWindow
+        {
+            get
+            {
+                if ((this.mUIDSPWindow == null))
+                {
+                    this.mUIDSPWindow = new UIDSPWindow(this);
+                }
+                return this.mUIDSPWindow;
+            }
+        }
+        
+        public UIEEXWindow UIEEXWindow
+        {
+            get
+            {
+                if ((this.mUIEEXWindow == null))
+                {
+                    this.mUIEEXWindow = new UIEEXWindow(this);
+                }
+                return this.mUIEEXWindow;
+            }
+        }
+        
+        public UIENGWindow UIENGWindow
+        {
+            get
+            {
+                if ((this.mUIENGWindow == null))
+                {
+                    this.mUIENGWindow = new UIENGWindow(this);
+                }
+                return this.mUIENGWindow;
+            }
+        }
+        
+        public UIE̽Window UIE̽Window
+        {
+            get
+            {
+                if ((this.mUIE̽Window == null))
+                {
+                    this.mUIE̽Window = new UIE̽Window(this);
+                }
+                return this.mUIE̽Window;
+            }
+        }
+        
+        public UIFIXWindow UIFIXWindow
+        {
+            get
+            {
+                if ((this.mUIFIXWindow == null))
+                {
+                    this.mUIFIXWindow = new UIFIXWindow(this);
+                }
+                return this.mUIFIXWindow;
+            }
+        }
+        
+        public UIIWindow UIIWindow
+        {
+            get
+            {
+                if ((this.mUIIWindow == null))
+                {
+                    this.mUIIWindow = new UIIWindow(this);
+                }
+                return this.mUIIWindow;
+            }
+        }
+        
+        public UILBLWindow UILBLWindow
+        {
+            get
+            {
+                if ((this.mUILBLWindow == null))
+                {
+                    this.mUILBLWindow = new UILBLWindow(this);
+                }
+                return this.mUILBLWindow;
+            }
+        }
+        
+        public UILNWindow UILNWindow
+        {
+            get
+            {
+                if ((this.mUILNWindow == null))
+                {
+                    this.mUILNWindow = new UILNWindow(this);
+                }
+                return this.mUILNWindow;
+            }
+        }
+        
+        public UIItemWindow5 UIItemWindow5
+        {
+            get
+            {
+                if ((this.mUIItemWindow5 == null))
+                {
+                    this.mUIItemWindow5 = new UIItemWindow5(this);
+                }
+                return this.mUIItemWindow5;
+            }
+        }
+        
+        public UIPrinterFeedButtonWindow UIPrinterFeedButtonWindow
+        {
+            get
+            {
+                if ((this.mUIPrinterFeedButtonWindow == null))
+                {
+                    this.mUIPrinterFeedButtonWindow = new UIPrinterFeedButtonWindow(this);
+                }
+                return this.mUIPrinterFeedButtonWindow;
+            }
+        }
+        
+        public UIRCLWindow UIRCLWindow
+        {
+            get
+            {
+                if ((this.mUIRCLWindow == null))
+                {
+                    this.mUIRCLWindow = new UIRCLWindow(this);
+                }
+                return this.mUIRCLWindow;
+            }
+        }
+        
+        public UIRWindow UIRWindow
+        {
+            get
+            {
+                if ((this.mUIRWindow == null))
+                {
+                    this.mUIRWindow = new UIRWindow(this);
+                }
+                return this.mUIRWindow;
+            }
+        }
+        
+        public UIRTNWindow UIRTNWindow
+        {
+            get
+            {
+                if ((this.mUIRTNWindow == null))
+                {
+                    this.mUIRTNWindow = new UIRTNWindow(this);
+                }
+                return this.mUIRTNWindow;
+            }
+        }
+        
+        public UISCIWindow UISCIWindow
+        {
+            get
+            {
+                if ((this.mUISCIWindow == null))
+                {
+                    this.mUISCIWindow = new UISCIWindow(this);
+                }
+                return this.mUISCIWindow;
+            }
+        }
+        
+        public UIX̅Window UIX̅Window
+        {
+            get
+            {
+                if ((this.mUIX̅Window == null))
+                {
+                    this.mUIX̅Window = new UIX̅Window(this);
+                }
+                return this.mUIX̅Window;
+            }
+        }
+        
+        public UISTOWindow UISTOWindow
+        {
+            get
+            {
+                if ((this.mUISTOWindow == null))
+                {
+                    this.mUISTOWindow = new UISTOWindow(this);
+                }
+                return this.mUISTOWindow;
+            }
+        }
+        
+        public UITANWindow UITANWindow
+        {
+            get
+            {
+                if ((this.mUITANWindow == null))
+                {
+                    this.mUITANWindow = new UITANWindow(this);
+                }
+                return this.mUITANWindow;
+            }
+        }
+        
+        public UIButtonWindow1 UIButtonWindow1
+        {
+            get
+            {
+                if ((this.mUIButtonWindow1 == null))
+                {
+                    this.mUIButtonWindow1 = new UIButtonWindow1(this);
+                }
+                return this.mUIButtonWindow1;
+            }
+        }
+        
+        public UIButtonWindow2 UIButtonWindow2
+        {
+            get
+            {
+                if ((this.mUIButtonWindow2 == null))
+                {
+                    this.mUIButtonWindow2 = new UIButtonWindow2(this);
+                }
+                return this.mUIButtonWindow2;
+            }
+        }
+        
+        public UIXYWindow UIXYWindow
+        {
+            get
+            {
+                if ((this.mUIXYWindow == null))
+                {
+                    this.mUIXYWindow = new UIXYWindow(this);
+                }
+                return this.mUIXYWindow;
+            }
+        }
+        
+        public UIY̽Window UIY̽Window
+        {
+            get
+            {
+                if ((this.mUIY̽Window == null))
+                {
+                    this.mUIY̽Window = new UIY̽Window(this);
+                }
+                return this.mUIY̽Window;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1055,6 +1847,62 @@ namespace User_Interface_Testing
         private UIListBoxWindow mUIListBoxWindow;
         
         private UICHSWindow mUICHSWindow;
+        
+        private UIHButtonWindow mUIHButtonWindow;
+        
+        private UIPanelMainWindow mUIPanelMainWindow;
+        
+        private UIAWindow mUIAWindow;
+        
+        private UIBWindow mUIBWindow;
+        
+        private UICWindow mUICWindow;
+        
+        private UICLxWindow mUICLxWindow;
+        
+        private UICOSWindow mUICOSWindow;
+        
+        private UIDSPWindow mUIDSPWindow;
+        
+        private UIEEXWindow mUIEEXWindow;
+        
+        private UIENGWindow mUIENGWindow;
+        
+        private UIE̽Window mUIE̽Window;
+        
+        private UIFIXWindow mUIFIXWindow;
+        
+        private UIIWindow mUIIWindow;
+        
+        private UILBLWindow mUILBLWindow;
+        
+        private UILNWindow mUILNWindow;
+        
+        private UIItemWindow5 mUIItemWindow5;
+        
+        private UIPrinterFeedButtonWindow mUIPrinterFeedButtonWindow;
+        
+        private UIRCLWindow mUIRCLWindow;
+        
+        private UIRWindow mUIRWindow;
+        
+        private UIRTNWindow mUIRTNWindow;
+        
+        private UISCIWindow mUISCIWindow;
+        
+        private UIX̅Window mUIX̅Window;
+        
+        private UISTOWindow mUISTOWindow;
+        
+        private UITANWindow mUITANWindow;
+        
+        private UIButtonWindow1 mUIButtonWindow1;
+        
+        private UIButtonWindow2 mUIButtonWindow2;
+        
+        private UIXYWindow mUIXYWindow;
+        
+        private UIY̽Window mUIY̽Window;
         #endregion
     }
     
@@ -2090,6 +2938,21 @@ namespace User_Interface_Testing
                 return this.mUIItemListItem3;
             }
         }
+        
+        public WinListItem UIItemListItem4
+        {
+            get
+            {
+                if ((this.mUIItemListItem4 == null))
+                {
+                    this.mUIItemListItem4 = new WinListItem(this);
+                    #region Search Criteria
+                    this.mUIItemListItem4.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIItemListItem4;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2100,6 +2963,8 @@ namespace User_Interface_Testing
         private WinListItem mUIItemListItem2;
         
         private WinListItem mUIItemListItem3;
+        
+        private WinListItem mUIItemListItem4;
         #endregion
     }
     
@@ -2137,6 +3002,1037 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinButton mUICHSButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIHButtonWindow : WinWindow
+    {
+        
+        public UIHButtonWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "hButton";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "21";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIHButtonButton
+        {
+            get
+            {
+                if ((this.mUIHButtonButton == null))
+                {
+                    this.mUIHButtonButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIHButtonButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIHButtonButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIHButtonButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIPanelMainWindow : WinWindow
+    {
+        
+        public UIPanelMainWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "panelMain";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinClient UIPanelMainClient
+        {
+            get
+            {
+                if ((this.mUIPanelMainClient == null))
+                {
+                    this.mUIPanelMainClient = new WinClient(this);
+                    #region Search Criteria
+                    this.mUIPanelMainClient.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIPanelMainClient;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinClient mUIPanelMainClient;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIAWindow : WinWindow
+    {
+        
+        public UIAWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "50";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIAButton
+        {
+            get
+            {
+                if ((this.mUIAButton == null))
+                {
+                    this.mUIAButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIAButton.SearchProperties[WinButton.PropertyNames.Name] = "A";
+                    this.mUIAButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIAButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIAButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIBWindow : WinWindow
+    {
+        
+        public UIBWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "49";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIBButton
+        {
+            get
+            {
+                if ((this.mUIBButton == null))
+                {
+                    this.mUIBButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIBButton.SearchProperties[WinButton.PropertyNames.Name] = "B";
+                    this.mUIBButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIBButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIBButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UICWindow : WinWindow
+    {
+        
+        public UICWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "52";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UICButton
+        {
+            get
+            {
+                if ((this.mUICButton == null))
+                {
+                    this.mUICButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUICButton.SearchProperties[WinButton.PropertyNames.Name] = "C";
+                    this.mUICButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUICButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUICButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UICLxWindow : WinWindow
+    {
+        
+        public UICLxWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "24";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UICLxButton
+        {
+            get
+            {
+                if ((this.mUICLxButton == null))
+                {
+                    this.mUICLxButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUICLxButton.SearchProperties[WinButton.PropertyNames.Name] = "CL x";
+                    this.mUICLxButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUICLxButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUICLxButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UICOSWindow : WinWindow
+    {
+        
+        public UICOSWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "34";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UICOSButton
+        {
+            get
+            {
+                if ((this.mUICOSButton == null))
+                {
+                    this.mUICOSButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUICOSButton.SearchProperties[WinButton.PropertyNames.Name] = "COS";
+                    this.mUICOSButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUICOSButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUICOSButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIDSPWindow : WinWindow
+    {
+        
+        public UIDSPWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "9";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIDSPButton
+        {
+            get
+            {
+                if ((this.mUIDSPButton == null))
+                {
+                    this.mUIDSPButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIDSPButton.SearchProperties[WinButton.PropertyNames.Name] = "DSP";
+                    this.mUIDSPButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIDSPButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIDSPButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIEEXWindow : WinWindow
+    {
+        
+        public UIEEXWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "7";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIEEXButton
+        {
+            get
+            {
+                if ((this.mUIEEXButton == null))
+                {
+                    this.mUIEEXButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIEEXButton.SearchProperties[WinButton.PropertyNames.Name] = "EEX";
+                    this.mUIEEXButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIEEXButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIEEXButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIENGWindow : WinWindow
+    {
+        
+        public UIENGWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "2";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIENGButton
+        {
+            get
+            {
+                if ((this.mUIENGButton == null))
+                {
+                    this.mUIENGButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIENGButton.SearchProperties[WinButton.PropertyNames.Name] = "ENG";
+                    this.mUIENGButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIENGButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIENGButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIE̽Window : WinWindow
+    {
+        
+        public UIE̽Window(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "42";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIE̽Button
+        {
+            get
+            {
+                if ((this.mUIE̽Button == null))
+                {
+                    this.mUIE̽Button = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIE̽Button.SearchProperties[WinButton.PropertyNames.Name] = "e ̽";
+                    this.mUIE̽Button.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIE̽Button;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIE̽Button;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFIXWindow : WinWindow
+    {
+        
+        public UIFIXWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "5";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIFIXButton
+        {
+            get
+            {
+                if ((this.mUIFIXButton == null))
+                {
+                    this.mUIFIXButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIFIXButton.SearchProperties[WinButton.PropertyNames.Name] = "FIX";
+                    this.mUIFIXButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIFIXButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIFIXButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIIWindow : WinWindow
+    {
+        
+        public UIIWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "35";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIIButton
+        {
+            get
+            {
+                if ((this.mUIIButton == null))
+                {
+                    this.mUIIButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIIButton.SearchProperties[WinButton.PropertyNames.Name] = "I";
+                    this.mUIIButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIIButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIIButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UILBLWindow : WinWindow
+    {
+        
+        public UILBLWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "59";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UILBLButton
+        {
+            get
+            {
+                if ((this.mUILBLButton == null))
+                {
+                    this.mUILBLButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUILBLButton.SearchProperties[WinButton.PropertyNames.Name] = "LBL";
+                    this.mUILBLButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUILBLButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUILBLButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UILNWindow : WinWindow
+    {
+        
+        public UILNWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "40";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UILNButton
+        {
+            get
+            {
+                if ((this.mUILNButton == null))
+                {
+                    this.mUILNButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUILNButton.SearchProperties[WinButton.PropertyNames.Name] = "LN";
+                    this.mUILNButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUILNButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUILNButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIItemWindow5 : WinWindow
+    {
+        
+        public UIItemWindow5(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "31";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIItemButton
+        {
+            get
+            {
+                if ((this.mUIItemButton == null))
+                {
+                    this.mUIItemButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIItemButton.SearchProperties[WinButton.PropertyNames.Name] = "%";
+                    this.mUIItemButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIItemButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIItemButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIPrinterFeedButtonWindow : WinWindow
+    {
+        
+        public UIPrinterFeedButtonWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "printerFeedButton";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIPrinterFeedButtonButton
+        {
+            get
+            {
+                if ((this.mUIPrinterFeedButtonButton == null))
+                {
+                    this.mUIPrinterFeedButtonButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIPrinterFeedButtonButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIPrinterFeedButtonButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIPrinterFeedButtonButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIRCLWindow : WinWindow
+    {
+        
+        public UIRCLWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "41";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIRCLButton
+        {
+            get
+            {
+                if ((this.mUIRCLButton == null))
+                {
+                    this.mUIRCLButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIRCLButton.SearchProperties[WinButton.PropertyNames.Name] = "RCL";
+                    this.mUIRCLButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIRCLButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIRCLButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIRWindow : WinWindow
+    {
+        
+        public UIRWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "25";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIRButton
+        {
+            get
+            {
+                if ((this.mUIRButton == null))
+                {
+                    this.mUIRButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIRButton.SearchProperties[WinButton.PropertyNames.Name] = "R↓";
+                    this.mUIRButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIRButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIRButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIRTNWindow : WinWindow
+    {
+        
+        public UIRTNWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "54";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIRTNButton
+        {
+            get
+            {
+                if ((this.mUIRTNButton == null))
+                {
+                    this.mUIRTNButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIRTNButton.SearchProperties[WinButton.PropertyNames.Name] = "RTN";
+                    this.mUIRTNButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIRTNButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIRTNButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UISCIWindow : WinWindow
+    {
+        
+        public UISCIWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "3";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UISCIButton
+        {
+            get
+            {
+                if ((this.mUISCIButton == null))
+                {
+                    this.mUISCIButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUISCIButton.SearchProperties[WinButton.PropertyNames.Name] = "SCI";
+                    this.mUISCIButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUISCIButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUISCIButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIX̅Window : WinWindow
+    {
+        
+        public UIX̅Window(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "27";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIX̅Button
+        {
+            get
+            {
+                if ((this.mUIX̅Button == null))
+                {
+                    this.mUIX̅Button = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIX̅Button.SearchProperties[WinButton.PropertyNames.Name] = "√x̅";
+                    this.mUIX̅Button.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIX̅Button;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIX̅Button;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UISTOWindow : WinWindow
+    {
+        
+        public UISTOWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "43";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UISTOButton
+        {
+            get
+            {
+                if ((this.mUISTOButton == null))
+                {
+                    this.mUISTOButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUISTOButton.SearchProperties[WinButton.PropertyNames.Name] = "STO";
+                    this.mUISTOButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUISTOButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUISTOButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UITANWindow : WinWindow
+    {
+        
+        public UITANWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "36";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UITANButton
+        {
+            get
+            {
+                if ((this.mUITANButton == null))
+                {
+                    this.mUITANButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUITANButton.SearchProperties[WinButton.PropertyNames.Name] = "TAN";
+                    this.mUITANButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITANButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUITANButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIButtonWindow1 : WinWindow
+    {
+        
+        public UIButtonWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "47";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIONButton
+        {
+            get
+            {
+                if ((this.mUIONButton == null))
+                {
+                    this.mUIONButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIONButton.SearchProperties[WinButton.PropertyNames.Name] = "ON";
+                    this.mUIONButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIONButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIONButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIButtonWindow2 : WinWindow
+    {
+        
+        public UIButtonWindow2(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "48";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIRUNButton
+        {
+            get
+            {
+                if ((this.mUIRUNButton == null))
+                {
+                    this.mUIRUNButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIRUNButton.SearchProperties[WinButton.PropertyNames.Name] = "RUN";
+                    this.mUIRUNButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIRUNButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIRUNButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIXYWindow : WinWindow
+    {
+        
+        public UIXYWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "23";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIXYButton
+        {
+            get
+            {
+                if ((this.mUIXYButton == null))
+                {
+                    this.mUIXYButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIXYButton.SearchProperties[WinButton.PropertyNames.Name] = "x⇄y";
+                    this.mUIXYButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIXYButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIXYButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIY̽Window : WinWindow
+    {
+        
+        public UIY̽Window(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "44";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIY̽Button
+        {
+            get
+            {
+                if ((this.mUIY̽Button == null))
+                {
+                    this.mUIY̽Button = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIY̽Button.SearchProperties[WinButton.PropertyNames.Name] = "y ̽";
+                    this.mUIY̽Button.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIY̽Button;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIY̽Button;
         #endregion
     }
 }

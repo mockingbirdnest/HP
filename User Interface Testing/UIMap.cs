@@ -29,7 +29,7 @@
 
         public void Pi()
         {
-            F();
+            f();
             Division();
         }
     }

@@ -28,25 +28,25 @@ namespace User_Interface_Testing
             UIMap.ManTraceNorm2Left();
 
             UIMap.Five();
-            UIMap.Enter();
+            UIMap.ENTER();
             UIMap.Six();
             UIMap.Addition();
             UIMap.AssertNumeric(" 11.00         ");
 
             UIMap.Eight();
-            UIMap.Enter();
+            UIMap.ENTER();
             UIMap.Two();
             UIMap.Division();
             UIMap.AssertNumeric(" 4.00          ");
 
             UIMap.Seven();
-            UIMap.Enter();
+            UIMap.ENTER();
             UIMap.Four();
             UIMap.Subtraction();
             UIMap.AssertNumeric(" 3.00          ");
 
             UIMap.Nine();
-            UIMap.Enter();
+            UIMap.ENTER();
             UIMap.Eight();
             UIMap.Multiplication();
             UIMap.AssertNumeric(" 72.00         ");
@@ -57,7 +57,7 @@ namespace User_Interface_Testing
 
             UIMap.Three();
             UIMap.Zero();
-            UIMap.Sin();
+            UIMap.SIN();
             UIMap.AssertNumeric(" 0.50          ");
 
             UIMap.ManTraceNorm2Right();
@@ -79,9 +79,14 @@ namespace User_Interface_Testing
             UIMap.AssertNumeric(" 32169908.78   ");
             UIMap.AssertPrinter("                  × ");
 
-            UIMap.DisplayX();
+            UIMap.PRINTx();
             UIMap.AssertNumeric(" 32169908.78   ");
             UIMap.AssertPrinter("    32169908.78  ***");
+        }
+
+        [TestMethod]
+        public void Playground()
+        {
         }
 
         #region Additional test attributes
