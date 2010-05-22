@@ -462,40 +462,6 @@ namespace User_Interface_Testing
         }
         
         /// <summary>
-        /// TwoTwo - Use 'TwoTwoParams' to pass parameters into this method.
-        /// </summary>
-        public void TwoTwo()
-        {
-            #region Variable Declarations
-            WinClient uIPanelMainClient = this.UIHP97Window.UIPanelMainWindow.UIPanelMainClient;
-            WinListItem uIItemListItem4 = this.UIHP97Window.UIListBoxWindow.UIItemListItem4;
-            #endregion
-
-            // Click 'panelMain' client
-            Mouse.Click(uIPanelMainClient, new Point(376, 410));
-
-            // Type '22' in 'Unknown Name' list item
-            Keyboard.SendKeys(uIItemListItem4, this.TwoTwoParams.UIItemListItem4SendKeys, ModifierKeys.None);
-        }
-        
-        /// <summary>
-        /// FourFour - Use 'FourFourParams' to pass parameters into this method.
-        /// </summary>
-        public void FourFour()
-        {
-            #region Variable Declarations
-            WinClient uIPanelMainClient = this.UIHP97Window.UIPanelMainWindow.UIPanelMainClient;
-            WinListItem uIItemListItem4 = this.UIHP97Window.UIListBoxWindow.UIItemListItem4;
-            #endregion
-
-            // Click 'panelMain' client
-            Mouse.Click(uIPanelMainClient, new Point(378, 388));
-
-            // Type '{NumPad4}{NumPad4}' in 'Unknown Name' list item
-            Keyboard.SendKeys(uIItemListItem4, this.FourFourParams.UIItemListItem4SendKeys, ModifierKeys.None);
-        }
-        
-        /// <summary>
         /// A
         /// </summary>
         public void A()
@@ -921,6 +887,134 @@ namespace User_Interface_Testing
             Mouse.Click(uIEButton, new Point(27, 12));
         }
         
+        /// <summary>
+        /// EditLabels - Use 'EditLabelsParams' to pass parameters into this method.
+        /// </summary>
+        public void EditLabels()
+        {
+            #region Variable Declarations
+            WinMenuItem uIEditLabelsMenuItem = this.UIHP97Window.UIMenuStripMenuBar.UIEditMenuItem.UIEditLabelsMenuItem;
+            WinEdit uITitleTextBoxEdit = this.UIHP97Window.UITITLEWindow.UITitleTextBoxEdit;
+            WinEdit uITextBoxfAEdit = this.UIHP97Window.UIFAWindow.UITextBoxfAEdit;
+            WinEdit uITextBoxfBEdit = this.UIHP97Window.UIFBWindow.UITextBoxfBEdit;
+            WinEdit uITextBoxfCEdit = this.UIHP97Window.UIFCWindow.UITextBoxfCEdit;
+            WinEdit uITextBoxfDEdit = this.UIHP97Window.UIFDWindow.UITextBoxfDEdit;
+            WinEdit uITextBoxfEEdit = this.UIHP97Window.UIFEWindow.UITextBoxfEEdit;
+            WinEdit uITextBoxAEdit = this.UIHP97Window.UIAWindow1.UITextBoxAEdit;
+            WinEdit uITextBoxAEdit1 = this.UIHP97Window.UIAWindow2.UITextBoxAEdit;
+            WinEdit uITextBoxBEdit = this.UIHP97Window.UIBWindow1.UITextBoxBEdit;
+            WinEdit uITextBoxBEdit1 = this.UIHP97Window.UIBWindow2.UITextBoxBEdit;
+            WinEdit uITextBoxCEdit = this.UIHP97Window.UICWindow1.UITextBoxCEdit;
+            WinEdit uITextBoxCEdit1 = this.UIHP97Window.UICWindow2.UITextBoxCEdit;
+            WinEdit uITextBoxDEdit = this.UIHP97Window.UIDWindow.UITextBoxDEdit;
+            WinEdit uITextBoxEEdit = this.UIHP97Window.UIEWindow1.UITextBoxEEdit;
+            #endregion
+
+            // Select 'Edit' -> 'Edit Labels' menu item
+            uIEditLabelsMenuItem.Checked = this.EditLabelsParams.UIEditLabelsMenuItemChecked;
+
+            // Type 'SPHERE SURFACE AREA' in 'titleTextBox' text box
+            uITitleTextBoxEdit.Text = this.EditLabelsParams.UITitleTextBoxEditText;
+
+            // Type '{Tab}' in 'titleTextBox' text box
+            Keyboard.SendKeys(uITitleTextBoxEdit, this.EditLabelsParams.UITitleTextBoxEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxfA' text box
+            uITextBoxfAEdit.Text = this.EditLabelsParams.UITextBoxfAEditText;
+
+            // Type '{Tab}' in 'textBoxfA' text box
+            Keyboard.SendKeys(uITextBoxfAEdit, this.EditLabelsParams.UITextBoxfAEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxfB' text box
+            uITextBoxfBEdit.Text = this.EditLabelsParams.UITextBoxfBEditText;
+
+            // Type '{Tab}' in 'textBoxfB' text box
+            Keyboard.SendKeys(uITextBoxfBEdit, this.EditLabelsParams.UITextBoxfBEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxfC' text box
+            uITextBoxfCEdit.Text = this.EditLabelsParams.UITextBoxfCEditText;
+
+            // Type '{Tab}' in 'textBoxfC' text box
+            Keyboard.SendKeys(uITextBoxfCEdit, this.EditLabelsParams.UITextBoxfCEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxfD' text box
+            uITextBoxfDEdit.Text = this.EditLabelsParams.UITextBoxfDEditText;
+
+            // Type '{Tab}' in 'textBoxfD' text box
+            Keyboard.SendKeys(uITextBoxfDEdit, this.EditLabelsParams.UITextBoxfDEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxfE' text box
+            uITextBoxfEEdit.Text = this.EditLabelsParams.UITextBoxfEEditText;
+
+            // Type '{Tab}' in 'textBoxfE' text box
+            Keyboard.SendKeys(uITextBoxfEEdit, this.EditLabelsParams.UITextBoxfEEditSendKeys, ModifierKeys.None);
+
+            // Type 'd->A' in 'textBoxA' text box
+            uITextBoxAEdit.Text = this.EditLabelsParams.UITextBoxAEditText;
+
+            // Type '{Tab}' in 'textBoxA' text box
+            Keyboard.SendKeys(uITextBoxAEdit1, this.EditLabelsParams.UITextBoxAEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxB' text box
+            uITextBoxBEdit.Text = this.EditLabelsParams.UITextBoxBEditText;
+
+            // Type '{Tab}' in 'textBoxB' text box
+            Keyboard.SendKeys(uITextBoxBEdit1, this.EditLabelsParams.UITextBoxBEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxC' text box
+            uITextBoxCEdit.Text = this.EditLabelsParams.UITextBoxCEditText;
+
+            // Type '{Tab}' in 'textBoxC' text box
+            Keyboard.SendKeys(uITextBoxCEdit1, this.EditLabelsParams.UITextBoxCEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxD' text box
+            uITextBoxDEdit.Text = this.EditLabelsParams.UITextBoxDEditText;
+
+            // Type '{Tab}' in 'textBoxD' text box
+            Keyboard.SendKeys(uITextBoxDEdit, this.EditLabelsParams.UITextBoxDEditSendKeys, ModifierKeys.None);
+
+            // Type '' in 'textBoxE' text box
+            uITextBoxEEdit.Text = this.EditLabelsParams.UITextBoxEEditText;
+        }
+        
+        /// <summary>
+        /// SaveCard - Use 'SaveCardParams' to pass parameters into this method.
+        /// </summary>
+        public void SaveCard()
+        {
+            #region Variable Declarations
+            WinMenuItem uISaveMenuItem = this.UIHP97Window.UIMenuStripMenuBar.UIFileMenuItem.UISaveMenuItem;
+            WinButton uIMyDocumentsButton = this.UISaveAsWindow.UIItemWindow.UIMyDocumentsButton;
+            WinComboBox uIFilenameComboBox = this.UISaveAsWindow.UIItemWindow1.UIFilenameComboBox;
+            WinButton uISaveButton = this.UISaveAsWindow.UISaveWindow.UISaveButton;
+            #endregion
+
+            // Click 'File' -> 'Save' menu item
+            Mouse.Click(uISaveMenuItem, new Point(31, 11));
+
+            // Click 'My Documents' button
+            Mouse.Click(uIMyDocumentsButton, new Point(41, 32));
+
+            // Select 'CardFile' in 'File name:' combo box
+            uIFilenameComboBox.EditableItem = this.SaveCardParams.UIFilenameComboBoxEditableItem;
+
+            // Click '&Save' button
+            Mouse.Click(uISaveButton, new Point(59, 18));
+        }
+        
+        /// <summary>
+        /// GTO
+        /// </summary>
+        public void GTO()
+        {
+            #region Variable Declarations
+            WinButton uIGTOButton = this.UIHP97Window.UIGTOWindow.UIGTOButton;
+            #endregion
+
+            // Click 'GTO' button
+            Mouse.Click(uIGTOButton, new Point(35, 12));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -994,30 +1088,6 @@ namespace User_Interface_Testing
             }
         }
         
-        public virtual TwoTwoParams TwoTwoParams
-        {
-            get
-            {
-                if ((this.mTwoTwoParams == null))
-                {
-                    this.mTwoTwoParams = new TwoTwoParams();
-                }
-                return this.mTwoTwoParams;
-            }
-        }
-        
-        public virtual FourFourParams FourFourParams
-        {
-            get
-            {
-                if ((this.mFourFourParams == null))
-                {
-                    this.mFourFourParams = new FourFourParams();
-                }
-                return this.mFourFourParams;
-            }
-        }
-        
         public virtual OpenStandardPacCardParams OpenStandardPacCardParams
         {
             get
@@ -1039,6 +1109,30 @@ namespace User_Interface_Testing
                     this.mDParams = new DParams();
                 }
                 return this.mDParams;
+            }
+        }
+        
+        public virtual EditLabelsParams EditLabelsParams
+        {
+            get
+            {
+                if ((this.mEditLabelsParams == null))
+                {
+                    this.mEditLabelsParams = new EditLabelsParams();
+                }
+                return this.mEditLabelsParams;
+            }
+        }
+        
+        public virtual SaveCardParams SaveCardParams
+        {
+            get
+            {
+                if ((this.mSaveCardParams == null))
+                {
+                    this.mSaveCardParams = new SaveCardParams();
+                }
+                return this.mSaveCardParams;
             }
         }
         
@@ -1065,6 +1159,30 @@ namespace User_Interface_Testing
                 return this.mUIOpenWindow;
             }
         }
+        
+        public UISaveAsWindow UISaveAsWindow
+        {
+            get
+            {
+                if ((this.mUISaveAsWindow == null))
+                {
+                    this.mUISaveAsWindow = new UISaveAsWindow();
+                }
+                return this.mUISaveAsWindow;
+            }
+        }
+        
+        public UIProgramManagerWindow UIProgramManagerWindow
+        {
+            get
+            {
+                if ((this.mUIProgramManagerWindow == null))
+                {
+                    this.mUIProgramManagerWindow = new UIProgramManagerWindow();
+                }
+                return this.mUIProgramManagerWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1080,17 +1198,21 @@ namespace User_Interface_Testing
         
         private AssertPrinterLine3ExpectedValues mAssertPrinterLine3ExpectedValues;
         
-        private TwoTwoParams mTwoTwoParams;
-        
-        private FourFourParams mFourFourParams;
-        
         private OpenStandardPacCardParams mOpenStandardPacCardParams;
         
         private DParams mDParams;
         
+        private EditLabelsParams mEditLabelsParams;
+        
+        private SaveCardParams mSaveCardParams;
+        
         private UIHP97Window mUIHP97Window;
         
         private UIOpenWindow mUIOpenWindow;
+        
+        private UISaveAsWindow mUISaveAsWindow;
+        
+        private UIProgramManagerWindow mUIProgramManagerWindow;
         #endregion
     }
     
@@ -1192,36 +1314,6 @@ namespace User_Interface_Testing
     }
     
     /// <summary>
-    /// Parameters to be passed into 'TwoTwo'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
-    public class TwoTwoParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Type '22' in 'Unknown Name' list item
-        /// </summary>
-        public string UIItemListItem4SendKeys = "22";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'FourFour'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
-    public class FourFourParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Type '{NumPad4}{NumPad4}' in 'Unknown Name' list item
-        /// </summary>
-        public string UIItemListItem4SendKeys = "{NumPad4}{NumPad4}";
-        #endregion
-    }
-    
-    /// <summary>
     /// Parameters to be passed into 'OpenStandardPacCard'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
@@ -1253,6 +1345,141 @@ namespace User_Interface_Testing
         /// Type 'd' in 'Unknown Name' list item
         /// </summary>
         public string UIItemListItem4SendKeys = "d";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'EditLabels'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class EditLabelsParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Select 'Edit' -> 'Edit Labels' menu item
+        /// </summary>
+        public bool UIEditLabelsMenuItemChecked = true;
+        
+        /// <summary>
+        /// Type 'SPHERE SURFACE AREA' in 'titleTextBox' text box
+        /// </summary>
+        public string UITitleTextBoxEditText = "SPHERE SURFACE AREA";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'titleTextBox' text box
+        /// </summary>
+        public string UITitleTextBoxEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxfA' text box
+        /// </summary>
+        public string UITextBoxfAEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxfA' text box
+        /// </summary>
+        public string UITextBoxfAEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxfB' text box
+        /// </summary>
+        public string UITextBoxfBEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxfB' text box
+        /// </summary>
+        public string UITextBoxfBEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxfC' text box
+        /// </summary>
+        public string UITextBoxfCEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxfC' text box
+        /// </summary>
+        public string UITextBoxfCEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxfD' text box
+        /// </summary>
+        public string UITextBoxfDEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxfD' text box
+        /// </summary>
+        public string UITextBoxfDEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxfE' text box
+        /// </summary>
+        public string UITextBoxfEEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxfE' text box
+        /// </summary>
+        public string UITextBoxfEEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type 'd->A' in 'textBoxA' text box
+        /// </summary>
+        public string UITextBoxAEditText = "d->A";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxA' text box
+        /// </summary>
+        public string UITextBoxAEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxB' text box
+        /// </summary>
+        public string UITextBoxBEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxB' text box
+        /// </summary>
+        public string UITextBoxBEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxC' text box
+        /// </summary>
+        public string UITextBoxCEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxC' text box
+        /// </summary>
+        public string UITextBoxCEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxD' text box
+        /// </summary>
+        public string UITextBoxDEditText = "";
+        
+        /// <summary>
+        /// Type '{Tab}' in 'textBoxD' text box
+        /// </summary>
+        public string UITextBoxDEditSendKeys = "{Tab}";
+        
+        /// <summary>
+        /// Type '' in 'textBoxE' text box
+        /// </summary>
+        public string UITextBoxEEditText = "";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'SaveCard'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class SaveCardParams
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Select 'CardFile' in 'File name:' combo box
+        /// </summary>
+        public string UIFilenameComboBoxEditableItem = "CardFile";
         #endregion
     }
     
@@ -1965,6 +2192,210 @@ namespace User_Interface_Testing
                 return this.mUIEWindow;
             }
         }
+        
+        public UITITLEWindow UITITLEWindow
+        {
+            get
+            {
+                if ((this.mUITITLEWindow == null))
+                {
+                    this.mUITITLEWindow = new UITITLEWindow(this);
+                }
+                return this.mUITITLEWindow;
+            }
+        }
+        
+        public UIFAWindow UIFAWindow
+        {
+            get
+            {
+                if ((this.mUIFAWindow == null))
+                {
+                    this.mUIFAWindow = new UIFAWindow(this);
+                }
+                return this.mUIFAWindow;
+            }
+        }
+        
+        public UIFBWindow UIFBWindow
+        {
+            get
+            {
+                if ((this.mUIFBWindow == null))
+                {
+                    this.mUIFBWindow = new UIFBWindow(this);
+                }
+                return this.mUIFBWindow;
+            }
+        }
+        
+        public UIFCWindow UIFCWindow
+        {
+            get
+            {
+                if ((this.mUIFCWindow == null))
+                {
+                    this.mUIFCWindow = new UIFCWindow(this);
+                }
+                return this.mUIFCWindow;
+            }
+        }
+        
+        public UIFDWindow UIFDWindow
+        {
+            get
+            {
+                if ((this.mUIFDWindow == null))
+                {
+                    this.mUIFDWindow = new UIFDWindow(this);
+                }
+                return this.mUIFDWindow;
+            }
+        }
+        
+        public UIFEWindow UIFEWindow
+        {
+            get
+            {
+                if ((this.mUIFEWindow == null))
+                {
+                    this.mUIFEWindow = new UIFEWindow(this);
+                }
+                return this.mUIFEWindow;
+            }
+        }
+        
+        public UIAWindow1 UIAWindow1
+        {
+            get
+            {
+                if ((this.mUIAWindow1 == null))
+                {
+                    this.mUIAWindow1 = new UIAWindow1(this);
+                }
+                return this.mUIAWindow1;
+            }
+        }
+        
+        public UIAWindow2 UIAWindow2
+        {
+            get
+            {
+                if ((this.mUIAWindow2 == null))
+                {
+                    this.mUIAWindow2 = new UIAWindow2(this);
+                }
+                return this.mUIAWindow2;
+            }
+        }
+        
+        public UIBWindow1 UIBWindow1
+        {
+            get
+            {
+                if ((this.mUIBWindow1 == null))
+                {
+                    this.mUIBWindow1 = new UIBWindow1(this);
+                }
+                return this.mUIBWindow1;
+            }
+        }
+        
+        public UIBWindow2 UIBWindow2
+        {
+            get
+            {
+                if ((this.mUIBWindow2 == null))
+                {
+                    this.mUIBWindow2 = new UIBWindow2(this);
+                }
+                return this.mUIBWindow2;
+            }
+        }
+        
+        public UICWindow1 UICWindow1
+        {
+            get
+            {
+                if ((this.mUICWindow1 == null))
+                {
+                    this.mUICWindow1 = new UICWindow1(this);
+                }
+                return this.mUICWindow1;
+            }
+        }
+        
+        public UICWindow2 UICWindow2
+        {
+            get
+            {
+                if ((this.mUICWindow2 == null))
+                {
+                    this.mUICWindow2 = new UICWindow2(this);
+                }
+                return this.mUICWindow2;
+            }
+        }
+        
+        public UIDWindow UIDWindow
+        {
+            get
+            {
+                if ((this.mUIDWindow == null))
+                {
+                    this.mUIDWindow = new UIDWindow(this);
+                }
+                return this.mUIDWindow;
+            }
+        }
+        
+        public UIEWindow1 UIEWindow1
+        {
+            get
+            {
+                if ((this.mUIEWindow1 == null))
+                {
+                    this.mUIEWindow1 = new UIEWindow1(this);
+                }
+                return this.mUIEWindow1;
+            }
+        }
+        
+        public UIGroupBoxCardWindow UIGroupBoxCardWindow
+        {
+            get
+            {
+                if ((this.mUIGroupBoxCardWindow == null))
+                {
+                    this.mUIGroupBoxCardWindow = new UIGroupBoxCardWindow(this);
+                }
+                return this.mUIGroupBoxCardWindow;
+            }
+        }
+        
+        public UIHButtonWindow1 UIHButtonWindow1
+        {
+            get
+            {
+                if ((this.mUIHButtonWindow1 == null))
+                {
+                    this.mUIHButtonWindow1 = new UIHButtonWindow1(this);
+                }
+                return this.mUIHButtonWindow1;
+            }
+        }
+        
+        public UIGTOWindow UIGTOWindow
+        {
+            get
+            {
+                if ((this.mUIGTOWindow == null))
+                {
+                    this.mUIGTOWindow = new UIGTOWindow(this);
+                }
+                return this.mUIGTOWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2083,6 +2514,40 @@ namespace User_Interface_Testing
         private UIMenuStripMenuBar mUIMenuStripMenuBar;
         
         private UIEWindow mUIEWindow;
+        
+        private UITITLEWindow mUITITLEWindow;
+        
+        private UIFAWindow mUIFAWindow;
+        
+        private UIFBWindow mUIFBWindow;
+        
+        private UIFCWindow mUIFCWindow;
+        
+        private UIFDWindow mUIFDWindow;
+        
+        private UIFEWindow mUIFEWindow;
+        
+        private UIAWindow1 mUIAWindow1;
+        
+        private UIAWindow2 mUIAWindow2;
+        
+        private UIBWindow1 mUIBWindow1;
+        
+        private UIBWindow2 mUIBWindow2;
+        
+        private UICWindow1 mUICWindow1;
+        
+        private UICWindow2 mUICWindow2;
+        
+        private UIDWindow mUIDWindow;
+        
+        private UIEWindow1 mUIEWindow1;
+        
+        private UIGroupBoxCardWindow mUIGroupBoxCardWindow;
+        
+        private UIHButtonWindow1 mUIHButtonWindow1;
+        
+        private UIGTOWindow mUIGTOWindow;
         #endregion
     }
     
@@ -3133,6 +3598,21 @@ namespace User_Interface_Testing
                 return this.mUIItemListItem4;
             }
         }
+        
+        public WinList UIListBoxList
+        {
+            get
+            {
+                if ((this.mUIListBoxList == null))
+                {
+                    this.mUIListBoxList = new WinList(this);
+                    #region Search Criteria
+                    this.mUIListBoxList.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIListBoxList;
+            }
+        }
         #endregion
         
         #region Fields
@@ -3145,6 +3625,8 @@ namespace User_Interface_Testing
         private WinListItem mUIItemListItem3;
         
         private WinListItem mUIItemListItem4;
+        
+        private WinList mUIListBoxList;
         #endregion
     }
     
@@ -4240,10 +4722,24 @@ namespace User_Interface_Testing
                 return this.mUIFileMenuItem;
             }
         }
+        
+        public UIEditMenuItem UIEditMenuItem
+        {
+            get
+            {
+                if ((this.mUIEditMenuItem == null))
+                {
+                    this.mUIEditMenuItem = new UIEditMenuItem(this);
+                }
+                return this.mUIEditMenuItem;
+            }
+        }
         #endregion
         
         #region Fields
         private UIFileMenuItem mUIFileMenuItem;
+        
+        private UIEditMenuItem mUIEditMenuItem;
         #endregion
     }
     
@@ -4277,10 +4773,66 @@ namespace User_Interface_Testing
                 return this.mUIOpenMenuItem;
             }
         }
+        
+        public WinMenuItem UISaveMenuItem
+        {
+            get
+            {
+                if ((this.mUISaveMenuItem == null))
+                {
+                    this.mUISaveMenuItem = new WinMenuItem(this);
+                    #region Search Criteria
+                    this.mUISaveMenuItem.SearchProperties[WinMenuItem.PropertyNames.Name] = "Save";
+                    this.mUISaveMenuItem.SearchConfigurations.Add(SearchConfiguration.ExpandWhileSearching);
+                    this.mUISaveMenuItem.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUISaveMenuItem;
+            }
+        }
         #endregion
         
         #region Fields
         private WinMenuItem mUIOpenMenuItem;
+        
+        private WinMenuItem mUISaveMenuItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIEditMenuItem : WinMenuItem
+    {
+        
+        public UIEditMenuItem(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinMenuItem.PropertyNames.Name] = "Edit";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinMenuItem UIEditLabelsMenuItem
+        {
+            get
+            {
+                if ((this.mUIEditLabelsMenuItem == null))
+                {
+                    this.mUIEditLabelsMenuItem = new WinMenuItem(this);
+                    #region Search Criteria
+                    this.mUIEditLabelsMenuItem.SearchProperties[WinMenuItem.PropertyNames.Name] = "Edit Labels";
+                    this.mUIEditLabelsMenuItem.SearchConfigurations.Add(SearchConfiguration.ExpandWhileSearching);
+                    this.mUIEditLabelsMenuItem.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIEditLabelsMenuItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinMenuItem mUIEditLabelsMenuItem;
         #endregion
     }
     
@@ -4318,6 +4870,604 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinButton mUIEButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UITITLEWindow : WinWindow
+    {
+        
+        public UITITLEWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "titleTextBox";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITitleTextBoxEdit
+        {
+            get
+            {
+                if ((this.mUITitleTextBoxEdit == null))
+                {
+                    this.mUITitleTextBoxEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITitleTextBoxEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITitleTextBoxEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITitleTextBoxEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFAWindow : WinWindow
+    {
+        
+        public UIFAWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxfA";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxfAEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxfAEdit == null))
+                {
+                    this.mUITextBoxfAEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxfAEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxfAEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxfAEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFBWindow : WinWindow
+    {
+        
+        public UIFBWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxfB";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxfBEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxfBEdit == null))
+                {
+                    this.mUITextBoxfBEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxfBEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxfBEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxfBEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFCWindow : WinWindow
+    {
+        
+        public UIFCWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxfC";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxfCEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxfCEdit == null))
+                {
+                    this.mUITextBoxfCEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxfCEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxfCEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxfCEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFDWindow : WinWindow
+    {
+        
+        public UIFDWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxfD";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxfDEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxfDEdit == null))
+                {
+                    this.mUITextBoxfDEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxfDEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxfDEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxfDEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFEWindow : WinWindow
+    {
+        
+        public UIFEWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxfE";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxfEEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxfEEdit == null))
+                {
+                    this.mUITextBoxfEEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxfEEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxfEEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxfEEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIAWindow1 : WinWindow
+    {
+        
+        public UIAWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxA";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxAEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxAEdit == null))
+                {
+                    this.mUITextBoxAEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxAEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxAEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxAEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIAWindow2 : WinWindow
+    {
+        
+        public UIAWindow2(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxA";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxAEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxAEdit == null))
+                {
+                    this.mUITextBoxAEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxAEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxAEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxAEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIBWindow1 : WinWindow
+    {
+        
+        public UIBWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxB";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxBEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxBEdit == null))
+                {
+                    this.mUITextBoxBEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxBEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxBEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxBEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIBWindow2 : WinWindow
+    {
+        
+        public UIBWindow2(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxB";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxBEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxBEdit == null))
+                {
+                    this.mUITextBoxBEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxBEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxBEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxBEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UICWindow1 : WinWindow
+    {
+        
+        public UICWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxC";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxCEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxCEdit == null))
+                {
+                    this.mUITextBoxCEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxCEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxCEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxCEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UICWindow2 : WinWindow
+    {
+        
+        public UICWindow2(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxC";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxCEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxCEdit == null))
+                {
+                    this.mUITextBoxCEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxCEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxCEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxCEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIDWindow : WinWindow
+    {
+        
+        public UIDWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxD";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxDEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxDEdit == null))
+                {
+                    this.mUITextBoxDEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxDEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxDEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxDEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIEWindow1 : WinWindow
+    {
+        
+        public UIEWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "textBoxE";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UITextBoxEEdit
+        {
+            get
+            {
+                if ((this.mUITextBoxEEdit == null))
+                {
+                    this.mUITextBoxEEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUITextBoxEEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITextBoxEEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUITextBoxEEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIGroupBoxCardWindow : WinWindow
+    {
+        
+        public UIGroupBoxCardWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "groupBoxCard";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinGroup UIGroupBoxCardGroup
+        {
+            get
+            {
+                if ((this.mUIGroupBoxCardGroup == null))
+                {
+                    this.mUIGroupBoxCardGroup = new WinGroup(this);
+                    #region Search Criteria
+                    this.mUIGroupBoxCardGroup.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIGroupBoxCardGroup;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinGroup mUIGroupBoxCardGroup;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIHButtonWindow1 : WinWindow
+    {
+        
+        public UIHButtonWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "hButton";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "47";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIHButtonButton
+        {
+            get
+            {
+                if ((this.mUIHButtonButton == null))
+                {
+                    this.mUIHButtonButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIHButtonButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIHButtonButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIHButtonButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIGTOWindow : WinWindow
+    {
+        
+        public UIGTOWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "55";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIGTOButton
+        {
+            get
+            {
+                if ((this.mUIGTOButton == null))
+                {
+                    this.mUIGTOButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIGTOButton.SearchProperties[WinButton.PropertyNames.Name] = "GTO";
+                    this.mUIGTOButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIGTOButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIGTOButton;
         #endregion
     }
     
@@ -4889,6 +6039,244 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinEdit mUIFilenameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UISaveAsWindow : WinWindow
+    {
+        
+        public UISaveAsWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.Name] = "Save As";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "#32770";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public UIItemWindow7 UIItemWindow
+        {
+            get
+            {
+                if ((this.mUIItemWindow == null))
+                {
+                    this.mUIItemWindow = new UIItemWindow7(this);
+                }
+                return this.mUIItemWindow;
+            }
+        }
+        
+        public UIItemWindow12 UIItemWindow1
+        {
+            get
+            {
+                if ((this.mUIItemWindow1 == null))
+                {
+                    this.mUIItemWindow1 = new UIItemWindow12(this);
+                }
+                return this.mUIItemWindow1;
+            }
+        }
+        
+        public UISaveWindow UISaveWindow
+        {
+            get
+            {
+                if ((this.mUISaveWindow == null))
+                {
+                    this.mUISaveWindow = new UISaveWindow(this);
+                }
+                return this.mUISaveWindow;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIItemWindow7 mUIItemWindow;
+        
+        private UIItemWindow12 mUIItemWindow1;
+        
+        private UISaveWindow mUISaveWindow;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIItemWindow7 : WinWindow
+    {
+        
+        public UIItemWindow7(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1184";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIMyDocumentsButton
+        {
+            get
+            {
+                if ((this.mUIMyDocumentsButton == null))
+                {
+                    this.mUIMyDocumentsButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIMyDocumentsButton.SearchProperties[WinButton.PropertyNames.Name] = "My Documents";
+                    this.mUIMyDocumentsButton.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUIMyDocumentsButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIMyDocumentsButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIItemWindow12 : WinWindow
+    {
+        
+        public UIItemWindow12(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1148";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "2";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinComboBox UIFilenameComboBox
+        {
+            get
+            {
+                if ((this.mUIFilenameComboBox == null))
+                {
+                    this.mUIFilenameComboBox = new WinComboBox(this);
+                    #region Search Criteria
+                    this.mUIFilenameComboBox.SearchProperties[WinComboBox.PropertyNames.Name] = "File name:";
+                    this.mUIFilenameComboBox.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUIFilenameComboBox;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinComboBox mUIFilenameComboBox;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UISaveWindow : WinWindow
+    {
+        
+        public UISaveWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "2";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UISaveButton
+        {
+            get
+            {
+                if ((this.mUISaveButton == null))
+                {
+                    this.mUISaveButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUISaveButton.SearchProperties[WinButton.PropertyNames.Name] = "Save";
+                    this.mUISaveButton.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUISaveButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUISaveButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIProgramManagerWindow : WinWindow
+    {
+        
+        public UIProgramManagerWindow()
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.Name] = "Program Manager";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "Progman";
+            this.WindowTitles.Add("Program Manager");
+            #endregion
+        }
+        
+        #region Properties
+        public UIDesktopList UIDesktopList
+        {
+            get
+            {
+                if ((this.mUIDesktopList == null))
+                {
+                    this.mUIDesktopList = new UIDesktopList(this);
+                }
+                return this.mUIDesktopList;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIDesktopList mUIDesktopList;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIDesktopList : WinList
+    {
+        
+        public UIDesktopList(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinList.PropertyNames.Name] = "Desktop";
+            this.WindowTitles.Add("Program Manager");
+            #endregion
+        }
+        
+        #region Properties
+        public WinListItem UIShortcuttoMockingbirListItem
+        {
+            get
+            {
+                if ((this.mUIShortcuttoMockingbirListItem == null))
+                {
+                    this.mUIShortcuttoMockingbirListItem = new WinListItem(this);
+                    #region Search Criteria
+                    this.mUIShortcuttoMockingbirListItem.SearchProperties[WinListItem.PropertyNames.Name] = "Shortcut to Mockingbird.HP.HP97.exe";
+                    this.mUIShortcuttoMockingbirListItem.WindowTitles.Add("Program Manager");
+                    #endregion
+                }
+                return this.mUIShortcuttoMockingbirListItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinListItem mUIShortcuttoMockingbirListItem;
         #endregion
     }
 }
