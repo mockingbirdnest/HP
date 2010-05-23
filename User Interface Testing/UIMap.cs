@@ -60,7 +60,7 @@
             WinClient uIPanelMainClient = UIHP97Window.UIPanelMainWindow.UIPanelMainClient;
 
             // Click 'panelMain' client
-            Mouse.Click (uIPanelMainClient, new Point (378, 388));
+            Mouse.Click (uIPanelMainClient, new Point (1, 1));
 
             Keyboard.SendKeys (uIPanelMainClient,
                                s,
