@@ -71,6 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HP97.cs" />
+    <Compile Include="HP97p14.cs" />
+    <Compile Include="HP97p15p17.cs" />
+    <Compile Include="HP97p18p19.cs" />
+    <Compile Include="HP97p24.cs" />
+    <Compile Include="HP97p25.cs" />
+    <Compile Include="HP97p27.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIMap.cs">
       <DependentUpon>UIMap.uitest</DependentUpon>
