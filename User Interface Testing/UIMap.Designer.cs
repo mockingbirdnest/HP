@@ -1015,6 +1015,22 @@ namespace User_Interface_Testing
             Mouse.Click(uIGTOButton, new Point(35, 12));
         }
         
+        /// <summary>
+        /// ManTraceNorm1Left
+        /// </summary>
+        public void ManTraceNorm1Left()
+        {
+            #region Variable Declarations
+            WinButton uINORMButton = this.UIHP97Window.UIButtonWindow.UINORMButton;
+            WinText uITRACEText = this.UIHP97Window.UITRACEWindow.UITRACEText;
+            #endregion
+
+            // Move 'NORM' button from (7, 4) to 'TRACE' label (29, 8)
+            uITRACEText.EnsureClickable(new Point(29, 8));
+            Mouse.StartDragging(uINORMButton, new Point(7, 4));
+            Mouse.StopDragging(uITRACEText, new Point(29, 8));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -2396,6 +2412,18 @@ namespace User_Interface_Testing
                 return this.mUIGTOWindow;
             }
         }
+        
+        public UITRACEWindow UITRACEWindow
+        {
+            get
+            {
+                if ((this.mUITRACEWindow == null))
+                {
+                    this.mUITRACEWindow = new UITRACEWindow(this);
+                }
+                return this.mUITRACEWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2548,6 +2576,8 @@ namespace User_Interface_Testing
         private UIHButtonWindow1 mUIHButtonWindow1;
         
         private UIGTOWindow mUIGTOWindow;
+        
+        private UITRACEWindow mUITRACEWindow;
         #endregion
     }
     
@@ -5468,6 +5498,42 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinButton mUIGTOButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UITRACEWindow : WinWindow
+    {
+        
+        public UITRACEWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "centerLabel";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinText UITRACEText
+        {
+            get
+            {
+                if ((this.mUITRACEText == null))
+                {
+                    this.mUITRACEText = new WinText(this);
+                    #region Search Criteria
+                    this.mUITRACEText.SearchProperties[WinText.PropertyNames.Name] = "TRACE";
+                    this.mUITRACEText.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUITRACEText;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinText mUITRACEText;
         #endregion
     }
     

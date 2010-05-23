@@ -16,61 +16,80 @@
 
     public partial class UIMap
     {
-        public void AssertNumeric(string s)
+        public void AssertNumeric (string s)
         {
             AssertNumericExpectedValues.UINumericTextBoxEditText = s;
-            AssertNumeric();
+            AssertNumeric ();
         }
 
-        public void AssertPrinter(string s)
+        public void AssertPrinter (string s)
         {
             AssertPrinterLine0ExpectedValues.UIItemListItemDisplayText = s;
-            AssertPrinterLine0();
+            AssertPrinterLine0 ();
         }
 
-        public void EditLabels(string title,
+        public void AssertPrinter (string s1, string s2)
+        {
+            AssertPrinterLine0ExpectedValues.UIItemListItemDisplayText = s2;
+            AssertPrinterLine0 ();
+            AssertPrinterLine1ExpectedValues.UIItemListItem1DisplayText = s1;
+            AssertPrinterLine1 ();
+        }
+
+        public void EditLabels (string title,
                                string labelA)
         {
             EditLabelsParams.UITitleTextBoxEditText = title;
             EditLabelsParams.UITextBoxAEditText = labelA;
-            EditLabels();
+            EditLabels ();
         }
 
-        public void OpenStandardPacCard(string name)
+        public void OpenStandardPacCard (string name)
         {
             OpenStandardPacCardParams.UIFilenameComboBoxEditableItem = name;
-            OpenStandardPacCard();
+            OpenStandardPacCard ();
         }
 
-        public void SaveCard(string name)
+        public void SaveCard (string name)
         {
             SaveCardParams.UIFilenameComboBoxEditableItem = name;
-            SaveCard();
+            SaveCard ();
         }
-        public void SendKeys(string s)
+        public void SendKeys (string s)
         {
             WinClient uIPanelMainClient = UIHP97Window.UIPanelMainWindow.UIPanelMainClient;
 
             // Click 'panelMain' client
-            Mouse.Click (uIPanelMainClient, new Point(378, 388));
+            Mouse.Click (uIPanelMainClient, new Point (378, 388));
 
-            Keyboard.SendKeys (uIPanelMainClient, 
-                               s, 
-                               ModifierKeys.None, 
-                               false /*isEncoded*/, 
+            Keyboard.SendKeys (uIPanelMainClient,
+                               s,
+                               ModifierKeys.None,
+                               false /*isEncoded*/,
                                false /*isUnicode*/);
         }
-        
-        public void CLPRGM()
+
+        public void CLPRGM ()
         {
-            f();
-            Three();
+            f ();
+            Three ();
         }
 
-        public void Pi()
+        public void LOG ()
         {
-            f();
-            Division();
+            f ();
+            LN ();
+        }
+        public void Pi ()
+        {
+            f ();
+            Division ();
+        }
+
+        public void TenToTheXth ()
+        {
+            f ();
+            Exp ();
         }
     }
 }
