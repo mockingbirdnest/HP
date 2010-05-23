@@ -24,6 +24,8 @@ namespace User_Interface_Testing
 
         public HP97 ()
         {
+            Playback.PlaybackSettings.ContinueOnError = true;
+
             // For some reason this setting doesn't seem to have any effect, so we use a wrapper
             // for SendKeys which sets isUnicode to false.
             Playback.PlaybackSettings.SendKeysAsScanCode = true;
@@ -34,6 +36,8 @@ namespace User_Interface_Testing
         [TestMethod]
         public void Playground ()
         {
+
+            this.UIMap.GSB ();
         }
 
         #region Additional test attributes

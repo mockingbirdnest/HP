@@ -384,58 +384,6 @@ namespace User_Interface_Testing
         }
         
         /// <summary>
-        /// AssertPrinterLine0 - Use 'AssertPrinterLine0ExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void AssertPrinterLine0()
-        {
-            #region Variable Declarations
-            WinListItem uIItemListItem = this.UIHP97Window.UIListBoxWindow.UIItemListItem;
-            #endregion
-
-            // Verify that list item numbered 7 in 'listBox' window's property 'DisplayText' equals ''
-            Assert.AreEqual(this.AssertPrinterLine0ExpectedValues.UIItemListItemDisplayText, uIItemListItem.DisplayText);
-        }
-        
-        /// <summary>
-        /// AssertPrinterLine1 - Use 'AssertPrinterLine1ExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void AssertPrinterLine1()
-        {
-            #region Variable Declarations
-            WinListItem uIItemListItem1 = this.UIHP97Window.UIListBoxWindow.UIItemListItem1;
-            #endregion
-
-            // Verify that list item numbered 6 in 'listBox' window's property 'DisplayText' equals ''
-            Assert.AreEqual(this.AssertPrinterLine1ExpectedValues.UIItemListItem1DisplayText, uIItemListItem1.DisplayText);
-        }
-        
-        /// <summary>
-        /// AssertPrinterLine2 - Use 'AssertPrinterLine2ExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void AssertPrinterLine2()
-        {
-            #region Variable Declarations
-            WinListItem uIItemListItem2 = this.UIHP97Window.UIListBoxWindow.UIItemListItem2;
-            #endregion
-
-            // Verify that list item numbered 5 in 'listBox' window's property 'DisplayText' equals ''
-            Assert.AreEqual(this.AssertPrinterLine2ExpectedValues.UIItemListItem2DisplayText, uIItemListItem2.DisplayText);
-        }
-        
-        /// <summary>
-        /// AssertPrinterLine3 - Use 'AssertPrinterLine3ExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void AssertPrinterLine3()
-        {
-            #region Variable Declarations
-            WinListItem uIItemListItem3 = this.UIHP97Window.UIListBoxWindow.UIItemListItem3;
-            #endregion
-
-            // Verify that list item numbered 4 in 'listBox' window's property 'DisplayText' equals ''
-            Assert.AreEqual(this.AssertPrinterLine3ExpectedValues.UIItemListItem3DisplayText, uIItemListItem3.DisplayText);
-        }
-        
-        /// <summary>
         /// CHS
         /// </summary>
         public void CHS()
@@ -1031,6 +979,19 @@ namespace User_Interface_Testing
             Mouse.StopDragging(uITRACEText, new Point(29, 8));
         }
         
+        /// <summary>
+        /// GSB
+        /// </summary>
+        public void GSB()
+        {
+            #region Variable Declarations
+            WinButton uIGSBButton = this.UIHP97Window.UIGSBWindow.UIGSBButton;
+            #endregion
+
+            // Click 'GSB' button
+            Mouse.Click(uIGSBButton, new Point(33, 12));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -1053,54 +1014,6 @@ namespace User_Interface_Testing
                     this.mAssertNumericExpectedValues = new AssertNumericExpectedValues();
                 }
                 return this.mAssertNumericExpectedValues;
-            }
-        }
-        
-        public virtual AssertPrinterLine0ExpectedValues AssertPrinterLine0ExpectedValues
-        {
-            get
-            {
-                if ((this.mAssertPrinterLine0ExpectedValues == null))
-                {
-                    this.mAssertPrinterLine0ExpectedValues = new AssertPrinterLine0ExpectedValues();
-                }
-                return this.mAssertPrinterLine0ExpectedValues;
-            }
-        }
-        
-        public virtual AssertPrinterLine1ExpectedValues AssertPrinterLine1ExpectedValues
-        {
-            get
-            {
-                if ((this.mAssertPrinterLine1ExpectedValues == null))
-                {
-                    this.mAssertPrinterLine1ExpectedValues = new AssertPrinterLine1ExpectedValues();
-                }
-                return this.mAssertPrinterLine1ExpectedValues;
-            }
-        }
-        
-        public virtual AssertPrinterLine2ExpectedValues AssertPrinterLine2ExpectedValues
-        {
-            get
-            {
-                if ((this.mAssertPrinterLine2ExpectedValues == null))
-                {
-                    this.mAssertPrinterLine2ExpectedValues = new AssertPrinterLine2ExpectedValues();
-                }
-                return this.mAssertPrinterLine2ExpectedValues;
-            }
-        }
-        
-        public virtual AssertPrinterLine3ExpectedValues AssertPrinterLine3ExpectedValues
-        {
-            get
-            {
-                if ((this.mAssertPrinterLine3ExpectedValues == null))
-                {
-                    this.mAssertPrinterLine3ExpectedValues = new AssertPrinterLine3ExpectedValues();
-                }
-                return this.mAssertPrinterLine3ExpectedValues;
             }
         }
         
@@ -1206,14 +1119,6 @@ namespace User_Interface_Testing
         
         private AssertNumericExpectedValues mAssertNumericExpectedValues;
         
-        private AssertPrinterLine0ExpectedValues mAssertPrinterLine0ExpectedValues;
-        
-        private AssertPrinterLine1ExpectedValues mAssertPrinterLine1ExpectedValues;
-        
-        private AssertPrinterLine2ExpectedValues mAssertPrinterLine2ExpectedValues;
-        
-        private AssertPrinterLine3ExpectedValues mAssertPrinterLine3ExpectedValues;
-        
         private OpenStandardPacCardParams mOpenStandardPacCardParams;
         
         private DParams mDParams;
@@ -1266,66 +1171,6 @@ namespace User_Interface_Testing
         /// Verify that 'numericTextBox' text box's property 'Text' equals ''
         /// </summary>
         public string UINumericTextBoxEditText = "";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'AssertPrinterLine0'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
-    public class AssertPrinterLine0ExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that list item numbered 7 in 'listBox' window's property 'DisplayText' equals ''
-        /// </summary>
-        public string UIItemListItemDisplayText = "";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'AssertPrinterLine1'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
-    public class AssertPrinterLine1ExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that list item numbered 6 in 'listBox' window's property 'DisplayText' equals ''
-        /// </summary>
-        public string UIItemListItem1DisplayText = "";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'AssertPrinterLine2'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
-    public class AssertPrinterLine2ExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that list item numbered 5 in 'listBox' window's property 'DisplayText' equals ''
-        /// </summary>
-        public string UIItemListItem2DisplayText = "";
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'AssertPrinterLine3'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
-    public class AssertPrinterLine3ExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that list item numbered 4 in 'listBox' window's property 'DisplayText' equals ''
-        /// </summary>
-        public string UIItemListItem3DisplayText = "";
         #endregion
     }
     
@@ -2424,6 +2269,18 @@ namespace User_Interface_Testing
                 return this.mUITRACEWindow;
             }
         }
+        
+        public UIGSBWindow UIGSBWindow
+        {
+            get
+            {
+                if ((this.mUIGSBWindow == null))
+                {
+                    this.mUIGSBWindow = new UIGSBWindow(this);
+                }
+                return this.mUIGSBWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2578,6 +2435,8 @@ namespace User_Interface_Testing
         private UIGTOWindow mUIGTOWindow;
         
         private UITRACEWindow mUITRACEWindow;
+        
+        private UIGSBWindow mUIGSBWindow;
         #endregion
     }
     
@@ -5534,6 +5393,43 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinText mUITRACEText;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIGSBWindow : WinWindow
+    {
+        
+        public UIGSBWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "57";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIGSBButton
+        {
+            get
+            {
+                if ((this.mUIGSBButton == null))
+                {
+                    this.mUIGSBButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIGSBButton.SearchProperties[WinButton.PropertyNames.Name] = "GSB";
+                    this.mUIGSBButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIGSBButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIGSBButton;
         #endregion
     }
     
