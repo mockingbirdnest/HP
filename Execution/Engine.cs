@@ -172,8 +172,9 @@ namespace Mockingbird.HP.Execution
 
                     // This code implements the special case described on page 41 of the
                     // documentation: in Fixed format if no exponent was typed and no truncation
-                    // happened, then print using the specified format.  Otherwise print the raw
-                    // input.  Note that DISPLAY_X always prints the raw input.
+                    // happened but the decimal point does not align, then print using the specified
+                    // format.  Otherwise print the raw input.  Note that DISPLAY_X always prints
+                    // the raw input.
 
                     bool hasExponent = exponent != new string (' ', exponent.Length);
                     int mantissaAft = mantissa.TrimEnd ().Length - mantissa.IndexOf ('.') - 1;
@@ -181,7 +182,7 @@ namespace Mockingbird.HP.Execution
                     if (inDisplayX ||
                         printer.Formatter.MustUseRaw ||
                         hasExponent ||
-                        mantissaAft > printer.Formatter.Digits)
+                        mantissaAft >= printer.Formatter.Digits)
                     {
                         printer.PrintNumeric (mantissa.TrimEnd (), exponent);
                     }
