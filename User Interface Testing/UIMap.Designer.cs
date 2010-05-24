@@ -1008,6 +1008,67 @@ namespace User_Interface_Testing
             Mouse.StopDragging(uINORMText, new Point(4, 4));
         }
         
+        /// <summary>
+        /// ZeroZeroZeroZero
+        /// </summary>
+        public void ZeroZeroZeroZero()
+        {
+            #region Variable Declarations
+            WinButton uIItem0Button = this.UIHP97Window.UIItem0Window.UIItem0Button;
+            #endregion
+
+            // Double-Click '0' button
+            Mouse.DoubleClick(uIItem0Button, new Point(92, 23));
+
+            // Double-Click '0' button
+            Mouse.DoubleClick(uIItem0Button, new Point(92, 23));
+        }
+        
+        /// <summary>
+        /// ZeroZeroZero
+        /// </summary>
+        public void ZeroZeroZero()
+        {
+            #region Variable Declarations
+            WinButton uIItem0Button = this.UIHP97Window.UIItem0Window.UIItem0Button;
+            #endregion
+
+            // Double-Click '0' button
+            Mouse.DoubleClick(uIItem0Button, new Point(99, 13));
+
+            // Click '0' button
+            Mouse.Click(uIItem0Button, new Point(99, 13));
+        }
+        
+        /// <summary>
+        /// FourFour
+        /// </summary>
+        public void FourFour()
+        {
+            #region Variable Declarations
+            WinButton uIItem4Button = this.UIHP97Window.UIItem4Window.UIItem4Button;
+            #endregion
+
+            // Double-Click '4' button
+            Mouse.DoubleClick(uIItem4Button, new Point(30, 23));
+        }
+        
+        /// <summary>
+        /// ThreeThreeThree
+        /// </summary>
+        public void ThreeThreeThree()
+        {
+            #region Variable Declarations
+            WinButton uIItem3Button = this.UIHP97Window.UIItem3Window.UIItem3Button;
+            #endregion
+
+            // Double-Click '3' button
+            Mouse.DoubleClick(uIItem3Button, new Point(39, 20));
+
+            // Click '3' button
+            Mouse.Click(uIItem3Button, new Point(39, 20));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {

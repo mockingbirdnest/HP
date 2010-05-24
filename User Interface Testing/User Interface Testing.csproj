@@ -79,6 +79,8 @@
     <Compile Include="HP97p27.cs" />
     <Compile Include="HP97p27p28.cs" />
     <Compile Include="HP97p29p33.cs" />
+    <Compile Include="HP97p35p39.cs" />
+    <Compile Include="HP97p40p42.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIMap.cs">
       <DependentUpon>UIMap.uitest</DependentUpon>

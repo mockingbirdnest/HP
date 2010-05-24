@@ -65,6 +65,19 @@
             AssertNumeric ();
         }
 
+        public void AssertPrinter (Array lines)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += lines.Length;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize - lines.Length + 1 :
+                                                             listItemsAsserted - lines.Length + 1;
+            foreach (string line in lines)
+            {
+                Assert.AreEqual (line, UIItemListItem (listItem).DisplayText);
+                ++listItem;
+            }
+        }
+
         public void AssertPrinter (string s)
         {
             InitializeListBoxState ();
@@ -75,104 +88,67 @@
 
         public void AssertPrinter (string s1, string s2)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 2;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s2, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 1).DisplayText);
+            string [] lines = new string [] { s1, s2 };
+            AssertPrinter (lines);
         }
 
         public void AssertPrinter (string s1, string s2, string s3)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 3;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s3, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 2).DisplayText);
+            string [] lines = new string [] { s1, s2, s3 };
+            AssertPrinter (lines);
         }
 
         public void AssertPrinter (string s1, string s2, string s3, string s4)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 4;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s4, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s3, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 2).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 3).DisplayText);
+            string [] lines = new string [] { s1, s2, s3, s4 };
+            AssertPrinter (lines);
         }
 
         public void AssertPrinter (string s1, string s2, string s3, string s4, string s5)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 5;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s5, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s4, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s3, UIItemListItem (listItem - 2).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 3).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 4).DisplayText);
+            string [] lines = new string [] { s1, s2, s3, s4, s5 };
+            AssertPrinter (lines);
         }
 
         public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 6;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s6, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s5, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s4, UIItemListItem (listItem - 2).DisplayText);
-            Assert.AreEqual (s3, UIItemListItem (listItem - 3).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 4).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 5).DisplayText);
-        }
-
-        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6, string s7)
-        {
-            InitializeListBoxState ();
-            listItemsAsserted += 7;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s7, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s6, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s5, UIItemListItem (listItem - 2).DisplayText);
-            Assert.AreEqual (s4, UIItemListItem (listItem - 3).DisplayText);
-            Assert.AreEqual (s3, UIItemListItem (listItem - 4).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 5).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 6).DisplayText);
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6 };
+            AssertPrinter (lines);
         }
 
         public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
-            string s7, string s8)
+                                   string s7)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 8;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s8, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s7, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s6, UIItemListItem (listItem - 2).DisplayText);
-            Assert.AreEqual (s5, UIItemListItem (listItem - 3).DisplayText);
-            Assert.AreEqual (s4, UIItemListItem (listItem - 4).DisplayText);
-            Assert.AreEqual (s3, UIItemListItem (listItem - 5).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 6).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 7).DisplayText);
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7 };
+            AssertPrinter (lines);
         }
 
         public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
-            string s7, string s8, string s9)
+                                   string s7, string s8)
         {
-            InitializeListBoxState ();
-            listItemsAsserted += 9;
-            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
-            Assert.AreEqual (s9, UIItemListItem (listItem).DisplayText);
-            Assert.AreEqual (s8, UIItemListItem (listItem - 1).DisplayText);
-            Assert.AreEqual (s7, UIItemListItem (listItem - 2).DisplayText);
-            Assert.AreEqual (s6, UIItemListItem (listItem - 3).DisplayText);
-            Assert.AreEqual (s5, UIItemListItem (listItem - 4).DisplayText);
-            Assert.AreEqual (s4, UIItemListItem (listItem - 5).DisplayText);
-            Assert.AreEqual (s3, UIItemListItem (listItem - 6).DisplayText);
-            Assert.AreEqual (s2, UIItemListItem (listItem - 7).DisplayText);
-            Assert.AreEqual (s1, UIItemListItem (listItem - 8).DisplayText);
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                    string s7, string s8, string s9, string s10, string s11)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11 };
+            AssertPrinter (lines);
         }
 
         // Menu.
