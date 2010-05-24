@@ -110,7 +110,7 @@ namespace User_Interface_Testing
             UIMap.One ();
             UIMap.Zero ();
             UIMap.Multiplication ();
-            UIMap.AssertNumeric (" 123        -06");
+            UIMap.AssertNumeric (" 123.       -06");
             UIMap.One ();
             UIMap.Zero ();
             UIMap.Multiplication ();

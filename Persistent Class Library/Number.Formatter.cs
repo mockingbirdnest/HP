@@ -391,6 +391,10 @@ namespace Mockingbird.HP.Class_Library
                     // in this format.
                     if (value <= 1)
                     {
+                        if (padMantissa && value < 1)
+                        {
+                            blanks = new String (' ', 8);
+                        }
                         engMantissaTemplate10 = " 00\\." + blanks + ";-00\\." + blanks;
                     }
                     else
@@ -401,6 +405,10 @@ namespace Mockingbird.HP.Class_Library
 
                     if (value <= 2)
                     {
+                        if (padMantissa && value < 2)
+                        {
+                            blanks = new String (' ', 7);
+                        } 
                         engMantissaTemplate100 = " 000\\." + blanks + ";-000\\." + blanks;
                     }
                     else
