@@ -992,6 +992,22 @@ namespace User_Interface_Testing
             Mouse.Click(uIGSBButton, new Point(33, 12));
         }
         
+        /// <summary>
+        /// ManTraceNorm1Right
+        /// </summary>
+        public void ManTraceNorm1Right()
+        {
+            #region Variable Declarations
+            WinButton uINORMButton = this.UIHP97Window.UIButtonWindow.UINORMButton;
+            WinText uINORMText = this.UIHP97Window.UINORMWindow.UINORMText;
+            #endregion
+
+            // Move 'NORM' button from (9, 2) to 'NORM' label (4, 4)
+            uINORMText.EnsureClickable(new Point(4, 4));
+            Mouse.StartDragging(uINORMButton, new Point(9, 2));
+            Mouse.StopDragging(uINORMText, new Point(4, 4));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {

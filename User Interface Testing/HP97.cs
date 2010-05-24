@@ -36,8 +36,6 @@ namespace User_Interface_Testing
         [TestMethod]
         public void Playground ()
         {
-
-            this.UIMap.GSB ();
         }
 
         #region Additional test attributes

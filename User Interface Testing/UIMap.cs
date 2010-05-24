@@ -50,7 +50,7 @@
             {
                 listItems [i] = new WinListItem (UIHP97Window.UIListBoxWindow);
                 #region Search Criteria
-                listItems [i].SearchProperties [WinListItem.PropertyNames.Instance] = i.ToString();
+                listItems [i].SearchProperties [WinListItem.PropertyNames.Instance] = i.ToString ();
                 listItems [i].WindowTitles.Add ("HP-97");
                 #endregion
             }
@@ -90,6 +90,89 @@
             Assert.AreEqual (s3, UIItemListItem (listItem).DisplayText);
             Assert.AreEqual (s2, UIItemListItem (listItem - 1).DisplayText);
             Assert.AreEqual (s1, UIItemListItem (listItem - 2).DisplayText);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += 4;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
+            Assert.AreEqual (s4, UIItemListItem (listItem).DisplayText);
+            Assert.AreEqual (s3, UIItemListItem (listItem - 1).DisplayText);
+            Assert.AreEqual (s2, UIItemListItem (listItem - 2).DisplayText);
+            Assert.AreEqual (s1, UIItemListItem (listItem - 3).DisplayText);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += 5;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
+            Assert.AreEqual (s5, UIItemListItem (listItem).DisplayText);
+            Assert.AreEqual (s4, UIItemListItem (listItem - 1).DisplayText);
+            Assert.AreEqual (s3, UIItemListItem (listItem - 2).DisplayText);
+            Assert.AreEqual (s2, UIItemListItem (listItem - 3).DisplayText);
+            Assert.AreEqual (s1, UIItemListItem (listItem - 4).DisplayText);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += 6;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
+            Assert.AreEqual (s6, UIItemListItem (listItem).DisplayText);
+            Assert.AreEqual (s5, UIItemListItem (listItem - 1).DisplayText);
+            Assert.AreEqual (s4, UIItemListItem (listItem - 2).DisplayText);
+            Assert.AreEqual (s3, UIItemListItem (listItem - 3).DisplayText);
+            Assert.AreEqual (s2, UIItemListItem (listItem - 4).DisplayText);
+            Assert.AreEqual (s1, UIItemListItem (listItem - 5).DisplayText);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6, string s7)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += 7;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
+            Assert.AreEqual (s7, UIItemListItem (listItem).DisplayText);
+            Assert.AreEqual (s6, UIItemListItem (listItem - 1).DisplayText);
+            Assert.AreEqual (s5, UIItemListItem (listItem - 2).DisplayText);
+            Assert.AreEqual (s4, UIItemListItem (listItem - 3).DisplayText);
+            Assert.AreEqual (s3, UIItemListItem (listItem - 4).DisplayText);
+            Assert.AreEqual (s2, UIItemListItem (listItem - 5).DisplayText);
+            Assert.AreEqual (s1, UIItemListItem (listItem - 6).DisplayText);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+            string s7, string s8)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += 8;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
+            Assert.AreEqual (s8, UIItemListItem (listItem).DisplayText);
+            Assert.AreEqual (s7, UIItemListItem (listItem - 1).DisplayText);
+            Assert.AreEqual (s6, UIItemListItem (listItem - 2).DisplayText);
+            Assert.AreEqual (s5, UIItemListItem (listItem - 3).DisplayText);
+            Assert.AreEqual (s4, UIItemListItem (listItem - 4).DisplayText);
+            Assert.AreEqual (s3, UIItemListItem (listItem - 5).DisplayText);
+            Assert.AreEqual (s2, UIItemListItem (listItem - 6).DisplayText);
+            Assert.AreEqual (s1, UIItemListItem (listItem - 7).DisplayText);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+            string s7, string s8, string s9)
+        {
+            InitializeListBoxState ();
+            listItemsAsserted += 9;
+            int listItem = listItemsAsserted < listBoxSize ? listBoxSize : listItemsAsserted;
+            Assert.AreEqual (s9, UIItemListItem (listItem).DisplayText);
+            Assert.AreEqual (s8, UIItemListItem (listItem - 1).DisplayText);
+            Assert.AreEqual (s7, UIItemListItem (listItem - 2).DisplayText);
+            Assert.AreEqual (s6, UIItemListItem (listItem - 3).DisplayText);
+            Assert.AreEqual (s5, UIItemListItem (listItem - 4).DisplayText);
+            Assert.AreEqual (s4, UIItemListItem (listItem - 5).DisplayText);
+            Assert.AreEqual (s3, UIItemListItem (listItem - 6).DisplayText);
+            Assert.AreEqual (s2, UIItemListItem (listItem - 7).DisplayText);
+            Assert.AreEqual (s1, UIItemListItem (listItem - 8).DisplayText);
         }
 
         // Menu.

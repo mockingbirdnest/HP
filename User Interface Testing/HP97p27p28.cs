@@ -19,6 +19,8 @@ namespace User_Interface_Testing
             UIMap.AssertNumeric (" 15.00         ");
             UIMap.AssertPrinter ("          12.00 ENT↑",
                                  "           3.00   + ",
+            // The documentation seems to assume that PRINTx is required for printing the result,
+            // as if we were in NORM mode, but we really are in TRACE mode.
                                  "          15.00  ***");
             UIMap.PRINTx ();
             UIMap.AssertPrinter ("          15.00  ***");

@@ -1393,6 +1393,24 @@
       <WorkItemId>0</WorkItemId>
       <MarkerRegionType>Action</MarkerRegionType>
     </TestStepMarkerAction>
+    <DragDropAction UIObjectName="UIMap.UIHP97Window.UIButtonWindow.UINORMButton">
+      <ParameterName />
+      <ModifierKeys>None</ModifierKeys>
+      <IsGlobalHotkey>false</IsGlobalHotkey>
+      <TargetElementName>UIMap.UIHP97Window.UINORMWindow.UINORMText</TargetElementName>
+      <MouseButton>Left</MouseButton>
+      <StartLocation X="9" Y="2" />
+      <StopLocation X="4" Y="4" />
+    </DragDropAction>
+    <TestStepMarkerAction MarkerInformation="ManTraceNorm1Right">
+      <ParameterName />
+      <StepId>-1</StepId>
+      <Direction>Start</Direction>
+      <Outcome />
+      <Disabled>false</Disabled>
+      <WorkItemId>0</WorkItemId>
+      <MarkerRegionType>Action</MarkerRegionType>
+    </TestStepMarkerAction>
   </ExecuteActions>
   <CleanupActions />
   <OnErrorActions />
