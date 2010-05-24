@@ -1069,6 +1069,19 @@ namespace User_Interface_Testing
             Mouse.Click(uIItem3Button, new Point(39, 20));
         }
         
+        /// <summary>
+        /// AssertText - Use 'AssertTextExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void AssertText()
+        {
+            #region Variable Declarations
+            WinEdit uIAlphabeticTextBoxEdit = this.UIHP97Window.UIAlphabeticWindow.UIAlphabeticTextBoxEdit;
+            #endregion
+
+            // Verify that 'alphabeticTextBox' text box's property 'Text' equals ''
+            Assert.AreEqual(this.AssertTextExpectedValues.UIAlphabeticTextBoxEditText, uIAlphabeticTextBoxEdit.Text);
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -1142,6 +1155,18 @@ namespace User_Interface_Testing
             }
         }
         
+        public virtual AssertTextExpectedValues AssertTextExpectedValues
+        {
+            get
+            {
+                if ((this.mAssertTextExpectedValues == null))
+                {
+                    this.mAssertTextExpectedValues = new AssertTextExpectedValues();
+                }
+                return this.mAssertTextExpectedValues;
+            }
+        }
+        
         public UIHP97Window UIHP97Window
         {
             get
@@ -1203,6 +1228,8 @@ namespace User_Interface_Testing
         private EditLabelsParams mEditLabelsParams;
         
         private SaveCardParams mSaveCardParams;
+        
+        private AssertTextExpectedValues mAssertTextExpectedValues;
         
         private UIHP97Window mUIHP97Window;
         
@@ -1418,6 +1445,21 @@ namespace User_Interface_Testing
         /// Select 'CardFile' in 'File name:' combo box
         /// </summary>
         public string UIFilenameComboBoxEditableItem = "CardFile";
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'AssertText'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class AssertTextExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that 'alphabeticTextBox' text box's property 'Text' equals ''
+        /// </summary>
+        public string UIAlphabeticTextBoxEditText = "";
         #endregion
     }
     
@@ -2358,6 +2400,18 @@ namespace User_Interface_Testing
                 return this.mUIGSBWindow;
             }
         }
+        
+        public UIAlphabeticWindow UIAlphabeticWindow
+        {
+            get
+            {
+                if ((this.mUIAlphabeticWindow == null))
+                {
+                    this.mUIAlphabeticWindow = new UIAlphabeticWindow(this);
+                }
+                return this.mUIAlphabeticWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2514,6 +2568,8 @@ namespace User_Interface_Testing
         private UITRACEWindow mUITRACEWindow;
         
         private UIGSBWindow mUIGSBWindow;
+        
+        private UIAlphabeticWindow mUIAlphabeticWindow;
         #endregion
     }
     
@@ -5507,6 +5563,41 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinButton mUIGSBButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIAlphabeticWindow : WinWindow
+    {
+        
+        public UIAlphabeticWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "alphabeticTextBox";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UIAlphabeticTextBoxEdit
+        {
+            get
+            {
+                if ((this.mUIAlphabeticTextBoxEdit == null))
+                {
+                    this.mUIAlphabeticTextBoxEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUIAlphabeticTextBoxEdit.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIAlphabeticTextBoxEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUIAlphabeticTextBoxEdit;
         #endregion
     }
     

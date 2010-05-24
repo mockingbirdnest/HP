@@ -151,6 +151,12 @@
             AssertPrinter (lines);
         }
 
+        public void AssertText (string s)
+        {
+            AssertTextExpectedValues.UIAlphabeticTextBoxEditText = s;
+            AssertText ();
+        }
+
         // Menu.
 
         public void EditLabels (string title,
