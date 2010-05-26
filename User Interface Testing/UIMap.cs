@@ -198,6 +198,12 @@
             Division ();
         }
 
+        public void PrintStack ()
+        {
+            f ();
+            PRINTx ();
+        }
+
         public void TenToTheXth ()
         {
             f ();

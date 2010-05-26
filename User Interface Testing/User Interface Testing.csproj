@@ -85,6 +85,9 @@
     <Compile Include="HP97p43p44.cs" />
     <Compile Include="HP97p44.cs" />
     <Compile Include="HP97p45.cs" />
+    <Compile Include="HP97p47.cs" />
+    <Compile Include="HP97PeriodCHS.cs" />
+    <Compile Include="HP97PrintXOfUnformattedNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIMap.cs">
       <DependentUpon>UIMap.uitest</DependentUpon>
