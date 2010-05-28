@@ -115,9 +115,10 @@ namespace Mockingbird.HP.Execution
                 new Number.ChangeEvent (DisplayFormattingChanged);
             this.validater.ExponentChanged += new Number.ChangeEvent (ExponentChanged);
             this.validater.MantissaChanged += new Number.ChangeEvent (MantissaChanged);
+            this.validater.NumberCancelled += new Number.SimpleEvent (NumberCancelled);
             this.validater.NumberDone += new Number.ChangeEvent (NumberDone);
             this.validater.NumberPeek += new Number.ChangeEvent (NumberPeek);
-            this.validater.NumberStarted += new Number.ChangeEvent (NumberStarted);
+            this.validater.NumberStarted += new Number.SimpleEvent (NumberStarted);
             Card.ReadFromDataset += new Card.DatasetImporterDelegate (ReadFromDataset);
             Card.WriteToDataset += new Card.DatasetExporterDelegate (WriteToDataset);
 
@@ -155,6 +156,11 @@ namespace Mockingbird.HP.Execution
         private void MantissaChanged (string mantissa, string exponent, Number value)
         {
             display.ShowNumeric (mantissa, exponent);
+        }
+
+        private void NumberCancelled ()
+        {
+            display.Formatter.Value = 0.0M;
         }
 
         private void NumberDone (string mantissa, string exponent, Number value)
@@ -203,7 +209,7 @@ namespace Mockingbird.HP.Execution
             printer.PrintNumeric ();
         }
 
-        private void NumberStarted (string mantissa, string exponent, Number value)
+        private void NumberStarted ()
         {
             // The HP-35 allows the user to press the CHS sign before or during number entry.  If a
             // number is in the display as a result of something other than digit entry, pressing
@@ -426,7 +432,6 @@ namespace Mockingbird.HP.Execution
                 // engine at all.
                 switch ((SymbolConstants) instruction.Symbol.Id)
                 {
-                    case SymbolConstants.SYMBOL_CHS:
                     case SymbolConstants.SYMBOL_CL_PRGM:
                     case SymbolConstants.SYMBOL_DEL:
                     case SymbolConstants.SYMBOL_DIGIT:
@@ -440,6 +445,19 @@ namespace Mockingbird.HP.Execution
                         // Their list was determined experimentally on the HP-67 calculator.
                         //TODO: It seems that we should be tracing the instruction when running/
                         // stepping.
+                        break;
+                    case SymbolConstants.SYMBOL_CHS:
+                    case SymbolConstants.SYMBOL_CLX:
+                        // These functions do not trace when they happen as part of digit entry.
+                        // In all cases, they don't trace the number.
+                        if (MustTrace && !validater.EnteringNumber)
+                        {
+                            if (running || stepping)
+                            {
+                                program.PrintStep ();
+                            }
+                            printer.PrintInstruction (instruction, /*showKeycodes*/ false);
+                        }
                         break;
                     case SymbolConstants.SYMBOL_GTO_PERIOD:
                     case SymbolConstants.SYMBOL_PRINT_PRGM:
@@ -514,9 +532,11 @@ namespace Mockingbird.HP.Execution
                         flags [((Digit) instruction.Arguments [0]).Value] = false;
                         break;
                     case SymbolConstants.SYMBOL_CHS:
-                        bool changeSignDone;
-                        validater.ChangeSign (out changeSignDone);
-                        if (!changeSignDone)
+                        if (validater.EnteringNumber)
+                        {
+                            validater.ChangeSign ();
+                        }
+                        else
                         {
                             stack.X = -stack.X;
                         }
@@ -535,7 +555,14 @@ namespace Mockingbird.HP.Execution
                         memory.Clear ();
                         break;
                     case SymbolConstants.SYMBOL_CLX:
-                        stack.X = 0.0M;
+                        if (validater.EnteringNumber)
+                        {
+                            validater.Cancel ();
+                        }
+                        else
+                        {
+                            stack.X = 0.0M;
+                        }
                         break;
                     case SymbolConstants.SYMBOL_COS:
                         stack.Get (out x);
@@ -1048,7 +1075,7 @@ namespace Mockingbird.HP.Execution
                             ProgrammableCalculator form =
                                 (ProgrammableCalculator) display.TopLevelControl;
                             FileStream stream =
-                                (FileStream) form.Invoke 
+                                (FileStream) form.Invoke
                                     (new Execution.Thread.CrossThreadFileOperation
                                             (form.CrossThreadSaveDataAs));
                             if (stream == null)
@@ -1167,9 +1194,7 @@ namespace Mockingbird.HP.Execution
                 // The HP-35 weird CHS.  See the comments in NumberStarted.
                 if (doWeirdCHS)
                 {
-                    bool changeSignDone;
-                    validater.ChangeSign (out changeSignDone);
-                    Trace.Assert (changeSignDone);
+                    validater.ChangeSign ();
                 }
 
                 // Set the stack lift as specified in Appendix D of the Programming Guide.

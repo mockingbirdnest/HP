@@ -38,9 +38,10 @@ namespace Mockingbird.HP.Class_Library
 
             public event ChangeEvent ExponentChanged;
             public event ChangeEvent MantissaChanged;
+            public event SimpleEvent NumberCancelled;
             public event ChangeEvent NumberDone;
             public event ChangeEvent NumberPeek;
-            public event ChangeEvent NumberStarted;
+            public event SimpleEvent NumberStarted;
 
             #endregion
 
@@ -136,7 +137,7 @@ namespace Mockingbird.HP.Class_Library
                 if (NumberStarted != null)
                 {
                     // Notify whoever is interested that we are starting to enter a number.
-                    NumberStarted (mantissa, exponent, Value);
+                    NumberStarted ();
                 }
                 enteringNumber = true;
                 enteringMantissa = true;
@@ -179,46 +180,46 @@ namespace Mockingbird.HP.Class_Library
 
             #region Public Operations
 
-            public void ChangeSign (out bool done)
+            public void ChangeSign ()
             {
-                char sign;
+                Trace.Assert (enteringNumber);
 
-                // Apologies: this is not ideal.  The CHS key can be used either (1) when entering a
-                // number, in the mantissa or the exponent or (2) when a number has been entered, as
-                // a normal transformation.  This method is only concerned with entering numbers, so
-                // if it detects that we are not entering a number it sets done to false to indicate
-                // that it didn't do its duty.  Clients will have to cope.
+                char sign;
+                // On the HP-35 the sequence period-CHS produces -. but not on the other models.
+                // See HP-35 Operating Manual, p. 14.
+                if (!isZero || (model == CalculatorModel.HP35))
+                {
+                    if (enteringMantissa)
+                    {
+                        sign = mantissa [mantissaSignFirst];
+                    }
+                    else
+                    {
+                        Trace.Assert (enteringExponent);
+                        sign = exponent [exponentSignFirst];
+                    }
+                    sign = OtherSign (sign);
+                    if (enteringMantissa)
+                    {
+                        ReplaceMantissaSign (sign);
+                    }
+                    else
+                    {
+                        Trace.Assert (enteringExponent);
+                        ReplaceExponentSign (sign);
+                    }
+                }
+            }
+
+            public void Cancel ()
+            {
                 if (enteringNumber)
                 {
-                    // On the HP-35 the sequence period-CHS produces -. but not on the other models.
-                    // See HP-35 Operating Manual, p. 14.
-                    if (!isZero || (model == CalculatorModel.HP35))
+                    enteringNumber = false;
+                    if (NumberCancelled != null)
                     {
-                        if (enteringMantissa)
-                        {
-                            sign = mantissa [mantissaSignFirst];
-                        }
-                        else
-                        {
-                            Trace.Assert (enteringExponent);
-                            sign = exponent [exponentSignFirst];
-                        }
-                        sign = OtherSign (sign);
-                        if (enteringMantissa)
-                        {
-                            ReplaceMantissaSign (sign);
-                        }
-                        else
-                        {
-                            Trace.Assert (enteringExponent);
-                            ReplaceExponentSign (sign);
-                        }
+                        NumberCancelled ();
                     }
-                    done = true;
-                }
-                else
-                {
-                    done = false;
                 }
             }
 
@@ -333,6 +334,18 @@ namespace Mockingbird.HP.Class_Library
                     ReplaceMantissaWithSign (" " + period);
                 }
                 hasAPeriod = true;
+            }
+
+            #endregion
+
+            #region Public Properties
+
+            public bool EnteringNumber
+            {
+                get
+                {
+                    return enteringNumber;
+                }
             }
 
             #endregion

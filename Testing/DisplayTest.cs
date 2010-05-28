@@ -65,8 +65,6 @@ namespace Mockingbird.HP.Testing
                 new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
             validater.NumberDone +=
                 new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberDoneEvent);
-            validater.NumberStarted +=
-                new Mockingbird.HP.Class_Library.Number.ChangeEvent (NumberChangeEvent);
             DisplayUnderTest.Formatter = formatter;
 		}
 
@@ -438,8 +436,7 @@ namespace Mockingbird.HP.Testing
 
 		private void chs_Click(object sender, System.EventArgs e)
 		{
-			bool changeSignDone;
-			validater.ChangeSign (out changeSignDone);
+			validater.ChangeSign ();
 		}
 
 		private void period_Click(object sender, System.EventArgs e)
