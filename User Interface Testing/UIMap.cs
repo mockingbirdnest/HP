@@ -324,6 +324,12 @@
             PRINTx ();
         }
 
+        public void RAD ()
+        {
+            f ();
+            CHS ();
+        }
+
         public void TenToTheXth ()
         {
             f ();
