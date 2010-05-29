@@ -16,7 +16,7 @@
 
     public partial class UIMap
     {
-        public void InitializeListBoxState ()
+        private void InitializeListBoxState ()
         {
             if (listItems == null)
             {
@@ -168,6 +168,84 @@
             AssertPrinter (lines);
         }
 
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17, string s18)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17, s18 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17, string s18, string s19)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17, s18, s19 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17, string s18, string s19, string s20)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17, s18, s19, s20 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17, string s18, string s19, string s20, string s21)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17, s18, s19, s20,
+                                              s21};
+            AssertPrinter (lines);
+        }
+
         public void AssertText (string s)
         {
             AssertTextExpectedValues.UIAlphabeticTextBoxEditText = s;
@@ -204,20 +282,40 @@
             Three ();
         }
 
+        public void CLREG ()
+        {
+            f ();
+            Two ();
+        }
+
         public void LASTx ()
         {
             f ();
             DSP ();
         }
+
         public void LOG ()
         {
             f ();
             LN ();
         }
+
+        public void PExchangeS ()
+        {
+            f ();
+            CLx ();
+        }
+
         public void Pi ()
         {
             f ();
             Division ();
+        }
+
+        public void PrintReg ()
+        {
+            f ();
+            ENG ();
         }
 
         public void PrintStack ()

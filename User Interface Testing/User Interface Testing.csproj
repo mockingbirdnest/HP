@@ -94,6 +94,8 @@
     <Compile Include="HP97p59p60.cs" />
     <Compile Include="HP97p60p61.cs" />
     <Compile Include="HP97p64p65.cs" />
+    <Compile Include="HP97p65.cs" />
+    <Compile Include="HP97p66p72.cs" />
     <Compile Include="HP97PeriodCHS.cs" />
     <Compile Include="HP97PrintXOfUnformattedNumber.cs" />
     <Compile Include="HP97PrintXStartup.cs" />
