@@ -145,9 +145,26 @@
         }
 
         public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
-                                    string s7, string s8, string s9, string s10, string s11)
+                                   string s7, string s8, string s9, string s10, string s11)
         {
             string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13 };
             AssertPrinter (lines);
         }
 
@@ -187,6 +204,11 @@
             Three ();
         }
 
+        public void LASTx ()
+        {
+            f ();
+            DSP ();
+        }
         public void LOG ()
         {
             f ();
