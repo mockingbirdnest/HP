@@ -9,6 +9,7 @@ namespace User_Interface_Testing
         [TestMethod]
         public void p65 ()
         {
+            // The I Register
             UIMap.Three ();
             UIMap.Period ();
             UIMap.Seven ();

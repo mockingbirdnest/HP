@@ -9,6 +9,8 @@ namespace User_Interface_Testing
         [TestMethod]
         public void p47 ()
         {
+            // The Stack
+
             // Initial Display
             UIMap.PrintStack ();
             UIMap.AssertNumeric (" 0.00          ");
