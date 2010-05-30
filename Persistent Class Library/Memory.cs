@@ -220,24 +220,24 @@ namespace Mockingbird.HP.Class_Library
 
         #region Public Operations
 
-        public void ΣPlus (Number X, Number Y)
+        public void ΣPlus (Number x, Number y)
         {
             this [ΣRegister.n]++;
-            this [ΣRegister.Σxy] += X * Y;
-            this [ΣRegister.Σy2] += Y * Y;
-            this [ΣRegister.Σy] += Y;
-            this [ΣRegister.Σx2] += X * X;
-            this [ΣRegister.Σx] += X;
+            this [ΣRegister.Σxy] += x * y;
+            this [ΣRegister.Σy2] += y * y;
+            this [ΣRegister.Σy] += y;
+            this [ΣRegister.Σx2] += x * x;
+            this [ΣRegister.Σx] += x;
         }
 
-        public void ΣMinus (Number X, Number Y)
+        public void ΣMinus (Number x, Number y)
         {
             this [ΣRegister.n]--;
-            this [ΣRegister.Σxy] -= X * Y;
-            this [ΣRegister.Σy2] -= Y * Y;
-            this [ΣRegister.Σy] -= Y;
-            this [ΣRegister.Σx2] -= X * X;
-            this [ΣRegister.Σx] -= X;
+            this [ΣRegister.Σxy] -= x * y;
+            this [ΣRegister.Σy2] -= y * y;
+            this [ΣRegister.Σy] -= y;
+            this [ΣRegister.Σx2] -= x * x;
+            this [ΣRegister.Σx] -= x;
         }
 
         private void CheckIndex ()
@@ -327,15 +327,15 @@ namespace Mockingbird.HP.Class_Library
             }
         }
 
-        public Number Recall (Byte Index)
+        public Number Recall (Byte index)
         {
-            Trace.Assert (Index <= 9);
-            return registers [Index];
+            Trace.Assert (index <= 9);
+            return registers [index];
         }
 
-        public Number Recall (LetterRegister Index)
+        public Number Recall (LetterRegister index)
         {
-            return this [Index];
+            return this [index];
         }
 
         public void RecallΣPlus (out Number x, out Number y)
@@ -360,43 +360,58 @@ namespace Mockingbird.HP.Class_Library
             }
             else
             {
-                x = Number.Sqrt 
+                x = Number.Sqrt
                         ((this [ΣRegister.Σx2] -
                             (this [ΣRegister.Σx] * this [ΣRegister.Σx]) / n) / (n - 1));
-                y = Number.Sqrt 
+                y = Number.Sqrt
                         ((this [ΣRegister.Σy2] -
                             (this [ΣRegister.Σy] * this [ΣRegister.Σy]) / n) / (n - 1));
             }
         }
 
-        public void Store (Number Value, Byte Index)
+        public void Store (Number value, Byte index)
         {
-            Trace.Assert (Index <= 9);
-            registers [Index] = Value;
+            Trace.Assert (index <= 9);
+            registers [index] = value;
         }
 
-        public void Store (Number Value, LetterRegister Index)
+        public void Store (Number value, LetterRegister index)
         {
-            this [Index] = Value;
+            this [index] = value;
         }
 
-        public void Store (Number Value, Byte Index, Operator Modifier)
+        public void Store (Number value, Byte index, Operator modifier)
         {
-            Trace.Assert (Index <= 9);
-            registers [Index] = Modifier (registers [Index], Value);
+            Trace.Assert (index <= 9);
+            Number modified = modifier (registers [index], value);
+            if (modified.Overflow)
+            {
+                throw new Error ();
+            }
+            else
+            {
+                registers [index] = modified;
+            }
         }
 
-        public void StoreIndexed (Number Value)
+        public void StoreIndexed (Number value)
         {
             CheckIndex ();
-            this [Number.Floor (Number.Abs (this [LetterRegister.I]))] = Value;
+            this [Number.Floor (Number.Abs (this [LetterRegister.I]))] = value;
         }
 
-        public void StoreIndexed (Number Value, Operator Modifier)
+        public void StoreIndexed (Number value, Operator modifier)
         {
             CheckIndex ();
-            this [Number.Floor (Number.Abs (this [LetterRegister.I]))] =
-                Modifier (Number.Floor (Number.Abs (this [LetterRegister.I])), Value);
+            Number modified = modifier (Number.Floor (Number.Abs (this [LetterRegister.I])), value);
+            if (modified.Overflow)
+            {
+                throw new Error ();
+            }
+            else
+            {
+                this [Number.Floor (Number.Abs (this [LetterRegister.I]))] = modified;
+            }
         }
 
         public void X̄ (out Number x, out Number y)
