@@ -333,15 +333,6 @@ namespace Mockingbird.HP.Class_Library
 
             #region Public Operations
 
-            public void Round (Number x)
-            {
-                Split (x);
-                if (FormattingChanged != null)
-                {
-                    FormattingChanged (Mantissa, Exponent, Value); // Probably unnecessary, but...
-                }
-            }
-
             #endregion
 
             #region Public Properties
@@ -450,6 +441,29 @@ namespace Mockingbird.HP.Class_Library
                            formatted.exponent != 0 ||
                            fixedUnderflowOverflow;
                }
+            }
+
+            public Number RoundedValue
+            {
+                get
+                {
+                    Decimal roundedMantissa;
+                    //TODO: Is "nothing" the right thing to do if the number doesn't parse?
+                    if (Decimal.TryParse (Mantissa,
+                                          NumberStyles.AllowLeadingWhite |
+                                          NumberStyles.AllowLeadingSign |
+                                          NumberStyles.AllowTrailingWhite |
+                                          NumberStyles.AllowDecimalPoint,
+                                          NumberFormatInfo.InvariantInfo,
+                                          out roundedMantissa))
+                    {
+                        return new Number (roundedMantissa, formatted.exponent);
+                    }
+                    else
+                    {
+                        return Value;
+                    } 
+                }
             }
 
             public Number Value

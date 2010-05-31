@@ -924,9 +924,9 @@ namespace Mockingbird.HP.Execution
                         // Change the printer first because the display will trigger reprint.
                         if (printer != null)
                         {
-                            printer.Formatter.Round (x);
+                            printer.Formatter.Value = printer.Formatter.RoundedValue;
                         }
-                        display.Formatter.Round (x);
+                        stack.X = display.Formatter.RoundedValue;
                         break;
                     case SymbolConstants.SYMBOL_RTN:
                         bool stop;
