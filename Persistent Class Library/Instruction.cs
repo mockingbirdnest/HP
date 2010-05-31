@@ -405,6 +405,9 @@ namespace Mockingbird.HP.Class_Library
                     case SymbolConstants.SYMBOL_FACTORIAL:
                         result = "N!";
                         break;
+                    case SymbolConstants.SYMBOL_FRAC:
+                        result = "FRC";
+                        break;
                     case SymbolConstants.SYMBOL_GRD:
                         result = "GRAD";
                         break;
