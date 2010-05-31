@@ -1082,6 +1082,32 @@ namespace User_Interface_Testing
             Assert.AreEqual(this.AssertTextExpectedValues.UIAlphabeticTextBoxEditText, uIAlphabeticTextBoxEdit.Text);
         }
         
+        /// <summary>
+        /// ToPolar
+        /// </summary>
+        public void ToPolar()
+        {
+            #region Variable Declarations
+            WinButton uIPButton = this.UIHP97Window.UIPWindow.UIPButton;
+            #endregion
+
+            // Click '→P' button
+            Mouse.Click(uIPButton, new Point(17, 9));
+        }
+        
+        /// <summary>
+        /// ToRectangular
+        /// </summary>
+        public void ToRectangular()
+        {
+            #region Variable Declarations
+            WinButton uIRButton = this.UIHP97Window.UIRWindow1.UIRButton;
+            #endregion
+
+            // Click '→R' button
+            Mouse.Click(uIRButton, new Point(33, 11));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -2412,6 +2438,30 @@ namespace User_Interface_Testing
                 return this.mUIAlphabeticWindow;
             }
         }
+        
+        public UIPWindow UIPWindow
+        {
+            get
+            {
+                if ((this.mUIPWindow == null))
+                {
+                    this.mUIPWindow = new UIPWindow(this);
+                }
+                return this.mUIPWindow;
+            }
+        }
+        
+        public UIRWindow1 UIRWindow1
+        {
+            get
+            {
+                if ((this.mUIRWindow1 == null))
+                {
+                    this.mUIRWindow1 = new UIRWindow1(this);
+                }
+                return this.mUIRWindow1;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2570,6 +2620,10 @@ namespace User_Interface_Testing
         private UIGSBWindow mUIGSBWindow;
         
         private UIAlphabeticWindow mUIAlphabeticWindow;
+        
+        private UIPWindow mUIPWindow;
+        
+        private UIRWindow1 mUIRWindow1;
         #endregion
     }
     
@@ -5598,6 +5652,80 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinEdit mUIAlphabeticTextBoxEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIPWindow : WinWindow
+    {
+        
+        public UIPWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "39";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIPButton
+        {
+            get
+            {
+                if ((this.mUIPButton == null))
+                {
+                    this.mUIPButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIPButton.SearchProperties[WinButton.PropertyNames.Name] = "→P";
+                    this.mUIPButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIPButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIPButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIRWindow1 : WinWindow
+    {
+        
+        public UIRWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "33";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIRButton
+        {
+            get
+            {
+                if ((this.mUIRButton == null))
+                {
+                    this.mUIRButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIRButton.SearchProperties[WinButton.PropertyNames.Name] = "→R";
+                    this.mUIRButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIRButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIRButton;
         #endregion
     }
     

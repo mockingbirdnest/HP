@@ -276,6 +276,12 @@
 
         // Composite operations.
 
+        public void ABS ()
+        {
+            f ();
+            YToTheXth ();
+        }
+
         public void CLPRGM ()
         {
             f ();
@@ -286,6 +292,18 @@
         {
             f ();
             Two ();
+        }
+
+        public void INT ()
+        {
+            f ();
+            ToPolar ();
+        }
+
+        public void FRAC ()
+        {
+            f ();
+            ToRectangular ();
         }
 
         public void LASTx ()
@@ -328,6 +346,12 @@
         {
             f ();
             CHS ();
+        }
+
+        public void RND ()
+        {
+            f ();
+            RTN ();
         }
 
         public void TenToTheXth ()
