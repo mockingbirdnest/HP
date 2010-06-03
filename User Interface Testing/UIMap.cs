@@ -300,6 +300,11 @@
             ToPolar ();
         }
 
+        public void Factorial () {
+            f ();
+            Reciprocal ();
+        }
+
         public void FRAC ()
         {
             f ();
