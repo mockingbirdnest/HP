@@ -370,13 +370,15 @@ namespace Mockingbird.HP.Class_Library
                         result = "+ ";
                         break;
                     case SymbolConstants.SYMBOL_ARCCOS:
-                        result = "COS⁻¹";
+                        // Not ideal, but the minus sign would make it five characters.  Design a
+                        // better font, someday.
+                        result = "COS¹";
                         break;
                     case SymbolConstants.SYMBOL_ARCSIN:
-                        result = "SIN⁻¹";
+                        result = "SIN¹";
                         break;
                     case SymbolConstants.SYMBOL_ARCTAN:
-                        result = "TAN⁻¹";
+                        result = "TAN¹";
                         break;
                     case SymbolConstants.SYMBOL_CL_REG:
                         result = "CLRG";
