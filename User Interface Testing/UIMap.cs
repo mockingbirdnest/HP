@@ -282,6 +282,12 @@
             YToTheXth ();
         }
 
+        public void ArcSIN ()
+        {
+            f ();
+            SIN ();
+        }
+
         public void CLPRGM ()
         {
             f ();
@@ -294,13 +300,20 @@
             Two ();
         }
 
+        public void DegreesToRadians ()
+        {
+            f ();
+            SubI ();
+        }
+
         public void INT ()
         {
             f ();
             ToPolar ();
         }
 
-        public void Factorial () {
+        public void Factorial ()
+        {
             f ();
             Reciprocal ();
         }
@@ -309,6 +322,12 @@
         {
             f ();
             ToRectangular ();
+        }
+
+        public void GRD ()
+        {
+            f ();
+            EEX ();
         }
 
         public void LASTx ()
@@ -321,6 +340,12 @@
         {
             f ();
             LN ();
+        }
+
+        public void PercentChange ()
+        {
+            f ();
+            Percent ();
         }
 
         public void PExchangeS ()
@@ -351,6 +376,12 @@
         {
             f ();
             CHS ();
+        }
+
+        public void RadiansToDegrees ()
+        {
+            f ();
+            I ();
         }
 
         public void RND ()

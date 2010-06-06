@@ -1108,6 +1108,19 @@ namespace User_Interface_Testing
             Mouse.Click(uIRButton, new Point(33, 11));
         }
         
+        /// <summary>
+        /// SubI
+        /// </summary>
+        public void SubI()
+        {
+            #region Variable Declarations
+            WinButton uIIButton = this.UIHP97Window.UIIWindow1.UIIButton;
+            #endregion
+
+            // Click '(i)' button
+            Mouse.Click(uIIButton, new Point(28, 8));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -2462,6 +2475,18 @@ namespace User_Interface_Testing
                 return this.mUIRWindow1;
             }
         }
+        
+        public UIIWindow1 UIIWindow1
+        {
+            get
+            {
+                if ((this.mUIIWindow1 == null))
+                {
+                    this.mUIIWindow1 = new UIIWindow1(this);
+                }
+                return this.mUIIWindow1;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2624,6 +2649,8 @@ namespace User_Interface_Testing
         private UIPWindow mUIPWindow;
         
         private UIRWindow1 mUIRWindow1;
+        
+        private UIIWindow1 mUIIWindow1;
         #endregion
     }
     
@@ -5726,6 +5753,43 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinButton mUIRButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIIWindow1 : WinWindow
+    {
+        
+        public UIIWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "37";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIIButton
+        {
+            get
+            {
+                if ((this.mUIIButton == null))
+                {
+                    this.mUIIButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIIButton.SearchProperties[WinButton.PropertyNames.Name] = "(i)";
+                    this.mUIIButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIIButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIIButton;
         #endregion
     }
     
