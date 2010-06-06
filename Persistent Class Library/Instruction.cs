@@ -500,7 +500,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "10ˣ";
                         break;
                     case SymbolConstants.SYMBOL_TO_DEGREES:
-                        result = "D←";
+                        result = "R→D";
                         break;
                     case SymbolConstants.SYMBOL_TO_HMS:
                         result = "→HMS";
