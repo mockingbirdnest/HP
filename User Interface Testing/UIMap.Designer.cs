@@ -35,7 +35,7 @@ namespace User_Interface_Testing
         public void Launch()
         {
 
-            // Launch 'C:\Profiles\Redirection\phl\My Documents\My Projects\Mockingbird\HP2010\HP97\bin\Debug\Mockingbird.HP.HP97.exe'
+            // Launch 'C:\Documents and Settings\phl\Projects\Mockingbird\HP\HP97\bin\Debug\Mockingbird.HP.HP97.exe'
             ApplicationUnderTest mockingbirdHPHP97Application = ApplicationUnderTest.Launch(this.LaunchParams.ExePath, this.LaunchParams.AlternateExePath);
         }
         
@@ -1289,15 +1289,16 @@ namespace User_Interface_Testing
         
         #region Fields
         /// <summary>
-        /// Launch 'C:\Profiles\Redirection\phl\My Documents\My Projects\Mockingbird\HP2010\HP97\bin\Debug\Mockingbird.HP.HP97.exe'
+        /// Launch 'C:\Documents and Settings\phl\Projects\Mockingbird\HP\HP97\bin\Debug\Mockingbird.HP.HP97.exe'
         /// </summary>
-        public string ExePath = "C:\\Profiles\\Redirection\\phl\\My Documents\\My Projects\\Mockingbird\\HP2010\\HP97\\bin\\" +
+        /// C:\Documents and Settings\phl\Projects\Mockingbird\HP
+        public string ExePath = "C:\\Documents and Settings\\phl\\Projects\\Mockingbird\\HP\\HP97\\bin\\" +
             "Debug\\Mockingbird.HP.HP97.exe";
         
         /// <summary>
-        /// Launch 'C:\Profiles\Redirection\phl\My Documents\My Projects\Mockingbird\HP2010\HP97\bin\Debug\Mockingbird.HP.HP97.exe'
+        /// Launch 'C:\Documents and Settings\phl\Projects\Mockingbird\HP\HP97\bin\Debug\Mockingbird.HP.HP97.exe'
         /// </summary>
-        public string AlternateExePath = "C:\\Profiles\\Redirection\\phl\\My Documents\\My Projects\\Mockingbird\\HP2010\\HP97\\bin\\" +
+        public string AlternateExePath = "C:\\Documents and Settings\\phl\\Projects\\Mockingbird\\HP\\HP97\\bin\\" +
             "Debug\\Mockingbird.HP.HP97.exe";
         #endregion
     }

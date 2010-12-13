@@ -242,7 +242,31 @@
         {
             string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
                                               s11, s12, s13, s14, s15, s16, s17, s18, s19, s20,
-                                              s21};
+                                              s21 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17, string s18, string s19, string s20, string s21,
+                                   string s22)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17, s18, s19, s20,
+                                              s21, s22 };
+            AssertPrinter (lines);
+        }
+
+        public void AssertPrinter (string s1, string s2, string s3, string s4, string s5, string s6,
+                                   string s7, string s8, string s9, string s10, string s11,
+                                   string s12, string s13, string s14, string s15, string s16,
+                                   string s17, string s18, string s19, string s20, string s21,
+                                   string s22, string s23)
+        {
+            string [] lines = new string [] { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, 
+                                              s11, s12, s13, s14, s15, s16, s17, s18, s19, s20,
+                                              s21, s22, s23 };
             AssertPrinter (lines);
         }
 
@@ -282,6 +306,12 @@
             YToTheXth ();
         }
 
+        public void ArcCOS ()
+        {
+            f ();
+            COS ();
+        }
+
         public void ArcSIN ()
         {
             f ();
@@ -300,13 +330,19 @@
             Two ();
         }
 
-        public void DegreesToRadians ()
+        public void DEG ()
         {
             f ();
-            SubI ();
+            ENTER ();
         }
 
-        public void INT ()
+        public void DegreesToRadians()
+        {
+            f();
+            SubI();
+        }
+
+        public void INT()
         {
             f ();
             ToPolar ();
@@ -324,10 +360,22 @@
             ToRectangular ();
         }
 
-        public void GRD ()
+        public void FromHMS()
+        {
+            f();
+            RCL();
+        }
+
+        public void GRD()
         {
             f ();
             EEX ();
+        }
+
+        public void HMSAddition ()
+        {
+            f ();
+            Addition ();
         }
 
         public void LASTx ()
@@ -378,13 +426,13 @@
             CHS ();
         }
 
-        public void RadiansToDegrees ()
+        public void RadiansToDegrees()
         {
-            f ();
-            I ();
+            f();
+            I();
         }
 
-        public void RND ()
+        public void RND()
         {
             f ();
             RTN ();
@@ -394,6 +442,12 @@
         {
             f ();
             Exp ();
+        }
+
+        public void ToHMS ()
+        {
+            f ();
+            STO ();
         }
 
         private const int listBoxSize = 7;
