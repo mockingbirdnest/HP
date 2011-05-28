@@ -887,22 +887,30 @@ namespace User_Interface_Testing
         {
             #region Variable Declarations
             WinMenuItem uISaveMenuItem = this.UIHP97Window.UIMenuStripMenuBar.UIFileMenuItem.UISaveMenuItem;
-            WinButton uIMyDocumentsButton = this.UISaveAsWindow.UIItemWindow.UIMyDocumentsButton;
-            WinComboBox uIFilenameComboBox = this.UISaveAsWindow.UIItemWindow1.UIFilenameComboBox;
-            WinButton uISaveButton = this.UISaveAsWindow.UISaveWindow.UISaveButton;
+            WinTreeItem uIProjectsTreeItem = this.UISaveAsWindow.UITreeViewWindow.UITreeViewTree.UIFavoritesTreeItem.UIProjectsTreeItem;
+            WinEdit uINameEdit = this.UISaveAsWindow.UIItemWindow2.UIMockingbirdListItem.UINameEdit;
+            WinEdit uINameEdit1 = this.UISaveAsWindow.UIItemWindow11.UIHPListItem.UINameEdit;
+            WinComboBox uIFilenameComboBox = this.UISaveAsWindow.UIDetailsPanePane.UIFilenameComboBox;
+            WinButton uISaveButton = this.UISaveAsWindow.UISaveWindow1.UISaveButton;
             #endregion
 
             // Click 'File' -> 'Save' menu item
-            Mouse.Click(uISaveMenuItem, new Point(31, 11));
+            Mouse.Click(uISaveMenuItem, new Point(33, 8));
 
-            // Click 'My Documents' button
-            Mouse.Click(uIMyDocumentsButton, new Point(41, 32));
+            // Double-Click 'Favorites' -> 'Projects' tree item
+            Mouse.DoubleClick(uIProjectsTreeItem, new Point(43, 18));
 
-            // Select 'CardFile' in 'File name:' combo box
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit, new Point(59, 9));
+
+            // Double-Click 'Name' text box
+            Mouse.DoubleClick(uINameEdit1, new Point(30, 14));
+
+            // Select '' in 'File name:' combo box
             uIFilenameComboBox.EditableItem = this.SaveCardParams.UIFilenameComboBoxEditableItem;
 
             // Click '&Save' button
-            Mouse.Click(uISaveButton, new Point(59, 18));
+            Mouse.Click(uISaveButton, new Point(46, 14));
         }
         
         /// <summary>
@@ -1455,9 +1463,9 @@ namespace User_Interface_Testing
         
         #region Fields
         /// <summary>
-        /// Select 'CardFile' in 'File name:' combo box
+        /// Select 'aoe.hp96' in 'File name:' combo box
         /// </summary>
-        public string UIFilenameComboBoxEditableItem = "CardFile";
+        public string UIFilenameComboBoxEditableItem = "aoe.hp96";
         #endregion
     }
     
@@ -2481,6 +2489,30 @@ namespace User_Interface_Testing
                 return this.mUIIWindow1;
             }
         }
+        
+        public UIPanelWindow UIPanelWindow
+        {
+            get
+            {
+                if ((this.mUIPanelWindow == null))
+                {
+                    this.mUIPanelWindow = new UIPanelWindow(this);
+                }
+                return this.mUIPanelWindow;
+            }
+        }
+        
+        public UIPRGMWindow UIPRGMWindow
+        {
+            get
+            {
+                if ((this.mUIPRGMWindow == null))
+                {
+                    this.mUIPRGMWindow = new UIPRGMWindow(this);
+                }
+                return this.mUIPRGMWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2645,6 +2677,10 @@ namespace User_Interface_Testing
         private UIRWindow1 mUIRWindow1;
         
         private UIIWindow1 mUIIWindow1;
+        
+        private UIPanelWindow mUIPanelWindow;
+        
+        private UIPRGMWindow mUIPRGMWindow;
         #endregion
     }
     
@@ -5788,6 +5824,79 @@ namespace User_Interface_Testing
     }
     
     [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIPanelWindow : WinWindow
+    {
+        
+        public UIPanelWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "panel";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "4";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinClient UIPanelClient
+        {
+            get
+            {
+                if ((this.mUIPanelClient == null))
+                {
+                    this.mUIPanelClient = new WinClient(this);
+                    #region Search Criteria
+                    this.mUIPanelClient.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIPanelClient;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinClient mUIPanelClient;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIPRGMWindow : WinWindow
+    {
+        
+        public UIPRGMWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "leftLabel";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "3";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinText UIPRGMText
+        {
+            get
+            {
+                if ((this.mUIPRGMText == null))
+                {
+                    this.mUIPRGMText = new WinText(this);
+                    #region Search Criteria
+                    this.mUIPRGMText.SearchProperties[WinText.PropertyNames.Name] = "PRGM";
+                    this.mUIPRGMText.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIPRGMText;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinText mUIPRGMText;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
     public class UIOpenWindow : WinWindow
     {
         
@@ -6824,6 +6933,66 @@ namespace User_Interface_Testing
                 return this.mUISaveWindow;
             }
         }
+        
+        public UITreeViewWindow1 UITreeViewWindow
+        {
+            get
+            {
+                if ((this.mUITreeViewWindow == null))
+                {
+                    this.mUITreeViewWindow = new UITreeViewWindow1(this);
+                }
+                return this.mUITreeViewWindow;
+            }
+        }
+        
+        public UIItemWindow22 UIItemWindow2
+        {
+            get
+            {
+                if ((this.mUIItemWindow2 == null))
+                {
+                    this.mUIItemWindow2 = new UIItemWindow22(this);
+                }
+                return this.mUIItemWindow2;
+            }
+        }
+        
+        public UIItemWindow112 UIItemWindow11
+        {
+            get
+            {
+                if ((this.mUIItemWindow11 == null))
+                {
+                    this.mUIItemWindow11 = new UIItemWindow112(this);
+                }
+                return this.mUIItemWindow11;
+            }
+        }
+        
+        public UIDetailsPanePane UIDetailsPanePane
+        {
+            get
+            {
+                if ((this.mUIDetailsPanePane == null))
+                {
+                    this.mUIDetailsPanePane = new UIDetailsPanePane(this);
+                }
+                return this.mUIDetailsPanePane;
+            }
+        }
+        
+        public UISaveWindow1 UISaveWindow1
+        {
+            get
+            {
+                if ((this.mUISaveWindow1 == null))
+                {
+                    this.mUISaveWindow1 = new UISaveWindow1(this);
+                }
+                return this.mUISaveWindow1;
+            }
+        }
         #endregion
         
         #region Fields
@@ -6832,6 +7001,16 @@ namespace User_Interface_Testing
         private UIItemWindow13 mUIItemWindow1;
         
         private UISaveWindow mUISaveWindow;
+        
+        private UITreeViewWindow1 mUITreeViewWindow;
+        
+        private UIItemWindow22 mUIItemWindow2;
+        
+        private UIItemWindow112 mUIItemWindow11;
+        
+        private UIDetailsPanePane mUIDetailsPanePane;
+        
+        private UISaveWindow1 mUISaveWindow1;
         #endregion
     }
     
@@ -6918,6 +7097,320 @@ namespace User_Interface_Testing
             #region Search Criteria
             this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1";
             this.SearchProperties[WinWindow.PropertyNames.Instance] = "2";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UISaveButton
+        {
+            get
+            {
+                if ((this.mUISaveButton == null))
+                {
+                    this.mUISaveButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUISaveButton.SearchProperties[WinButton.PropertyNames.Name] = "Save";
+                    this.mUISaveButton.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUISaveButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUISaveButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UITreeViewWindow1 : WinWindow
+    {
+        
+        public UITreeViewWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "100";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public UITreeViewTree1 UITreeViewTree
+        {
+            get
+            {
+                if ((this.mUITreeViewTree == null))
+                {
+                    this.mUITreeViewTree = new UITreeViewTree1(this);
+                }
+                return this.mUITreeViewTree;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UITreeViewTree1 mUITreeViewTree;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UITreeViewTree1 : WinTree
+    {
+        
+        public UITreeViewTree1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinTree.PropertyNames.Name] = "Namespace Tree Control";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public UIFavoritesTreeItem1 UIFavoritesTreeItem
+        {
+            get
+            {
+                if ((this.mUIFavoritesTreeItem == null))
+                {
+                    this.mUIFavoritesTreeItem = new UIFavoritesTreeItem1(this);
+                }
+                return this.mUIFavoritesTreeItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIFavoritesTreeItem1 mUIFavoritesTreeItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIFavoritesTreeItem1 : WinTreeItem
+    {
+        
+        public UIFavoritesTreeItem1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinTreeItem.PropertyNames.Name] = "Favorites";
+            this.SearchProperties["Value"] = "0";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinTreeItem UIProjectsTreeItem
+        {
+            get
+            {
+                if ((this.mUIProjectsTreeItem == null))
+                {
+                    this.mUIProjectsTreeItem = new WinTreeItem(this);
+                    #region Search Criteria
+                    this.mUIProjectsTreeItem.SearchProperties[WinTreeItem.PropertyNames.Name] = "Projects";
+                    this.mUIProjectsTreeItem.SearchProperties["Value"] = "1";
+                    this.mUIProjectsTreeItem.SearchConfigurations.Add(SearchConfiguration.ExpandWhileSearching);
+                    this.mUIProjectsTreeItem.SearchConfigurations.Add(SearchConfiguration.NextSibling);
+                    this.mUIProjectsTreeItem.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUIProjectsTreeItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinTreeItem mUIProjectsTreeItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIItemWindow22 : WinWindow
+    {
+        
+        public UIItemWindow22(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public UIMockingbirdListItem1 UIMockingbirdListItem
+        {
+            get
+            {
+                if ((this.mUIMockingbirdListItem == null))
+                {
+                    this.mUIMockingbirdListItem = new UIMockingbirdListItem1(this);
+                }
+                return this.mUIMockingbirdListItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIMockingbirdListItem1 mUIMockingbirdListItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIMockingbirdListItem1 : WinListItem
+    {
+        
+        public UIMockingbirdListItem1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "Mockingbird";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIItemWindow112 : WinWindow
+    {
+        
+        public UIItemWindow112(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.AccessibleName] = "Items View";
+            this.SearchProperties[WinWindow.PropertyNames.ClassName] = "DirectUIHWND";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public UIHPListItem1 UIHPListItem
+        {
+            get
+            {
+                if ((this.mUIHPListItem == null))
+                {
+                    this.mUIHPListItem = new UIHPListItem1(this);
+                }
+                return this.mUIHPListItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private UIHPListItem1 mUIHPListItem;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIHPListItem1 : WinListItem
+    {
+        
+        public UIHPListItem1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinListItem.PropertyNames.Name] = "HP";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UINameEdit
+        {
+            get
+            {
+                if ((this.mUINameEdit == null))
+                {
+                    this.mUINameEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUINameEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Name";
+                    this.mUINameEdit.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUINameEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUINameEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIDetailsPanePane : WinPane
+    {
+        
+        public UIDetailsPanePane(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinControl.PropertyNames.Name] = "Details Pane";
+            this.WindowTitles.Add("Save As");
+            #endregion
+        }
+        
+        #region Properties
+        public WinComboBox UIFilenameComboBox
+        {
+            get
+            {
+                if ((this.mUIFilenameComboBox == null))
+                {
+                    this.mUIFilenameComboBox = new WinComboBox(this);
+                    #region Search Criteria
+                    this.mUIFilenameComboBox.SearchProperties[WinComboBox.PropertyNames.Name] = "File name:";
+                    this.mUIFilenameComboBox.WindowTitles.Add("Save As");
+                    #endregion
+                }
+                return this.mUIFilenameComboBox;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinComboBox mUIFilenameComboBox;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UISaveWindow1 : WinWindow
+    {
+        
+        public UISaveWindow1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlId] = "1";
             this.WindowTitles.Add("Save As");
             #endregion
         }
