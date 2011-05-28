@@ -428,21 +428,6 @@ namespace Mockingbird.HP.Class_Library
                 }
             }
 
-            public bool MustUseRaw
-            {
-                get
-                {
-
-                    // This gives a number of conditions under which the raw input (as opposed to:
-                    // the formatted input) must be echoed by the printer.  This is *not* complete,
-                    // though: there are other conditions (no exponent entered, no truncation) that
-                    // can only be checked based on the raw input given by the validater.
-                    return format != Number.DisplayFormat.Fixed ||
-                           formatted.exponent != 0 ||
-                           fixedUnderflowOverflow;
-               }
-            }
-
             public Number RoundedValue
             {
                 get

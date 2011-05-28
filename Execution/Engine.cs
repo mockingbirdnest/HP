@@ -178,23 +178,27 @@ namespace Mockingbird.HP.Execution
 
                     // This code implements the special case described on page 41 of the
                     // documentation: in Fixed format if no exponent was typed and no truncation
-                    // happened but the decimal point does not align, then print using the specified
-                    // format.  Otherwise print the raw input.  Note that DISPLAY_X always prints
-                    // the raw input.
+                    // happened but the decimal point does not align, then add trailing zeros if
+                    // necessary.  This is *not* printing using the fixed format, though, as no
+                    // leading zero is added if the input started with a period.
+                    // Otherwise print the raw input.  Note that DISPLAY_X always prints the raw
+                    // input.
 
                     bool hasExponent = exponent != new string (' ', exponent.Length);
                     int mantissaAft = mantissa.TrimEnd ().Length - mantissa.IndexOf ('.') - 1;
 
-                    if (inDisplayX ||
-                        printer.Formatter.MustUseRaw ||
-                        hasExponent ||
-                        mantissaAft >= printer.Formatter.Digits)
+                    if (!inDisplayX &&
+                        printer.Formatter.Format == Number.DisplayFormat.Fixed &&
+                        !hasExponent &&
+                        printer.Formatter.Digits > mantissaAft)
                     {
-                        printer.PrintNumeric (mantissa.TrimEnd (), exponent);
+                        printer.PrintNumeric(mantissa.TrimEnd() + 
+                                             new String('0', printer.Formatter.Digits - mantissaAft), 
+                                             exponent);
                     }
                     else
                     {
-                        printer.PrintNumeric ();
+                        printer.PrintNumeric(mantissa.TrimEnd(), exponent);
                     }
                 }
             }
