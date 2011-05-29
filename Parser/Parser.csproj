@@ -157,6 +157,7 @@
     <None Include="Build HP Parser.bat" />
     <None Include="C-Sharp - Calitha Interface Based.pgt" />
     <None Include="C-Sharp - Calitha Interface Implementation.pgt" />
+    <None Include="HP.cgt" />
     <None Include="HP.grm" />
     <EmbeddedResource Include="Parser.resx">
       <DependentUpon>Parser.cs</DependentUpon>
