@@ -112,12 +112,12 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="printerPaperRoll.Font" type="System.Drawing.Font, System.Drawing">
     <value>Courier New, 14.25pt, style=Bold</value>
   </data>
@@ -127,7 +127,7 @@
   <data name="printerPaperRoll.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 188</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="printerPaperRoll.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -135,7 +135,7 @@
     <value>printerPaperRoll</value>
   </data>
   <data name="&gt;&gt;printerPaperRoll.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Printer, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Printer, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;printerPaperRoll.Parent" xml:space="preserve">
     <value>$this</value>
@@ -165,7 +165,7 @@
     <value>labelPrint</value>
   </data>
   <data name="&gt;&gt;labelPrint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelPrint.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -186,7 +186,7 @@
     <value>pictureBoxLineRight</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineRight.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -207,7 +207,7 @@
     <value>pictureBoxLineCenter</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineCenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineCenter.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -228,7 +228,7 @@
     <value>pictureBoxLineLeft</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pictureBoxLineLeft.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -252,7 +252,7 @@
     <value>keyPRINTx</value>
   </data>
   <data name="&gt;&gt;keyPRINTx.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyPRINTx.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -276,7 +276,7 @@
     <value>keyENG</value>
   </data>
   <data name="&gt;&gt;keyENG.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyENG.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -300,7 +300,7 @@
     <value>keySCI</value>
   </data>
   <data name="&gt;&gt;keySCI.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySCI.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -324,7 +324,7 @@
     <value>keyCHS</value>
   </data>
   <data name="&gt;&gt;keyCHS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyCHS.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -348,7 +348,7 @@
     <value>keyFIX</value>
   </data>
   <data name="&gt;&gt;keyFIX.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyFIX.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -372,7 +372,7 @@
     <value>keyENTER</value>
   </data>
   <data name="&gt;&gt;keyENTER.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyENTER.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -396,7 +396,7 @@
     <value>keyEEX</value>
   </data>
   <data name="&gt;&gt;keyEEX.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyEEX.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -420,7 +420,7 @@
     <value>keyPlus</value>
   </data>
   <data name="&gt;&gt;keyPlus.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyPlus.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -444,7 +444,7 @@
     <value>keyDSP</value>
   </data>
   <data name="&gt;&gt;keyDSP.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyDSP.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -468,7 +468,7 @@
     <value>keyPeriod</value>
   </data>
   <data name="&gt;&gt;keyPeriod.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyPeriod.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -492,7 +492,7 @@
     <value>keyMult</value>
   </data>
   <data name="&gt;&gt;keyMult.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyMult.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -516,7 +516,7 @@
     <value>keySub</value>
   </data>
   <data name="&gt;&gt;keySub.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySub.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -540,7 +540,7 @@
     <value>keyDiv</value>
   </data>
   <data name="&gt;&gt;keyDiv.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyDiv.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -564,7 +564,7 @@
     <value>key6</value>
   </data>
   <data name="&gt;&gt;key6.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key6.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -588,7 +588,7 @@
     <value>key3</value>
   </data>
   <data name="&gt;&gt;key3.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key3.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -612,7 +612,7 @@
     <value>key9</value>
   </data>
   <data name="&gt;&gt;key9.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key9.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -636,7 +636,7 @@
     <value>key5</value>
   </data>
   <data name="&gt;&gt;key5.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key5.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -660,7 +660,7 @@
     <value>key2</value>
   </data>
   <data name="&gt;&gt;key2.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key2.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -684,7 +684,7 @@
     <value>key8</value>
   </data>
   <data name="&gt;&gt;key8.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key8.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -708,7 +708,7 @@
     <value>key4</value>
   </data>
   <data name="&gt;&gt;key4.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key4.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -732,7 +732,7 @@
     <value>key1</value>
   </data>
   <data name="&gt;&gt;key1.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key1.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -756,7 +756,7 @@
     <value>key7</value>
   </data>
   <data name="&gt;&gt;key7.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key7.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -780,7 +780,7 @@
     <value>keyXExchangeY</value>
   </data>
   <data name="&gt;&gt;keyXExchangeY.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyXExchangeY.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -804,7 +804,7 @@
     <value>keyCLx</value>
   </data>
   <data name="&gt;&gt;keyCLx.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyCLx.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -828,7 +828,7 @@
     <value>keyRDown</value>
   </data>
   <data name="&gt;&gt;keyRDown.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRDown.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -852,7 +852,7 @@
     <value>key0</value>
   </data>
   <data name="&gt;&gt;key0.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;key0.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -860,7 +860,7 @@
   <data name="&gt;&gt;key0.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <metadata name="keySqrt.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keySqrt.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keySqrt.Font" type="System.Drawing.Font, System.Drawing">
@@ -879,7 +879,7 @@
     <value>keySqrt</value>
   </data>
   <data name="&gt;&gt;keySqrt.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySqrt.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -887,7 +887,7 @@
   <data name="&gt;&gt;keySqrt.ZOrder" xml:space="preserve">
     <value>30</value>
   </data>
-  <metadata name="keyReciprocal.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyReciprocal.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyReciprocal.Font" type="System.Drawing.Font, System.Drawing">
@@ -906,7 +906,7 @@
     <value>keyReciprocal</value>
   </data>
   <data name="&gt;&gt;keyReciprocal.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyReciprocal.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -914,7 +914,7 @@
   <data name="&gt;&gt;keyReciprocal.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
-  <metadata name="keyΣ.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyΣ.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyΣ.Font" type="System.Drawing.Font, System.Drawing">
@@ -923,7 +923,7 @@
   <data name="keyΣ.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 376</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="keyΣ.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
@@ -937,7 +937,7 @@
     <value>keyΣ</value>
   </data>
   <data name="&gt;&gt;keyΣ.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyΣ.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -945,7 +945,7 @@
   <data name="&gt;&gt;keyΣ.ZOrder" xml:space="preserve">
     <value>32</value>
   </data>
-  <metadata name="keySquare.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keySquare.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keySquare.Font" type="System.Drawing.Font, System.Drawing">
@@ -964,7 +964,7 @@
     <value>keySquare</value>
   </data>
   <data name="&gt;&gt;keySquare.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySquare.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -972,7 +972,7 @@
   <data name="&gt;&gt;keySquare.ZOrder" xml:space="preserve">
     <value>33</value>
   </data>
-  <metadata name="keyPercent.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyPercent.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyPercent.Font" type="System.Drawing.Font, System.Drawing">
@@ -991,7 +991,7 @@
     <value>keyPercent</value>
   </data>
   <data name="&gt;&gt;keyPercent.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyPercent.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -999,7 +999,7 @@
   <data name="&gt;&gt;keyPercent.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
-  <metadata name="keyRS.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyRS.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyRS.Font" type="System.Drawing.Font, System.Drawing">
@@ -1018,7 +1018,7 @@
     <value>keyRS</value>
   </data>
   <data name="&gt;&gt;keyRS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRS.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1026,7 +1026,7 @@
   <data name="&gt;&gt;keyRS.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
-  <metadata name="keyToRectangular.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyToRectangular.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyToRectangular.Font" type="System.Drawing.Font, System.Drawing">
@@ -1045,7 +1045,7 @@
     <value>keyToRectangular</value>
   </data>
   <data name="&gt;&gt;keyToRectangular.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyToRectangular.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1053,7 +1053,7 @@
   <data name="&gt;&gt;keyToRectangular.ZOrder" xml:space="preserve">
     <value>36</value>
   </data>
-  <metadata name="keyCOS.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyCOS.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyCOS.Font" type="System.Drawing.Font, System.Drawing">
@@ -1072,7 +1072,7 @@
     <value>keyCOS</value>
   </data>
   <data name="&gt;&gt;keyCOS.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyCOS.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1080,7 +1080,7 @@
   <data name="&gt;&gt;keyCOS.ZOrder" xml:space="preserve">
     <value>37</value>
   </data>
-  <metadata name="keyI.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyI.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyI.Font" type="System.Drawing.Font, System.Drawing">
@@ -1099,7 +1099,7 @@
     <value>keyI</value>
   </data>
   <data name="&gt;&gt;keyI.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyI.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1107,7 +1107,7 @@
   <data name="&gt;&gt;keyI.ZOrder" xml:space="preserve">
     <value>38</value>
   </data>
-  <metadata name="keyTAN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyTAN.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyTAN.Font" type="System.Drawing.Font, System.Drawing">
@@ -1126,7 +1126,7 @@
     <value>keyTAN</value>
   </data>
   <data name="&gt;&gt;keyTAN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyTAN.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1134,7 +1134,7 @@
   <data name="&gt;&gt;keyTAN.ZOrder" xml:space="preserve">
     <value>39</value>
   </data>
-  <metadata name="keySubI.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keySubI.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keySubI.Font" type="System.Drawing.Font, System.Drawing">
@@ -1153,7 +1153,7 @@
     <value>keySubI</value>
   </data>
   <data name="&gt;&gt;keySubI.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySubI.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1161,7 +1161,7 @@
   <data name="&gt;&gt;keySubI.ZOrder" xml:space="preserve">
     <value>40</value>
   </data>
-  <metadata name="keySIN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keySIN.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keySIN.Font" type="System.Drawing.Font, System.Drawing">
@@ -1180,7 +1180,7 @@
     <value>keySIN</value>
   </data>
   <data name="&gt;&gt;keySIN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySIN.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1188,7 +1188,7 @@
   <data name="&gt;&gt;keySIN.ZOrder" xml:space="preserve">
     <value>41</value>
   </data>
-  <metadata name="keyToPolar.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyToPolar.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyToPolar.Font" type="System.Drawing.Font, System.Drawing">
@@ -1207,7 +1207,7 @@
     <value>keyToPolar</value>
   </data>
   <data name="&gt;&gt;keyToPolar.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyToPolar.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1215,7 +1215,7 @@
   <data name="&gt;&gt;keyToPolar.ZOrder" xml:space="preserve">
     <value>42</value>
   </data>
-  <metadata name="keyLN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyLN.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyLN.Font" type="System.Drawing.Font, System.Drawing">
@@ -1234,7 +1234,7 @@
     <value>keyLN</value>
   </data>
   <data name="&gt;&gt;keyLN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyLN.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1242,7 +1242,7 @@
   <data name="&gt;&gt;keyLN.ZOrder" xml:space="preserve">
     <value>43</value>
   </data>
-  <metadata name="keyRCL.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyRCL.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyRCL.Font" type="System.Drawing.Font, System.Drawing">
@@ -1261,7 +1261,7 @@
     <value>keyRCL</value>
   </data>
   <data name="&gt;&gt;keyRCL.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRCL.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1269,7 +1269,7 @@
   <data name="&gt;&gt;keyRCL.ZOrder" xml:space="preserve">
     <value>44</value>
   </data>
-  <metadata name="keyEToTheXth.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyEToTheXth.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyEToTheXth.Font" type="System.Drawing.Font, System.Drawing">
@@ -1288,7 +1288,7 @@
     <value>keyEToTheXth</value>
   </data>
   <data name="&gt;&gt;keyEToTheXth.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyEToTheXth.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1296,7 +1296,7 @@
   <data name="&gt;&gt;keyEToTheXth.ZOrder" xml:space="preserve">
     <value>45</value>
   </data>
-  <metadata name="keySTO.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keySTO.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keySTO.Font" type="System.Drawing.Font, System.Drawing">
@@ -1315,7 +1315,7 @@
     <value>keySTO</value>
   </data>
   <data name="&gt;&gt;keySTO.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySTO.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1323,7 +1323,7 @@
   <data name="&gt;&gt;keySTO.ZOrder" xml:space="preserve">
     <value>46</value>
   </data>
-  <metadata name="keyYToTheXth.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyYToTheXth.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyYToTheXth.Font" type="System.Drawing.Font, System.Drawing">
@@ -1342,7 +1342,7 @@
     <value>keyYToTheXth</value>
   </data>
   <data name="&gt;&gt;keyYToTheXth.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyYToTheXth.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1350,10 +1350,10 @@
   <data name="&gt;&gt;keyYToTheXth.ZOrder" xml:space="preserve">
     <value>47</value>
   </data>
-  <metadata name="groupBoxCard.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="groupBoxCard.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="cardSlot.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="cardSlot.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="cardSlot.Font" type="System.Drawing.Font, System.Drawing">
@@ -1372,7 +1372,7 @@
     <value>cardSlot</value>
   </data>
   <data name="&gt;&gt;cardSlot.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.CardSlot, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.CardSlot, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cardSlot.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1380,7 +1380,7 @@
   <data name="&gt;&gt;cardSlot.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="toggleManTraceNorm.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="toggleManTraceNorm.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="toggleManTraceNorm.Location" type="System.Drawing.Point, System.Drawing">
@@ -1396,7 +1396,7 @@
     <value>toggleManTraceNorm</value>
   </data>
   <data name="&gt;&gt;toggleManTraceNorm.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toggleManTraceNorm.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1404,7 +1404,7 @@
   <data name="&gt;&gt;toggleManTraceNorm.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="keyE.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyE.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyE.Font" type="System.Drawing.Font, System.Drawing">
@@ -1423,7 +1423,7 @@
     <value>keyE</value>
   </data>
   <data name="&gt;&gt;keyE.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyE.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1431,7 +1431,7 @@
   <data name="&gt;&gt;keyE.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="toggleOffOn.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="toggleOffOn.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="toggleOffOn.Font" type="System.Drawing.Font, System.Drawing">
@@ -1450,7 +1450,7 @@
     <value>toggleOffOn</value>
   </data>
   <data name="&gt;&gt;toggleOffOn.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toggleOffOn.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1458,7 +1458,7 @@
   <data name="&gt;&gt;toggleOffOn.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="toggleWprgmRun.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="toggleWprgmRun.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="toggleWprgmRun.Font" type="System.Drawing.Font, System.Drawing">
@@ -1477,7 +1477,7 @@
     <value>toggleWprgmRun</value>
   </data>
   <data name="&gt;&gt;toggleWprgmRun.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Toggle, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toggleWprgmRun.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1485,7 +1485,7 @@
   <data name="&gt;&gt;toggleWprgmRun.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="keyB.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyB.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyB.Font" type="System.Drawing.Font, System.Drawing">
@@ -1504,7 +1504,7 @@
     <value>keyB</value>
   </data>
   <data name="&gt;&gt;keyB.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyB.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1512,7 +1512,7 @@
   <data name="&gt;&gt;keyB.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <metadata name="keyA.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyA.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyA.Font" type="System.Drawing.Font, System.Drawing">
@@ -1531,7 +1531,7 @@
     <value>keyA</value>
   </data>
   <data name="&gt;&gt;keyA.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyA.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1539,7 +1539,7 @@
   <data name="&gt;&gt;keyA.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <metadata name="keyD.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyD.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyD.Font" type="System.Drawing.Font, System.Drawing">
@@ -1558,7 +1558,7 @@
     <value>keyD</value>
   </data>
   <data name="&gt;&gt;keyD.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyD.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1566,7 +1566,7 @@
   <data name="&gt;&gt;keyD.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="keyC.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyC.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyC.Font" type="System.Drawing.Font, System.Drawing">
@@ -1585,7 +1585,7 @@
     <value>keyC</value>
   </data>
   <data name="&gt;&gt;keyC.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyC.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1593,7 +1593,7 @@
   <data name="&gt;&gt;keyC.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <metadata name="keyF.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyF.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyF.Font" type="System.Drawing.Font, System.Drawing">
@@ -1612,7 +1612,7 @@
     <value>keyF</value>
   </data>
   <data name="&gt;&gt;keyF.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyF.Parent" xml:space="preserve">
     <value>groupBoxCard</value>
@@ -1633,7 +1633,7 @@
     <value>groupBoxCard</value>
   </data>
   <data name="&gt;&gt;groupBoxCard.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxCard.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1641,7 +1641,7 @@
   <data name="&gt;&gt;groupBoxCard.ZOrder" xml:space="preserve">
     <value>48</value>
   </data>
-  <metadata name="keyRTN.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyRTN.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyRTN.Font" type="System.Drawing.Font, System.Drawing">
@@ -1660,7 +1660,7 @@
     <value>keyRTN</value>
   </data>
   <data name="&gt;&gt;keyRTN.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyRTN.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1668,7 +1668,7 @@
   <data name="&gt;&gt;keyRTN.ZOrder" xml:space="preserve">
     <value>49</value>
   </data>
-  <metadata name="keyGTO.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyGTO.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyGTO.Font" type="System.Drawing.Font, System.Drawing">
@@ -1687,7 +1687,7 @@
     <value>keyGTO</value>
   </data>
   <data name="&gt;&gt;keyGTO.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyGTO.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1695,7 +1695,7 @@
   <data name="&gt;&gt;keyGTO.ZOrder" xml:space="preserve">
     <value>50</value>
   </data>
-  <metadata name="keySST.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keySST.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keySST.Font" type="System.Drawing.Font, System.Drawing">
@@ -1714,7 +1714,7 @@
     <value>keySST</value>
   </data>
   <data name="&gt;&gt;keySST.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keySST.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1722,7 +1722,7 @@
   <data name="&gt;&gt;keySST.ZOrder" xml:space="preserve">
     <value>51</value>
   </data>
-  <metadata name="keyGSB.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyGSB.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyGSB.Font" type="System.Drawing.Font, System.Drawing">
@@ -1741,7 +1741,7 @@
     <value>keyGSB</value>
   </data>
   <data name="&gt;&gt;keyGSB.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyGSB.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1749,7 +1749,7 @@
   <data name="&gt;&gt;keyGSB.ZOrder" xml:space="preserve">
     <value>52</value>
   </data>
-  <metadata name="keyBST.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyBST.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyBST.Font" type="System.Drawing.Font, System.Drawing">
@@ -1768,7 +1768,7 @@
     <value>keyBST</value>
   </data>
   <data name="&gt;&gt;keyBST.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyBST.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1776,7 +1776,7 @@
   <data name="&gt;&gt;keyBST.ZOrder" xml:space="preserve">
     <value>53</value>
   </data>
-  <metadata name="keyLBL.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="keyLBL.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="keyLBL.Font" type="System.Drawing.Font, System.Drawing">
@@ -1795,7 +1795,7 @@
     <value>keyLBL</value>
   </data>
   <data name="&gt;&gt;keyLBL.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Key, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;keyLBL.Parent" xml:space="preserve">
     <value>panelMain</value>
@@ -1816,7 +1816,7 @@
     <value>panelMain</value>
   </data>
   <data name="&gt;&gt;panelMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelMain.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1824,23 +1824,23 @@
   <data name="&gt;&gt;panelMain.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>119, 17</value>
   </metadata>
   <data name="openFileDialog.Filter" xml:space="preserve">
     <value>HP97 Card Files (*.hp97)|*.hp97|HP67 Card Files (*.hp67)|*.hp67|All files (*.*)|*.*</value>
   </data>
-  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>243, 17</value>
   </metadata>
   <data name="saveFileDialog.Filter" xml:space="preserve">
     <value>HP97 Card Files (*.hp97)|*.hp97|All files (*.*)|*.*</value>
   </data>
-  <metadata name="printDocument.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="printDocument.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>365, 17</value>
   </metadata>
   <data name="display.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Quartz, 26.25pt</value>
+    <value>Microsoft Sans Serif, 26.25pt</value>
   </data>
   <data name="display.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 8</value>
@@ -1855,7 +1855,7 @@
     <value>display</value>
   </data>
   <data name="&gt;&gt;display.Type" xml:space="preserve">
-    <value>Mockingbird.HP.Control_Library.Display, Mockingbird.HP.Control Library, Version=1.0.2982.26172, Culture=neutral, PublicKeyToken=null</value>
+    <value>Mockingbird.HP.Control_Library.Display, Mockingbird.HP.Control Library, Version=1.0.4166.22631, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;display.Parent" xml:space="preserve">
     <value>panelDisplay</value>
@@ -1876,7 +1876,7 @@
     <value>panelDisplay</value>
   </data>
   <data name="&gt;&gt;panelDisplay.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelDisplay.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1897,7 +1897,7 @@
     <value>printerFeedButton</value>
   </data>
   <data name="&gt;&gt;printerFeedButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;printerFeedButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1905,14 +1905,14 @@
   <data name="&gt;&gt;printerFeedButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
   <data name="openToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open...</value>
@@ -1921,13 +1921,13 @@
     <value>Black</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save &amp;As...</value>
@@ -1936,37 +1936,37 @@
     <value>Black</value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>123, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
   <data name="editLabelsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="editLabelsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit Labels</value>
   </data>
   <data name="rtfToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 22</value>
+    <value>130, 22</value>
   </data>
   <data name="rtfToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Rich Text</value>
   </data>
   <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="editToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Edit</value>
@@ -1984,7 +1984,7 @@
     <value>menuStrip</value>
   </data>
   <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1992,17 +1992,47 @@
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="panelSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panelSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="panelSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>820, 624</value>
+  </data>
+  <data name="panelSize.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;panelSize.Name" xml:space="preserve">
+    <value>panelSize</value>
+  </data>
+  <data name="&gt;&gt;panelSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelSize.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelSize.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>42</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>820, 622</value>
+    <value>820, 624</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2384,7 +2414,7 @@
 </value>
   </data>
   <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>828, 656</value>
+    <value>1828, 1656</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>828, 656</value>
@@ -2396,78 +2426,78 @@
     <value>openFileDialog</value>
   </data>
   <data name="&gt;&gt;openFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveFileDialog.Name" xml:space="preserve">
     <value>saveFileDialog</value>
   </data>
   <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;printDocument.Name" xml:space="preserve">
     <value>printDocument</value>
   </data>
   <data name="&gt;&gt;printDocument.Type" xml:space="preserve">
-    <value>System.Drawing.Printing.PrintDocument, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>System.Drawing.Printing.PrintDocument, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Name" xml:space="preserve">
     <value>openToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
     <value>saveToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveAsToolStripMenuItem.Name" xml:space="preserve">
     <value>saveAsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;saveAsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
     <value>printToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exitToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Name" xml:space="preserve">
     <value>editToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;editToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;editLabelsToolStripMenuItem.Name" xml:space="preserve">
     <value>editLabelsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;editLabelsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rtfToolStripMenuItem.Name" xml:space="preserve">
     <value>rtfToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;rtfToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>HP97</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
