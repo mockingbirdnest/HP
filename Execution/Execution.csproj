@@ -124,12 +124,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CalithaLib">
-      <Name>CalithaLib</Name>
-      <HintPath>C:\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
     </Reference>
     <Reference Include="GoldParserEngine">
-      <Name>GoldParserEngine</Name>
-      <HintPath>C:\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>

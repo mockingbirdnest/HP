@@ -123,13 +123,11 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalithaLib, Version=1.11.2083.28932, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
+    <Reference Include="CalithaLib">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\GOLD Parser Builder\Calitha\CalithaLib.dll</HintPath>
     </Reference>
-    <Reference Include="GoldParserEngine, Version=1.11.2083.28932, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
+    <Reference Include="GoldParserEngine">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\GOLD Parser Builder\Calitha\GoldParserEngine.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>

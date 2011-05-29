@@ -70,7 +70,6 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodedUITest5.cs" />
     <Compile Include="HP97.cs" />
     <Compile Include="HP97p14.cs" />
     <Compile Include="HP97p15p17.cs" />
