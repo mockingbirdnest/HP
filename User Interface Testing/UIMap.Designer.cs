@@ -1125,6 +1125,19 @@ namespace User_Interface_Testing
             Keyboard.SendKeys(uIFilenameEdit, this.OpenStandardPacCardParams.UIFilenameEditSendKeys, ModifierKeys.None);
         }
         
+        /// <summary>
+        /// SigmaPlus
+        /// </summary>
+        public void SigmaPlus()
+        {
+            #region Variable Declarations
+            WinButton uIΣButton = this.UIHP97Window.UIΣWindow.UIΣButton;
+            #endregion
+
+            // Click 'Σ+' button
+            Mouse.Click(uIΣButton, new Point(24, 8));
+        }
+        
         #region Properties
         public virtual LaunchParams LaunchParams
         {
@@ -1463,9 +1476,9 @@ namespace User_Interface_Testing
         
         #region Fields
         /// <summary>
-        /// Select 'aoe.hp96' in 'File name:' combo box
+        /// Select '' in 'File name:' combo box
         /// </summary>
-        public string UIFilenameComboBoxEditableItem = "aoe.hp96";
+        public string UIFilenameComboBoxEditableItem = "";
         #endregion
     }
     
@@ -2513,6 +2526,18 @@ namespace User_Interface_Testing
                 return this.mUIPRGMWindow;
             }
         }
+        
+        public UIΣWindow UIΣWindow
+        {
+            get
+            {
+                if ((this.mUIΣWindow == null))
+                {
+                    this.mUIΣWindow = new UIΣWindow(this);
+                }
+                return this.mUIΣWindow;
+            }
+        }
         #endregion
         
         #region Fields
@@ -2681,6 +2706,8 @@ namespace User_Interface_Testing
         private UIPanelWindow mUIPanelWindow;
         
         private UIPRGMWindow mUIPRGMWindow;
+        
+        private UIΣWindow mUIΣWindow;
         #endregion
     }
     
@@ -5893,6 +5920,43 @@ namespace User_Interface_Testing
         
         #region Fields
         private WinText mUIPRGMText;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "10.0.30319.1")]
+    public class UIΣWindow : WinWindow
+    {
+        
+        public UIΣWindow(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinWindow.PropertyNames.ControlName] = "button";
+            this.SearchProperties[WinWindow.PropertyNames.Instance] = "29";
+            this.WindowTitles.Add("HP-97");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UIΣButton
+        {
+            get
+            {
+                if ((this.mUIΣButton == null))
+                {
+                    this.mUIΣButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUIΣButton.SearchProperties[WinButton.PropertyNames.Name] = "Σ+";
+                    this.mUIΣButton.WindowTitles.Add("HP-97");
+                    #endregion
+                }
+                return this.mUIΣButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUIΣButton;
         #endregion
     }
     

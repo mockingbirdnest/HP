@@ -107,6 +107,7 @@
     <Compile Include="HP97p87p89.cs" />
     <Compile Include="HP97p91p92.cs" />
     <Compile Include="HP97p93p96.cs" />
+    <Compile Include="HP97p99p100.cs" />
     <Compile Include="HP97PeriodCHS.cs" />
     <Compile Include="HP97PrintXOfUnformattedNumber.cs" />
     <Compile Include="HP97PrintXStartup.cs" />
@@ -120,7 +121,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="UIMap.uitest" />
+    <None Include="UIMap.uitest">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
