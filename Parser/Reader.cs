@@ -32,6 +32,7 @@ namespace Mockingbird.HP.Parser
         private Dictionary<int, string> symbolIdToTag = null;
         private Dictionary<int, string> symbolIdToString = null;
         private Dictionary<SymbolConstants, Symbol> symbolIdToSymbol = null;
+        private HashSet<Symbol> symbols = null;
 
         #endregion
 
@@ -134,6 +135,28 @@ namespace Mockingbird.HP.Parser
             return words;
         }
 
+        // Calitha 1.11 used to have a Symbols property that returned a SymbolCollection, but not 
+        // anymore.  So we simulate it here.
+        private HashSet<Symbol> Symbols
+        {
+            get
+            {
+                if (symbols == null)
+                {
+                    symbols = new HashSet<Symbol> ();
+                    foreach (Rule r in Rules)
+                    {
+                        symbols.Add (r.Lhs);
+                        foreach (Symbol s in r.Rhs)
+                        {
+                            symbols.Add (s);
+                        }
+                    }
+                }
+                return symbols;
+            }
+        }
+
         #endregion
 
         #region Public Operations
@@ -186,7 +209,7 @@ namespace Mockingbird.HP.Parser
                 symbolIdToString = new Dictionary<int, string> ();
             }
 
-            if (! symbolIdToString.TryGetValue (symbol.Id, out result))
+            if (!symbolIdToString.TryGetValue (symbol.Id, out result))
             {
                 foreach (string w in UnparseToWords (symbol))
                 {
