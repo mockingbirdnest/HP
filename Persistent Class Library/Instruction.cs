@@ -523,7 +523,7 @@ namespace Mockingbird.HP.Class_Library
                         result = "WDTA";
                         break;
                     case SymbolConstants.SYMBOL_X_AVERAGE:
-                        result = "̄̄̄̄X̄ ";
+                        result = "x̅ ";
                         break;
                     case SymbolConstants.SYMBOL_X_EQ_0:
                         result = "X=0?";

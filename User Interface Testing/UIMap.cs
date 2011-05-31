@@ -512,6 +512,12 @@
             STO ();
         }
 
+        public void XAverage ()
+        {
+            f ();
+            Square ();
+        }
+
         private const int listBoxSize = 7;
         private Dictionary<int, WinListItem> listItems;
         private int listItemsAsserted;
