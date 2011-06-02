@@ -398,13 +398,13 @@
             ENTER ();
         }
 
-        public void DegreesToRadians()
+        public void DegreesToRadians ()
         {
-            f();
-            SubI();
+            f ();
+            SubI ();
         }
 
-        public void INT()
+        public void INT ()
         {
             f ();
             ToPolar ();
@@ -422,13 +422,13 @@
             ToRectangular ();
         }
 
-        public void FromHMS()
+        public void FromHMS ()
         {
-            f();
-            RCL();
+            f ();
+            RCL ();
         }
 
-        public void GRD()
+        public void GRD ()
         {
             f ();
             EEX ();
@@ -488,16 +488,34 @@
             CHS ();
         }
 
-        public void RadiansToDegrees()
+        public void RadiansToDegrees ()
         {
-            f();
-            I();
+            f ();
+            I ();
         }
 
-        public void RND()
+        public void RCLSigma ()
+        {
+            RCL ();
+            SigmaPlus ();
+        }
+
+        public void RND ()
         {
             f ();
             RTN ();
+        }
+
+        public void s ()
+        {
+            f ();
+            Sqrt ();
+        }
+
+        public void SigmaMinus ()
+        {
+            f ();
+            SigmaPlus ();
         }
 
         public void TenToTheXth ()

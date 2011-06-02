@@ -72,6 +72,9 @@
   <ItemGroup>
     <Compile Include="HP97p101p102.cs" />
     <Compile Include="HP97.cs" />
+    <Compile Include="HP97p104p105.cs" />
+    <Compile Include="HP97p106.cs" />
+    <Compile Include="HP97p107p108.cs" />
     <Compile Include="HP97p14.cs" />
     <Compile Include="HP97p15p17.cs" />
     <Compile Include="HP97p18p19.cs" />
